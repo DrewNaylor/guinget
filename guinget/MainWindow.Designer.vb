@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class aaformMainWindow
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,15 +20,15 @@ Partial Class aaformMainWindow
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -49,12 +49,24 @@ Partial Class aaformMainWindow
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(44, 24)
         Me.FileToolStripMenuItem.Text = "&File"
         '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(108, 26)
+        Me.ExitToolStripMenuItem.Text = "&Exit"
+        '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(56, 24)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
+        '
+        'VerifyManifestToolStripMenuItem
+        '
+        Me.VerifyManifestToolStripMenuItem.Name = "VerifyManifestToolStripMenuItem"
+        Me.VerifyManifestToolStripMenuItem.Size = New System.Drawing.Size(182, 26)
+        Me.VerifyManifestToolStripMenuItem.Text = "&Verify manifest"
         '
         'HelpToolStripMenuItem
         '
@@ -66,20 +78,8 @@ Partial Class aaformMainWindow
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(125, 26)
         Me.AboutToolStripMenuItem.Text = "&About"
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
-        Me.ExitToolStripMenuItem.Text = "&Exit"
-        '
-        'VerifyManifestToolStripMenuItem
-        '
-        Me.VerifyManifestToolStripMenuItem.Name = "VerifyManifestToolStripMenuItem"
-        Me.VerifyManifestToolStripMenuItem.Size = New System.Drawing.Size(182, 26)
-        Me.VerifyManifestToolStripMenuItem.Text = "&Verify manifest"
         '
         'aaformMainWindow
         '
