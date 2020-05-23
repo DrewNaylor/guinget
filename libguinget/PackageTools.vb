@@ -93,17 +93,6 @@ Public Class PackageTools
                 End If
 
             End Using
-
-            ' Start the process.
-            proc.Start()
-
-            ' Get standard output.
-            Dim procOutput As String
-            Using outputStreamReader As IO.StreamReader = proc.StandardOutput
-                procOutput = outputStreamReader.ReadToEnd
-            End Using
-
-            Return procOutput
         End Using
     End Function
 
