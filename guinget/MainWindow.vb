@@ -15,20 +15,6 @@
         datagridviewPackageList.Rows.Add("Do nothing", Status, PkgName, Description)
     End Sub
 
-    Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
-        ' Code based on this SO answer:
-        ' https://stackoverflow.com/a/939275
-        ' Also borrows from this answer:
-        ' https://stackoverflow.com/a/173315
-
-        If e.Button = MouseButtons.Right Then
-            ' Check if Control is being held down.
-            If ModifierKeys = CType(Keys.Control, Keys) Then
-                datagridviewPackageList.Rows(e.RowIndex).Selected = True
-            End If
-        End If
-    End Sub
-
 
 
     ' This YouTube video should help out with displaying CMD
