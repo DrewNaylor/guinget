@@ -23,38 +23,38 @@ Partial Class aaformMainWindow
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aaformMainWindow))
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
-        Me.MenuStrip1.SuspendLayout()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainer1.Panel1.SuspendLayout()
-        Me.SplitContainer1.Panel2.SuspendLayout()
-        Me.SplitContainer1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
+        Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
+        Me.checkedlistboxPackages = New System.Windows.Forms.CheckedListBox()
+        Me.textboxPackageDetails = New System.Windows.Forms.TextBox()
+        Me.panelMainWindow = New System.Windows.Forms.Panel()
+        Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
+        Me.toolstripbuttonSearch = New System.Windows.Forms.ToolStripButton()
+        Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
+        Me.menustripMainWindow.SuspendLayout()
+        CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.splitcontainerMainWindow.Panel1.SuspendLayout()
+        Me.splitcontainerMainWindow.Panel2.SuspendLayout()
+        Me.splitcontainerMainWindow.SuspendLayout()
+        Me.panelMainWindow.SuspendLayout()
+        Me.toolstripMainWindow.SuspendLayout()
         Me.SuspendLayout()
         '
-        'MenuStrip1
+        'menustripMainWindow
         '
-        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(818, 28)
-        Me.MenuStrip1.TabIndex = 0
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.menustripMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.menustripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.menustripMainWindow.Location = New System.Drawing.Point(0, 0)
+        Me.menustripMainWindow.Name = "menustripMainWindow"
+        Me.menustripMainWindow.Size = New System.Drawing.Size(818, 28)
+        Me.menustripMainWindow.TabIndex = 0
+        Me.menustripMainWindow.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
@@ -95,116 +95,116 @@ Partial Class aaformMainWindow
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(125, 26)
         Me.AboutToolStripMenuItem.Text = "&About"
         '
-        'SplitContainer1
+        'splitcontainerMainWindow
         '
-        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
-        Me.SplitContainer1.Name = "SplitContainer1"
-        Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
+        Me.splitcontainerMainWindow.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.splitcontainerMainWindow.Location = New System.Drawing.Point(0, 0)
+        Me.splitcontainerMainWindow.Name = "splitcontainerMainWindow"
+        Me.splitcontainerMainWindow.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
-        'SplitContainer1.Panel1
+        'splitcontainerMainWindow.Panel1
         '
-        Me.SplitContainer1.Panel1.Controls.Add(Me.CheckedListBox1)
+        Me.splitcontainerMainWindow.Panel1.Controls.Add(Me.checkedlistboxPackages)
         '
-        'SplitContainer1.Panel2
+        'splitcontainerMainWindow.Panel2
         '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.TextBox1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(818, 440)
-        Me.SplitContainer1.SplitterDistance = 256
-        Me.SplitContainer1.TabIndex = 1
+        Me.splitcontainerMainWindow.Panel2.Controls.Add(Me.textboxPackageDetails)
+        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(818, 440)
+        Me.splitcontainerMainWindow.SplitterDistance = 256
+        Me.splitcontainerMainWindow.TabIndex = 1
         '
-        'CheckedListBox1
+        'checkedlistboxPackages
         '
-        Me.CheckedListBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.IntegralHeight = False
-        Me.CheckedListBox1.Location = New System.Drawing.Point(0, 0)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.ScrollAlwaysVisible = True
-        Me.CheckedListBox1.Size = New System.Drawing.Size(818, 256)
-        Me.CheckedListBox1.TabIndex = 0
+        Me.checkedlistboxPackages.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.checkedlistboxPackages.FormattingEnabled = True
+        Me.checkedlistboxPackages.IntegralHeight = False
+        Me.checkedlistboxPackages.Location = New System.Drawing.Point(0, 0)
+        Me.checkedlistboxPackages.Name = "checkedlistboxPackages"
+        Me.checkedlistboxPackages.ScrollAlwaysVisible = True
+        Me.checkedlistboxPackages.Size = New System.Drawing.Size(818, 256)
+        Me.checkedlistboxPackages.TabIndex = 0
         '
-        'TextBox1
+        'textboxPackageDetails
         '
-        Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBox1.Location = New System.Drawing.Point(0, 0)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(818, 180)
-        Me.TextBox1.TabIndex = 0
+        Me.textboxPackageDetails.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.textboxPackageDetails.Location = New System.Drawing.Point(0, 0)
+        Me.textboxPackageDetails.Multiline = True
+        Me.textboxPackageDetails.Name = "textboxPackageDetails"
+        Me.textboxPackageDetails.Size = New System.Drawing.Size(818, 180)
+        Me.textboxPackageDetails.TabIndex = 0
         '
-        'Panel1
+        'panelMainWindow
         '
-        Me.Panel1.Controls.Add(Me.SplitContainer1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 55)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(818, 440)
-        Me.Panel1.TabIndex = 2
+        Me.panelMainWindow.Controls.Add(Me.splitcontainerMainWindow)
+        Me.panelMainWindow.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelMainWindow.Location = New System.Drawing.Point(0, 55)
+        Me.panelMainWindow.Name = "panelMainWindow"
+        Me.panelMainWindow.Size = New System.Drawing.Size(818, 440)
+        Me.panelMainWindow.TabIndex = 2
         '
-        'ToolStrip1
+        'toolstripMainWindow
         '
-        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripTextBox1, Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 28)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(818, 27)
-        Me.ToolStrip1.TabIndex = 0
-        Me.ToolStrip1.Text = "ToolStrip1"
+        Me.toolstripMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.toolstripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstriptextboxSearch, Me.toolstripbuttonSearch})
+        Me.toolstripMainWindow.Location = New System.Drawing.Point(0, 28)
+        Me.toolstripMainWindow.Name = "toolstripMainWindow"
+        Me.toolstripMainWindow.Size = New System.Drawing.Size(818, 27)
+        Me.toolstripMainWindow.TabIndex = 0
+        Me.toolstripMainWindow.Text = "ToolStrip1"
         '
-        'ToolStripButton1
+        'toolstripbuttonSearch
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(24, 24)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
+        Me.toolstripbuttonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.toolstripbuttonSearch.Image = CType(resources.GetObject("toolstripbuttonSearch.Image"), System.Drawing.Image)
+        Me.toolstripbuttonSearch.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.toolstripbuttonSearch.Name = "toolstripbuttonSearch"
+        Me.toolstripbuttonSearch.Size = New System.Drawing.Size(24, 24)
+        Me.toolstripbuttonSearch.Text = "ToolStripButton1"
         '
-        'ToolStripTextBox1
+        'toolstriptextboxSearch
         '
-        Me.ToolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(250, 27)
+        Me.toolstriptextboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.toolstriptextboxSearch.Name = "toolstriptextboxSearch"
+        Me.toolstriptextboxSearch.Size = New System.Drawing.Size(250, 27)
         '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(818, 495)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.MenuStrip1)
-        Me.MainMenuStrip = Me.MenuStrip1
+        Me.Controls.Add(Me.panelMainWindow)
+        Me.Controls.Add(Me.toolstripMainWindow)
+        Me.Controls.Add(Me.menustripMainWindow)
+        Me.MainMenuStrip = Me.menustripMainWindow
         Me.Name = "aaformMainWindow"
         Me.Text = "guinget"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
-        Me.SplitContainer1.Panel1.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.PerformLayout()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SplitContainer1.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
+        Me.menustripMainWindow.ResumeLayout(False)
+        Me.menustripMainWindow.PerformLayout()
+        Me.splitcontainerMainWindow.Panel1.ResumeLayout(False)
+        Me.splitcontainerMainWindow.Panel2.ResumeLayout(False)
+        Me.splitcontainerMainWindow.Panel2.PerformLayout()
+        CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.splitcontainerMainWindow.ResumeLayout(False)
+        Me.panelMainWindow.ResumeLayout(False)
+        Me.toolstripMainWindow.ResumeLayout(False)
+        Me.toolstripMainWindow.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents menustripMainWindow As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VerifyManifestToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SplitContainer1 As SplitContainer
-    Friend WithEvents CheckedListBox1 As CheckedListBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents ToolStripButton1 As ToolStripButton
-    Friend WithEvents ToolStripTextBox1 As ToolStripTextBox
+    Friend WithEvents splitcontainerMainWindow As SplitContainer
+    Friend WithEvents checkedlistboxPackages As CheckedListBox
+    Friend WithEvents textboxPackageDetails As TextBox
+    Friend WithEvents panelMainWindow As Panel
+    Friend WithEvents toolstripMainWindow As ToolStrip
+    Friend WithEvents toolstripbuttonSearch As ToolStripButton
+    Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
 End Class
