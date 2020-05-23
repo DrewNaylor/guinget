@@ -47,7 +47,7 @@ Public Class PackageTools
         'AddHandler proc.ErrorDataReceived, AddressOf Async_Data_Received
         'AddHandler proc.OutputDataReceived, AddressOf Async_Data_Received
 
-        'proc.Start()
+        proc.Start()
         'proc.BeginOutputReadLine()
         'proc.BeginErrorReadLine()
 
