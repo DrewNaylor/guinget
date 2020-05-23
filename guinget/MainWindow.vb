@@ -79,11 +79,11 @@ Public Class aaformMainWindow
         Next
     End Sub
 
-    Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
+    Private Async Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected.
         If datagridviewPackageList.SelectedRows.Count = 1 Then
             ' If only one is selected, get its details into the details textbox.
-            textboxPackageDetails.Text = CType(libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.CurrentRow.Index).Value.ToString), String)
+            textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.CurrentRow.Index).Value.ToString)
         End If
     End Sub
 
