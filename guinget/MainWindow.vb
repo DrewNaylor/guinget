@@ -3,7 +3,20 @@
         ' Original code for info as well as the PackageInfo class was from this StackOverflow answer:
         ' https://stackoverflow.com/a/36801744
         Dim p = New PackageInfo With {.Status = "NotInstalled", .PkgName = "VLC", .Description = "A versitile media player."}
-        datagridPackageList.Rows.Add(New String() {"Do nothing", p.Status, p.PkgName, p.Description})
+        AddPackageEntryToList(p.Status, p.PkgName, p.Description)
+    End Sub
+
+    Private Sub AddPackageEntryToList(Status As String, PkgName As String, Description As String)
+        ' Code based on what's on this page:
+        ' https://www.dotnetheaven.com/article/listview-control-with-multiple-column-in-vb.net
+        Dim str(4) As String
+        Dim itm As ListViewItem
+        str(0) = "Do nothing"
+        str(1) = Status
+        str(2) = PkgName
+        str(3) = Description
+        itm = New ListViewItem(str)
+        ListView1.Items.Add(itm)
     End Sub
 
     ' This YouTube video should help out with displaying CMD

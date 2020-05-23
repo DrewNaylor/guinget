@@ -171,6 +171,7 @@ Partial Class aaformMainWindow
         '
         Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.PkgStatus, Me.PkgAction, Me.PkgName, Me.PkgDescription})
         Me.ListView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListView1.FullRowSelect = True
         Me.ListView1.Location = New System.Drawing.Point(0, 0)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(818, 256)
