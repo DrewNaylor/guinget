@@ -65,6 +65,9 @@ Public Class PackageTools
 
         Using cancelRegister = cancel.Register(Sub() proc.Kill())
 
+            Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
+            Dim wingetError = proc.StandardError.ReadToEndAsync
+
         End Using
 
         ' Assign process thing.
