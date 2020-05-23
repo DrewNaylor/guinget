@@ -2,6 +2,10 @@
     Private Sub ExamplePackageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExamplePackageToolStripMenuItem.Click
         ' Original code for info as well as the PackageInfo class was from this StackOverflow answer:
         ' https://stackoverflow.com/a/36801744
+
+        ' Add test packages to the list.
+        ' These will eventually be replaced with a package list
+        ' retrieved from winget.
         Dim p = New PackageInfo With {.Status = "NotInstalled", .PkgName = "VLC", .Description = "A versitile media player."}
         AddPackageEntryToList(p.Status, p.PkgName, p.Description)
         Dim p2 = New PackageInfo With {.Status = "Installed", .PkgName = "Notepad++", .Description = "Light-weight but feature-rich text editor."}
