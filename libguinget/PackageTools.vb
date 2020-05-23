@@ -25,4 +25,9 @@
 
 Public Class PackageTools
 
+    ' Get package details from winget.
+    Public Function GetPkgDetails(PackageId As String)
+
+    End Function
+
 End Class
