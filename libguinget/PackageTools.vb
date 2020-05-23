@@ -33,6 +33,8 @@ Public Class PackageTools
         Dim proc As Process
         Dim procinfo As ProcessStartInfo
 
+        procinfo = New ProcessStartInfo("winget", "-e " & PackageId)
+
         With procinfo
             .UseShellExecute = False
             .RedirectStandardError = True
