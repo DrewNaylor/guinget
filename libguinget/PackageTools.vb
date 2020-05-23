@@ -63,6 +63,36 @@ Public Class PackageTools
 
     Async Function GetPkgInfoAsync(PackageId As String, Optional RequestedInfo As String = "Everything") As Task
 
+        Dim proc As Process
+        Dim procinfo As ProcessStartInfo
+
+        ' If we want to get everything, do so.
+        If RequestedInfo = "Everything" Then
+            procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
+        End If
+
+        ' Setup procinfo properties.
+        With procinfo
+            .UseShellExecute = False
+            .RedirectStandardError = True
+            .RedirectStandardInput = True
+            .RedirectStandardOutput = True
+            .CreateNoWindow = True
+        End With
+
+        ' Assign process thing.
+        proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
+
+        ' Start the process.
+        proc.Start()
+
+        ' Get standard output.
+        Dim procOutput As String
+        Using outputStreamReader As IO.StreamReader = proc.StandardOutput
+            procOutput = outputStreamReader.ReadToEnd
+        End Using
+
+        Return procOutput
     End Function
 
 
