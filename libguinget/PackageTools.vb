@@ -28,34 +28,13 @@ Public Class PackageTools
     ' Get package details from winget.
     Public Shared Function GetPkgDetails(PackageId As String)
 
-
-        Dim proc As Process
-        Dim procinfo As ProcessStartInfo
-
-        procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
-
-        With procinfo
-            .UseShellExecute = False
-            .RedirectStandardError = True
-            .RedirectStandardInput = True
-            .RedirectStandardOutput = True
-            .CreateNoWindow = True
-        End With
-
-        proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
-        'AddHandler proc.ErrorDataReceived, AddressOf Async_Data_Received
-        'AddHandler proc.OutputDataReceived, AddressOf Async_Data_Received
-
-        proc.Start()
-        'proc.BeginOutputReadLine()
-        'proc.BeginErrorReadLine()
+        ' Async stuff based on this code:
+        ' https://docs.microsoft.com/en-us/archive/blogs/lucian/how-to-await-a-command-line-process-and-capture-its-output
 
         ' Stream reader output code based on this SO answer:
         ' https://stackoverflow.com/a/8811377
         Dim procOutput As String
-        Using outputStreamReader As IO.StreamReader = proc.StandardOutput
-            procOutput = outputStreamReader.ReadToEnd
-        End Using
+
 
         Return procOutput
     End Function
