@@ -33,13 +33,13 @@ Public Class PackageTools
 
         ' Stream reader output code based on this SO answer:
         ' https://stackoverflow.com/a/8811377
-        Dim procOutput As String = Await GetPkgInfoAsync()
+        Dim procOutput As String = Await GetPkgInfoAsync(PackageId)
 
 
         Return procOutput
     End Function
 
-    Async Function GetPkgInfoAsync(PackageId As String, Optional RequestedInfo As String = "Everything") As Task
+    Shared Async Function GetPkgInfoAsync(PackageId As String, Optional RequestedInfo As String = "Everything") As Task(Of String)
 
         ' Based partially on the code in this video:
         ' https://www.youtube.com/watch?v=APyteDZMpYw
