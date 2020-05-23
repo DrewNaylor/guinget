@@ -62,6 +62,7 @@ Public Class PackageTools
             .RedirectStandardOutput = True
             .CreateNoWindow = True
         End With
+        If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
 
         Using cancelRegister = cancel.Register(Sub() proc.Kill())
 
@@ -82,7 +83,8 @@ Public Class PackageTools
                 Throw New OperationCanceledException(standardErr)
             ElseIf String.IsNullOrEmpty(standardOut) = True Then
                 Throw New Exception(standardErr)
-
+            Else
+                Return standardOut
             End If
 
         End Using
