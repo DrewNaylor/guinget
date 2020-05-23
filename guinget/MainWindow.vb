@@ -23,7 +23,7 @@
 
         If e.Button = MouseButtons.Right Then
             ' Check if Control is being held down.
-            If Keys.KeyCode = CType(Keys.ControlKey, Keys) Then
+            If ModifierKeys = CType(Keys.Control, Keys) Then
                 datagridviewPackageList.Rows(e.RowIndex).Selected = True
             End If
         End If
