@@ -83,7 +83,7 @@ Public Class aaformMainWindow
         ' Get package details if only one package is selected.
         If datagridviewPackageList.SelectedRows.Count = 1 Then
             ' If only one is selected, get its details into the details textbox.
-            textboxPackageDetails.Text = CType(libguinget.PackageTools.GetPkgDetails(datagridviewPackageList.Item(2, datagridviewPackageList.CurrentRow.Index).Value.ToString), String)
+            textboxPackageDetails.Text = CType(libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.CurrentRow.Index).Value.ToString), String)
         End If
     End Sub
 

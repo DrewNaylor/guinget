@@ -26,14 +26,14 @@
 Public Class PackageTools
 
     ' Get package details from winget.
-    Public Shared Function GetPkgDetails(PackageId As String)
+    Public Shared Async Function GetPkgDetailsAsync(PackageId As String) As Task
 
         ' Async stuff based on this code:
         ' https://docs.microsoft.com/en-us/archive/blogs/lucian/how-to-await-a-command-line-process-and-capture-its-output
 
         ' Stream reader output code based on this SO answer:
         ' https://stackoverflow.com/a/8811377
-        Dim procOutput As String
+        Dim procOutput As String = Await GetPkgInfoAsync()
 
 
         Return procOutput
