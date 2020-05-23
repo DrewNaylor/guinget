@@ -1,4 +1,4 @@
-﻿' libguinget - Package and repository tools for guinget and other tools that
+﻿' libguinget - Package tools for guinget and other programs that
 '  want to use them.
 ' Copyright (C) 2020 Drew Naylor
 ' (Note that the copyright years include the years left out by the hyphen.)
