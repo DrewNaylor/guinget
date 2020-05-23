@@ -5,7 +5,7 @@
 '
 ' This file is a part of the guinget project.
 ' Neither guinget nor Drew Naylor are associated with Microsoft
-' and Microsoft does not approve of guinget.
+' and Microsoft does not endorse guinget.
 '
 '
 '   Licensed under the Apache License, Version 2.0 (the "License");
