@@ -78,6 +78,13 @@ Public Class PackageTools
             Dim standardOut = Await wingetOutput
             Dim standardErr = Await wingetError
 
+            If cancel.IsCancellationRequested = True Then
+                Throw New OperationCanceledException(standardErr)
+            ElseIf String.IsNullOrEmpty(standardOut) = True Then
+                Throw New Exception(standardErr)
+
+            End If
+
         End Using
 
         ' Assign process thing.
