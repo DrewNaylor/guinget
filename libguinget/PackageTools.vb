@@ -53,8 +53,10 @@ Public Class PackageTools
 
     End Function
 
-    Private Sub Async_Data_Received(ByVal sender As Object, ByVal e As DataReceivedEventArgs)
+    Private Delegate Sub InvokeWithString(ByVal text As String)
 
+    Private Sub Async_Data_Received(ByVal sender As Object, ByVal e As DataReceivedEventArgs)
+        Me.Invoke(New InvokeWithString)
     End Sub
 
 End Class
