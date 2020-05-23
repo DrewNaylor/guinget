@@ -63,6 +63,10 @@ Public Class PackageTools
             .CreateNoWindow = True
         End With
 
+        Using cancelRegister = cancel.Register(Sub() proc.Kill())
+            Dim standardin = Async Function()
+        End Using
+
         ' Assign process thing.
         proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
 
