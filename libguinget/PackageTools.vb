@@ -33,7 +33,7 @@ Public Class PackageTools
         Dim proc As Process
         Dim procinfo As ProcessStartInfo
 
-        procinfo = New ProcessStartInfo("winget", "-e " & PackageId)
+        procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
 
         With procinfo
             .UseShellExecute = False
