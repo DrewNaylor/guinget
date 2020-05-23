@@ -64,7 +64,6 @@ Public Class PackageTools
             proc.StartInfo.RedirectStandardOutput = True
             proc.StartInfo.CreateNoWindow = True
 
-            MessageBox.Show(proc.StartInfo.FileName.ToString & " " & proc.StartInfo.Arguments.ToString)
             'If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
 
             Using cancelRegister = cancel.Register(Sub() proc.Kill())
