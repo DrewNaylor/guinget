@@ -30,21 +30,21 @@ Public Class aaformMainWindow
         ' Add test packages to the list.
         ' These will eventually be replaced with a package list
         ' retrieved from winget.
-        Dim p = New PackageInfo With {.Status = "NotInstalled", .PkgName = "VLC", .Description = "A versitile media player."}
-        AddPackageEntryToList(p.Status, p.PkgName, p.Description)
-        Dim p2 = New PackageInfo With {.Status = "Installed", .PkgName = "Notepad++", .Description = "Light-weight but feature-rich text editor."}
-        AddPackageEntryToList(p2.Status, p2.PkgName, p2.Description)
-        Dim p3 = New PackageInfo With {.Status = "Installed", .PkgName = "z", .Description = "z test"}
-        AddPackageEntryToList(p3.Status, p3.PkgName, p3.Description)
+        Dim p = New PackageInfo With {.Status = "NotInstalled", .Package = "VLC", .Description = "A versitile media player."}
+        AddPackageEntryToList(p.Status, p.Package, p.Description)
+        Dim p2 = New PackageInfo With {.Status = "Installed", .Package = "Notepad++", .Description = "Light-weight but feature-rich text editor."}
+        AddPackageEntryToList(p2.Status, p2.Package, p2.Description)
+        Dim p3 = New PackageInfo With {.Status = "Installed", .Package = "z", .Description = "z test"}
+        AddPackageEntryToList(p3.Status, p3.Package, p3.Description)
     End Sub
 
-    Private Sub AddPackageEntryToList(Status As String, PkgName As String, Description As String)
+    Private Sub AddPackageEntryToList(Status As String, Package As String, Description As String)
 
         ' Adds a package to the package list based on what's passed to it.
         ' TODO: "Do nothing" should be changed to match the package's
         ' current status. Maybe this could be something stored in another hidden
         ' list for selections that can be shown in a different window or something.
-        datagridviewPackageList.Rows.Add("Do nothing", Status, PkgName, Description)
+        datagridviewPackageList.Rows.Add("Do nothing", Status, Package, Description)
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
@@ -92,7 +92,7 @@ Public Class PackageInfo
 
     ' This class contains info on the packages.
     Public Property Status As String
-    Public Property PkgName As String
+    Public Property Package As String
     Public Property InstalledVersion As String
     Public Property AvailableVersion As String
     Public Property Description As String
