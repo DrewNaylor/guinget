@@ -48,28 +48,24 @@ Public Class PackageTools
         Using proc As New Process
             proc.StartInfo.FileName = "winget"
 
-            Dim procinfo As ProcessStartInfo
-
             ' If we want to get everything, do so.
             If RequestedInfo = "Everything" Then
-                procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
+                proc.StartInfo.Arguments = "show -e " & PackageId
             Else
                 ' Otherwise, just get the stuff if we want everything.
-                procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
+                proc.StartInfo.Arguments = "show -e " & PackageId
             End If
 
             ' Setup procinfo properties.
-            With procinfo
-                .UseShellExecute = False
-                .RedirectStandardError = True
-                .RedirectStandardInput = True
-                .RedirectStandardOutput = True
-                .CreateNoWindow = True
-            End With
+            proc.StartInfo.UseShellExecute = False
+            proc.StartInfo.RedirectStandardError = True
+            proc.StartInfo.RedirectStandardInput = True
+            proc.StartInfo.RedirectStandardOutput = True
+            proc.StartInfo.CreateNoWindow = True
 
-            If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
+                'If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
 
-            Using cancelRegister = cancel.Register(Sub() proc.Kill())
+                Using cancelRegister = cancel.Register(Sub() proc.Kill())
 
                 Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
                 Dim wingetError = proc.StandardError.ReadToEndAsync
