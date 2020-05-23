@@ -28,8 +28,7 @@ Public Class PackageTools
     ' Get package details from winget.
     Public Shared Function GetPkgDetails(PackageId As String)
 
-        ' Based on the code in this video:
-        ' https://www.youtube.com/watch?v=APyteDZMpYw
+
         Dim proc As Process
         Dim procinfo As ProcessStartInfo
 
@@ -63,6 +62,8 @@ Public Class PackageTools
 
     Async Function GetPkgInfoAsync(PackageId As String, Optional RequestedInfo As String = "Everything") As Task
 
+        ' Based partially on the code in this video:
+        ' https://www.youtube.com/watch?v=APyteDZMpYw
         Dim proc As Process
         Dim procinfo As ProcessStartInfo
 
