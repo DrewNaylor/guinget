@@ -193,16 +193,19 @@ Partial Class aaformMainWindow
         '
         Me.PkgStatus.HeaderText = "Status"
         Me.PkgStatus.Name = "PkgStatus"
+        Me.PkgStatus.ReadOnly = True
         '
         'PkgName
         '
         Me.PkgName.HeaderText = "Package"
         Me.PkgName.Name = "PkgName"
+        Me.PkgName.ReadOnly = True
         '
         'PkgDescription
         '
         Me.PkgDescription.HeaderText = "Description"
         Me.PkgDescription.Name = "PkgDescription"
+        Me.PkgDescription.ReadOnly = True
         '
         'aaformMainWindow
         '
