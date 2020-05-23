@@ -172,12 +172,12 @@ Partial Class aaformMainWindow
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToOrderColumns = True
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.PkgDescription})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(818, 256)
@@ -188,25 +188,21 @@ Partial Class aaformMainWindow
         Me.PkgAction.HeaderText = "Action"
         Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
         Me.PkgAction.Name = "PkgAction"
-        Me.PkgAction.ReadOnly = True
         '
         'PkgStatus
         '
         Me.PkgStatus.HeaderText = "Status"
         Me.PkgStatus.Name = "PkgStatus"
-        Me.PkgStatus.ReadOnly = True
         '
         'PkgName
         '
         Me.PkgName.HeaderText = "Package"
         Me.PkgName.Name = "PkgName"
-        Me.PkgName.ReadOnly = True
         '
         'PkgDescription
         '
         Me.PkgDescription.HeaderText = "Description"
         Me.PkgDescription.Name = "PkgDescription"
-        Me.PkgDescription.ReadOnly = True
         '
         'aaformMainWindow
         '
