@@ -58,7 +58,7 @@ Public Class PackageTools
             procOutput = outputStreamReader.ReadToEnd
         End Using
 
-
+        Return procOutput
     End Function
 
 
