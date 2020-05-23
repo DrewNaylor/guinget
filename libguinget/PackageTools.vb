@@ -82,16 +82,21 @@ Public Class PackageTools
                 proc.StandardOutput.Close()
                 proc.StandardError.Close()
 
+                ' Run the process and wait for exit (why didn't this work before? I have no idea.)
                 Await Task.Run(AddressOf proc.WaitForExit)
 
+                ' Assign variables for standard output and error to winget's output stuff.
                 Dim standardOut = Await wingetOutput
                 Dim standardErr = Await wingetError
 
+                ' If canceling is requested, then throw an operation canceled exception.
                 If cancel.IsCancellationRequested = True Then
                     Throw New OperationCanceledException(standardErr)
                 ElseIf String.IsNullOrEmpty(standardOut) = True Then
+                    ' If the output is null or empty, throw an exception.
                     Throw New Exception(standardErr)
                 Else
+                    ' Otherwise, if it's all good, return the output.
                     Return standardOut
                 End If
 
