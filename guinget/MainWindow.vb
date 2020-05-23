@@ -12,6 +12,10 @@
 
     Private Sub AddPackageEntryToList(Status As String, PkgName As String, Description As String)
 
+        ' Adds a package to the package list based on what's passed to it.
+        ' TODO: "Do nothing" should be changed to match the package's
+        ' current status. Maybe this could be something stored in another hidden
+        ' list for selections that can be shown in a different window or something.
         datagridviewPackageList.Rows.Add("Do nothing", Status, PkgName, Description)
     End Sub
 
