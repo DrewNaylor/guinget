@@ -21,7 +21,7 @@
         ' Also borrows from this answer:
         ' https://stackoverflow.com/a/173315
 
-        If e.Button = MouseButtons.Right Then
+        If e.Button = MouseButtons.Right AndAlso e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
             ' Check if Control is being held down.
             If ModifierKeys = Nothing Then
                 datagridviewPackageList.CurrentCell = datagridviewPackageList(e.ColumnIndex, e.RowIndex)
