@@ -68,13 +68,17 @@ Public Class PackageTools
 
             Using cancelRegister = cancel.Register(Sub() proc.Kill())
 
+                ' Start winget so we can get output from it.
                 proc.Start()
 
+                ' Assign and create variables to store its output.
                 Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
                 Dim wingetError = proc.StandardError.ReadToEndAsync
 
+                ' Wait for the output and error tasks to complete.
                 Await Task.WhenAll(wingetOutput, wingetError)
 
+                ' Close winget's standard output and standard error.
                 proc.StandardOutput.Close()
                 proc.StandardError.Close()
 
