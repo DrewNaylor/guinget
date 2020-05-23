@@ -29,6 +29,14 @@
         End If
     End Sub
 
+    Private Sub DoNothingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoNothingToolStripMenuItem.Click
+
+        For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
+            Package.Cells.Item(0).Value = "Do nothing"
+        Next
+
+    End Sub
+
 
 
     ' This YouTube video should help out with displaying CMD

@@ -43,7 +43,7 @@ Partial Class aaformMainWindow
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.toolstripbuttonSearch = New System.Windows.Forms.ToolStripButton()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -55,7 +55,7 @@ Partial Class aaformMainWindow
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelMainWindow.SuspendLayout()
         Me.toolstripMainWindow.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
+        Me.contextmenustripPackageMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -139,7 +139,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.PkgDescription})
-        Me.datagridviewPackageList.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
@@ -217,24 +217,24 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonSearch.Size = New System.Drawing.Size(24, 24)
         Me.toolstripbuttonSearch.Text = "ToolStripButton1"
         '
-        'ContextMenuStrip1
+        'contextmenustripPackageMenu
         '
-        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(122, 28)
+        Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem})
+        Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(176, 56)
         '
         'ActionToolStripMenuItem
         '
         Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem})
         Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
-        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(121, 24)
+        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(175, 24)
         Me.ActionToolStripMenuItem.Text = "Action"
         '
         'DoNothingToolStripMenuItem
         '
         Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
-        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(159, 26)
+        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
         Me.DoNothingToolStripMenuItem.Text = "Do nothing"
         '
         'InstallToolStripMenuItem
@@ -265,7 +265,7 @@ Partial Class aaformMainWindow
         Me.panelMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.PerformLayout()
-        Me.ContextMenuStrip1.ResumeLayout(False)
+        Me.contextmenustripPackageMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -286,7 +286,7 @@ Partial Class aaformMainWindow
     Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
     Friend WithEvents ExamplePackageToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents datagridviewPackageList As DataGridView
-    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents contextmenustripPackageMenu As ContextMenuStrip
     Friend WithEvents ActionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DoNothingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InstallToolStripMenuItem As ToolStripMenuItem
