@@ -31,12 +31,12 @@ Partial Class aaformMainWindow
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
-        Me.checkedlistboxPackages = New System.Windows.Forms.CheckedListBox()
         Me.textboxPackageDetails = New System.Windows.Forms.TextBox()
         Me.panelMainWindow = New System.Windows.Forms.Panel()
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
         Me.toolstripbuttonSearch = New System.Windows.Forms.ToolStripButton()
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
+        Me.listboxPackages = New System.Windows.Forms.ListBox()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -104,7 +104,7 @@ Partial Class aaformMainWindow
         '
         'splitcontainerMainWindow.Panel1
         '
-        Me.splitcontainerMainWindow.Panel1.Controls.Add(Me.checkedlistboxPackages)
+        Me.splitcontainerMainWindow.Panel1.Controls.Add(Me.listboxPackages)
         '
         'splitcontainerMainWindow.Panel2
         '
@@ -112,17 +112,6 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow.Size = New System.Drawing.Size(818, 440)
         Me.splitcontainerMainWindow.SplitterDistance = 256
         Me.splitcontainerMainWindow.TabIndex = 1
-        '
-        'checkedlistboxPackages
-        '
-        Me.checkedlistboxPackages.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.checkedlistboxPackages.FormattingEnabled = True
-        Me.checkedlistboxPackages.IntegralHeight = False
-        Me.checkedlistboxPackages.Location = New System.Drawing.Point(0, 0)
-        Me.checkedlistboxPackages.Name = "checkedlistboxPackages"
-        Me.checkedlistboxPackages.ScrollAlwaysVisible = True
-        Me.checkedlistboxPackages.Size = New System.Drawing.Size(818, 256)
-        Me.checkedlistboxPackages.TabIndex = 0
         '
         'textboxPackageDetails
         '
@@ -167,6 +156,16 @@ Partial Class aaformMainWindow
         Me.toolstriptextboxSearch.Name = "toolstriptextboxSearch"
         Me.toolstriptextboxSearch.Size = New System.Drawing.Size(250, 27)
         '
+        'listboxPackages
+        '
+        Me.listboxPackages.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.listboxPackages.FormattingEnabled = True
+        Me.listboxPackages.ItemHeight = 16
+        Me.listboxPackages.Location = New System.Drawing.Point(0, 0)
+        Me.listboxPackages.Name = "listboxPackages"
+        Me.listboxPackages.Size = New System.Drawing.Size(818, 256)
+        Me.listboxPackages.TabIndex = 0
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -201,10 +200,10 @@ Partial Class aaformMainWindow
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents splitcontainerMainWindow As SplitContainer
-    Friend WithEvents checkedlistboxPackages As CheckedListBox
     Friend WithEvents textboxPackageDetails As TextBox
     Friend WithEvents panelMainWindow As Panel
     Friend WithEvents toolstripMainWindow As ToolStrip
     Friend WithEvents toolstripbuttonSearch As ToolStripButton
     Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
+    Friend WithEvents listboxPackages As ListBox
 End Class
