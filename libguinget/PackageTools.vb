@@ -44,21 +44,22 @@ Public Class PackageTools
         End With
 
         proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
-        AddHandler proc.ErrorDataReceived, AddressOf Async_Data_Received
-        AddHandler proc.OutputDataReceived, AddressOf Async_Data_Received
+        'AddHandler proc.ErrorDataReceived, AddressOf Async_Data_Received
+        'AddHandler proc.OutputDataReceived, AddressOf Async_Data_Received
 
-        proc.Start()
-        proc.BeginOutputReadLine()
-        proc.BeginErrorReadLine()
+        'proc.Start()
+        'proc.BeginOutputReadLine()
+        'proc.BeginErrorReadLine()
 
+        ' Stream reader output code based on this SO answer:
+        ' https://stackoverflow.com/a/8811377
+        Dim procOutput As String
+        Using outputStreamReader As IO.StreamReader = proc.StandardOutput
+
+        End Using
 
 
     End Function
 
-    Private Delegate Sub InvokeWithString(ByVal text As String)
-
-    Private Sub Async_Data_Received(ByVal sender As Object, ByVal e As DataReceivedEventArgs)
-        Me.Invoke(New InvokeWithString)
-    End Sub
 
 End Class
