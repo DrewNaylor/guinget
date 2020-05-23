@@ -30,21 +30,21 @@ Public Class aaformMainWindow
         ' Add test packages to the list.
         ' These will eventually be replaced with a package list
         ' retrieved from winget.
-        Dim p = New PackageInfo With {.Status = "NotInstalled", .Package = "VLC", .Description = "A versitile media player."}
-        AddPackageEntryToList(p.Status, p.Package, p.Description)
-        Dim p2 = New PackageInfo With {.Status = "Installed", .Package = "Notepad++", .Description = "Light-weight but feature-rich text editor."}
-        AddPackageEntryToList(p2.Status, p2.Package, p2.Description)
-        Dim p3 = New PackageInfo With {.Status = "Installed", .Package = "z", .Description = "z test"}
-        AddPackageEntryToList(p3.Status, p3.Package, p3.Description)
+        Dim p = New PackageInfo With {.Status = "NotInstalled", .Package = "VLC", .AvailableVersion = "3.0.10", .Description = "A versitile media player."}
+        AddPackageEntryToList(p.Status, p.Package, p.AvailableVersion, p.Description)
+        Dim p2 = New PackageInfo With {.Status = "Installed", .Package = "Notepad++", .AvailableVersion = "v7.8.5", .Description = "Light-weight but feature-rich text editor."}
+        AddPackageEntryToList(p2.Status, p2.Package, p2.AvailableVersion, p2.Description)
+        Dim p3 = New PackageInfo With {.Status = "Installed", .Package = "z", .AvailableVersion = "1.0", .Description = "z test"}
+        AddPackageEntryToList(p3.Status, p3.Package, p3.AvailableVersion, p3.Description)
     End Sub
 
-    Private Sub AddPackageEntryToList(Status As String, Package As String, Description As String)
+    Private Sub AddPackageEntryToList(Status As String, Package As String, AvailableVersion As String, Description As String)
 
         ' Adds a package to the package list based on what's passed to it.
         ' TODO: "Do nothing" should be changed to match the package's
         ' current status. Maybe this could be something stored in another hidden
         ' list for selections that can be shown in a different window or something.
-        datagridviewPackageList.Rows.Add("Do nothing", Status, Package, Description)
+        datagridviewPackageList.Rows.Add("Do nothing", Status, Package, AvailableVersion, Description)
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
