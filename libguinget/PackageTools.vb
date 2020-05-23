@@ -43,6 +43,7 @@ Public Class PackageTools
 
         proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
         AddHandler proc.ErrorDataReceived, AddressOf Async_Data_Received
+        AddHandler proc.OutputDataReceived, AddressOf Async_Data_Received
 
     End Function
 
