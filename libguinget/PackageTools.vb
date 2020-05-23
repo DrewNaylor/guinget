@@ -55,7 +55,7 @@ Public Class PackageTools
         ' https://stackoverflow.com/a/8811377
         Dim procOutput As String
         Using outputStreamReader As IO.StreamReader = proc.StandardOutput
-
+            procOutput = outputStreamReader.ReadToEnd
         End Using
 
 
