@@ -110,8 +110,10 @@ Partial Class aaformMainWindow
         '
         Me.CheckedListBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CheckedListBox1.FormattingEnabled = True
+        Me.CheckedListBox1.IntegralHeight = False
         Me.CheckedListBox1.Location = New System.Drawing.Point(0, 0)
         Me.CheckedListBox1.Name = "CheckedListBox1"
+        Me.CheckedListBox1.ScrollAlwaysVisible = True
         Me.CheckedListBox1.Size = New System.Drawing.Size(818, 272)
         Me.CheckedListBox1.TabIndex = 0
         '
