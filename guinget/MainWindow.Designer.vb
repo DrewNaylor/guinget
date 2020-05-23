@@ -162,6 +162,7 @@ Partial Class aaformMainWindow
         Me.listboxPackages.FormattingEnabled = True
         Me.listboxPackages.ItemHeight = 16
         Me.listboxPackages.Location = New System.Drawing.Point(0, 0)
+        Me.listboxPackages.MultiColumn = True
         Me.listboxPackages.Name = "listboxPackages"
         Me.listboxPackages.Size = New System.Drawing.Size(818, 256)
         Me.listboxPackages.TabIndex = 0
