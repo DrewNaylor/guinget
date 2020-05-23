@@ -49,6 +49,9 @@ Public Class PackageTools
         ' If we want to get everything, do so.
         If RequestedInfo = "Everything" Then
             procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
+        Else
+            ' Otherwise, just get the stuff if we want everything.
+            procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
         End If
 
         ' Setup procinfo properties.
