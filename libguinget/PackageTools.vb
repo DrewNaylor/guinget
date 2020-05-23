@@ -64,9 +64,7 @@ Public Class PackageTools
         End With
 
         Using cancelRegister = cancel.Register(Sub() proc.Kill())
-            Dim wingetInput = Async Function()
 
-                              End Function
         End Using
 
         ' Assign process thing.
