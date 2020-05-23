@@ -70,6 +70,11 @@ Public Class PackageTools
 
             Await Task.WhenAll(wingetOutput, wingetError)
 
+            proc.StandardOutput.Close()
+            proc.StandardError.Close()
+
+
+
         End Using
 
         ' Assign process thing.
