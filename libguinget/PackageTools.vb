@@ -73,7 +73,7 @@ Public Class PackageTools
             proc.StandardOutput.Close()
             proc.StandardError.Close()
 
-
+            Await Task.Run(AddressOf proc.WaitForExit)
 
         End Using
 
