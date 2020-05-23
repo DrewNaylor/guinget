@@ -61,5 +61,9 @@ Public Class PackageTools
         Return procOutput
     End Function
 
+    Async Function GetPkgInfoAsync(PackageId As String) As Task
+
+    End Function
+
 
 End Class
