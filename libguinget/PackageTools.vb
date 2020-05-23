@@ -68,6 +68,8 @@ Public Class PackageTools
             Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
             Dim wingetError = proc.StandardError.ReadToEndAsync
 
+            Await Task.WhenAll(wingetOutput, wingetError)
+
         End Using
 
         ' Assign process thing.
