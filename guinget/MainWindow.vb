@@ -89,6 +89,8 @@ End Class
 
 
 Public Class PackageInfo
+
+    ' This class contains info on the packages.
     Public Property Status As String
     Public Property PkgName As String
     Public Property InstalledVersion As String
