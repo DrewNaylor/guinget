@@ -33,6 +33,14 @@ Public Class PackageTools
         Dim proc As Process
         Dim procinfo As ProcessStartInfo
 
+        With procinfo
+            .UseShellExecute = False
+            .RedirectStandardError = True
+            .RedirectStandardInput = True
+            .RedirectStandardOutput = True
+            .CreateNoWindow = True
+
+        End With
 
     End Function
 
