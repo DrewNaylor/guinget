@@ -75,6 +75,9 @@ Public Class PackageTools
 
             Await Task.Run(AddressOf proc.WaitForExit)
 
+            Dim standardOut = Await wingetOutput
+            Dim standardErr = Await wingetError
+
         End Using
 
         ' Assign process thing.
