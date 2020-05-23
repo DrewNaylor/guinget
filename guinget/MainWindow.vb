@@ -81,7 +81,7 @@ Public Class aaformMainWindow
 
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         If datagridviewPackageList.SelectedRows.Count = 1 Then
-            textboxPackageDetails.Text = 
+            textboxPackageDetails.Text = CType(libguinget.PackageTools.GetPkgDetails(datagridviewPackageList.CurrentRow.Cells.Item("Package").Value.ToString), String)
         End If
     End Sub
 
