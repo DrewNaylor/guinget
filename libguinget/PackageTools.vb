@@ -43,65 +43,69 @@ Public Class PackageTools
 
         ' Based partially on the code in this video:
         ' https://www.youtube.com/watch?v=APyteDZMpYw
-        Dim proc As Process
-        Dim procinfo As ProcessStartInfo
+        Using proc As New Process
+            proc.StartInfo.FileName = "winget"
 
-        ' If we want to get everything, do so.
-        If RequestedInfo = "Everything" Then
-            procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
-        Else
-            ' Otherwise, just get the stuff if we want everything.
-            procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
-        End If
+            Dim procinfo As ProcessStartInfo
 
-        ' Setup procinfo properties.
-        With procinfo
-            .UseShellExecute = False
-            .RedirectStandardError = True
-            .RedirectStandardInput = True
-            .RedirectStandardOutput = True
-            .CreateNoWindow = True
-        End With
-        If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
-
-        Using cancelRegister = cancel.Register(Sub() proc.Kill())
-
-            Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
-            Dim wingetError = proc.StandardError.ReadToEndAsync
-
-            Await Task.WhenAll(wingetOutput, wingetError)
-
-            proc.StandardOutput.Close()
-            proc.StandardError.Close()
-
-            Await Task.Run(AddressOf proc.WaitForExit)
-
-            Dim standardOut = Await wingetOutput
-            Dim standardErr = Await wingetError
-
-            If cancel.IsCancellationRequested = True Then
-                Throw New OperationCanceledException(standardErr)
-            ElseIf String.IsNullOrEmpty(standardOut) = True Then
-                Throw New Exception(standardErr)
+            ' If we want to get everything, do so.
+            If RequestedInfo = "Everything" Then
+                procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
             Else
-                Return standardOut
+                ' Otherwise, just get the stuff if we want everything.
+                procinfo = New ProcessStartInfo("winget", "show -e " & PackageId)
             End If
 
+            ' Setup procinfo properties.
+            With procinfo
+                .UseShellExecute = False
+                .RedirectStandardError = True
+                .RedirectStandardInput = True
+                .RedirectStandardOutput = True
+                .CreateNoWindow = True
+            End With
+            If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
+
+            Using cancelRegister = cancel.Register(Sub() proc.Kill())
+
+                Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
+                Dim wingetError = proc.StandardError.ReadToEndAsync
+
+                Await Task.WhenAll(wingetOutput, wingetError)
+
+                proc.StandardOutput.Close()
+                proc.StandardError.Close()
+
+                Await Task.Run(AddressOf proc.WaitForExit)
+
+                Dim standardOut = Await wingetOutput
+                Dim standardErr = Await wingetError
+
+                If cancel.IsCancellationRequested = True Then
+                    Throw New OperationCanceledException(standardErr)
+                ElseIf String.IsNullOrEmpty(standardOut) = True Then
+                    Throw New Exception(standardErr)
+                Else
+                    Return standardOut
+                End If
+
+            End Using
+
+            ' Assign process thing.
+            proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
+
+            ' Start the process.
+            proc.Start()
+
+            ' Get standard output.
+            Dim procOutput As String
+            Using outputStreamReader As IO.StreamReader = proc.StandardOutput
+                procOutput = outputStreamReader.ReadToEnd
+            End Using
+
+            Return procOutput
         End Using
-
-        ' Assign process thing.
-        proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
-
-        ' Start the process.
-        proc.Start()
-
-        ' Get standard output.
-        Dim procOutput As String
-        Using outputStreamReader As IO.StreamReader = proc.StandardOutput
-            procOutput = outputStreamReader.ReadToEnd
         End Using
-
-        Return procOutput
     End Function
 
 
