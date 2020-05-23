@@ -34,28 +34,29 @@ Partial Class aaformMainWindow
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
         Me.datagridviewPackageList = New System.Windows.Forms.DataGridView()
-        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.textboxPackageDetails = New System.Windows.Forms.TextBox()
         Me.panelMainWindow = New System.Windows.Forms.Panel()
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.toolstripbuttonSearch = New System.Windows.Forms.ToolStripButton()
-        Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
         Me.splitcontainerMainWindow.Panel2.SuspendLayout()
         Me.splitcontainerMainWindow.SuspendLayout()
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.contextmenustripPackageMenu.SuspendLayout()
         Me.panelMainWindow.SuspendLayout()
         Me.toolstripMainWindow.SuspendLayout()
-        Me.contextmenustripPackageMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -137,8 +138,9 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToDeleteRows = False
         Me.datagridviewPackageList.AllowUserToOrderColumns = True
         Me.datagridviewPackageList.AllowUserToResizeRows = False
+        Me.datagridviewPackageList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.PkgDescription})
+        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.AvailableVersion, Me.PkgDescription})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
@@ -149,30 +151,31 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.Size = New System.Drawing.Size(818, 256)
         Me.datagridviewPackageList.TabIndex = 0
         '
-        'PkgAction
+        'contextmenustripPackageMenu
         '
-        Me.PkgAction.HeaderText = "Action"
-        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
-        Me.PkgAction.Name = "PkgAction"
-        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem})
+        Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(122, 28)
         '
-        'PkgStatus
+        'ActionToolStripMenuItem
         '
-        Me.PkgStatus.HeaderText = "Status"
-        Me.PkgStatus.Name = "PkgStatus"
-        Me.PkgStatus.ReadOnly = True
+        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem})
+        Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
+        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(121, 24)
+        Me.ActionToolStripMenuItem.Text = "Action"
         '
-        'PkgName
+        'DoNothingToolStripMenuItem
         '
-        Me.PkgName.HeaderText = "Package"
-        Me.PkgName.Name = "PkgName"
-        Me.PkgName.ReadOnly = True
+        Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
+        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(159, 26)
+        Me.DoNothingToolStripMenuItem.Text = "Do nothing"
         '
-        'PkgDescription
+        'InstallToolStripMenuItem
         '
-        Me.PkgDescription.HeaderText = "Description"
-        Me.PkgDescription.Name = "PkgDescription"
-        Me.PkgDescription.ReadOnly = True
+        Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
+        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(159, 26)
+        Me.InstallToolStripMenuItem.Text = "Install"
         '
         'textboxPackageDetails
         '
@@ -217,31 +220,36 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonSearch.Size = New System.Drawing.Size(24, 24)
         Me.toolstripbuttonSearch.Text = "ToolStripButton1"
         '
-        'contextmenustripPackageMenu
+        'PkgAction
         '
-        Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem})
-        Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(176, 56)
+        Me.PkgAction.HeaderText = "Action"
+        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
+        Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
-        'ActionToolStripMenuItem
+        'PkgStatus
         '
-        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem})
-        Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
-        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(175, 24)
-        Me.ActionToolStripMenuItem.Text = "Action"
+        Me.PkgStatus.HeaderText = "Status"
+        Me.PkgStatus.Name = "PkgStatus"
+        Me.PkgStatus.ReadOnly = True
         '
-        'DoNothingToolStripMenuItem
+        'PkgName
         '
-        Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
-        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
-        Me.DoNothingToolStripMenuItem.Text = "Do nothing"
+        Me.PkgName.HeaderText = "Package"
+        Me.PkgName.Name = "PkgName"
+        Me.PkgName.ReadOnly = True
         '
-        'InstallToolStripMenuItem
+        'AvailableVersion
         '
-        Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
-        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
-        Me.InstallToolStripMenuItem.Text = "Install"
+        Me.AvailableVersion.HeaderText = "Available version"
+        Me.AvailableVersion.Name = "AvailableVersion"
+        Me.AvailableVersion.ReadOnly = True
+        '
+        'PkgDescription
+        '
+        Me.PkgDescription.HeaderText = "Description"
+        Me.PkgDescription.Name = "PkgDescription"
+        Me.PkgDescription.ReadOnly = True
         '
         'aaformMainWindow
         '
@@ -262,10 +270,10 @@ Partial Class aaformMainWindow
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.splitcontainerMainWindow.ResumeLayout(False)
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.contextmenustripPackageMenu.ResumeLayout(False)
         Me.panelMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.PerformLayout()
-        Me.contextmenustripPackageMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -293,5 +301,6 @@ Partial Class aaformMainWindow
     Friend WithEvents PkgAction As DataGridViewComboBoxColumn
     Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
     Friend WithEvents PkgName As DataGridViewTextBoxColumn
+    Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
 End Class
