@@ -23,6 +23,8 @@
 
 
 
+Imports System.Threading
+
 Public Class PackageTools
 
     ' Get package details from winget.
@@ -39,7 +41,7 @@ Public Class PackageTools
         Return procOutput
     End Function
 
-    Shared Async Function GetPkgInfoAsync(PackageId As String, Optional RequestedInfo As String = "Everything") As Task(Of String)
+    Shared Async Function GetPkgInfoAsync(PackageId As String, Optional RequestedInfo As String = "Everything", Optional cancel As CancellationToken = Nothing) As Task(Of String)
 
         ' Based partially on the code in this video:
         ' https://www.youtube.com/watch?v=APyteDZMpYw
@@ -64,6 +66,7 @@ Public Class PackageTools
                 .RedirectStandardOutput = True
                 .CreateNoWindow = True
             End With
+
             If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
 
             Using cancelRegister = cancel.Register(Sub() proc.Kill())
@@ -91,9 +94,6 @@ Public Class PackageTools
 
             End Using
 
-            ' Assign process thing.
-            proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
-
             ' Start the process.
             proc.Start()
 
@@ -104,7 +104,6 @@ Public Class PackageTools
             End Using
 
             Return procOutput
-        End Using
         End Using
     End Function
 
