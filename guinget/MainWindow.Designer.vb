@@ -39,14 +39,14 @@ Partial Class aaformMainWindow
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.toolstripbuttonSearch = New System.Windows.Forms.ToolStripButton()
         Me.datagridviewPackageList = New System.Windows.Forms.DataGridView()
-        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -191,31 +191,6 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.Size = New System.Drawing.Size(818, 256)
         Me.datagridviewPackageList.TabIndex = 0
         '
-        'PkgAction
-        '
-        Me.PkgAction.HeaderText = "Action"
-        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
-        Me.PkgAction.Name = "PkgAction"
-        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'PkgStatus
-        '
-        Me.PkgStatus.HeaderText = "Status"
-        Me.PkgStatus.Name = "PkgStatus"
-        Me.PkgStatus.ReadOnly = True
-        '
-        'PkgName
-        '
-        Me.PkgName.HeaderText = "Package"
-        Me.PkgName.Name = "PkgName"
-        Me.PkgName.ReadOnly = True
-        '
-        'PkgDescription
-        '
-        Me.PkgDescription.HeaderText = "Description"
-        Me.PkgDescription.Name = "PkgDescription"
-        Me.PkgDescription.ReadOnly = True
-        '
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
@@ -241,6 +216,31 @@ Partial Class aaformMainWindow
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
         Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
         Me.InstallToolStripMenuItem.Text = "Install"
+        '
+        'PkgAction
+        '
+        Me.PkgAction.HeaderText = "Action"
+        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
+        Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'PkgStatus
+        '
+        Me.PkgStatus.HeaderText = "Status"
+        Me.PkgStatus.Name = "PkgStatus"
+        Me.PkgStatus.ReadOnly = True
+        '
+        'PkgName
+        '
+        Me.PkgName.HeaderText = "Package"
+        Me.PkgName.Name = "PkgName"
+        Me.PkgName.ReadOnly = True
+        '
+        'PkgDescription
+        '
+        Me.PkgDescription.HeaderText = "Description"
+        Me.PkgDescription.Name = "PkgDescription"
+        Me.PkgDescription.ReadOnly = True
         '
         'aaformMainWindow
         '
@@ -285,12 +285,12 @@ Partial Class aaformMainWindow
     Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
     Friend WithEvents ExamplePackageToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents datagridviewPackageList As DataGridView
-    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
-    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
-    Friend WithEvents PkgName As DataGridViewTextBoxColumn
-    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ActionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DoNothingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InstallToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
+    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
+    Friend WithEvents PkgName As DataGridViewTextBoxColumn
+    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
 End Class
