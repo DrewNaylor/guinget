@@ -24,6 +24,7 @@
 
 
 Imports System.Threading
+Imports System.Windows.Forms
 
 Public Class PackageTools
 
@@ -63,9 +64,12 @@ Public Class PackageTools
             proc.StartInfo.RedirectStandardOutput = True
             proc.StartInfo.CreateNoWindow = True
 
-                'If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
+            MessageBox.Show(proc.StartInfo.FileName.ToString & " " & proc.StartInfo.Arguments.ToString)
+            'If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
 
-                Using cancelRegister = cancel.Register(Sub() proc.Kill())
+            Using cancelRegister = cancel.Register(Sub() proc.Kill())
+
+                proc.Start()
 
                 Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
                 Dim wingetError = proc.StandardError.ReadToEndAsync
