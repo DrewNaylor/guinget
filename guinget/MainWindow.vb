@@ -12,14 +12,7 @@
         ' Combobox thing based on code from this page:
         ' http://www.nullskull.com/q/10432229/add-a-combobox-column-to-a-listview.aspx
 
-        Dim str(4) As String
-        Dim itm As ListViewItem
-        str(0) = "Do nothing"
-        str(1) = Status
-        str(2) = PkgName
-        str(3) = Description
-        itm = New ListViewItem(str)
-        DataGridView1.Rows.Add(itm)
+        DataGridView1.Rows.Add("Do nothing", Status, PkgName, Description)
     End Sub
 
     ' This YouTube video should help out with displaying CMD
