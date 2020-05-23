@@ -15,26 +15,19 @@
         datagridviewPackageList.Rows.Add("Do nothing", Status, PkgName, Description)
     End Sub
 
+    Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
+        ' Code based on this SO answer:
+        ' https://stackoverflow.com/a/939275
+        ' Also borrows from this answer:
+        ' https://stackoverflow.com/a/173315
 
-    ' Might remove the following code, since Explorer doesn't add to selections
-    ' on right-click, and neither does Visual Studio's Solution Explorer.
-    'Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
-    '    ' Code based on this SO answer:
-    '    ' https://stackoverflow.com/a/939275
-    '    ' Also borrows from this answer:
-    '    ' https://stackoverflow.com/a/173315
-
-    '    If e.Button = MouseButtons.Right Then
-    '        ' Check if Control is being held down.
-    '        If ModifierKeys = CType(Keys.Control, Keys) Then
-    '            datagridviewPackageList.Rows(e.RowIndex).Selected = True
-    '        ElseIf ModifierKeys = CType(Keys.Shift, Keys) Then
-    '            ' If Control isn't being held down, change the selection to
-    '            ' the current row.
-    '            MessageBox.Show("")
-    '        End If
-    '    End If
-    'End Sub
+        If e.Button = MouseButtons.Right Then
+            ' Check if Control is being held down.
+            If ModifierKeys = Nothing Then
+                datagridviewPackageList.CurrentCell = datagridviewPackageList(e.ColumnIndex, e.RowIndex)
+            End If
+        End If
+    End Sub
 
 
 
