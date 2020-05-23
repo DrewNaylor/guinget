@@ -7,12 +7,8 @@
     End Sub
 
     Private Sub AddPackageEntryToList(Status As String, PkgName As String, Description As String)
-        ' Code based on what's on this page:
-        ' https://www.dotnetheaven.com/article/listview-control-with-multiple-column-in-vb.net
-        ' Combobox thing based on code from this page:
-        ' http://www.nullskull.com/q/10432229/add-a-combobox-column-to-a-listview.aspx
 
-        DataGridView1.Rows.Add("Do nothing", Status, PkgName, Description)
+        datagridviewPackageList.Rows.Add("Do nothing", Status, PkgName, Description)
     End Sub
 
     ' This YouTube video should help out with displaying CMD
