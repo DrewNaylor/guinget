@@ -37,11 +37,11 @@ Partial Class aaformMainWindow
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.toolstripbuttonSearch = New System.Windows.Forms.ToolStripButton()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.PkgStatus = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.PkgAction = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.PkgName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.PkgDescription = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -49,6 +49,7 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow.SuspendLayout()
         Me.panelMainWindow.SuspendLayout()
         Me.toolstripMainWindow.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -115,7 +116,7 @@ Partial Class aaformMainWindow
         '
         'splitcontainerMainWindow.Panel1
         '
-        Me.splitcontainerMainWindow.Panel1.Controls.Add(Me.ListView1)
+        Me.splitcontainerMainWindow.Panel1.Controls.Add(Me.DataGridView1)
         '
         'splitcontainerMainWindow.Panel2
         '
@@ -167,36 +168,45 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonSearch.Size = New System.Drawing.Size(24, 24)
         Me.toolstripbuttonSearch.Text = "ToolStripButton1"
         '
-        'ListView1
+        'DataGridView1
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.PkgStatus, Me.PkgAction, Me.PkgName, Me.PkgDescription})
-        Me.ListView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListView1.FullRowSelect = True
-        Me.ListView1.Location = New System.Drawing.Point(0, 0)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(818, 256)
-        Me.ListView1.TabIndex = 0
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
-        '
-        'PkgStatus
-        '
-        Me.PkgStatus.Text = "Status"
-        Me.PkgStatus.Width = 78
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.PkgDescription})
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView1.Size = New System.Drawing.Size(818, 256)
+        Me.DataGridView1.TabIndex = 0
         '
         'PkgAction
         '
-        Me.PkgAction.Text = "Action"
+        Me.PkgAction.HeaderText = "Action"
+        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
+        Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.ReadOnly = True
+        '
+        'PkgStatus
+        '
+        Me.PkgStatus.HeaderText = "Status"
+        Me.PkgStatus.Name = "PkgStatus"
+        Me.PkgStatus.ReadOnly = True
         '
         'PkgName
         '
-        Me.PkgName.Text = "Package"
-        Me.PkgName.Width = 73
+        Me.PkgName.HeaderText = "Package"
+        Me.PkgName.Name = "PkgName"
+        Me.PkgName.ReadOnly = True
         '
         'PkgDescription
         '
-        Me.PkgDescription.Text = "Description"
-        Me.PkgDescription.Width = 128
+        Me.PkgDescription.HeaderText = "Description"
+        Me.PkgDescription.Name = "PkgDescription"
+        Me.PkgDescription.ReadOnly = True
         '
         'aaformMainWindow
         '
@@ -219,6 +229,7 @@ Partial Class aaformMainWindow
         Me.panelMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -238,9 +249,9 @@ Partial Class aaformMainWindow
     Friend WithEvents toolstripbuttonSearch As ToolStripButton
     Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
     Friend WithEvents ExamplePackageToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ListView1 As ListView
-    Friend WithEvents PkgStatus As ColumnHeader
-    Friend WithEvents PkgAction As ColumnHeader
-    Friend WithEvents PkgName As ColumnHeader
-    Friend WithEvents PkgDescription As ColumnHeader
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
+    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
+    Friend WithEvents PkgName As DataGridViewTextBoxColumn
+    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
 End Class

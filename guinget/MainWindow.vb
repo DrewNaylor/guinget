@@ -9,6 +9,9 @@
     Private Sub AddPackageEntryToList(Status As String, PkgName As String, Description As String)
         ' Code based on what's on this page:
         ' https://www.dotnetheaven.com/article/listview-control-with-multiple-column-in-vb.net
+        ' Combobox thing based on code from this page:
+        ' http://www.nullskull.com/q/10432229/add-a-combobox-column-to-a-listview.aspx
+
         Dim str(4) As String
         Dim itm As ListViewItem
         str(0) = "Do nothing"
@@ -16,7 +19,7 @@
         str(2) = PkgName
         str(3) = Description
         itm = New ListViewItem(str)
-        ListView1.Items.Add(itm)
+        DataGridView1.Rows.Add(itm)
     End Sub
 
     ' This YouTube video should help out with displaying CMD
