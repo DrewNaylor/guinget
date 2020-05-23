@@ -32,7 +32,7 @@
     Private Sub DoNothingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoNothingToolStripMenuItem.Click
         ' Set all selected packages to "do nothing", or whatever the text in the
         ' context menu item that was clicked is. This could allow for
-        ' translation.
+        ' translation and adding additional actions.
         For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = sender.ToString
         Next
@@ -41,7 +41,7 @@
     Private Sub InstallToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallToolStripMenuItem.Click
         ' Set all selected packages to "do nothing", or whatever the text in the
         ' context menu item that was clicked is. This could allow for
-        ' translation.
+        ' translation and adding additional actions.
         For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = sender.ToString
         Next
