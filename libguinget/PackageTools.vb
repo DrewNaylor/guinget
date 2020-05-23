@@ -26,7 +26,7 @@
 Public Class PackageTools
 
     ' Get package details from winget.
-    Public Shared Async Function GetPkgDetailsAsync(PackageId As String) As Task
+    Public Shared Async Function GetPkgDetailsAsync(PackageId As String) As Task(Of String)
 
         ' Async stuff based on this code:
         ' https://docs.microsoft.com/en-us/archive/blogs/lucian/how-to-await-a-command-line-process-and-capture-its-output
