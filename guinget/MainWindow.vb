@@ -79,6 +79,12 @@ Public Class aaformMainWindow
         Next
     End Sub
 
+    Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
+        If datagridviewPackageList.SelectedRows.Count = 1 Then
+            textboxPackageDetails.Text = 
+        End If
+    End Sub
+
 
 
     ' This YouTube video should help out with displaying CMD
