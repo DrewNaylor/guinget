@@ -240,7 +240,7 @@ Partial Class aaformMainWindow
         'InstallToolStripMenuItem
         '
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
-        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(159, 26)
+        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
         Me.InstallToolStripMenuItem.Text = "Install"
         '
         'aaformMainWindow
