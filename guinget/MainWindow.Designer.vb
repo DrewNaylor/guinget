@@ -22,6 +22,7 @@ Partial Class aaformMainWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aaformMainWindow))
         Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,6 +43,10 @@ Partial Class aaformMainWindow
         Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -50,6 +55,7 @@ Partial Class aaformMainWindow
         Me.panelMainWindow.SuspendLayout()
         Me.toolstripMainWindow.SuspendLayout()
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -173,6 +179,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToAddRows = False
         Me.datagridviewPackageList.AllowUserToDeleteRows = False
         Me.datagridviewPackageList.AllowUserToOrderColumns = True
+        Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.PkgDescription})
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
@@ -180,6 +187,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
         Me.datagridviewPackageList.RowTemplate.Height = 24
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.datagridviewPackageList.ShowEditingIcon = False
         Me.datagridviewPackageList.Size = New System.Drawing.Size(818, 256)
         Me.datagridviewPackageList.TabIndex = 0
         '
@@ -208,6 +216,32 @@ Partial Class aaformMainWindow
         Me.PkgDescription.Name = "PkgDescription"
         Me.PkgDescription.ReadOnly = True
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(122, 28)
+        '
+        'ActionToolStripMenuItem
+        '
+        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem})
+        Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
+        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(121, 24)
+        Me.ActionToolStripMenuItem.Text = "Action"
+        '
+        'DoNothingToolStripMenuItem
+        '
+        Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
+        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.DoNothingToolStripMenuItem.Text = "Do nothing"
+        '
+        'InstallToolStripMenuItem
+        '
+        Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
+        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.InstallToolStripMenuItem.Text = "Install"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -230,6 +264,7 @@ Partial Class aaformMainWindow
         Me.toolstripMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.PerformLayout()
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -254,4 +289,8 @@ Partial Class aaformMainWindow
     Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
     Friend WithEvents PkgName As DataGridViewTextBoxColumn
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents ActionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DoNothingToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InstallToolStripMenuItem As ToolStripMenuItem
 End Class
