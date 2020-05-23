@@ -39,8 +39,9 @@ Public Class PackageTools
             .RedirectStandardInput = True
             .RedirectStandardOutput = True
             .CreateNoWindow = True
-
         End With
+
+        proc = New Process With {.StartInfo = procinfo, .EnableRaisingEvents = True}
 
     End Function
 
