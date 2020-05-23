@@ -4,6 +4,10 @@
         ' https://stackoverflow.com/a/36801744
         Dim p = New PackageInfo With {.Status = "NotInstalled", .PkgName = "VLC", .Description = "A versitile media player."}
         AddPackageEntryToList(p.Status, p.PkgName, p.Description)
+        Dim p2 = New PackageInfo With {.Status = "Installed", .PkgName = "Notepad++", .Description = "Light-weight but feature-rich text editor."}
+        AddPackageEntryToList(p2.Status, p2.PkgName, p2.Description)
+        Dim p3 = New PackageInfo With {.Status = "Installed", .PkgName = "z", .Description = "z test"}
+        AddPackageEntryToList(p3.Status, p3.PkgName, p3.Description)
     End Sub
 
     Private Sub AddPackageEntryToList(Status As String, PkgName As String, Description As String)

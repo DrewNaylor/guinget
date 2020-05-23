@@ -188,6 +188,7 @@ Partial Class aaformMainWindow
         Me.PkgAction.HeaderText = "Action"
         Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
         Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'PkgStatus
         '
