@@ -46,6 +46,9 @@ Public Class PackageListTools
         ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
         If SQLdr.HasRows Then
             Do While SQLdr.Read
+                ' While reading the SQL db file, append the package name we're
+                ' looking at with the current package and add a comma
+                ' for separation.
                 packageArray = packageArray & ","
             Loop
         End If
@@ -57,7 +60,7 @@ Public Class PackageListTools
 
 
 
-        Return packageArray(packageIndex)
+        Return packageArray
 
         'End the connection
         SQLdr.Close()
