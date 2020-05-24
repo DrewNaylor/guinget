@@ -51,10 +51,10 @@ Public Class PackageTools
 
             ' If we want to get everything, do so.
             If RequestedInfo = "Everything" Then
-                proc.StartInfo.Arguments = "show -e " & PackageId
+                proc.StartInfo.Arguments = "show -e " & """" & PackageId & """"
             Else
                 ' Otherwise, just get the stuff if we want everything.
-                proc.StartInfo.Arguments = "show -e " & PackageId
+                proc.StartInfo.Arguments = "show -e " & """" & PackageId & """"
             End If
 
             ' Setup procinfo properties.
