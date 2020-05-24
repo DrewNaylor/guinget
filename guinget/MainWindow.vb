@@ -84,15 +84,15 @@ Public Class aaformMainWindow
         Next
     End Sub
 
-    'Private Async Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
-    '    ' Get package details if only one package is selected.
-    '    If datagridviewPackageList.SelectedRows.Count = 1 Then
-    '        ' If only one is selected, get its details into the details textbox.
-    '        ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
-    '        textboxPackageDetails.Text = "Loading, please wait..."
-    '        textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
-    '    End If
-    'End Sub
+    Private Async Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
+        ' Get package details if only one package is selected.
+        If datagridviewPackageList.SelectedRows.Count = 1 Then
+            ' If only one is selected, get its details into the details textbox.
+            ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
+            textboxPackageDetails.Text = "Loading, please wait..."
+            textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
+        End If
+    End Sub
 
     Private Shared Sub LoadPackageList()
         ' Trying to load the package list as shown in this SO
@@ -118,7 +118,7 @@ Public Class aaformMainWindow
         While SQLdr.Read()
             'Insert into textbox
             AddPackageEntryToList("", SQLdr.GetString(SQLdr.GetOrdinal("name")), "", "")
-            aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
+            'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
         End While
 
         'End the connection
