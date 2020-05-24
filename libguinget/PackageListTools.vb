@@ -29,11 +29,13 @@ Public Class PackageListTools
         Dim packageArray(packageCount) As String
         While SQLdr.Read()
             ' Add package to package string array.
-            packageArray(packageCount) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
-            ' Update the package count.
-            MessageBox.Show(packageCount.ToString)
-            packageCount = packageCount + 1
-            MessageBox.Show(packageCount.ToString)
+            For i As Integer = 0 To SQLdr.GetString(SQLdr.GetOrdinal("name")).Count
+                packageArray(i) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
+                ' Update the package count.
+                MessageBox.Show(i.ToString)
+                i = i + 1
+                MessageBox.Show(i.ToString)
+            Next
             ' Return package array.
             'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
             'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
