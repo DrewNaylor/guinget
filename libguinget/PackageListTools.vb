@@ -32,7 +32,7 @@ Public Class PackageListTools
 
         '' Have a number to store how many packages there are.
         'Dim packageIndex As Integer = 0
-        'Dim packageArray(packageIndex) As String
+        Dim packageArray As String = String.Empty
         '' Add package to package string array.
         'For i As Integer = 0 To dtable.Rows.Count - 1
         '    packageArray(i) = dtable.GetString(SQLdr.GetOrdinal("name"))
@@ -44,8 +44,11 @@ Public Class PackageListTools
 
         ' Get data from the name column based on this MSDN page:
         ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
-
-
+        If SQLdr.HasRows Then
+            Do While SQLdr.Read
+                packageArray = packageArray & ","
+            Loop
+        End If
 
 
         ' Return package array.
