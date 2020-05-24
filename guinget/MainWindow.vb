@@ -39,16 +39,19 @@ Public Class aaformMainWindow
         'AddPackageEntryToList(p2.Status, p2.Package, p2.AvailableVersion, p2.Description)
         'Dim p3 = New PackageInfo With {.Status = "Installed", .Package = "z", .AvailableVersion = "1.0", .Description = "z test"}
         'AddPackageEntryToList(p3.Status, p3.Package, p3.AvailableVersion, p3.Description)
-        LoadPackageList()
+        AddPackageEntryToList()
     End Sub
 
-    Private Shared Sub AddPackageEntryToList(Status As String, Package As String, AvailableVersion As String, Description As String)
+    Private Shared Sub AddPackageEntryToList()
+        ' Temporary copy of this sub's args:
+        ' Status As String, Package As String, AvailableVersion As String, Description As String
 
         ' Adds a package to the package list based on what's passed to it.
         ' TODO: "Do nothing" should be changed to match the package's
         ' current status. Maybe this could be something stored in another hidden
         ' list for selections that can be shown in a different window or something.
-        aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, Package, AvailableVersion, Description)
+        'aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, libguinget.PackageListTools.GetPackageList, AvailableVersion, Description)
+        aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "", libguinget.PackageListTools.GetPackageList, "", "")
         'LoadPackageList()
     End Sub
 
@@ -94,37 +97,7 @@ Public Class aaformMainWindow
         End If
     End Sub
 
-    Private Shared Sub LoadPackageList()
-        ' Trying to load the package list as shown in this SO
-        ' question that has the solution with it:
-        ' https://stackoverflow.com/q/19553165
 
-        'Value to search as SQL Query - return first match
-        Dim SQLstr As String = "Select name FROM names;"
-
-        'Define file to open - .path passed from parent form
-        Dim connection As String = "Data Source=C:\Users\drewn\Desktop\index.db"
-        Dim SQLConn As New SqliteConnection(connection)
-        Dim SQLcmd As New SqliteCommand(SQLConn.ToString)
-        Dim SQLdr As SqliteDataReader
-        SQLConn.Open()
-
-        SQLcmd.Connection = SQLConn
-        SQLcmd.CommandText = SQLstr
-        SQLdr = SQLcmd.ExecuteReader()
-
-        'For Each query returned
-
-        While SQLdr.Read()
-            'Insert into textbox
-            AddPackageEntryToList("", SQLdr.GetString(SQLdr.GetOrdinal("name")), "", "")
-            'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
-        End While
-
-        'End the connection
-        SQLdr.Close()
-            SQLConn.Close()
-    End Sub
 
 
 
