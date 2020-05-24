@@ -23,8 +23,12 @@ Public Class PackageListTools
 
         'For Each query returned
 
+        ' Have a number to store how many packages there are.
+        Dim packageCount As Integer = 0
         While SQLdr.Read()
-            'Insert into textbox
+            ' Update the package count.
+            packageCount = packageCount + 1
+            ' Return package array.
             Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
             'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
         End While
