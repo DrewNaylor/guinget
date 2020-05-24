@@ -23,7 +23,6 @@
 
 
 
-Imports Microsoft.Data.Sqlite
 
 Public Class aaformMainWindow
     Private Sub ExamplePackageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExamplePackageToolStripMenuItem.Click
