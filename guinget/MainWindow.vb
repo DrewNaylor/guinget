@@ -115,8 +115,8 @@ Public Class aaformMainWindow
         'For Each query returned
         While SQLdr.Read()
             'Insert into textbox
-            AddPackageEntryToList("", SQLdr.GetString(SQLdr.GetOrdinal("name")), "", "")
-            'aaformMainWindow.textboxPackageDetails.Text = SQLdr.GetString(SQLdr.GetOrdinal("name"))
+            'AddPackageEntryToList("", SQLdr.GetString(SQLdr.GetOrdinal("name")), "", "")
+            aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
         End While
 
             'End the connection
