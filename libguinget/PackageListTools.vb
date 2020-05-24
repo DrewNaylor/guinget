@@ -49,7 +49,10 @@ Public Class PackageListTools
                 ' While reading the SQL db file, append the package name we're
                 ' looking at with the current package and add a comma
                 ' for separation.
-                packageArray = packageArray & ","
+                Debug.WriteLine(SQLdr.GetInt32(0) _
+                  & vbTab & SQLdr.GetString(0))
+                packageArray = SQLdr.GetString(0) & ","
+                MessageBox.Show(packageArray)
             Loop
         End If
 
@@ -60,11 +63,13 @@ Public Class PackageListTools
 
 
 
-        Return packageArray
+
 
         'End the connection
         SQLdr.Close()
         SQLConn.Close()
+
+        Return packageArray
     End Function
 
 End Class
