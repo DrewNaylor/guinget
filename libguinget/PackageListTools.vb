@@ -22,55 +22,28 @@ Public Class PackageListTools
         SQLcmd.CommandText = SQLstr
         SQLdr = SQLcmd.ExecuteReader()
 
-        'For Each query returned
 
-        '' Data table based on this SO answer:
-        '' https://stackoverflow.com/a/14629894
-        'Dim dtable As DataTable = New DataTable
-        'dtable.Load(SQLdr)
-
-
-        '' Have a number to store how many packages there are.
-        'Dim packageIndex As Integer = 0
+        ' Store the package name list in an array.
         Dim packageArray As String = String.Empty
-        '' Add package to package string array.
-        'For i As Integer = 0 To dtable.Rows.Count - 1
-        '    packageArray(i) = dtable.GetString(SQLdr.GetOrdinal("name"))
-        '    ' Update the package count.
-        '    MessageBox.Show(i.ToString)
-
-
-        'Next
 
         ' Get data from the name column based on this MSDN page:
         ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
         If SQLdr.HasRows Then
+            ' If the SQL data reader has rows, then read it.
             Do While SQLdr.Read
                 ' While reading the SQL db file, append the package name we're
                 ' looking at with the current package and add a comma
                 ' for separation.
-                Debug.WriteLine(SQLdr.GetInt32(0) _
-                  & vbTab & SQLdr.GetString(0))
                 packageArray = packageArray & SQLdr.GetString(0) & ","
-                'MessageBox.Show(packageArray)
             Loop
         End If
-
-        ' Now we need to split the package list into comma-separated values.
-        'Dim separatedPackageArray() As String = packageArray.Split(CType(",", Char()))
-
-        ' Return package array.
-        'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
-        'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
-
-
-
 
 
         'End the connection
         SQLdr.Close()
         SQLConn.Close()
 
+        ' Return the list of packages.
         Return packageArray
     End Function
 
