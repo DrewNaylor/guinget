@@ -56,6 +56,8 @@ Public Class PackageListTools
             Loop
         End If
 
+        ' Now we need to split the package list into comma-separated values.
+        Dim separatedPackageArray() As String = packageArray.Split(CType(",", Char()))
 
         ' Return package array.
         'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
