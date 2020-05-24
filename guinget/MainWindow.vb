@@ -23,6 +23,8 @@
 
 
 
+Imports Microsoft.Data.Sqlite
+
 Public Class aaformMainWindow
     Private Sub ExamplePackageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExamplePackageToolStripMenuItem.Click
         ' Original code for info as well as the PackageInfo class was from this StackOverflow answer:
@@ -45,7 +47,8 @@ Public Class aaformMainWindow
         ' TODO: "Do nothing" should be changed to match the package's
         ' current status. Maybe this could be something stored in another hidden
         ' list for selections that can be shown in a different window or something.
-        datagridviewPackageList.Rows.Add("Do nothing", Status, Package, AvailableVersion, Description)
+        'datagridviewPackageList.Rows.Add("Do nothing", Status, Package, AvailableVersion, Description)
+        LoadPackageList()
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
@@ -80,20 +83,44 @@ Public Class aaformMainWindow
         Next
     End Sub
 
-    Private Async Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
-        ' Get package details if only one package is selected.
-        If datagridviewPackageList.SelectedRows.Count = 1 Then
-            ' If only one is selected, get its details into the details textbox.
-            ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
-            textboxPackageDetails.Text = "Loading, please wait..."
-            textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
-        End If
-    End Sub
+    'Private Async Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
+    '    ' Get package details if only one package is selected.
+    '    If datagridviewPackageList.SelectedRows.Count = 1 Then
+    '        ' If only one is selected, get its details into the details textbox.
+    '        ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
+    '        textboxPackageDetails.Text = "Loading, please wait..."
+    '        textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
+    '    End If
+    'End Sub
 
     Private Shared Sub LoadPackageList()
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
         ' https://stackoverflow.com/q/19553165
+
+        'Value to search as SQL Query - return first match
+        Dim SQLstr As String = "Select * FROM manifest;"
+
+        'Define file to open - .path passed from parent form
+        Dim connection As String = "Data Source=C:\Users\drewn\Desktop\index.db"
+        Dim SQLConn As New SqliteConnection(connection)
+        Dim SQLcmd As New SqliteCommand(SQLConn.ToString)
+        Dim SQLdr As SqliteDataReader
+        SQLConn.Open()
+
+        SQLcmd.Connection = SQLConn
+        SQLcmd.CommandText = SQLstr
+        SQLdr = SQLcmd.ExecuteReader()
+
+        'For Each query returned
+        While SQLdr.Read()
+            'Insert into textbox
+            aaformMainWindow.textboxPackageDetails.Text = (SQLdr.GetString(SQLdr.GetOrdinal("id")))
+        End While
+
+            'End the connection
+            SQLdr.Close()
+            SQLConn.Close()
     End Sub
 
 
