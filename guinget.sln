@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "guinget", "guinget\guinget.vbproj", "{3FDC7E07-ABB2-4540-8D92-B85A66114A3B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F3886502-361D-408C-9B43-7E9DE8197BE2} = {F3886502-361D-408C-9B43-7E9DE8197BE2}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "libguinget", "libguinget\libguinget.vbproj", "{F3886502-361D-408C-9B43-7E9DE8197BE2}"
 EndProject
