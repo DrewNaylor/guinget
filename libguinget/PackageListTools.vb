@@ -24,17 +24,26 @@ Public Class PackageListTools
 
         'For Each query returned
 
+        ' Data table based on this SO answer:
+        ' https://stackoverflow.com/a/14629894
+        Dim dtable As DataTable = New DataTable
+        dtable.Load(SQLdr)
+
+
         ' Have a number to store how many packages there are.
-        Dim packageCount As Integer = 0
-        Dim packageArray(packageCount) As String
+        Dim packageIndex As Integer = 0
+        Dim packageArray(packageIndex) As String
         While SQLdr.Read()
             ' Add package to package string array.
-            For i As Integer = 0 To SQLdr.FieldCount - 1
-                packageArray(i) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
+            For i As Integer = 0 To SQLdr.Item
+                packageArray(packageIndex) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
                 ' Update the package count.
-                MessageBox.Show(SQLdr.FieldCount.ToString)
+                MessageBox.Show(packageIndex.ToString)
+                packageIndex = packageIndex + 1
+                MessageBox.Show(packageIndex.ToString)
 
-            Next
+
+            End While
             ' Return package array.
             'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
             'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
@@ -42,7 +51,7 @@ Public Class PackageListTools
 
 
 
-        Return packageArray(packageCount)
+        Return packageArray(packageIndex)
 
         'End the connection
         SQLdr.Close()
