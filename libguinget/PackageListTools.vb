@@ -3,7 +3,7 @@ Imports Microsoft.Data.Sqlite
 
 Public Class PackageListTools
 
-    Public Shared Function GetPackageList() As String()
+    Public Shared Function GetPackageList() As String
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
         ' https://stackoverflow.com/q/19553165
@@ -57,7 +57,7 @@ Public Class PackageListTools
         End If
 
         ' Now we need to split the package list into comma-separated values.
-        Dim separatedPackageArray() As String = packageArray.Split(CType(",", Char()))
+        'Dim separatedPackageArray() As String = packageArray.Split(CType(",", Char()))
 
         ' Return package array.
         'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
@@ -71,7 +71,7 @@ Public Class PackageListTools
         SQLdr.Close()
         SQLConn.Close()
 
-        Return separatedPackageArray
+        Return packageArray
     End Function
 
 End Class

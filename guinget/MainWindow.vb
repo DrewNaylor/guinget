@@ -51,8 +51,10 @@ Public Class aaformMainWindow
         ' current status. Maybe this could be something stored in another hidden
         ' list for selections that can be shown in a different window or something.
         'aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, libguinget.PackageListTools.GetPackageList, AvailableVersion, Description)
-        For i As Integer = 0 To libguinget.PackageListTools.GetPackageList.Count - 1
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "", libguinget.PackageListTools.GetPackageList, "", "")
+
+        Dim separatedPackageArray() As String = libguinget.PackageListTools.GetPackageList.Split(CType(",", Char()))
+        For i As Integer = 0 To separatedPackageArray.Count - 1
+            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "", separatedPackageArray(i), "", "")
         Next
         'LoadPackageList()
     End Sub
