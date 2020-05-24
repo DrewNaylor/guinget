@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -58,17 +57,8 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="libguinget">
       <HintPath>..\libguinget\bin\Debug\libguinget.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Sqlite, Version=3.1.4.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.Sqlite.Core.3.1.4\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.3.851, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.3\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
@@ -170,16 +160,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.3\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.3\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.3\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.3\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
-  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.3\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.3\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
