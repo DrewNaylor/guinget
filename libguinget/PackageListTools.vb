@@ -32,7 +32,7 @@ Public Class PackageListTools
             For i As Integer = 0 To SQLdr.GetString(SQLdr.GetOrdinal("name")).Count - 1
                 packageArray(i) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
                 ' Update the package count.
-                MessageBox.Show(i.ToString)
+                MessageBox.Show(SQLdr.GetString(SQLdr.GetOrdinal("name")).Count.ToString)
 
             Next
             ' Return package array.
