@@ -3,7 +3,7 @@ Imports Microsoft.Data.Sqlite
 
 Public Class PackageListTools
 
-    Public Shared Function GetPackageList() As String
+    Public Shared Function GetPackageList() As String()
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
         ' https://stackoverflow.com/q/19553165
@@ -71,7 +71,7 @@ Public Class PackageListTools
         SQLdr.Close()
         SQLConn.Close()
 
-        Return separatedPackageArray()
+        Return separatedPackageArray
     End Function
 
 End Class
