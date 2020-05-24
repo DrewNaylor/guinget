@@ -27,6 +27,8 @@ Public Class PackageListTools
         Dim packageCount As Integer = 0
         Dim packageArray(packageCount) As String
         While SQLdr.Read()
+            ' Add package to package string array.
+            packageArray(packageCount) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
             ' Update the package count.
             packageCount = packageCount + 1
             ' Return package array.
