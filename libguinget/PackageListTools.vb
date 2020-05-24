@@ -33,8 +33,7 @@ Public Class PackageListTools
                 packageArray(i) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
                 ' Update the package count.
                 MessageBox.Show(i.ToString)
-                i = i + 1
-                MessageBox.Show(i.ToString)
+
             Next
             ' Return package array.
             'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
