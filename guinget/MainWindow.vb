@@ -99,7 +99,7 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/q/19553165
 
         'Value to search as SQL Query - return first match
-        Dim SQLstr As String = "Select * FROM manifest;"
+        Dim SQLstr As String = "Select * FROM names;"
 
         'Define file to open - .path passed from parent form
         Dim connection As String = "Data Source=C:\Users\drewn\Desktop\index.db"
@@ -115,7 +115,7 @@ Public Class aaformMainWindow
         'For Each query returned
         While SQLdr.Read()
             'Insert into textbox
-            aaformMainWindow.textboxPackageDetails.Text = (SQLdr.GetString(SQLdr.GetOrdinal("id")))
+            aaformMainWindow.textboxPackageDetails.Text = (SQLdr.GetString(SQLdr.GetOrdinal("name")))
         End While
 
             'End the connection
