@@ -32,13 +32,13 @@ Public Class PackageListTools
             ' Update the package count.
             packageCount = packageCount + 1
             ' Return package array.
-            Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
+            'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
             'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
         End While
 
 
 
-        'Return packageArray
+        Return packageArray(packageCount)
 
         'End the connection
         SQLdr.Close()
