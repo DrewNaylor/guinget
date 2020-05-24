@@ -51,8 +51,8 @@ Public Class PackageListTools
                 ' for separation.
                 Debug.WriteLine(SQLdr.GetInt32(0) _
                   & vbTab & SQLdr.GetString(0))
-                packageArray = SQLdr.GetString(0) & ","
-                MessageBox.Show(packageArray)
+                packageArray = packageArray & SQLdr.GetString(0) & ","
+                'MessageBox.Show(packageArray)
             Loop
         End If
 
