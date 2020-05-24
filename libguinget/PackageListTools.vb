@@ -1,4 +1,5 @@
-﻿Imports Microsoft.Data.Sqlite
+﻿Imports System.Windows.Forms
+Imports Microsoft.Data.Sqlite
 
 Public Class PackageListTools
 
@@ -30,7 +31,9 @@ Public Class PackageListTools
             ' Add package to package string array.
             packageArray(packageCount) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
             ' Update the package count.
+            MessageBox.Show(packageCount.ToString)
             packageCount = packageCount + 1
+            MessageBox.Show(packageCount.ToString)
             ' Return package array.
             'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
             'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
