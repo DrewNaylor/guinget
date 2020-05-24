@@ -71,7 +71,7 @@ Public Class PackageListTools
         SQLdr.Close()
         SQLConn.Close()
 
-        Return packageArray
+        Return separatedPackageArray()
     End Function
 
 End Class
