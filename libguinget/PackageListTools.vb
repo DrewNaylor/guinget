@@ -9,18 +9,20 @@ Public Class PackageListTools
         ' https://stackoverflow.com/q/19553165
 
         'Value to search as SQL Query - return first match
-        Dim SQLstr As String = "Select name FROM names;"
+        Dim SqlQuery As String = "Select name FROM names;"
 
-        'Define file to open - .path passed from parent form
-        Dim connection As String = "Data Source=C:\Users\drewn\Desktop\index.db"
-        Dim SQLConn As New SqliteConnection(connection)
-        Dim SQLcmd As New SqliteCommand(SQLConn.ToString)
-        Dim SQLdr As SqliteDataReader
-        SQLConn.Open()
+        ' Specify winget package list database file we want
+        ' to read from.
+        Dim PackageListPath As String = "Data Source=C:\Users\drewn\Desktop\index.db"
+        Dim SqlConnection As New SqliteConnection(PackageListPath)
+        Dim SqlCommand As New SqliteCommand(SqlConnection.ToString)
+        Dim SqlDataReader As SqliteDataReader
+        ' Open connection to the database file.
+        SqlConnection.Open()
 
-        SQLcmd.Connection = SQLConn
-        SQLcmd.CommandText = SQLstr
-        SQLdr = SQLcmd.ExecuteReader()
+        SqlCommand.Connection = SqlConnection
+        SqlCommand.CommandText = SqlQuery
+        SqlDataReader = SqlCommand.ExecuteReader()
 
 
         ' Store the package name list in an array.
@@ -28,20 +30,20 @@ Public Class PackageListTools
 
         ' Get data from the name column based on this MSDN page:
         ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
-        If SQLdr.HasRows Then
+        If SqlDataReader.HasRows Then
             ' If the SQL data reader has rows, then read it.
-            Do While SQLdr.Read
+            Do While SqlDataReader.Read
                 ' While reading the SQL db file, append the package name we're
                 ' looking at with the current package and add a comma
                 ' for separation.
-                packageArray = packageArray & SQLdr.GetString(0) & ","
+                packageArray = packageArray & SqlDataReader.GetString(0) & ","
             Loop
         End If
 
 
         'End the connection
-        SQLdr.Close()
-        SQLConn.Close()
+        SqlDataReader.Close()
+        SqlConnection.Close()
 
         ' Return the list of packages.
         Return packageArray
