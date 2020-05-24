@@ -1,5 +1,5 @@
 ﻿' libguinget - Package tools for guinget and other programs that
-'  want to use them.
+'              want to use them.
 ' Copyright (C) 2020 Drew Naylor
 ' (Note that the copyright years include the years left out by the hyphen.)
 ' winget, Windows, and all related words are copyright and trademark Microsoft Corporation.

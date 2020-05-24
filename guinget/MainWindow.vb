@@ -1,4 +1,5 @@
 ﻿' guinget - Unofficial GUI for Microsoft's Windows Package Manager (winget)
+'           Kinda like Synaptic, but for Windows.
 ' Copyright (C) 2020 Drew Naylor
 ' (Note that the copyright years include the years left out by the hyphen.)
 ' winget, Windows, and all related words are copyright and trademark Microsoft Corporation.
