@@ -24,28 +24,33 @@ Public Class PackageListTools
 
         'For Each query returned
 
-        ' Data table based on this SO answer:
-        ' https://stackoverflow.com/a/14629894
-        Dim dtable As DataTable = New DataTable
-        dtable.Load(SQLdr)
+        '' Data table based on this SO answer:
+        '' https://stackoverflow.com/a/14629894
+        'Dim dtable As DataTable = New DataTable
+        'dtable.Load(SQLdr)
 
 
-        ' Have a number to store how many packages there are.
-        Dim packageIndex As Integer = 0
-        Dim packageArray(packageIndex) As String
-        While SQLdr.Read()
-            ' Add package to package string array.
-            For i As Integer = 0 To dtable.Rows.Count - 1
-                packageArray(i) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
-                ' Update the package count.
-                MessageBox.Show(i.ToString)
+        '' Have a number to store how many packages there are.
+        'Dim packageIndex As Integer = 0
+        'Dim packageArray(packageIndex) As String
+        '' Add package to package string array.
+        'For i As Integer = 0 To dtable.Rows.Count - 1
+        '    packageArray(i) = dtable.GetString(SQLdr.GetOrdinal("name"))
+        '    ' Update the package count.
+        '    MessageBox.Show(i.ToString)
 
 
-            Next
-            ' Return package array.
-            'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
-            'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
-        End While
+        'Next
+
+        ' Get data from the name column based on this MSDN page:
+        ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
+
+
+
+
+        ' Return package array.
+        'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
+        'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
 
 
 
