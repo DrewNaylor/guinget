@@ -35,15 +35,13 @@ Public Class PackageListTools
         Dim packageArray(packageIndex) As String
         While SQLdr.Read()
             ' Add package to package string array.
-            For i As Integer = 0 To SQLdr.Item
-                packageArray(packageIndex) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
+            For i As Integer = 0 To dtable.Rows.Count - 1
+                packageArray(i) = SQLdr.GetString(SQLdr.GetOrdinal("name"))
                 ' Update the package count.
-                MessageBox.Show(packageIndex.ToString)
-                packageIndex = packageIndex + 1
-                MessageBox.Show(packageIndex.ToString)
+                MessageBox.Show(i.ToString)
 
 
-            End While
+            Next
             ' Return package array.
             'Return SQLdr.GetString(SQLdr.GetOrdinal("name"))
             'aaformMainWindow.textboxPackageDetails.AppendText(SQLdr.GetString(SQLdr.GetOrdinal("name")))
