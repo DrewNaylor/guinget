@@ -78,45 +78,45 @@ Partial Class aaformMainWindow
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem, Me.ExamplePackageToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(44, 24)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 24)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(209, 26)
         Me.ExitToolStripMenuItem.Text = "&Exit"
         '
         'ExamplePackageToolStripMenuItem
         '
         Me.ExamplePackageToolStripMenuItem.Name = "ExamplePackageToolStripMenuItem"
-        Me.ExamplePackageToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
+        Me.ExamplePackageToolStripMenuItem.Size = New System.Drawing.Size(209, 26)
         Me.ExamplePackageToolStripMenuItem.Text = "Example package"
         '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(56, 24)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(58, 24)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'VerifyManifestToolStripMenuItem
         '
         Me.VerifyManifestToolStripMenuItem.Name = "VerifyManifestToolStripMenuItem"
-        Me.VerifyManifestToolStripMenuItem.Size = New System.Drawing.Size(182, 26)
+        Me.VerifyManifestToolStripMenuItem.Size = New System.Drawing.Size(190, 26)
         Me.VerifyManifestToolStripMenuItem.Text = "&Verify manifest"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(55, 24)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(125, 26)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(133, 26)
         Me.AboutToolStripMenuItem.Text = "&About"
         '
         'splitcontainerMainWindow
@@ -150,6 +150,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
+        Me.datagridviewPackageList.RowHeadersWidth = 51
         Me.datagridviewPackageList.RowTemplate.Height = 24
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridviewPackageList.ShowEditingIcon = False
@@ -160,30 +161,35 @@ Partial Class aaformMainWindow
         '
         Me.PkgAction.HeaderText = "Action"
         Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
+        Me.PkgAction.MinimumWidth = 6
         Me.PkgAction.Name = "PkgAction"
         Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'PkgStatus
         '
         Me.PkgStatus.HeaderText = "Status"
+        Me.PkgStatus.MinimumWidth = 6
         Me.PkgStatus.Name = "PkgStatus"
         Me.PkgStatus.ReadOnly = True
         '
         'PkgName
         '
         Me.PkgName.HeaderText = "Package"
+        Me.PkgName.MinimumWidth = 6
         Me.PkgName.Name = "PkgName"
         Me.PkgName.ReadOnly = True
         '
         'AvailableVersion
         '
         Me.AvailableVersion.HeaderText = "Available version"
+        Me.AvailableVersion.MinimumWidth = 6
         Me.AvailableVersion.Name = "AvailableVersion"
         Me.AvailableVersion.ReadOnly = True
         '
         'PkgDescription
         '
         Me.PkgDescription.HeaderText = "Description"
+        Me.PkgDescription.MinimumWidth = 6
         Me.PkgDescription.Name = "PkgDescription"
         Me.PkgDescription.ReadOnly = True
         '
@@ -204,13 +210,13 @@ Partial Class aaformMainWindow
         'DoNothingToolStripMenuItem
         '
         Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
-        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(159, 26)
+        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(167, 26)
         Me.DoNothingToolStripMenuItem.Text = "Do nothing"
         '
         'InstallToolStripMenuItem
         '
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
-        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(159, 26)
+        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(167, 26)
         Me.InstallToolStripMenuItem.Text = "Install"
         '
         'textboxPackageDetails

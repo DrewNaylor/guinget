@@ -90,6 +90,12 @@ Public Class aaformMainWindow
         End If
     End Sub
 
+    Private Shared Sub LoadPackageList()
+        ' Trying to load the package list as shown in this SO
+        ' question that has the solution with it:
+        ' https://stackoverflow.com/q/19553165
+    End Sub
+
 
 
     ' This YouTube video should help out with displaying CMD
