@@ -66,6 +66,7 @@ Partial Class aaformMainWindow
         Me.tabpageSections = New System.Windows.Forms.TabPage()
         Me.tabpageCustomFilters = New System.Windows.Forms.TabPage()
         Me.panelMainForm = New System.Windows.Forms.Panel()
+        Me.tabpageArchitecture = New System.Windows.Forms.TabPage()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -357,11 +358,12 @@ Partial Class aaformMainWindow
         '
         'tabcontrolSidebar
         '
-        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSearchTerms)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSections)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageStatus)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSource)
-        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSections)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageCustomFilters)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSearchTerms)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageArchitecture)
         Me.tabcontrolSidebar.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolSidebar.Location = New System.Drawing.Point(0, 0)
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
@@ -472,6 +474,15 @@ Partial Class aaformMainWindow
         Me.panelMainForm.Size = New System.Drawing.Size(818, 440)
         Me.panelMainForm.TabIndex = 4
         '
+        'tabpageArchitecture
+        '
+        Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 25)
+        Me.tabpageArchitecture.Name = "tabpageArchitecture"
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(264, 411)
+        Me.tabpageArchitecture.TabIndex = 5
+        Me.tabpageArchitecture.Text = "Architecture"
+        Me.tabpageArchitecture.UseVisualStyleBackColor = True
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -552,4 +563,5 @@ Partial Class aaformMainWindow
     Friend WithEvents tablelayoutpanelSearchTerms As TableLayoutPanel
     Friend WithEvents buttonClearSearchTerms As Button
     Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents tabpageArchitecture As TabPage
 End Class
