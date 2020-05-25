@@ -57,8 +57,11 @@ Partial Class aaformMainWindow
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.tabpageSections = New System.Windows.Forms.TabPage()
+        Me.tabpageAction = New System.Windows.Forms.TabPage()
+        Me.tabpageSource = New System.Windows.Forms.TabPage()
+        Me.tabpageCustomFilters = New System.Windows.Forms.TabPage()
+        Me.tabpageSearchResults = New System.Windows.Forms.TabPage()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -355,8 +358,11 @@ Partial Class aaformMainWindow
         '
         'TabControl1
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.tabpageSearchResults)
+        Me.TabControl1.Controls.Add(Me.tabpageAction)
+        Me.TabControl1.Controls.Add(Me.tabpageSource)
+        Me.TabControl1.Controls.Add(Me.tabpageSections)
+        Me.TabControl1.Controls.Add(Me.tabpageCustomFilters)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
@@ -364,25 +370,52 @@ Partial Class aaformMainWindow
         Me.TabControl1.Size = New System.Drawing.Size(272, 440)
         Me.TabControl1.TabIndex = 0
         '
-        'TabPage1
+        'tabpageSections
         '
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(264, 411)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.tabpageSections.Location = New System.Drawing.Point(4, 25)
+        Me.tabpageSections.Name = "tabpageSections"
+        Me.tabpageSections.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageSections.Size = New System.Drawing.Size(264, 411)
+        Me.tabpageSections.TabIndex = 0
+        Me.tabpageSections.Text = "Sections"
+        Me.tabpageSections.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'tabpageAction
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(192, 71)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.tabpageAction.Location = New System.Drawing.Point(4, 25)
+        Me.tabpageAction.Name = "tabpageAction"
+        Me.tabpageAction.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageAction.Size = New System.Drawing.Size(264, 411)
+        Me.tabpageAction.TabIndex = 1
+        Me.tabpageAction.Text = "Action"
+        Me.tabpageAction.UseVisualStyleBackColor = True
+        '
+        'tabpageSource
+        '
+        Me.tabpageSource.Location = New System.Drawing.Point(4, 25)
+        Me.tabpageSource.Name = "tabpageSource"
+        Me.tabpageSource.Size = New System.Drawing.Size(264, 411)
+        Me.tabpageSource.TabIndex = 2
+        Me.tabpageSource.Text = "Source"
+        Me.tabpageSource.UseVisualStyleBackColor = True
+        '
+        'tabpageCustomFilters
+        '
+        Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 25)
+        Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(264, 411)
+        Me.tabpageCustomFilters.TabIndex = 3
+        Me.tabpageCustomFilters.Text = "Custom filters"
+        Me.tabpageCustomFilters.UseVisualStyleBackColor = True
+        '
+        'tabpageSearchResults
+        '
+        Me.tabpageSearchResults.Location = New System.Drawing.Point(4, 25)
+        Me.tabpageSearchResults.Name = "tabpageSearchResults"
+        Me.tabpageSearchResults.Size = New System.Drawing.Size(264, 411)
+        Me.tabpageSearchResults.TabIndex = 4
+        Me.tabpageSearchResults.Text = "Search results"
+        Me.tabpageSearchResults.UseVisualStyleBackColor = True
         '
         'aaformMainWindow
         '
@@ -452,6 +485,9 @@ Partial Class aaformMainWindow
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents tabpageSections As TabPage
+    Friend WithEvents tabpageAction As TabPage
+    Friend WithEvents tabpageSource As TabPage
+    Friend WithEvents tabpageCustomFilters As TabPage
+    Friend WithEvents tabpageSearchResults As TabPage
 End Class
