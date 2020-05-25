@@ -62,6 +62,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource = New System.Windows.Forms.TabPage()
         Me.tabpageCustomFilters = New System.Windows.Forms.TabPage()
         Me.tabpageSearchResults = New System.Windows.Forms.TabPage()
+        Me.listboxSearchResults = New System.Windows.Forms.ListBox()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -78,6 +79,7 @@ Partial Class aaformMainWindow
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TabControl1.SuspendLayout()
+        Me.tabpageSearchResults.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -410,12 +412,23 @@ Partial Class aaformMainWindow
         '
         'tabpageSearchResults
         '
+        Me.tabpageSearchResults.Controls.Add(Me.listboxSearchResults)
         Me.tabpageSearchResults.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearchResults.Name = "tabpageSearchResults"
         Me.tabpageSearchResults.Size = New System.Drawing.Size(264, 411)
         Me.tabpageSearchResults.TabIndex = 4
         Me.tabpageSearchResults.Text = "Search results"
         Me.tabpageSearchResults.UseVisualStyleBackColor = True
+        '
+        'listboxSearchResults
+        '
+        Me.listboxSearchResults.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.listboxSearchResults.FormattingEnabled = True
+        Me.listboxSearchResults.ItemHeight = 16
+        Me.listboxSearchResults.Location = New System.Drawing.Point(0, 0)
+        Me.listboxSearchResults.Name = "listboxSearchResults"
+        Me.listboxSearchResults.Size = New System.Drawing.Size(264, 411)
+        Me.listboxSearchResults.TabIndex = 0
         '
         'aaformMainWindow
         '
@@ -447,6 +460,7 @@ Partial Class aaformMainWindow
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
+        Me.tabpageSearchResults.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -490,4 +504,5 @@ Partial Class aaformMainWindow
     Friend WithEvents tabpageSource As TabPage
     Friend WithEvents tabpageCustomFilters As TabPage
     Friend WithEvents tabpageSearchResults As TabPage
+    Friend WithEvents listboxSearchResults As ListBox
 End Class
