@@ -70,12 +70,10 @@ Public Class aaformMainWindow
 
         If e.Button = MouseButtons.Right AndAlso e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
             ' Make sure no modifier keys like Control are held down.
-            ' Trying to use this SO answer with modifications:
-            ' https://stackoverflow.com/a/36935158
-
+            ' Also make sure what we're right-clicking isn't in the selected
+            ' items collection of the datagridview.
             If ModifierKeys = Nothing AndAlso Not datagridviewPackageList.Item(e.ColumnIndex, e.RowIndex).Selected Then
-                ' TODO: Make sure that if the cell under the mouse is selected,
-                ' then DON'T deselect the already-selected cells.
+                ' If it's not one of the selected items, select only whatever was right-clicked.
                 datagridviewPackageList.CurrentCell = datagridviewPackageList(e.ColumnIndex, e.RowIndex)
             End If
         End If
