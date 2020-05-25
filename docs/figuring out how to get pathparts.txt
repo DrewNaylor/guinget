@@ -1,0 +1,1 @@
+look at each item in the parent column, then append each item in the pathpart column with the data in the row number specified by the parent column.
