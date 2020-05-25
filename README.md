@@ -2,6 +2,7 @@
 Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Synaptic, but for Windows.
 
 Not associated with Microsoft, and Microsoft does not endorse guinget.
+Not associated with the Synaptic project, either.
 
 Visual Studio 2019 Community is being used for this project.
 
