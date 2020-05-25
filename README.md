@@ -13,6 +13,8 @@ Even though it looks like the UI is complete, it's really not, and the package l
 
 Just a few hours after this screenshot was taken, guinget gained the ability to load package names from a manually-downloaded copy of the sources package. To use it, for now you'll have to manually download and extract the [source MSIX package from Microsoft](https://winget.azureedge.net/cache/source.msix) and change the file path in the code, then re-compile. The database is stored in `Public\index.db` in this MSIX package.
 
+Turns out that the YAML manifests are stored on the same server as `source.msix`. In the case of VLC, that's in `https://winget.azureedge.net/cache/manifests/VideoLAN/VLC/369c-3.0.10.yaml`. This probably varies between versions, but at least the location is known. I found this out by reading one of winget's log files.
+
 TODO:
 - Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
 - Create library that can be used by guinget (as well as other winget front-ends that want to use it) that makes it easier to get package info from winget.
