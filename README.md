@@ -18,7 +18,7 @@ Turns out that the YAML manifests are stored on the same server as `source.msix`
 Screenshot with more-complete UI (as of May 25, 2020), but with incomplete package list as the SQL isn't finished:
 ![](/docs/images/screenshot-morecompleteui_butincompletepkglist.png?raw=true)
 
-Please note that some columns and panels were resized for the screenshot; it won't look exactly like this when it starts. winget may also output junk characters on occasion, usually when guinget first calls it. Might be a good idea to do a String.Replace() on the output to get rid of that "a"-like character as shown below:
+Please note that some columns and panels were resized for the screenshot; it won't look exactly like this when it starts. winget may also output junk characters on occasion, usually when guinget first calls it but sometimes it can happen a few minutes later. Could be a result of winget re-downloading the package list. Might be a good idea to do a `String.Replace()` (replacing the weird characters with underscores or something that'll look like a progress bar like pound signs, perhaps? or maybe just replacing with `String.Empty`) on the output to get rid of `â–ˆ` and `â–’` as shown below:
 ![](/docs/images/screenshot-sometimes-winget-makes-a-mess-of-the-details.png?raw=true)
 
 TODO:
