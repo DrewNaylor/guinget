@@ -9,7 +9,7 @@ Public Class PackageListTools
         ' https://stackoverflow.com/q/19553165
 
         'Value to search as SQL Query - return first match
-        Dim SqlQuery As String = "Select name FROM names;"
+        Dim SqlQuery As String = "Select id FROM ids;"
 
         ' Specify winget package list database file we want
         ' to read from.
