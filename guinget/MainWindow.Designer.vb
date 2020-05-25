@@ -157,8 +157,8 @@ Partial Class aaformMainWindow
         'splitcontainerMainWindow.Panel2
         '
         Me.splitcontainerMainWindow.Panel2.Controls.Add(Me.textboxPackageDetails)
-        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(542, 440)
-        Me.splitcontainerMainWindow.SplitterDistance = 256
+        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(569, 440)
+        Me.splitcontainerMainWindow.SplitterDistance = 281
         Me.splitcontainerMainWindow.TabIndex = 1
         '
         'datagridviewPackageList
@@ -178,7 +178,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.RowTemplate.Height = 24
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridviewPackageList.ShowEditingIcon = False
-        Me.datagridviewPackageList.Size = New System.Drawing.Size(542, 256)
+        Me.datagridviewPackageList.Size = New System.Drawing.Size(569, 281)
         Me.datagridviewPackageList.StandardTab = True
         Me.datagridviewPackageList.TabIndex = 0
         '
@@ -251,7 +251,7 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.Multiline = True
         Me.textboxPackageDetails.Name = "textboxPackageDetails"
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textboxPackageDetails.Size = New System.Drawing.Size(542, 180)
+        Me.textboxPackageDetails.Size = New System.Drawing.Size(569, 155)
         Me.textboxPackageDetails.TabIndex = 0
         '
         'panelMainPkgArea
@@ -260,7 +260,7 @@ Partial Class aaformMainWindow
         Me.panelMainPkgArea.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMainPkgArea.Location = New System.Drawing.Point(0, 0)
         Me.panelMainPkgArea.Name = "panelMainPkgArea"
-        Me.panelMainPkgArea.Size = New System.Drawing.Size(542, 440)
+        Me.panelMainPkgArea.Size = New System.Drawing.Size(569, 440)
         Me.panelMainPkgArea.TabIndex = 2
         '
         'toolstripMainWindow
@@ -344,7 +344,7 @@ Partial Class aaformMainWindow
         '
         Me.splitcontainerSidebarAndPkgList.Panel2.Controls.Add(Me.panelMainPkgArea)
         Me.splitcontainerSidebarAndPkgList.Size = New System.Drawing.Size(818, 440)
-        Me.splitcontainerSidebarAndPkgList.SplitterDistance = 272
+        Me.splitcontainerSidebarAndPkgList.SplitterDistance = 245
         Me.splitcontainerSidebarAndPkgList.TabIndex = 3
         '
         'panelSidebarHolder
@@ -353,7 +353,7 @@ Partial Class aaformMainWindow
         Me.panelSidebarHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelSidebarHolder.Location = New System.Drawing.Point(0, 0)
         Me.panelSidebarHolder.Name = "panelSidebarHolder"
-        Me.panelSidebarHolder.Size = New System.Drawing.Size(272, 440)
+        Me.panelSidebarHolder.Size = New System.Drawing.Size(245, 440)
         Me.panelSidebarHolder.TabIndex = 0
         '
         'tabcontrolSidebar
@@ -368,7 +368,7 @@ Partial Class aaformMainWindow
         Me.tabcontrolSidebar.Location = New System.Drawing.Point(0, 0)
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
         Me.tabcontrolSidebar.SelectedIndex = 0
-        Me.tabcontrolSidebar.Size = New System.Drawing.Size(272, 440)
+        Me.tabcontrolSidebar.Size = New System.Drawing.Size(245, 440)
         Me.tabcontrolSidebar.TabIndex = 0
         '
         'tabpageSearchTerms
@@ -451,7 +451,7 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSections.Name = "tabpageSections"
         Me.tabpageSections.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageSections.Size = New System.Drawing.Size(264, 411)
+        Me.tabpageSections.Size = New System.Drawing.Size(237, 411)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Sections"
         Me.tabpageSections.UseVisualStyleBackColor = True
