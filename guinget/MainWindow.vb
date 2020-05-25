@@ -46,9 +46,16 @@ Public Class aaformMainWindow
         ' Status As String, Package As String, AvailableVersion As String, Description As String
 
         ' Adds a package to the package list based on what's passed to it.
-        ' TODO: "Do nothing" should be changed to match the package's
-        ' current status. Maybe this could be something stored in another hidden
-        ' list for selections that can be shown in a different window or something.
+        ' TODO: Make sure the package's status is properly set. For now, it'll
+        ' probably be "Not installed" unless tracking installed packages is added
+        ' as a feature.
+        ' Also be sure to properly get the other package info, like the description.
+        ' Maybe the packages could be separated with semicolons, and we split the master
+        ' list apart at the semicolon, then for each package info set we split it again
+        ' at a comma and put in the rows with the remaining info.
+        ' This may be more complicated in SQL as the data isn't all right there,
+        ' but we'll have to go from the master table and grab details from the separate tables
+        ' for each package.
         'aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, libguinget.PackageListTools.GetPackageList, AvailableVersion, Description)
 
         ' Assign a variable to store the package list array.
