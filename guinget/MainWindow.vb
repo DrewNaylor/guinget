@@ -72,7 +72,7 @@ Public Class aaformMainWindow
             ' Make sure no modifier keys like Control are held down.
             ' Trying to use this SO answer with modifications:
             ' https://stackoverflow.com/a/36935158
-            Dim currentRow As DataGridView.HitTestInfo = e.Location
+            Dim currentRow As DataGridView.HitTestInfo = datagridviewPackageList.HitTest(New Point(e.X, e.Y))
 
             If ModifierKeys = Nothing AndAlso Not datagridviewPackageList.SelectedRows.Contains(currentRow) Then
                 ' TODO: Make sure that if the cell under the mouse is selected,
