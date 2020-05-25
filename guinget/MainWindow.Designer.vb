@@ -366,11 +366,11 @@ Partial Class aaformMainWindow
         '
         'tabcontrolSidebar
         '
-        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSections)
-        Me.tabcontrolSidebar.Controls.Add(Me.tabpageStatus)
-        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSource)
-        Me.tabcontrolSidebar.Controls.Add(Me.tabpageCustomFilters)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSearchTerms)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageStatus)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageCustomFilters)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSections)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSource)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageArchitecture)
         Me.tabcontrolSidebar.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolSidebar.Location = New System.Drawing.Point(0, 0)
@@ -431,7 +431,7 @@ Partial Class aaformMainWindow
         Me.tabpageStatus.Location = New System.Drawing.Point(4, 25)
         Me.tabpageStatus.Name = "tabpageStatus"
         Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageStatus.Size = New System.Drawing.Size(237, 405)
+        Me.tabpageStatus.Size = New System.Drawing.Size(289, 540)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -444,7 +444,7 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.ItemHeight = 16
         Me.listboxStatusTab.Location = New System.Drawing.Point(3, 3)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(231, 399)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(283, 534)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageSource
@@ -452,7 +452,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource.Controls.Add(Me.listboxSourceTab)
         Me.tabpageSource.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(237, 405)
+        Me.tabpageSource.Size = New System.Drawing.Size(289, 540)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -463,9 +463,9 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSections.Name = "tabpageSections"
         Me.tabpageSections.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageSections.Size = New System.Drawing.Size(237, 405)
+        Me.tabpageSections.Size = New System.Drawing.Size(289, 540)
         Me.tabpageSections.TabIndex = 0
-        Me.tabpageSections.Text = "Sections"
+        Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
         '
         'tabpageCustomFilters
@@ -473,7 +473,7 @@ Partial Class aaformMainWindow
         Me.tabpageCustomFilters.Controls.Add(Me.listboxCustomFilters)
         Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 25)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(237, 405)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(289, 540)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -492,7 +492,7 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.Controls.Add(Me.listboxArchitecture)
         Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 25)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(237, 405)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(289, 540)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -505,7 +505,7 @@ Partial Class aaformMainWindow
         Me.listboxSections.ItemHeight = 16
         Me.listboxSections.Location = New System.Drawing.Point(3, 3)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(231, 399)
+        Me.listboxSections.Size = New System.Drawing.Size(283, 534)
         Me.listboxSections.TabIndex = 1
         '
         'listboxSourceTab
@@ -516,7 +516,7 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.ItemHeight = 16
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(237, 405)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(289, 540)
         Me.listboxSourceTab.TabIndex = 1
         '
         'listboxCustomFilters
@@ -527,7 +527,7 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.ItemHeight = 16
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(237, 405)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(289, 540)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'listboxArchitecture
@@ -538,7 +538,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.ItemHeight = 16
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(237, 405)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(289, 540)
         Me.listboxArchitecture.TabIndex = 1
         '
         'aaformMainWindow
