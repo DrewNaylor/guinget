@@ -69,8 +69,10 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/173315
 
         If e.Button = MouseButtons.Right AndAlso e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
-            ' Check if Control is being held down.
+            ' Make sure no modifier keys like Control are held down.
             If ModifierKeys = Nothing Then
+                ' TODO: Make sure that if the cell under the mouse is selected,
+                ' then DON'T deselect the already-selected cells.
                 datagridviewPackageList.CurrentCell = datagridviewPackageList(e.ColumnIndex, e.RowIndex)
             End If
         End If
