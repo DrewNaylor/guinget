@@ -44,7 +44,7 @@ Partial Class aaformMainWindow
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.textboxPackageDetails = New System.Windows.Forms.TextBox()
-        Me.panelMainWindow = New System.Windows.Forms.Panel()
+        Me.panelMainPkgArea = New System.Windows.Forms.Panel()
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
         Me.toolstripbuttonRefreshCache = New System.Windows.Forms.ToolStripButton()
         Me.toolstripbuttonApplyChanges = New System.Windows.Forms.ToolStripButton()
@@ -53,17 +53,17 @@ Partial Class aaformMainWindow
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.toolstripbuttonSearch = New System.Windows.Forms.ToolStripButton()
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.splitcontainerSidebarAndPkgList = New System.Windows.Forms.SplitContainer()
+        Me.panelMainForm = New System.Windows.Forms.Panel()
+        Me.panelSidebarHolder = New System.Windows.Forms.Panel()
+        Me.tabcontrolSidebar = New System.Windows.Forms.TabControl()
         Me.tabpageSections = New System.Windows.Forms.TabPage()
         Me.tabpageAction = New System.Windows.Forms.TabPage()
         Me.tabpageSource = New System.Windows.Forms.TabPage()
         Me.tabpageCustomFilters = New System.Windows.Forms.TabPage()
         Me.tabpageSearchTerms = New System.Windows.Forms.TabPage()
         Me.listboxSearchTerms = New System.Windows.Forms.ListBox()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tablelayoutpanelSearchTerms = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonClearSearchTerms = New System.Windows.Forms.Button()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,17 +72,17 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow.SuspendLayout()
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.contextmenustripPackageMenu.SuspendLayout()
-        Me.panelMainWindow.SuspendLayout()
+        Me.panelMainPkgArea.SuspendLayout()
         Me.toolstripMainWindow.SuspendLayout()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainer1.Panel1.SuspendLayout()
-        Me.SplitContainer1.Panel2.SuspendLayout()
-        Me.SplitContainer1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
+        CType(Me.splitcontainerSidebarAndPkgList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.splitcontainerSidebarAndPkgList.Panel1.SuspendLayout()
+        Me.splitcontainerSidebarAndPkgList.Panel2.SuspendLayout()
+        Me.splitcontainerSidebarAndPkgList.SuspendLayout()
+        Me.panelMainForm.SuspendLayout()
+        Me.panelSidebarHolder.SuspendLayout()
+        Me.tabcontrolSidebar.SuspendLayout()
         Me.tabpageSearchTerms.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
+        Me.tablelayoutpanelSearchTerms.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -176,6 +176,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridviewPackageList.ShowEditingIcon = False
         Me.datagridviewPackageList.Size = New System.Drawing.Size(542, 256)
+        Me.datagridviewPackageList.StandardTab = True
         Me.datagridviewPackageList.TabIndex = 0
         '
         'PkgAction
@@ -250,14 +251,14 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.Size = New System.Drawing.Size(542, 180)
         Me.textboxPackageDetails.TabIndex = 0
         '
-        'panelMainWindow
+        'panelMainPkgArea
         '
-        Me.panelMainWindow.Controls.Add(Me.splitcontainerMainWindow)
-        Me.panelMainWindow.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelMainWindow.Location = New System.Drawing.Point(0, 0)
-        Me.panelMainWindow.Name = "panelMainWindow"
-        Me.panelMainWindow.Size = New System.Drawing.Size(542, 440)
-        Me.panelMainWindow.TabIndex = 2
+        Me.panelMainPkgArea.Controls.Add(Me.splitcontainerMainWindow)
+        Me.panelMainPkgArea.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelMainPkgArea.Location = New System.Drawing.Point(0, 0)
+        Me.panelMainPkgArea.Name = "panelMainPkgArea"
+        Me.panelMainPkgArea.Size = New System.Drawing.Size(542, 440)
+        Me.panelMainPkgArea.TabIndex = 2
         '
         'toolstripMainWindow
         '
@@ -326,54 +327,54 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonSearch.Text = "Search"
         Me.toolstripbuttonSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'SplitContainer1
+        'splitcontainerSidebarAndPkgList
         '
-        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
-        Me.SplitContainer1.Name = "SplitContainer1"
+        Me.splitcontainerSidebarAndPkgList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.splitcontainerSidebarAndPkgList.Location = New System.Drawing.Point(0, 0)
+        Me.splitcontainerSidebarAndPkgList.Name = "splitcontainerSidebarAndPkgList"
         '
-        'SplitContainer1.Panel1
+        'splitcontainerSidebarAndPkgList.Panel1
         '
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Panel2)
+        Me.splitcontainerSidebarAndPkgList.Panel1.Controls.Add(Me.panelSidebarHolder)
         '
-        'SplitContainer1.Panel2
+        'splitcontainerSidebarAndPkgList.Panel2
         '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.panelMainWindow)
-        Me.SplitContainer1.Size = New System.Drawing.Size(818, 440)
-        Me.SplitContainer1.SplitterDistance = 272
-        Me.SplitContainer1.TabIndex = 3
+        Me.splitcontainerSidebarAndPkgList.Panel2.Controls.Add(Me.panelMainPkgArea)
+        Me.splitcontainerSidebarAndPkgList.Size = New System.Drawing.Size(818, 440)
+        Me.splitcontainerSidebarAndPkgList.SplitterDistance = 272
+        Me.splitcontainerSidebarAndPkgList.TabIndex = 3
         '
-        'Panel1
+        'panelMainForm
         '
-        Me.Panel1.Controls.Add(Me.SplitContainer1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 55)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(818, 440)
-        Me.Panel1.TabIndex = 4
+        Me.panelMainForm.Controls.Add(Me.splitcontainerSidebarAndPkgList)
+        Me.panelMainForm.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelMainForm.Location = New System.Drawing.Point(0, 55)
+        Me.panelMainForm.Name = "panelMainForm"
+        Me.panelMainForm.Size = New System.Drawing.Size(818, 440)
+        Me.panelMainForm.TabIndex = 4
         '
-        'Panel2
+        'panelSidebarHolder
         '
-        Me.Panel2.Controls.Add(Me.TabControl1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(272, 440)
-        Me.Panel2.TabIndex = 0
+        Me.panelSidebarHolder.Controls.Add(Me.tabcontrolSidebar)
+        Me.panelSidebarHolder.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelSidebarHolder.Location = New System.Drawing.Point(0, 0)
+        Me.panelSidebarHolder.Name = "panelSidebarHolder"
+        Me.panelSidebarHolder.Size = New System.Drawing.Size(272, 440)
+        Me.panelSidebarHolder.TabIndex = 0
         '
-        'TabControl1
+        'tabcontrolSidebar
         '
-        Me.TabControl1.Controls.Add(Me.tabpageSearchTerms)
-        Me.TabControl1.Controls.Add(Me.tabpageAction)
-        Me.TabControl1.Controls.Add(Me.tabpageSource)
-        Me.TabControl1.Controls.Add(Me.tabpageSections)
-        Me.TabControl1.Controls.Add(Me.tabpageCustomFilters)
-        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(272, 440)
-        Me.TabControl1.TabIndex = 0
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSearchTerms)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageAction)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSource)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageSections)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageCustomFilters)
+        Me.tabcontrolSidebar.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tabcontrolSidebar.Location = New System.Drawing.Point(0, 0)
+        Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
+        Me.tabcontrolSidebar.SelectedIndex = 0
+        Me.tabcontrolSidebar.Size = New System.Drawing.Size(272, 440)
+        Me.tabcontrolSidebar.TabIndex = 0
         '
         'tabpageSections
         '
@@ -415,7 +416,7 @@ Partial Class aaformMainWindow
         '
         'tabpageSearchTerms
         '
-        Me.tabpageSearchTerms.Controls.Add(Me.TableLayoutPanel1)
+        Me.tabpageSearchTerms.Controls.Add(Me.tablelayoutpanelSearchTerms)
         Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
         Me.tabpageSearchTerms.Size = New System.Drawing.Size(264, 411)
@@ -433,20 +434,20 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.Size = New System.Drawing.Size(258, 353)
         Me.listboxSearchTerms.TabIndex = 0
         '
-        'TableLayoutPanel1
+        'tablelayoutpanelSearchTerms
         '
-        Me.TableLayoutPanel1.ColumnCount = 1
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.listboxSearchTerms, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.buttonClearSearchTerms, 0, 1)
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.59124!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.40876!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(264, 411)
-        Me.TableLayoutPanel1.TabIndex = 1
+        Me.tablelayoutpanelSearchTerms.ColumnCount = 1
+        Me.tablelayoutpanelSearchTerms.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tablelayoutpanelSearchTerms.Controls.Add(Me.listboxSearchTerms, 0, 0)
+        Me.tablelayoutpanelSearchTerms.Controls.Add(Me.buttonClearSearchTerms, 0, 1)
+        Me.tablelayoutpanelSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tablelayoutpanelSearchTerms.Location = New System.Drawing.Point(0, 0)
+        Me.tablelayoutpanelSearchTerms.Name = "tablelayoutpanelSearchTerms"
+        Me.tablelayoutpanelSearchTerms.RowCount = 2
+        Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.59124!))
+        Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.40876!))
+        Me.tablelayoutpanelSearchTerms.Size = New System.Drawing.Size(264, 411)
+        Me.tablelayoutpanelSearchTerms.TabIndex = 1
         '
         'buttonClearSearchTerms
         '
@@ -463,7 +464,7 @@ Partial Class aaformMainWindow
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(818, 495)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.panelMainForm)
         Me.Controls.Add(Me.toolstripMainWindow)
         Me.Controls.Add(Me.menustripMainWindow)
         Me.MainMenuStrip = Me.menustripMainWindow
@@ -478,18 +479,18 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow.ResumeLayout(False)
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.contextmenustripPackageMenu.ResumeLayout(False)
-        Me.panelMainWindow.ResumeLayout(False)
+        Me.panelMainPkgArea.ResumeLayout(False)
         Me.toolstripMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.PerformLayout()
-        Me.SplitContainer1.Panel1.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.ResumeLayout(False)
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SplitContainer1.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
+        Me.splitcontainerSidebarAndPkgList.Panel1.ResumeLayout(False)
+        Me.splitcontainerSidebarAndPkgList.Panel2.ResumeLayout(False)
+        CType(Me.splitcontainerSidebarAndPkgList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.splitcontainerSidebarAndPkgList.ResumeLayout(False)
+        Me.panelMainForm.ResumeLayout(False)
+        Me.panelSidebarHolder.ResumeLayout(False)
+        Me.tabcontrolSidebar.ResumeLayout(False)
         Me.tabpageSearchTerms.ResumeLayout(False)
-        Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.tablelayoutpanelSearchTerms.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -504,7 +505,7 @@ Partial Class aaformMainWindow
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents splitcontainerMainWindow As SplitContainer
     Friend WithEvents textboxPackageDetails As TextBox
-    Friend WithEvents panelMainWindow As Panel
+    Friend WithEvents panelMainPkgArea As Panel
     Friend WithEvents toolstripMainWindow As ToolStrip
     Friend WithEvents toolstripbuttonSearch As ToolStripButton
     Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
@@ -524,16 +525,16 @@ Partial Class aaformMainWindow
     Friend WithEvents toolstripbuttonProperties As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents toolstripbuttonApplyChanges As ToolStripButton
-    Friend WithEvents SplitContainer1 As SplitContainer
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents splitcontainerSidebarAndPkgList As SplitContainer
+    Friend WithEvents panelMainForm As Panel
+    Friend WithEvents panelSidebarHolder As Panel
+    Friend WithEvents tabcontrolSidebar As TabControl
     Friend WithEvents tabpageSections As TabPage
     Friend WithEvents tabpageAction As TabPage
     Friend WithEvents tabpageSource As TabPage
     Friend WithEvents tabpageCustomFilters As TabPage
     Friend WithEvents tabpageSearchTerms As TabPage
     Friend WithEvents listboxSearchTerms As ListBox
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents tablelayoutpanelSearchTerms As TableLayoutPanel
     Friend WithEvents buttonClearSearchTerms As Button
 End Class
