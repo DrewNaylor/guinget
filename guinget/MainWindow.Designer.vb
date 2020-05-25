@@ -416,8 +416,10 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.FormattingEnabled = True
         Me.listboxSearchTerms.IntegralHeight = False
         Me.listboxSearchTerms.ItemHeight = 16
+        Me.listboxSearchTerms.Items.AddRange(New Object() {"test", "test2", "test3", "test4"})
         Me.listboxSearchTerms.Location = New System.Drawing.Point(3, 3)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
+        Me.listboxSearchTerms.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
         Me.listboxSearchTerms.Size = New System.Drawing.Size(283, 494)
         Me.listboxSearchTerms.TabIndex = 0
         '
@@ -552,7 +554,7 @@ Partial Class aaformMainWindow
         Me.contextmenuSearchTerm.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.contextmenuSearchTerm.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSelectedSearchTermToolStripMenuItem, Me.ToolStripSeparator3, Me.ClearAllSearchTermsToolStripMenuItem})
         Me.contextmenuSearchTerm.Name = "contextmenuSearchTerm"
-        Me.contextmenuSearchTerm.Size = New System.Drawing.Size(269, 86)
+        Me.contextmenuSearchTerm.Size = New System.Drawing.Size(269, 58)
         '
         'ClearSelectedSearchTermToolStripMenuItem
         '
