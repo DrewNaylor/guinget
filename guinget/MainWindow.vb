@@ -70,7 +70,10 @@ Public Class aaformMainWindow
 
         If e.Button = MouseButtons.Right AndAlso e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
             ' Make sure no modifier keys like Control are held down.
-            Dim currentRow As Integer = e.RowIndex
+            ' Trying to use this SO answer with modifications:
+            ' https://stackoverflow.com/a/36935158
+            Dim currentRow As DataGridView.HitTestInfo = e.Location
+
             If ModifierKeys = Nothing AndAlso Not datagridviewPackageList.SelectedRows.Contains(currentRow) Then
                 ' TODO: Make sure that if the cell under the mouse is selected,
                 ' then DON'T deselect the already-selected cells.
