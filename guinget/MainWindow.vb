@@ -70,7 +70,8 @@ Public Class aaformMainWindow
 
         If e.Button = MouseButtons.Right AndAlso e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
             ' Make sure no modifier keys like Control are held down.
-            If ModifierKeys = Nothing Then
+            Dim currentRow As Integer = e.RowIndex
+            If ModifierKeys = Nothing AndAlso Not datagridviewPackageList.SelectedRows.Contains(currentRow) Then
                 ' TODO: Make sure that if the cell under the mouse is selected,
                 ' then DON'T deselect the already-selected cells.
                 datagridviewPackageList.CurrentCell = datagridviewPackageList(e.ColumnIndex, e.RowIndex)
