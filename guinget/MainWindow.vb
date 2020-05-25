@@ -72,15 +72,11 @@ Public Class aaformMainWindow
             ' Make sure no modifier keys like Control are held down.
             ' Trying to use this SO answer with modifications:
             ' https://stackoverflow.com/a/36935158
-            Dim currentRow As DataGridView.HitTestInfo = datagridviewPackageList.HitTest(e.X, e.Y)
 
-            If ModifierKeys = Nothing AndAlso currentRow.Type = DataGridViewHitTestType.Cell Then
+            If ModifierKeys = Nothing AndAlso Not datagridviewPackageList.Item(e.ColumnIndex, e.RowIndex).Selected Then
                 ' TODO: Make sure that if the cell under the mouse is selected,
                 ' then DON'T deselect the already-selected cells.
-                Dim viewrow As Integer = currentRow.RowIndex
-                If datagridviewPackageList.SelectedRows.Contains() Then
-                    datagridviewPackageList.CurrentCell = datagridviewPackageList(e.ColumnIndex, e.RowIndex)
-                End If
+                datagridviewPackageList.CurrentCell = datagridviewPackageList(e.ColumnIndex, e.RowIndex)
             End If
         End If
     End Sub
