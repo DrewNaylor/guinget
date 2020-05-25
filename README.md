@@ -15,6 +15,12 @@ Just a few hours after this screenshot was taken, guinget gained the ability to 
 
 Turns out that the YAML manifests are stored on the same server as `source.msix`. In the case of VLC, that's in `https://winget.azureedge.net/cache/manifests/VideoLAN/VLC/369c-3.0.10.yaml`. This probably varies between versions, but at least the location is known. I found this out by reading one of winget's log files.
 
+Screenshot with more-complete UI (as of May 25, 2020), but with incomplete package list as the SQL isn't finished:
+![](/docs/images/screenshot-morecompleteui_butincompletepkglist.png?raw=true)
+
+Please note that some columns and panels were resized for the screenshot; it won't look exactly like this when it starts. winget may also output junk characters on occasion, usually when guinget first calls it. Might be a good idea to do a String.Replace() on the output to get rid of that "a"-like character as shown below:
+![](/docs/images/screenshot-sometimes-winget-makes-a mess-of-the-details.png?raw=true)
+
 TODO:
 - Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
 - Create library that can be used by guinget (as well as other winget front-ends that want to use it) that makes it easier to get package info from winget.
