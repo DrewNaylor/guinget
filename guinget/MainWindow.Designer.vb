@@ -53,6 +53,8 @@ Partial Class aaformMainWindow
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.toolstripbuttonSearch = New System.Windows.Forms.ToolStripButton()
+        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -62,6 +64,10 @@ Partial Class aaformMainWindow
         Me.contextmenustripPackageMenu.SuspendLayout()
         Me.panelMainWindow.SuspendLayout()
         Me.toolstripMainWindow.SuspendLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer1.Panel2.SuspendLayout()
+        Me.SplitContainer1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -133,7 +139,7 @@ Partial Class aaformMainWindow
         'splitcontainerMainWindow.Panel2
         '
         Me.splitcontainerMainWindow.Panel2.Controls.Add(Me.textboxPackageDetails)
-        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(818, 440)
+        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(542, 440)
         Me.splitcontainerMainWindow.SplitterDistance = 256
         Me.splitcontainerMainWindow.TabIndex = 1
         '
@@ -154,7 +160,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.RowTemplate.Height = 24
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridviewPackageList.ShowEditingIcon = False
-        Me.datagridviewPackageList.Size = New System.Drawing.Size(818, 256)
+        Me.datagridviewPackageList.Size = New System.Drawing.Size(542, 256)
         Me.datagridviewPackageList.TabIndex = 0
         '
         'PkgAction
@@ -226,16 +232,16 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.Multiline = True
         Me.textboxPackageDetails.Name = "textboxPackageDetails"
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textboxPackageDetails.Size = New System.Drawing.Size(818, 180)
+        Me.textboxPackageDetails.Size = New System.Drawing.Size(542, 180)
         Me.textboxPackageDetails.TabIndex = 0
         '
         'panelMainWindow
         '
         Me.panelMainWindow.Controls.Add(Me.splitcontainerMainWindow)
         Me.panelMainWindow.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelMainWindow.Location = New System.Drawing.Point(0, 55)
+        Me.panelMainWindow.Location = New System.Drawing.Point(0, 0)
         Me.panelMainWindow.Name = "panelMainWindow"
-        Me.panelMainWindow.Size = New System.Drawing.Size(818, 440)
+        Me.panelMainWindow.Size = New System.Drawing.Size(542, 440)
         Me.panelMainWindow.TabIndex = 2
         '
         'toolstripMainWindow
@@ -291,6 +297,7 @@ Partial Class aaformMainWindow
         'toolstriptextboxSearch
         '
         Me.toolstriptextboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.toolstriptextboxSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.toolstriptextboxSearch.Name = "toolstriptextboxSearch"
         Me.toolstriptextboxSearch.Size = New System.Drawing.Size(250, 27)
         '
@@ -304,12 +311,34 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonSearch.Text = "Search"
         Me.toolstripbuttonSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
+        'SplitContainer1
+        '
+        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer1.Name = "SplitContainer1"
+        '
+        'SplitContainer1.Panel2
+        '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.panelMainWindow)
+        Me.SplitContainer1.Size = New System.Drawing.Size(818, 440)
+        Me.SplitContainer1.SplitterDistance = 272
+        Me.SplitContainer1.TabIndex = 3
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.SplitContainer1)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 55)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(818, 440)
+        Me.Panel1.TabIndex = 4
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(818, 495)
-        Me.Controls.Add(Me.panelMainWindow)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.toolstripMainWindow)
         Me.Controls.Add(Me.menustripMainWindow)
         Me.MainMenuStrip = Me.menustripMainWindow
@@ -327,6 +356,10 @@ Partial Class aaformMainWindow
         Me.panelMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.ResumeLayout(False)
         Me.toolstripMainWindow.PerformLayout()
+        Me.SplitContainer1.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer1.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -361,4 +394,6 @@ Partial Class aaformMainWindow
     Friend WithEvents toolstripbuttonProperties As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents toolstripbuttonApplyChanges As ToolStripButton
+    Friend WithEvents SplitContainer1 As SplitContainer
+    Friend WithEvents Panel1 As Panel
 End Class
