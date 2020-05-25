@@ -428,33 +428,34 @@ Partial Class aaformMainWindow
         '
         Me.listboxSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
         Me.listboxSearchTerms.FormattingEnabled = True
+        Me.listboxSearchTerms.IntegralHeight = False
         Me.listboxSearchTerms.ItemHeight = 16
         Me.listboxSearchTerms.Location = New System.Drawing.Point(3, 3)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
-        Me.listboxSearchTerms.Size = New System.Drawing.Size(258, 353)
+        Me.listboxSearchTerms.Size = New System.Drawing.Size(258, 365)
         Me.listboxSearchTerms.TabIndex = 0
         '
         'tablelayoutpanelSearchTerms
         '
         Me.tablelayoutpanelSearchTerms.ColumnCount = 1
-        Me.tablelayoutpanelSearchTerms.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tablelayoutpanelSearchTerms.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.tablelayoutpanelSearchTerms.Controls.Add(Me.listboxSearchTerms, 0, 0)
         Me.tablelayoutpanelSearchTerms.Controls.Add(Me.buttonClearSearchTerms, 0, 1)
         Me.tablelayoutpanelSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelSearchTerms.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelSearchTerms.Name = "tablelayoutpanelSearchTerms"
         Me.tablelayoutpanelSearchTerms.RowCount = 2
-        Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.59124!))
-        Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.40876!))
+        Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.tablelayoutpanelSearchTerms.Size = New System.Drawing.Size(264, 411)
         Me.tablelayoutpanelSearchTerms.TabIndex = 1
         '
         'buttonClearSearchTerms
         '
         Me.buttonClearSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonClearSearchTerms.Location = New System.Drawing.Point(3, 362)
+        Me.buttonClearSearchTerms.Location = New System.Drawing.Point(3, 374)
         Me.buttonClearSearchTerms.Name = "buttonClearSearchTerms"
-        Me.buttonClearSearchTerms.Size = New System.Drawing.Size(258, 46)
+        Me.buttonClearSearchTerms.Size = New System.Drawing.Size(258, 34)
         Me.buttonClearSearchTerms.TabIndex = 1
         Me.buttonClearSearchTerms.Text = "Clear search terms"
         Me.buttonClearSearchTerms.UseVisualStyleBackColor = True
