@@ -61,10 +61,10 @@ Partial Class aaformMainWindow
         Me.tabpageAction = New System.Windows.Forms.TabPage()
         Me.tabpageSource = New System.Windows.Forms.TabPage()
         Me.tabpageCustomFilters = New System.Windows.Forms.TabPage()
-        Me.tabpageSearchResults = New System.Windows.Forms.TabPage()
-        Me.listboxSearchResults = New System.Windows.Forms.ListBox()
+        Me.tabpageSearchTerms = New System.Windows.Forms.TabPage()
+        Me.listboxSearchTerms = New System.Windows.Forms.ListBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.buttonClearSearchTerms = New System.Windows.Forms.Button()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -81,7 +81,7 @@ Partial Class aaformMainWindow
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TabControl1.SuspendLayout()
-        Me.tabpageSearchResults.SuspendLayout()
+        Me.tabpageSearchTerms.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -363,7 +363,7 @@ Partial Class aaformMainWindow
         '
         'TabControl1
         '
-        Me.TabControl1.Controls.Add(Me.tabpageSearchResults)
+        Me.TabControl1.Controls.Add(Me.tabpageSearchTerms)
         Me.TabControl1.Controls.Add(Me.tabpageAction)
         Me.TabControl1.Controls.Add(Me.tabpageSource)
         Me.TabControl1.Controls.Add(Me.tabpageSections)
@@ -413,32 +413,32 @@ Partial Class aaformMainWindow
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
         '
-        'tabpageSearchResults
+        'tabpageSearchTerms
         '
-        Me.tabpageSearchResults.Controls.Add(Me.TableLayoutPanel1)
-        Me.tabpageSearchResults.Location = New System.Drawing.Point(4, 25)
-        Me.tabpageSearchResults.Name = "tabpageSearchResults"
-        Me.tabpageSearchResults.Size = New System.Drawing.Size(264, 411)
-        Me.tabpageSearchResults.TabIndex = 4
-        Me.tabpageSearchResults.Text = "Search results"
-        Me.tabpageSearchResults.UseVisualStyleBackColor = True
+        Me.tabpageSearchTerms.Controls.Add(Me.TableLayoutPanel1)
+        Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 25)
+        Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
+        Me.tabpageSearchTerms.Size = New System.Drawing.Size(264, 411)
+        Me.tabpageSearchTerms.TabIndex = 4
+        Me.tabpageSearchTerms.Text = "Search terms"
+        Me.tabpageSearchTerms.UseVisualStyleBackColor = True
         '
-        'listboxSearchResults
+        'listboxSearchTerms
         '
-        Me.listboxSearchResults.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.listboxSearchResults.FormattingEnabled = True
-        Me.listboxSearchResults.ItemHeight = 16
-        Me.listboxSearchResults.Location = New System.Drawing.Point(3, 3)
-        Me.listboxSearchResults.Name = "listboxSearchResults"
-        Me.listboxSearchResults.Size = New System.Drawing.Size(258, 353)
-        Me.listboxSearchResults.TabIndex = 0
+        Me.listboxSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.listboxSearchTerms.FormattingEnabled = True
+        Me.listboxSearchTerms.ItemHeight = 16
+        Me.listboxSearchTerms.Location = New System.Drawing.Point(3, 3)
+        Me.listboxSearchTerms.Name = "listboxSearchTerms"
+        Me.listboxSearchTerms.Size = New System.Drawing.Size(258, 353)
+        Me.listboxSearchTerms.TabIndex = 0
         '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.listboxSearchResults, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button1, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.listboxSearchTerms, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.buttonClearSearchTerms, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -448,15 +448,15 @@ Partial Class aaformMainWindow
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(264, 411)
         Me.TableLayoutPanel1.TabIndex = 1
         '
-        'Button1
+        'buttonClearSearchTerms
         '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Location = New System.Drawing.Point(3, 362)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(258, 46)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.buttonClearSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonClearSearchTerms.Location = New System.Drawing.Point(3, 362)
+        Me.buttonClearSearchTerms.Name = "buttonClearSearchTerms"
+        Me.buttonClearSearchTerms.Size = New System.Drawing.Size(258, 46)
+        Me.buttonClearSearchTerms.TabIndex = 1
+        Me.buttonClearSearchTerms.Text = "Clear search terms"
+        Me.buttonClearSearchTerms.UseVisualStyleBackColor = True
         '
         'aaformMainWindow
         '
@@ -488,7 +488,7 @@ Partial Class aaformMainWindow
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
-        Me.tabpageSearchResults.ResumeLayout(False)
+        Me.tabpageSearchTerms.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -532,8 +532,8 @@ Partial Class aaformMainWindow
     Friend WithEvents tabpageAction As TabPage
     Friend WithEvents tabpageSource As TabPage
     Friend WithEvents tabpageCustomFilters As TabPage
-    Friend WithEvents tabpageSearchResults As TabPage
-    Friend WithEvents listboxSearchResults As ListBox
+    Friend WithEvents tabpageSearchTerms As TabPage
+    Friend WithEvents listboxSearchTerms As ListBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents Button1 As Button
+    Friend WithEvents buttonClearSearchTerms As Button
 End Class
