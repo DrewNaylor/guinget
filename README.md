@@ -3,10 +3,14 @@ Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Syna
 
 Not associated with Microsoft, and Microsoft does not endorse guinget.
 
+Visual Studio 2019 Community is being used for this project.
+
 Early screenshot:
 ![](/docs/images/screenshot.png?raw=true)
 
 Even though it looks like the UI is complete, it's really not, and the package list is just a hard-coded example list (filled by clicking `File>Example package`) that's being used for testing until it's possible to load the real package list files used by winget. Additionally, the `Status` column cells just have arbitrary data for now; guinget doesn't check to see if an app is installed or not yet. The only thing that's being loaded from winget for now is the text in the package details textbox at the bottom.
+
+Just a few hours after this screenshot was taken, guinget gained the ability to load package names from a manually-downloaded copy of the sources package. To use it, for now you'll have to manually download and extract the [source MSIX package from Microsoft](https://winget.azureedge.net/cache/source.msix) and change the file path in the code, then re-compile. The database is stored in `Public\index.db` in this MSIX package.
 
 TODO:
 - Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
