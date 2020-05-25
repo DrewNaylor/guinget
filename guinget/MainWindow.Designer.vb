@@ -74,6 +74,7 @@ Partial Class aaformMainWindow
         Me.contextmenuSearchTerm = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ClearSelectedSearchTermToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearAllSearchTermsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -410,6 +411,7 @@ Partial Class aaformMainWindow
         '
         'listboxSearchTerms
         '
+        Me.listboxSearchTerms.ContextMenuStrip = Me.contextmenuSearchTerm
         Me.listboxSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
         Me.listboxSearchTerms.FormattingEnabled = True
         Me.listboxSearchTerms.IntegralHeight = False
@@ -426,7 +428,7 @@ Partial Class aaformMainWindow
         Me.buttonClearSearchTerms.Name = "buttonClearSearchTerms"
         Me.buttonClearSearchTerms.Size = New System.Drawing.Size(283, 34)
         Me.buttonClearSearchTerms.TabIndex = 1
-        Me.buttonClearSearchTerms.Text = "Clear search terms"
+        Me.buttonClearSearchTerms.Text = "Clear all search terms"
         Me.buttonClearSearchTerms.UseVisualStyleBackColor = True
         '
         'tabpageStatus
@@ -548,9 +550,9 @@ Partial Class aaformMainWindow
         'contextmenuSearchTerm
         '
         Me.contextmenuSearchTerm.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.contextmenuSearchTerm.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSelectedSearchTermToolStripMenuItem, Me.ClearAllSearchTermsToolStripMenuItem})
+        Me.contextmenuSearchTerm.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSelectedSearchTermToolStripMenuItem, Me.ToolStripSeparator3, Me.ClearAllSearchTermsToolStripMenuItem})
         Me.contextmenuSearchTerm.Name = "contextmenuSearchTerm"
-        Me.contextmenuSearchTerm.Size = New System.Drawing.Size(269, 80)
+        Me.contextmenuSearchTerm.Size = New System.Drawing.Size(269, 86)
         '
         'ClearSelectedSearchTermToolStripMenuItem
         '
@@ -563,6 +565,11 @@ Partial Class aaformMainWindow
         Me.ClearAllSearchTermsToolStripMenuItem.Name = "ClearAllSearchTermsToolStripMenuItem"
         Me.ClearAllSearchTermsToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
         Me.ClearAllSearchTermsToolStripMenuItem.Text = "Clear all search terms"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(265, 6)
         '
         'aaformMainWindow
         '
@@ -657,4 +664,5 @@ Partial Class aaformMainWindow
     Friend WithEvents contextmenuSearchTerm As ContextMenuStrip
     Friend WithEvents ClearSelectedSearchTermToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClearAllSearchTermsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
 End Class
