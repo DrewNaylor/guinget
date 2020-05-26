@@ -79,7 +79,7 @@ Public Class aaformMainWindow
 
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Id")
+            Row.Cells.Item(2).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Id")
         Next
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
