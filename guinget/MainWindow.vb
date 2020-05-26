@@ -128,6 +128,9 @@ Public Class aaformMainWindow
                 "\winget-frontends\pkglist\manifests\" & PathWithOnlyTwoReplacements & "\" &
             datagridviewPackageList.Item(3, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString & ".yaml"
             'MessageBox.Show(ManifestPath)
+            ' This crashes on "Microsoft.VisualStudio.Community". Maybe what
+            ' could be done is to have a handler that says if the file can't be found,
+            ' just replace all the dots in the filename and try again.
             textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
         End If
     End Sub
