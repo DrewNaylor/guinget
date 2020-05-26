@@ -67,7 +67,10 @@ Public Class PackageListTools
             Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
 
             For Each Entry In YamlRoot.Children
+
+                ' Check each entry in the YAML root node.
                 If CType(Entry.Key, YamlScalarNode).Value = "Id" Then
+                    ' If we're looking at an ID, add it to the package list array.
                     MessageBox.Show(Entry.Value.ToString)
                 End If
                 MessageBox.Show(CType(Entry.Key, YamlScalarNode).Value)
