@@ -73,6 +73,7 @@ Partial Class aaformMainWindow
         Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -183,7 +184,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.AvailableVersion, Me.PkgDescription, Me.Manifest})
+        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.Name, Me.AvailableVersion, Me.PkgDescription, Me.Manifest})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
@@ -428,7 +429,7 @@ Partial Class aaformMainWindow
         Me.tabpageStatus.Location = New System.Drawing.Point(4, 25)
         Me.tabpageStatus.Name = "tabpageStatus"
         Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageStatus.Size = New System.Drawing.Size(289, 534)
+        Me.tabpageStatus.Size = New System.Drawing.Size(289, 540)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -441,7 +442,7 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.ItemHeight = 16
         Me.listboxStatusTab.Location = New System.Drawing.Point(3, 3)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(283, 528)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(283, 534)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
@@ -449,7 +450,7 @@ Partial Class aaformMainWindow
         Me.tabpageCustomFilters.Controls.Add(Me.listboxCustomFilters)
         Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 25)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(289, 534)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(289, 540)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -462,7 +463,7 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.ItemHeight = 16
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(289, 534)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(289, 540)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'tabpageSections
@@ -471,7 +472,7 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSections.Name = "tabpageSections"
         Me.tabpageSections.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageSections.Size = New System.Drawing.Size(289, 534)
+        Me.tabpageSections.Size = New System.Drawing.Size(289, 540)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
@@ -484,7 +485,7 @@ Partial Class aaformMainWindow
         Me.listboxSections.ItemHeight = 16
         Me.listboxSections.Location = New System.Drawing.Point(3, 3)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(283, 528)
+        Me.listboxSections.Size = New System.Drawing.Size(283, 534)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
@@ -492,7 +493,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource.Controls.Add(Me.listboxSourceTab)
         Me.tabpageSource.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(289, 534)
+        Me.tabpageSource.Size = New System.Drawing.Size(289, 540)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -505,7 +506,7 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.ItemHeight = 16
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(289, 534)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(289, 540)
         Me.listboxSourceTab.TabIndex = 1
         '
         'tabpageArchitecture
@@ -513,7 +514,7 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.Controls.Add(Me.listboxArchitecture)
         Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 25)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(289, 534)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(289, 540)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -526,7 +527,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.ItemHeight = 16
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(289, 534)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(289, 540)
         Me.listboxArchitecture.TabIndex = 1
         '
         'panelMainForm
@@ -560,6 +561,13 @@ Partial Class aaformMainWindow
         Me.PkgName.Name = "PkgName"
         Me.PkgName.ReadOnly = True
         '
+        'Name
+        '
+        Me.Name.HeaderText = "Name"
+        Me.Name.MinimumWidth = 6
+        Me.Name.Name = "Name"
+        Me.Name.ReadOnly = True
+        '
         'AvailableVersion
         '
         Me.AvailableVersion.HeaderText = "Version"
@@ -581,6 +589,7 @@ Partial Class aaformMainWindow
         Me.Manifest.HeaderText = "Manifest"
         Me.Manifest.MinimumWidth = 6
         Me.Manifest.Name = "Manifest"
+        Me.Manifest.ReadOnly = True
         Me.Manifest.Visible = False
         '
         'aaformMainWindow
@@ -675,6 +684,7 @@ Partial Class aaformMainWindow
     Friend WithEvents PkgAction As DataGridViewComboBoxColumn
     Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
     Friend WithEvents PkgName As DataGridViewTextBoxColumn
+    Friend WithEvents Name As DataGridViewTextBoxColumn
     Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
     Friend WithEvents Manifest As DataGridViewTextBoxColumn
