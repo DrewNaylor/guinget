@@ -66,13 +66,11 @@ Public Class aaformMainWindow
         'Dim separatedManifestLocationArray() As String = PackageListTools.GetPackageListFromYaml("ManifestLocation").Split(CType(",", Char()))
 
         Dim Manifest As String
-        PackageListTools.GetManifests()
-
         ' Now we populate the Manifest column with each manifest.
-        Dim ManifestPaths() As String = PackageListTools.GetManifests.Split(CType("?", Char()))
+        Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
 
         ' Go through everything in the manifest paths array until it's out.
-        For i As Integer = 0 To ManifestPaths.Count - 1
+        For i As Integer = 0 To ManifestPaths.Count - 2
 
             ' Read the file into the manifest column and make a new row with it.
             aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
