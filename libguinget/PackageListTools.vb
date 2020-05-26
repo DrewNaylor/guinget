@@ -100,6 +100,11 @@ Public Class PackageListTools
 
     End Function
 
+    Public Shared Function GetPackageDir(PackageID As String) As String
+
+    End Function
+
+
     Public Shared Function GetPackageListFromSqliteDB() As String
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
