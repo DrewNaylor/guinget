@@ -102,6 +102,9 @@ Public Class PackageListTools
 
     Public Shared Function GetPackageDir(PackageID As String) As String
 
+        ' Assign a variable to get the publisher and package name from
+        ' package ID passed to this function.
+
     End Function
 
 
