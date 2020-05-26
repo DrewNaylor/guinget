@@ -110,7 +110,7 @@ Public Class PackageListTools
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\pkglist\manifests"
 
         ' Define a variable so we can store the manifest paths.
-        Dim ManifestPath As String
+        Dim ManifestPath As String = String.Empty
 
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
@@ -121,6 +121,8 @@ Public Class PackageListTools
             ManifestPath = ManifestPath & PackageManifest & "?"
             MessageBox.Show(ManifestPath)
         Next
+
+        Return ManifestPath
     End Function
 
     Public Shared Function GetPackageDir(PackageID As String) As String
