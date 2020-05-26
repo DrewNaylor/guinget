@@ -562,10 +562,12 @@ Partial Class aaformMainWindow
         '
         'AvailableVersion
         '
-        Me.AvailableVersion.HeaderText = "Available version"
+        Me.AvailableVersion.HeaderText = "Version"
         Me.AvailableVersion.MinimumWidth = 6
         Me.AvailableVersion.Name = "AvailableVersion"
         Me.AvailableVersion.ReadOnly = True
+        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
+    "dow like Synaptic)"
         '
         'PkgDescription
         '
