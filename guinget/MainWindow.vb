@@ -22,7 +22,7 @@
 '   limitations under the License.
 
 
-
+Imports libguinget
 
 Public Class aaformMainWindow
     Private Sub ExamplePackageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExamplePackageToolStripMenuItem.Click
@@ -59,9 +59,11 @@ Public Class aaformMainWindow
         'aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, libguinget.PackageListTools.GetPackageList, AvailableVersion, Description)
 
         ' Assign a variable to store the package list array.
-        Dim separatedPackageArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Id").Split(CType(",", Char()))
+        Dim separatedPackageArray() As String = PackageListTools.GetPackageListFromYaml("Id").Split(CType(",", Char()))
 
-        Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
+        Dim separatedVersionArray() As String = PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
+
+        Dim separatedManifestLocationArray() As String = PackageListTools.GetPackageListFromYaml("ManifestLocation").Split(CType(",", Char()))
 
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
@@ -71,7 +73,7 @@ Public Class aaformMainWindow
             ' Make a separated package info variable.
             ' Make sure we're not below 0.
             ' Now we split the text apart.
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), separatedVersionArray(i), "Not available")
+            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), separatedVersionArray(i), "Not available", separatedManifestLocationArray(i))
         Next
     End Sub
 
@@ -116,6 +118,7 @@ Public Class aaformMainWindow
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
+            'textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
             textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
         End If
     End Sub

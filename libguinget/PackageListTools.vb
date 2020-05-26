@@ -45,44 +45,53 @@ Public Class PackageListTools
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
 
-            ' Set up the document input.
-            ' We had to use a StreamReader instead of a StringReader
-            ' that the LoadingAYamlStream sample used since we want
-            ' to read a file, not a filename.
-            ' If we used a StringReader, we'd end up with an Invalid
-            ' Cast Exception with the following details:
-            '    Unhandled Exception: System.InvalidCastException: Unable
-            '    to cast object of type 'YamlDotNet.RepresentationModel.YamlScalarNode'
-            '    to type 'YamlDotNet.RepresentationModel.YamlMappingNode'.`
-            ' This working example is described in the following
-            ' StackOverflow answer:
-            ' https://stackoverflow.com/a/46897520
-            Dim Input As StreamReader = New StreamReader(PackageManifest)
+            ' If the calling code just wants the manifest location, return it.
+            If RequestedKey = "ManifestLocation" Then
+                PackageListArray = PackageListArray & PackageManifest & ","
+                'MessageBox.Show(PackageListArray)
 
-            ' Load the stream in.
-            Dim YamlStream As New YamlStream
-            YamlStream.Load(Input)
-
-            ' Create variable for root node.
-            Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
-
-            For Each Entry In YamlRoot.Children
-
-                Dim tempAppInfo As String
-
-                ' Check each entry in the YAML root node.
-                If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
-                    ' If we're looking at an ID, add it to the package list array.
-                    tempAppInfo = tempAppInfo & Entry.Value.ToString & ","
-                    'MessageBox.Show(Entry.Value.ToString)
-
-                End If
+            Else
 
 
-                PackageListArray = tempAppInfo
-                'MessageBox.Show(CType(Entry.Key, YamlScalarNode).Value)
-            Next
+                ' Set up the document input.
+                ' We had to use a StreamReader instead of a StringReader
+                ' that the LoadingAYamlStream sample used since we want
+                ' to read a file, not a filename.
+                ' If we used a StringReader, we'd end up with an Invalid
+                ' Cast Exception with the following details:
+                '    Unhandled Exception: System.InvalidCastException: Unable
+                '    to cast object of type 'YamlDotNet.RepresentationModel.YamlScalarNode'
+                '    to type 'YamlDotNet.RepresentationModel.YamlMappingNode'.`
+                ' This working example is described in the following
+                ' StackOverflow answer:
+                ' https://stackoverflow.com/a/46897520
+                Dim Input As StreamReader = New StreamReader(PackageManifest)
 
+                ' Load the stream in.
+                Dim YamlStream As New YamlStream
+                YamlStream.Load(Input)
+
+                ' Create variable for root node.
+                Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+
+                For Each Entry In YamlRoot.Children
+
+                    Dim tempAppInfo As String
+
+                    ' Check each entry in the YAML root node.
+                    If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
+                        ' If we're looking at an ID, add it to the package list array.
+                        tempAppInfo = tempAppInfo & Entry.Value.ToString & ","
+                        'MessageBox.Show(Entry.Value.ToString)
+
+                    End If
+
+
+                    PackageListArray = tempAppInfo
+                    'MessageBox.Show(CType(Entry.Key, YamlScalarNode).Value)
+                Next
+
+            End If
 
             'MessageBox.Show(PackageManifest)
         Next
