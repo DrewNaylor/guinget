@@ -75,7 +75,7 @@ Partial Class aaformMainWindow
         Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ManifestLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -183,7 +183,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.AvailableVersion, Me.PkgDescription, Me.ManifestLocation})
+        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.AvailableVersion, Me.PkgDescription, Me.Manifest})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
@@ -576,11 +576,11 @@ Partial Class aaformMainWindow
         Me.PkgDescription.Name = "PkgDescription"
         Me.PkgDescription.ReadOnly = True
         '
-        'ManifestLocation
+        'Manifest
         '
-        Me.ManifestLocation.HeaderText = "ManifestLocation"
-        Me.ManifestLocation.MinimumWidth = 6
-        Me.ManifestLocation.Name = "ManifestLocation"
+        Me.Manifest.HeaderText = "Manifest"
+        Me.Manifest.MinimumWidth = 6
+        Me.Manifest.Name = "Manifest"
         '
         'aaformMainWindow
         '
@@ -676,5 +676,5 @@ Partial Class aaformMainWindow
     Friend WithEvents PkgName As DataGridViewTextBoxColumn
     Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
-    Friend WithEvents ManifestLocation As DataGridViewTextBoxColumn
+    Friend WithEvents Manifest As DataGridViewTextBoxColumn
 End Class
