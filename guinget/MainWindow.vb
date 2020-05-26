@@ -80,7 +80,9 @@ Public Class aaformMainWindow
         Next
 
         ' Now we load the details for each row.
+        For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
 
+        Next
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
         ' Go through all the items in the array until we run out.
