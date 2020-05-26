@@ -53,13 +53,17 @@ Public Class PackageListTools
             YamlStream.Load(Input)
 
             ' Create variable for root node.
-            Dim YamlRoot = YamlStream.Documents(0).RootNode
+            Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+
+            For Each Entry In YamlRoot.Children
+
+            Next
 
 
             MessageBox.Show(PackageManifest)
-        Next
+            Next
 
-        Return PackageListArray
+            Return PackageListArray
 
     End Function
 
