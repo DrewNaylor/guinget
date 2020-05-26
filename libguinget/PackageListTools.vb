@@ -110,12 +110,14 @@ Public Class PackageListTools
         ' Return folder but with the dot replaced with a backslash.
         Dim NewPackageDir As String = PackageID
         ' Make sure we only do this twice.
+        ' Using Regex as per this answer if it's easy:
+        ' https://stackoverflow.com/a/146747
         Dim i As Integer = 0
         Do Until i = 2
-            NewPackageDir = NewPackageDir.Replace(".", "\")
+            NewPackageDir = NewPackageDir.IndexOf(".")
         Loop
 
-        Return PackageID.Replace(".", "\")
+        Return NewPackageDir
 
     End Function
 
