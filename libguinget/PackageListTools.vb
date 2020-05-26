@@ -52,6 +52,10 @@ Public Class PackageListTools
             Dim YamlStream As New YamlStream
             YamlStream.Load(Input)
 
+            ' Create variable for root node.
+            Dim RootNode As YamlMappingNode = YamlStream.Documents(0).RootNode
+
+
             MessageBox.Show(PackageManifest)
         Next
 
