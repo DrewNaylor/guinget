@@ -33,11 +33,17 @@ Public Class PackageListTools
         ' Look in the manifests folder and get the IDs from
         ' each .yml file in every subdirectory.
 
+        ' Create a variable to hold the package list.
+        Dim PackageListArray As String = String.Empty
+
+        ' Create a variable to hold the folder we'll be looking in.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\pkglist\manifests"
 
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
             MessageBox.Show(PackageManifest)
         Next
+
+        Return PackageListArray
 
     End Function
 
