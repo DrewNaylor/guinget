@@ -116,6 +116,9 @@ Public Class PackageListTools
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
 
+            ' Append the current package manifest's path to the ManifestPath string.
+            ' Using a question mark since it's not allowed in path names.
+            ManifestPath = ManifestPath & PackageManifest & "?"
         Next
     End Function
 
