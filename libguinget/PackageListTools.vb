@@ -105,6 +105,10 @@ Public Class PackageListTools
 
     End Function
 
+    Public Shared Function GetManifests() As String
+
+    End Function
+
     Public Shared Function GetPackageDir(PackageID As String) As String
 
         ' Return folder but with the dot replaced with a backslash.
