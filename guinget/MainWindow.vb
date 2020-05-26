@@ -59,7 +59,9 @@ Public Class aaformMainWindow
         'aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, libguinget.PackageListTools.GetPackageList, AvailableVersion, Description)
 
         ' Assign a variable to store the package list array.
-        Dim separatedPackageArray As String = libguinget.PackageListTools.GetPackageListFromYaml("Id")
+        Dim separatedPackageArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Id").Split(CType(",", Char()))
+
+        Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
@@ -68,11 +70,8 @@ Public Class aaformMainWindow
             ' Add a row with each item in the array.
             ' Make a separated package info variable.
             ' Make sure we're not below 0.
-            Dim packageInfoArray As String = separatedPackageArray.Substring(0, separatedPackageArray.IndexOf(";")).Trim
-
-                ' Now we split the text apart.
-                Dim splitPackageInfo() As String = packageInfoArray.Split(CType(",", Char))
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", splitPackageInfo(0), splitPackageInfo(1), "Not available")
+            ' Now we split the text apart.
+            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), separatedVersionArray(i), "Not available")
         Next
     End Sub
 

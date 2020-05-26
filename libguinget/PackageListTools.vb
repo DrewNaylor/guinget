@@ -82,8 +82,8 @@ Public Class PackageListTools
                     tempAppInfo = tempAppInfo & Entry.Value.ToString & ","
                 End If
 
-                ' Finally, add a semicolon so we can split packages here.
-                PackageListArray = tempAppInfo & ";"
+
+                PackageListArray = tempAppInfo
                 'MessageBox.Show(CType(Entry.Key, YamlScalarNode).Value)
             Next
 
