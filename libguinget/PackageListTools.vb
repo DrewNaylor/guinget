@@ -35,7 +35,7 @@ Public Class PackageListTools
 
         Dim ManifestAppDataFolder As String = My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\winget-frontends\pkglist\manifest"
 
-        For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData)
+        For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder)
 
         Next
 
