@@ -30,6 +30,9 @@ Public Class PackageListTools
 
     Public Shared Function GetPackageListFromYaml() As String
 
+        ' Look in the manifests folder and get the IDs from
+        ' each .yml file in every subdirectory.
+
     End Function
 
     Public Shared Function GetPackageListFromSqliteDB() As String
