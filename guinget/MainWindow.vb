@@ -68,9 +68,9 @@ Public Class aaformMainWindow
             ' Add a row with each item in the array.
             ' Make a separated package info variable.
             Dim packageInfoArray() As String = separatedPackageArray(i).Split(CType(",", Char()))
-            For packageIndex() As Integer = 0 To packageInfoArray.Count - 1
+            For packageIndex As Integer = 0 To packageInfoArray.Count - 1
 
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", sep, "separatedVersionArray(i)", "Not available")
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", packageInfoArray(packageIndex), "separatedVersionArray(i)", "Not available")
             Next
         Next
     End Sub
