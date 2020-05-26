@@ -109,6 +109,9 @@ Public Class PackageListTools
         ' Get and return each manifest in the manifests folder.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\pkglist\manifests"
 
+        ' Define a variable so we can store the manifest paths.
+        Dim ManifestPath As String
+
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
