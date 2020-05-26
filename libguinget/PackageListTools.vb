@@ -30,7 +30,7 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageListTools
 
-    Public Shared Function GetPackageListFromYaml() As String
+    Public Shared Function GetPackageListFromYaml(RequestedKey As String) As String
 
         ' Look in the manifests folder and get the IDs from
         ' each .yml file in every subdirectory.
@@ -69,7 +69,7 @@ Public Class PackageListTools
             For Each Entry In YamlRoot.Children
 
                 ' Check each entry in the YAML root node.
-                If CType(Entry.Key, YamlScalarNode).Value = "Id" Then
+                If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
                     ' If we're looking at an ID, add it to the package list array.
                     PackageListArray = PackageListArray & Entry.Value.ToString & ","
                     'MessageBox.Show(Entry.Value.ToString)
@@ -81,7 +81,7 @@ Public Class PackageListTools
             'MessageBox.Show(PackageManifest)
         Next
 
-            Return PackageListArray
+        Return PackageListArray
 
     End Function
 
