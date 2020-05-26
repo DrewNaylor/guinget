@@ -71,15 +71,11 @@ Public Class PackageListTools
                 Dim tempAppInfo As String
 
                 ' Check each entry in the YAML root node.
-                If CType(Entry.Key, YamlScalarNode).Value = "Id" Then
+                If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
                     ' If we're looking at an ID, add it to the package list array.
                     tempAppInfo = tempAppInfo & Entry.Value.ToString & ","
                     'MessageBox.Show(Entry.Value.ToString)
 
-                ElseIf CType(Entry.Key, YamlScalarNode).Value = "Version" Then
-
-                    ' If this is a version, add it to the package info.
-                    tempAppInfo = tempAppInfo & Entry.Value.ToString & ","
                 End If
 
 
