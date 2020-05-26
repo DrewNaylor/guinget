@@ -105,7 +105,7 @@ Public Class PackageListTools
 
     End Function
 
-    Public Shared Function GetManifests() As String
+    Public Shared Function GetManifests() As String()
         ' Get and return each manifest in the manifests folder.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\pkglist\manifests"
 
