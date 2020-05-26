@@ -32,6 +32,34 @@ Public Class PackageListTools
 
     Public Shared Function GetPackageInfoFromYaml(ManifestPath As String, RequestedKey As String) As String
 
+        ' Load in the file and get whatever was requested of it.
+
+        Dim Input As StreamReader = New StreamReader(ManifestPath)
+
+        ' Load the stream in.
+        Dim YamlStream As New YamlStream
+        YamlStream.Load(Input)
+
+        ' Create variable for root node.
+        Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+
+        For Each Entry In YamlRoot.Children
+
+            ' If the requested key exists, then use it.
+            ' This check doesn't work; maybe something
+            ' like an ordered list would be better:
+            ' https://stackoverflow.com/a/30097560
+            ' Check each entry in the YAML root node.
+            If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
+                ' If we're looking at an ID, add it to the package list array.
+
+                Return Entry.Value.ToString
+                'MessageBox.Show(Entry.Value.ToString)
+
+            End If
+
+        Next
+
     End Function
 
     Public Shared Function GetPackageListFromYaml(RequestedKey As String) As String
