@@ -78,6 +78,9 @@ Public Class aaformMainWindow
             aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
 
         Next
+
+        ' Now we load the details for each row.
+
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
         ' Go through all the items in the array until we run out.
@@ -88,6 +91,10 @@ Public Class aaformMainWindow
         '    ' Now we split the text apart.
         '    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), separatedVersionArray(i), "Not available", separatedManifestLocationArray(i))
         'Next
+    End Sub
+
+    Private Shared Sub UpdatePackageDetailsFromPath()
+
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
