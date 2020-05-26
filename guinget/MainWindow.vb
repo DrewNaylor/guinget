@@ -66,9 +66,11 @@ Public Class aaformMainWindow
         ' Go through all the items in the array until we run out.
         For i As Integer = 0 To separatedPackageArray.Count - 1
             ' Add a row with each item in the array.
-            For Each package As Integer In separatedPackageArray(i).Split(CType(",", Char()))
+            ' Make a separated package info variable.
+            Dim packageInfoArray() As String = separatedPackageArray(i).Split(CType(",", Char()))
+            For packageIndex() As Integer = 0 To packageInfoArray.Count - 1
 
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), "separatedVersionArray(i)", "Not available")
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", sep, "separatedVersionArray(i)", "Not available")
             Next
         Next
     End Sub
