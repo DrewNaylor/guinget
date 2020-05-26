@@ -72,7 +72,7 @@ Public Class aaformMainWindow
 
                 ' Now we split the text apart.
                 Dim splitPackageInfo() As String = packageInfoArray.Split(CType(",", Char))
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", splitPackageInfo(0), packageInfoArray(1), "Not available")
+            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", splitPackageInfo(0), splitPackageInfo(1), "Not available")
         Next
     End Sub
 
