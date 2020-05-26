@@ -26,7 +26,7 @@
 Imports System.IO
 Imports System.Windows.Forms
 Imports Microsoft.Data.Sqlite
-Imports YamlDotNet
+Imports YamlDotNet.RepresentationModel
 
 Public Class PackageListTools
 
@@ -47,6 +47,10 @@ Public Class PackageListTools
 
             ' Set up the document input.
             Dim Input As StringReader = New StringReader(PackageManifest)
+
+            ' Load the stream in.
+            Dim YamlStream As New YamlStream
+            YamlStream.Load(Input)
 
             MessageBox.Show(PackageManifest)
         Next
