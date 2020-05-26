@@ -114,7 +114,7 @@ Public Class PackageListTools
         ' https://stackoverflow.com/a/146747
         Dim regex As System.Text.RegularExpressions.Regex = New Text.RegularExpressions.Regex("\.")
 
-        NewPackageDir = regex.Replace(NewPackageDir, "/", 2)
+        NewPackageDir = regex.Replace(NewPackageDir, "/", 1)
 
         Return NewPackageDir
 
