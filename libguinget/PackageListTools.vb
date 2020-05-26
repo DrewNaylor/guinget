@@ -108,6 +108,13 @@ Public Class PackageListTools
     Public Shared Function GetPackageDir(PackageID As String) As String
 
         ' Return folder but with the dot replaced with a backslash.
+        Dim NewPackageDir As String = PackageID
+        ' Make sure we only do this twice.
+        Dim i As Integer = 0
+        Do Until i = 2
+            NewPackageDir = NewPackageDir.Replace(".", "\")
+        Loop
+
         Return PackageID.Replace(".", "\")
 
     End Function
