@@ -123,10 +123,10 @@ Public Class aaformMainWindow
             ' Take text from the ManifestLocation cell and use that
             ' file path to display text in the details textbox.
             'textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(datagridviewPackageList.Item(5, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString).Replace(vbLf, vbCrLf)
+            Dim PathWithOnlyTwoReplacements As String = PackageListTools.GetPackageDir(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
             Dim ManifestPath As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                "\winget-frontends\pkglist\manifests\" &
-                datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString.Replace(".", "\") & "\" &
-                datagridviewPackageList.Item(3, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString & ".yaml"
+                "\winget-frontends\pkglist\manifests\" & PathWithOnlyTwoReplacements & "\" &
+            datagridviewPackageList.Item(3, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString & ".yaml"
             'MessageBox.Show(ManifestPath)
             textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
         End If
