@@ -78,9 +78,14 @@ Public Class PackageListTools
 
                     Dim tempAppInfo As String
 
+                    ' If the requested key exists, then use it.
+                    ' This check doesn't work; maybe something
+                    ' like an ordered list would be better:
+                    ' https://stackoverflow.com/a/30097560
                     ' Check each entry in the YAML root node.
                     If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
                         ' If we're looking at an ID, add it to the package list array.
+
                         tempAppInfo = tempAppInfo & Entry.Value.ToString & ","
                         'MessageBox.Show(Entry.Value.ToString)
 
