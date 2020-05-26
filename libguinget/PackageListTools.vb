@@ -105,7 +105,7 @@ Public Class PackageListTools
 
     End Function
 
-    Public Shared Function GetManifests() As String()
+    Public Shared Function GetManifests() As String
         ' Get and return each manifest in the manifests folder.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\pkglist\manifests"
 
@@ -119,7 +119,6 @@ Public Class PackageListTools
             ' Append the current package manifest's path to the ManifestPath string.
             ' Using a question mark since it's not allowed in path names.
             ManifestPath = ManifestPath & PackageManifest & "?"
-            MessageBox.Show(ManifestPath)
         Next
 
         Return ManifestPath

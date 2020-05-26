@@ -69,7 +69,7 @@ Public Class aaformMainWindow
         PackageListTools.GetManifests()
 
         ' Now we populate the Manifest column with each manifest.
-        Dim ManifestPaths() As String = PackageListTools.GetManifests
+        Dim ManifestPaths() As String = PackageListTools.GetManifests.Split(CType("?", Char()))
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
         ' Go through all the items in the array until we run out.
