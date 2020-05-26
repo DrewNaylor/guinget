@@ -64,7 +64,7 @@ Public Class aaformMainWindow
         ' Go through all the items in the array until we run out.
         For i As Integer = 0 To separatedPackageArray.Count - 1
             ' Add a row with each item in the array.
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "", separatedPackageArray(i), "", "")
+            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), "Not available", "Not available")
         Next
         'LoadPackageList()
     End Sub
