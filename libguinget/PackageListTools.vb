@@ -112,11 +112,11 @@ Public Class PackageListTools
         ' Make sure we only do this twice.
         ' Using Regex as per this answer if it's easy:
         ' https://stackoverflow.com/a/146747
-        Dim regex As System.Text.RegularExpressions.Regex = New Text.RegularExpressions.Regex(".")
+        Dim regex As System.Text.RegularExpressions.Regex = New Text.RegularExpressions.Regex("\.")
 
         NewPackageDir = regex.Replace(NewPackageDir, "/", 2)
 
-            Return NewPackageDir
+        Return NewPackageDir
 
     End Function
 
