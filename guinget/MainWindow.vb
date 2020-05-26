@@ -66,17 +66,17 @@ Public Class aaformMainWindow
         'Dim separatedManifestLocationArray() As String = PackageListTools.GetPackageListFromYaml("ManifestLocation").Split(CType(",", Char()))
 
         Dim Manifest As String
-
+        PackageListTools.GetManifests()
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
         ' Go through all the items in the array until we run out.
-        For i As Integer = 0 To separatedPackageArray.Count - 1
-            ' Add a row with each item in the array.
-            ' Make a separated package info variable.
-            ' Make sure we're not below 0.
-            ' Now we split the text apart.
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), separatedVersionArray(i), "Not available", separatedManifestLocationArray(i))
-        Next
+        'For i As Integer = 0 To separatedPackageArray.Count - 1
+        '    ' Add a row with each item in the array.
+        '    ' Make a separated package info variable.
+        '    ' Make sure we're not below 0.
+        '    ' Now we split the text apart.
+        '    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), separatedVersionArray(i), "Not available", separatedManifestLocationArray(i))
+        'Next
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown

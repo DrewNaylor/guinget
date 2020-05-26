@@ -119,6 +119,7 @@ Public Class PackageListTools
             ' Append the current package manifest's path to the ManifestPath string.
             ' Using a question mark since it's not allowed in path names.
             ManifestPath = ManifestPath & PackageManifest & "?"
+            MessageBox.Show(ManifestPath)
         Next
     End Function
 
