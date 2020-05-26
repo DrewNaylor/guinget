@@ -68,20 +68,22 @@ Public Class PackageListTools
 
             For Each Entry In YamlRoot.Children
 
+                Dim tempAppInfo As String
+
                 ' Check each entry in the YAML root node.
                 If CType(Entry.Key, YamlScalarNode).Value = "Id" Then
                     ' If we're looking at an ID, add it to the package list array.
-                    PackageListArray = PackageListArray & Entry.Value.ToString & ","
+                    tempAppInfo = tempAppInfo & Entry.Value.ToString & ","
                     'MessageBox.Show(Entry.Value.ToString)
 
                 ElseIf CType(Entry.Key, YamlScalarNode).Value = "Version" Then
 
                     ' If this is a version, add it to the package info.
-                    PackageListArray = PackageListArray & Entry.Value.ToString & ","
+                    tempAppInfo = tempAppInfo & Entry.Value.ToString & ","
                 End If
 
                 ' Finally, add a semicolon so we can split packages here.
-                PackageListArray = PackageListArray & ";"
+                PackageListArray = tempAppInfo & ";"
                 'MessageBox.Show(CType(Entry.Key, YamlScalarNode).Value)
             Next
 
