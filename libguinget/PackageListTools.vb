@@ -69,11 +69,12 @@ Public Class PackageListTools
             For Each Entry In YamlRoot.Children
 
                 ' Check each entry in the YAML root node.
-                If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
+                If CType(Entry.Key, YamlScalarNode).Value = "Id" Then
                     ' If we're looking at an ID, add it to the package list array.
                     PackageListArray = PackageListArray & Entry.Value.ToString & ","
                     'MessageBox.Show(Entry.Value.ToString)
                 End If
+                PackageListArray = PackageListArray & ";"
                 'MessageBox.Show(CType(Entry.Key, YamlScalarNode).Value)
             Next
 
