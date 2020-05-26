@@ -70,6 +70,14 @@ Public Class aaformMainWindow
 
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths() As String = PackageListTools.GetManifests.Split(CType("?", Char()))
+
+        ' Go through everything in the manifest paths array until it's out.
+        For i As Integer = 0 To ManifestPaths.Count - 1
+
+            ' Read the file into the manifest column and make a new row with it.
+            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
+
+        Next
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
         ' Go through all the items in the array until we run out.
