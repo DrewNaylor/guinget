@@ -53,10 +53,10 @@ Public Class PackageListTools
             YamlStream.Load(Input)
 
             ' Create variable for root node.
-            Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+            Dim YamlRoot As YamlMappingNode = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
 
             For Each Entry In YamlRoot.Children
-
+                MessageBox.Show(CType(Entry.Key, YamlScalarNode).Value)
             Next
 
 
