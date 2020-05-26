@@ -81,6 +81,8 @@ Public Class aaformMainWindow
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
             Row.Cells.Item(2).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Id")
+            ' Load package name column.
+            Row.Cells.Item(3).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Name")
             ' Load package version column.
             Row.Cells.Item(4).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
