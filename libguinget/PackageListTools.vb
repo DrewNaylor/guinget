@@ -102,8 +102,8 @@ Public Class PackageListTools
 
     Public Shared Function GetPackageDir(PackageID As String) As String
 
-        ' Assign a variable to get the publisher and package name from
-        ' package ID passed to this function.
+        ' Return folder but with the dot replaced with a backslash.
+        Return PackageID.Replace(".", "\")
 
     End Function
 
