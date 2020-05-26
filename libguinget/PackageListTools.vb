@@ -30,6 +30,10 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageListTools
 
+    Public Shared Function GetPackageInfoFromYaml(ManifestPath As String, RequestedKey As String) As String
+
+    End Function
+
     Public Shared Function GetPackageListFromYaml(RequestedKey As String) As String
 
         ' Look in the manifests folder and get the IDs from
