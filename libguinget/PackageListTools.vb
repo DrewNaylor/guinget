@@ -23,8 +23,10 @@
 
 
 
+Imports System.IO
 Imports System.Windows.Forms
 Imports Microsoft.Data.Sqlite
+Imports YamlDotNet
 
 Public Class PackageListTools
 
@@ -42,6 +44,10 @@ Public Class PackageListTools
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
+
+            ' Set up the document input.
+            Dim Input As StringReader = New StringReader(PackageManifest)
+
             MessageBox.Show(PackageManifest)
         Next
 
