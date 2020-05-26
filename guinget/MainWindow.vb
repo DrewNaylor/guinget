@@ -112,13 +112,16 @@ Public Class aaformMainWindow
         Next
     End Sub
 
-    Private Async Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
+    Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected.
         If datagridviewPackageList.SelectedRows.Count = 1 Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
             'textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
+
+            ' Take text from the ManifestLocation cell and use that
+            ' file path to display text in the details textbox.
             textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(datagridviewPackageList.Item(5, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString).Replace(vbLf, vbCrLf)
         End If
     End Sub
