@@ -73,18 +73,18 @@ Public Class aaformMainWindow
         For i As Integer = 0 To ManifestPaths.Count - 2
 
             ' Read the file into the manifest column and make a new row with it.
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
+            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
 
         Next
 
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
-            Row.Cells.Item(2).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(5).Value.ToString, "Id")
+            Row.Cells.Item(2).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Id")
             ' Load package version column.
-            Row.Cells.Item(3).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(5).Value.ToString, "Version")
+            Row.Cells.Item(4).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
-            Row.Cells.Item(4).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(5).Value.ToString, "Description")
+            Row.Cells.Item(5).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
         Next
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
@@ -145,7 +145,7 @@ Public Class aaformMainWindow
             ' file path to display text in the details textbox.
             'textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(datagridviewPackageList.Item(5, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString).Replace(vbLf, vbCrLf)
             'Dim PathWithOnlyTwoReplacements As String = PackageListTools.GetPackageDir(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
-            Dim ManifestPath As String = datagridviewPackageList.Item(5, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
+            Dim ManifestPath As String = datagridviewPackageList.Item(6, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
             'MessageBox.Show(ManifestPath)
             ' This crashes on "Microsoft.VisualStudio.Community". Maybe what
             ' could be done is to have a handler that says if the file can't be found,

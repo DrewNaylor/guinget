@@ -73,7 +73,7 @@ Partial Class aaformMainWindow
         Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -184,7 +184,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.Name, Me.AvailableVersion, Me.PkgDescription, Me.Manifest})
+        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.FriendlyName, Me.AvailableVersion, Me.PkgDescription, Me.Manifest})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
@@ -561,12 +561,12 @@ Partial Class aaformMainWindow
         Me.PkgName.Name = "PkgName"
         Me.PkgName.ReadOnly = True
         '
-        'Name
+        'FriendlyName
         '
-        Me.Name.HeaderText = "Name"
-        Me.Name.MinimumWidth = 6
-        Me.Name.Name = "Name"
-        Me.Name.ReadOnly = True
+        Me.FriendlyName.HeaderText = "Name"
+        Me.FriendlyName.MinimumWidth = 6
+        Me.FriendlyName.Name = "FriendlyName"
+        Me.FriendlyName.ReadOnly = True
         '
         'AvailableVersion
         '
@@ -684,7 +684,7 @@ Partial Class aaformMainWindow
     Friend WithEvents PkgAction As DataGridViewComboBoxColumn
     Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
     Friend WithEvents PkgName As DataGridViewTextBoxColumn
-    Friend WithEvents Name As DataGridViewTextBoxColumn
+    Friend WithEvents FriendlyName As DataGridViewTextBoxColumn
     Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
     Friend WithEvents Manifest As DataGridViewTextBoxColumn
