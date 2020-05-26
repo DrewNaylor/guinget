@@ -59,16 +59,15 @@ Public Class aaformMainWindow
         'aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, libguinget.PackageListTools.GetPackageList, AvailableVersion, Description)
 
         ' Assign a variable to store the package list array.
-        'Dim separatedPackageArray() As String = libguinget.PackageListTools.GetPackageListFromSqliteDB.Split(CType(",", Char()))
+        Dim separatedPackageArray() As String = libguinget.PackageListTools.GetPackageListFromYaml.Split(CType(",", Char()))
 
         libguinget.PackageListTools.GetPackageListFromYaml()
 
         ' Go through all the items in the array until we run out.
-        'For i As Integer = 0 To separatedPackageArray.Count - 1
-        '    ' Add a row with each item in the array.
-        '    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), "Not available", "Not available")
-        'Next
-        'LoadPackageList()
+        For i As Integer = 0 To separatedPackageArray.Count - 1
+            ' Add a row with each item in the array.
+            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), "Not available", "Not available")
+        Next
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
