@@ -67,6 +67,9 @@ Public Class PackageListTools
             Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
 
             For Each Entry In YamlRoot.Children
+                If CType(Entry.Key, YamlScalarNode).Value = "Id" Then
+                    MessageBox.Show(Entry.Value.ToString)
+                End If
                 MessageBox.Show(CType(Entry.Key, YamlScalarNode).Value)
             Next
 
