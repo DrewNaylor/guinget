@@ -34,6 +34,19 @@ Public Class PackageListTools
 
         ' Load in the file and get whatever was requested of it.
 
+
+        ' Set up the document input.
+        ' We had to use a StreamReader instead of a StringReader
+        ' that the LoadingAYamlStream sample used since we want
+        ' to read a file, not a filename.
+        ' If we used a StringReader, we'd end up with an Invalid
+        ' Cast Exception with the following details:
+        '    Unhandled Exception: System.InvalidCastException: Unable
+        '    to cast object of type 'YamlDotNet.RepresentationModel.YamlScalarNode'
+        '    to type 'YamlDotNet.RepresentationModel.YamlMappingNode'.`
+        ' This working example is described in the following
+        ' StackOverflow answer:
+        ' https://stackoverflow.com/a/46897520
         Dim Input As StreamReader = New StreamReader(ManifestPath)
 
         ' Load the stream in.
