@@ -106,6 +106,7 @@ Public Class PackageListTools
     End Function
 
     Public Shared Function GetManifests() As String
+        ' Get and return each manifest in the manifests folder.
 
     End Function
 

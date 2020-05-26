@@ -59,11 +59,13 @@ Public Class aaformMainWindow
         'aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, libguinget.PackageListTools.GetPackageList, AvailableVersion, Description)
 
         ' Assign a variable to store the package list array.
-        Dim separatedPackageArray() As String = PackageListTools.GetPackageListFromYaml("Id").Split(CType(",", Char()))
+        'Dim separatedPackageArray() As String = PackageListTools.GetPackageListFromYaml("Id").Split(CType(",", Char()))
 
-        Dim separatedVersionArray() As String = PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
+        'Dim separatedVersionArray() As String = PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
-        Dim separatedManifestLocationArray() As String = PackageListTools.GetPackageListFromYaml("ManifestLocation").Split(CType(",", Char()))
+        'Dim separatedManifestLocationArray() As String = PackageListTools.GetPackageListFromYaml("ManifestLocation").Split(CType(",", Char()))
+
+        Dim Manifest As String
 
         'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
 
