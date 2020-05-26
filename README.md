@@ -21,6 +21,8 @@ Screenshot with more-complete UI (as of May 25, 2020), but with incomplete packa
 Please note that some columns and panels were resized for the screenshot; it won't look exactly like this when it starts. winget may also output junk characters on occasion, usually when guinget first calls it but sometimes it can happen a few minutes later. Could be a result of winget re-downloading the package list. Might be a good idea to do a `String.Replace()` (replacing the weird characters with underscores or something that'll look like a progress bar like pound signs, perhaps? or maybe just replacing with `String.Empty`) on the output to get rid of `â–ˆ` and `â–’` as shown below:
 ![](/docs/images/screenshot-sometimes-winget-makes-a-mess-of-the-details.png?raw=true)
 
+Turned out to be difficult to get information from the SQLite database file, so I'll probably just grab the YAML files from the `winget-pkgs` repo as a zip file instead.
+
 TODO:
 - Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
 - Create library that can be used by guinget (as well as other winget front-ends that want to use it) that makes it easier to get package info from winget.
@@ -33,3 +35,4 @@ TODO:
 - To make it easier for other frontends to use and update the package list, maybe have it be saved to a folder like "winget-frontends-pkglist", and in that folder there will be folders with the name of each configured source, containing the package list files in there.
 - Ensuring this folder doesn't get messed up by a frontend while another one is running, have a file named "frontend.lock" in the root of "winget-frontends-pkglist" that both prevents other frontends from running when that file exists as well as storing the frontend's name for easy identification in other frontends that are being prevented from running, if they want to display the name of the app that's preventing them from running.
 - "winget-frontends-pkglist" could be stored in the user's AppData folder. Having the location be configurable to be on a USB drive instead for example may make things confusing and result in frontends becoming incompatible or having the incorrect information if they choose to use a different location.
+- Remember that winget allows installing from a manifest passed to it. This may be useful to allow for the user to select a manifest to install from the File menu, for example. Might also be possible to use this feature to have winget use the YAML manifests downloaded from Microsoft's `winget-pkgs` repo instead of the default one in winget, as well.
