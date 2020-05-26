@@ -28,6 +28,10 @@ Imports Microsoft.Data.Sqlite
 
 Public Class PackageListTools
 
+    Public Shared Function GetPackageListFromYaml() As String
+
+    End Function
+
     Public Shared Function GetPackageListFromSqliteDB() As String
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
