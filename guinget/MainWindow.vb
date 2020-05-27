@@ -44,6 +44,10 @@ Public Class aaformMainWindow
         ' Clear the rows.
         aaformMainWindow.datagridviewPackageList.Rows.Clear()
 
+        ' Hide the datagridview while we're updating to make
+        ' this slightly faster.
+        aaformMainWindow.datagridviewPackageList.Visible = False
+
         ' Display loading progress bar and stuff.
         aaformMainWindow.toolstripstatusSplitter.Visible = True
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
@@ -67,7 +71,6 @@ Public Class aaformMainWindow
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            Debug.WriteLine(aaformMainWindow.toolstripprogressbarLoadingPackages.Value)
             ' Update the main form to show the current info.
             aaformMainWindow.Update()
         Next
@@ -95,8 +98,6 @@ Public Class aaformMainWindow
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading details for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            Debug.WriteLine(aaformMainWindow.toolstripprogressbarLoadingPackages.Value)
-
             ' Update the main form to show the current info.
             aaformMainWindow.Update()
         Next
@@ -113,6 +114,8 @@ Public Class aaformMainWindow
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
+        ' Show datagridview again.
+        aaformMainWindow.datagridviewPackageList.Visible = True
 
         ' Display number of packages loaded. This really should be
         ' changed to calculate the number of currently-visible rows
