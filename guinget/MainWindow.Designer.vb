@@ -206,6 +206,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
+        Me.datagridviewPackageList.RowHeadersVisible = False
         Me.datagridviewPackageList.RowHeadersWidth = 51
         Me.datagridviewPackageList.RowTemplate.Height = 24
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
