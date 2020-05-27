@@ -39,7 +39,7 @@ echo(
 echo The purpose of update-manifests is to expediate the downloading and extracting of winget sources from Microsoft's Community Package Repository. For now, this is the only source supported, but the goal is to support more sources in the future, along with winget gaining that feature whenever it does. update-manifests will use PowerShell to download a Zip file from github.com and extract it into %AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests using PowerShell. 
 
 echo(
-echo Windows PowerShell, Microsoft Build Tools 2015 and Microsoft .Net Framework 4.6.1 are required to build and run this application. Links are available in the System Requirements in the README file here:  https://github.com/DrewNaylor/UXL-Launcher/blob/master/README.md#system-requirements
+echo Windows PowerShell is required to run this script. Links are available in the System Requirements in the UXL Launcher README file here:  https://github.com/DrewNaylor/UXL-Launcher/blob/master/README.md#system-requirements
 echo(
 
 echo --------------------------------------
