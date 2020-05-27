@@ -17,6 +17,12 @@ set DOWNLOADING_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Downloading 
 REM Create variable for the titlebar text when extracting the package:
 set EXTRACTING_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Extracting package previously downloaded from GitHub...
 
+REM Create variable for the titlebar text when deleting the old manifests:
+set DELETING_OLD_MANIFESTS_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Deleting old manifests...
+
+REM Create variable for the titlebar text when deleting the old manifests:
+set COPYING_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Copying manifests folder from package...
+
 REM Set the titlebar text to the regular text:
 title %REGULAR_TITLE_BAR%
 
@@ -36,7 +42,7 @@ echo If anything happens to your computer, Drew Naylor is not responsible. Use a
 echo Please visit https://github.com/DrewNaylor/guinget/ for more information on this script's parent project, guinget, which is open source.
 echo(
 
-echo The purpose of update-manifests is to expediate the downloading and extracting of winget sources from Microsoft's Community Package Repository. For now, this is the only source supported, but the goal is to support more sources in the future, along with winget gaining that feature whenever it does. Eventually guinget will get its own manifest updater, so this script is just a temporary solution. update-manifests will use PowerShell to download a Zip file from github.com and extract it into "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" using PowerShell. Manifests in this folder can be used by other winget frontends in addition to guinget, if they want to. Additionally, manifests from other sources will be extracted to their own "source\" folder.
+echo The purpose of update-manifests is to expediate the downloading and extracting of winget sources from Microsoft's Community Package Repository. For now, this is the only source supported, but the goal is to support more sources in the future, along with winget gaining that feature whenever it does. Eventually guinget will get its own manifest updater, so this script is just a temporary solution. update-manifests will use PowerShell to download a Zip file from github.com and extract it into "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" using PowerShell and robocopy. Manifests in this folder can be used by other winget frontends in addition to guinget, if they want to. Additionally, manifests from other sources will be extracted to their own "source\" folder. After copying the manifests, you'll be asked if you want to delete the temp files.
 
 echo(
 echo Windows PowerShell is required to run this script. Links are available in the System Requirements in the UXL Launcher README file here:  https://github.com/DrewNaylor/UXL-Launcher/blob/master/README.md#system-requirements
