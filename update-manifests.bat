@@ -79,7 +79,7 @@ REM powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archi
 
 
 REM Check if the manifests folder exists.
-IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\manifests" (
+IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" (
 REM If it does exist, ask to delete.
 cls
 REM Set titlebar text to the deleting text:
@@ -105,7 +105,7 @@ title %EXTRACTING_TITLE_BAR%
 echo Copying manifests folder from package...
 robocopy /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
-
+choice
 
 REM Decide which Program Files folder to run msbuild from based on which folders exist. Courtesy this 
 REM Stack Overflow answer: <http://superuser.com/a/142416>
