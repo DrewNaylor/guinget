@@ -77,7 +77,10 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture = New System.Windows.Forms.TabPage()
         Me.listboxArchitecture = New System.Windows.Forms.ListBox()
         Me.panelMainForm = New System.Windows.Forms.Panel()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.statusbarMainWindow = New System.Windows.Forms.StatusStrip()
+        Me.toolstripstatuslabelPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -102,6 +105,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource.SuspendLayout()
         Me.tabpageArchitecture.SuspendLayout()
         Me.panelMainForm.SuspendLayout()
+        Me.statusbarMainWindow.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -110,7 +114,7 @@ Partial Class aaformMainWindow
         Me.menustripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.menustripMainWindow.Location = New System.Drawing.Point(0, 0)
         Me.menustripMainWindow.Name = "menustripMainWindow"
-        Me.menustripMainWindow.Size = New System.Drawing.Size(992, 30)
+        Me.menustripMainWindow.Size = New System.Drawing.Size(992, 28)
         Me.menustripMainWindow.TabIndex = 0
         Me.menustripMainWindow.Text = "MenuStrip1"
         '
@@ -118,7 +122,7 @@ Partial Class aaformMainWindow
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem, Me.ExamplePackageToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 26)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 24)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'ExitToolStripMenuItem
@@ -137,7 +141,7 @@ Partial Class aaformMainWindow
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(58, 26)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(58, 24)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'VerifyManifestToolStripMenuItem
@@ -150,7 +154,7 @@ Partial Class aaformMainWindow
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(55, 26)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(55, 24)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
@@ -173,8 +177,8 @@ Partial Class aaformMainWindow
         'splitcontainerMainWindow.Panel2
         '
         Me.splitcontainerMainWindow.Panel2.Controls.Add(Me.textboxPackageDetails)
-        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(691, 539)
-        Me.splitcontainerMainWindow.SplitterDistance = 342
+        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(691, 543)
+        Me.splitcontainerMainWindow.SplitterDistance = 345
         Me.splitcontainerMainWindow.TabIndex = 1
         '
         'datagridviewPackageList
@@ -194,7 +198,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.RowTemplate.Height = 24
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridviewPackageList.ShowEditingIcon = False
-        Me.datagridviewPackageList.Size = New System.Drawing.Size(691, 342)
+        Me.datagridviewPackageList.Size = New System.Drawing.Size(691, 345)
         Me.datagridviewPackageList.StandardTab = True
         Me.datagridviewPackageList.TabIndex = 0
         '
@@ -284,7 +288,7 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.Multiline = True
         Me.textboxPackageDetails.Name = "textboxPackageDetails"
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textboxPackageDetails.Size = New System.Drawing.Size(691, 193)
+        Me.textboxPackageDetails.Size = New System.Drawing.Size(691, 194)
         Me.textboxPackageDetails.TabIndex = 0
         '
         'panelMainPkgArea
@@ -293,16 +297,16 @@ Partial Class aaformMainWindow
         Me.panelMainPkgArea.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMainPkgArea.Location = New System.Drawing.Point(0, 0)
         Me.panelMainPkgArea.Name = "panelMainPkgArea"
-        Me.panelMainPkgArea.Size = New System.Drawing.Size(691, 539)
+        Me.panelMainPkgArea.Size = New System.Drawing.Size(691, 543)
         Me.panelMainPkgArea.TabIndex = 2
         '
         'toolstripMainWindow
         '
         Me.toolstripMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.toolstripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripbuttonRefreshCache, Me.toolstripbuttonApplyChanges, Me.ToolStripSeparator2, Me.toolstripbuttonProperties, Me.ToolStripSeparator1, Me.toolstriptextboxSearch, Me.toolstripbuttonSearch})
-        Me.toolstripMainWindow.Location = New System.Drawing.Point(0, 30)
+        Me.toolstripMainWindow.Location = New System.Drawing.Point(0, 28)
         Me.toolstripMainWindow.Name = "toolstripMainWindow"
-        Me.toolstripMainWindow.Size = New System.Drawing.Size(992, 31)
+        Me.toolstripMainWindow.Size = New System.Drawing.Size(992, 27)
         Me.toolstripMainWindow.TabIndex = 0
         Me.toolstripMainWindow.Text = "ToolStrip1"
         '
@@ -312,7 +316,7 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonRefreshCache.Image = CType(resources.GetObject("toolstripbuttonRefreshCache.Image"), System.Drawing.Image)
         Me.toolstripbuttonRefreshCache.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonRefreshCache.Name = "toolstripbuttonRefreshCache"
-        Me.toolstripbuttonRefreshCache.Size = New System.Drawing.Size(104, 28)
+        Me.toolstripbuttonRefreshCache.Size = New System.Drawing.Size(104, 24)
         Me.toolstripbuttonRefreshCache.Text = "Refresh cache"
         Me.toolstripbuttonRefreshCache.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -322,14 +326,14 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonApplyChanges.Image = CType(resources.GetObject("toolstripbuttonApplyChanges.Image"), System.Drawing.Image)
         Me.toolstripbuttonApplyChanges.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonApplyChanges.Name = "toolstripbuttonApplyChanges"
-        Me.toolstripbuttonApplyChanges.Size = New System.Drawing.Size(110, 28)
+        Me.toolstripbuttonApplyChanges.Size = New System.Drawing.Size(110, 24)
         Me.toolstripbuttonApplyChanges.Text = "Apply changes"
         Me.toolstripbuttonApplyChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 31)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
         '
         'toolstripbuttonProperties
         '
@@ -337,21 +341,21 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonProperties.Image = CType(resources.GetObject("toolstripbuttonProperties.Image"), System.Drawing.Image)
         Me.toolstripbuttonProperties.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonProperties.Name = "toolstripbuttonProperties"
-        Me.toolstripbuttonProperties.Size = New System.Drawing.Size(80, 28)
+        Me.toolstripbuttonProperties.Size = New System.Drawing.Size(80, 24)
         Me.toolstripbuttonProperties.Text = "Properties"
         Me.toolstripbuttonProperties.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 31)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
         '
         'toolstriptextboxSearch
         '
         Me.toolstriptextboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.toolstriptextboxSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.toolstriptextboxSearch.Name = "toolstriptextboxSearch"
-        Me.toolstriptextboxSearch.Size = New System.Drawing.Size(250, 31)
+        Me.toolstriptextboxSearch.Size = New System.Drawing.Size(250, 27)
         '
         'toolstripbuttonSearch
         '
@@ -359,7 +363,7 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonSearch.Image = CType(resources.GetObject("toolstripbuttonSearch.Image"), System.Drawing.Image)
         Me.toolstripbuttonSearch.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonSearch.Name = "toolstripbuttonSearch"
-        Me.toolstripbuttonSearch.Size = New System.Drawing.Size(57, 28)
+        Me.toolstripbuttonSearch.Size = New System.Drawing.Size(57, 24)
         Me.toolstripbuttonSearch.Text = "Search"
         Me.toolstripbuttonSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -376,7 +380,7 @@ Partial Class aaformMainWindow
         'splitcontainerSidebarAndPkgList.Panel2
         '
         Me.splitcontainerSidebarAndPkgList.Panel2.Controls.Add(Me.panelMainPkgArea)
-        Me.splitcontainerSidebarAndPkgList.Size = New System.Drawing.Size(992, 539)
+        Me.splitcontainerSidebarAndPkgList.Size = New System.Drawing.Size(992, 543)
         Me.splitcontainerSidebarAndPkgList.SplitterDistance = 297
         Me.splitcontainerSidebarAndPkgList.TabIndex = 3
         '
@@ -386,7 +390,7 @@ Partial Class aaformMainWindow
         Me.panelSidebarHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelSidebarHolder.Location = New System.Drawing.Point(0, 0)
         Me.panelSidebarHolder.Name = "panelSidebarHolder"
-        Me.panelSidebarHolder.Size = New System.Drawing.Size(297, 539)
+        Me.panelSidebarHolder.Size = New System.Drawing.Size(297, 543)
         Me.panelSidebarHolder.TabIndex = 0
         '
         'tabcontrolSidebar
@@ -401,7 +405,7 @@ Partial Class aaformMainWindow
         Me.tabcontrolSidebar.Location = New System.Drawing.Point(0, 0)
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
         Me.tabcontrolSidebar.SelectedIndex = 0
-        Me.tabcontrolSidebar.Size = New System.Drawing.Size(297, 539)
+        Me.tabcontrolSidebar.Size = New System.Drawing.Size(297, 543)
         Me.tabcontrolSidebar.TabIndex = 0
         '
         'tabpageSearchTerms
@@ -409,7 +413,7 @@ Partial Class aaformMainWindow
         Me.tabpageSearchTerms.Controls.Add(Me.tablelayoutpanelSearchTerms)
         Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
-        Me.tabpageSearchTerms.Size = New System.Drawing.Size(289, 510)
+        Me.tabpageSearchTerms.Size = New System.Drawing.Size(289, 514)
         Me.tabpageSearchTerms.TabIndex = 4
         Me.tabpageSearchTerms.Text = "Search terms"
         Me.tabpageSearchTerms.UseVisualStyleBackColor = True
@@ -426,13 +430,13 @@ Partial Class aaformMainWindow
         Me.tablelayoutpanelSearchTerms.RowCount = 2
         Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
-        Me.tablelayoutpanelSearchTerms.Size = New System.Drawing.Size(289, 510)
+        Me.tablelayoutpanelSearchTerms.Size = New System.Drawing.Size(289, 514)
         Me.tablelayoutpanelSearchTerms.TabIndex = 1
         '
         'buttonClearSearchTerms
         '
         Me.buttonClearSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonClearSearchTerms.Location = New System.Drawing.Point(3, 473)
+        Me.buttonClearSearchTerms.Location = New System.Drawing.Point(3, 477)
         Me.buttonClearSearchTerms.Name = "buttonClearSearchTerms"
         Me.buttonClearSearchTerms.Size = New System.Drawing.Size(283, 34)
         Me.buttonClearSearchTerms.TabIndex = 1
@@ -450,7 +454,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.Location = New System.Drawing.Point(3, 3)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
         Me.listboxSearchTerms.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.listboxSearchTerms.Size = New System.Drawing.Size(283, 464)
+        Me.listboxSearchTerms.Size = New System.Drawing.Size(283, 468)
         Me.listboxSearchTerms.TabIndex = 0
         '
         'contextmenuSearchTerm
@@ -588,19 +592,37 @@ Partial Class aaformMainWindow
         '
         Me.panelMainForm.Controls.Add(Me.splitcontainerSidebarAndPkgList)
         Me.panelMainForm.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelMainForm.Location = New System.Drawing.Point(0, 61)
+        Me.panelMainForm.Location = New System.Drawing.Point(0, 55)
         Me.panelMainForm.Name = "panelMainForm"
-        Me.panelMainForm.Size = New System.Drawing.Size(992, 539)
+        Me.panelMainForm.Size = New System.Drawing.Size(992, 543)
         Me.panelMainForm.TabIndex = 4
         '
-        'StatusStrip1
+        'statusbarMainWindow
         '
-        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 600)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(992, 24)
-        Me.StatusStrip1.TabIndex = 5
-        Me.StatusStrip1.Text = "StatusStrip1"
+        Me.statusbarMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.statusbarMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripstatuslabelPackageCount, Me.toolstripstatuslabelLoadingPackageCount, Me.toolstripprogressbarLoadingPackages})
+        Me.statusbarMainWindow.Location = New System.Drawing.Point(0, 598)
+        Me.statusbarMainWindow.Name = "statusbarMainWindow"
+        Me.statusbarMainWindow.Size = New System.Drawing.Size(992, 26)
+        Me.statusbarMainWindow.TabIndex = 5
+        Me.statusbarMainWindow.Text = "StatusStrip1"
+        '
+        'toolstripstatuslabelPackageCount
+        '
+        Me.toolstripstatuslabelPackageCount.Name = "toolstripstatuslabelPackageCount"
+        Me.toolstripstatuslabelPackageCount.Size = New System.Drawing.Size(124, 20)
+        Me.toolstripstatuslabelPackageCount.Text = "# packages listed"
+        '
+        'toolstripstatuslabelLoadingPackageCount
+        '
+        Me.toolstripstatuslabelLoadingPackageCount.Name = "toolstripstatuslabelLoadingPackageCount"
+        Me.toolstripstatuslabelLoadingPackageCount.Size = New System.Drawing.Size(176, 20)
+        Me.toolstripstatuslabelLoadingPackageCount.Text = "Loading package # of #..."
+        '
+        'toolstripprogressbarLoadingPackages
+        '
+        Me.toolstripprogressbarLoadingPackages.Name = "toolstripprogressbarLoadingPackages"
+        Me.toolstripprogressbarLoadingPackages.Size = New System.Drawing.Size(100, 18)
         '
         'aaformMainWindow
         '
@@ -608,7 +630,7 @@ Partial Class aaformMainWindow
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(992, 624)
         Me.Controls.Add(Me.panelMainForm)
-        Me.Controls.Add(Me.StatusStrip1)
+        Me.Controls.Add(Me.statusbarMainWindow)
         Me.Controls.Add(Me.toolstripMainWindow)
         Me.Controls.Add(Me.menustripMainWindow)
         Me.MainMenuStrip = Me.menustripMainWindow
@@ -641,6 +663,8 @@ Partial Class aaformMainWindow
         Me.tabpageSource.ResumeLayout(False)
         Me.tabpageArchitecture.ResumeLayout(False)
         Me.panelMainForm.ResumeLayout(False)
+        Me.statusbarMainWindow.ResumeLayout(False)
+        Me.statusbarMainWindow.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -699,5 +723,8 @@ Partial Class aaformMainWindow
     Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
     Friend WithEvents Manifest As DataGridViewTextBoxColumn
-    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents statusbarMainWindow As StatusStrip
+    Friend WithEvents toolstripstatuslabelPackageCount As ToolStripStatusLabel
+    Friend WithEvents toolstripstatuslabelLoadingPackageCount As ToolStripStatusLabel
+    Friend WithEvents toolstripprogressbarLoadingPackages As ToolStripProgressBar
 End Class
