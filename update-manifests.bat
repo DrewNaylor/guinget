@@ -140,10 +140,11 @@ REM Set titlebar text back to the regular text:
 title %REGULAR_TITLE_BAR%
 cls
 echo Manifest update complete. Please refresh the package list in guinget to see the updated list.
-echo
+REM A paranthese right after echo makes it a blank line.
+echo(
 echo Start time: %START_TIME%
 echo End time: %time%
-echo
+echo(
 pause
 
 REM Set titlebar back to default.
