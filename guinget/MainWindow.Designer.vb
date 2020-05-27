@@ -82,8 +82,8 @@ Partial Class aaformMainWindow
         Me.toolstripstatusSplitter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
-        Me.panelPackageListHolder = New System.Windows.Forms.Panel()
         Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
+        Me.panelPackageListHolder = New System.Windows.Forms.Panel()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -638,6 +638,18 @@ Partial Class aaformMainWindow
         Me.toolstripprogressbarLoadingPackages.Size = New System.Drawing.Size(150, 18)
         Me.toolstripprogressbarLoadingPackages.Visible = False
         '
+        'labelUpdatingPackageList
+        '
+        Me.labelUpdatingPackageList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.labelUpdatingPackageList.AutoSize = True
+        Me.labelUpdatingPackageList.Location = New System.Drawing.Point(3, 0)
+        Me.labelUpdatingPackageList.Name = "labelUpdatingPackageList"
+        Me.labelUpdatingPackageList.Size = New System.Drawing.Size(228, 17)
+        Me.labelUpdatingPackageList.TabIndex = 1
+        Me.labelUpdatingPackageList.Text = "Loading package list, please wait..."
+        '
         'panelPackageListHolder
         '
         Me.panelPackageListHolder.Controls.Add(Me.datagridviewPackageList)
@@ -646,16 +658,7 @@ Partial Class aaformMainWindow
         Me.panelPackageListHolder.Location = New System.Drawing.Point(0, 0)
         Me.panelPackageListHolder.Name = "panelPackageListHolder"
         Me.panelPackageListHolder.Size = New System.Drawing.Size(691, 344)
-        Me.panelPackageListHolder.TabIndex = 1
-        '
-        'labelUpdatingPackageList
-        '
-        Me.labelUpdatingPackageList.AutoSize = True
-        Me.labelUpdatingPackageList.Location = New System.Drawing.Point(231, 114)
-        Me.labelUpdatingPackageList.Name = "labelUpdatingPackageList"
-        Me.labelUpdatingPackageList.Size = New System.Drawing.Size(228, 17)
-        Me.labelUpdatingPackageList.TabIndex = 1
-        Me.labelUpdatingPackageList.Text = "Loading package list, please wait..."
+        Me.panelPackageListHolder.TabIndex = 2
         '
         'aaformMainWindow
         '
@@ -763,6 +766,6 @@ Partial Class aaformMainWindow
     Friend WithEvents toolstripstatuslabelLoadingPackageCount As ToolStripStatusLabel
     Friend WithEvents toolstripprogressbarLoadingPackages As ToolStripProgressBar
     Friend WithEvents toolstripstatusSplitter As ToolStripStatusLabel
-    Friend WithEvents panelPackageListHolder As Panel
     Friend WithEvents labelUpdatingPackageList As Label
+    Friend WithEvents panelPackageListHolder As Panel
 End Class
