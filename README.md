@@ -23,6 +23,8 @@ Please note that some columns and panels were resized for the screenshot; it won
 
 Turned out to be difficult to get information from the SQLite database file, so I'll probably just grab the YAML files from the `winget-pkgs` repo as a zip file instead.
 
+Yeah, I've stopped using the SQLite database and started just reading from a package list cache stored in `%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests`, which is downloaded from `Microsoft\winget-pkgs` on GitHub. The `update-manifests.bat` script can be used to automate the downloading and updating of these manifests.
+
 TODO:
 - Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
 - Create library that can be used by guinget (as well as other winget front-ends that want to use it) that makes it easier to get package info from winget.

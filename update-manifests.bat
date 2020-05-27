@@ -38,6 +38,7 @@ title %REGULAR_TITLE_BAR%
 echo update-manifests is provided to others free of charge and without warranty by Drew Naylor.
 echo Based on UXL Autobuild Script version 2018.01-1:
 echo https://gist.github.com/DrewNaylor/22e3f1cded702fff494a46dabe643fde
+echo(
 echo update-manifests Version %VERSIONNUMBER% Copyright 2020 Drew Naylor.
 echo Drew Naylor has no relation to Microsoft or GitHub.
 echo update-manifests is related to neither Microsoft nor winget, and Microsoft does not endorse this software.
