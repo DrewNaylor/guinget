@@ -46,13 +46,13 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
         aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = True
 
+
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
 
-        ' Set initial minimum and maximum of the loading progressbar.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Minimum = 0
+        ' Set progress bar maximum and step count.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
-
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
         ' Go through everything in the manifest paths array until it's out.
         For i As Integer = 0 To ManifestPaths.Count - 2
@@ -62,10 +62,9 @@ Public Class aaformMainWindow
 
             ' Update loading statusbar label and progressbar.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
-            ' Make sure the progress bar is within bounds.
-            If aaformMainWindow.toolstripprogressbarLoadingPackages.Value + 1 < aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum Then
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Value + 1
-            End If
+            ' Make the progress bar progress.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            Debug.WriteLine(aaformMainWindow.toolstripprogressbarLoadingPackages.Value)
             ' Update the main form to show the current info.
             aaformMainWindow.Update()
         Next
@@ -86,13 +85,16 @@ Public Class aaformMainWindow
 
             ' Update loading statusbar label and progressbar.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading details for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
-            ' Make sure the progress bar is within bounds.
-            If aaformMainWindow.toolstripprogressbarLoadingPackages.Value + 1 < aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum Then
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Value + 1
-            End If
+            ' Make the progress bar progress.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            Debug.WriteLine(aaformMainWindow.toolstripprogressbarLoadingPackages.Value)
+
             ' Update the main form to show the current info.
             aaformMainWindow.Update()
         Next
+
+        ' Set the progressbar to the maximum to make it look finished.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
@@ -100,6 +102,8 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = False
         aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = False
 
+        ' Reset progress bar to 0.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
 
         ' Display number of packages loaded. This really should be
