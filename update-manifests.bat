@@ -84,7 +84,7 @@ REM Set titlebar text to the downloading text:
 title %DOWNLOADING_TITLE_BAR%
 echo Downloading package from GitHub...
 echo If you want to cancel, please use Ctrl+C.
-REM powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
+powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
 
 REM Check if the manifests folder exists.
 IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" (
