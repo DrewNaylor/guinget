@@ -61,8 +61,6 @@ Partial Class aaformMainWindow
         Me.panelSidebarHolder = New System.Windows.Forms.Panel()
         Me.tabcontrolSidebar = New System.Windows.Forms.TabControl()
         Me.tabpageSearchTerms = New System.Windows.Forms.TabPage()
-        Me.tablelayoutpanelSearchTerms = New System.Windows.Forms.TableLayoutPanel()
-        Me.buttonClearSearchTerms = New System.Windows.Forms.Button()
         Me.listboxSearchTerms = New System.Windows.Forms.ListBox()
         Me.contextmenuSearchTerm = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ClearSelectedSearchTermToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -101,7 +99,6 @@ Partial Class aaformMainWindow
         Me.panelSidebarHolder.SuspendLayout()
         Me.tabcontrolSidebar.SuspendLayout()
         Me.tabpageSearchTerms.SuspendLayout()
-        Me.tablelayoutpanelSearchTerms.SuspendLayout()
         Me.contextmenuSearchTerm.SuspendLayout()
         Me.tabpageStatus.SuspendLayout()
         Me.tabpageCustomFilters.SuspendLayout()
@@ -437,38 +434,13 @@ Partial Class aaformMainWindow
         '
         'tabpageSearchTerms
         '
-        Me.tabpageSearchTerms.Controls.Add(Me.tablelayoutpanelSearchTerms)
+        Me.tabpageSearchTerms.Controls.Add(Me.listboxSearchTerms)
         Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
         Me.tabpageSearchTerms.Size = New System.Drawing.Size(289, 514)
         Me.tabpageSearchTerms.TabIndex = 4
         Me.tabpageSearchTerms.Text = "Search terms"
         Me.tabpageSearchTerms.UseVisualStyleBackColor = True
-        '
-        'tablelayoutpanelSearchTerms
-        '
-        Me.tablelayoutpanelSearchTerms.ColumnCount = 1
-        Me.tablelayoutpanelSearchTerms.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.tablelayoutpanelSearchTerms.Controls.Add(Me.buttonClearSearchTerms, 0, 1)
-        Me.tablelayoutpanelSearchTerms.Controls.Add(Me.listboxSearchTerms, 0, 0)
-        Me.tablelayoutpanelSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tablelayoutpanelSearchTerms.Location = New System.Drawing.Point(0, 0)
-        Me.tablelayoutpanelSearchTerms.Name = "tablelayoutpanelSearchTerms"
-        Me.tablelayoutpanelSearchTerms.RowCount = 2
-        Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tablelayoutpanelSearchTerms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
-        Me.tablelayoutpanelSearchTerms.Size = New System.Drawing.Size(289, 514)
-        Me.tablelayoutpanelSearchTerms.TabIndex = 1
-        '
-        'buttonClearSearchTerms
-        '
-        Me.buttonClearSearchTerms.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonClearSearchTerms.Location = New System.Drawing.Point(3, 477)
-        Me.buttonClearSearchTerms.Name = "buttonClearSearchTerms"
-        Me.buttonClearSearchTerms.Size = New System.Drawing.Size(283, 34)
-        Me.buttonClearSearchTerms.TabIndex = 1
-        Me.buttonClearSearchTerms.Text = "Clear all search terms"
-        Me.buttonClearSearchTerms.UseVisualStyleBackColor = True
         '
         'listboxSearchTerms
         '
@@ -478,10 +450,10 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.IntegralHeight = False
         Me.listboxSearchTerms.ItemHeight = 16
         Me.listboxSearchTerms.Items.AddRange(New Object() {"test", "test2", "test3", "test4"})
-        Me.listboxSearchTerms.Location = New System.Drawing.Point(3, 3)
+        Me.listboxSearchTerms.Location = New System.Drawing.Point(0, 0)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
         Me.listboxSearchTerms.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.listboxSearchTerms.Size = New System.Drawing.Size(283, 468)
+        Me.listboxSearchTerms.Size = New System.Drawing.Size(289, 514)
         Me.listboxSearchTerms.TabIndex = 0
         '
         'contextmenuSearchTerm
@@ -693,7 +665,6 @@ Partial Class aaformMainWindow
         Me.panelSidebarHolder.ResumeLayout(False)
         Me.tabcontrolSidebar.ResumeLayout(False)
         Me.tabpageSearchTerms.ResumeLayout(False)
-        Me.tablelayoutpanelSearchTerms.ResumeLayout(False)
         Me.contextmenuSearchTerm.ResumeLayout(False)
         Me.tabpageStatus.ResumeLayout(False)
         Me.tabpageCustomFilters.ResumeLayout(False)
@@ -742,8 +713,6 @@ Partial Class aaformMainWindow
     Friend WithEvents tabpageCustomFilters As TabPage
     Friend WithEvents tabpageSearchTerms As TabPage
     Friend WithEvents listboxSearchTerms As ListBox
-    Friend WithEvents tablelayoutpanelSearchTerms As TableLayoutPanel
-    Friend WithEvents buttonClearSearchTerms As Button
     Friend WithEvents listboxStatusTab As ListBox
     Friend WithEvents tabpageArchitecture As TabPage
     Friend WithEvents listboxSections As ListBox
