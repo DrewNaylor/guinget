@@ -70,10 +70,11 @@ IF NOT EXIST "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-mas
 REM If it doesn't exist, create it.
 mkdir "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master" )
 
-REM cls
+cls
 REM Set titlebar text to the downloading text:
-REM title %DOWNLOADING_TITLE_BAR%
-REM echo Downloading package from GitHub...
+title %DOWNLOADING_TITLE_BAR%
+echo Downloading package from GitHub...
+echo If you want to cancel, please use Ctrl+C.
 REM powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
 
 
@@ -85,6 +86,7 @@ cls
 REM Set titlebar text to the deleting text:
 title %DOWNLOADING_TITLE_BAR%
 echo Deleting old manifests...
+echo If you want to cancel, please use Ctrl+C.
 rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
 )
 REM ELSE (
@@ -96,6 +98,7 @@ cls
 REM Set titlebar text to the extracting text:
 title %EXTRACTING_TITLE_BAR%
 echo Extracting package previously downloaded from GitHub...
+echo If you want to cancel, please use Ctrl+C.
 powershell Expand-Archive -Path "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -DestinationPath " '%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master' " -Force
 
 echo(
@@ -103,6 +106,7 @@ cls
 REM Set titlebar text to the extracting text:
 title %EXTRACTING_TITLE_BAR%
 echo Copying manifests folder from package...
+echo If you want to cancel, please use Ctrl+C.
 robocopy /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
 choice
