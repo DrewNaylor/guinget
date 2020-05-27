@@ -74,6 +74,9 @@ goto beginning-of-script
 :start-building
 REM The code below here will be where the build starts.
 
+REM Get current time to display later.
+set START_TIME=%time%
+
 REM Check if the temp folder exists.
 IF NOT EXIST "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master" (
 REM If it doesn't exist, create it.
@@ -137,7 +140,10 @@ REM Set titlebar text back to the regular text:
 title %REGULAR_TITLE_BAR%
 cls
 echo Manifest update complete. Please refresh the package list in guinget to see the updated list.
-
+echo
+echo Start time: %START_TIME%
+echo End time: %time%
+echo
 pause
 
 REM Set titlebar back to default.
