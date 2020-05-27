@@ -70,17 +70,25 @@ IF NOT EXIST "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-mas
 REM If it doesn't exist, create it.
 mkdir "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master" )
 
-cls
+REM cls
 REM Set titlebar text to the downloading text:
-title %DOWNLOADING_TITLE_BAR%
-echo Downloading package from GitHub...
-powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
+REM title %DOWNLOADING_TITLE_BAR%
+REM echo Downloading package from GitHub...
+REM powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
 
+
+
+REM Check if the manifests folder exists.
+IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\manifests" (
+REM If it does exist, ask to delete.
 cls
 REM Set titlebar text to the deleting text:
 title %DOWNLOADING_TITLE_BAR%
 echo Deleting old manifests...
-rmdir /s "$env:AppData\winget-frontends\source\winget-pkgs\pkglist\manifests"
+rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
+) ELSE (
+REM If it doesn't exist, create it.
+mkdir "%AppData%\winget-frontends\source\winget-pkgs\manifests" )
 
 echo(
 REM Set titlebar text to the extracting text:
