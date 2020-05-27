@@ -35,10 +35,8 @@ Public Class aaformMainWindow
     End Sub
 
     Private Shared Sub AddPackageEntryToList()
-        ' Temporary copy of this sub's args:
-        ' Status As String, Package As String, AvailableVersion As String, Description As String
 
-        ' Adds a package to the package list based on what's passed to it.
+        ' Adds a package to the package list based on what's in the manifests folder.
         ' TODO: Make sure the package's status is properly set. For now, it'll
         ' probably be "Not installed" unless tracking installed packages is added
         ' as a feature.
@@ -65,16 +63,6 @@ Public Class aaformMainWindow
             ' Load package description column.
             Row.Cells.Item(5).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
         Next
-        'Dim separatedVersionArray() As String = libguinget.PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
-
-        ' Go through all the items in the array until we run out.
-        'For i As Integer = 0 To separatedPackageArray.Count - 1
-        '    ' Add a row with each item in the array.
-        '    ' Make a separated package info variable.
-        '    ' Make sure we're not below 0.
-        '    ' Now we split the text apart.
-        '    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", separatedPackageArray(i), separatedVersionArray(i), "Not available", separatedManifestLocationArray(i))
-        'Next
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
@@ -118,17 +106,10 @@ Public Class aaformMainWindow
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
-            'textboxPackageDetails.Text = Await libguinget.PackageTools.GetPkgDetailsAsync(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
-
-            ' Take text from the ManifestLocation cell and use that
+            ' Take text from the Manifest cell and use that
             ' file path to display text in the details textbox.
-            'textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(datagridviewPackageList.Item(5, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString).Replace(vbLf, vbCrLf)
-            'Dim PathWithOnlyTwoReplacements As String = PackageListTools.GetPackageDir(datagridviewPackageList.Item(2, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString)
             Dim ManifestPath As String = datagridviewPackageList.Item(6, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
-            'MessageBox.Show(ManifestPath)
-            ' This crashes on "Microsoft.VisualStudio.Community". Maybe what
-            ' could be done is to have a handler that says if the file can't be found,
-            ' just replace all the dots in the filename and try again.
+            ' Display full manifest in details textbox.
             textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
         End If
     End Sub
