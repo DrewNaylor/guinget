@@ -64,6 +64,8 @@ Public Class aaformMainWindow
             aaformMainWindow.Update()
         Next
 
+        ' Reset progress bar to 0.
+
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
