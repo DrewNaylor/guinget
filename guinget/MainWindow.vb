@@ -70,6 +70,15 @@ Public Class aaformMainWindow
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading details for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
             aaformMainWindow.Update()
         Next
+
+        ' Display number of packages loaded. This really should be
+        ' changed to calculate the number of currently-visible rows
+        ' in case the user is filtering the list,
+        ' but this is better than nothing for now.
+        ' This SO answer might help:
+        ' https://stackoverflow.com/a/44661255
+        aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount - 1).ToString &
+            " packages listed."
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
