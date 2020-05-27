@@ -30,6 +30,11 @@ Screenshot as of the middle of the night on May 26/27th, 2020, featuring a mostl
 
 Loading these YAML files takes a bit at the moment, as it's not async. I'd like to make it async, but for now this is good enough. Besides, there's a progress bar and progress label at the bottom and a label that says "please wait", so it's not like the window shows nothing while it loads. One issue is the window can't be moved around while it loads, which is something async loading would fix. Something that's ended up making it faster is just loading details directly from the YAML files, bypassing `winget show -e` entirely.
 
+Here's what it looks like when loading the package list:
+![](/docs/images/screenshot-loading-progress.png?raw=true)
+
+The data grid view that's used for the package list is hidden while loading so that things go faster. If the data grid view were still visible, it would show all the rows as they're added and slow things down until rows that aren't on screen are being added, at which point it would speed up a lot.
+
 TODO:
 - Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
 - Create library that can be used by guinget (as well as other winget front-ends that want to use it) that makes it easier to get package info from winget.
