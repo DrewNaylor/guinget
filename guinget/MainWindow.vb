@@ -72,6 +72,11 @@ Public Class aaformMainWindow
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
+        ' Set progress bar maximum to number of rows, in case there are new
+        ' rows. There shouldn't be any new rows though, as that would be
+        ' a result of not clearing the rows before filling them.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = aaformMainWindow.datagridviewPackageList.Rows.Count
+
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
