@@ -87,6 +87,7 @@ REM Set titlebar text to the deleting text:
 title %DOWNLOADING_TITLE_BAR%
 echo Deleting old manifests...
 echo If you want to cancel, please use Ctrl+C.
+echo This will remove the following folder and all subfolders:
 rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
 )
 REM ELSE (
