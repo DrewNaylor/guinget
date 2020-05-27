@@ -611,25 +611,28 @@ Partial Class aaformMainWindow
         'toolstripstatuslabelPackageCount
         '
         Me.toolstripstatuslabelPackageCount.Name = "toolstripstatuslabelPackageCount"
-        Me.toolstripstatuslabelPackageCount.Size = New System.Drawing.Size(124, 20)
-        Me.toolstripstatuslabelPackageCount.Text = "# packages listed"
+        Me.toolstripstatuslabelPackageCount.Size = New System.Drawing.Size(126, 20)
+        Me.toolstripstatuslabelPackageCount.Text = "0 packages listed."
         '
         'toolstripstatusSplitter
         '
         Me.toolstripstatusSplitter.Name = "toolstripstatusSplitter"
         Me.toolstripstatusSplitter.Size = New System.Drawing.Size(13, 20)
         Me.toolstripstatusSplitter.Text = "|"
+        Me.toolstripstatusSplitter.Visible = False
         '
         'toolstripstatuslabelLoadingPackageCount
         '
         Me.toolstripstatuslabelLoadingPackageCount.Name = "toolstripstatuslabelLoadingPackageCount"
-        Me.toolstripstatuslabelLoadingPackageCount.Size = New System.Drawing.Size(176, 20)
-        Me.toolstripstatuslabelLoadingPackageCount.Text = "Loading package # of #..."
+        Me.toolstripstatuslabelLoadingPackageCount.Size = New System.Drawing.Size(174, 20)
+        Me.toolstripstatuslabelLoadingPackageCount.Text = "Loading package 0 of 0..."
+        Me.toolstripstatuslabelLoadingPackageCount.Visible = False
         '
         'toolstripprogressbarLoadingPackages
         '
         Me.toolstripprogressbarLoadingPackages.Name = "toolstripprogressbarLoadingPackages"
         Me.toolstripprogressbarLoadingPackages.Size = New System.Drawing.Size(150, 18)
+        Me.toolstripprogressbarLoadingPackages.Visible = False
         '
         'aaformMainWindow
         '
