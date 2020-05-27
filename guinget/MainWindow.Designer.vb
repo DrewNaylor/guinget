@@ -623,7 +623,7 @@ Partial Class aaformMainWindow
         'toolstripprogressbarLoadingPackages
         '
         Me.toolstripprogressbarLoadingPackages.Name = "toolstripprogressbarLoadingPackages"
-        Me.toolstripprogressbarLoadingPackages.Size = New System.Drawing.Size(100, 18)
+        Me.toolstripprogressbarLoadingPackages.Size = New System.Drawing.Size(150, 18)
         '
         'toolstripstatusSplitter
         '
