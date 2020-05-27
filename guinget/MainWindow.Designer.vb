@@ -440,7 +440,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.FormattingEnabled = True
         Me.listboxSearchTerms.IntegralHeight = False
         Me.listboxSearchTerms.ItemHeight = 16
-        Me.listboxSearchTerms.Items.AddRange(New Object() {"test", "test2", "test3", "test4"})
+        Me.listboxSearchTerms.Items.AddRange(New Object() {"All", "test", "test2", "test3", "test4"})
         Me.listboxSearchTerms.Location = New System.Drawing.Point(0, 0)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
         Me.listboxSearchTerms.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
@@ -488,6 +488,7 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.FormattingEnabled = True
         Me.listboxStatusTab.IntegralHeight = False
         Me.listboxStatusTab.ItemHeight = 16
+        Me.listboxStatusTab.Items.AddRange(New Object() {"All"})
         Me.listboxStatusTab.Location = New System.Drawing.Point(3, 3)
         Me.listboxStatusTab.Name = "listboxStatusTab"
         Me.listboxStatusTab.Size = New System.Drawing.Size(283, 508)
@@ -509,6 +510,7 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.FormattingEnabled = True
         Me.listboxCustomFilters.IntegralHeight = False
         Me.listboxCustomFilters.ItemHeight = 16
+        Me.listboxCustomFilters.Items.AddRange(New Object() {"All"})
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
         Me.listboxCustomFilters.Size = New System.Drawing.Size(289, 514)
@@ -531,6 +533,7 @@ Partial Class aaformMainWindow
         Me.listboxSections.FormattingEnabled = True
         Me.listboxSections.IntegralHeight = False
         Me.listboxSections.ItemHeight = 16
+        Me.listboxSections.Items.AddRange(New Object() {"All"})
         Me.listboxSections.Location = New System.Drawing.Point(3, 3)
         Me.listboxSections.Name = "listboxSections"
         Me.listboxSections.Size = New System.Drawing.Size(283, 508)
@@ -552,6 +555,7 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.FormattingEnabled = True
         Me.listboxSourceTab.IntegralHeight = False
         Me.listboxSourceTab.ItemHeight = 16
+        Me.listboxSourceTab.Items.AddRange(New Object() {"All"})
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Name = "listboxSourceTab"
         Me.listboxSourceTab.Size = New System.Drawing.Size(289, 514)
@@ -573,6 +577,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.FormattingEnabled = True
         Me.listboxArchitecture.IntegralHeight = False
         Me.listboxArchitecture.ItemHeight = 16
+        Me.listboxArchitecture.Items.AddRange(New Object() {"All"})
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Name = "listboxArchitecture"
         Me.listboxArchitecture.Size = New System.Drawing.Size(289, 514)
