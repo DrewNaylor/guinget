@@ -41,6 +41,11 @@ Public Class aaformMainWindow
         ' probably be "Not installed" unless tracking installed packages is added
         ' as a feature.
 
+        ' Display loading progress bar and stuff.
+        aaformMainWindow.toolstripstatusSplitter.Visible = True
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = True
+
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
 
@@ -70,6 +75,14 @@ Public Class aaformMainWindow
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading details for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
             aaformMainWindow.Update()
         Next
+
+        ' Hide the loading label and progress bar as well as the
+        ' fake splitter label.
+        aaformMainWindow.toolstripstatusSplitter.Visible = False
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = False
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = False
+
+
 
         ' Display number of packages loaded. This really should be
         ' changed to calculate the number of currently-visible rows
