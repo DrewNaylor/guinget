@@ -291,6 +291,7 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.Location = New System.Drawing.Point(0, 0)
         Me.textboxPackageDetails.Multiline = True
         Me.textboxPackageDetails.Name = "textboxPackageDetails"
+        Me.textboxPackageDetails.ReadOnly = True
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.textboxPackageDetails.Size = New System.Drawing.Size(691, 195)
         Me.textboxPackageDetails.TabIndex = 0
