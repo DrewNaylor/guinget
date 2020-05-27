@@ -128,38 +128,13 @@ echo This will remove the following folder and all subfolders:
 rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\temp"
 )
 
-choice
-
-REM Decide which Program Files folder to run msbuild from based on which folders exist. Courtesy this 
-REM Stack Overflow answer: <http://superuser.com/a/142416>
-
-if defined ProgramFiles(x86) (
-	REM If the PC has Program Files (x86), run msbuild from this folder.
-   echo(
-   REM Set titlebar text to the building text:
-	title %BUILDING_TITLE_BAR%
-	echo Building the VBProj file...
-	echo(
-	"C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" "C:\Users\%USERNAME%\0AppLauncherBuilds\uxl-master\UXL-Launcher-master\UXL-Launcher\UXL-Launcher.vbproj"
-	echo(
-
-) else (
-   REM If the PC only has Program Files, run msbuild from another folder.
-   echo(
-   REM Set titlebar text to the building text:
-	title %BUILDING_TITLE_BAR%
-	echo Building the VBProj file...
-	echo(
-	"C:\Program Files\MSBuild\14.0\Bin\MSBuild.exe" "C:\Users\%USERNAME%\0AppLauncherBuilds\uxl-master\UXL-Launcher-master\UXL-Launcher\UXL-Launcher.vbproj"
-)
-
-
 echo(
 
-REM Set titlebar text to the running text:
-title %RUNNING_TITLE_BAR%
-echo Running the EXE file...
-"C:\Users\%USERNAME%\0AppLauncherBuilds\uxl-master\UXL-Launcher-master\UXL-Launcher\bin\Debug\UXL-Launcher.exe"
+REM Set titlebar text back to the regular text:
+title %REGULAR_TITLE_BAR%
+echo Manifest update complete. Please refresh the package list in guinget to see the updated list.
+
+read
 
 REM Set titlebar back to default.
 title Command Prompt
