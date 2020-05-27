@@ -69,7 +69,7 @@ cls
 REM Set titlebar text to the downloading text:
 title %DOWNLOADING_TITLE_BAR%
 echo Downloading package from GitHub...
-powershell Invoke-WebRequest "https://github.com/DrewNaylor/UXL-Launcher/archive/master.zip" -OutFile "$env:TEMP\uxl-launcher-master.zip" -UseBasicParsing
+powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\pkglist\temp\winget-pkgs-master.zip" -UseBasicParsing
 
 echo(
 REM Set titlebar text to the extracting text:
