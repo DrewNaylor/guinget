@@ -94,7 +94,7 @@ echo(
 REM Set titlebar text to the extracting text:
 title %EXTRACTING_TITLE_BAR%
 echo Extracting package previously downloaded from GitHub...
-powershell Expand-Archive -Path "$env:TEMP\uxl-launcher-master.zip" -DestinationPath " 'C:\Users\%USERNAME%\0AppLauncherBuilds\uxl-master' " -Force
+powershell Expand-Archive -Path "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -DestinationPath " '%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests' " -Force
 
 
 REM Decide which Program Files folder to run msbuild from based on which folders exist. Courtesy this 
