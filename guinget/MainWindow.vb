@@ -49,6 +49,8 @@ Public Class aaformMainWindow
 
             ' Read the file into the manifest column and make a new row with it.
             aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
+
+            ' Update loading statusbar label and progressbar.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
             aaformMainWindow.Update()
         Next
@@ -63,6 +65,10 @@ Public Class aaformMainWindow
             Row.Cells.Item(4).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
             Row.Cells.Item(5).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
+
+            ' Update loading statusbar label and progressbar.
+            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Updating info for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
+            aaformMainWindow.Update()
         Next
     End Sub
 
