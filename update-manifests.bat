@@ -46,7 +46,7 @@ echo --------------------------------------
 echo(
 
 REM Start asking the user if they want to continue.
-echo Would you like to continue running this script? Type "Yes" to continue, "no" to abort, or "README" to see the links for required software mentioned above. Currently UAS only supports the Master branch of UXL Launcher.
+echo Would you like to continue running this script? Type "Yes" to continue, "no" to abort, or "README" to see the links for required software mentioned above. Currently update-manifests only supports the Master branch of Microsoft\winget-pkgs on GitHub.
 set /p BUILDQUESTION=
 If %BUILDQUESTION%==no exit cmd
 If %BUILDQUESTION%==Yes goto start-building
