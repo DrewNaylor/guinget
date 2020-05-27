@@ -52,6 +52,7 @@ Public Class aaformMainWindow
         ' Set initial minimum and maximum of the loading progressbar.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Minimum = 0
         aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 2
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
         ' Go through everything in the manifest paths array until it's out.
         For i As Integer = 0 To ManifestPaths.Count - 2
@@ -61,6 +62,7 @@ Public Class aaformMainWindow
 
             ' Update loading statusbar label and progressbar.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
+            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             aaformMainWindow.Update()
         Next
 
@@ -80,6 +82,7 @@ Public Class aaformMainWindow
 
             ' Update loading statusbar label and progressbar.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading details for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
+            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             aaformMainWindow.Update()
         Next
 
