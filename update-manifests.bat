@@ -23,6 +23,9 @@ set DELETING_OLD_MANIFESTS_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: D
 REM Create variable for the titlebar text when deleting the old manifests:
 set COPYING_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Copying manifests folder from package...
 
+REM Create variable for the titlebar text when deleting the temp files:
+set DELETING_TEMP_FILES_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Deleting temp files...
+
 REM Set the titlebar text to the regular text:
 title %REGULAR_TITLE_BAR%
 
@@ -83,14 +86,12 @@ echo Downloading package from GitHub...
 echo If you want to cancel, please use Ctrl+C.
 REM powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
 
-
-
 REM Check if the manifests folder exists.
 IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" (
 REM If it does exist, ask to delete.
 cls
 REM Set titlebar text to the deleting text:
-title %DOWNLOADING_TITLE_BAR%
+title %DELETING_OLD_MANIFESTS_TITLE_BAR%
 echo Deleting old manifests...
 echo If you want to cancel, please use Ctrl+C.
 echo This will remove the following folder and all subfolders:
@@ -108,7 +109,7 @@ powershell Expand-Archive -Path "$env:AppData\winget-frontends\source\winget-pkg
 echo(
 cls
 REM Set titlebar text to the copying text:
-title %EXTRACTING_TITLE_BAR%
+title %COPYING_TITLE_BAR%
 echo Copying manifests folder from package...
 echo If you want to cancel, please use Ctrl+C.
 robocopy /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
@@ -119,7 +120,7 @@ IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\temp" (
 REM If it does exist, ask to delete.
 cls
 REM Set titlebar text to the deleting text:
-title %DOWNLOADING_TITLE_BAR%
+title %DELETING_TEMP_FILES_TITLE_BAR%
 echo Deleting temp files...
 echo If you want to cancel, please use Ctrl+C.
 echo Would you like to delete the temp files left from updating the manifests?
