@@ -25,6 +25,11 @@ Turned out to be difficult to get information from the SQLite database file, so 
 
 Yeah, I've stopped using the SQLite database and started just reading from a package list cache stored in `%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests`, which is downloaded from `Microsoft\winget-pkgs` on GitHub. The `update-manifests.bat` script can be used to automate the downloading and updating of these manifests.
 
+Screenshot as of the middle of the night on May 26/27th, 2020, featuring a mostly-complete package list from the YAML files:
+![](/docs/images/screenshot-mostly-complete-packagelist.png?raw=true)
+
+Loading these YAML files takes a bit at the moment, as it's not async. I'd like to make it async, but for now this is good enough. Besides, there's a progress bar and progress label at the bottom and a label that says "please wait", so it's not like the window shows nothing while it loads. One issue is the window can't be moved around while it loads, which is something async loading would fix. Something that's ended up making it faster is just loading details directly from the YAML files, bypassing `winget show -e` entirely.
+
 TODO:
 - Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
 - Create library that can be used by guinget (as well as other winget front-ends that want to use it) that makes it easier to get package info from winget.
