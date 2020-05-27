@@ -65,11 +65,22 @@ goto beginning-of-script
 :start-building
 REM The code below here will be where the build starts.
 
+REM Check if the temp folder exists.
+IF NOT EXIST "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master" (
+REM If it doesn't exist, create it.
+mkdir "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master" )
+
 cls
 REM Set titlebar text to the downloading text:
 title %DOWNLOADING_TITLE_BAR%
 echo Downloading package from GitHub...
-powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\pkglist\temp\winget-pkgs-master.zip" -UseBasicParsing
+powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
+
+cls
+REM Set titlebar text to the deleting text:
+title %DOWNLOADING_TITLE_BAR%
+echo Deleting old manifests...
+rmdir /s "$env:AppData\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
 echo(
 REM Set titlebar text to the extracting text:
