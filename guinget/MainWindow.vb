@@ -41,6 +41,9 @@ Public Class aaformMainWindow
         ' probably be "Not installed" unless tracking installed packages is added
         ' as a feature.
 
+        ' Clear the rows.
+        aaformMainWindow.datagridviewPackageList.Rows.Clear()
+
         ' Display loading progress bar and stuff.
         aaformMainWindow.toolstripstatusSplitter.Visible = True
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
