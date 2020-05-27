@@ -84,7 +84,8 @@ Public Class PackageListTools
         Dim PackageListArray As String = String.Empty
 
         ' Create a variable to hold the folder we'll be looking in.
-        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\pkglist\manifests"
+        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+            "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
