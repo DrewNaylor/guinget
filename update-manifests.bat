@@ -86,15 +86,25 @@ REM Set titlebar text to the deleting text:
 title %DOWNLOADING_TITLE_BAR%
 echo Deleting old manifests...
 rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
-) ELSE (
+)
+REM ELSE (
 REM If it doesn't exist, create it.
-mkdir "%AppData%\winget-frontends\source\winget-pkgs\manifests" )
+REM mkdir "%AppData%\winget-frontends\source\winget-pkgs\manifests" )
 
 echo(
+cls
 REM Set titlebar text to the extracting text:
 title %EXTRACTING_TITLE_BAR%
 echo Extracting package previously downloaded from GitHub...
 powershell Expand-Archive -Path "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -DestinationPath " '%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master' " -Force
+
+echo(
+cls
+REM Set titlebar text to the extracting text:
+title %EXTRACTING_TITLE_BAR%
+echo Copying manifests folder from package...
+robocopy /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
+
 
 
 REM Decide which Program Files folder to run msbuild from based on which folders exist. Courtesy this 
