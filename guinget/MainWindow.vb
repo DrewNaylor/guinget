@@ -29,15 +29,8 @@ Public Class aaformMainWindow
         ' Original code for info as well as the PackageInfo class was from this StackOverflow answer:
         ' https://stackoverflow.com/a/36801744
 
-        ' Add test packages to the list.
-        ' These will eventually be replaced with a package list
-        ' retrieved from winget.
-        'Dim p = New PackageInfo With {.Status = "NotInstalled", .Package = "VLC", .AvailableVersion = "3.0.10", .Description = "A versitile media player."}
-        'AddPackageEntryToList(p.Status, p.Package, p.AvailableVersion, p.Description)
-        'Dim p2 = New PackageInfo With {.Status = "Installed", .Package = "Notepad++", .AvailableVersion = "v7.8.5", .Description = "Light-weight but feature-rich text editor."}
-        'AddPackageEntryToList(p2.Status, p2.Package, p2.AvailableVersion, p2.Description)
-        'Dim p3 = New PackageInfo With {.Status = "Installed", .Package = "z", .AvailableVersion = "1.0", .Description = "z test"}
-        'AddPackageEntryToList(p3.Status, p3.Package, p3.AvailableVersion, p3.Description)
+        ' Add packages to the list using what's stored in
+        ' %AppData%\winget-frontends\pkglist\manifests.
         AddPackageEntryToList()
     End Sub
 
@@ -49,23 +42,7 @@ Public Class aaformMainWindow
         ' TODO: Make sure the package's status is properly set. For now, it'll
         ' probably be "Not installed" unless tracking installed packages is added
         ' as a feature.
-        ' Also be sure to properly get the other package info, like the description.
-        ' Maybe the packages could be separated with semicolons, and we split the master
-        ' list apart at the semicolon, then for each package info set we split it again
-        ' at a comma and put in the rows with the remaining info.
-        ' This may be more complicated in SQL as the data isn't all right there,
-        ' but we'll have to go from the master table and grab details from the separate tables
-        ' for each package.
-        'aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", Status, libguinget.PackageListTools.GetPackageList, AvailableVersion, Description)
 
-        ' Assign a variable to store the package list array.
-        'Dim separatedPackageArray() As String = PackageListTools.GetPackageListFromYaml("Id").Split(CType(",", Char()))
-
-        'Dim separatedVersionArray() As String = PackageListTools.GetPackageListFromYaml("Version").Split(CType(",", Char()))
-
-        'Dim separatedManifestLocationArray() As String = PackageListTools.GetPackageListFromYaml("ManifestLocation").Split(CType(",", Char()))
-
-        Dim Manifest As String
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
 
