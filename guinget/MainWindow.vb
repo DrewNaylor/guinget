@@ -49,6 +49,10 @@ Public Class aaformMainWindow
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
 
+        ' Set initial minimum and maximum of the loading progressbar.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Minimum = 0
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 2
+
         ' Go through everything in the manifest paths array until it's out.
         For i As Integer = 0 To ManifestPaths.Count - 2
 
