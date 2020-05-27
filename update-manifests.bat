@@ -90,9 +90,6 @@ echo If you want to cancel, please use Ctrl+C.
 echo This will remove the following folder and all subfolders:
 rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
 )
-REM ELSE (
-REM If it doesn't exist, create it.
-REM mkdir "%AppData%\winget-frontends\source\winget-pkgs\manifests" )
 
 echo(
 cls
@@ -104,11 +101,25 @@ powershell Expand-Archive -Path "$env:AppData\winget-frontends\source\winget-pkg
 
 echo(
 cls
-REM Set titlebar text to the extracting text:
+REM Set titlebar text to the copying text:
 title %EXTRACTING_TITLE_BAR%
 echo Copying manifests folder from package...
 echo If you want to cancel, please use Ctrl+C.
 robocopy /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
+
+REM Ask the user if they'd like to delete the items in the temp folder.
+REM Check if the manifests folder exists.
+IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\temp" (
+REM If it does exist, ask to delete.
+cls
+REM Set titlebar text to the deleting text:
+title %DOWNLOADING_TITLE_BAR%
+echo Deleting temp files...
+echo If you want to cancel, please use Ctrl+C.
+echo Would you like to delete the temp files left from updating the manifests?
+echo This will remove the following folder and all subfolders:
+rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\temp"
+)
 
 choice
 
