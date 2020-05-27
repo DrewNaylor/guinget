@@ -33,6 +33,7 @@ Partial Class aaformMainWindow
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
+        Me.panelPackageListHolder = New System.Windows.Forms.Panel()
         Me.datagridviewPackageList = New System.Windows.Forms.DataGridView()
         Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,6 +46,7 @@ Partial Class aaformMainWindow
         Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
         Me.textboxPackageDetails = New System.Windows.Forms.TextBox()
         Me.panelMainPkgArea = New System.Windows.Forms.Panel()
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
@@ -82,13 +84,12 @@ Partial Class aaformMainWindow
         Me.toolstripstatusSplitter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
-        Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
-        Me.panelPackageListHolder = New System.Windows.Forms.Panel()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
         Me.splitcontainerMainWindow.Panel2.SuspendLayout()
         Me.splitcontainerMainWindow.SuspendLayout()
+        Me.panelPackageListHolder.SuspendLayout()
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.contextmenustripPackageMenu.SuspendLayout()
         Me.panelMainPkgArea.SuspendLayout()
@@ -109,7 +110,6 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.SuspendLayout()
         Me.panelMainForm.SuspendLayout()
         Me.statusbarMainWindow.SuspendLayout()
-        Me.panelPackageListHolder.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -184,6 +184,16 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow.Size = New System.Drawing.Size(691, 543)
         Me.splitcontainerMainWindow.SplitterDistance = 344
         Me.splitcontainerMainWindow.TabIndex = 1
+        '
+        'panelPackageListHolder
+        '
+        Me.panelPackageListHolder.Controls.Add(Me.datagridviewPackageList)
+        Me.panelPackageListHolder.Controls.Add(Me.labelUpdatingPackageList)
+        Me.panelPackageListHolder.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelPackageListHolder.Location = New System.Drawing.Point(0, 0)
+        Me.panelPackageListHolder.Name = "panelPackageListHolder"
+        Me.panelPackageListHolder.Size = New System.Drawing.Size(691, 344)
+        Me.panelPackageListHolder.TabIndex = 2
         '
         'datagridviewPackageList
         '
@@ -284,6 +294,18 @@ Partial Class aaformMainWindow
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
         Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(167, 26)
         Me.InstallToolStripMenuItem.Text = "Install"
+        '
+        'labelUpdatingPackageList
+        '
+        Me.labelUpdatingPackageList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.labelUpdatingPackageList.AutoSize = True
+        Me.labelUpdatingPackageList.Location = New System.Drawing.Point(3, 0)
+        Me.labelUpdatingPackageList.Name = "labelUpdatingPackageList"
+        Me.labelUpdatingPackageList.Size = New System.Drawing.Size(228, 17)
+        Me.labelUpdatingPackageList.TabIndex = 1
+        Me.labelUpdatingPackageList.Text = "Loading package list, please wait..."
         '
         'textboxPackageDetails
         '
@@ -492,7 +514,7 @@ Partial Class aaformMainWindow
         Me.tabpageStatus.Location = New System.Drawing.Point(4, 25)
         Me.tabpageStatus.Name = "tabpageStatus"
         Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageStatus.Size = New System.Drawing.Size(289, 508)
+        Me.tabpageStatus.Size = New System.Drawing.Size(289, 514)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -505,7 +527,7 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.ItemHeight = 16
         Me.listboxStatusTab.Location = New System.Drawing.Point(3, 3)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(283, 502)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(283, 508)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
@@ -513,7 +535,7 @@ Partial Class aaformMainWindow
         Me.tabpageCustomFilters.Controls.Add(Me.listboxCustomFilters)
         Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 25)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(289, 508)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(289, 514)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -526,7 +548,7 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.ItemHeight = 16
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(289, 508)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(289, 514)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'tabpageSections
@@ -535,7 +557,7 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSections.Name = "tabpageSections"
         Me.tabpageSections.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageSections.Size = New System.Drawing.Size(289, 508)
+        Me.tabpageSections.Size = New System.Drawing.Size(289, 514)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
@@ -548,7 +570,7 @@ Partial Class aaformMainWindow
         Me.listboxSections.ItemHeight = 16
         Me.listboxSections.Location = New System.Drawing.Point(3, 3)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(283, 502)
+        Me.listboxSections.Size = New System.Drawing.Size(283, 508)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
@@ -556,7 +578,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource.Controls.Add(Me.listboxSourceTab)
         Me.tabpageSource.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(289, 508)
+        Me.tabpageSource.Size = New System.Drawing.Size(289, 514)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -569,7 +591,7 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.ItemHeight = 16
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(289, 508)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(289, 514)
         Me.listboxSourceTab.TabIndex = 1
         '
         'tabpageArchitecture
@@ -577,7 +599,7 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.Controls.Add(Me.listboxArchitecture)
         Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 25)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(289, 508)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(289, 514)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -590,7 +612,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.ItemHeight = 16
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(289, 508)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(289, 514)
         Me.listboxArchitecture.TabIndex = 1
         '
         'panelMainForm
@@ -638,28 +660,6 @@ Partial Class aaformMainWindow
         Me.toolstripprogressbarLoadingPackages.Size = New System.Drawing.Size(150, 18)
         Me.toolstripprogressbarLoadingPackages.Visible = False
         '
-        'labelUpdatingPackageList
-        '
-        Me.labelUpdatingPackageList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.labelUpdatingPackageList.AutoSize = True
-        Me.labelUpdatingPackageList.Location = New System.Drawing.Point(3, 0)
-        Me.labelUpdatingPackageList.Name = "labelUpdatingPackageList"
-        Me.labelUpdatingPackageList.Size = New System.Drawing.Size(228, 17)
-        Me.labelUpdatingPackageList.TabIndex = 1
-        Me.labelUpdatingPackageList.Text = "Loading package list, please wait..."
-        '
-        'panelPackageListHolder
-        '
-        Me.panelPackageListHolder.Controls.Add(Me.datagridviewPackageList)
-        Me.panelPackageListHolder.Controls.Add(Me.labelUpdatingPackageList)
-        Me.panelPackageListHolder.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelPackageListHolder.Location = New System.Drawing.Point(0, 0)
-        Me.panelPackageListHolder.Name = "panelPackageListHolder"
-        Me.panelPackageListHolder.Size = New System.Drawing.Size(691, 344)
-        Me.panelPackageListHolder.TabIndex = 2
-        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -679,6 +679,8 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow.Panel2.PerformLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.splitcontainerMainWindow.ResumeLayout(False)
+        Me.panelPackageListHolder.ResumeLayout(False)
+        Me.panelPackageListHolder.PerformLayout()
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.contextmenustripPackageMenu.ResumeLayout(False)
         Me.panelMainPkgArea.ResumeLayout(False)
@@ -701,8 +703,6 @@ Partial Class aaformMainWindow
         Me.panelMainForm.ResumeLayout(False)
         Me.statusbarMainWindow.ResumeLayout(False)
         Me.statusbarMainWindow.PerformLayout()
-        Me.panelPackageListHolder.ResumeLayout(False)
-        Me.panelPackageListHolder.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

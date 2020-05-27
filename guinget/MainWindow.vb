@@ -41,6 +41,9 @@ Public Class aaformMainWindow
         ' probably be "Not installed" unless tracking installed packages is added
         ' as a feature.
 
+        ' Change mouse cursor to the "working" one.
+        aaformMainWindow.Cursor = Cursors.WaitCursor
+
         ' Clear the rows.
         aaformMainWindow.datagridviewPackageList.Rows.Clear()
 
@@ -116,6 +119,9 @@ Public Class aaformMainWindow
 
         ' Show datagridview again.
         aaformMainWindow.datagridviewPackageList.Visible = True
+
+        ' Change mouse cursor to the default one.
+        aaformMainWindow.Cursor = Cursors.Default
 
         ' Display number of packages loaded. This really should be
         ' changed to calculate the number of currently-visible rows
