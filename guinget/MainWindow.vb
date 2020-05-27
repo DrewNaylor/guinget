@@ -49,7 +49,8 @@ Public Class aaformMainWindow
 
             ' Read the file into the manifest column and make a new row with it.
             aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
-
+            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
+            aaformMainWindow.Update()
         Next
 
         ' Now we load the details for each row.
