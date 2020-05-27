@@ -84,7 +84,7 @@ REM Set titlebar text to the downloading text:
 title %DOWNLOADING_TITLE_BAR%
 echo Downloading package from GitHub...
 echo If you want to cancel, please use Ctrl+C.
-powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
+REM powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
 
 REM Check if the manifests folder exists.
 IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" (
@@ -105,6 +105,7 @@ title %EXTRACTING_TITLE_BAR%
 echo Extracting package previously downloaded from GitHub...
 echo If you want to cancel, please use Ctrl+C.
 powershell Expand-Archive -Path "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -DestinationPath " '%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master' " -Force
+pause
 
 echo(
 cls
@@ -112,7 +113,9 @@ REM Set titlebar text to the copying text:
 title %COPYING_TITLE_BAR%
 echo Copying manifests folder from package...
 echo If you want to cancel, please use Ctrl+C.
-robocopy /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
+pause
+robocopy /NFL /NDL /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
+pause
 
 REM Ask the user if they'd like to delete the items in the temp folder.
 REM Check if the manifests folder exists.
@@ -134,7 +137,7 @@ REM Set titlebar text back to the regular text:
 title %REGULAR_TITLE_BAR%
 echo Manifest update complete. Please refresh the package list in guinget to see the updated list.
 
-read
+pause
 
 REM Set titlebar back to default.
 title Command Prompt
