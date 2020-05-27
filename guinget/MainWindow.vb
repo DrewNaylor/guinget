@@ -41,6 +41,9 @@ Public Class aaformMainWindow
         ' probably be "Not installed" unless tracking installed packages is added
         ' as a feature.
 
+        ' TODO: If I can figure out a way to make this async, I will,
+        ' but for now non-async is better than nothing.
+
         ' Change mouse cursor to the "working" one.
         aaformMainWindow.Cursor = Cursors.WaitCursor
 
