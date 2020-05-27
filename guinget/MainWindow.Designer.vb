@@ -316,6 +316,7 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.textboxPackageDetails.Size = New System.Drawing.Size(691, 195)
         Me.textboxPackageDetails.TabIndex = 0
+        Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
         '
         'panelMainPkgArea
         '
