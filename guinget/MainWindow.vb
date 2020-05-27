@@ -67,7 +67,7 @@ Public Class aaformMainWindow
             Row.Cells.Item(5).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
 
             ' Update loading statusbar label and progressbar.
-            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Updating info for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
+            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading details for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
             aaformMainWindow.Update()
         Next
     End Sub
