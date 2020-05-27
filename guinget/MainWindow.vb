@@ -111,6 +111,12 @@ Public Class aaformMainWindow
             Dim ManifestPath As String = datagridviewPackageList.Item(6, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
             ' Display full manifest in details textbox.
             textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
+        ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
+            ' If no rows are selected, say so in the same way Synaptic does,
+            ' because it says it in a way that's simple and nice.
+            ' This might not show up since rows are automatically selected when
+            ' they're loaded.
+            textboxPackageDetails.Text = "No package is selected."
         End If
     End Sub
 
