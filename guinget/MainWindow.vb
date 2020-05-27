@@ -246,6 +246,13 @@ Public Class aaformMainWindow
         End Using
     End Sub
 
+    Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
+        ' Display temporary message saying to use update-manifests.bat, then click Ok.
+        MessageBox.Show("Please run update-manifests.bat located in guinget's EXE directory, then click Ok when it's finished.")
+        ' Reload the package list with the new manifests.
+        AddPackageEntryToList()
+    End Sub
+
 
 
 
