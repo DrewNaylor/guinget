@@ -660,7 +660,7 @@ Partial Class aaformMainWindow
         Me.Controls.Add(Me.menustripMainWindow)
         Me.MainMenuStrip = Me.menustripMainWindow
         Me.Name = "aaformMainWindow"
-        Me.Text = "guinget"
+        Me.Text = "guinget version 0.1 pre-alpha 1"
         Me.menustripMainWindow.ResumeLayout(False)
         Me.menustripMainWindow.PerformLayout()
         Me.splitcontainerMainWindow.Panel1.ResumeLayout(False)
