@@ -29,7 +29,7 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageListTools
 
-    Public Shared Function GetPackageInfoFromYaml(ManifestPath As String, RequestedKey As String) As String
+    Public Shared Async Function GetPackageInfoFromYaml(ManifestPath As String, RequestedKey As String) As Task(Of String)
 
         ' Load in the file and get whatever was requested of it.
 
@@ -46,35 +46,42 @@ Public Class PackageListTools
         ' This working example is described in the following
         ' StackOverflow answer:
         ' https://stackoverflow.com/a/46897520
+
+        Dim PackageInfo As String = String.Empty
         Using Input As StreamReader = File.OpenText(ManifestPath)
 
-            ' Load the stream in.
-            Dim YamlStream As New YamlStream
-            YamlStream.Load(Input)
+            PackageInfo = Await GetManifestInfoAsync(Input, RequestedKey)
+        End Using
 
-            ' Create variable for root node.
-            Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+        Return PackageInfo
 
-            For Each Entry In YamlRoot.Children
+        ' Load the stream in.
+        'Dim YamlStream As New YamlStream
+        'YamlStream.Load(Input)
 
-                ' If the requested key exists, then use it.
-                ' This check doesn't work; maybe something
-                ' like an ordered list would be better:
-                ' https://stackoverflow.com/a/30097560
-                ' Check each entry in the YAML root node.
-                If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
-                    ' If we're looking at an ID, add it to the package list array.
+        '' Create variable for root node.
+        'Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
 
-                    Return Entry.Value.ToString
-                    'MessageBox.Show(Entry.Value.ToString)
+        'For Each Entry In YamlRoot.Children
 
-                End If
+        '    ' If the requested key exists, then use it.
+        '    ' This check doesn't work; maybe something
+        '    ' like an ordered list would be better:
+        '    ' https://stackoverflow.com/a/30097560
+        '    ' Check each entry in the YAML root node.
+        '    If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
+        '        ' If we're looking at an ID, add it to the package list array.
 
-            Next
+        '        Return Entry.Value.ToString
+        '        'MessageBox.Show(Entry.Value.ToString)
+
+        '    End If
+
+        'Next
 
     End Function
 
-    Async Function GetManifestInfoAsync(YamlInput As StreamReader, RequestedKey As String) As Task(Of String)
+    Friend Shared Async Function GetManifestInfoAsync(YamlInput As StreamReader, RequestedKey As String) As Task(Of String)
         ' Load the stream in.
         Dim YamlStream As New YamlStream
         YamlStream.Load(YamlInput)
@@ -94,7 +101,7 @@ Public Class PackageListTools
             If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
                 ' If we're looking at an ID, add it to the package list array.
 
-                FinalList = FinalList & Await Entry.Value.ToString
+                Return Entry.Value.ToString
                 'MessageBox.Show(Entry.Value.ToString)
 
             End If
