@@ -51,14 +51,14 @@ Public Class PackageTools
         Using Input As StreamReader = File.OpenText(ManifestPath)
 
             ' Getting package info using async.
-            PackageInfo = Await GetManifestInfoAsync(Input, RequestedKey)
+            PackageInfo = Await GetYamlKeyValueAsync(Input, RequestedKey)
         End Using
 
         Return PackageInfo
 
     End Function
 
-    Friend Shared Async Function GetManifestInfoAsync(YamlInput As StreamReader, RequestedKey As String) As Task(Of String)
+    Friend Shared Async Function GetYamlKeyValueAsync(YamlInput As StreamReader, RequestedKey As String) As Task(Of String)
 
         ' Load the stream in.
         Dim YamlStream As New YamlStream
@@ -87,20 +87,20 @@ Public Class PackageTools
     End Function
 
     ' Get package details from winget.
-    Public Shared Async Function GetPkgDetailsAsync(PackageId As String) As Task(Of String)
+    Public Shared Async Function GetPkgDetailsFromWingetAsync(PackageId As String) As Task(Of String)
 
         ' Async stuff based on this code:
         ' https://docs.microsoft.com/en-us/archive/blogs/lucian/how-to-await-a-command-line-process-and-capture-its-output
 
         ' Stream reader output code based on this SO answer:
         ' https://stackoverflow.com/a/8811377
-        Dim procOutput As String = Await GetPkgInfoAsync(PackageId)
+        Dim procOutput As String = Await GetPkgInfoFromWingetAsync(PackageId)
 
 
         Return procOutput
     End Function
 
-    Shared Async Function GetPkgInfoAsync(PackageId As String, Optional RequestedInfo As String = "Everything", Optional cancel As CancellationToken = Nothing) As Task(Of String)
+    Shared Async Function GetPkgInfoFromWingetAsync(PackageId As String, Optional RequestedInfo As String = "Everything", Optional cancel As CancellationToken = Nothing) As Task(Of String)
 
         ' Based partially on the code in this video:
         ' https://www.youtube.com/watch?v=APyteDZMpYw
