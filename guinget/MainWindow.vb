@@ -142,11 +142,6 @@ Public Class aaformMainWindow
             " packages listed."
     End Function
 
-    Friend Shared Async Function UpdateProgressTextAsync(RowIndex As Integer, TotalPackages As Integer) As Task
-
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & RowIndex.ToString & " of " & TotalPackages.ToString & "..."
-    End Function
-
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
         ' Code based on this SO answer:
         ' https://stackoverflow.com/a/939275
