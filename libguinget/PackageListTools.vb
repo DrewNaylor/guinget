@@ -50,34 +50,11 @@ Public Class PackageListTools
         Dim PackageInfo As String = String.Empty
         Using Input As StreamReader = File.OpenText(ManifestPath)
 
+            ' Getting package info using async.
             PackageInfo = Await GetManifestInfoAsync(Input, RequestedKey)
         End Using
 
         Return PackageInfo
-
-        ' Load the stream in.
-        'Dim YamlStream As New YamlStream
-        'YamlStream.Load(Input)
-
-        '' Create variable for root node.
-        'Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
-
-        'For Each Entry In YamlRoot.Children
-
-        '    ' If the requested key exists, then use it.
-        '    ' This check doesn't work; maybe something
-        '    ' like an ordered list would be better:
-        '    ' https://stackoverflow.com/a/30097560
-        '    ' Check each entry in the YAML root node.
-        '    If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
-        '        ' If we're looking at an ID, add it to the package list array.
-
-        '        Return Entry.Value.ToString
-        '        'MessageBox.Show(Entry.Value.ToString)
-
-        '    End If
-
-        'Next
 
     End Function
 
@@ -86,25 +63,25 @@ Public Class PackageListTools
         Dim YamlStream As New YamlStream
         YamlStream.Load(YamlInput)
 
-            ' Create variable for root node.
-            Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+        ' Create variable for root node.
+        Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
 
-            Dim FinalInfo As String = String.Empty
+        Dim EntryValue As String = String.Empty
 
         For Each Entry In YamlRoot.Children
 
-            ' If the requested key exists, then use it.
+            ' If the requested key exists, then return it.
             ' This check doesn't work; maybe something
             ' like an ordered list would be better:
             ' https://stackoverflow.com/a/30097560
             ' Check each entry in the YAML root node.
             If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
-                ' If we're looking at an ID, add it to the package list array.
-
-                Return Entry.Value.ToString
-                'MessageBox.Show(Entry.Value.ToString)
+                ' If we're looking at what's requested, return it.
+                EntryValue = Entry.Value.ToString
             End If
         Next
+
+        Return EntryValue
 
     End Function
 
