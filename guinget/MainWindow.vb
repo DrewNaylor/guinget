@@ -253,6 +253,10 @@ Public Class aaformMainWindow
         End Using
     End Sub
 
+    Friend Shared Async Sub UpdateLoadingProgressbarAsync(RowIndex As Integer)
+
+    End Sub
+
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Display temporary message saying to use update-manifests.bat, then click Ok.
         MessageBox.Show("Please run update-manifests.bat located in guinget's EXE directory (may also be in the" &
