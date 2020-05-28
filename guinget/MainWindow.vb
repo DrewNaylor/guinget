@@ -34,7 +34,7 @@ Public Class aaformMainWindow
         AddPackageEntryToList()
     End Sub
 
-    Private Shared Sub AddPackageEntryToList()
+    Private Shared Async Sub AddPackageEntryToList()
 
         ' Adds a package to the package list based on what's in the manifests folder.
         ' TODO: Make sure the package's status is properly set. For now, it'll
@@ -92,13 +92,13 @@ Public Class aaformMainWindow
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
-            Row.Cells.Item(2).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Id")
+            Row.Cells.Item(2).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Id")
             ' Load package name column.
-            Row.Cells.Item(3).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Name")
+            Row.Cells.Item(3).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Name")
             ' Load package version column.
-            Row.Cells.Item(4).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
+            Row.Cells.Item(4).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
-            Row.Cells.Item(5).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
+            Row.Cells.Item(5).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
 
             ' Update loading statusbar label and progressbar.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading details for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."

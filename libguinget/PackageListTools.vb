@@ -86,10 +86,10 @@ Public Class PackageListTools
         Dim YamlStream As New YamlStream
         YamlStream.Load(YamlInput)
 
-        ' Create variable for root node.
-        Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+            ' Create variable for root node.
+            Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
 
-        Dim FinalInfo As String = String.Empty
+            Dim FinalInfo As String = String.Empty
 
         For Each Entry In YamlRoot.Children
 
@@ -101,12 +101,11 @@ Public Class PackageListTools
             If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
                 ' If we're looking at an ID, add it to the package list array.
 
-                FinalInfo = Entry.Value.ToString
+                Return Entry.Value.ToString
                 'MessageBox.Show(Entry.Value.ToString)
             End If
         Next
 
-        Return FinalInfo
     End Function
 
     Public Shared Function GetManifests() As String
