@@ -84,6 +84,7 @@ Public Class aaformMainWindow
             aaformMainWindow.Update()
         Next
 
+        ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
 
         ' Reset progress bar to 0.
@@ -100,6 +101,7 @@ Public Class aaformMainWindow
         ' Show datagridview again.
         aaformMainWindow.datagridviewPackageList.Visible = True
 
+        ' Update the main window again after making the list visible and changing the loading label.
         aaformMainWindow.Update()
 
 
