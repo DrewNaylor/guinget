@@ -95,6 +95,9 @@ Public Class aaformMainWindow
         ' Update loading label.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package details..."
 
+        ' Show datagridview again.
+        aaformMainWindow.datagridviewPackageList.Visible = True
+
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
@@ -125,8 +128,7 @@ Public Class aaformMainWindow
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
-        ' Show datagridview again.
-        aaformMainWindow.datagridviewPackageList.Visible = True
+
 
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
