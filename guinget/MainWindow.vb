@@ -69,21 +69,16 @@ Public Class aaformMainWindow
 
         Dim starttime As DateTime = DateTime.Now
 
+        ' Update loading statusbar label.
+        ' We're not showing the current index anymore since that takes too long.
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package list" & "..."
+
         ' Go through everything in the manifest paths array until it's out.
         For i As Integer = 0 To ManifestPaths.Count - 2
 
             ' Read the file into the manifest column and make a new row with it.
             aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
 
-            ' Update loading statusbar label and progressbar.
-
-            ' I timed this, and it took only 0.1 seconds or so
-            ' without updating the status text, as opposed to
-            ' over a second when displaying progress.
-            ' Maybe give the user a way to turn off the progress
-            ' status if they want it to go as fast as possible.
-            ' Could be "ShowProgressWhileLoadingManifests".
-            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package list" & "..."
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             ' Update the statusbar to show the current info.
