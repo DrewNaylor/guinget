@@ -27,7 +27,6 @@ Partial Class aaformMainWindow
         Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExamplePackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -122,7 +121,7 @@ Partial Class aaformMainWindow
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem, Me.ExamplePackageToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 24)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -132,12 +131,6 @@ Partial Class aaformMainWindow
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(209, 26)
         Me.ExitToolStripMenuItem.Text = "&Exit"
-        '
-        'ExamplePackageToolStripMenuItem
-        '
-        Me.ExamplePackageToolStripMenuItem.Name = "ExamplePackageToolStripMenuItem"
-        Me.ExamplePackageToolStripMenuItem.Size = New System.Drawing.Size(209, 26)
-        Me.ExamplePackageToolStripMenuItem.Text = "Example package"
         '
         'ToolsToolStripMenuItem
         '
@@ -708,7 +701,6 @@ Partial Class aaformMainWindow
     Friend WithEvents panelMainPkgArea As Panel
     Friend WithEvents toolstripMainWindow As ToolStrip
     Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
-    Friend WithEvents ExamplePackageToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents datagridviewPackageList As DataGridView
     Friend WithEvents contextmenustripPackageMenu As ContextMenuStrip
     Friend WithEvents ActionToolStripMenuItem As ToolStripMenuItem
