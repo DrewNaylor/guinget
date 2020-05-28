@@ -23,10 +23,68 @@
 
 
 
+Imports System.IO
 Imports System.Threading
 Imports System.Windows.Forms
+Imports YamlDotNet.RepresentationModel
 
 Public Class PackageTools
+
+    Public Shared Async Function GetPackageInfoFromYamlAsync(ManifestPath As String, RequestedKey As String) As Task(Of String)
+
+        ' Load in the file and get whatever was requested of it.
+
+        ' Set up the document input.
+        ' We had to use a StreamReader instead of a StringReader
+        ' that the LoadingAYamlStream sample used since we want
+        ' to read a file, not a filename.
+        ' If we used a StringReader, we'd end up with an Invalid
+        ' Cast Exception with the following details:
+        '    Unhandled Exception: System.InvalidCastException: Unable
+        '    to cast object of type 'YamlDotNet.RepresentationModel.YamlScalarNode'
+        '    to type 'YamlDotNet.RepresentationModel.YamlMappingNode'.`
+        ' This working example is described in the following
+        ' StackOverflow answer:
+        ' https://stackoverflow.com/a/46897520
+
+        Dim PackageInfo As String = String.Empty
+        Using Input As StreamReader = File.OpenText(ManifestPath)
+
+            ' Getting package info using async.
+            PackageInfo = Await GetManifestInfoAsync(Input, RequestedKey)
+        End Using
+
+        Return PackageInfo
+
+    End Function
+
+    Friend Shared Async Function GetManifestInfoAsync(YamlInput As StreamReader, RequestedKey As String) As Task(Of String)
+
+        ' Load the stream in.
+        Dim YamlStream As New YamlStream
+        YamlStream.Load(YamlInput)
+
+        ' Create variable for root node.
+        Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+
+        Dim EntryValue As String = String.Empty
+
+        For Each Entry In YamlRoot.Children
+
+            ' If the requested key exists, then return it.
+            ' This check doesn't work; maybe something
+            ' like an ordered list would be better:
+            ' https://stackoverflow.com/a/30097560
+            ' Check each entry in the YAML root node.
+            If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
+                ' If we're looking at what's requested, return it.
+                EntryValue = Entry.Value.ToString
+            End If
+        Next
+
+        Return EntryValue
+
+    End Function
 
     ' Get package details from winget.
     Public Shared Async Function GetPkgDetailsAsync(PackageId As String) As Task(Of String)
