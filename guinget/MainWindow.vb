@@ -85,7 +85,7 @@ Public Class aaformMainWindow
             aaformMainWindow.statusbarMainWindow.Update()
         Next
 
-        Debug.WriteLine((DateTime.Now - starttime).TotalSeconds)
+        'Debug.WriteLine((DateTime.Now - starttime).TotalSeconds)
 
         ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
@@ -101,6 +101,8 @@ Public Class aaformMainWindow
 
         ' Update the main window again after making the list visible and changing the loading label.
         aaformMainWindow.Update()
+
+        'Dim starttime2 As DateTime = DateTime.Now
 
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
@@ -118,6 +120,8 @@ Public Class aaformMainWindow
             aaformMainWindow.statusbarMainWindow.Update()
         Next
 
+        Debug.WriteLine((DateTime.Now - starttime).TotalSeconds)
+
         ' Update the main window again.
         aaformMainWindow.Update()
 
@@ -129,6 +133,9 @@ Public Class aaformMainWindow
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+
+        ' Reset loading label to default.
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
 
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
