@@ -74,7 +74,7 @@ Public Class PackageListTools
 
     End Function
 
-    Async Function GetManifestInfo(YamlInput As StreamReader, RequestedKey As String) As Task
+    Async Function GetManifestInfoAsync(YamlInput As StreamReader, RequestedKey As String) As Task
 
     End Function
 
