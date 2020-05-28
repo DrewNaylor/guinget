@@ -30,6 +30,7 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageTools
 
+#Region "Get package details from YAML"
     Public Shared Async Function GetPackageInfoFromYamlAsync(ManifestPath As String, RequestedKey As String) As Task(Of String)
 
         ' Load in the file and get whatever was requested of it.
@@ -83,10 +84,14 @@ Public Class PackageTools
         Next
 
         Return EntryValue
-
     End Function
+#End Region
 
+#Region "Get package details from winget."
     ' Get package details from winget.
+    ' These functions are deprecated and are mainly
+    ' meant to be examples for a way to get info from
+    ' winget.
     Public Shared Async Function GetPkgDetailsFromWingetAsync(PackageId As String) As Task(Of String)
 
         ' Async stuff based on this code:
@@ -161,6 +166,6 @@ Public Class PackageTools
             End Using
         End Using
     End Function
-
+#End Region
 
 End Class
