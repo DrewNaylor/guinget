@@ -80,7 +80,7 @@ Public Class aaformMainWindow
             aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
 
             ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
             ' Update the statusbar to show the current info.
             aaformMainWindow.statusbarMainWindow.Update()
         Next
@@ -91,8 +91,7 @@ Public Class aaformMainWindow
         aaformMainWindow.Update()
 
         ' Set the progressbar to the maximum to make it look finished.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = 100
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 100
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
 
         ' Update loading label.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package details..."
@@ -114,7 +113,9 @@ Public Class aaformMainWindow
             ' Load package description column.
             Row.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Description")
             ' Update the package list so it doesn't show loading for everything until it's done.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
             aaformMainWindow.datagridviewPackageList.Update()
+            aaformMainWindow.statusbarMainWindow.Update()
         Next
 
         ' Update the main window again.
