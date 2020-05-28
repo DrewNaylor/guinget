@@ -85,8 +85,8 @@ Public Class aaformMainWindow
             ' I timed this, and it took only 0.1 seconds or so
             ' without updating the status text, as opposed to
             ' over a second when displaying progress.
-            ' Maybe give the user a way to turn off the progress status
-            ' if they want it to go as fast as possible.
+            ' Maybe give the user a way to turn off the progress
+            ' status if they want it to go as fast as possible.
             ' Could be "ShowProgressWhileLoadingManifests".
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
             ' Make the progress bar progress.
