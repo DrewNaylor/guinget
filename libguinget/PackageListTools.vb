@@ -29,7 +29,7 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageListTools
 
-    Public Shared Async Function GetPackageInfoFromYaml(ManifestPath As String, RequestedKey As String) As Task(Of String)
+    Public Shared Async Function GetPackageInfoFromYamlAsync(ManifestPath As String, RequestedKey As String) As Task(Of String)
 
         ' Load in the file and get whatever was requested of it.
 

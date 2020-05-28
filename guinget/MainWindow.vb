@@ -114,13 +114,13 @@ Public Class aaformMainWindow
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
-            Row.Cells.Item(2).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Id")
+            Row.Cells.Item(2).Value = Await PackageListTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Id")
             ' Load package name column.
-            Row.Cells.Item(3).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Name")
+            Row.Cells.Item(3).Value = Await PackageListTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Name")
             ' Load package version column.
-            Row.Cells.Item(4).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
+            Row.Cells.Item(4).Value = Await PackageListTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
-            Row.Cells.Item(5).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
+            Row.Cells.Item(5).Value = Await PackageListTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Description")
             ' Update the package list so it doesn't show loading for everything until it's done.
             aaformMainWindow.datagridviewPackageList.Update()
         Next
