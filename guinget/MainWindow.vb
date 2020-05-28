@@ -67,8 +67,6 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
         aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
-        Dim starttime As DateTime = DateTime.Now
-
         ' Update loading statusbar label.
         ' We're not showing the current index anymore since that takes too long.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package list" & "..."
@@ -85,8 +83,6 @@ Public Class aaformMainWindow
             aaformMainWindow.statusbarMainWindow.Update()
         Next
 
-        'Debug.WriteLine((DateTime.Now - starttime).TotalSeconds)
-
         ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
 
@@ -96,13 +92,8 @@ Public Class aaformMainWindow
         ' Update loading label.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package details..."
 
-        ' Show datagridview again.
-        aaformMainWindow.datagridviewPackageList.Visible = True
-
         ' Update the main window again after making the list visible and changing the loading label.
         aaformMainWindow.Update()
-
-        'Dim starttime2 As DateTime = DateTime.Now
 
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
@@ -114,13 +105,14 @@ Public Class aaformMainWindow
             Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
             Row.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Description")
-            ' Update the package list so it doesn't show loading for everything until it's done.
+            ' Update the progressbar so it doesn't look frozen.
             aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
-            aaformMainWindow.datagridviewPackageList.Update()
             aaformMainWindow.statusbarMainWindow.Update()
         Next
 
-        Debug.WriteLine((DateTime.Now - starttime).TotalSeconds)
+        ' Show the package list again.
+        ' We're waiting until the loading is done so it finishes faster.
+        aaformMainWindow.datagridviewPackageList.Visible = True
 
         ' Update the main window again.
         aaformMainWindow.Update()
