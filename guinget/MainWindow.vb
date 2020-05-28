@@ -31,10 +31,10 @@ Public Class aaformMainWindow
 
         ' Add packages to the list using what's stored in
         ' %AppData%\winget-frontends\pkglist\manifests.
-        AddPackageEntryToList()
+        AddPackageEntryToListAsync()
     End Sub
 
-    Private Shared Sub AddPackageEntryToList()
+    Private Shared Async Function AddPackageEntryToListAsync() As Task
 
         ' Adds a package to the package list based on what's in the manifests folder.
         ' TODO: Make sure the package's status is properly set. For now, it'll
@@ -43,22 +43,29 @@ Public Class aaformMainWindow
 
         ' TODO: If I can figure out a way to make this async, I will,
         ' but for now non-async is better than nothing.
+        ' Update 5/27/2020: This sub is now async for getting
+        ' package details, but not async for getting the package
+        ' list yet.
 
         ' Change mouse cursor to the "working" one.
         aaformMainWindow.Cursor = Cursors.WaitCursor
-
-        ' Clear the rows.
-        aaformMainWindow.datagridviewPackageList.Rows.Clear()
 
         ' Hide the datagridview while we're updating to make
         ' this slightly faster.
         aaformMainWindow.datagridviewPackageList.Visible = False
 
+        ' Clear the rows.
+        aaformMainWindow.datagridviewPackageList.Rows.Clear()
+
         ' Display loading progress bar and stuff.
         aaformMainWindow.toolstripstatusSplitter.Visible = True
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
         aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = True
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
 
+        ' Update main window so the "loading package list, please wait..." label
+        ' looks ok when the package list is hidden, along with anything else
+        ' that needs to be refreshed, like the details textbox.
+        aaformMainWindow.Update()
 
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
@@ -74,54 +81,61 @@ Public Class aaformMainWindow
             aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
 
             ' Update loading statusbar label and progressbar.
+
+            ' I timed this, and it took only 0.1 seconds or so
+            ' without updating the status text, as opposed to
+            ' over a second when displaying progress.
+            ' Maybe give the user a way to turn off the progress
+            ' status if they want it to go as fast as possible.
+            ' Could be "ShowProgressWhileLoadingManifests".
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            ' Update the main form to show the current info.
-            aaformMainWindow.Update()
+            ' Update the statusbar to show the current info.
+            aaformMainWindow.statusbarMainWindow.Update()
         Next
 
-        ' Reset progress bar to 0.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+        ' Update the main window now that the list is loaded.
+        aaformMainWindow.Update()
 
-        ' Set progress bar maximum to number of rows, in case there are new
-        ' rows. There shouldn't be any new rows though, as that would be
-        ' a result of not clearing the rows before filling them.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = aaformMainWindow.datagridviewPackageList.Rows.Count
+        ' Set the progressbar to the maximum to make it look finished.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = 100
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 100
+
+        ' Update loading label.
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package details..."
+
+        ' Show datagridview again.
+        aaformMainWindow.datagridviewPackageList.Visible = True
+
+        ' Update the main window again after making the list visible and changing the loading label.
+        aaformMainWindow.Update()
 
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
-            Row.Cells.Item(2).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Id")
+            Row.Cells.Item(2).Value = Await PackageListTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Id")
             ' Load package name column.
-            Row.Cells.Item(3).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Name")
+            Row.Cells.Item(3).Value = Await PackageListTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Name")
             ' Load package version column.
-            Row.Cells.Item(4).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
+            Row.Cells.Item(4).Value = Await PackageListTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
-            Row.Cells.Item(5).Value = PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
-
-            ' Update loading statusbar label and progressbar.
-            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading details for package " & Row.Index.ToString & " of " & (aaformMainWindow.datagridviewPackageList.Rows.Count - 1).ToString & "..."
-            ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            ' Update the main form to show the current info.
-            aaformMainWindow.Update()
+            Row.Cells.Item(5).Value = Await PackageListTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Description")
+            ' Update the package list so it doesn't show loading for everything until it's done.
+            aaformMainWindow.datagridviewPackageList.Update()
         Next
 
-        ' Set the progressbar to the maximum to make it look finished.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
+        ' Update the main window again.
+        aaformMainWindow.Update()
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
         aaformMainWindow.toolstripstatusSplitter.Visible = False
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = False
         aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = False
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = False
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
-
-        ' Show datagridview again.
-        aaformMainWindow.datagridviewPackageList.Visible = True
 
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
@@ -134,7 +148,7 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/44661255
         aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount - 1).ToString &
             " packages listed."
-    End Sub
+    End Function
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
         ' Code based on this SO answer:
@@ -251,8 +265,17 @@ Public Class aaformMainWindow
         MessageBox.Show("Please run update-manifests.bat located in guinget's EXE directory (may also be in the" &
                         " repository's root folder), then click OK when it's finished.", "Refresh cache")
         ' Reload the package list with the new manifests.
-        AddPackageEntryToList()
+        AddPackageEntryToListAsync()
     End Sub
+
+    ' If we wanted to, we could allow the package list to be loaded on application
+    ' startup, but since loading the files list isn't async yet, it takes a bit
+    ' longer than not loading the files list on startup and requiring a click
+    ' on the "Refresh cache" button.
+    ' Not sure if this is faster or slower with Await.
+    'Private Async Sub aaformMainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    '    Await AddPackageEntryToListAsync()
+    'End Sub
 
 
 
