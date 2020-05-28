@@ -74,13 +74,15 @@ Public Class PackageListTools
 
     End Function
 
-    Async Function GetManifestInfoAsync(YamlInput As StreamReader, RequestedKey As String) As Task
+    Async Function GetManifestInfoAsync(YamlInput As StreamReader, RequestedKey As String) As Task(Of String)
         ' Load the stream in.
         Dim YamlStream As New YamlStream
         YamlStream.Load(YamlInput)
 
         ' Create variable for root node.
         Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+
+        Dim FinalList As String = String.Empty
 
         For Each Entry In YamlRoot.Children
 
@@ -92,7 +94,7 @@ Public Class PackageListTools
             If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
                 ' If we're looking at an ID, add it to the package list array.
 
-                Return Entry.Value.ToString
+                FinalList = FinalList & Await Entry.Value.ToString
                 'MessageBox.Show(Entry.Value.ToString)
 
             End If
