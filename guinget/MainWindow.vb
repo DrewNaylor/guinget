@@ -62,6 +62,11 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = True
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
 
+        ' Update main window so the "loading package list, please wait..." label
+        ' looks ok when the package list is hidden, along with anything else
+        ' that needs to be refreshed, like the details textbox.
+        aaformMainWindow.Update()
+
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
 
@@ -79,8 +84,8 @@ Public Class aaformMainWindow
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            ' Update the main form to show the current info.
-            aaformMainWindow.Update()
+            ' Update the statusbar to show the current info.
+            aaformMainWindow.statusbarMainWindow.Update()
         Next
 
         ' Update the main window now that the list is loaded.
@@ -109,6 +114,8 @@ Public Class aaformMainWindow
             Row.Cells.Item(4).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
             Row.Cells.Item(5).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
+            ' Update the package list so it doesn't show loading for everything until it's done.
+            aaformMainWindow.datagridviewPackageList.Update()
         Next
 
         ' Update the main window again.
