@@ -31,10 +31,10 @@ Public Class aaformMainWindow
 
         ' Add packages to the list using what's stored in
         ' %AppData%\winget-frontends\pkglist\manifests.
-        AddPackageEntryToList()
+        AddPackageEntryToListAsync()
     End Sub
 
-    Private Shared Async Sub AddPackageEntryToList()
+    Private Shared Async Sub AddPackageEntryToListAsync()
 
         ' Adds a package to the package list based on what's in the manifests folder.
         ' TODO: Make sure the package's status is properly set. For now, it'll
@@ -43,6 +43,9 @@ Public Class aaformMainWindow
 
         ' TODO: If I can figure out a way to make this async, I will,
         ' but for now non-async is better than nothing.
+        ' Update 5/27/2020: This sub is now async for getting
+        ' package details, but not async for getting the package
+        ' list yet.
 
         ' Change mouse cursor to the "working" one.
         aaformMainWindow.Cursor = Cursors.WaitCursor
@@ -251,7 +254,7 @@ Public Class aaformMainWindow
         MessageBox.Show("Please run update-manifests.bat located in guinget's EXE directory (may also be in the" &
                         " repository's root folder), then click OK when it's finished.", "Refresh cache")
         ' Reload the package list with the new manifests.
-        AddPackageEntryToList()
+        AddPackageEntryToListAsync()
     End Sub
 
 
