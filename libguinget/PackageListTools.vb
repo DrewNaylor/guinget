@@ -46,31 +46,35 @@ Public Class PackageListTools
         ' This working example is described in the following
         ' StackOverflow answer:
         ' https://stackoverflow.com/a/46897520
-        Dim Input As StreamReader = New StreamReader(ManifestPath)
+        Using Input As StreamReader = File.OpenText(ManifestPath)
 
-        ' Load the stream in.
-        Dim YamlStream As New YamlStream
-        YamlStream.Load(Input)
+            ' Load the stream in.
+            Dim YamlStream As New YamlStream
+            YamlStream.Load(Input)
 
-        ' Create variable for root node.
-        Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
+            ' Create variable for root node.
+            Dim YamlRoot = CType(YamlStream.Documents(0).RootNode, YamlMappingNode)
 
-        For Each Entry In YamlRoot.Children
+            For Each Entry In YamlRoot.Children
 
-            ' If the requested key exists, then use it.
-            ' This check doesn't work; maybe something
-            ' like an ordered list would be better:
-            ' https://stackoverflow.com/a/30097560
-            ' Check each entry in the YAML root node.
-            If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
-                ' If we're looking at an ID, add it to the package list array.
+                ' If the requested key exists, then use it.
+                ' This check doesn't work; maybe something
+                ' like an ordered list would be better:
+                ' https://stackoverflow.com/a/30097560
+                ' Check each entry in the YAML root node.
+                If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
+                    ' If we're looking at an ID, add it to the package list array.
 
-                Return Entry.Value.ToString
-                'MessageBox.Show(Entry.Value.ToString)
+                    Return Entry.Value.ToString
+                    'MessageBox.Show(Entry.Value.ToString)
 
-            End If
+                End If
 
-        Next
+            Next
+
+    End Function
+
+    Async Function GetManifestInfo(YamlInput As StreamReader, RequestedKey As String) As Task
 
     End Function
 
