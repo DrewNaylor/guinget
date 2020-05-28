@@ -12,7 +12,7 @@
 # Version 0.1 Pre-Alpha 2
 
 - [ ] Make marking everything in the list for installation (or for doing nothing) an async operation, so it doesn't lock up the UI
-- [ ] Allow the user to hide the progressbar and statuslabel for loading so it goes faster, or have that be an async operation that runs at each loop
+- [ ] Allow the user to hide the progressbar and statuslabel for loading so loading the package list goes faster
 - [ ] Pass the list of apps marked for installation to winget, so they can be installed
 - [ ] Filtering/searching the package list (by name, id, and description for now, but maybe tags would be a good idea) and keeping these search terms in a listbox for quick use until closing guinget
 - [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
