@@ -276,6 +276,10 @@ Public Class aaformMainWindow
     ' This YouTube video should help out with displaying CMD
     ' output in the app's window:
     ' https://www.youtube.com/watch?v=APyteDZMpYw
+    ' The above video doesn't seem to work if
+    ' the code you're calling is in another class without
+    ' Me.Invoke. libguinget.PackageTools.GetPkgInfoAsync
+    ' works a lot better for this task as example code.
 
 End Class
 
