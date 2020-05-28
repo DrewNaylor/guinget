@@ -34,7 +34,7 @@ Public Class aaformMainWindow
         AddPackageEntryToListAsync()
     End Sub
 
-    Private Shared Async Sub AddPackageEntryToListAsync()
+    Private Shared Async Function AddPackageEntryToListAsync() As Task
 
         ' Adds a package to the package list based on what's in the manifests folder.
         ' TODO: Make sure the package's status is properly set. For now, it'll
@@ -148,7 +148,7 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/44661255
         aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount - 1).ToString &
             " packages listed."
-    End Sub
+    End Function
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
         ' Code based on this SO answer:
@@ -267,6 +267,14 @@ Public Class aaformMainWindow
         ' Reload the package list with the new manifests.
         AddPackageEntryToListAsync()
     End Sub
+
+    ' If we wanted to, we could allow the package list to be loaded on application
+    ' startup, but since loading the files list isn't async yet, it takes a bit
+    ' longer than not loading the files list on startup and requiring a click
+    ' on the "Refresh cache" button.
+    'Private Async Sub aaformMainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    '    Await AddPackageEntryToListAsync()
+    'End Sub
 
 
 

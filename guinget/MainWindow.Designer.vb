@@ -35,6 +35,13 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
         Me.panelPackageListHolder = New System.Windows.Forms.Panel()
         Me.datagridviewPackageList = New System.Windows.Forms.DataGridView()
+        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -49,6 +56,8 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonProperties = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
+        Me.toolstripsplitbuttonSearch = New System.Windows.Forms.ToolStripSplitButton()
+        Me.toolstripmenuitemAdvancedSearch = New System.Windows.Forms.ToolStripMenuItem()
         Me.splitcontainerSidebarAndPkgList = New System.Windows.Forms.SplitContainer()
         Me.panelSidebarHolder = New System.Windows.Forms.Panel()
         Me.tabcontrolSidebar = New System.Windows.Forms.TabControl()
@@ -72,17 +81,8 @@ Partial Class aaformMainWindow
         Me.statusbarMainWindow = New System.Windows.Forms.StatusStrip()
         Me.toolstripstatuslabelPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripstatusSplitter = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
-        Me.toolstripsplitbuttonSearch = New System.Windows.Forms.ToolStripSplitButton()
-        Me.toolstripmenuitemAdvancedSearch = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -215,6 +215,63 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.StandardTab = True
         Me.datagridviewPackageList.TabIndex = 0
         '
+        'PkgAction
+        '
+        Me.PkgAction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PkgAction.HeaderText = "Action"
+        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
+        Me.PkgAction.MinimumWidth = 6
+        Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.PkgAction.Width = 76
+        '
+        'PkgStatus
+        '
+        Me.PkgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PkgStatus.HeaderText = "Status"
+        Me.PkgStatus.MinimumWidth = 6
+        Me.PkgStatus.Name = "PkgStatus"
+        Me.PkgStatus.ReadOnly = True
+        Me.PkgStatus.Width = 77
+        '
+        'PkgName
+        '
+        Me.PkgName.HeaderText = "Package"
+        Me.PkgName.MinimumWidth = 6
+        Me.PkgName.Name = "PkgName"
+        Me.PkgName.ReadOnly = True
+        '
+        'FriendlyName
+        '
+        Me.FriendlyName.HeaderText = "Name"
+        Me.FriendlyName.MinimumWidth = 6
+        Me.FriendlyName.Name = "FriendlyName"
+        Me.FriendlyName.ReadOnly = True
+        '
+        'AvailableVersion
+        '
+        Me.AvailableVersion.HeaderText = "Version"
+        Me.AvailableVersion.MinimumWidth = 6
+        Me.AvailableVersion.Name = "AvailableVersion"
+        Me.AvailableVersion.ReadOnly = True
+        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
+    "dow like Synaptic)"
+        '
+        'PkgDescription
+        '
+        Me.PkgDescription.HeaderText = "Description"
+        Me.PkgDescription.MinimumWidth = 6
+        Me.PkgDescription.Name = "PkgDescription"
+        Me.PkgDescription.ReadOnly = True
+        '
+        'Manifest
+        '
+        Me.Manifest.HeaderText = "Manifest"
+        Me.Manifest.MinimumWidth = 6
+        Me.Manifest.Name = "Manifest"
+        Me.Manifest.ReadOnly = True
+        Me.Manifest.Visible = False
+        '
         'contextmenustripPackageMenu
         '
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
@@ -330,6 +387,22 @@ Partial Class aaformMainWindow
         Me.toolstriptextboxSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.toolstriptextboxSearch.Name = "toolstriptextboxSearch"
         Me.toolstriptextboxSearch.Size = New System.Drawing.Size(250, 27)
+        '
+        'toolstripsplitbuttonSearch
+        '
+        Me.toolstripsplitbuttonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.toolstripsplitbuttonSearch.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripmenuitemAdvancedSearch})
+        Me.toolstripsplitbuttonSearch.Image = CType(resources.GetObject("toolstripsplitbuttonSearch.Image"), System.Drawing.Image)
+        Me.toolstripsplitbuttonSearch.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.toolstripsplitbuttonSearch.Name = "toolstripsplitbuttonSearch"
+        Me.toolstripsplitbuttonSearch.Size = New System.Drawing.Size(72, 24)
+        Me.toolstripsplitbuttonSearch.Text = "Search"
+        '
+        'toolstripmenuitemAdvancedSearch
+        '
+        Me.toolstripmenuitemAdvancedSearch.Name = "toolstripmenuitemAdvancedSearch"
+        Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(213, 26)
+        Me.toolstripmenuitemAdvancedSearch.Text = "&Advanced search..."
         '
         'splitcontainerSidebarAndPkgList
         '
@@ -563,91 +636,18 @@ Partial Class aaformMainWindow
         Me.toolstripstatusSplitter.Text = "|"
         Me.toolstripstatusSplitter.Visible = False
         '
-        'toolstripstatuslabelLoadingPackageCount
-        '
-        Me.toolstripstatuslabelLoadingPackageCount.Name = "toolstripstatuslabelLoadingPackageCount"
-        Me.toolstripstatuslabelLoadingPackageCount.Size = New System.Drawing.Size(174, 20)
-        Me.toolstripstatuslabelLoadingPackageCount.Text = "Loading package 0 of 0..."
-        Me.toolstripstatuslabelLoadingPackageCount.Visible = False
-        '
         'toolstripprogressbarLoadingPackages
         '
         Me.toolstripprogressbarLoadingPackages.Name = "toolstripprogressbarLoadingPackages"
         Me.toolstripprogressbarLoadingPackages.Size = New System.Drawing.Size(150, 18)
         Me.toolstripprogressbarLoadingPackages.Visible = False
         '
-        'toolstripsplitbuttonSearch
+        'toolstripstatuslabelLoadingPackageCount
         '
-        Me.toolstripsplitbuttonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.toolstripsplitbuttonSearch.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripmenuitemAdvancedSearch})
-        Me.toolstripsplitbuttonSearch.Image = CType(resources.GetObject("toolstripsplitbuttonSearch.Image"), System.Drawing.Image)
-        Me.toolstripsplitbuttonSearch.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.toolstripsplitbuttonSearch.Name = "toolstripsplitbuttonSearch"
-        Me.toolstripsplitbuttonSearch.Size = New System.Drawing.Size(72, 24)
-        Me.toolstripsplitbuttonSearch.Text = "Search"
-        '
-        'toolstripmenuitemAdvancedSearch
-        '
-        Me.toolstripmenuitemAdvancedSearch.Name = "toolstripmenuitemAdvancedSearch"
-        Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(224, 26)
-        Me.toolstripmenuitemAdvancedSearch.Text = "&Advanced search..."
-        '
-        'PkgAction
-        '
-        Me.PkgAction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.PkgAction.HeaderText = "Action"
-        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
-        Me.PkgAction.MinimumWidth = 6
-        Me.PkgAction.Name = "PkgAction"
-        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.PkgAction.Width = 76
-        '
-        'PkgStatus
-        '
-        Me.PkgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.PkgStatus.HeaderText = "Status"
-        Me.PkgStatus.MinimumWidth = 6
-        Me.PkgStatus.Name = "PkgStatus"
-        Me.PkgStatus.ReadOnly = True
-        Me.PkgStatus.Width = 77
-        '
-        'PkgName
-        '
-        Me.PkgName.HeaderText = "Package"
-        Me.PkgName.MinimumWidth = 6
-        Me.PkgName.Name = "PkgName"
-        Me.PkgName.ReadOnly = True
-        '
-        'FriendlyName
-        '
-        Me.FriendlyName.HeaderText = "Name"
-        Me.FriendlyName.MinimumWidth = 6
-        Me.FriendlyName.Name = "FriendlyName"
-        Me.FriendlyName.ReadOnly = True
-        '
-        'AvailableVersion
-        '
-        Me.AvailableVersion.HeaderText = "Version"
-        Me.AvailableVersion.MinimumWidth = 6
-        Me.AvailableVersion.Name = "AvailableVersion"
-        Me.AvailableVersion.ReadOnly = True
-        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
-    "dow like Synaptic)"
-        '
-        'PkgDescription
-        '
-        Me.PkgDescription.HeaderText = "Description"
-        Me.PkgDescription.MinimumWidth = 6
-        Me.PkgDescription.Name = "PkgDescription"
-        Me.PkgDescription.ReadOnly = True
-        '
-        'Manifest
-        '
-        Me.Manifest.HeaderText = "Manifest"
-        Me.Manifest.MinimumWidth = 6
-        Me.Manifest.Name = "Manifest"
-        Me.Manifest.ReadOnly = True
-        Me.Manifest.Visible = False
+        Me.toolstripstatuslabelLoadingPackageCount.Name = "toolstripstatuslabelLoadingPackageCount"
+        Me.toolstripstatuslabelLoadingPackageCount.Size = New System.Drawing.Size(174, 20)
+        Me.toolstripstatuslabelLoadingPackageCount.Text = "Loading package 0 of 0..."
+        Me.toolstripstatuslabelLoadingPackageCount.Visible = False
         '
         'aaformMainWindow
         '
