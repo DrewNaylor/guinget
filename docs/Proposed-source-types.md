@@ -3,6 +3,9 @@ These are proposed source types that guinget can get manifests from.
 - guinget.ZipDownload (Default): Just a zip file that's downloaded and extracted. Doesn't support checking if any changes have occurred since the last manifest update before downloading.
 - guinget.GitRepo: A git repository that's cloned and can be checked for differences before updating, to preserve bandwidth and make updating faster. Requires `git`.
 
+Maybe also allow partial support for Microsoft's default source type of MSIX file, where all that's done is it's downloaded and extracted but isn't read. This could help other frondends that do use the SQLite database, in that there would be an application to update and manage the MSIX sources even if guinget itself doesn't.
+Making sure this file is safe would be a good idea, just like the rest of the source types.
+
 The source types may not be supported by winget, as winget uses an SQLite database to get package info from, then it grabs the manifests from the remote source server as far as I know.
 I'd like to support using this SQLite database, but it was too difficult for me to figure out.
 
