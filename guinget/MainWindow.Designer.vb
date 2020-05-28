@@ -35,13 +35,6 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
         Me.panelPackageListHolder = New System.Windows.Forms.Panel()
         Me.datagridviewPackageList = New System.Windows.Forms.DataGridView()
-        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -83,6 +76,13 @@ Partial Class aaformMainWindow
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
         Me.toolstripsplitbuttonSearch = New System.Windows.Forms.ToolStripSplitButton()
         Me.toolstripmenuitemAdvancedSearch = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menustripMainWindow.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitcontainerMainWindow.Panel1.SuspendLayout()
@@ -116,7 +116,7 @@ Partial Class aaformMainWindow
         Me.menustripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.menustripMainWindow.Location = New System.Drawing.Point(0, 0)
         Me.menustripMainWindow.Name = "menustripMainWindow"
-        Me.menustripMainWindow.Size = New System.Drawing.Size(992, 28)
+        Me.menustripMainWindow.Size = New System.Drawing.Size(992, 30)
         Me.menustripMainWindow.TabIndex = 0
         Me.menustripMainWindow.Text = "MenuStrip1"
         '
@@ -124,7 +124,7 @@ Partial Class aaformMainWindow
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem, Me.ExamplePackageToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 24)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 26)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'ExitToolStripMenuItem
@@ -143,7 +143,7 @@ Partial Class aaformMainWindow
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(58, 24)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(58, 26)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'VerifyManifestToolStripMenuItem
@@ -156,7 +156,7 @@ Partial Class aaformMainWindow
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(55, 24)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(55, 26)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
@@ -179,8 +179,8 @@ Partial Class aaformMainWindow
         'splitcontainerMainWindow.Panel2
         '
         Me.splitcontainerMainWindow.Panel2.Controls.Add(Me.textboxPackageDetails)
-        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(691, 543)
-        Me.splitcontainerMainWindow.SplitterDistance = 344
+        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(691, 537)
+        Me.splitcontainerMainWindow.SplitterDistance = 340
         Me.splitcontainerMainWindow.TabIndex = 1
         '
         'panelPackageListHolder
@@ -190,7 +190,7 @@ Partial Class aaformMainWindow
         Me.panelPackageListHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelPackageListHolder.Location = New System.Drawing.Point(0, 0)
         Me.panelPackageListHolder.Name = "panelPackageListHolder"
-        Me.panelPackageListHolder.Size = New System.Drawing.Size(691, 344)
+        Me.panelPackageListHolder.Size = New System.Drawing.Size(691, 340)
         Me.panelPackageListHolder.TabIndex = 2
         '
         'datagridviewPackageList
@@ -211,62 +211,9 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.RowTemplate.Height = 24
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridviewPackageList.ShowEditingIcon = False
-        Me.datagridviewPackageList.Size = New System.Drawing.Size(691, 344)
+        Me.datagridviewPackageList.Size = New System.Drawing.Size(691, 340)
         Me.datagridviewPackageList.StandardTab = True
         Me.datagridviewPackageList.TabIndex = 0
-        '
-        'PkgAction
-        '
-        Me.PkgAction.HeaderText = "Action"
-        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
-        Me.PkgAction.MinimumWidth = 6
-        Me.PkgAction.Name = "PkgAction"
-        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'PkgStatus
-        '
-        Me.PkgStatus.HeaderText = "Status"
-        Me.PkgStatus.MinimumWidth = 6
-        Me.PkgStatus.Name = "PkgStatus"
-        Me.PkgStatus.ReadOnly = True
-        '
-        'PkgName
-        '
-        Me.PkgName.HeaderText = "Package"
-        Me.PkgName.MinimumWidth = 6
-        Me.PkgName.Name = "PkgName"
-        Me.PkgName.ReadOnly = True
-        '
-        'FriendlyName
-        '
-        Me.FriendlyName.HeaderText = "Name"
-        Me.FriendlyName.MinimumWidth = 6
-        Me.FriendlyName.Name = "FriendlyName"
-        Me.FriendlyName.ReadOnly = True
-        '
-        'AvailableVersion
-        '
-        Me.AvailableVersion.HeaderText = "Version"
-        Me.AvailableVersion.MinimumWidth = 6
-        Me.AvailableVersion.Name = "AvailableVersion"
-        Me.AvailableVersion.ReadOnly = True
-        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
-    "dow like Synaptic)"
-        '
-        'PkgDescription
-        '
-        Me.PkgDescription.HeaderText = "Description"
-        Me.PkgDescription.MinimumWidth = 6
-        Me.PkgDescription.Name = "PkgDescription"
-        Me.PkgDescription.ReadOnly = True
-        '
-        'Manifest
-        '
-        Me.Manifest.HeaderText = "Manifest"
-        Me.Manifest.MinimumWidth = 6
-        Me.Manifest.Name = "Manifest"
-        Me.Manifest.ReadOnly = True
-        Me.Manifest.Visible = False
         '
         'contextmenustripPackageMenu
         '
@@ -314,7 +261,7 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.Name = "textboxPackageDetails"
         Me.textboxPackageDetails.ReadOnly = True
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textboxPackageDetails.Size = New System.Drawing.Size(691, 195)
+        Me.textboxPackageDetails.Size = New System.Drawing.Size(691, 193)
         Me.textboxPackageDetails.TabIndex = 0
         Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
         '
@@ -324,16 +271,16 @@ Partial Class aaformMainWindow
         Me.panelMainPkgArea.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMainPkgArea.Location = New System.Drawing.Point(0, 0)
         Me.panelMainPkgArea.Name = "panelMainPkgArea"
-        Me.panelMainPkgArea.Size = New System.Drawing.Size(691, 543)
+        Me.panelMainPkgArea.Size = New System.Drawing.Size(691, 537)
         Me.panelMainPkgArea.TabIndex = 2
         '
         'toolstripMainWindow
         '
         Me.toolstripMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.toolstripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripbuttonRefreshCache, Me.toolstripbuttonApplyChanges, Me.ToolStripSeparator2, Me.toolstripbuttonProperties, Me.ToolStripSeparator1, Me.toolstriptextboxSearch, Me.toolstripsplitbuttonSearch})
-        Me.toolstripMainWindow.Location = New System.Drawing.Point(0, 28)
+        Me.toolstripMainWindow.Location = New System.Drawing.Point(0, 30)
         Me.toolstripMainWindow.Name = "toolstripMainWindow"
-        Me.toolstripMainWindow.Size = New System.Drawing.Size(992, 27)
+        Me.toolstripMainWindow.Size = New System.Drawing.Size(992, 31)
         Me.toolstripMainWindow.TabIndex = 0
         Me.toolstripMainWindow.Text = "ToolStrip1"
         '
@@ -343,7 +290,7 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonRefreshCache.Image = CType(resources.GetObject("toolstripbuttonRefreshCache.Image"), System.Drawing.Image)
         Me.toolstripbuttonRefreshCache.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonRefreshCache.Name = "toolstripbuttonRefreshCache"
-        Me.toolstripbuttonRefreshCache.Size = New System.Drawing.Size(104, 24)
+        Me.toolstripbuttonRefreshCache.Size = New System.Drawing.Size(104, 28)
         Me.toolstripbuttonRefreshCache.Text = "Refresh cache"
         Me.toolstripbuttonRefreshCache.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -353,14 +300,14 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonApplyChanges.Image = CType(resources.GetObject("toolstripbuttonApplyChanges.Image"), System.Drawing.Image)
         Me.toolstripbuttonApplyChanges.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonApplyChanges.Name = "toolstripbuttonApplyChanges"
-        Me.toolstripbuttonApplyChanges.Size = New System.Drawing.Size(110, 24)
+        Me.toolstripbuttonApplyChanges.Size = New System.Drawing.Size(110, 28)
         Me.toolstripbuttonApplyChanges.Text = "Apply changes"
         Me.toolstripbuttonApplyChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 31)
         '
         'toolstripbuttonProperties
         '
@@ -368,21 +315,21 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonProperties.Image = CType(resources.GetObject("toolstripbuttonProperties.Image"), System.Drawing.Image)
         Me.toolstripbuttonProperties.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonProperties.Name = "toolstripbuttonProperties"
-        Me.toolstripbuttonProperties.Size = New System.Drawing.Size(80, 24)
+        Me.toolstripbuttonProperties.Size = New System.Drawing.Size(80, 28)
         Me.toolstripbuttonProperties.Text = "Properties"
         Me.toolstripbuttonProperties.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 31)
         '
         'toolstriptextboxSearch
         '
         Me.toolstriptextboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.toolstriptextboxSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.toolstriptextboxSearch.Name = "toolstriptextboxSearch"
-        Me.toolstriptextboxSearch.Size = New System.Drawing.Size(250, 27)
+        Me.toolstriptextboxSearch.Size = New System.Drawing.Size(250, 31)
         '
         'splitcontainerSidebarAndPkgList
         '
@@ -397,7 +344,7 @@ Partial Class aaformMainWindow
         'splitcontainerSidebarAndPkgList.Panel2
         '
         Me.splitcontainerSidebarAndPkgList.Panel2.Controls.Add(Me.panelMainPkgArea)
-        Me.splitcontainerSidebarAndPkgList.Size = New System.Drawing.Size(992, 543)
+        Me.splitcontainerSidebarAndPkgList.Size = New System.Drawing.Size(992, 537)
         Me.splitcontainerSidebarAndPkgList.SplitterDistance = 297
         Me.splitcontainerSidebarAndPkgList.TabIndex = 3
         '
@@ -407,7 +354,7 @@ Partial Class aaformMainWindow
         Me.panelSidebarHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelSidebarHolder.Location = New System.Drawing.Point(0, 0)
         Me.panelSidebarHolder.Name = "panelSidebarHolder"
-        Me.panelSidebarHolder.Size = New System.Drawing.Size(297, 543)
+        Me.panelSidebarHolder.Size = New System.Drawing.Size(297, 537)
         Me.panelSidebarHolder.TabIndex = 0
         '
         'tabcontrolSidebar
@@ -422,7 +369,7 @@ Partial Class aaformMainWindow
         Me.tabcontrolSidebar.Location = New System.Drawing.Point(0, 0)
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
         Me.tabcontrolSidebar.SelectedIndex = 0
-        Me.tabcontrolSidebar.Size = New System.Drawing.Size(297, 543)
+        Me.tabcontrolSidebar.Size = New System.Drawing.Size(297, 537)
         Me.tabcontrolSidebar.TabIndex = 0
         '
         'tabpageSearchTerms
@@ -430,7 +377,7 @@ Partial Class aaformMainWindow
         Me.tabpageSearchTerms.Controls.Add(Me.listboxSearchTerms)
         Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
-        Me.tabpageSearchTerms.Size = New System.Drawing.Size(289, 514)
+        Me.tabpageSearchTerms.Size = New System.Drawing.Size(289, 508)
         Me.tabpageSearchTerms.TabIndex = 4
         Me.tabpageSearchTerms.Text = "Search terms"
         Me.tabpageSearchTerms.UseVisualStyleBackColor = True
@@ -445,7 +392,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.Items.AddRange(New Object() {"All", "test", "test2", "test3", "test4"})
         Me.listboxSearchTerms.Location = New System.Drawing.Point(0, 0)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
-        Me.listboxSearchTerms.Size = New System.Drawing.Size(289, 514)
+        Me.listboxSearchTerms.Size = New System.Drawing.Size(289, 508)
         Me.listboxSearchTerms.TabIndex = 0
         '
         'contextmenuSearchTerm
@@ -588,9 +535,9 @@ Partial Class aaformMainWindow
         '
         Me.panelMainForm.Controls.Add(Me.splitcontainerSidebarAndPkgList)
         Me.panelMainForm.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelMainForm.Location = New System.Drawing.Point(0, 55)
+        Me.panelMainForm.Location = New System.Drawing.Point(0, 61)
         Me.panelMainForm.Name = "panelMainForm"
-        Me.panelMainForm.Size = New System.Drawing.Size(992, 543)
+        Me.panelMainForm.Size = New System.Drawing.Size(992, 537)
         Me.panelMainForm.TabIndex = 4
         '
         'statusbarMainWindow
@@ -636,7 +583,7 @@ Partial Class aaformMainWindow
         Me.toolstripsplitbuttonSearch.Image = CType(resources.GetObject("toolstripsplitbuttonSearch.Image"), System.Drawing.Image)
         Me.toolstripsplitbuttonSearch.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripsplitbuttonSearch.Name = "toolstripsplitbuttonSearch"
-        Me.toolstripsplitbuttonSearch.Size = New System.Drawing.Size(72, 24)
+        Me.toolstripsplitbuttonSearch.Size = New System.Drawing.Size(72, 28)
         Me.toolstripsplitbuttonSearch.Text = "Search"
         '
         'toolstripmenuitemAdvancedSearch
@@ -644,6 +591,63 @@ Partial Class aaformMainWindow
         Me.toolstripmenuitemAdvancedSearch.Name = "toolstripmenuitemAdvancedSearch"
         Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(224, 26)
         Me.toolstripmenuitemAdvancedSearch.Text = "&Advanced search..."
+        '
+        'PkgAction
+        '
+        Me.PkgAction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PkgAction.HeaderText = "Action"
+        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
+        Me.PkgAction.MinimumWidth = 6
+        Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.PkgAction.Width = 76
+        '
+        'PkgStatus
+        '
+        Me.PkgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PkgStatus.HeaderText = "Status"
+        Me.PkgStatus.MinimumWidth = 6
+        Me.PkgStatus.Name = "PkgStatus"
+        Me.PkgStatus.ReadOnly = True
+        Me.PkgStatus.Width = 77
+        '
+        'PkgName
+        '
+        Me.PkgName.HeaderText = "Package"
+        Me.PkgName.MinimumWidth = 6
+        Me.PkgName.Name = "PkgName"
+        Me.PkgName.ReadOnly = True
+        '
+        'FriendlyName
+        '
+        Me.FriendlyName.HeaderText = "Name"
+        Me.FriendlyName.MinimumWidth = 6
+        Me.FriendlyName.Name = "FriendlyName"
+        Me.FriendlyName.ReadOnly = True
+        '
+        'AvailableVersion
+        '
+        Me.AvailableVersion.HeaderText = "Version"
+        Me.AvailableVersion.MinimumWidth = 6
+        Me.AvailableVersion.Name = "AvailableVersion"
+        Me.AvailableVersion.ReadOnly = True
+        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
+    "dow like Synaptic)"
+        '
+        'PkgDescription
+        '
+        Me.PkgDescription.HeaderText = "Description"
+        Me.PkgDescription.MinimumWidth = 6
+        Me.PkgDescription.Name = "PkgDescription"
+        Me.PkgDescription.ReadOnly = True
+        '
+        'Manifest
+        '
+        Me.Manifest.HeaderText = "Manifest"
+        Me.Manifest.MinimumWidth = 6
+        Me.Manifest.Name = "Manifest"
+        Me.Manifest.ReadOnly = True
+        Me.Manifest.Visible = False
         '
         'aaformMainWindow
         '
@@ -735,13 +739,6 @@ Partial Class aaformMainWindow
     Friend WithEvents ClearSelectedSearchTermToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClearAllSearchTermsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
-    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
-    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
-    Friend WithEvents PkgName As DataGridViewTextBoxColumn
-    Friend WithEvents FriendlyName As DataGridViewTextBoxColumn
-    Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
-    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
-    Friend WithEvents Manifest As DataGridViewTextBoxColumn
     Friend WithEvents statusbarMainWindow As StatusStrip
     Friend WithEvents toolstripstatuslabelPackageCount As ToolStripStatusLabel
     Friend WithEvents toolstripstatuslabelLoadingPackageCount As ToolStripStatusLabel
@@ -751,4 +748,11 @@ Partial Class aaformMainWindow
     Friend WithEvents panelPackageListHolder As Panel
     Friend WithEvents toolstripsplitbuttonSearch As ToolStripSplitButton
     Friend WithEvents toolstripmenuitemAdvancedSearch As ToolStripMenuItem
+    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
+    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
+    Friend WithEvents PkgName As DataGridViewTextBoxColumn
+    Friend WithEvents FriendlyName As DataGridViewTextBoxColumn
+    Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
+    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
+    Friend WithEvents Manifest As DataGridViewTextBoxColumn
 End Class
