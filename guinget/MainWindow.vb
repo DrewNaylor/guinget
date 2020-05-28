@@ -67,6 +67,8 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
         aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
+        Dim starttime As DateTime = DateTime.Now
+
         ' Go through everything in the manifest paths array until it's out.
         For i As Integer = 0 To ManifestPaths.Count - 2
 
@@ -81,12 +83,14 @@ Public Class aaformMainWindow
             ' Maybe give the user a way to turn off the progress
             ' status if they want it to go as fast as possible.
             ' Could be "ShowProgressWhileLoadingManifests".
-            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
+            'aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             ' Update the statusbar to show the current info.
             aaformMainWindow.statusbarMainWindow.Update()
         Next
+
+        Debug.WriteLine((DateTime.Now - starttime).TotalSeconds)
 
         ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
