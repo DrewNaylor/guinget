@@ -543,7 +543,7 @@ Partial Class aaformMainWindow
         'statusbarMainWindow
         '
         Me.statusbarMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.statusbarMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripstatuslabelPackageCount, Me.toolstripstatusSplitter, Me.toolstripstatuslabelLoadingPackageCount, Me.toolstripprogressbarLoadingPackages})
+        Me.statusbarMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripstatuslabelPackageCount, Me.toolstripstatusSplitter, Me.toolstripprogressbarLoadingPackages, Me.toolstripstatuslabelLoadingPackageCount})
         Me.statusbarMainWindow.Location = New System.Drawing.Point(0, 598)
         Me.statusbarMainWindow.Name = "statusbarMainWindow"
         Me.statusbarMainWindow.Size = New System.Drawing.Size(992, 26)

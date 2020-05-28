@@ -59,9 +59,8 @@ Public Class aaformMainWindow
 
         ' Display loading progress bar and stuff.
         aaformMainWindow.toolstripstatusSplitter.Visible = True
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
         aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = True
-
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
 
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
@@ -87,13 +86,9 @@ Public Class aaformMainWindow
         ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
 
-        ' Reset progress bar to 0.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
-
-        ' Set progress bar maximum to number of rows, in case there are new
-        ' rows. There shouldn't be any new rows though, as that would be
-        ' a result of not clearing the rows before filling them.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = aaformMainWindow.datagridviewPackageList.Rows.Count
+        ' Set the progressbar to the maximum to make it look finished.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = 100
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 100
 
         ' Update loading label.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package details..."
@@ -103,7 +98,6 @@ Public Class aaformMainWindow
 
         ' Update the main window again after making the list visible and changing the loading label.
         aaformMainWindow.Update()
-
 
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
@@ -117,24 +111,20 @@ Public Class aaformMainWindow
             Row.Cells.Item(5).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
         Next
 
-        ' Set the progressbar to the maximum to make it look finished.
-        'aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
+        ' Update the main window again.
+        aaformMainWindow.Update()
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
         aaformMainWindow.toolstripstatusSplitter.Visible = False
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = False
         aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = False
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = False
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
-
-
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
-
-
 
         ' Display number of packages loaded. This really should be
         ' changed to calculate the number of currently-visible rows
