@@ -108,12 +108,6 @@ Public Class aaformMainWindow
             Row.Cells.Item(4).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Version")
             ' Load package description column.
             Row.Cells.Item(5).Value = Await PackageListTools.GetPackageInfoFromYaml(Row.Cells.Item(6).Value.ToString, "Description")
-
-            ' Update loading statusbar label and progressbar.
-            ' Make the progress bar progress.
-            'aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            ' Update the main form to show the current info.
-            aaformMainWindow.Update()
         Next
 
         ' Set the progressbar to the maximum to make it look finished.
@@ -132,6 +126,8 @@ Public Class aaformMainWindow
 
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
+
+
 
         ' Display number of packages loaded. This really should be
         ' changed to calculate the number of currently-visible rows
