@@ -83,7 +83,7 @@ Public Class aaformMainWindow
             ' Maybe give the user a way to turn off the progress
             ' status if they want it to go as fast as possible.
             ' Could be "ShowProgressWhileLoadingManifests".
-            'aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & i.ToString & " of " & (ManifestPaths.Count - 2).ToString & "..."
+            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package list" & "..."
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             ' Update the statusbar to show the current info.
@@ -149,6 +149,7 @@ Public Class aaformMainWindow
 
     Friend Shared Async Function UpdateProgressTextAsync(RowIndex As Integer, TotalPackages As Integer) As Task
 
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package " & RowIndex.ToString & " of " & TotalPackages.ToString & "..."
     End Function
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
