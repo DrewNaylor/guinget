@@ -4,7 +4,7 @@
 - [X] Load package list from cache
 - [X] Display package details, some in columns and entire manifest in a textbox
 - [X] Allow sorting by column
-- [X] Marking package for install or ignoring package
+- [X] Marking package (or multiple packages, if you wish) for install or ignoring package(s)
 - [ ] An option to run `winget source update` before updating guinget's package list cache, so they're both as up to date as possible
 - [ ] Functionality for `File>Exit` and `Help>About`
 - [ ] Hide controls that don't have features fully implemented, with a config option to show them
