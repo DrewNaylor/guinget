@@ -272,6 +272,7 @@ Public Class aaformMainWindow
     ' startup, but since loading the files list isn't async yet, it takes a bit
     ' longer than not loading the files list on startup and requiring a click
     ' on the "Refresh cache" button.
+    ' Not sure if this is faster or slower with Await.
     'Private Async Sub aaformMainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     '    Await AddPackageEntryToListAsync()
     'End Sub
