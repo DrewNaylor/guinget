@@ -84,6 +84,8 @@ Public Class aaformMainWindow
             aaformMainWindow.Update()
         Next
 
+        aaformMainWindow.Update()
+
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
@@ -98,6 +100,9 @@ Public Class aaformMainWindow
         ' Show datagridview again.
         aaformMainWindow.datagridviewPackageList.Visible = True
 
+        aaformMainWindow.Update()
+
+
         ' Now we load the details for each row.
         For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Load package ID column.
@@ -111,7 +116,7 @@ Public Class aaformMainWindow
         Next
 
         ' Set the progressbar to the maximum to make it look finished.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
+        'aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
