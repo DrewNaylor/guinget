@@ -25,14 +25,6 @@
 Imports libguinget
 
 Public Class aaformMainWindow
-    Private Sub ExamplePackageToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        ' Original code for info as well as the PackageInfo class was from this StackOverflow answer:
-        ' https://stackoverflow.com/a/36801744
-
-        ' Add packages to the list using what's stored in
-        ' %AppData%\winget-frontends\pkglist\manifests.
-        AddPackageEntryToListAsync()
-    End Sub
 
     Private Shared Async Function AddPackageEntryToListAsync() As Task
 
