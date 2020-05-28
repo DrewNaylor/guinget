@@ -50,12 +50,12 @@ Public Class aaformMainWindow
         ' Change mouse cursor to the "working" one.
         aaformMainWindow.Cursor = Cursors.WaitCursor
 
-        ' Clear the rows.
-        aaformMainWindow.datagridviewPackageList.Rows.Clear()
-
         ' Hide the datagridview while we're updating to make
         ' this slightly faster.
         aaformMainWindow.datagridviewPackageList.Visible = False
+
+        ' Clear the rows.
+        aaformMainWindow.datagridviewPackageList.Rows.Clear()
 
         ' Display loading progress bar and stuff.
         aaformMainWindow.toolstripstatusSplitter.Visible = True
