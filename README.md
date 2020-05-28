@@ -6,6 +6,8 @@ Not associated with the Synaptic project, either.
 
 Visual Studio 2019 Community is being used for this project. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
 
+There's a [project roadmap](./docs/Project-roadmap.md) available, if you want to read it.
+
 Early screenshot:
 ![](/docs/images/screenshot.png?raw=true)
 
