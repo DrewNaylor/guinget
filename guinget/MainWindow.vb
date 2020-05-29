@@ -210,6 +210,8 @@ Public Class aaformMainWindow
             If Not Row.Cells(0).Value.ToString = "Do nothing" Then
                 ' If this package says something other than do nothing,
                 ' add it to the list.
+                LocalApplyChangesWindow.datagridviewAppsBeingInstalled.Rows.Add(Row.Cells(2).Value.ToString,
+                  Row.Cells(4).Value.ToString, Row.Cells(0).Value.ToString, Row.Cells(3).Value.ToString & " - Ready")
 
             End If
         Next
