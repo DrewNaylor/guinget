@@ -39,6 +39,8 @@ Public Class aaformMainWindow
         ' Update 5/27/2020: This sub is now async for getting
         ' package details, but not async for getting the package
         ' list yet.
+        ' One issue with this code is that if the manifests can't be found,
+        ' it'll just hang here.
 
         ' Change mouse cursor to the "working" one.
         aaformMainWindow.Cursor = Cursors.WaitCursor
