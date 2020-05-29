@@ -178,9 +178,7 @@ Public Class aaformMainWindow
         ' Maybe add a messagebox that asks if the user is sure they want to
         ' mark more than 40 packages for installation/do nothing at once
         ' as that may take a long time to complete, with an option to not ask again.
-        For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
-            Package.Cells.Item(0).Value = sender.ToString
-        Next
+        MarkPackages(sender.ToString)
     End Sub
 
     Private Sub InstallToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallToolStripMenuItem.Click
@@ -197,13 +195,16 @@ Public Class aaformMainWindow
         ' Maybe add a messagebox that asks if the user is sure they want to
         ' mark more than 40 packages for installation/do nothing at once
         ' as that may take a long time to complete, with an option to not ask again.
-        For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
-            Package.Cells.Item(0).Value = sender.ToString
-        Next
+        MarkPackages(sender.ToString)
     End Sub
 
     Friend Shared Sub MarkPackages(Action As String)
 
+        ' Mark each package with an action based on what
+        ' the user wants.
+        For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
+            Package.Cells.Item(0).Value = Action
+        Next
     End Sub
 
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
