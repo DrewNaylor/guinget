@@ -24,6 +24,9 @@ Partial Class ApplyChangesWindow
     Private Sub InitializeComponent()
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
         Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
+        Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PackageAction = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -49,6 +52,7 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.AllowUserToDeleteRows = False
         Me.datagridviewAppsBeingInstalled.AllowUserToOrderColumns = True
         Me.datagridviewAppsBeingInstalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.datagridviewAppsBeingInstalled.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PackageName, Me.PackageAction, Me.PackageCurrentStatus})
         Me.tablelayoutpanelApplyChanges.SetColumnSpan(Me.datagridviewAppsBeingInstalled, 2)
         Me.datagridviewAppsBeingInstalled.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewAppsBeingInstalled.Location = New System.Drawing.Point(3, 3)
@@ -58,6 +62,30 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.RowTemplate.Height = 24
         Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(684, 404)
         Me.datagridviewAppsBeingInstalled.TabIndex = 0
+        '
+        'PackageName
+        '
+        Me.PackageName.HeaderText = "Package"
+        Me.PackageName.MinimumWidth = 6
+        Me.PackageName.Name = "PackageName"
+        Me.PackageName.ReadOnly = True
+        Me.PackageName.Width = 125
+        '
+        'PackageAction
+        '
+        Me.PackageAction.HeaderText = "Action"
+        Me.PackageAction.MinimumWidth = 6
+        Me.PackageAction.Name = "PackageAction"
+        Me.PackageAction.ReadOnly = True
+        Me.PackageAction.Width = 125
+        '
+        'PackageCurrentStatus
+        '
+        Me.PackageCurrentStatus.HeaderText = "Current status"
+        Me.PackageCurrentStatus.MinimumWidth = 6
+        Me.PackageCurrentStatus.Name = "PackageCurrentStatus"
+        Me.PackageCurrentStatus.ReadOnly = True
+        Me.PackageCurrentStatus.Width = 125
         '
         'ApplyChangesWindow
         '
@@ -75,4 +103,7 @@ Partial Class ApplyChangesWindow
 
     Friend WithEvents tablelayoutpanelApplyChanges As TableLayoutPanel
     Friend WithEvents datagridviewAppsBeingInstalled As DataGridView
+    Friend WithEvents PackageName As DataGridViewTextBoxColumn
+    Friend WithEvents PackageAction As DataGridViewTextBoxColumn
+    Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
 End Class
