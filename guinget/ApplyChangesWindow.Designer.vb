@@ -51,6 +51,7 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.AllowUserToAddRows = False
         Me.datagridviewAppsBeingInstalled.AllowUserToDeleteRows = False
         Me.datagridviewAppsBeingInstalled.AllowUserToOrderColumns = True
+        Me.datagridviewAppsBeingInstalled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewAppsBeingInstalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridviewAppsBeingInstalled.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PackageName, Me.PackageAction, Me.PackageCurrentStatus})
         Me.tablelayoutpanelApplyChanges.SetColumnSpan(Me.datagridviewAppsBeingInstalled, 2)
@@ -58,6 +59,7 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.Location = New System.Drawing.Point(3, 3)
         Me.datagridviewAppsBeingInstalled.Name = "datagridviewAppsBeingInstalled"
         Me.datagridviewAppsBeingInstalled.ReadOnly = True
+        Me.datagridviewAppsBeingInstalled.RowHeadersVisible = False
         Me.datagridviewAppsBeingInstalled.RowHeadersWidth = 51
         Me.datagridviewAppsBeingInstalled.RowTemplate.Height = 24
         Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(684, 404)
@@ -69,7 +71,6 @@ Partial Class ApplyChangesWindow
         Me.PackageName.MinimumWidth = 6
         Me.PackageName.Name = "PackageName"
         Me.PackageName.ReadOnly = True
-        Me.PackageName.Width = 125
         '
         'PackageAction
         '
@@ -77,7 +78,6 @@ Partial Class ApplyChangesWindow
         Me.PackageAction.MinimumWidth = 6
         Me.PackageAction.Name = "PackageAction"
         Me.PackageAction.ReadOnly = True
-        Me.PackageAction.Width = 125
         '
         'PackageCurrentStatus
         '
@@ -85,7 +85,6 @@ Partial Class ApplyChangesWindow
         Me.PackageCurrentStatus.MinimumWidth = 6
         Me.PackageCurrentStatus.Name = "PackageCurrentStatus"
         Me.PackageCurrentStatus.ReadOnly = True
-        Me.PackageCurrentStatus.Width = 125
         '
         'ApplyChangesWindow
         '
