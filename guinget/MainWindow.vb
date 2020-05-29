@@ -201,6 +201,9 @@ Public Class aaformMainWindow
 
         ' We need to use the progress bar so it doesn't look like the UI is frozen.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+        ' Show progress bar and info label.
+        ProgressInfoVisibility()
+
         For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = Action
         Next
