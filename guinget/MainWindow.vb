@@ -216,6 +216,8 @@ Public Class aaformMainWindow
             End If
         Next
 
+        LocalApplyChangesWindow.ShowDialog(Me)
+
         'Using proc As New Process
         '    proc.StartInfo.FileName = "winget"
 
