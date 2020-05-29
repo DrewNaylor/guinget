@@ -207,6 +207,9 @@ Public Class aaformMainWindow
         For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = Action
         Next
+
+        ' Hide progress bar and info label.
+        ProgressInfoVisibility(False)
     End Sub
 
     Friend Shared Sub ProgressInfoVisibility(Optional Visible As Boolean = True)
