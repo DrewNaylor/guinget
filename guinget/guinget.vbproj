@@ -87,6 +87,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplyChangesWindow.Designer.vb">
+      <DependentUpon>ApplyChangesWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyChangesWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainWindow.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ApplyChangesWindow.resx">
+      <DependentUpon>ApplyChangesWindow.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.vb</DependentUpon>
     </EmbeddedResource>
