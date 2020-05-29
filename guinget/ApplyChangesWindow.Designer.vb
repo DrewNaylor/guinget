@@ -22,34 +22,57 @@ Partial Class ApplyChangesWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
+        Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
+        Me.tablelayoutpanelApplyChanges.SuspendLayout()
+        CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TableLayoutPanel1
+        'tablelayoutpanelApplyChanges
         '
-        Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(690, 450)
-        Me.TableLayoutPanel1.TabIndex = 0
+        Me.tablelayoutpanelApplyChanges.ColumnCount = 2
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.datagridviewAppsBeingInstalled, 0, 0)
+        Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
+        Me.tablelayoutpanelApplyChanges.Name = "tablelayoutpanelApplyChanges"
+        Me.tablelayoutpanelApplyChanges.RowCount = 2
+        Me.tablelayoutpanelApplyChanges.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tablelayoutpanelApplyChanges.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
+        Me.tablelayoutpanelApplyChanges.Size = New System.Drawing.Size(690, 450)
+        Me.tablelayoutpanelApplyChanges.TabIndex = 0
+        '
+        'datagridviewAppsBeingInstalled
+        '
+        Me.datagridviewAppsBeingInstalled.AllowUserToAddRows = False
+        Me.datagridviewAppsBeingInstalled.AllowUserToDeleteRows = False
+        Me.datagridviewAppsBeingInstalled.AllowUserToOrderColumns = True
+        Me.datagridviewAppsBeingInstalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tablelayoutpanelApplyChanges.SetColumnSpan(Me.datagridviewAppsBeingInstalled, 2)
+        Me.datagridviewAppsBeingInstalled.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.datagridviewAppsBeingInstalled.Location = New System.Drawing.Point(3, 3)
+        Me.datagridviewAppsBeingInstalled.Name = "datagridviewAppsBeingInstalled"
+        Me.datagridviewAppsBeingInstalled.ReadOnly = True
+        Me.datagridviewAppsBeingInstalled.RowHeadersWidth = 51
+        Me.datagridviewAppsBeingInstalled.RowTemplate.Height = 24
+        Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(684, 404)
+        Me.datagridviewAppsBeingInstalled.TabIndex = 0
         '
         'ApplyChangesWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(690, 450)
-        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Controls.Add(Me.tablelayoutpanelApplyChanges)
         Me.Name = "ApplyChangesWindow"
         Me.Text = "ApplyChangesWindow"
+        Me.tablelayoutpanelApplyChanges.ResumeLayout(False)
+        CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents tablelayoutpanelApplyChanges As TableLayoutPanel
+    Friend WithEvents datagridviewAppsBeingInstalled As DataGridView
 End Class
