@@ -202,6 +202,17 @@ Public Class aaformMainWindow
     Private Sub toolstripbuttonApplyChanges_Click(sender As Object, e As EventArgs) Handles toolstripbuttonApplyChanges.Click
 
         ' Open the Apply changes window and put the user's selections into it.
+        Dim LocalApplyChangesWindow As New ApplyChangesWindow
+
+        ' Put the user's selections into this window.
+        For Each Row As DataGridViewRow In datagridviewPackageList.Rows
+            ' Check if the package is meant to be installed.
+            If Not Row.Cells(0).Value.ToString = "Do nothing" Then
+                ' If this package says something other than do nothing,
+                ' add it to the list.
+
+            End If
+        Next
 
         'Using proc As New Process
         '    proc.StartInfo.FileName = "winget"
