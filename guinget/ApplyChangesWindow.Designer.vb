@@ -24,7 +24,7 @@ Partial Class ApplyChangesWindow
     Private Sub InitializeComponent()
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonCancel = New System.Windows.Forms.Button()
-        Me.buttonApplyChanges = New System.Windows.Forms.Button()
+        Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PackageAction = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -37,11 +37,11 @@ Partial Class ApplyChangesWindow
         '
         Me.tablelayoutpanelApplyChanges.ColumnCount = 3
         Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140.0!))
         Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.datagridviewAppsBeingInstalled, 0, 0)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonCancel, 2, 1)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonApplyChanges, 1, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonConfirmChanges, 1, 1)
         Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelApplyChanges.Name = "tablelayoutpanelApplyChanges"
@@ -61,15 +61,15 @@ Partial Class ApplyChangesWindow
         Me.buttonCancel.Text = "Cancel"
         Me.buttonCancel.UseVisualStyleBackColor = True
         '
-        'buttonApplyChanges
+        'buttonConfirmChanges
         '
-        Me.buttonApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonApplyChanges.Location = New System.Drawing.Point(453, 413)
-        Me.buttonApplyChanges.Name = "buttonApplyChanges"
-        Me.buttonApplyChanges.Size = New System.Drawing.Size(114, 34)
-        Me.buttonApplyChanges.TabIndex = 2
-        Me.buttonApplyChanges.Text = "Apply changes"
-        Me.buttonApplyChanges.UseVisualStyleBackColor = True
+        Me.buttonConfirmChanges.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonConfirmChanges.Location = New System.Drawing.Point(433, 413)
+        Me.buttonConfirmChanges.Name = "buttonConfirmChanges"
+        Me.buttonConfirmChanges.Size = New System.Drawing.Size(134, 34)
+        Me.buttonConfirmChanges.TabIndex = 2
+        Me.buttonConfirmChanges.Text = "Confirm changes"
+        Me.buttonConfirmChanges.UseVisualStyleBackColor = True
         '
         'PackageCurrentStatus
         '
@@ -127,7 +127,7 @@ Partial Class ApplyChangesWindow
 
     Friend WithEvents tablelayoutpanelApplyChanges As TableLayoutPanel
     Friend WithEvents buttonCancel As Button
-    Friend WithEvents buttonApplyChanges As Button
+    Friend WithEvents buttonConfirmChanges As Button
     Friend WithEvents datagridviewAppsBeingInstalled As DataGridView
     Friend WithEvents PackageName As DataGridViewTextBoxColumn
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
