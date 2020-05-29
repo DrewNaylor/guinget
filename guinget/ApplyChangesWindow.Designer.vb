@@ -23,8 +23,8 @@ Partial Class ApplyChangesWindow
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.buttonCancel = New System.Windows.Forms.Button()
+        Me.buttonApplyChanges = New System.Windows.Forms.Button()
         Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PackageAction = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -37,11 +37,11 @@ Partial Class ApplyChangesWindow
         '
         Me.tablelayoutpanelApplyChanges.ColumnCount = 3
         Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
-        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.datagridviewAppsBeingInstalled, 0, 0)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.Button1, 2, 1)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.Button2, 1, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonCancel, 2, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonApplyChanges, 1, 1)
         Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelApplyChanges.Name = "tablelayoutpanelApplyChanges"
@@ -51,25 +51,25 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.Size = New System.Drawing.Size(690, 450)
         Me.tablelayoutpanelApplyChanges.TabIndex = 0
         '
-        'Button1
+        'buttonCancel
         '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Location = New System.Drawing.Point(613, 413)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(74, 34)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonCancel.Location = New System.Drawing.Point(573, 413)
+        Me.buttonCancel.Name = "buttonCancel"
+        Me.buttonCancel.Size = New System.Drawing.Size(114, 34)
+        Me.buttonCancel.TabIndex = 1
+        Me.buttonCancel.Text = "Cancel"
+        Me.buttonCancel.UseVisualStyleBackColor = True
         '
-        'Button2
+        'buttonApplyChanges
         '
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button2.Location = New System.Drawing.Point(533, 413)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(74, 34)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.buttonApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonApplyChanges.Location = New System.Drawing.Point(453, 413)
+        Me.buttonApplyChanges.Name = "buttonApplyChanges"
+        Me.buttonApplyChanges.Size = New System.Drawing.Size(114, 34)
+        Me.buttonApplyChanges.TabIndex = 2
+        Me.buttonApplyChanges.Text = "Apply changes"
+        Me.buttonApplyChanges.UseVisualStyleBackColor = True
         '
         'PackageCurrentStatus
         '
@@ -126,8 +126,8 @@ Partial Class ApplyChangesWindow
     End Sub
 
     Friend WithEvents tablelayoutpanelApplyChanges As TableLayoutPanel
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents buttonCancel As Button
+    Friend WithEvents buttonApplyChanges As Button
     Friend WithEvents datagridviewAppsBeingInstalled As DataGridView
     Friend WithEvents PackageName As DataGridViewTextBoxColumn
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
