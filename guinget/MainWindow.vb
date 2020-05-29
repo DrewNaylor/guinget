@@ -204,6 +204,9 @@ Public Class aaformMainWindow
         ' Show progress bar and info label.
         ProgressInfoVisibility()
 
+        ' Update the main window.
+        aaformMainWindow.Update()
+
         For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = Action
         Next
