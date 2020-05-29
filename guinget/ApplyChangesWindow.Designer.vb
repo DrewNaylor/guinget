@@ -25,10 +25,11 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
-        Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PackageAction = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
+        Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PackageVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PackageAction = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -71,27 +72,6 @@ Partial Class ApplyChangesWindow
         Me.buttonConfirmChanges.Text = "Confirm changes"
         Me.buttonConfirmChanges.UseVisualStyleBackColor = True
         '
-        'PackageCurrentStatus
-        '
-        Me.PackageCurrentStatus.HeaderText = "Current status"
-        Me.PackageCurrentStatus.MinimumWidth = 6
-        Me.PackageCurrentStatus.Name = "PackageCurrentStatus"
-        Me.PackageCurrentStatus.ReadOnly = True
-        '
-        'PackageAction
-        '
-        Me.PackageAction.HeaderText = "Action"
-        Me.PackageAction.MinimumWidth = 6
-        Me.PackageAction.Name = "PackageAction"
-        Me.PackageAction.ReadOnly = True
-        '
-        'PackageName
-        '
-        Me.PackageName.HeaderText = "Package"
-        Me.PackageName.MinimumWidth = 6
-        Me.PackageName.Name = "PackageName"
-        Me.PackageName.ReadOnly = True
-        '
         'datagridviewAppsBeingInstalled
         '
         Me.datagridviewAppsBeingInstalled.AllowUserToAddRows = False
@@ -99,7 +79,7 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.AllowUserToOrderColumns = True
         Me.datagridviewAppsBeingInstalled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewAppsBeingInstalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridviewAppsBeingInstalled.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PackageName, Me.PackageAction, Me.PackageCurrentStatus})
+        Me.datagridviewAppsBeingInstalled.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PackageName, Me.PackageVersion, Me.PackageAction, Me.PackageCurrentStatus})
         Me.tablelayoutpanelApplyChanges.SetColumnSpan(Me.datagridviewAppsBeingInstalled, 3)
         Me.datagridviewAppsBeingInstalled.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewAppsBeingInstalled.Location = New System.Drawing.Point(3, 3)
@@ -110,6 +90,34 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.RowTemplate.Height = 24
         Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(684, 404)
         Me.datagridviewAppsBeingInstalled.TabIndex = 0
+        '
+        'PackageName
+        '
+        Me.PackageName.HeaderText = "Package"
+        Me.PackageName.MinimumWidth = 6
+        Me.PackageName.Name = "PackageName"
+        Me.PackageName.ReadOnly = True
+        '
+        'PackageVersion
+        '
+        Me.PackageVersion.HeaderText = "Version"
+        Me.PackageVersion.MinimumWidth = 6
+        Me.PackageVersion.Name = "PackageVersion"
+        Me.PackageVersion.ReadOnly = True
+        '
+        'PackageAction
+        '
+        Me.PackageAction.HeaderText = "Action"
+        Me.PackageAction.MinimumWidth = 6
+        Me.PackageAction.Name = "PackageAction"
+        Me.PackageAction.ReadOnly = True
+        '
+        'PackageCurrentStatus
+        '
+        Me.PackageCurrentStatus.HeaderText = "Current status"
+        Me.PackageCurrentStatus.MinimumWidth = 6
+        Me.PackageCurrentStatus.Name = "PackageCurrentStatus"
+        Me.PackageCurrentStatus.ReadOnly = True
         '
         'ApplyChangesWindow
         '
@@ -130,6 +138,7 @@ Partial Class ApplyChangesWindow
     Friend WithEvents buttonConfirmChanges As Button
     Friend WithEvents datagridviewAppsBeingInstalled As DataGridView
     Friend WithEvents PackageName As DataGridViewTextBoxColumn
+    Friend WithEvents PackageVersion As DataGridViewTextBoxColumn
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
 End Class

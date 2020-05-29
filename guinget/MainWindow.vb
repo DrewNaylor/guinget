@@ -200,58 +200,61 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripbuttonApplyChanges_Click(sender As Object, e As EventArgs) Handles toolstripbuttonApplyChanges.Click
-        Using proc As New Process
-            proc.StartInfo.FileName = "winget"
 
-            ' If we want to get everything, do so.
-            If datagridviewPackageList.Rows(3).Cells(0).Value.ToString = "Install" Then
-                proc.StartInfo.Arguments = "show -e " & """" & datagridviewPackageList.Rows(3).Cells(2).Value.ToString & """"
-                proc.Start()
-            End If
-            '' Setup procinfo properties.
-            'proc.StartInfo.UseShellExecute = False
-            'proc.StartInfo.RedirectStandardError = True
-            'proc.StartInfo.RedirectStandardInput = True
-            'proc.StartInfo.RedirectStandardOutput = True
-            'proc.StartInfo.CreateNoWindow = True
+        ' Open the Apply changes window and put the user's selections into it.
 
-            ''If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
+        'Using proc As New Process
+        '    proc.StartInfo.FileName = "winget"
 
-            'Using cancelRegister = cancel.Register(Sub() proc.Kill())
+        '    ' If we want to get everything, do so.
+        '    If datagridviewPackageList.Rows(3).Cells(0).Value.ToString = "Install" Then
+        '        proc.StartInfo.Arguments = "show -e " & """" & datagridviewPackageList.Rows(3).Cells(2).Value.ToString & """"
+        '        proc.Start()
+        '    End If
+        '    '' Setup procinfo properties.
+        '    'proc.StartInfo.UseShellExecute = False
+        '    'proc.StartInfo.RedirectStandardError = True
+        '    'proc.StartInfo.RedirectStandardInput = True
+        '    'proc.StartInfo.RedirectStandardOutput = True
+        '    'proc.StartInfo.CreateNoWindow = True
 
-            '    ' Start winget so we can get output from it.
-            '    proc.Start()
+        '    ''If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
 
-            '    ' Assign and create variables to store its output.
-            '    Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
-            '    Dim wingetError = proc.StandardError.ReadToEndAsync
+        '    'Using cancelRegister = cancel.Register(Sub() proc.Kill())
 
-            '    ' Wait for the output and error tasks to complete.
-            '    Await Task.WhenAll(wingetOutput, wingetError)
+        '    '    ' Start winget so we can get output from it.
+        '    '    proc.Start()
 
-            '    ' Close winget's standard output and standard error.
-            '    proc.StandardOutput.Close()
-            '    proc.StandardError.Close()
+        '    '    ' Assign and create variables to store its output.
+        '    '    Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
+        '    '    Dim wingetError = proc.StandardError.ReadToEndAsync
 
-            '    ' Run the process and wait for exit (why didn't this work before? I have no idea.)
-            '    Await Task.Run(AddressOf proc.WaitForExit)
+        '    '    ' Wait for the output and error tasks to complete.
+        '    '    Await Task.WhenAll(wingetOutput, wingetError)
 
-            '    ' Assign variables for standard output and error to winget's output stuff.
-            '    Dim standardOut = Await wingetOutput
-            '    Dim standardErr = Await wingetError
+        '    '    ' Close winget's standard output and standard error.
+        '    '    proc.StandardOutput.Close()
+        '    '    proc.StandardError.Close()
 
-            '    ' If canceling is requested, then throw an operation canceled exception.
-            '    If cancel.IsCancellationRequested = True Then
-            '        Throw New OperationCanceledException(standardErr)
-            '    ElseIf String.IsNullOrEmpty(standardOut) = True Then
-            '        ' If the output is null or empty, throw an exception.
-            '        Throw New Exception(standardErr)
-            '    Else
-            '        ' Otherwise, if it's all good, return the output.
-            '        Return standardOut
-            '    End If
+        '    '    ' Run the process and wait for exit (why didn't this work before? I have no idea.)
+        '    '    Await Task.Run(AddressOf proc.WaitForExit)
 
-        End Using
+        '    '    ' Assign variables for standard output and error to winget's output stuff.
+        '    '    Dim standardOut = Await wingetOutput
+        '    '    Dim standardErr = Await wingetError
+
+        '    '    ' If canceling is requested, then throw an operation canceled exception.
+        '    '    If cancel.IsCancellationRequested = True Then
+        '    '        Throw New OperationCanceledException(standardErr)
+        '    '    ElseIf String.IsNullOrEmpty(standardOut) = True Then
+        '    '        ' If the output is null or empty, throw an exception.
+        '    '        Throw New Exception(standardErr)
+        '    '    Else
+        '    '        ' Otherwise, if it's all good, return the output.
+        '    '        Return standardOut
+        '    '    End If
+
+        'End Using
     End Sub
 
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
