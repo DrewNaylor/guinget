@@ -252,15 +252,13 @@ Public Class aaformMainWindow
         End Using
     End Sub
 
-    Private Shared Async Function UpdatePackageList() As Task
-
-    End Function
-
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Display temporary message saying to use update-manifests.bat, then click Ok.
         MessageBox.Show("Please run update-manifests.bat located in guinget's EXE directory (may also be in the" &
                         " repository's root folder), then click OK when it's finished.", "Refresh cache")
         ' Reload the package list with the new manifests.
+        ' Trying to do this without blocking with this example:
+        ' https://www.codeproject.com/Tips/729674/Simple-Net-progress-bar-using-async-await
         AddPackageEntryToListAsync()
     End Sub
 
