@@ -171,6 +171,10 @@ Public Class aaformMainWindow
         ' look like the app is frozen. Preferably we'd also use an async
         ' operation to select everything while disabling certain controls
         ' like the Refresh cache button and the Apply changes button.
+
+        ' Maybe add a messagebox that asks if the user is sure they want to
+        ' mark more than 40 packages for installation/do nothing at once
+        ' as that may take a long time to complete, with an option to not ask again.
         For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = sender.ToString
         Next
@@ -186,6 +190,10 @@ Public Class aaformMainWindow
         ' look like the app is frozen. Preferably we'd also use an async
         ' operation to select everything while disabling certain controls
         ' like the Refresh cache button and the Apply changes button.
+
+        ' Maybe add a messagebox that asks if the user is sure they want to
+        ' mark more than 40 packages for installation/do nothing at once
+        ' as that may take a long time to complete, with an option to not ask again.
         For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = sender.ToString
         Next
