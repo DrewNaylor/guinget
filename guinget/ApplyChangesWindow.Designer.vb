@@ -23,13 +23,13 @@ Partial Class ApplyChangesWindow
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
-        Me.buttonCancel = New System.Windows.Forms.Button()
-        Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
         Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PackageVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PackageAction = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.buttonCancel = New System.Windows.Forms.Button()
+        Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -52,31 +52,12 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.Size = New System.Drawing.Size(690, 450)
         Me.tablelayoutpanelApplyChanges.TabIndex = 0
         '
-        'buttonCancel
-        '
-        Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonCancel.Location = New System.Drawing.Point(573, 413)
-        Me.buttonCancel.Name = "buttonCancel"
-        Me.buttonCancel.Size = New System.Drawing.Size(114, 34)
-        Me.buttonCancel.TabIndex = 1
-        Me.buttonCancel.Text = "Cancel"
-        Me.buttonCancel.UseVisualStyleBackColor = True
-        '
-        'buttonConfirmChanges
-        '
-        Me.buttonConfirmChanges.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonConfirmChanges.Location = New System.Drawing.Point(433, 413)
-        Me.buttonConfirmChanges.Name = "buttonConfirmChanges"
-        Me.buttonConfirmChanges.Size = New System.Drawing.Size(134, 34)
-        Me.buttonConfirmChanges.TabIndex = 2
-        Me.buttonConfirmChanges.Text = "Confirm changes"
-        Me.buttonConfirmChanges.UseVisualStyleBackColor = True
-        '
         'datagridviewAppsBeingInstalled
         '
         Me.datagridviewAppsBeingInstalled.AllowUserToAddRows = False
         Me.datagridviewAppsBeingInstalled.AllowUserToDeleteRows = False
         Me.datagridviewAppsBeingInstalled.AllowUserToOrderColumns = True
+        Me.datagridviewAppsBeingInstalled.AllowUserToResizeRows = False
         Me.datagridviewAppsBeingInstalled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewAppsBeingInstalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridviewAppsBeingInstalled.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PackageName, Me.PackageVersion, Me.PackageAction, Me.PackageCurrentStatus})
@@ -87,8 +68,11 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.ReadOnly = True
         Me.datagridviewAppsBeingInstalled.RowHeadersVisible = False
         Me.datagridviewAppsBeingInstalled.RowHeadersWidth = 51
+        Me.datagridviewAppsBeingInstalled.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.datagridviewAppsBeingInstalled.RowTemplate.Height = 24
+        Me.datagridviewAppsBeingInstalled.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(684, 404)
+        Me.datagridviewAppsBeingInstalled.StandardTab = True
         Me.datagridviewAppsBeingInstalled.TabIndex = 0
         '
         'PackageName
@@ -118,6 +102,26 @@ Partial Class ApplyChangesWindow
         Me.PackageCurrentStatus.MinimumWidth = 6
         Me.PackageCurrentStatus.Name = "PackageCurrentStatus"
         Me.PackageCurrentStatus.ReadOnly = True
+        '
+        'buttonCancel
+        '
+        Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonCancel.Location = New System.Drawing.Point(573, 413)
+        Me.buttonCancel.Name = "buttonCancel"
+        Me.buttonCancel.Size = New System.Drawing.Size(114, 34)
+        Me.buttonCancel.TabIndex = 1
+        Me.buttonCancel.Text = "Cancel"
+        Me.buttonCancel.UseVisualStyleBackColor = True
+        '
+        'buttonConfirmChanges
+        '
+        Me.buttonConfirmChanges.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonConfirmChanges.Location = New System.Drawing.Point(433, 413)
+        Me.buttonConfirmChanges.Name = "buttonConfirmChanges"
+        Me.buttonConfirmChanges.Size = New System.Drawing.Size(134, 34)
+        Me.buttonConfirmChanges.TabIndex = 2
+        Me.buttonConfirmChanges.Text = "Confirm changes"
+        Me.buttonConfirmChanges.UseVisualStyleBackColor = True
         '
         'ApplyChangesWindow
         '
