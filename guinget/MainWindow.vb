@@ -165,6 +165,12 @@ Public Class aaformMainWindow
         ' Set all selected packages to "do nothing", or whatever the text in the
         ' context menu item that was clicked is. This could allow for
         ' translation and adding additional actions.
+
+        ' This takes a while if there are a lot of packages selected,
+        ' so we'll have to use the progress bar and stuff so it doesn't
+        ' look like the app is frozen. Preferably we'd also use an async
+        ' operation to select everything while disabling certain controls
+        ' like the Refresh cache button and the Apply changes button.
         For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = sender.ToString
         Next
@@ -174,6 +180,12 @@ Public Class aaformMainWindow
         ' Set all selected packages to "do nothing", or whatever the text in the
         ' context menu item that was clicked is. This could allow for
         ' translation and adding additional actions.
+
+        ' This takes a while if there are a lot of packages selected,
+        ' so we'll have to use the progress bar and stuff so it doesn't
+        ' look like the app is frozen. Preferably we'd also use an async
+        ' operation to select everything while disabling certain controls
+        ' like the Refresh cache button and the Apply changes button.
         For Each Package As DataGridViewRow In datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = sender.ToString
         Next
