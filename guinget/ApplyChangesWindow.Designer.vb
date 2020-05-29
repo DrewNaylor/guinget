@@ -23,11 +23,12 @@ Partial Class ApplyChangesWindow
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
-        Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
-        Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PackageAction = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PackageAction = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -35,11 +36,12 @@ Partial Class ApplyChangesWindow
         'tablelayoutpanelApplyChanges
         '
         Me.tablelayoutpanelApplyChanges.ColumnCount = 3
-        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 386.0!))
-        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140.0!))
-        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140.0!))
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.datagridviewAppsBeingInstalled, 0, 0)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.Button1, 2, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.Button2, 1, 1)
         Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelApplyChanges.Name = "tablelayoutpanelApplyChanges"
@@ -48,6 +50,47 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.tablelayoutpanelApplyChanges.Size = New System.Drawing.Size(690, 450)
         Me.tablelayoutpanelApplyChanges.TabIndex = 0
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button1.Location = New System.Drawing.Point(613, 413)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(74, 34)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button2.Location = New System.Drawing.Point(533, 413)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(74, 34)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'PackageCurrentStatus
+        '
+        Me.PackageCurrentStatus.HeaderText = "Current status"
+        Me.PackageCurrentStatus.MinimumWidth = 6
+        Me.PackageCurrentStatus.Name = "PackageCurrentStatus"
+        Me.PackageCurrentStatus.ReadOnly = True
+        '
+        'PackageAction
+        '
+        Me.PackageAction.HeaderText = "Action"
+        Me.PackageAction.MinimumWidth = 6
+        Me.PackageAction.Name = "PackageAction"
+        Me.PackageAction.ReadOnly = True
+        '
+        'PackageName
+        '
+        Me.PackageName.HeaderText = "Package"
+        Me.PackageName.MinimumWidth = 6
+        Me.PackageName.Name = "PackageName"
+        Me.PackageName.ReadOnly = True
         '
         'datagridviewAppsBeingInstalled
         '
@@ -68,37 +111,6 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(684, 404)
         Me.datagridviewAppsBeingInstalled.TabIndex = 0
         '
-        'PackageName
-        '
-        Me.PackageName.HeaderText = "Package"
-        Me.PackageName.MinimumWidth = 6
-        Me.PackageName.Name = "PackageName"
-        Me.PackageName.ReadOnly = True
-        '
-        'PackageAction
-        '
-        Me.PackageAction.HeaderText = "Action"
-        Me.PackageAction.MinimumWidth = 6
-        Me.PackageAction.Name = "PackageAction"
-        Me.PackageAction.ReadOnly = True
-        '
-        'PackageCurrentStatus
-        '
-        Me.PackageCurrentStatus.HeaderText = "Current status"
-        Me.PackageCurrentStatus.MinimumWidth = 6
-        Me.PackageCurrentStatus.Name = "PackageCurrentStatus"
-        Me.PackageCurrentStatus.ReadOnly = True
-        '
-        'Button1
-        '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Location = New System.Drawing.Point(529, 413)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(158, 34)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'ApplyChangesWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -114,9 +126,10 @@ Partial Class ApplyChangesWindow
     End Sub
 
     Friend WithEvents tablelayoutpanelApplyChanges As TableLayoutPanel
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
     Friend WithEvents datagridviewAppsBeingInstalled As DataGridView
     Friend WithEvents PackageName As DataGridViewTextBoxColumn
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
-    Friend WithEvents Button1 As Button
 End Class
