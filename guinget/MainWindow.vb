@@ -202,6 +202,10 @@ Public Class aaformMainWindow
         Next
     End Sub
 
+    Friend Shared Sub MarkPackages(Action As String)
+
+    End Sub
+
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected.
         If datagridviewPackageList.SelectedRows.Count = 1 Then
