@@ -227,6 +227,10 @@ Public Class aaformMainWindow
         ' Open the Apply changes window and put the user's selections into it.
         Dim LocalApplyChangesWindow As New ApplyChangesWindow
 
+        ' Commit the action selections so that selecting a different
+        ' row isn't required to get what's set for installation or whatever.
+        datagridviewPackageList.EndEdit()
+
         ' Put the user's selections into this window.
         For Each Row As DataGridViewRow In datagridviewPackageList.Rows
             ' Check if the package is meant to be installed.
