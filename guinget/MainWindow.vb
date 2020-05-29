@@ -43,6 +43,9 @@ Public Class aaformMainWindow
         ' it'll just hang here.
 
         ' Change mouse cursor to the "working" one.
+        ' For some reason this doesn't work if the mouse is outside
+        ' the window when starting to load the list.
+        ' Instead it'll just keep the default cursor.
         aaformMainWindow.Cursor = Cursors.WaitCursor
 
         ' Hide the datagridview while we're updating to make
