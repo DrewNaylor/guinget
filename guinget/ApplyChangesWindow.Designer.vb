@@ -135,6 +135,7 @@ Partial Class ApplyChangesWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.buttonCancel
         Me.ClientSize = New System.Drawing.Size(518, 366)
         Me.Controls.Add(Me.tablelayoutpanelApplyChanges)
         Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)

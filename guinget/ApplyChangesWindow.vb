@@ -25,5 +25,7 @@
 
 
 Public Class ApplyChangesWindow
+    Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
 
+    End Sub
 End Class
