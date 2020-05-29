@@ -252,6 +252,10 @@ Public Class aaformMainWindow
         End Using
     End Sub
 
+    Private Shared Async Function UpdatePackageList() As Task
+
+    End Function
+
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Display temporary message saying to use update-manifests.bat, then click Ok.
         MessageBox.Show("Please run update-manifests.bat located in guinget's EXE directory (may also be in the" &
