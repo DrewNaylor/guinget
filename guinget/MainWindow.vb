@@ -179,10 +179,6 @@ Public Class aaformMainWindow
         Next
     End Sub
 
-    Friend Shared Async Function ChangePackageActionAsync(Action As String) As Task
-
-    End Function
-
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected.
         If datagridviewPackageList.SelectedRows.Count = 1 Then
