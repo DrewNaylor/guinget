@@ -56,9 +56,7 @@ Public Class aaformMainWindow
         aaformMainWindow.datagridviewPackageList.Rows.Clear()
 
         ' Display loading progress bar and stuff.
-        aaformMainWindow.toolstripstatusSplitter.Visible = True
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = True
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = True
+        ProgressInfoVisibility()
 
         ' Update main window so the "loading package list, please wait..." label
         ' looks ok when the package list is hidden, along with anything else
@@ -124,9 +122,7 @@ Public Class aaformMainWindow
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
-        aaformMainWindow.toolstripstatusSplitter.Visible = False
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = False
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = False
+        ProgressInfoVisibility(False)
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
@@ -202,9 +198,21 @@ Public Class aaformMainWindow
 
         ' Mark each package with an action based on what
         ' the user wants.
+
+        ' We need to use the progress bar so it doesn't look like the UI is frozen.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
         For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = Action
         Next
+    End Sub
+
+    Friend Shared Sub ProgressInfoVisibility(Optional Visible As Boolean = True)
+
+        ' Make the progress bar and progress label shown or hidden
+        ' based on the Visible arg.
+        aaformMainWindow.toolstripstatusSplitter.Visible = Visible
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Visible = Visible
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = Visible
     End Sub
 
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
