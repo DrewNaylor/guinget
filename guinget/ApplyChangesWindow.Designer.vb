@@ -118,7 +118,7 @@ Partial Class ApplyChangesWindow
         Me.ClientSize = New System.Drawing.Size(690, 450)
         Me.Controls.Add(Me.tablelayoutpanelApplyChanges)
         Me.Name = "ApplyChangesWindow"
-        Me.Text = "ApplyChangesWindow"
+        Me.Text = "Apply changes"
         Me.tablelayoutpanelApplyChanges.ResumeLayout(False)
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
