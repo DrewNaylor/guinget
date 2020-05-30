@@ -45,6 +45,8 @@ Public Class ApplyChangesWindow
         ' Show a messagebox that says we don't support batch installs yet, and
         ' ask the user to double-click or press Enter on each of the packages
         ' when they're ready to start installing them.
+        MessageBox.Show("Sorry, we don't support automatic batch package installs yet, but you can double-click or press Enter" &
+                        " on each package in the list to install them individually when you're ready.", "Confirm changes")
     End Sub
 
     Private Sub InstallSinglePackage()
