@@ -35,6 +35,8 @@ Public Class ApplyChangesWindow
         ' Necessary for now as we don't support batch installs yet.
 
         ' First make sure that we're not already installing the package.
+        If Not datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..." Then
 
+        End If
     End Sub
 End Class
