@@ -42,7 +42,7 @@ Public Class PackageTools
             proc.StartInfo.FileName = "cmd"
 
             ' Define CMD args.
-            proc.StartInfo.Arguments = "/k winget"
+            proc.StartInfo.Arguments = "/k winget install -e " & PackageId & " -v " & PackageVersion
 
             proc.Start()
 
