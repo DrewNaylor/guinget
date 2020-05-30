@@ -61,4 +61,28 @@ Public Class ApplyChangesWindow
         ' ask the user to double-click or press Enter on each of the packages
         ' when they're ready to start installing them.
     End Sub
+
+    Private Sub datagridviewAppsBeingInstalled_KeyDown(sender As Object, e As KeyEventArgs) Handles datagridviewAppsBeingInstalled.KeyDown
+        ' Make sure the user pressed Enter.
+        If e.KeyCode = Keys.Enter Then
+            ' First make sure that we're not already installing the package.
+            If Not datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..." Then
+
+                ' If we're not installing, change the current status cell value to "Installing..." and
+                ' show a messagebox for testing.
+
+                datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..."
+
+                ' Show messagebox with current status.
+                'MessageBox.Show(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString)
+
+                ' Now call winget and install the package. Be sure to keep the window open
+                ' for now until configuration is possible and until we display winget output
+                ' in a textbox below the datagridview.
+                PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
+                                                   datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString)
+
+            End If
+        End If
+    End Sub
 End Class
