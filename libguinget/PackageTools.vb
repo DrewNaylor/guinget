@@ -30,6 +30,12 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageTools
 
+#Region "Install package with winget."
+
+
+
+#End Region
+
 #Region "Get package details from YAML"
     Public Shared Async Function GetPackageInfoFromYamlAsync(ManifestPath As String, RequestedKey As String) As Task(Of String)
 
