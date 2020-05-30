@@ -204,6 +204,9 @@ Public Class aaformMainWindow
         ' Show progress bar and info label.
         ProgressInfoVisibility()
 
+        ' Change the mouse cursor to the waiting one.
+        Cursor.Current = Cursors.WaitCursor
+
         ' Change progress text.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Marking selected packages, please wait..."
 
@@ -218,6 +221,12 @@ Public Class aaformMainWindow
 
         ' Hide progress bar and info label.
         ProgressInfoVisibility(False)
+
+        ' Reset loading label to default.
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
+
+        ' Change mouse cursor to the default one.
+        aaformMainWindow.Cursor = Cursors.Default
     End Sub
 
     Friend Shared Sub ProgressInfoVisibility(Optional Visible As Boolean = True)
