@@ -18,7 +18,7 @@ https://github.com/DrewNaylor/guinget/milestone/1
 
 # Version 0.1 Pre-Alpha 2
 
-- ~~[ ] Allow the user to hide the progress bar and status label for loading so loading the package list goes faster~~
+- [ ] ~~Allow the user to hide the progress bar and status label for loading so loading the package list goes faster~~
   - The problem was having a text label updating; a progress bar is fine.
 - [ ] Filtering/searching the package list (by name, id, and description for now, but maybe tags would be a good idea) and keeping these search terms in a listbox for quick use until closing guinget
 - [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
