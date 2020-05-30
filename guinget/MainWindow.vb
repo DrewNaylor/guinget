@@ -361,10 +361,11 @@ Public Class aaformMainWindow
         ' Show About window. Basic messagebox for now.
         MessageBox.Show("guinget" & vbCrLf &
                         "Version 0.1 Pre-Alpha 1" & vbCrLf &
-                        "Unofficial GUI for Microsoft's Windows Package Manager (winget)" & vbCrLf &
+                        My.Application.Info.Copyright & vbCrLf &
+                        vbCrLf &
+                        "Unofficial GUI for Microsoft's Windows Package Manager (winget)." & vbCrLf &
                         "Kinda like Synaptic, but for Windows. Not associated with either" & vbCrLf &
                         "Microsoft or the Synaptic project. Microsoft does not endorse guinget." & vbCrLf &
-                        My.Application.Info.Copyright & vbCrLf &
                         vbCrLf &
                         "You can get the source code for guinget from" & vbCrLf &
                         "https://github.com/DrewNaylor/guinget")
