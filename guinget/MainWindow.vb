@@ -368,7 +368,19 @@ Public Class aaformMainWindow
                         "Microsoft or the Synaptic project. Microsoft does not endorse guinget." & vbCrLf &
                         vbCrLf &
                         "You can get the source code for guinget from" & vbCrLf &
-                        "https://github.com/DrewNaylor/guinget")
+                        "https://github.com/DrewNaylor/guinget" & vbCrLf &
+                        vbCrLf &
+                        "Licensed under the Apache License, Version 2.0 (the ""License"");" & vbCrLf &
+"you may not use this file except in compliance with the License." & vbCrLf &
+"You may obtain a copy of the License at" & vbCrLf &
+vbCrLf &
+"http://www.apache.org/licenses/LICENSE-2.0" & vbCrLf &
+vbCrLf &
+"Unless required by applicable law or agreed to in writing, software" & vbCrLf &
+"distributed under the License is distributed on an ""AS Is"" BASIS," & vbCrLf &
+"WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied." & vbCrLf &
+"See the License for the specific language governing permissions and" & vbCrLf &
+"limitations under the License." & vbCrLf)
     End Sub
 
     ' If we wanted to, we could allow the package list to be loaded on application
