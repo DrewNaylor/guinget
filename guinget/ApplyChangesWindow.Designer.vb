@@ -142,6 +142,7 @@ Partial Class ApplyChangesWindow
         Me.Controls.Add(Me.tablelayoutpanelApplyChanges)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "ApplyChangesWindow"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Apply changes"
         Me.tablelayoutpanelApplyChanges.ResumeLayout(False)
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).EndInit()
