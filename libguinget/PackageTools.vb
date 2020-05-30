@@ -32,7 +32,10 @@ Public Class PackageTools
 
 #Region "Install package with winget."
 
+    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String)
 
+
+    End Sub
 
 #End Region
 
