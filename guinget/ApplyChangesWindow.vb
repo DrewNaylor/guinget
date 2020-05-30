@@ -37,6 +37,9 @@ Public Class ApplyChangesWindow
         ' First make sure that we're not already installing the package.
         If Not datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..." Then
 
+            ' If we're not installing, change the current status cell value to "Installing..." and
+            ' show a messagebox for testing.
+
         End If
     End Sub
 End Class
