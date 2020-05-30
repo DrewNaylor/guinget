@@ -43,8 +43,11 @@ Public Class ApplyChangesWindow
             datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..."
 
             ' Show messagebox with current status.
-
             MessageBox.Show(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString)
+
+            ' Now call winget and install the package. Be sure to keep the window open
+            ' for now until configuration is possible and until we display winget output
+            ' in a textbox below the datagridview.
 
         End If
     End Sub
