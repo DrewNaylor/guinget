@@ -55,4 +55,10 @@ Public Class ApplyChangesWindow
 
         End If
     End Sub
+
+    Private Sub buttonConfirmChanges_Click(sender As Object, e As EventArgs) Handles buttonConfirmChanges.Click
+        ' Show a messagebox that says we don't support batch installs yet, and
+        ' ask the user to double-click or press Enter on each of the packages
+        ' when they're ready to start installing them.
+    End Sub
 End Class
