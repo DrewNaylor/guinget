@@ -48,23 +48,26 @@ Public Class ApplyChangesWindow
     End Sub
 
     Private Sub InstallSinglePackage()
-        ' First make sure that we're not already installing the package.
-        If Not datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..." Then
+        ' Before doing anything, make sure there are packages in the list.
+        If datagridviewAppsBeingInstalled.CurrentRow IsNot Nothing Then
+            ' First make sure that we're not already installing the package.
+            If Not datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..." Then
 
-            ' If we're not installing, change the current status cell value to "Installing..." and
-            ' show a messagebox for testing.
+                ' If we're not installing, change the current status cell value to "Installing..." and
+                ' show a messagebox for testing.
 
-            datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..."
+                datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..."
 
-            ' Show messagebox with current status.
-            'MessageBox.Show(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString)
+                ' Show messagebox with current status.
+                'MessageBox.Show(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString)
 
-            ' Now call winget and install the package. Be sure to keep the window open
-            ' for now until configuration is possible and until we display winget output
-            ' in a textbox below the datagridview.
-            PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
-                                               datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString)
+                ' Now call winget and install the package. Be sure to keep the window open
+                ' for now until configuration is possible and until we display winget output
+                ' in a textbox below the datagridview.
+                PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
+                                                   datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString)
 
+            End If
         End If
     End Sub
 
