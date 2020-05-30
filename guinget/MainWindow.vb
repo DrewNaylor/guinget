@@ -213,6 +213,7 @@ Public Class aaformMainWindow
         For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = Action
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            aaformMainWindow.statusbarMainWindow.Update()
         Next
 
         ' Hide progress bar and info label.
