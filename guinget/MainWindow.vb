@@ -352,6 +352,11 @@ Public Class aaformMainWindow
         contextmenustripPackageMenu.Show(MousePosition)
     End Sub
 
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        '  Exit the application.
+        Me.Close()
+    End Sub
+
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
     ' longer than not loading the files list on startup and requiring a click
