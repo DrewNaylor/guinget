@@ -194,7 +194,7 @@ Public Class aaformMainWindow
         MarkPackages(sender.ToString)
     End Sub
 
-    Friend Shared Async Sub MarkPackages(Action As String)
+    Friend Shared Sub MarkPackages(Action As String)
 
         ' Mark each package with an action based on what
         ' the user wants.
@@ -207,24 +207,13 @@ Public Class aaformMainWindow
         ' Update the main window.
         aaformMainWindow.Update()
 
-
         For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
-            'Await Task.Run(Sub()
             Package.Cells.Item(0).Value = Action
-            'End Sub)
         Next
 
         ' Hide progress bar and info label.
         ProgressInfoVisibility(False)
     End Sub
-
-    Friend Shared Async Function MarkerSwitcher(PackageIndex As DataGridViewRow, Action As String) As Task(Of String)
-
-        PackageIndex.Cells.Item(0).Value = Action
-
-        Return Action
-
-    End Function
 
     Friend Shared Sub ProgressInfoVisibility(Optional Visible As Boolean = True)
 
