@@ -163,7 +163,7 @@ Partial Class aaformMainWindow
         '
         Me.splitcontainerMainWindow.Dock = System.Windows.Forms.DockStyle.Fill
         Me.splitcontainerMainWindow.Location = New System.Drawing.Point(0, 0)
-        Me.splitcontainerMainWindow.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.splitcontainerMainWindow.Margin = New System.Windows.Forms.Padding(2)
         Me.splitcontainerMainWindow.Name = "splitcontainerMainWindow"
         Me.splitcontainerMainWindow.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -185,7 +185,7 @@ Partial Class aaformMainWindow
         Me.panelPackageListHolder.Controls.Add(Me.labelUpdatingPackageList)
         Me.panelPackageListHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelPackageListHolder.Location = New System.Drawing.Point(0, 0)
-        Me.panelPackageListHolder.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelPackageListHolder.Margin = New System.Windows.Forms.Padding(2)
         Me.panelPackageListHolder.Name = "panelPackageListHolder"
         Me.panelPackageListHolder.Size = New System.Drawing.Size(554, 270)
         Me.panelPackageListHolder.TabIndex = 2
@@ -202,7 +202,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
-        Me.datagridviewPackageList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.datagridviewPackageList.Margin = New System.Windows.Forms.Padding(2)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
         Me.datagridviewPackageList.RowHeadersVisible = False
         Me.datagridviewPackageList.RowHeadersWidth = 51
@@ -313,7 +313,7 @@ Partial Class aaformMainWindow
         '
         Me.textboxPackageDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.textboxPackageDetails.Location = New System.Drawing.Point(0, 0)
-        Me.textboxPackageDetails.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.textboxPackageDetails.Margin = New System.Windows.Forms.Padding(2)
         Me.textboxPackageDetails.Multiline = True
         Me.textboxPackageDetails.Name = "textboxPackageDetails"
         Me.textboxPackageDetails.ReadOnly = True
@@ -327,7 +327,7 @@ Partial Class aaformMainWindow
         Me.panelMainPkgArea.Controls.Add(Me.splitcontainerMainWindow)
         Me.panelMainPkgArea.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMainPkgArea.Location = New System.Drawing.Point(0, 0)
-        Me.panelMainPkgArea.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelMainPkgArea.Margin = New System.Windows.Forms.Padding(2)
         Me.panelMainPkgArea.Name = "panelMainPkgArea"
         Me.panelMainPkgArea.Size = New System.Drawing.Size(554, 428)
         Me.panelMainPkgArea.TabIndex = 2
@@ -408,7 +408,7 @@ Partial Class aaformMainWindow
         '
         Me.splitcontainerSidebarAndPkgList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.splitcontainerSidebarAndPkgList.Location = New System.Drawing.Point(0, 0)
-        Me.splitcontainerSidebarAndPkgList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.splitcontainerSidebarAndPkgList.Margin = New System.Windows.Forms.Padding(2)
         Me.splitcontainerSidebarAndPkgList.Name = "splitcontainerSidebarAndPkgList"
         '
         'splitcontainerSidebarAndPkgList.Panel1
@@ -428,7 +428,7 @@ Partial Class aaformMainWindow
         Me.panelSidebarHolder.Controls.Add(Me.tabcontrolSidebar)
         Me.panelSidebarHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelSidebarHolder.Location = New System.Drawing.Point(0, 0)
-        Me.panelSidebarHolder.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelSidebarHolder.Margin = New System.Windows.Forms.Padding(2)
         Me.panelSidebarHolder.Name = "panelSidebarHolder"
         Me.panelSidebarHolder.Size = New System.Drawing.Size(237, 428)
         Me.panelSidebarHolder.TabIndex = 0
@@ -443,7 +443,7 @@ Partial Class aaformMainWindow
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageArchitecture)
         Me.tabcontrolSidebar.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolSidebar.Location = New System.Drawing.Point(0, 0)
-        Me.tabcontrolSidebar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabcontrolSidebar.Margin = New System.Windows.Forms.Padding(2)
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
         Me.tabcontrolSidebar.SelectedIndex = 0
         Me.tabcontrolSidebar.Size = New System.Drawing.Size(237, 428)
@@ -453,7 +453,7 @@ Partial Class aaformMainWindow
         '
         Me.tabpageSearchTerms.Controls.Add(Me.listboxSearchTerms)
         Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageSearchTerms.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabpageSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
         Me.tabpageSearchTerms.Size = New System.Drawing.Size(229, 402)
         Me.tabpageSearchTerms.TabIndex = 4
@@ -468,7 +468,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.IntegralHeight = False
         Me.listboxSearchTerms.Items.AddRange(New Object() {"All", "test", "test2", "test3", "test4"})
         Me.listboxSearchTerms.Location = New System.Drawing.Point(0, 0)
-        Me.listboxSearchTerms.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.listboxSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
         Me.listboxSearchTerms.Size = New System.Drawing.Size(229, 402)
         Me.listboxSearchTerms.TabIndex = 0
@@ -501,10 +501,10 @@ Partial Class aaformMainWindow
         '
         Me.tabpageStatus.Controls.Add(Me.listboxStatusTab)
         Me.tabpageStatus.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageStatus.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabpageStatus.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageStatus.Name = "tabpageStatus"
-        Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tabpageStatus.Size = New System.Drawing.Size(230, 408)
+        Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(2)
+        Me.tabpageStatus.Size = New System.Drawing.Size(229, 402)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -516,18 +516,18 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.IntegralHeight = False
         Me.listboxStatusTab.Items.AddRange(New Object() {"All"})
         Me.listboxStatusTab.Location = New System.Drawing.Point(2, 2)
-        Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(226, 404)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(225, 398)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
         '
         Me.tabpageCustomFilters.Controls.Add(Me.listboxCustomFilters)
         Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageCustomFilters.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabpageCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(230, 408)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(229, 402)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -539,19 +539,19 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.IntegralHeight = False
         Me.listboxCustomFilters.Items.AddRange(New Object() {"All"})
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
-        Me.listboxCustomFilters.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.listboxCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(230, 408)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(229, 402)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'tabpageSections
         '
         Me.tabpageSections.Controls.Add(Me.listboxSections)
         Me.tabpageSections.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageSections.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabpageSections.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSections.Name = "tabpageSections"
-        Me.tabpageSections.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tabpageSections.Size = New System.Drawing.Size(230, 408)
+        Me.tabpageSections.Padding = New System.Windows.Forms.Padding(2)
+        Me.tabpageSections.Size = New System.Drawing.Size(229, 402)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
@@ -563,18 +563,18 @@ Partial Class aaformMainWindow
         Me.listboxSections.IntegralHeight = False
         Me.listboxSections.Items.AddRange(New Object() {"All"})
         Me.listboxSections.Location = New System.Drawing.Point(2, 2)
-        Me.listboxSections.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.listboxSections.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(226, 404)
+        Me.listboxSections.Size = New System.Drawing.Size(225, 398)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
         '
         Me.tabpageSource.Controls.Add(Me.listboxSourceTab)
         Me.tabpageSource.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageSource.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabpageSource.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(230, 408)
+        Me.tabpageSource.Size = New System.Drawing.Size(229, 402)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -586,18 +586,18 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.IntegralHeight = False
         Me.listboxSourceTab.Items.AddRange(New Object() {"All"})
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
-        Me.listboxSourceTab.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.listboxSourceTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(230, 408)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(229, 402)
         Me.listboxSourceTab.TabIndex = 1
         '
         'tabpageArchitecture
         '
         Me.tabpageArchitecture.Controls.Add(Me.listboxArchitecture)
         Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageArchitecture.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabpageArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(230, 408)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(229, 402)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -609,9 +609,9 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.IntegralHeight = False
         Me.listboxArchitecture.Items.AddRange(New Object() {"All"})
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
-        Me.listboxArchitecture.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.listboxArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(230, 408)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(229, 402)
         Me.listboxArchitecture.TabIndex = 1
         '
         'panelMainForm
@@ -619,7 +619,7 @@ Partial Class aaformMainWindow
         Me.panelMainForm.Controls.Add(Me.splitcontainerSidebarAndPkgList)
         Me.panelMainForm.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMainForm.Location = New System.Drawing.Point(0, 49)
-        Me.panelMainForm.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelMainForm.Margin = New System.Windows.Forms.Padding(2)
         Me.panelMainForm.Name = "panelMainForm"
         Me.panelMainForm.Size = New System.Drawing.Size(794, 428)
         Me.panelMainForm.TabIndex = 4
@@ -671,7 +671,7 @@ Partial Class aaformMainWindow
         Me.Controls.Add(Me.toolstripMainWindow)
         Me.Controls.Add(Me.menustripMainWindow)
         Me.MainMenuStrip = Me.menustripMainWindow
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "aaformMainWindow"
         Me.Text = "guinget version 0.1 pre-alpha 1"
         Me.menustripMainWindow.ResumeLayout(False)

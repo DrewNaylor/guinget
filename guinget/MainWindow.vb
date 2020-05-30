@@ -346,6 +346,11 @@ Public Class aaformMainWindow
         AddPackageEntryToListAsync()
     End Sub
 
+    Private Sub datagridviewPackageList_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellDoubleClick
+        ' Show package context menu on cell double-click, like Synaptic.
+        contextmenustripPackageMenu.Show(MousePosition)
+    End Sub
+
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
     ' longer than not loading the files list on startup and requiring a click
