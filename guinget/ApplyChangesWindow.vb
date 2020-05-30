@@ -28,4 +28,10 @@ Public Class ApplyChangesWindow
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
 
     End Sub
+
+    Private Sub datagridviewAppsBeingInstalled_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewAppsBeingInstalled.CellDoubleClick
+        ' When double-clicking a cell, we'll call winget and start
+        ' installing or uninstalling the package.
+        ' Necessary for now as we don't support batch installs yet.
+    End Sub
 End Class
