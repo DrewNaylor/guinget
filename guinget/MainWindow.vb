@@ -374,10 +374,10 @@ Public Class aaformMainWindow
 "you may not use this file except in compliance with the License." & vbCrLf &
 "You may obtain a copy of the License at" & vbCrLf &
 vbCrLf &
-"http://www.apache.org/licenses/LICENSE-2.0" & vbCrLf &
+"   http://www.apache.org/licenses/LICENSE-2.0" & vbCrLf &
 vbCrLf &
 "Unless required by applicable law or agreed to in writing, software" & vbCrLf &
-"distributed under the License is distributed on an ""AS Is"" BASIS," & vbCrLf &
+"distributed under the License is distributed on an ""AS IS"" BASIS," & vbCrLf &
 "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied." & vbCrLf &
 "See the License for the specific language governing permissions and" & vbCrLf &
 "limitations under the License." & vbCrLf)
