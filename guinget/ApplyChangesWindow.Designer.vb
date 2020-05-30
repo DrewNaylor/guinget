@@ -119,7 +119,7 @@ Partial Class ApplyChangesWindow
         Me.buttonCancel.Name = "buttonCancel"
         Me.buttonCancel.Size = New System.Drawing.Size(86, 28)
         Me.buttonCancel.TabIndex = 1
-        Me.buttonCancel.Text = "Cancel"
+        Me.buttonCancel.Text = "Close"
         Me.buttonCancel.UseVisualStyleBackColor = True
         '
         'buttonConfirmChanges
