@@ -280,6 +280,7 @@ Public Class aaformMainWindow
             End If
         Next
 
+        ' Open apply changes window.
         LocalApplyChangesWindow.ShowDialog(Me)
 
         'Using proc As New Process
