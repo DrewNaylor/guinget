@@ -204,6 +204,9 @@ Public Class aaformMainWindow
         ' Show progress bar and info label.
         ProgressInfoVisibility()
 
+        ' Change progress text.
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Marking selected packages, please wait..."
+
         ' Update the main window.
         aaformMainWindow.Update()
 
