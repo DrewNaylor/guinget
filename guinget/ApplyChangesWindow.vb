@@ -24,6 +24,8 @@
 
 
 
+Imports libguinget
+
 Public Class ApplyChangesWindow
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
 
@@ -43,12 +45,12 @@ Public Class ApplyChangesWindow
             datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..."
 
             ' Show messagebox with current status.
-            MessageBox.Show(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString)
+            'MessageBox.Show(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString)
 
             ' Now call winget and install the package. Be sure to keep the window open
             ' for now until configuration is possible and until we display winget output
             ' in a textbox below the datagridview.
-            libguinget.PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
+            PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
                                                datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString)
 
         End If
