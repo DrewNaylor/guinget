@@ -1,5 +1,8 @@
 # Version 0.1 Pre-Alpha 1
 
+GitHub milestone:
+https://github.com/DrewNaylor/guinget/milestone/1
+
 - [X] Update package list using temporary batch script
 - [X] Load package list from cache
 - [X] Display package details, some in columns and entire manifest in a textbox
