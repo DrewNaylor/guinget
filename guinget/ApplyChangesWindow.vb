@@ -33,5 +33,8 @@ Public Class ApplyChangesWindow
         ' When double-clicking a cell, we'll call winget and start
         ' installing or uninstalling the package.
         ' Necessary for now as we don't support batch installs yet.
+
+        ' First make sure that we're not already installing the package.
+
     End Sub
 End Class
