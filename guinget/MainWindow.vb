@@ -357,6 +357,19 @@ Public Class aaformMainWindow
         Me.Close()
     End Sub
 
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        ' Show About window. Basic messagebox for now.
+        MessageBox.Show("guinget" & vbCrLf &
+                        "Version 0.1 Pre-Alpha 1" & vbCrLf &
+                        "Unofficial GUI for Microsoft's Windows Package Manager (winget)" & vbCrLf &
+                        "Kinda like Synaptic, but for Windows. Not associated with either" & vbCrLf &
+                        "Microsoft or the Synaptic project." & vbCrLf &
+                        My.Application.Info.Copyright & vbCrLf &
+                        vbCrLf &
+                        "You can get the source code for guinget from" & vbCrLf &
+                        "https://github.com/DrewNaylor/guinget")
+    End Sub
+
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
     ' longer than not loading the files list on startup and requiring a click
