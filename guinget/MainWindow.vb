@@ -363,7 +363,7 @@ Public Class aaformMainWindow
                         "Version 0.1 Pre-Alpha 1" & vbCrLf &
                         "Unofficial GUI for Microsoft's Windows Package Manager (winget)" & vbCrLf &
                         "Kinda like Synaptic, but for Windows. Not associated with either" & vbCrLf &
-                        "Microsoft or the Synaptic project." & vbCrLf &
+                        "Microsoft or the Synaptic project. Microsoft does not endorse guinget." & vbCrLf &
                         My.Application.Info.Copyright & vbCrLf &
                         vbCrLf &
                         "You can get the source code for guinget from" & vbCrLf &
