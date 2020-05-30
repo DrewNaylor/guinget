@@ -48,6 +48,8 @@ Public Class ApplyChangesWindow
             ' Now call winget and install the package. Be sure to keep the window open
             ' for now until configuration is possible and until we display winget output
             ' in a textbox below the datagridview.
+            libguinget.PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
+                                               datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString)
 
         End If
     End Sub

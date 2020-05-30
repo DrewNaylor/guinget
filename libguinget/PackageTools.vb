@@ -41,6 +41,11 @@ Public Class PackageTools
 
             proc.StartInfo.FileName = "cmd"
 
+            ' Define CMD args.
+            proc.StartInfo.Arguments = "/k /c winget"
+
+            proc.Start()
+
         End Using
 
     End Sub
