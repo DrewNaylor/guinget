@@ -41,13 +41,13 @@ Partial Class AboutWindow
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(435, 315)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(529, 368)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'OK_Button
         '
         Me.OK_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.OK_Button.Location = New System.Drawing.Point(357, 287)
+        Me.OK_Button.Location = New System.Drawing.Point(451, 340)
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(75, 25)
         Me.OK_Button.TabIndex = 0
@@ -61,7 +61,8 @@ Partial Class AboutWindow
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(429, 278)
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox1.Size = New System.Drawing.Size(523, 331)
         Me.TextBox1.TabIndex = 1
         '
         'AboutWindow
@@ -69,9 +70,8 @@ Partial Class AboutWindow
         Me.AcceptButton = Me.OK_Button
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(435, 315)
+        Me.ClientSize = New System.Drawing.Size(529, 368)
         Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AboutWindow"
