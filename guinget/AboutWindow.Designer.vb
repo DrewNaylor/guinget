@@ -29,24 +29,25 @@ Partial Class AboutWindow
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel1.ColumnCount = 1
+        Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(340, 274)
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 1, 1)
+        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 1
+        Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(83, 29)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(435, 315)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'OK_Button
         '
-        Me.OK_Button.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.OK_Button.Location = New System.Drawing.Point(8, 3)
+        Me.OK_Button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.OK_Button.Location = New System.Drawing.Point(357, 287)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(67, 23)
+        Me.OK_Button.Size = New System.Drawing.Size(75, 25)
         Me.OK_Button.TabIndex = 0
         Me.OK_Button.Text = "OK"
         '
