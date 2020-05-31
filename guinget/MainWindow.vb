@@ -74,6 +74,15 @@ Public Class aaformMainWindow
         ' We're not showing the current index anymore since that takes too long.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package list" & "..."
 
+        MessageBox.Show(ManifestPaths.Count.ToString)
+        MessageBox.Show(ManifestPaths(0))
+
+        ' Check to make sure there are manifests.
+        If ManifestPaths(0) = String.Empty Then
+            MessageBox.Show("Manifest paths are less than 0 and 0 is string.empty")
+            Exit Function
+        End If
+
         ' Go through everything in the manifest paths array until it's out.
         For i As Integer = 0 To ManifestPaths.Count - 2
 
