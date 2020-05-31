@@ -345,7 +345,9 @@ Public Class aaformMainWindow
         ' Trying to do this without blocking with this example:
         ' https://www.codeproject.com/Tips/729674/Simple-Net-progress-bar-using-async-await
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
-        If My.Computer.FileSystem.DirectoryExists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests") Then
+        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+
+        If My.Computer.FileSystem.DirectoryExists(ManifestDir) Then
             AddPackageEntryToListAsync()
         End If
     End Sub
