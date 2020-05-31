@@ -397,6 +397,9 @@ Public Class aaformMainWindow
         toolstriptextboxSearch.Visible = False
         ' Search button.
         toolstripsplitbuttonSearch.Visible = False
+        ' Toolstrip separators.
+        ToolStripSeparator1.Visible = False
+        ToolStripSeparator2.Visible = False
 
     End Sub
 
