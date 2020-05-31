@@ -34,7 +34,7 @@ Public Class AboutWindow
 
     Private Sub AboutWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Put text in the About textbox.
-        TextBox1.Text = "guinget" & vbCrLf &
+        textboxAbout.Text = "guinget" & vbCrLf &
                         "Version 0.1 Pre-Alpha 1" & vbCrLf &
                         My.Application.Info.Copyright & vbCrLf &
                         vbCrLf &
@@ -84,5 +84,10 @@ vbCrLf &
 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," & vbCrLf &
 "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE" & vbCrLf &
 "SOFTWARE."
+    End Sub
+
+    Private Sub labelShowHiddenControls_Click(sender As Object, e As EventArgs) Handles labelShowHiddenControls.Click
+        ' Show unfinished controls.
+        aaformMainWindow.UnfinishedControlsVisible(True)
     End Sub
 End Class

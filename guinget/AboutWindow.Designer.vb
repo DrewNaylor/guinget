@@ -22,31 +22,31 @@ Partial Class AboutWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tablelayoutpanelAbout = New System.Windows.Forms.TableLayoutPanel()
         Me.OK_Button = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.textboxAbout = New System.Windows.Forms.TextBox()
         Me.labelShowHiddenControls = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel1.SuspendLayout()
+        Me.tablelayoutpanelAbout.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TableLayoutPanel1
+        'tablelayoutpanelAbout
         '
-        Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 2, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.TextBox1, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.labelShowHiddenControls, 0, 1)
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(529, 368)
-        Me.TableLayoutPanel1.TabIndex = 0
+        Me.tablelayoutpanelAbout.ColumnCount = 3
+        Me.tablelayoutpanelAbout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118.0!))
+        Me.tablelayoutpanelAbout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tablelayoutpanelAbout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81.0!))
+        Me.tablelayoutpanelAbout.Controls.Add(Me.OK_Button, 2, 1)
+        Me.tablelayoutpanelAbout.Controls.Add(Me.textboxAbout, 0, 0)
+        Me.tablelayoutpanelAbout.Controls.Add(Me.labelShowHiddenControls, 0, 1)
+        Me.tablelayoutpanelAbout.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tablelayoutpanelAbout.Location = New System.Drawing.Point(0, 0)
+        Me.tablelayoutpanelAbout.Name = "tablelayoutpanelAbout"
+        Me.tablelayoutpanelAbout.RowCount = 2
+        Me.tablelayoutpanelAbout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tablelayoutpanelAbout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
+        Me.tablelayoutpanelAbout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tablelayoutpanelAbout.Size = New System.Drawing.Size(529, 368)
+        Me.tablelayoutpanelAbout.TabIndex = 0
         '
         'OK_Button
         '
@@ -58,17 +58,17 @@ Partial Class AboutWindow
         Me.OK_Button.TabIndex = 0
         Me.OK_Button.Text = "OK"
         '
-        'TextBox1
+        'textboxAbout
         '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.TextBox1, 3)
-        Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBox1.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(523, 331)
-        Me.TextBox1.TabIndex = 1
+        Me.tablelayoutpanelAbout.SetColumnSpan(Me.textboxAbout, 3)
+        Me.textboxAbout.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.textboxAbout.Location = New System.Drawing.Point(3, 3)
+        Me.textboxAbout.Multiline = True
+        Me.textboxAbout.Name = "textboxAbout"
+        Me.textboxAbout.ReadOnly = True
+        Me.textboxAbout.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.textboxAbout.Size = New System.Drawing.Size(523, 331)
+        Me.textboxAbout.TabIndex = 1
         '
         'labelShowHiddenControls
         '
@@ -89,20 +89,20 @@ Partial Class AboutWindow
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.OK_Button
         Me.ClientSize = New System.Drawing.Size(529, 368)
-        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Controls.Add(Me.tablelayoutpanelAbout)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AboutWindow"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "About guinget"
-        Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.TableLayoutPanel1.PerformLayout()
+        Me.tablelayoutpanelAbout.ResumeLayout(False)
+        Me.tablelayoutpanelAbout.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents tablelayoutpanelAbout As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents OK_Button As System.Windows.Forms.Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents textboxAbout As TextBox
     Friend WithEvents labelShowHiddenControls As Label
 End Class

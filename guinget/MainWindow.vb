@@ -384,29 +384,30 @@ Public Class aaformMainWindow
         AboutWindow.ShowDialog(Me)
     End Sub
 
-    Private Sub HideUnfinishedControls()
+    Friend Shared Sub UnfinishedControlsVisible(Visible As Boolean)
 
         ' Hide controls that don't work yet.
         ' Fiters pane.
-        splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+        ' Saying "Not" here makes it the inverse of Visible.
+        aaformMainWindow.splitcontainerSidebarAndPkgList.Panel1Collapsed = Not Visible
         ' Tools menu.
-        ToolsToolStripMenuItem.Visible = False
+        aaformMainWindow.ToolsToolStripMenuItem.Visible = Visible
         ' Properties button.
-        toolstripbuttonProperties.Visible = False
+        aaformMainWindow.toolstripbuttonProperties.Visible = Visible
         ' Search box.
-        toolstriptextboxSearch.Visible = False
+        aaformMainWindow.toolstriptextboxSearch.Visible = Visible
         ' Search button.
-        toolstripsplitbuttonSearch.Visible = False
+        aaformMainWindow.toolstripsplitbuttonSearch.Visible = Visible
         ' Toolstrip separators.
-        ToolStripSeparator1.Visible = False
-        ToolStripSeparator2.Visible = False
+        aaformMainWindow.ToolStripSeparator1.Visible = Visible
+        aaformMainWindow.ToolStripSeparator2.Visible = Visible
 
     End Sub
 
     Private Sub aaformMainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Hide unfinished controls on startup if My.Settings.HideUnfinishedControls = True.
         If My.Settings.HideUnfinishedControls = True Then
-            HideUnfinishedControls()
+            UnfinishedControlsVisible(False)
         End If
     End Sub
 
