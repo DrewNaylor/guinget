@@ -387,7 +387,16 @@ Public Class aaformMainWindow
     Private Sub HideUnfinishedControls()
 
         ' Hide controls that don't work yet.
+        ' Fiters pane.
         splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+        ' Tools menu.
+        ToolsToolStripMenuItem.Visible = False
+        ' Properties button.
+        toolstripbuttonProperties.Visible = False
+        ' Search box.
+        toolstriptextboxSearch.Visible = False
+        ' Search button.
+        toolstripsplitbuttonSearch.Visible = False
 
     End Sub
 
