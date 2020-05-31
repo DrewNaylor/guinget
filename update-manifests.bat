@@ -6,7 +6,7 @@ Rem https://gist.github.com/DrewNaylor/22e3f1cded702fff494a46dabe643fde
 
 
 REM Current script version:
-set VERSIONNUMBER=2020.05-1
+set VERSIONNUMBER=2020.05-2
 
 REM Create variable for the titlebar text when not doing anything:
 set REGULAR_TITLE_BAR=update-manifests Version %VERSIONNUMBER%
@@ -49,7 +49,7 @@ echo(
 echo The purpose of update-manifests is to expediate the downloading and extracting of winget sources from Microsoft's Community Package Repository. For now, this is the only source supported, but the goal is to support more sources in the future, along with winget gaining that feature whenever it does. Eventually guinget will get its own manifest updater, so this script is just a temporary solution. update-manifests will use PowerShell to download a Zip file from github.com and extract it into "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" using PowerShell and robocopy. Manifests in this folder can be used by other winget frontends in addition to guinget, if they want to. Additionally, manifests from other sources will be extracted to their own "source\" folder. After copying the manifests, you'll be asked if you want to delete the temp files.
 
 echo(
-echo Windows PowerShell is required to run this script. Links are available in the System Requirements in the UXL Launcher README file here:  https://github.com/DrewNaylor/UXL-Launcher/blob/master/README.md#system-requirements
+echo Windows PowerShell 5.0 or greater is required to run this script. Links are available in the System Requirements in the UXL Launcher README file here:  https://github.com/DrewNaylor/UXL-Launcher/blob/master/README.md#building-uxl-launcher-from-source-system-requirements-and-guide
 echo(
 
 echo --------------------------------------
@@ -60,7 +60,7 @@ echo Would you like to continue running this script? Type "Yes" to continue, "no
 set /p BUILDQUESTION=
 If %BUILDQUESTION%==no exit cmd
 If %BUILDQUESTION%==Yes goto start-building
-If %BUILDQUESTION%==README start "" https://github.com/DrewNaylor/UXL-Launcher/blob/master/README.md#system-requirements
+If %BUILDQUESTION%==README start "" https://github.com/DrewNaylor/UXL-Launcher/blob/master/README.md#building-uxl-launcher-from-source-system-requirements-and-guide
 
 REM If the user types either README or something else that doesn't have a goto or exit command in the "If" line, clear
 REM the screen and go back to the beginning of the script.
