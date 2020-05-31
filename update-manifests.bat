@@ -6,7 +6,7 @@ Rem https://gist.github.com/DrewNaylor/22e3f1cded702fff494a46dabe643fde
 
 
 REM Current script version:
-set VERSIONNUMBER=2020.05-2
+set VERSIONNUMBER=2020.05-1
 
 REM Create variable for the titlebar text when not doing anything:
 set REGULAR_TITLE_BAR=update-manifests Version %VERSIONNUMBER%
@@ -25,9 +25,6 @@ set COPYING_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Copying manifest
 
 REM Create variable for the titlebar text when deleting the temp files:
 set DELETING_TEMP_FILES_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Deleting temp files...
-
-REM Create variable for seeing if we should run interactively.
-set RUN_INTERACTIVELY=FALSE
 
 REM Set the titlebar text to the regular text:
 title %REGULAR_TITLE_BAR%
@@ -78,12 +75,6 @@ goto beginning-of-script
 :start-building
 REM The code below here will be where the build starts.
 
-REM Ask the user if they want to run interactively, and time out after 10 seconds.
-cls
-choice /T 10 /d N /M "Would you like to run this script interactively? Running non-interactively in 10 seconds..."
-IF %ERRORLEVEL% EQU 1 set RUN_INTERACTIVELY=TRUE
-IF %ERRORLEVEL% EQU 2 set RUN_INTERACTIVELY=FALSE
-
 REM Get current time to display later.
 set START_TIME=%time%
 
@@ -97,7 +88,7 @@ REM Set titlebar text to the downloading text:
 title %DOWNLOADING_TITLE_BAR%
 echo Downloading package from GitHub...
 echo If you want to cancel, please use Ctrl+C.
-REM powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
+powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
 
 REM Check if the manifests folder exists.
 IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" (
@@ -108,15 +99,8 @@ title %DELETING_OLD_MANIFESTS_TITLE_BAR%
 echo Deleting old manifests...
 echo If you want to cancel, please use Ctrl+C.
 echo This will remove the following folder and all subfolders:
-
-IF %RUN_INTERACTIVELY%=TRUE
-(
-REM If the user wants to be asked before deleting, allow it.
 rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
-) ELSE (
-REM Otherwise, don't ask before deleting the folder.
-rmdir /s /q "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" )
-
+)
 
 echo(
 cls
@@ -125,10 +109,7 @@ title %EXTRACTING_TITLE_BAR%
 echo Extracting package previously downloaded from GitHub...
 echo If you want to cancel, please use Ctrl+C.
 powershell Expand-Archive -Path "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -DestinationPath " '%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master' " -Force
-REM Don't pause if we're running automatically.
-IF %RUN_INTERACTIVELY%=TRUE(
 pause
-)
 
 echo(
 cls
@@ -136,15 +117,9 @@ REM Set titlebar text to the copying text:
 title %COPYING_TITLE_BAR%
 echo Copying manifests folder from package...
 echo If you want to cancel, please use Ctrl+C.
-REM Don't pause if we're running automatically.
-IF %RUN_INTERACTIVELY%=TRUE(
 pause
-)
 robocopy /NFL /NDL /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
-REM Don't pause if we're running automatically.
-IF %RUN_INTERACTIVELY%=TRUE(
 pause
-)
 
 REM Ask the user if they'd like to delete the items in the temp folder.
 REM Check if the manifests folder exists.
