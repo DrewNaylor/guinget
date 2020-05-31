@@ -13,7 +13,7 @@ https://github.com/DrewNaylor/guinget/milestone/1
   - For now, a CMD window displaying winget's output is shown, but eventually this output will be displayed in a textbox below the list of packages in the Apply changes window.
 - [ ] Don't hang if we can't find the package manifest cache ([issue #8](https://github.com/DrewNaylor/guinget/issues/8))
 - [ ] An option to run `winget source update` before updating guinget's package list cache, so they're both as up to date as possible
-- [ ] Functionality for `File>Exit` and `Help>About`
+- [X] Functionality for `File>Exit` and `Help>About`
 - [ ] Hide controls that don't have features fully implemented, with a config option to show them
 
 # Version 0.1 Pre-Alpha 2
