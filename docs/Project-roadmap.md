@@ -15,7 +15,8 @@ https://github.com/DrewNaylor/guinget/milestone/1
 - [ ] ~~An option to run `winget source update` before updating guinget's package list cache, so they're both as up to date as possible~~
   - Probably unimportant, since winget will just update its sources on installing an app anyway.
 - [X] Functionality for `File>Exit` and `Help>About`
-- [ ] Hide controls that don't have features fully implemented, with a config option to show them
+- [X] Hide controls that don't have features fully implemented, with a config option to show them
+  - It's also possible to click a hidden label in the bottom-left corner of the About window to show hidden controls until next time guinget is opened.
 
 # Version 0.1 Pre-Alpha 2
 
