@@ -6,7 +6,7 @@ Rem https://gist.github.com/DrewNaylor/22e3f1cded702fff494a46dabe643fde
 
 
 REM Current script version:
-set VERSIONNUMBER=2020.05-1
+set VERSIONNUMBER=2020.05-2
 
 REM Create variable for the titlebar text when not doing anything:
 set REGULAR_TITLE_BAR=update-manifests Version %VERSIONNUMBER%
