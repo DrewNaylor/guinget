@@ -386,6 +386,9 @@ Public Class aaformMainWindow
 
     Private Sub HideUnfinishedControls()
 
+        ' Hide controls that don't work yet.
+        splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+
     End Sub
 
     Private Sub aaformMainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
