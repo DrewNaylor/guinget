@@ -11,7 +11,7 @@ https://github.com/DrewNaylor/guinget/milestone/1
 - [X] Passing a package id and version to winget for installation
   - Currently requires double-clicking or pressing "Enter" on a package in the Apply changes window, though eventually this won't be required and you'll be able to do batch installs.
   - For now, a CMD window displaying winget's output is shown, but eventually this output will be displayed in a textbox below the list of packages in the Apply changes window.
-- [ ] Don't hang if we can't find the package manifest cache ([issue #8](https://github.com/DrewNaylor/guinget/issues/8))
+- [X] Don't hang if we can't find the package manifest cache ([issue #8](https://github.com/DrewNaylor/guinget/issues/8))
 - [ ] An option to run `winget source update` before updating guinget's package list cache, so they're both as up to date as possible
 - [X] Functionality for `File>Exit` and `Help>About`
 - [ ] Hide controls that don't have features fully implemented, with a config option to show them
