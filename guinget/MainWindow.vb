@@ -385,7 +385,30 @@ vbCrLf &
 "distributed under the License is distributed on an ""AS IS"" BASIS," & vbCrLf &
 "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied." & vbCrLf &
 "See the License for the specific language governing permissions and" & vbCrLf &
-"limitations under the License." & vbCrLf)
+"limitations under the License." & vbCrLf &
+vbCrLf &
+vbCrLf &
+"MIT license as it applies to YamlDotNet:" & vbCrLf &
+vbCrLf &
+"Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry and contributors" & vbCrLf &
+vbCrLf &
+"Permission is hereby granted, free of charge, to any person obtaining a copy of" & vbCrLf &
+"this software and associated documentation files (the ""Software""), to deal in" & vbCrLf &
+"the Software without restriction, including without limitation the rights to" & vbCrLf &
+"use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies" & vbCrLf &
+"of the Software, and to permit persons to whom the Software is furnished to do" & vbCrLf &
+"so, subject to the following conditions:" & vbCrLf &
+vbCrLf &
+"The above copyright notice and this permission notice shall be included in all" & vbCrLf &
+"copies or substantial portions of the Software." & vbCrLf &
+vbCrLf &
+"THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR" & vbCrLf &
+"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY," & vbCrLf &
+"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE" & vbCrLf &
+"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" & vbCrLf &
+"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," & vbCrLf &
+"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE" & vbCrLf &
+"SOFTWARE.")
     End Sub
 
     ' If we wanted to, we could allow the package list to be loaded on application
