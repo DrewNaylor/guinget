@@ -344,7 +344,10 @@ Public Class aaformMainWindow
         ' Reload the package list with the new manifests.
         ' Trying to do this without blocking with this example:
         ' https://www.codeproject.com/Tips/729674/Simple-Net-progress-bar-using-async-await
-        AddPackageEntryToListAsync()
+        ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
+        If My.Computer.FileSystem.DirectoryExists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests") Then
+            AddPackageEntryToListAsync()
+        End If
     End Sub
 
     Private Sub datagridviewPackageList_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellDoubleClick
