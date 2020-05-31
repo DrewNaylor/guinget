@@ -370,6 +370,10 @@ Public Class aaformMainWindow
                         "You can get the source code for guinget from" & vbCrLf &
                         "https://github.com/DrewNaylor/guinget" & vbCrLf &
                         vbCrLf &
+                        "guinget uses YamlDotNet, which you can get the source code for here:" & vbCrLf &
+                        "https://github.com/aaubry/YamlDotNet" & vbCrLf &
+                        "YamlDotNet falls under the MIT license, which you can read a copy of below the Apache License." & vbCrLf &
+                        vbCrLf &
                         "Licensed under the Apache License, Version 2.0 (the ""License"");" & vbCrLf &
 "you may not use this file except in compliance with the License." & vbCrLf &
 "You may obtain a copy of the License at" & vbCrLf &
