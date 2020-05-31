@@ -26,6 +26,9 @@ set COPYING_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Copying manifest
 REM Create variable for the titlebar text when deleting the temp files:
 set DELETING_TEMP_FILES_TITLE_BAR=update-manifests Version %VERSIONNUMBER%: Deleting temp files...
 
+REM Create variable for seeing if we should run interactively.
+set RUN_INTERACTIVELY=FALSE
+
 REM Set the titlebar text to the regular text:
 title %REGULAR_TITLE_BAR%
 
