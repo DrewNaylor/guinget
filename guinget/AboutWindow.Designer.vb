@@ -24,6 +24,7 @@ Partial Class AboutWindow
     Private Sub InitializeComponent()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.OK_Button = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -33,6 +34,7 @@ Partial Class AboutWindow
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 1, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.TextBox1, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -51,6 +53,17 @@ Partial Class AboutWindow
         Me.OK_Button.TabIndex = 0
         Me.OK_Button.Text = "OK"
         '
+        'TextBox1
+        '
+        Me.TableLayoutPanel1.SetColumnSpan(Me.TextBox1, 2)
+        Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TextBox1.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(429, 278)
+        Me.TextBox1.TabIndex = 1
+        '
         'AboutWindow
         '
         Me.AcceptButton = Me.OK_Button
@@ -66,10 +79,11 @@ Partial Class AboutWindow
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "AboutWindow"
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.TableLayoutPanel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents OK_Button As System.Windows.Forms.Button
-
+    Friend WithEvents TextBox1 As TextBox
 End Class
