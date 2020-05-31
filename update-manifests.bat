@@ -108,8 +108,15 @@ title %DELETING_OLD_MANIFESTS_TITLE_BAR%
 echo Deleting old manifests...
 echo If you want to cancel, please use Ctrl+C.
 echo This will remove the following folder and all subfolders:
+
+IF %RUN_INTERACTIVELY%=TRUE
+(
+REM If the user wants to be asked before deleting, allow it.
 rmdir /s "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
-)
+) ELSE (
+REM Otherwise, don't ask before deleting the folder.
+rmdir /s /q "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" )
+
 
 echo(
 cls
@@ -118,7 +125,10 @@ title %EXTRACTING_TITLE_BAR%
 echo Extracting package previously downloaded from GitHub...
 echo If you want to cancel, please use Ctrl+C.
 powershell Expand-Archive -Path "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -DestinationPath " '%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master' " -Force
+REM Don't pause if we're running automatically.
+IF %RUN_INTERACTIVELY%=TRUE(
 pause
+)
 
 echo(
 cls
@@ -126,9 +136,15 @@ REM Set titlebar text to the copying text:
 title %COPYING_TITLE_BAR%
 echo Copying manifests folder from package...
 echo If you want to cancel, please use Ctrl+C.
+REM Don't pause if we're running automatically.
+IF %RUN_INTERACTIVELY%=TRUE(
 pause
+)
 robocopy /NFL /NDL /S "%AppData%\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master\winget-pkgs-master\manifests" "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests"
+REM Don't pause if we're running automatically.
+IF %RUN_INTERACTIVELY%=TRUE(
 pause
+)
 
 REM Ask the user if they'd like to delete the items in the temp folder.
 REM Check if the manifests folder exists.
