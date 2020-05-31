@@ -79,37 +79,8 @@ Public Class aaformMainWindow
 
         ' Check to make sure there are manifests.
         If ManifestPaths(0) = String.Empty Then
-            ' This code should really be moved to its own sub for easier
-            ' editing and to make it cleaner.
-
-            ' Show the package list again.
-            ' We're waiting until the loading is done so it finishes faster.
-            aaformMainWindow.datagridviewPackageList.Visible = True
-
-            ' Update the main window again.
-            aaformMainWindow.Update()
-
-            ' Hide the loading label and progress bar as well as the
-            ' fake splitter label.
-            ProgressInfoVisibility(False)
-
-            ' Reset progress bar to 0.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
-
-            ' Reset loading label to default.
-            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
-
-            ' Change mouse cursor to the default one.
-            aaformMainWindow.Cursor = Cursors.Default
-
-            ' Display number of packages loaded. This really should be
-            ' changed to calculate the number of currently-visible rows
-            ' in case the user is filtering the list,
-            ' but this is better than nothing for now.
-            ' This SO answer might help:
-            ' https://stackoverflow.com/a/44661255
-            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-            " packages listed."
+            ' Reset main window stuff to default.
+            PackageListPostUpdate()
             Exit Function
         End If
 
@@ -152,6 +123,13 @@ Public Class aaformMainWindow
             aaformMainWindow.statusbarMainWindow.Update()
         Next
 
+        ' We're done updating the package list, so call the post-update sub.
+        PackageListPostUpdate()
+
+    End Function
+
+    Private Shared Sub PackageListPostUpdate()
+
         ' Show the package list again.
         ' We're waiting until the loading is done so it finishes faster.
         aaformMainWindow.datagridviewPackageList.Visible = True
@@ -180,7 +158,7 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/44661255
         aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
             " packages listed."
-    End Function
+    End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
         ' Code based on this SO answer:
