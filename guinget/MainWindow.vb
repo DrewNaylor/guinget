@@ -74,12 +74,42 @@ Public Class aaformMainWindow
         ' We're not showing the current index anymore since that takes too long.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package list" & "..."
 
-        MessageBox.Show(ManifestPaths.Count.ToString)
-        MessageBox.Show(ManifestPaths(0))
+        'MessageBox.Show(ManifestPaths.Count.ToString)
+        'MessageBox.Show(ManifestPaths(0))
 
         ' Check to make sure there are manifests.
         If ManifestPaths(0) = String.Empty Then
-            MessageBox.Show("Manifest paths are less than 0 and 0 is string.empty")
+            ' This code should really be moved to its own sub for easier
+            ' editing and to make it cleaner.
+
+            ' Show the package list again.
+            ' We're waiting until the loading is done so it finishes faster.
+            aaformMainWindow.datagridviewPackageList.Visible = True
+
+            ' Update the main window again.
+            aaformMainWindow.Update()
+
+            ' Hide the loading label and progress bar as well as the
+            ' fake splitter label.
+            ProgressInfoVisibility(False)
+
+            ' Reset progress bar to 0.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+
+            ' Reset loading label to default.
+            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
+
+            ' Change mouse cursor to the default one.
+            aaformMainWindow.Cursor = Cursors.Default
+
+            ' Display number of packages loaded. This really should be
+            ' changed to calculate the number of currently-visible rows
+            ' in case the user is filtering the list,
+            ' but this is better than nothing for now.
+            ' This SO answer might help:
+            ' https://stackoverflow.com/a/44661255
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount - 1).ToString &
+            " packages listed."
             Exit Function
         End If
 
