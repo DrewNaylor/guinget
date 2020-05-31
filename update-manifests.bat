@@ -80,7 +80,9 @@ REM The code below here will be where the build starts.
 
 REM Ask the user if they want to run interactively, and time out after 10 seconds.
 cls
-choice /T 10 /d N /M "Would you like to run this script interactively? Will run non-interactively in 10 seconds."
+choice /T 10 /d N /M "Would you like to run this script interactively? This script will run non-interactively in 10 seconds."
+IF %ERRORLEVEL% EQU 1 set RUN_INTERACTIVELY=TRUE
+IF %ERRORLEVEL% EQU 2 set RUN_INTERACTIVELY=FALSE
 
 REM Get current time to display later.
 set START_TIME=%time%
