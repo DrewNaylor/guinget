@@ -108,7 +108,7 @@ Public Class aaformMainWindow
             ' but this is better than nothing for now.
             ' This SO answer might help:
             ' https://stackoverflow.com/a/44661255
-            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount - 1).ToString &
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
             " packages listed."
             Exit Function
         End If
@@ -178,7 +178,7 @@ Public Class aaformMainWindow
         ' but this is better than nothing for now.
         ' This SO answer might help:
         ' https://stackoverflow.com/a/44661255
-        aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount - 1).ToString &
+        aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
             " packages listed."
     End Function
 
