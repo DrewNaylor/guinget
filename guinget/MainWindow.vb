@@ -355,9 +355,16 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
-        ' Display temporary message saying to use update-manifests.bat, then click Ok.
-        MessageBox.Show("Please run update-manifests.bat located in guinget's EXE directory (may also be in the" &
-                        " repository's root folder), then click OK when it's finished.", "Refresh cache")
+        ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
+        MessageBox.Show("For now, we'll update the manifests with update-manifests.bat, but this'll eventually be replaced with something better." &
+                        " Please click OK when ready.", "Refresh cache")
+        Using updatemanifestsscript As New Process
+            ' Run update-manifests.bat.
+            updatemanifestsscript.StartInfo.FileName = Application.StartupPath & "\update-manifests.bat"
+            updatemanifestsscript.Start()
+        End Using
+        ' Show messagebox that says to click OK when finished with update-manifests.bat.
+        MessageBox.Show("When finished with update-manifests.bat, please click OK.", "Refresh cache")
         ' Reload the package list with the new manifests.
         ' Trying to do this without blocking with this example:
         ' https://www.codeproject.com/Tips/729674/Simple-Net-progress-bar-using-async-await
