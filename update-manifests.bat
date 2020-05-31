@@ -75,6 +75,10 @@ goto beginning-of-script
 :start-building
 REM The code below here will be where the build starts.
 
+REM Ask the user if they want to run interactively, and time out after 10 seconds.
+cls
+choice /T 10 /d N /M "Would you like to run this script interactively? Will run non-interactively in 10 seconds."
+
 REM Get current time to display later.
 set START_TIME=%time%
 
@@ -88,7 +92,7 @@ REM Set titlebar text to the downloading text:
 title %DOWNLOADING_TITLE_BAR%
 echo Downloading package from GitHub...
 echo If you want to cancel, please use Ctrl+C.
-powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
+REM powershell Invoke-WebRequest "https://github.com/Microsoft/winget-pkgs/archive/master.zip" -OutFile "$env:AppData\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip" -UseBasicParsing
 
 REM Check if the manifests folder exists.
 IF EXIST "%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests" (
