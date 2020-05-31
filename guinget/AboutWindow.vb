@@ -7,12 +7,8 @@ Public Class AboutWindow
         Me.Close()
     End Sub
 
-    Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Close()
-    End Sub
-
     Private Sub AboutWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Put text in the About textbox.
         TextBox1.Text = "guinget" & vbCrLf &
                         "Version 0.1 Pre-Alpha 1" & vbCrLf &
                         My.Application.Info.Copyright & vbCrLf &
