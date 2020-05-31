@@ -45,7 +45,9 @@ Public Class AboutWindow
                         "You can get the source code for guinget from" & vbCrLf &
                         "https://github.com/DrewNaylor/guinget" & vbCrLf &
                         vbCrLf &
-                        "guinget uses YamlDotNet, which you can get the source code for here:" & vbCrLf &
+                        "libguinget is used for things like loading the package list and uses the Apache License 2.0." & vbCrLf &
+                        vbCrLf &
+                        "YamlDotNet is used to read manifests, which you can get the source code for here:" & vbCrLf &
                         "https://github.com/aaubry/YamlDotNet" & vbCrLf &
                         "YamlDotNet falls under the MIT license, which you can read a copy of below the Apache License summary." & vbCrLf &
                         vbCrLf &
@@ -64,7 +66,6 @@ vbCrLf &
 vbCrLf &
 vbCrLf &
 "MIT license as it applies to YamlDotNet:" & vbCrLf &
-vbCrLf &
 "Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry and contributors" & vbCrLf &
 vbCrLf &
 "Permission is hereby granted, free of charge, to any person obtaining a copy of" & vbCrLf &
