@@ -288,7 +288,16 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripbuttonApplyChanges_Click(sender As Object, e As EventArgs) Handles toolstripbuttonApplyChanges.Click
+        ' Open the apply changes dialog.
+        ApplyChanges
+    End Sub
 
+    Private Sub ApplyChangesMenuItem_Click(sender As Object, e As EventArgs) Handles ApplyChangesMenuItem.Click
+        ' Open the apply changes dialog.
+        ApplyChanges()
+    End Sub
+
+    Private Sub ApplyChanges()
         ' Open the Apply changes window and put the user's selections into it.
         Dim LocalApplyChangesWindow As New ApplyChangesWindow
 
@@ -311,7 +320,6 @@ Public Class aaformMainWindow
 
         ' Open apply changes window.
         LocalApplyChangesWindow.ShowDialog(Me)
-
     End Sub
 
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
