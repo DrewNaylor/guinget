@@ -165,8 +165,8 @@ Partial Class aaformMainWindow
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(133, 26)
-        Me.AboutToolStripMenuItem.Text = "&About"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.AboutToolStripMenuItem.Text = "&About..."
         '
         'splitcontainerMainWindow
         '
@@ -311,8 +311,8 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonApplyChanges.Image = CType(resources.GetObject("toolstripbuttonApplyChanges.Image"), System.Drawing.Image)
         Me.toolstripbuttonApplyChanges.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonApplyChanges.Name = "toolstripbuttonApplyChanges"
-        Me.toolstripbuttonApplyChanges.Size = New System.Drawing.Size(110, 24)
-        Me.toolstripbuttonApplyChanges.Text = "Apply changes"
+        Me.toolstripbuttonApplyChanges.Size = New System.Drawing.Size(119, 24)
+        Me.toolstripbuttonApplyChanges.Text = "Apply changes..."
         Me.toolstripbuttonApplyChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'ToolStripSeparator2
@@ -326,8 +326,8 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonProperties.Image = CType(resources.GetObject("toolstripbuttonProperties.Image"), System.Drawing.Image)
         Me.toolstripbuttonProperties.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolstripbuttonProperties.Name = "toolstripbuttonProperties"
-        Me.toolstripbuttonProperties.Size = New System.Drawing.Size(80, 24)
-        Me.toolstripbuttonProperties.Text = "Properties"
+        Me.toolstripbuttonProperties.Size = New System.Drawing.Size(89, 28)
+        Me.toolstripbuttonProperties.Text = "Properties..."
         Me.toolstripbuttonProperties.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'ToolStripSeparator1
@@ -623,7 +623,7 @@ Partial Class aaformMainWindow
         '
         Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.ToolStripSeparator6, Me.PackageContextMenuDropdown, Me.ToolStripSeparator5, Me.PackagePropertiesMenuItem, Me.ToolStripSeparator4, Me.AdvancedSearchMenuItem})
         Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
-        Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(100, 24)
+        Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(100, 26)
         Me.PackageToolStripMenuItem.Text = "&Package list"
         '
         'RefreshCacheMenuButton
@@ -635,21 +635,21 @@ Partial Class aaformMainWindow
         'ApplyChangesMenuItem
         '
         Me.ApplyChangesMenuItem.Name = "ApplyChangesMenuItem"
-        Me.ApplyChangesMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.ApplyChangesMenuItem.Text = "&Apply changes"
+        Me.ApplyChangesMenuItem.Size = New System.Drawing.Size(227, 26)
+        Me.ApplyChangesMenuItem.Text = "&Apply changes..."
         '
         'PackageContextMenuDropdown
         '
         Me.PackageContextMenuDropdown.DropDown = Me.contextmenustripPackageMenu
         Me.PackageContextMenuDropdown.Name = "PackageContextMenuDropdown"
-        Me.PackageContextMenuDropdown.Size = New System.Drawing.Size(224, 26)
+        Me.PackageContextMenuDropdown.Size = New System.Drawing.Size(227, 26)
         Me.PackageContextMenuDropdown.Text = "&Selected package"
         '
         'PackagePropertiesMenuItem
         '
         Me.PackagePropertiesMenuItem.Name = "PackagePropertiesMenuItem"
-        Me.PackagePropertiesMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.PackagePropertiesMenuItem.Text = "Pa&ckage properties"
+        Me.PackagePropertiesMenuItem.Size = New System.Drawing.Size(227, 26)
+        Me.PackagePropertiesMenuItem.Text = "Pa&ckage properties..."
         '
         'AdvancedSearchMenuItem
         '
