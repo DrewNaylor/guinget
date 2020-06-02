@@ -13,8 +13,8 @@ Since it may be a bit complicated for new users, there's a guide on [how to use 
 
 There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
 
-Screenshot as of the middle of the night on May 26/27th, 2020, featuring a mostly-complete package list from the YAML files:
-![](/docs/images/screenshot-mostly-complete-packagelist.png?raw=true)
+Pre-alpha 1 screenshot:
+![](/docs/images/screenshot-pre-alpha-1.png?raw=true)
 
 Packages displayed here are loaded from a package list cache stored in `%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests`, which is downloaded from `Microsoft\winget-pkgs` on GitHub. The `update-manifests.bat` script can be used to automate the downloading and updating of these manifests.
 
