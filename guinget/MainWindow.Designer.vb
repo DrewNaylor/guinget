@@ -272,8 +272,7 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.textboxPackageDetails.Size = New System.Drawing.Size(692, 197)
         Me.textboxPackageDetails.TabIndex = 0
-        Me.textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. You can load t" &
-    "he package list using the Refresh cache button."
+        Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
         '
         'panelMainPkgArea
         '
@@ -623,13 +622,14 @@ Partial Class aaformMainWindow
         '
         Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.ToolStripSeparator6, Me.PackageContextMenuDropdown, Me.ToolStripSeparator5, Me.PackagePropertiesMenuItem, Me.ToolStripSeparator4, Me.AdvancedSearchMenuItem})
         Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
-        Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(100, 26)
+        Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(100, 24)
         Me.PackageToolStripMenuItem.Text = "&Package list"
         '
         'RefreshCacheMenuButton
         '
         Me.RefreshCacheMenuButton.Name = "RefreshCacheMenuButton"
-        Me.RefreshCacheMenuButton.Size = New System.Drawing.Size(224, 26)
+        Me.RefreshCacheMenuButton.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.RefreshCacheMenuButton.Size = New System.Drawing.Size(234, 26)
         Me.RefreshCacheMenuButton.Text = "&Refresh cache"
         '
         'ApplyChangesMenuItem
@@ -642,7 +642,7 @@ Partial Class aaformMainWindow
         '
         Me.PackageContextMenuDropdown.DropDown = Me.contextmenustripPackageMenu
         Me.PackageContextMenuDropdown.Name = "PackageContextMenuDropdown"
-        Me.PackageContextMenuDropdown.Size = New System.Drawing.Size(227, 26)
+        Me.PackageContextMenuDropdown.Size = New System.Drawing.Size(234, 26)
         Me.PackageContextMenuDropdown.Text = "&Selected package"
         '
         'PackagePropertiesMenuItem

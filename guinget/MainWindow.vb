@@ -282,8 +282,9 @@ Public Class aaformMainWindow
             ' loading the package list, or just load the package list. This
             ' should be a setting to allow for people to choose whether it
             ' always updates the cache automatically, or have it ask to update every time.
-            textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet." &
-                " You can load the package list using the Refresh cache button."
+            textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
+                "You can load the package list by using the Refresh cache toolbar button, by going to Package list" &
+                ">Refresh cache, or by pressing Ctrl+R."
         End If
     End Sub
 
