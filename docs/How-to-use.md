@@ -15,3 +15,9 @@ To mark multiple packages, either select them with the mouse (using `Shift` and 
 # Applying marked changes
 
 Marked changes are applied using the `Apply changes` dialog, accessible through either the `Apply changes...` toolbar button or via `Package list>Apply changes...`. Batch package installs (and uninstalls, when that's supported) are not supported yet, so you'll have to either double-click or press `Enter` on each package in the list to install it when ready.
+
+# Showing unfinished controls
+
+Controls that don't yet have their features implemented are hidden by default, but you can show them if you wish. There are two ways to do this detailes as follows:
+- The first way is temporary until the next application start, and involves clicking on a hidden label in the bottom-left corner of the About window.
+- The second way is semi-permanent and involves opening the config file and changing the value for `HideUnfinishedControls` from `True` to `False`. This setting may not persist guinget updates, however.
