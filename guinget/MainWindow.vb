@@ -392,6 +392,9 @@ Public Class aaformMainWindow
         ' Toolstrip separators.
         aaformMainWindow.ToolStripSeparator1.Visible = Visible
         aaformMainWindow.ToolStripSeparator2.Visible = Visible
+        aaformMainWindow.ToolStripSeparator4.Visible = Visible
+        aaformMainWindow.ToolStripSeparator5.Visible = Visible
+        aaformMainWindow.ToolStripSeparator6.Visible = Visible
 
     End Sub
 
