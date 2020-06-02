@@ -271,7 +271,13 @@ Public Class aaformMainWindow
             ' because it says it in a way that's simple and nice.
             ' This might not show up since rows are automatically selected when
             ' they're loaded.
-            textboxPackageDetails.Text = "No package is selected."
+
+            ' TODO: Allow the user to choose whether to update the cache before
+            ' loading the package list, or just load the package list. This
+            ' should be a setting to allow for people to choose whether it
+            ' always updates the cache automatically, or have it ask to update every time.
+            textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet." &
+                " You can load the package list using the Refresh cache button."
         End If
     End Sub
 

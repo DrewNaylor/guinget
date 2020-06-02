@@ -144,11 +144,6 @@
   <metadata name="contextmenustripPackageMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>357, 17</value>
   </metadata>
-  <data name="textboxPackageDetails.Text" xml:space="preserve">
-    <value>No package is selected or the package list hasn't been loaded yet. You can load the package list using the Refresh cache button.
-TODO: Allow the user to have it ask before updating the cache, or always update the cache
-before loading the package list.</value>
-  </data>
   <metadata name="toolstripMainWindow.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>153, 17</value>
   </metadata>
