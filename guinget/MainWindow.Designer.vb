@@ -706,13 +706,13 @@ Partial Class aaformMainWindow
         '
         Me.PackagePropertiesMenuItem.Name = "PackagePropertiesMenuItem"
         Me.PackagePropertiesMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.PackagePropertiesMenuItem.Text = "Package &properties"
+        Me.PackagePropertiesMenuItem.Text = "Pa&ckage properties"
         '
         'AdvancedSearchMenuItem
         '
         Me.AdvancedSearchMenuItem.Name = "AdvancedSearchMenuItem"
         Me.AdvancedSearchMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.AdvancedSearchMenuItem.Text = "&Advanced search..."
+        Me.AdvancedSearchMenuItem.Text = "A&dvanced search..."
         '
         'ToolStripSeparator4
         '
