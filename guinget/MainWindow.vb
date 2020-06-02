@@ -315,6 +315,16 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
+        ' Refresh package list and package cache.
+        RefreshCache()
+    End Sub
+
+    Private Sub RefreshCacheMenuButton_Click(sender As Object, e As EventArgs) Handles RefreshCacheMenuButton.Click
+        ' Refresh package list and package cache.
+        RefreshCache()
+    End Sub
+
+    Private Sub RefreshCache()
         ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
         MessageBox.Show("For now, we'll update the manifests with update-manifests.bat, but this'll eventually be replaced with something better." &
                         " Please click OK when ready and follow the prompts in update-manifests.bat.", "Refresh cache")
@@ -383,6 +393,8 @@ Public Class aaformMainWindow
             UnfinishedControlsVisible(False)
         End If
     End Sub
+
+
 
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
