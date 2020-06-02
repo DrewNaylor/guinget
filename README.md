@@ -13,8 +13,8 @@ Since it may be a bit complicated for new users, there's a guide on [how to use 
 
 There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
 
-Screenshot as of the middle of the night on May 26/27th, 2020, featuring a mostly-complete package list from the YAML files:
-![](/docs/images/screenshot-mostly-complete-packagelist.png?raw=true)
+Pre-alpha 1 screenshot:
+![](/docs/images/screenshot-pre-alpha-1.png?raw=true)
 
 Packages displayed here are loaded from a package list cache stored in `%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests`, which is downloaded from `Microsoft\winget-pkgs` on GitHub. The `update-manifests.bat` script can be used to automate the downloading and updating of these manifests.
 
@@ -27,7 +27,7 @@ The data grid view that's used for the package list is hidden while loading so t
 
 Currently, the `Status` column cells just have arbitrary data for now; guinget doesn't check to see if an app is installed or not yet. Package details in the textbox at the bottom are loaded directly from the YAML files.
 
-More screenshots available in the [devlog](./docs/devlog.md). This document has a few things similar to the readme, but organized more by date and what I tried to do/did do around each time.
+More screenshots available in the [devlog archive](./docs/devlog.md). This document has a few things similar to the readme, but organized more by date and what I tried to do/did do around each time.
 
 TODO:
 - Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
