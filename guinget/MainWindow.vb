@@ -158,6 +158,9 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/44661255
         aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
             " packages listed."
+
+        ' Focus the package list.
+        aaformMainWindow.datagridviewPackageList.Focus()
     End Sub
 
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
