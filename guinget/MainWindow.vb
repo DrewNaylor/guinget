@@ -230,9 +230,12 @@ Public Class aaformMainWindow
         ' Update the main window.
         aaformMainWindow.Update()
 
+        ' Now we actually mark the packages with what the user chose.
         For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
             Package.Cells.Item(0).Value = Action
+            ' Move the progress bar.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ' Update the status bar to show the current progress.
             aaformMainWindow.statusbarMainWindow.Update()
         Next
 

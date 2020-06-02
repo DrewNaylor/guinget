@@ -403,7 +403,7 @@ Partial Class aaformMainWindow
         'toolstripmenuitemAdvancedSearch
         '
         Me.toolstripmenuitemAdvancedSearch.Name = "toolstripmenuitemAdvancedSearch"
-        Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(224, 26)
+        Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(213, 26)
         Me.toolstripmenuitemAdvancedSearch.Text = "&Advanced search..."
         '
         'splitcontainerSidebarAndPkgList
