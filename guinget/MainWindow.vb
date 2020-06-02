@@ -305,11 +305,17 @@ Public Class aaformMainWindow
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
         MessageBox.Show("For now, we'll update the manifests with update-manifests.bat, but this'll eventually be replaced with something better." &
-                        " Please click OK when ready.", "Refresh cache")
+                        " Please click OK when ready and follow the prompts in update-manifests.bat.", "Refresh cache")
         Using updatemanifestsscript As New Process
             ' Run update-manifests.bat.
             updatemanifestsscript.StartInfo.FileName = Application.StartupPath & "\update-manifests.bat"
-            updatemanifestsscript.Start()
+            ' Need to make sure the update script is in the folder.
+            Try
+                updatemanifestsscript.Start()
+            Catch ex As ComponentModel.Win32Exception
+                MessageBox.Show("We couldn't find update-manifests.bat in the same folder as guinget.exe. " &
+                                "Please download a new copy of guinget from https://github.com/DrewNaylor/guinget/releases")
+            End Try
         End Using
         ' Show messagebox that says to click OK when finished with update-manifests.bat.
         MessageBox.Show("When finished with update-manifests.bat, please click OK.", "Refresh cache")
