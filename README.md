@@ -9,7 +9,9 @@ Master branch build status:<br>
 
 Visual Studio 2019 Community is being used for this project's development, and .Net Framework 4.6.1 or greater is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
 
-There's a [project roadmap](./docs/Project-roadmap.md) available, if you want to read it.
+Since it may be a bit complicated for new users, there's a guide on [how to use guinget](/docs/How-to-use.md). I tried to make it work as closely as I could to Synaptic, so if you have experience with Synaptic, guinget should work similarly (mainly with marking packages) with a few exceptions in places I'm less experienced and/or wouldn't work as well on Windows.
+
+There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
 
 Screenshot as of the middle of the night on May 26/27th, 2020, featuring a mostly-complete package list from the YAML files:
 ![](/docs/images/screenshot-mostly-complete-packagelist.png?raw=true)
