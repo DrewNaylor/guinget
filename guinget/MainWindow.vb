@@ -72,7 +72,7 @@ Public Class aaformMainWindow
 
         ' Update loading statusbar label.
         ' We're not showing the current index anymore since that takes too long.
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package list" & "..."
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package list..."
 
         'MessageBox.Show(ManifestPaths.Count.ToString)
         'MessageBox.Show(ManifestPaths(0))
