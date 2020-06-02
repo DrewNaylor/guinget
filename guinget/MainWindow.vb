@@ -381,20 +381,30 @@ Public Class aaformMainWindow
         ' Fiters pane.
         ' Saying "Not" here makes it the inverse of Visible.
         aaformMainWindow.splitcontainerSidebarAndPkgList.Panel1Collapsed = Not Visible
+
         ' Tools menu.
         aaformMainWindow.ToolsToolStripMenuItem.Visible = Visible
-        ' Properties button.
+
+        ' Properties button on toolbar.
         aaformMainWindow.toolstripbuttonProperties.Visible = Visible
-        ' Search box.
+        ' Properties button in Package list menu.
+        aaformMainWindow.PackagePropertiesMenuItem.Visible = Visible
+
+        ' Search box on toolbar.
         aaformMainWindow.toolstriptextboxSearch.Visible = Visible
-        ' Search button.
+
+        ' Advanced search button in Package list menu.
+        aaformMainWindow.AdvancedSearchMenuItem.Visible = Visible
+        ' Search button on toolbar.
         aaformMainWindow.toolstripsplitbuttonSearch.Visible = Visible
+
         ' Toolstrip separators.
+        ' Main toolbar.
         aaformMainWindow.ToolStripSeparator1.Visible = Visible
         aaformMainWindow.ToolStripSeparator2.Visible = Visible
+        ' Package list menu.
         aaformMainWindow.ToolStripSeparator4.Visible = Visible
         aaformMainWindow.ToolStripSeparator5.Visible = Visible
-        aaformMainWindow.ToolStripSeparator6.Visible = Visible
 
     End Sub
 
