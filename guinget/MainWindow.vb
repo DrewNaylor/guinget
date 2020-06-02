@@ -194,7 +194,7 @@ Public Class aaformMainWindow
         ' Maybe add a messagebox that asks if the user is sure they want to
         ' mark more than 40 packages for installation/do nothing at once
         ' as that may take a long time to complete, with an option to not ask again.
-        MarkPackages(sender.ToString)
+        MarkPackages("Do nothing")
     End Sub
 
     Private Sub InstallToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallToolStripMenuItem.Click
@@ -211,7 +211,7 @@ Public Class aaformMainWindow
         ' Maybe add a messagebox that asks if the user is sure they want to
         ' mark more than 40 packages for installation/do nothing at once
         ' as that may take a long time to complete, with an option to not ask again.
-        MarkPackages(sender.ToString)
+        MarkPackages("Install")
     End Sub
 
     Friend Shared Sub MarkPackages(Action As String)
