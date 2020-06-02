@@ -1,3 +1,9 @@
+# Refreshing package cache
+
+Refreshing the package cache is done either by using the `Refresh cache` button on the toolbar or by using the `Package list>Refresh cache` menu item. You can also refresh the cache with `Ctrl+R`. At the moment, refreshing the cache is partially done using a batch script named `update-manifests.bat`, and it doesn't support running automatically yet (which is something I want to allow but it was kinda difficult), so it has prompts that ask for input. Extracting the package cache may take a while as PowerShell's `Expand-Archive` command is kinda slow, so eventually I'll probably use a command-line 7-zip EXE file to do it instead. May be a good idea to allow the user to choose to use an already-installed copy of 7-zip if they want to slim down guinget's installation.
+
+After following the prompts in the script, you'll click `OK` in a message box to let it know that you're ready to load the package list. Loading the package list may take a bit, and you won't be able to interact with the window during that time. I want to allow the window to be moved and resized during this operation, but that's something I need to figure out how to do properly first.
+
 # Marking a package
 
 To mark a package, you can right-click on it and select `Action>Install`, open the `Package list` menu and select `Selected package>Action>Install`, open the combobox dropdown menu for the package in the `Action` column, or move the cell selection over to the `Action` column and press `spacebar` then use the arrow keys to select `Install`. This also applies to marking a package for uninstallation, or for marking a package as one you want to ignore (ignoring is `Do nothing`).
