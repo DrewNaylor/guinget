@@ -27,6 +27,9 @@ The data grid view that's used for the package list is hidden while loading so t
 
 Currently, the `Status` column cells just have arbitrary data for now; guinget doesn't check to see if an app is installed or not yet. Package details in the textbox at the bottom are loaded directly from the YAML files.
 
+By default, controls that don't have features implemented yet are hidden, but you can show them if you want to and this is what it looks like when you do so:
+![](/docs/images/screenshot-hidden-controls-shown.png?raw=true)
+
 More screenshots available in the [devlog archive](./docs/devlog.md). This document has a few things similar to the readme, but organized more by date and what I tried to do/did do around each time.
 
 TODO:
