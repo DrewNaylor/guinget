@@ -1,4 +1,6 @@
-# Version 0.1 Pre-Alpha 1
+# Project roadmap
+
+## Version 0.1 Pre-Alpha 1
 
 GitHub milestone:
 https://github.com/DrewNaylor/guinget/milestone/1
@@ -18,7 +20,7 @@ https://github.com/DrewNaylor/guinget/milestone/1
 - [X] Hide controls that don't have features fully implemented, with a config option to show them
   - It's also possible to click a hidden label in the bottom-left corner of the About window to show hidden controls until next time guinget is opened.
 
-# Version 0.1 Pre-Alpha 2
+## Version 0.1 Pre-Alpha 2
 
 - [ ] ~~Allow the user to hide the progress bar and status label for loading so loading the package list goes faster~~
   - The problem was having a text label updating; a progress bar is fine.
@@ -26,7 +28,7 @@ https://github.com/DrewNaylor/guinget/milestone/1
 - [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
 - [ ] Show number of packages marked for changes, like Synaptic
 
-# Version 0.1 Pre-Alpha 3
+## Version 0.1 Pre-Alpha 3
 
 - [ ] Allow batch installing of packages
 - [ ] Make marking everything in the list for installation (or for doing nothing) an async operation, so it doesn't lock up the UI
