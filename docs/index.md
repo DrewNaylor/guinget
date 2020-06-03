@@ -3,4 +3,4 @@ For now, this website won't have much, so it may be a good idea to [look at the 
 - [How to use](How-to-use)<br>
 - [Project roadmap](Project-roadmap)<br>
 - [Proposed source types](Proposed-source-types)<br>
-- [update-manifests-changelog](update-manifests-changelog)
+- [update-manifests.bat changelog](update-manifests-changelog)
