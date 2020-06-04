@@ -35,7 +35,7 @@ Public Class PackageTools
     Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String)
 
         ' Define variables for storing the winget process. We'll run CMD
-        ' with a /c so that we can keep it open with /k.
+        ' so that we can keep it open with /k.
 
         Using proc As New Process
 
