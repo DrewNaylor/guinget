@@ -9,7 +9,7 @@ If you have any trouble, you might be able to find an answer in the documentatio
 MD5 checksums are not used for guinget as they are weaker than SHA-256. More details, though they're not as relevant to guinget:
 https://github.com/DrewNaylor/UXL-Launcher/issues/124
 
-You can use Windows PowerShell to confirm the hash of the main UXL Launcher EXE file by running
+You can use Windows PowerShell to confirm the hash of the main guinget EXE file by running
 Get-FileHash .\guinget.exe -Algorithm SHA256 in the folder you extracted the archive to and comparing the output to my sum listed below. HowToGeek has a nice article on this:
 https://www.howtogeek.com/67241/htg-explains-what-are-md5-sha-1-hashes-and-how-do-i-check-them/ , but the Windows section is a bit further down on the page.
 
@@ -60,7 +60,7 @@ See all known issues: https://github.com/DrewNaylor/guinget/labels/known%20issue
 SYSTEM REQUIREMENTS
 ~~~~~~~~~~~~~~~~~~~~
 
-To run UXL Launcher, your computer requires the following:
+To run guinget, your computer requires the following:
 
 - Microsoft .Net 4.6.1 Framework https://www.microsoft.com/en-us/download/details.aspx?id=49981
 
