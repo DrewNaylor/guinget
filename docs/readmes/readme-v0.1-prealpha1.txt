@@ -123,7 +123,7 @@ guinget documentation:			https://github.com/DrewNaylor/guinget/docs
 guinget website:				https://drew-naylor.com/guinget/
 The website has most of the important documentation presented in a cleaner way than just a list of files, but it's not finished yet.
 
-Email:                    		drewnaylor_apps@outlook.com
+Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 
