@@ -424,7 +424,7 @@ Public Class aaformMainWindow
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
         For Each column As DataGridViewColumn In datagridviewPackageList.Columns
-            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
         Next
         ' Hide the package list.
         datagridviewPackageList.Visible = False
@@ -454,7 +454,8 @@ Public Class aaformMainWindow
         ' Show the package list again.
         datagridviewPackageList.Visible = True
         ' Turn autosize back on for certain columns.
-
+        PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         ' Update the main window.
         Me.Update()
 
