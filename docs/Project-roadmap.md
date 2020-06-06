@@ -22,15 +22,14 @@ https://github.com/DrewNaylor/guinget/milestone/1
 
 ## Version 0.1 Pre-Alpha 2
 
-- [ ] ~~Allow the user to hide the progress bar and status label for loading so loading the package list goes faster~~
-  - The problem was having a text label updating; a progress bar is fine.
+- [ ] ~~Allow the user to hide the progress bar and status label for loading so loading the package list goes faster~~ **The problem was having a text label updating; a progress bar is fine.**
 - [X] Filtering/searching the package list (by id for now, but maybe name, description, and tags would be a good idea for a future version)
 - [X] Dramatically speed up marking lots of packages at once by turning off auto-size columns while marking packages if we're marking an excessive amount at once, like 25 packages for example
 
 ## Version 0.1 Alpha
 
 - [ ] Allow batch installing of packages
-- [ ] Make marking everything in the list for installation (or for doing nothing) an async operation, so it doesn't lock up the UI
+- [ ] ~~Make marking everything in the list for installation (or for doing nothing) an async operation, so it doesn't lock up the UI~~ **While this is a good idea, it might not be a problem for now since this operation has already gotten way faster in version 0.1 pre-alpha 2.**
 
 ## Version 0.2 Beta
 
