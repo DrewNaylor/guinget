@@ -417,11 +417,27 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
+        ProgressInfoVisibility(True)
+        datagridviewPackageList.Visible = False
+        toolstripprogressbarLoadingPackages.Maximum = datagridviewPackageList.Rows.Count - 1
+        toolstripprogressbarLoadingPackages.Value = 0
+        Me.Update()
+
         For Each searchRow As DataGridViewRow In datagridviewPackageList.Rows
-            If Not searchRow.Cells.Item(2).Value.ToString.Contains(toolstriptextboxSearch.Text) Then
+            If searchRow.Cells.Item(2).Value.ToString.Contains(toolstriptextboxSearch.Text) Then
+                searchRow.Visible = True
+            Else
                 searchRow.Visible = False
             End If
+            toolstripprogressbarLoadingPackages.PerformStep()
+            statusbarMainWindow.Update()
         Next
+        ProgressInfoVisibility(False)
+        datagridviewPackageList.Visible = True
+
+        Me.Update()
+
+
     End Sub
 
 
