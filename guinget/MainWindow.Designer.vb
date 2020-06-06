@@ -405,6 +405,7 @@ Partial Class aaformMainWindow
         Me.toolstripMainWindow.Name = "toolstripMainWindow"
         Me.toolstripMainWindow.Size = New System.Drawing.Size(992, 27)
         Me.toolstripMainWindow.TabIndex = 0
+        Me.toolstripMainWindow.TabStop = True
         Me.toolstripMainWindow.Text = "ToolStrip1"
         '
         'toolstripbuttonRefreshCache
