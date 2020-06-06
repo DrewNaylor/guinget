@@ -48,9 +48,19 @@ Public Class aaformMainWindow
         ' Instead it'll just keep the default cursor.
         aaformMainWindow.Cursor = Cursors.WaitCursor
 
+        '' Turn off autosize to make it go way faster.Might not help
+        '' performance, so it's commented out for now.
+        '' Credits to this SO answer:
+        '' https://stackoverflow.com/a/19518340
+        'For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+        '    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+        'Next
+
         ' Hide the datagridview while we're updating to make
         ' this slightly faster.
         aaformMainWindow.datagridviewPackageList.Visible = False
+
+
 
         ' Clear the rows.
         aaformMainWindow.datagridviewPackageList.Rows.Clear()
@@ -131,6 +141,12 @@ Public Class aaformMainWindow
     Private Shared Sub PackageListPostUpdate()
 
         ' Show the package list again.
+
+        '' Turn autosize back on for certain columns. Might not help
+        '' performance, so it's commented out for now.
+        'aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        'aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
         ' We're waiting until the loading is done so it finishes faster.
         aaformMainWindow.datagridviewPackageList.Visible = True
 
@@ -220,11 +236,15 @@ Public Class aaformMainWindow
         ' the user wants.
 
         ' Turn off autosize to make it go way faster.
+        ' We're only doing this if the number of selected
+        ' rows is excessive.
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
-        For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
-            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
-        Next
+        If aaformMainWindow.datagridviewPackageList.SelectedRows.Count >= 25 Then
+            For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+            Next
+        End If
 
         ' We need to use the progress bar so it doesn't look like the UI is frozen.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
