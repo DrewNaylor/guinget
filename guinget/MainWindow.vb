@@ -173,7 +173,7 @@ Public Class aaformMainWindow
         ' This SO answer might help:
         ' https://stackoverflow.com/a/44661255
         aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-            " packages listed."
+            " packages loaded."
 
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
@@ -490,6 +490,7 @@ Public Class aaformMainWindow
             ' Turn autosize back on for certain columns.
             PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
             ' Update the main window.
             Me.Update()
 
