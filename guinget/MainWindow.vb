@@ -418,8 +418,8 @@ Public Class aaformMainWindow
 
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
         For Each searchRow As DataGridViewRow In datagridviewPackageList.Rows
-            If searchRow.Cells.Item(2).Value.ToString.Contains(toolstriptextboxSearch.Text) Then
-
+            If Not searchRow.Cells.Item(2).Value.ToString.Contains(toolstriptextboxSearch.Text) Then
+                searchRow.Visible = False
             End If
         Next
     End Sub
