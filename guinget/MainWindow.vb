@@ -454,14 +454,17 @@ Public Class aaformMainWindow
 
             ' Show progress bar; this'll take a while.
             ProgressInfoVisibility(True)
+
+            ' Hide the package list.
+            datagridviewPackageList.Visible = False
+
             ' Turn off autosize to make it go way faster.
             ' Credits to this SO answer:
             ' https://stackoverflow.com/a/19518340
             For Each column As DataGridViewColumn In datagridviewPackageList.Columns
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
             Next
-            ' Hide the package list.
-            datagridviewPackageList.Visible = False
+
             ' Set progress bar maximum to number of rows.
             toolstripprogressbarLoadingPackages.Maximum = datagridviewPackageList.Rows.Count - 1
             ' Set progress bar value to 0.
@@ -485,11 +488,13 @@ Public Class aaformMainWindow
             Next
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
-            ' Show the package list again.
-            datagridviewPackageList.Visible = True
+
             ' Turn autosize back on for certain columns.
             PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
+            ' Show the package list again.
+            datagridviewPackageList.Visible = True
 
             ' Update the main window.
             Me.Update()
