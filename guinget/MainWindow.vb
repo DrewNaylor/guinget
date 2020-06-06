@@ -262,7 +262,14 @@ Public Class aaformMainWindow
 
         ' Now we actually mark the packages with what the user chose.
         For Each Package As DataGridViewRow In aaformMainWindow.datagridviewPackageList.SelectedRows
-            Package.Cells.Item(0).Value = Action
+            ' Make sure the packages are visible first.
+            ' If we don't do this, we'll accidentally mark
+            ' packages that aren't being shown, such as if
+            ' we're doing a search.
+            If Package.Visible = True Then
+                ' Mark the package.
+                Package.Cells.Item(0).Value = Action
+            End If
             ' Move the progress bar.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             ' Update the status bar to show the current progress.
