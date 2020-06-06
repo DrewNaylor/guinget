@@ -219,6 +219,13 @@ Public Class aaformMainWindow
         ' Mark each package with an action based on what
         ' the user wants.
 
+        ' Turn off autosize to make it go way faster.
+        ' Credits to this SO answer:
+        ' https://stackoverflow.com/a/19518340
+        For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+        Next
+
         ' We need to use the progress bar so it doesn't look like the UI is frozen.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
         ' Show progress bar and info label.
@@ -241,6 +248,10 @@ Public Class aaformMainWindow
             ' Update the status bar to show the current progress.
             aaformMainWindow.statusbarMainWindow.Update()
         Next
+
+        ' Turn autosize back on for certain columns.
+        aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
         ' Hide progress bar and info label.
         ProgressInfoVisibility(False)
