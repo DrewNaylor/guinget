@@ -422,13 +422,8 @@ Public Class aaformMainWindow
         ' Properties button in Package list menu.
         aaformMainWindow.PackagePropertiesMenuItem.Visible = Visible
 
-        ' Search box on toolbar.
-        aaformMainWindow.toolstriptextboxSearch.Visible = Visible
-
         ' Advanced search button in Package list menu.
         aaformMainWindow.AdvancedSearchMenuItem.Visible = Visible
-        ' Search button on toolbar.
-        aaformMainWindow.toolstripsplitbuttonSearch.Visible = Visible
 
         ' Toolstrip separators.
         ' Main toolbar.
@@ -436,7 +431,6 @@ Public Class aaformMainWindow
         aaformMainWindow.ToolStripSeparator2.Visible = Visible
         ' Package list menu.
         aaformMainWindow.ToolStripSeparator4.Visible = Visible
-        aaformMainWindow.ToolStripSeparator5.Visible = Visible
 
     End Sub
 
