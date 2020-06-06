@@ -92,6 +92,7 @@ Partial Class aaformMainWindow
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
         Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SearchMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SearchToolstripButton = New System.Windows.Forms.ToolStripButton()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -400,7 +401,7 @@ Partial Class aaformMainWindow
         'toolstripMainWindow
         '
         Me.toolstripMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.toolstripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripbuttonRefreshCache, Me.toolstripbuttonApplyChanges, Me.ToolStripSeparator2, Me.toolstripbuttonProperties, Me.ToolStripSeparator1, Me.toolstriptextboxSearch, Me.toolstripsplitbuttonSearch})
+        Me.toolstripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripbuttonRefreshCache, Me.toolstripbuttonApplyChanges, Me.ToolStripSeparator2, Me.toolstripbuttonProperties, Me.ToolStripSeparator1, Me.toolstriptextboxSearch, Me.toolstripsplitbuttonSearch, Me.SearchToolstripButton})
         Me.toolstripMainWindow.Location = New System.Drawing.Point(0, 28)
         Me.toolstripMainWindow.Name = "toolstripMainWindow"
         Me.toolstripMainWindow.Size = New System.Drawing.Size(992, 27)
@@ -468,7 +469,7 @@ Partial Class aaformMainWindow
         'toolstripmenuitemAdvancedSearch
         '
         Me.toolstripmenuitemAdvancedSearch.Name = "toolstripmenuitemAdvancedSearch"
-        Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(213, 26)
+        Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(224, 26)
         Me.toolstripmenuitemAdvancedSearch.Text = "&Advanced search..."
         '
         'splitcontainerSidebarAndPkgList
@@ -739,6 +740,15 @@ Partial Class aaformMainWindow
         Me.SearchMenuItem.Size = New System.Drawing.Size(234, 26)
         Me.SearchMenuItem.Text = "Search"
         '
+        'SearchToolstripButton
+        '
+        Me.SearchToolstripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.SearchToolstripButton.Image = CType(resources.GetObject("SearchToolstripButton.Image"), System.Drawing.Image)
+        Me.SearchToolstripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SearchToolstripButton.Name = "SearchToolstripButton"
+        Me.SearchToolstripButton.Size = New System.Drawing.Size(57, 24)
+        Me.SearchToolstripButton.Text = "Search"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -855,4 +865,5 @@ Partial Class aaformMainWindow
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
     Friend WithEvents Manifest As DataGridViewTextBoxColumn
     Friend WithEvents SearchMenuItem As ToolStripMenuItem
+    Friend WithEvents SearchToolstripButton As ToolStripButton
 End Class

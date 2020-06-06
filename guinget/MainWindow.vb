@@ -422,6 +422,8 @@ Public Class aaformMainWindow
         ' Properties button in Package list menu.
         aaformMainWindow.PackagePropertiesMenuItem.Visible = Visible
 
+        ' Split Search button with Advanced search in its dropdown.
+        aaformMainWindow.toolstripsplitbuttonSearch.Visible = Visible
         ' Advanced search button in Package list menu.
         aaformMainWindow.AdvancedSearchMenuItem.Visible = Visible
 
@@ -505,6 +507,11 @@ Public Class aaformMainWindow
     Private Sub SearchMenuItem_Click(sender As Object, e As EventArgs) Handles SearchMenuItem.Click
         ' Focus search textbox.
         toolstriptextboxSearch.Focus()
+    End Sub
+
+    Private Sub SearchToolstripButton_Click(sender As Object, e As EventArgs) Handles SearchToolstripButton.Click
+        ' Start searching.
+        BeginPackageIdSearch()
     End Sub
 
 
