@@ -417,8 +417,15 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
+
         ' Show progress bar; this'll take a while.
         ProgressInfoVisibility(True)
+        ' Turn off autosize to make it go way faster.
+        ' Credits to this SO answer:
+        ' https://stackoverflow.com/a/19518340
+        For Each column As DataGridViewColumn In datagridviewPackageList.Columns
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        Next
         ' Hide the package list.
         datagridviewPackageList.Visible = False
         ' Set progress bar maximum to number of rows.
@@ -446,6 +453,8 @@ Public Class aaformMainWindow
         ProgressInfoVisibility(False)
         ' Show the package list again.
         datagridviewPackageList.Visible = True
+        ' Turn autosize back on for certain columns.
+
         ' Update the main window.
         Me.Update()
 
