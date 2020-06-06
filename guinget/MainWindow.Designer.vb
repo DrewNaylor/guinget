@@ -538,7 +538,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
         Me.listboxSearchTerms.Size = New System.Drawing.Size(288, 514)
-        Me.listboxSearchTerms.TabIndex = 0
+        Me.listboxSearchTerms.TabIndex = 2
         '
         'contextmenuSearchTerm
         '
