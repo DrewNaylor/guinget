@@ -416,6 +416,14 @@ Public Class aaformMainWindow
         End If
     End Sub
 
+    Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
+        For Each searchRow As DataGridViewRow In datagridviewPackageList.Rows
+            If searchRow.Cells.Item(2).Value.ToString.Contains(toolstriptextboxSearch.Text) Then
+
+            End If
+        Next
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
