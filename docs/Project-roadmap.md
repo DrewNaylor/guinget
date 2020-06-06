@@ -24,11 +24,17 @@ https://github.com/DrewNaylor/guinget/milestone/1
 
 - [ ] ~~Allow the user to hide the progress bar and status label for loading so loading the package list goes faster~~
   - The problem was having a text label updating; a progress bar is fine.
-- [ ] Filtering/searching the package list (by name, id, and description for now, but maybe tags would be a good idea) and keeping these search terms in a listbox for quick use until closing guinget
-- [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
-- [ ] Show number of packages marked for changes, like Synaptic
+- [X] Filtering/searching the package list (by id for now, but maybe name, description, and tags would be a good idea for a future version)
+- [X] Dramatically speed up marking lots of packages at once by turning off auto-size columns while marking packages if we're marking an excessive amount at once, like 25 packages for example
 
-## Version 0.1 Pre-Alpha 3
+## Version 0.1 Alpha
 
 - [ ] Allow batch installing of packages
 - [ ] Make marking everything in the list for installation (or for doing nothing) an async operation, so it doesn't lock up the UI
+
+## Version 0.2 Beta
+
+- [ ] Keep search terms in a listbox for quick use until closing guinget
+- [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
+- [ ] Show number of packages marked for changes, like Synaptic
+- [ ] Allow filtering by things like name, description, and tags
