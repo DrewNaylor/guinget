@@ -267,7 +267,7 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow.Panel2.Controls.Add(Me.textboxPackageDetails)
         Me.splitcontainerMainWindow.Size = New System.Drawing.Size(692, 543)
         Me.splitcontainerMainWindow.SplitterDistance = 341
-        Me.splitcontainerMainWindow.TabIndex = 1
+        Me.splitcontainerMainWindow.TabIndex = 4
         '
         'panelPackageListHolder
         '
@@ -384,7 +384,7 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.ReadOnly = True
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.textboxPackageDetails.Size = New System.Drawing.Size(692, 198)
-        Me.textboxPackageDetails.TabIndex = 0
+        Me.textboxPackageDetails.TabIndex = 1
         Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
         '
         'panelMainPkgArea
@@ -404,7 +404,7 @@ Partial Class aaformMainWindow
         Me.toolstripMainWindow.Location = New System.Drawing.Point(0, 28)
         Me.toolstripMainWindow.Name = "toolstripMainWindow"
         Me.toolstripMainWindow.Size = New System.Drawing.Size(992, 27)
-        Me.toolstripMainWindow.TabIndex = 0
+        Me.toolstripMainWindow.TabIndex = 6
         Me.toolstripMainWindow.TabStop = True
         Me.toolstripMainWindow.Text = "ToolStrip1"
         '
@@ -487,7 +487,7 @@ Partial Class aaformMainWindow
         Me.splitcontainerSidebarAndPkgList.Panel2.Controls.Add(Me.panelMainPkgArea)
         Me.splitcontainerSidebarAndPkgList.Size = New System.Drawing.Size(992, 543)
         Me.splitcontainerSidebarAndPkgList.SplitterDistance = 296
-        Me.splitcontainerSidebarAndPkgList.TabIndex = 3
+        Me.splitcontainerSidebarAndPkgList.TabIndex = 5
         '
         'panelSidebarHolder
         '
@@ -513,7 +513,7 @@ Partial Class aaformMainWindow
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
         Me.tabcontrolSidebar.SelectedIndex = 0
         Me.tabcontrolSidebar.Size = New System.Drawing.Size(296, 543)
-        Me.tabcontrolSidebar.TabIndex = 0
+        Me.tabcontrolSidebar.TabIndex = 2
         '
         'tabpageSearchTerms
         '
