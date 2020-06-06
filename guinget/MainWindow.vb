@@ -468,7 +468,7 @@ Public Class aaformMainWindow
 
         For Each searchRow As DataGridViewRow In datagridviewPackageList.Rows
             ' Look in each row in the datagridview, and see what text it has.
-            If searchRow.Cells.Item(2).Value.ToString.Contains(toolstriptextboxSearch.Text) Then
+            If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(toolstriptextboxSearch.Text.ToLowerInvariant) Then
                 ' If the Package ID cell contains what's in the search box, show it.
                 searchRow.Visible = True
             Else
