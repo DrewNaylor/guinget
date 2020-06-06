@@ -453,46 +453,52 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub BeginPackageIdSearch()
-        ' Show progress bar; this'll take a while.
-        ProgressInfoVisibility(True)
-        ' Turn off autosize to make it go way faster.
-        ' Credits to this SO answer:
-        ' https://stackoverflow.com/a/19518340
-        For Each column As DataGridViewColumn In datagridviewPackageList.Columns
-            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
-        Next
-        ' Hide the package list.
-        datagridviewPackageList.Visible = False
-        ' Set progress bar maximum to number of rows.
-        toolstripprogressbarLoadingPackages.Maximum = datagridviewPackageList.Rows.Count - 1
-        ' Set progress bar value to 0.
-        toolstripprogressbarLoadingPackages.Value = 0
-        ' Update main window.
-        Me.Update()
 
-        For Each searchRow As DataGridViewRow In datagridviewPackageList.Rows
-            ' Look in each row in the datagridview, and see what text it has.
-            If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(toolstriptextboxSearch.Text.ToLowerInvariant) Then
-                ' If the Package ID cell contains what's in the search box, show it.
-                searchRow.Visible = True
-            Else
-                ' Otherwise, hide it.
-                searchRow.Visible = False
-            End If
-            ' Make the progress bar progress.
-            toolstripprogressbarLoadingPackages.PerformStep()
-            ' Update the status bar.
-            statusbarMainWindow.Update()
-        Next
-        ' Hide the progress bar.
-        ProgressInfoVisibility(False)
-        ' Show the package list again.
-        datagridviewPackageList.Visible = True
-        ' Turn autosize back on for certain columns.
-        PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        ' Update the main window.
-        Me.Update()
+        ' Make sure there are packages to begin with.
+        If datagridviewPackageList.Rows.Count >= 1 Then
+
+            ' Show progress bar; this'll take a while.
+            ProgressInfoVisibility(True)
+            ' Turn off autosize to make it go way faster.
+            ' Credits to this SO answer:
+            ' https://stackoverflow.com/a/19518340
+            For Each column As DataGridViewColumn In datagridviewPackageList.Columns
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+            Next
+            ' Hide the package list.
+            datagridviewPackageList.Visible = False
+            ' Set progress bar maximum to number of rows.
+            toolstripprogressbarLoadingPackages.Maximum = datagridviewPackageList.Rows.Count - 1
+            ' Set progress bar value to 0.
+            toolstripprogressbarLoadingPackages.Value = 0
+            ' Update main window.
+            Me.Update()
+
+            For Each searchRow As DataGridViewRow In datagridviewPackageList.Rows
+                ' Look in each row in the datagridview, and see what text it has.
+                If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(toolstriptextboxSearch.Text.ToLowerInvariant) Then
+                    ' If the Package ID cell contains what's in the search box, show it.
+                    searchRow.Visible = True
+                Else
+                    ' Otherwise, hide it.
+                    searchRow.Visible = False
+                End If
+                ' Make the progress bar progress.
+                toolstripprogressbarLoadingPackages.PerformStep()
+                ' Update the status bar.
+                statusbarMainWindow.Update()
+            Next
+            ' Hide the progress bar.
+            ProgressInfoVisibility(False)
+            ' Show the package list again.
+            datagridviewPackageList.Visible = True
+            ' Turn autosize back on for certain columns.
+            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            ' Update the main window.
+            Me.Update()
+
+        End If
     End Sub
 
     Private Sub toolstriptextboxSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles toolstriptextboxSearch.KeyDown
