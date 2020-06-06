@@ -448,7 +448,11 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
+        ' Start searching.
+        BeginPackageIdSearch()
+    End Sub
 
+    Private Sub BeginPackageIdSearch()
         ' Show progress bar; this'll take a while.
         ProgressInfoVisibility(True)
         ' Turn off autosize to make it go way faster.
@@ -489,8 +493,13 @@ Public Class aaformMainWindow
         PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         ' Update the main window.
         Me.Update()
+    End Sub
 
-
+    Private Sub toolstriptextboxSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles toolstriptextboxSearch.KeyDown
+        ' Start searching on pressing Enter.
+        If e.KeyCode = Keys.Enter Then
+            BeginPackageIdSearch()
+        End If
     End Sub
 
 
