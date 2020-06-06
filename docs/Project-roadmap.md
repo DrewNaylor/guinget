@@ -28,6 +28,7 @@ https://github.com/DrewNaylor/guinget/milestone/1
 
 ## Version 0.1 Alpha
 
+- [ ] Use 7z.exe for extracting the manifests instead of PowerShell Extract-Archive to speed things up
 - [ ] Allow batch installing of packages
 - [ ] ~~Make marking everything in the list for installation (or for doing nothing) an async operation, so it doesn't lock up the UI~~ **While this is a good idea, it might not be a problem for now since this operation has already gotten way faster in version 0.1 pre-alpha 2.**
 
