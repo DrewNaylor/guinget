@@ -91,6 +91,7 @@ Partial Class aaformMainWindow
         Me.toolstripstatusSplitter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
         Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SearchMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,7 +145,7 @@ Partial Class aaformMainWindow
         '
         'PackageToolStripMenuItem
         '
-        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.ToolStripSeparator6, Me.PackageContextMenuDropdown, Me.ToolStripSeparator5, Me.PackagePropertiesMenuItem, Me.ToolStripSeparator4, Me.AdvancedSearchMenuItem})
+        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.ToolStripSeparator6, Me.PackageContextMenuDropdown, Me.ToolStripSeparator5, Me.PackagePropertiesMenuItem, Me.ToolStripSeparator4, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
         Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
         Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(100, 24)
         Me.PackageToolStripMenuItem.Text = "&Package list"
@@ -730,6 +731,13 @@ Partial Class aaformMainWindow
         Me.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
         Me.toolstripstatuslabelLoadingPackageCount.Visible = False
         '
+        'SearchMenuItem
+        '
+        Me.SearchMenuItem.Name = "SearchMenuItem"
+        Me.SearchMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
+        Me.SearchMenuItem.Size = New System.Drawing.Size(234, 26)
+        Me.SearchMenuItem.Text = "Search"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -845,4 +853,5 @@ Partial Class aaformMainWindow
     Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
     Friend WithEvents Manifest As DataGridViewTextBoxColumn
+    Friend WithEvents SearchMenuItem As ToolStripMenuItem
 End Class
