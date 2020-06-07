@@ -52,7 +52,9 @@ GENERAL NOTES
 KNOWN ISSUES
 ~~~~~~~~~~~~~~~~
 
-There aren't any open known issues yet, so this section is a placeholder.
+- Sometimes the package context menu isn't shown where expected. (issue #14 https://github.com/DrewNaylor/guinget/issues/14 )
+
+- Selecting all packages with Ctrl+A while searching will select every package, even the ones that aren't visible. (issue #13 https://github.com/DrewNaylor/guinget/issues/13 )
 
 See all known issues: https://github.com/DrewNaylor/guinget/labels/known%20issue
 
