@@ -104,11 +104,11 @@ A more-detailed usage guide is available in "docs/How to use guinget.html".
 
 5. Mark the packages as you wish by right-clicking or double-clicking on them and selecting what you want them to be marked as from the "Action" submenu (either install or "do nothing"/ignore for now).
 
-Searching is available as of version 0.1 pre-alpha 2, so you can use the search box to make finding packages faster.
-
 You can also mark packages from the "Package list>Selected package>Action" menu, or by opening the package's combobox/dropdown in the "Action" column (may require several clicks). This combobox/dropdown can also be activated by moving over to it with the arrow keys and pressing "space".
 
-Each version of a package is listed as a seperate package for now. I want to have it be like Synaptic where you open a different window to choose a different version of a package.
+Each version of a package is listed as a separate package for now. I want to have it be like Synaptic where you open a different window to choose a different version of a package.
+
+Searching is available as of version 0.1 pre-alpha 2, so you can use the search box to make finding packages faster. At the moment, you'll have to manually clear the search box and search again to get back to the non-filtered package list.
 
 6. Once you've marked your packages, you can apply them by opening the "Apply changes" dialog, either from the toolbar or from the "Package list" menu.
 
