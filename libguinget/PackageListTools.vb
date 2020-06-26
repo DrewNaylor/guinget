@@ -32,8 +32,11 @@ Public Class PackageListTools
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
         '  Delete any temp files.
-        System.IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                   "\winget-frontends\source\winget-pkgs\temp", True)
+        Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                   "\winget-frontends\source\winget-pkgs\temp"
+        If System.IO.Directory.Exists(tempDir) Then
+            System.IO.Directory.Delete(tempDir, True)
+        End If
 
         Using ArchiveDownloader As New Net.WebClient
             ' Download the package list using the ArchiveDownloader.
