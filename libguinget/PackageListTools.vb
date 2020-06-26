@@ -24,6 +24,7 @@
 
 
 Imports System.Windows.Forms
+Imports System.IO.Compression
 
 Public Class PackageListTools
 
@@ -57,6 +58,9 @@ Public Class PackageListTools
         If System.IO.Directory.Exists(ManifestDir) Then
             System.IO.Directory.Delete(ManifestDir, True)
         End If
+
+        ' We can now extract the manifests.
+
 
     End Sub
 
