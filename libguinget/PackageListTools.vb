@@ -41,8 +41,14 @@ Public Class PackageListTools
         Using ArchiveDownloader As New Net.WebClient
             ' Download the package list using the ArchiveDownloader.
             ' Probably should make this async so that things don't lock up.
+            ' If the temp folder doesn't exist, create it.
+            If Not System.IO.Directory.Exists(tempDir) Then
+                System.IO.Directory.CreateDirectory(tempDir)
+            End If
+
+
             ArchiveDownloader.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                          "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip")
+                                          tempDir & "\winget-pkgs-master.zip")
         End Using
 
         ' Now we extract that file, but first we need to delete old manifests.
