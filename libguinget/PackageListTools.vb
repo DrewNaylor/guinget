@@ -53,7 +53,7 @@ Public Class PackageListTools
         Return
     End Function
 
-    Public Shared Async Sub UpdateManifests()
+    Public Shared Async Function UpdateManifests() As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
@@ -114,7 +114,7 @@ Public Class PackageListTools
         ' Now we just need to copy the right files over.
         My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
 
-    End Sub
+    End Function
 
     Public Shared Function GetManifests() As String
         ' Get and return each manifest in the manifests folder.
