@@ -52,8 +52,11 @@ Public Class PackageListTools
         End Using
 
         ' Now we extract that file, but first we need to delete old manifests.
-        System.IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                   "\winget-frontends\source\winget-pkgs\pkglist\manifests", True)
+        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                   "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+        If System.IO.Directory.Exists(ManifestDir) Then
+            System.IO.Directory.Delete(ManifestDir, True)
+        End If
 
     End Sub
 
