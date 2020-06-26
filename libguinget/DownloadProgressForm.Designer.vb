@@ -26,6 +26,8 @@ Partial Class DownloadProgressForm
         Me.labelDownloadingPackageList = New System.Windows.Forms.Label()
         Me.labelSourceName = New System.Windows.Forms.Label()
         Me.labelSourceLocation = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'progressbarDownloadProgress
@@ -47,7 +49,7 @@ Partial Class DownloadProgressForm
         'labelSourceName
         '
         Me.labelSourceName.AutoSize = True
-        Me.labelSourceName.Location = New System.Drawing.Point(12, 59)
+        Me.labelSourceName.Location = New System.Drawing.Point(3, -2)
         Me.labelSourceName.Name = "labelSourceName"
         Me.labelSourceName.Size = New System.Drawing.Size(100, 17)
         Me.labelSourceName.TabIndex = 2
@@ -56,23 +58,34 @@ Partial Class DownloadProgressForm
         'labelSourceLocation
         '
         Me.labelSourceLocation.AutoSize = True
-        Me.labelSourceLocation.Location = New System.Drawing.Point(12, 76)
+        Me.labelSourceLocation.Location = New System.Drawing.Point(3, 15)
         Me.labelSourceLocation.Name = "labelSourceLocation"
         Me.labelSourceLocation.Size = New System.Drawing.Size(114, 17)
         Me.labelSourceLocation.TabIndex = 3
         Me.labelSourceLocation.Text = "Source location: "
+        '
+        'Panel1
+        '
+        Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.labelSourceLocation)
+        Me.Panel1.Controls.Add(Me.labelSourceName)
+        Me.Panel1.Location = New System.Drawing.Point(12, 58)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(422, 68)
+        Me.Panel1.TabIndex = 4
         '
         'DownloadProgressForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(447, 138)
-        Me.Controls.Add(Me.labelSourceLocation)
-        Me.Controls.Add(Me.labelSourceName)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.labelDownloadingPackageList)
         Me.Controls.Add(Me.progressbarDownloadProgress)
         Me.Name = "DownloadProgressForm"
         Me.Text = "DownloadProgressForm"
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -82,4 +95,5 @@ Partial Class DownloadProgressForm
     Friend WithEvents labelDownloadingPackageList As Windows.Forms.Label
     Friend WithEvents labelSourceName As Windows.Forms.Label
     Friend WithEvents labelSourceLocation As Windows.Forms.Label
+    Friend WithEvents Panel1 As Windows.Forms.Panel
 End Class
