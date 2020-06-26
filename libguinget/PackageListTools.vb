@@ -43,7 +43,7 @@ Public Class PackageListTools
         Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
         ' Set up the filestream we'll write to.
-        Using OutputStream As IO.FileStream = IO.File.Create(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+        Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
             MessageBox.Show(OutputStream.ToString)
             ' Copy out the stream.
@@ -60,9 +60,9 @@ Public Class PackageListTools
         '  Delete any temp files.
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
-        If System.IO.Directory.Exists(tempDir) Then
-            System.IO.Directory.Delete(tempDir, True)
-        End If
+        'If System.IO.Directory.Exists(tempDir) Then
+        '    System.IO.Directory.Delete(tempDir, True)
+        'End If
 
         ' Trying to use this code to display progress as
         ' we update:
