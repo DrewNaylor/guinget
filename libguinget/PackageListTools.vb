@@ -57,19 +57,32 @@ Public Class PackageListTools
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
-        '  Delete any temp files.
+        ' Re-create the temp folder.
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
+
         If Not System.IO.Directory.Exists(tempDir) Then
+            ' If it doesn't exist, create it.
             System.IO.Directory.CreateDirectory(tempDir)
+            ' Now we can download the package.
+            ' This is copied here so it doesn't crash
+            ' when it can't find the temp folder.
+            Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                         "Microsoft/winget-pkgs")
+        Else
+            ' Otherwise, re-create it.
+            System.IO.Directory.Delete(tempDir, True)
+            System.IO.Directory.CreateDirectory(tempDir)
+            ' Now we can download the package.
+            ' This is copied here so it doesn't crash
+            ' when it can't find the temp folder.
+            Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                         "Microsoft/winget-pkgs")
         End If
 
         ' Trying to use this code to display progress as
         ' we update:
         ' https://stackoverflow.com/a/19459595
-
-        Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                         "Microsoft/winget-pkgs")
 
         'Using ArchiveDownloader As New Net.WebClient
         '    ' Download the package list using the ArchiveDownloader.
