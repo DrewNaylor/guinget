@@ -32,6 +32,8 @@ Public Class PackageListTools
 
     Private Shared Async Function UpdateWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
 
+        ' Download a file with HttpClient:
+        ' https://stackoverflow.com/a/54475013
 
     End Function
 
