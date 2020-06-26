@@ -30,4 +30,9 @@ Public Class ChoosePkglistUpdater
         Me.Hide()
         aaformMainWindow.RefreshCache()
     End Sub
+
+    Private Sub buttonUpdateWithBuiltin_Click(sender As Object, e As EventArgs) Handles buttonUpdateWithBuiltin.Click
+        Me.Hide()
+        libguinget.PackageListTools.UpdateManifests()
+    End Sub
 End Class
