@@ -31,7 +31,7 @@ Public Class PackageListTools
     ' Define an http client we'll use.
     Shared ReadOnly pkgclient As Net.Http.HttpClient = New Net.Http.HttpClient()
 
-    Private Shared Async Function UpdateWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
+    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
 
         ' Download a file with HttpClient:
         ' https://stackoverflow.com/a/54475013
