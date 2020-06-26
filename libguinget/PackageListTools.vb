@@ -31,7 +31,7 @@ Public Class PackageListTools
     ' Define an http client we'll use.
     Shared ReadOnly PkgClient As Net.Http.HttpClient = New Net.Http.HttpClient()
 
-    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
+    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task(Of Integer)
 
         ' Download a file with HttpClient:
         ' https://stackoverflow.com/a/54475013
@@ -44,7 +44,7 @@ Public Class PackageListTools
 
         ' Set up the filestream we'll write to.
         Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                   "\winget-frontends\source\winget-pkgs\temp", IO.FileMode.CreateNew)
+                                   "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
             ' Copy out the stream.
             Await ClientResponse.Content.CopyToAsync(OutputStream)
         End Using
@@ -66,18 +66,21 @@ Public Class PackageListTools
         ' we update:
         ' https://stackoverflow.com/a/19459595
 
-        Using ArchiveDownloader As New Net.WebClient
-            ' Download the package list using the ArchiveDownloader.
-            ' Probably should make this async so that things don't lock up.
-            ' If the temp folder doesn't exist, create it.
-            If Not System.IO.Directory.Exists(tempDir) Then
-                System.IO.Directory.CreateDirectory(tempDir)
-            End If
+        Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                         "Microsoft/winget-pkgs")
+
+        'Using ArchiveDownloader As New Net.WebClient
+        '    ' Download the package list using the ArchiveDownloader.
+        '    ' Probably should make this async so that things don't lock up.
+        '    ' If the temp folder doesn't exist, create it.
+        '    If Not System.IO.Directory.Exists(tempDir) Then
+        '        System.IO.Directory.CreateDirectory(tempDir)
+        '    End If
 
 
-            ArchiveDownloader.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                          tempDir & "\winget-pkgs-master.zip")
-        End Using
+        '    ArchiveDownloader.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+        '                                  tempDir & "\winget-pkgs-master.zip")
+        'End Using
 
         MessageBox.Show("Done downloading.")
 

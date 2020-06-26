@@ -40,7 +40,7 @@ Public Class ChoosePkglistUpdater
             progressform.ShowDialog()
         End Using
 
-        'libguinget.PackageListTools.UpdateManifests()
+        libguinget.PackageListTools.UpdateManifests()
 
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
         'Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
