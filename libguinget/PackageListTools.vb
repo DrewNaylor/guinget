@@ -60,7 +60,7 @@ Public Class PackageListTools
         End If
 
         ' We can now extract the manifests.
-
+        ZipFile.ExtractToDirectory()
 
     End Sub
 
