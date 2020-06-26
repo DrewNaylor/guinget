@@ -4,8 +4,10 @@ These are proposed source types that guinget can get manifests from.
 
 - guinget.ZipDownload (Default): Just a zip file that's downloaded and extracted. Doesn't support checking if any changes have occurred since the last manifest update before downloading.
 - guinget.GitRepo: A git repository that's cloned and can be checked for differences before updating, to preserve bandwidth and make updating faster. Requires `git`.
+
 <br>
-Perhaps (libgit2sharp)[https://github.com/libgit2/libgit2sharp/] could be used for this instead of requiring git itself to be installed, as this library is what (HandyWinGet-GUI)[https://github.com/HandyOrg/HandyWinGet-GUI] uses to clone the package repo.
+
+Perhaps [libgit2sharp](https://github.com/libgit2/libgit2sharp/) could be used for this instead of requiring git itself to be installed, as this library is what [HandyWinGet-GUI](https://github.com/HandyOrg/HandyWinGet-GUI) uses to clone the package repo.
 
 <br>
 
