@@ -7,17 +7,17 @@
     Private Sub DownloadProgressForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' Set label text.
-        labelSourceName.Text = labelSourceLocation.Text & PackageListSourceName
+        labelSourceName.Text = labelSourceName.Text & PackageListSourceName
         labelSourceLocation.Text = labelSourceLocation.Text & PackageListUrl
 
     End Sub
 
 #Region "Package list properties"
     ' Package list URL.
-    Friend Shared Property PackageListUrl As String = String.Empty
+    Public Property PackageListUrl As String = String.Empty
 
     ' Package list source name.
-    Friend Shared Property PackageListSourceName As String = String.Empty
+    Public Property PackageListSourceName As String = String.Empty
 #End Region
 
 End Class
