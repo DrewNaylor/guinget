@@ -22,28 +22,28 @@ Partial Class ChoosePkglistUpdater
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.buttonUpdateWithUpdateManifests = New System.Windows.Forms.Button()
+        Me.buttonUpdateWithBuiltin = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'Button1
+        'buttonUpdateWithUpdateManifests
         '
-        Me.Button1.Location = New System.Drawing.Point(13, 13)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(179, 69)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Update using update-manifests.bat (Recommended)"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.buttonUpdateWithUpdateManifests.Location = New System.Drawing.Point(13, 13)
+        Me.buttonUpdateWithUpdateManifests.Name = "buttonUpdateWithUpdateManifests"
+        Me.buttonUpdateWithUpdateManifests.Size = New System.Drawing.Size(179, 69)
+        Me.buttonUpdateWithUpdateManifests.TabIndex = 0
+        Me.buttonUpdateWithUpdateManifests.Text = "Update using update-manifests.bat (Recommended)"
+        Me.buttonUpdateWithUpdateManifests.UseVisualStyleBackColor = True
         '
-        'Button2
+        'buttonUpdateWithBuiltin
         '
-        Me.Button2.Location = New System.Drawing.Point(198, 13)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(179, 69)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Update using built-in updater"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.buttonUpdateWithBuiltin.Location = New System.Drawing.Point(198, 13)
+        Me.buttonUpdateWithBuiltin.Name = "buttonUpdateWithBuiltin"
+        Me.buttonUpdateWithBuiltin.Size = New System.Drawing.Size(179, 69)
+        Me.buttonUpdateWithBuiltin.TabIndex = 1
+        Me.buttonUpdateWithBuiltin.Text = "Update using built-in updater"
+        Me.buttonUpdateWithBuiltin.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -62,8 +62,8 @@ Partial Class ChoosePkglistUpdater
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(388, 167)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.buttonUpdateWithBuiltin)
+        Me.Controls.Add(Me.buttonUpdateWithUpdateManifests)
         Me.Name = "ChoosePkglistUpdater"
         Me.Text = "Choose package list updater"
         Me.ResumeLayout(False)
@@ -71,7 +71,7 @@ Partial Class ChoosePkglistUpdater
 
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents buttonUpdateWithUpdateManifests As Button
+    Friend WithEvents buttonUpdateWithBuiltin As Button
     Friend WithEvents Label1 As Label
 End Class
