@@ -32,6 +32,8 @@ Partial Class DownloadProgressForm
         '
         'progressbarDownloadProgress
         '
+        Me.progressbarDownloadProgress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.progressbarDownloadProgress.Location = New System.Drawing.Point(12, 29)
         Me.progressbarDownloadProgress.Name = "progressbarDownloadProgress"
         Me.progressbarDownloadProgress.Size = New System.Drawing.Size(422, 23)
@@ -66,6 +68,8 @@ Partial Class DownloadProgressForm
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.AutoScroll = True
         Me.Panel1.Controls.Add(Me.labelSourceLocation)
         Me.Panel1.Controls.Add(Me.labelSourceName)
