@@ -28,7 +28,7 @@ Imports System.IO.Compression
 
 Public Class PackageListTools
 
-    Public Shared Sub UpdateManifests()
+    Public Shared Async Sub UpdateManifests()
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
@@ -38,6 +38,10 @@ Public Class PackageListTools
         If System.IO.Directory.Exists(tempDir) Then
             System.IO.Directory.Delete(tempDir, True)
         End If
+
+        ' Trying to use this code to display progress as
+        ' we update:
+        ' https://stackoverflow.com/a/19459595
 
         Using ArchiveDownloader As New Net.WebClient
             ' Download the package list using the ArchiveDownloader.
