@@ -31,7 +31,7 @@ Public Class PackageListTools
     ' Define an http client we'll use.
     Shared ReadOnly PkgClient As Net.Http.HttpClient = New Net.Http.HttpClient()
 
-    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task(Of Integer)
+    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task
 
         ' Download a file with HttpClient:
         ' https://stackoverflow.com/a/54475013
@@ -43,12 +43,14 @@ Public Class PackageListTools
         Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
         ' Set up the filestream we'll write to.
-        Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+        Using OutputStream As IO.FileStream = IO.File.Create(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
+            MessageBox.Show(OutputStream.ToString)
             ' Copy out the stream.
             Await ClientResponse.Content.CopyToAsync(OutputStream)
         End Using
 
+        Return
     End Function
 
     Public Shared Async Sub UpdateManifests()
