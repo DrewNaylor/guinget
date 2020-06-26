@@ -28,6 +28,10 @@ Imports System.IO.Compression
 
 Public Class PackageListTools
 
+    Private Shared Async Function UpdateWithProgressAsync(ByVal SourceUrl As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
+
+    End Function
+
     Public Shared Async Sub UpdateManifests()
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
