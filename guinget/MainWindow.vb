@@ -27,7 +27,7 @@ Imports libguinget
 
 Public Class aaformMainWindow
 
-    Private Shared Async Function AddPackageEntryToListAsync() As Task
+    Friend Shared Async Function AddPackageEntryToListAsync() As Task
 
         ' Adds a package to the package list based on what's in the manifests folder.
         ' TODO: Make sure the package's status is properly set. For now, it'll

@@ -52,6 +52,8 @@ Public Class PackageListTools
                                           tempDir & "\winget-pkgs-master.zip")
         End Using
 
+        MessageBox.Show("Done downloading.")
+
         ' Now we extract that file, but first we need to delete old manifests.
         Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\pkglist\manifests"
@@ -61,6 +63,11 @@ Public Class PackageListTools
 
         ' We can now extract the manifests.
         ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+
+        MessageBox.Show("Done extracting.")
+
+        ' Now we just need to copy the right files over.
+        My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
 
     End Sub
 
