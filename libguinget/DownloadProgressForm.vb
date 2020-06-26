@@ -6,7 +6,7 @@
 
     Friend Shared Property PackageListUrl As String
 
-
-
+    ' Package list URL for the property.
+    Private Shared _PackageListUrl As String = String.Empty
 
 End Class
