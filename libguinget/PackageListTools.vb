@@ -42,6 +42,12 @@ Public Class PackageListTools
         ' Define HTTP response message.
         Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
+        ' Set up the filestream we'll write to.
+        Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                   "\winget-frontends\source\winget-pkgs\temp", IO.FileMode.CreateNew)
+
+        End Using
+
     End Function
 
     Public Shared Async Sub UpdateManifests()
