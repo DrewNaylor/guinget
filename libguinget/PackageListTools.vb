@@ -29,7 +29,7 @@ Imports System.IO.Compression
 Public Class PackageListTools
 
     ' Define an http client we'll use.
-    Shared ReadOnly pkgclient As Net.Http.HttpClient = New Net.Http.HttpClient()
+    Shared ReadOnly PkgClient As Net.Http.HttpClient = New Net.Http.HttpClient()
 
     Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
 
@@ -39,6 +39,8 @@ Public Class PackageListTools
         ' Define uri with source url.
         Dim PkgUri As Uri = New Uri(SourceUrl)
 
+        ' Define HTTP response message.
+        Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
     End Function
 
