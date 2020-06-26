@@ -60,9 +60,9 @@ Public Class PackageListTools
         '  Delete any temp files.
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
-        'If System.IO.Directory.Exists(tempDir) Then
-        '    System.IO.Directory.Delete(tempDir, True)
-        'End If
+        If Not System.IO.Directory.Exists(tempDir) Then
+            System.IO.Directory.CreateDirectory(tempDir)
+        End If
 
         ' Trying to use this code to display progress as
         ' we update:
