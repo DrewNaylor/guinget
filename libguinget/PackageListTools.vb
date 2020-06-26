@@ -28,7 +28,7 @@ Imports System.IO.Compression
 
 Public Class PackageListTools
 
-    Private Shared Async Function UpdateWithProgressAsync(ByVal SourceUrl As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
+    Private Shared Async Function UpdateWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
 
     End Function
 
