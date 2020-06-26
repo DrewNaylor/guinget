@@ -60,7 +60,7 @@ Public Class PackageListTools
         End If
 
         ' We can now extract the manifests.
-        ZipFile.ExtractToDirectory()
+        ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
 
     End Sub
 
