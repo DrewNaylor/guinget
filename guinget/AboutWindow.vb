@@ -35,7 +35,7 @@ Public Class AboutWindow
     Private Sub AboutWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Put text in the About textbox.
         textboxAbout.Text = "guinget" & vbCrLf &
-                        "Version 0.1 Pre-Alpha 2" & vbCrLf &
+                        "Version 0.1 Alpha" & vbCrLf &
                         My.Application.Info.Copyright & vbCrLf &
                         vbCrLf &
                         "Unofficial GUI for Microsoft's Windows Package Manager (winget)." & vbCrLf &
