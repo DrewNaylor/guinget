@@ -36,6 +36,10 @@ Public Class PackageListTools
         ' Download a file with HttpClient:
         ' https://stackoverflow.com/a/54475013
 
+        ' Define uri with source url.
+        Dim PkgUri As Uri = New Uri(SourceUrl)
+
+
     End Function
 
     Public Shared Async Sub UpdateManifests()
