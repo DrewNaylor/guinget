@@ -28,7 +28,10 @@ Imports System.IO.Compression
 
 Public Class PackageListTools
 
+    ' Define an http client we'll use.
+
     Private Shared Async Function UpdateWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal ProgressBarToUpdate As ProgressBar) As Task(Of Integer)
+
 
     End Function
 
