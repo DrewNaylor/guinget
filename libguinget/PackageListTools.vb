@@ -27,6 +27,10 @@ Imports System.Windows.Forms
 
 Public Class PackageListTools
 
+    Public Shared Sub UpdateManifests()
+
+    End Sub
+
     Public Shared Function GetManifests() As String
         ' Get and return each manifest in the manifests folder.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
