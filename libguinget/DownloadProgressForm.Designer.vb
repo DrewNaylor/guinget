@@ -22,18 +22,18 @@ Partial Class DownloadProgressForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.progressbarDownloadProgress = New System.Windows.Forms.ProgressBar()
         Me.labelDownloadingPackageList = New System.Windows.Forms.Label()
         Me.labelSourceName = New System.Windows.Forms.Label()
         Me.labelSourceLocation = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'ProgressBar1
+        'progressbarDownloadProgress
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(12, 29)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(422, 23)
-        Me.ProgressBar1.TabIndex = 0
+        Me.progressbarDownloadProgress.Location = New System.Drawing.Point(12, 29)
+        Me.progressbarDownloadProgress.Name = "progressbarDownloadProgress"
+        Me.progressbarDownloadProgress.Size = New System.Drawing.Size(422, 23)
+        Me.progressbarDownloadProgress.TabIndex = 0
         '
         'labelDownloadingPackageList
         '
@@ -70,7 +70,7 @@ Partial Class DownloadProgressForm
         Me.Controls.Add(Me.labelSourceLocation)
         Me.Controls.Add(Me.labelSourceName)
         Me.Controls.Add(Me.labelDownloadingPackageList)
-        Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.progressbarDownloadProgress)
         Me.Name = "DownloadProgressForm"
         Me.Text = "DownloadProgressForm"
         Me.ResumeLayout(False)
@@ -78,7 +78,7 @@ Partial Class DownloadProgressForm
 
     End Sub
 
-    Friend WithEvents ProgressBar1 As Windows.Forms.ProgressBar
+    Friend WithEvents progressbarDownloadProgress As Windows.Forms.ProgressBar
     Friend WithEvents labelDownloadingPackageList As Windows.Forms.Label
     Friend WithEvents labelSourceName As Windows.Forms.Label
     Friend WithEvents labelSourceLocation As Windows.Forms.Label
