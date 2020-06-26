@@ -51,7 +51,7 @@ Partial Class DownloadProgressForm
         'labelSourceName
         '
         Me.labelSourceName.AutoSize = True
-        Me.labelSourceName.Location = New System.Drawing.Point(3, -2)
+        Me.labelSourceName.Location = New System.Drawing.Point(-3, -3)
         Me.labelSourceName.Name = "labelSourceName"
         Me.labelSourceName.Size = New System.Drawing.Size(100, 17)
         Me.labelSourceName.TabIndex = 2
@@ -60,7 +60,7 @@ Partial Class DownloadProgressForm
         'labelSourceLocation
         '
         Me.labelSourceLocation.AutoSize = True
-        Me.labelSourceLocation.Location = New System.Drawing.Point(3, 15)
+        Me.labelSourceLocation.Location = New System.Drawing.Point(-3, 14)
         Me.labelSourceLocation.Name = "labelSourceLocation"
         Me.labelSourceLocation.Size = New System.Drawing.Size(114, 17)
         Me.labelSourceLocation.TabIndex = 3
