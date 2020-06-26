@@ -371,7 +371,7 @@ Public Class aaformMainWindow
         RefreshCache()
     End Sub
 
-    Private Sub RefreshCache()
+    Friend Shared Sub RefreshCache()
         ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
         MessageBox.Show("For now, we'll update the manifests with update-manifests.bat, but this'll eventually be replaced with something better." &
                         " Please click OK when ready and follow the prompts in update-manifests.bat.", "Refresh cache")
