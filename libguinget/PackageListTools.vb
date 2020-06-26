@@ -31,10 +31,21 @@ Public Class PackageListTools
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
+        '  Delete any temp files.
+        System.IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                   "\winget-frontends\source\winget-pkgs\temp", True)
+
         Using ArchiveDownloader As New Net.WebClient
+            ' Download the package list using the ArchiveDownloader.
+            ' Probably should make this async so that things don't lock up.
             ArchiveDownloader.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip")
+                                          "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip")
         End Using
+
+        ' Now we extract that file, but first we need to delete old manifests.
+        System.IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                   "\winget-frontends\source\winget-pkgs\pkglist\manifests", True)
+
     End Sub
 
     Public Shared Function GetManifests() As String
