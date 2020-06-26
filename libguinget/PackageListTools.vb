@@ -30,8 +30,11 @@ Public Class PackageListTools
     Public Shared Sub UpdateManifests()
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
-        My.Computer.Network.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+
+        Using ArchiveDownloader As New Net.WebClient
+            ArchiveDownloader.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                          Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip")
+        End Using
     End Sub
 
     Public Shared Function GetManifests() As String
