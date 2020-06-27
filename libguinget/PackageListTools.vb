@@ -51,6 +51,12 @@ Public Class PackageListTools
             ' Define HTTP response message.
             Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
+            For i As Integer = 0 To 99
+                progressform.progressbarDownloadProgress.Value = i
+                System.Threading.Thread.Sleep(300)
+                progressform.Update()
+            Next
+
             ' Set up the filestream we'll write to.
             Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                        "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
