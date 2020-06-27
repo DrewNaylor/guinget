@@ -49,6 +49,9 @@ Public Class PackageListTools
             Dim PkgUri As Uri = New Uri(SourceUrl)
 
             ' Set progress bar maximum to the length of the client response's content.
+            ' Have progress bar be an indeterminate one for now.
+            ' If the server sends a content length header, we
+            ' can change the max to that instead.
             progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
             progressform.Update()
 
