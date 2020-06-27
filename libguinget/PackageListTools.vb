@@ -57,6 +57,16 @@ Public Class PackageListTools
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
+        ' Show a progress form that says what's being done.
+        Using progressform As New libguinget.DownloadProgressForm
+            ' Set progress form properties.
+            progressform.PackageListUrl = "https://github.com/Microsoft/winget-pkgs/archive/master.zip"
+            progressform.PackageListSourceName = "Microsoft/winget-pkgs"
+
+            ' Show progress form.
+            progressform.ShowDialog()
+        End Using
+
         ' Re-create the temp folder.
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
