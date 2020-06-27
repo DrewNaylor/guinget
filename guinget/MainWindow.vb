@@ -361,6 +361,21 @@ Public Class aaformMainWindow
         LocalApplyChangesWindow.ShowDialog(Me)
     End Sub
 
+    Private Shared Async Sub UpdatePackageListBuiltinAsync()
+
+        ' First, we need to download and update the manifests.
+        Await libguinget.PackageListTools.UpdateManifests()
+
+        ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
+        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+
+        ' If the manifest directory exists, we can add the
+        ' packages to the list.
+        If My.Computer.FileSystem.DirectoryExists(ManifestDir) Then
+            Await AddPackageEntryToListAsync()
+        End If
+    End Sub
+
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Refresh package list and package cache.
         'RefreshCache()
