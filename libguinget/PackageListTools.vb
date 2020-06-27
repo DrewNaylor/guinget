@@ -43,7 +43,7 @@ Public Class PackageListTools
             progressform.PackageListSourceName = "Microsoft/winget-pkgs"
 
             ' Show progress form.
-            progressform.ShowDialog()
+            progressform.Show()
 
             ' Define uri with source url.
             Dim PkgUri As Uri = New Uri(SourceUrl)
