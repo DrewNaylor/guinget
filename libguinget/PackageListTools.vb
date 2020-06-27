@@ -65,64 +65,66 @@ Public Class PackageListTools
 
             ' Show progress form.
             progressform.ShowDialog()
-        End Using
 
-        ' Re-create the temp folder.
-        Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+
+            ' Re-create the temp folder.
+            Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
 
-        If Not System.IO.Directory.Exists(tempDir) Then
-            ' If it doesn't exist, create it.
-            System.IO.Directory.CreateDirectory(tempDir)
-            ' Now we can download the package.
-            ' This is copied here so it doesn't crash
-            ' when it can't find the temp folder.
-            Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                         "Microsoft/winget-pkgs")
-        Else
-            ' Otherwise, re-create it.
-            System.IO.Directory.Delete(tempDir, True)
-            System.IO.Directory.CreateDirectory(tempDir)
-            ' Now we can download the package.
-            ' This is copied here so it doesn't crash
-            ' when it can't find the temp folder.
-            Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                         "Microsoft/winget-pkgs")
-        End If
+            If Not System.IO.Directory.Exists(tempDir) Then
+                ' If it doesn't exist, create it.
+                System.IO.Directory.CreateDirectory(tempDir)
+                ' Now we can download the package.
+                ' This is copied here so it doesn't crash
+                ' when it can't find the temp folder.
+                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                             "Microsoft/winget-pkgs")
+            Else
+                ' Otherwise, re-create it.
+                System.IO.Directory.Delete(tempDir, True)
+                System.IO.Directory.CreateDirectory(tempDir)
+                ' Now we can download the package.
+                ' This is copied here so it doesn't crash
+                ' when it can't find the temp folder.
+                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                             "Microsoft/winget-pkgs")
+            End If
 
-        ' Trying to use this code to display progress as
-        ' we update:
-        ' https://stackoverflow.com/a/19459595
+            ' Trying to use this code to display progress as
+            ' we update:
+            ' https://stackoverflow.com/a/19459595
 
-        'Using ArchiveDownloader As New Net.WebClient
-        '    ' Download the package list using the ArchiveDownloader.
-        '    ' Probably should make this async so that things don't lock up.
-        '    ' If the temp folder doesn't exist, create it.
-        '    If Not System.IO.Directory.Exists(tempDir) Then
-        '        System.IO.Directory.CreateDirectory(tempDir)
-        '    End If
+            'Using ArchiveDownloader As New Net.WebClient
+            '    ' Download the package list using the ArchiveDownloader.
+            '    ' Probably should make this async so that things don't lock up.
+            '    ' If the temp folder doesn't exist, create it.
+            '    If Not System.IO.Directory.Exists(tempDir) Then
+            '        System.IO.Directory.CreateDirectory(tempDir)
+            '    End If
 
 
-        '    ArchiveDownloader.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-        '                                  tempDir & "\winget-pkgs-master.zip")
-        'End Using
+            '    ArchiveDownloader.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+            '                                  tempDir & "\winget-pkgs-master.zip")
+            'End Using
 
-        MessageBox.Show("Done downloading.")
+            MessageBox.Show("Done downloading.")
 
-        ' Now we extract that file, but first we need to delete old manifests.
-        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                   "\winget-frontends\source\winget-pkgs\pkglist\manifests"
-        If System.IO.Directory.Exists(ManifestDir) Then
-            System.IO.Directory.Delete(ManifestDir, True)
-        End If
+            ' Now we extract that file, but first we need to delete old manifests.
+            Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                       "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+            If System.IO.Directory.Exists(ManifestDir) Then
+                System.IO.Directory.Delete(ManifestDir, True)
+            End If
 
-        ' We can now extract the manifests.
-        ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+            ' We can now extract the manifests.
+            ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
 
-        MessageBox.Show("Done extracting.")
+            MessageBox.Show("Done extracting.")
 
-        ' Now we just need to copy the right files over.
-        My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+            ' Now we just need to copy the right files over.
+            My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+
+        End Using
 
     End Function
 
