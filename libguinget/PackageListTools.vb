@@ -138,6 +138,9 @@ Public Class PackageListTools
             progressform.Update()
 
             ' Extract manifests.
+            ' To monitor progress, maybe something like the following
+            ' StackOverflow answer would work:
+            ' https://stackoverflow.com/a/39668142
             Await Task.Run(Sub()
                                ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
                            End Sub)
