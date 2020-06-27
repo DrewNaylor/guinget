@@ -136,9 +136,20 @@ Public Class PackageListTools
         End If
 
         ' We can now extract the manifests.
-        ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
 
-        MessageBox.Show("Done extracting.")
+        ' Display a window to show progress.
+        Using progressform As New DownloadProgressForm
+            progressform.labelSourceLocation.Hide()
+            progressform.labelSourceName.Hide()
+            progressform.CurrentAction = "Extracting package list..."
+
+
+
+            ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+
+            End Using
+
+            MessageBox.Show("Done extracting.")
 
         ' Now we just need to copy the right files over.
         My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
