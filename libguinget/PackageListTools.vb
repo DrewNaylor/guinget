@@ -161,7 +161,26 @@ Public Class PackageListTools
         MessageBox.Show("Done extracting.")
 
         ' Now we just need to copy the right files over.
-        My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+        ' Probably should add a dialog to not make it
+        ' look like nothing is happening.
+        Using progressform As New DownloadProgressForm
+            progressform.labelSourceLocation.Hide()
+            progressform.labelSourceName.Hide()
+            progressform.CurrentAction = "Copying manifests..."
+
+            ' Show progress form.
+            progressform.Show()
+
+            ' Start the progress bar.
+            progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
+            progressform.Update()
+
+            ' Copy manifests.
+            Await Task.Run(Sub()
+                               My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                           End Sub)
+
+        End Using
 
     End Function
 
