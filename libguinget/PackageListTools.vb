@@ -53,7 +53,7 @@ Public Class PackageListTools
 
             For i As Integer = 0 To 99
                 progressform.progressbarDownloadProgress.Value = i
-                System.Threading.Thread.Sleep(300)
+                System.Threading.Thread.Sleep(4)
                 progressform.Update()
             Next
 
