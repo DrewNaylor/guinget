@@ -143,8 +143,14 @@ Public Class PackageListTools
             progressform.labelSourceName.Hide()
             progressform.CurrentAction = "Extracting package list..."
 
+            ' Show progress form.
+            progressform.Show()
 
+            ' Start the progress bar.
+            progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
+            progressform.Update()
 
+            ' Extract manifests.
             ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
 
             End Using
