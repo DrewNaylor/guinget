@@ -328,7 +328,7 @@ Public Class aaformMainWindow
 
     Private Sub toolstripbuttonApplyChanges_Click(sender As Object, e As EventArgs) Handles toolstripbuttonApplyChanges.Click
         ' Open the apply changes dialog.
-        ApplyChanges
+        ApplyChanges()
     End Sub
 
     Private Sub ApplyChangesMenuItem_Click(sender As Object, e As EventArgs) Handles ApplyChangesMenuItem.Click
@@ -364,6 +364,12 @@ Public Class aaformMainWindow
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Refresh package list and package cache.
         'RefreshCache()
+        ' Once the code in the ChoosePkglistUpdater window's button
+        ' that starts the built-in updater is brought into the
+        ' main window, we can set this button to be an Async Sub
+        ' and have it all go.
+        ' It would be a really good idea to disable most of the buttons
+        ' (such as the Refresh and Apply changes buttons) while it's updating.
         ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
