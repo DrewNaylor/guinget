@@ -113,20 +113,7 @@ Public Class PackageListTools
         ' we update:
         ' https://stackoverflow.com/a/19459595
 
-        'Using ArchiveDownloader As New Net.WebClient
-        '    ' Download the package list using the ArchiveDownloader.
-        '    ' Probably should make this async so that things don't lock up.
-        '    ' If the temp folder doesn't exist, create it.
-        '    If Not System.IO.Directory.Exists(tempDir) Then
-        '        System.IO.Directory.CreateDirectory(tempDir)
-        '    End If
-
-
-        '    ArchiveDownloader.DownloadFile("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-        '                                  tempDir & "\winget-pkgs-master.zip")
-        'End Using
-
-        MessageBox.Show("Done downloading.")
+        'MessageBox.Show("Done downloading.")
 
         ' Now we extract that file, but first we need to delete old manifests.
         Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
@@ -158,7 +145,7 @@ Public Class PackageListTools
 
         End Using
 
-        MessageBox.Show("Done extracting.")
+        'MessageBox.Show("Done extracting.")
 
         ' Now we just need to copy the right files over.
         ' Probably should add a dialog to not make it
