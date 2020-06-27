@@ -39,8 +39,8 @@ Public Class PackageListTools
         ' Show a progress form that says what's being done.
         Using progressform As New libguinget.DownloadProgressForm
             ' Set progress form properties.
-            progressform.PackageListUrl = "https://github.com/Microsoft/winget-pkgs/archive/master.zip"
-            progressform.PackageListSourceName = "Microsoft/winget-pkgs"
+            progressform.PackageListUrl = SourceUrl
+            progressform.PackageListSourceName = SourceName
 
             ' Show progress form.
             progressform.Show()
@@ -48,20 +48,24 @@ Public Class PackageListTools
             ' Define uri with source url.
             Dim PkgUri As Uri = New Uri(SourceUrl)
 
+            ' Set progress bar maximum to the length of the client response's content.
+            progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
+            progressform.Update()
+
             ' Define HTTP response message.
             Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
-            For i As Integer = 0 To 99
-                progressform.progressbarDownloadProgress.Value = i
-                System.Threading.Thread.Sleep(4)
-                progressform.Update()
-            Next
+            'For i As Integer = 0 To 99
+            '    progressform.progressbarDownloadProgress.Value = i
+            '    System.Threading.Thread.Sleep(4)
+            '    progressform.Update()
+            'Next
 
             ' Set up the filestream we'll write to.
             Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                        "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
                 'MessageBox.Show(OutputStream.ToString)
-                progressform.progressbarDownloadProgress.Value = progressform.progressbarDownloadProgress.Maximum
+
                 ' Copy out the stream.
                 Await ClientResponse.Content.CopyToAsync(OutputStream)
             End Using
