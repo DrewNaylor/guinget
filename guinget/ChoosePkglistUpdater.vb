@@ -28,24 +28,14 @@ Public Class ChoosePkglistUpdater
 
     Private Sub buttonUpdateWithUpdateManifests_Click(sender As Object, e As EventArgs) Handles buttonUpdateWithUpdateManifests.Click
         Me.Hide()
+        ' Start update via update-manifests.bat updater.
         aaformMainWindow.RefreshCache()
     End Sub
 
     Private Async Sub buttonUpdateWithBuiltin_Click(sender As Object, e As EventArgs) Handles buttonUpdateWithBuiltin.Click
-        'Me.Hide()
 
-
-
-        Await libguinget.PackageListTools.UpdateManifests()
-
-        ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
-        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
-
-
-
-        If My.Computer.FileSystem.DirectoryExists(ManifestDir) Then
-            aaformMainWindow.AddPackageEntryToListAsync()
-        End If
+        ' Start update using built-in updater.
+        Await aaformMainWindow.UpdatePackageListBuiltinAsync
 
         Me.Close()
     End Sub

@@ -361,10 +361,10 @@ Public Class aaformMainWindow
         LocalApplyChangesWindow.ShowDialog(Me)
     End Sub
 
-    Private Shared Async Sub UpdatePackageListBuiltinAsync()
+    Friend Shared Async Function UpdatePackageListBuiltinAsync() As Task
 
         ' First, we need to download and update the manifests.
-        Await libguinget.PackageListTools.UpdateManifests()
+        Await PackageListTools.UpdateManifests()
 
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
         Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
@@ -374,17 +374,19 @@ Public Class aaformMainWindow
         If My.Computer.FileSystem.DirectoryExists(ManifestDir) Then
             Await AddPackageEntryToListAsync()
         End If
-    End Sub
+
+        Return
+    End Function
 
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Refresh package list and package cache.
         'RefreshCache()
-        ' Once the code in the ChoosePkglistUpdater window's button
-        ' that starts the built-in updater is brought into the
-        ' main window, we can set this button to be an Async Sub
-        ' and have it all go.
+        ' Once the built-in updater is finished,
+        ' we can uncomment "Await UpdatePackageListBuiltinAsync()"
+        ' so it can update without blocking the ui.
         ' It would be a really good idea to disable most of the buttons
         ' (such as the Refresh and Apply changes buttons) while it's updating.
+        'Await UpdatePackageListBuiltinAsync()
         ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
