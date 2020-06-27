@@ -9,6 +9,7 @@
         ' Set label text.
         labelSourceName.Text = labelSourceName.Text & PackageListSourceName
         labelSourceLocation.Text = labelSourceLocation.Text & PackageListUrl
+        labelDownloadingPackageList.Text = CurrentAction
 
         ' Start updating according to the package list url.
 
@@ -21,6 +22,10 @@
 
     ' Package list source name.
     Public Property PackageListSourceName As String = String.Empty
+
+    ' What action is currently being taken.
+    ' This can be downloading or extracting.
+    Public Property CurrentAction As String = "Downloading package list..."
 #End Region
 
 End Class
