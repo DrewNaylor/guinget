@@ -60,22 +60,26 @@ Public Class PackageListTools
             progressform.Update()
 
             ' Define HTTP response message.
-            Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
+            ' TODO: Be sure to prevent URLs that we can't find from crashing.
+            Try
+                Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
-            'For i As Integer = 0 To 99
-            '    progressform.progressbarDownloadProgress.Value = i
-            '    System.Threading.Thread.Sleep(4)
-            '    progressform.Update()
-            'Next
+                ' Set up the filestream we'll write to.
+                Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                           "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
+                    'MessageBox.Show(OutputStream.ToString)
 
-            ' Set up the filestream we'll write to.
-            Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                       "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
-                'MessageBox.Show(OutputStream.ToString)
+                    ' Copy out the stream.
+                    Await ClientResponse.Content.CopyToAsync(OutputStream)
+                End Using
 
-                ' Copy out the stream.
-                Await ClientResponse.Content.CopyToAsync(OutputStream)
-            End Using
+            Catch ex As System.Net.Http.HttpRequestException
+                ' Temporary, basic error handler in case we can't find
+                ' the source's URL. This may happen if there's
+                ' no Internet connection.
+                MessageBox.Show("Couldn't find " & SourceUrl)
+                Exit Function
+            End Try
 
         End Using
 
@@ -142,7 +146,14 @@ Public Class PackageListTools
             ' StackOverflow answer would work:
             ' https://stackoverflow.com/a/39668142
             Await Task.Run(Sub()
-                               ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+
+                               ' Temporary, basic error handler in case we can't find
+                               ' the zip file we want to extract.
+                               Try
+                                   ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+                               Catch ex As System.IO.FileNotFoundException
+                                   MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip")
+                               End Try
                            End Sub)
 
 
@@ -167,7 +178,14 @@ Public Class PackageListTools
 
             ' Copy manifests.
             Await Task.Run(Sub()
-                               My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+
+                               ' Temporary, basic error handler in case
+                               ' we can't find the manifests folder.
+                               Try
+                                   My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                               Catch ex As System.IO.DirectoryNotFoundException
+                                   MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
+                               End Try
                            End Sub)
 
         End Using
