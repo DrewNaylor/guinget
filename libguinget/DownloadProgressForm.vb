@@ -11,8 +11,8 @@
         labelSourceLocation.Text = labelSourceLocation.Text & PackageListUrl
         labelDownloadingPackageList.Text = CurrentAction
 
-        ' Start updating according to the package list url.
-
+        ' Update titlebar.
+        Me.Text = CurrentAction
 
     End Sub
 
