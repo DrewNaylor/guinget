@@ -54,7 +54,8 @@ Public Class PackageListTools
             ' Set up the filestream we'll write to.
             Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                        "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
-                MessageBox.Show(OutputStream.ToString)
+                'MessageBox.Show(OutputStream.ToString)
+                progressform.progressbarDownloadProgress.Value = progressform.progressbarDownloadProgress.Maximum
                 ' Copy out the stream.
                 Await ClientResponse.Content.CopyToAsync(OutputStream)
             End Using
