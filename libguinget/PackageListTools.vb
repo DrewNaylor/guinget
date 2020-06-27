@@ -90,6 +90,10 @@ Public Class PackageListTools
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
+        ' The manifest's location needs to be based on the source's name,
+        ' but for now it's hardcoded until source configuration is supported.
+        ' This will probably use a YAML file to store source names, locations, and types.
+
         ' Re-create the temp folder.
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
