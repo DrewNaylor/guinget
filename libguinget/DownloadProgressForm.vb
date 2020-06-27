@@ -10,6 +10,9 @@
         labelSourceName.Text = labelSourceName.Text & PackageListSourceName
         labelSourceLocation.Text = labelSourceLocation.Text & PackageListUrl
 
+        ' Start updating according to the package list url.
+
+
     End Sub
 
 #Region "Package list properties"

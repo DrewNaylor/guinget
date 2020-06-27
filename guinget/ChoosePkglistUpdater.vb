@@ -37,6 +37,7 @@ Public Class ChoosePkglistUpdater
         Using progressform As New libguinget.DownloadProgressForm
             progressform.PackageListUrl = "https://github.com/Microsoft/winget-pkgs/archive/master.zip"
             progressform.PackageListSourceName = "Microsoft/winget-pkgs"
+
             progressform.ShowDialog()
         End Using
 
