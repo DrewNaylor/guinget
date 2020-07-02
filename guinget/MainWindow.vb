@@ -27,7 +27,7 @@ Imports libguinget
 
 Public Class aaformMainWindow
 
-    Private Shared Async Function AddPackageEntryToListAsync() As Task
+    Friend Shared Async Function AddPackageEntryToListAsync() As Task
 
         ' Adds a package to the package list based on what's in the manifests folder.
         ' TODO: Make sure the package's status is properly set. For now, it'll
@@ -328,7 +328,7 @@ Public Class aaformMainWindow
 
     Private Sub toolstripbuttonApplyChanges_Click(sender As Object, e As EventArgs) Handles toolstripbuttonApplyChanges.Click
         ' Open the apply changes dialog.
-        ApplyChanges
+        ApplyChanges()
     End Sub
 
     Private Sub ApplyChangesMenuItem_Click(sender As Object, e As EventArgs) Handles ApplyChangesMenuItem.Click
@@ -361,19 +361,44 @@ Public Class aaformMainWindow
         LocalApplyChangesWindow.ShowDialog(Me)
     End Sub
 
+    Friend Shared Async Function UpdatePackageListBuiltinAsync() As Task
+
+        ' First, we need to download and update the manifests.
+        Await PackageListTools.UpdateManifests()
+
+        ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
+        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+
+        ' If the manifest directory exists, we can add the
+        ' packages to the list.
+        If My.Computer.FileSystem.DirectoryExists(ManifestDir) Then
+            Await AddPackageEntryToListAsync()
+        End If
+
+        Return
+    End Function
+
     Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Refresh package list and package cache.
-        RefreshCache()
+        'RefreshCache()
+        ' Once the built-in updater is finished,
+        ' we can uncomment "Await UpdatePackageListBuiltinAsync()"
+        ' so it can update without blocking the ui.
+        ' It would be a really good idea to disable most of the buttons
+        ' (such as the Refresh and Apply changes buttons) while it's updating.
+        'Await UpdatePackageListBuiltinAsync()
+        ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
     Private Sub RefreshCacheMenuButton_Click(sender As Object, e As EventArgs) Handles RefreshCacheMenuButton.Click
         ' Refresh package list and package cache.
-        RefreshCache()
+        'RefreshCache()
+        ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
-    Private Sub RefreshCache()
+    Friend Shared Sub RefreshCache()
         ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
-        MessageBox.Show("For now, we'll update the manifests with update-manifests.bat, but this'll eventually be replaced with something better." &
+        MessageBox.Show(aaformMainWindow, "For now, we'll update the manifests with update-manifests.bat, but this'll eventually be replaced with something better." &
                         " Please click OK when ready and follow the prompts in update-manifests.bat.", "Refresh cache")
         Using updatemanifestsscript As New Process
             ' Run update-manifests.bat.
@@ -382,12 +407,12 @@ Public Class aaformMainWindow
             Try
                 updatemanifestsscript.Start()
             Catch ex As ComponentModel.Win32Exception
-                MessageBox.Show("We couldn't find update-manifests.bat in the same folder as guinget.exe. " &
+                MessageBox.Show(aaformMainWindow, "We couldn't find update-manifests.bat in the same folder as guinget.exe. " &
                                 "Please download a new copy of guinget from https://github.com/DrewNaylor/guinget/releases")
             End Try
         End Using
         ' Show messagebox that says to click OK when finished with update-manifests.bat.
-        MessageBox.Show("When finished with update-manifests.bat, please click OK.", "Refresh cache")
+        MessageBox.Show(aaformMainWindow, "When finished with update-manifests.bat, please click OK.", "Refresh cache")
         ' Reload the package list with the new manifests.
         ' Trying to do this without blocking with this example:
         ' https://www.codeproject.com/Tips/729674/Simple-Net-progress-bar-using-async-await

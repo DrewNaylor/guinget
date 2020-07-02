@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -75,6 +77,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DownloadProgressForm.Designer.vb">
+      <DependentUpon>DownloadProgressForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DownloadProgressForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PackageListTools.vb" />
     <Compile Include="PackageTools.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -94,6 +102,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DownloadProgressForm.resx">
+      <DependentUpon>DownloadProgressForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
