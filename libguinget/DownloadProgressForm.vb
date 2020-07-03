@@ -34,7 +34,7 @@ Public Class DownloadProgressForm
         ' Set label text.
         labelSourceName.Text = labelSourceName.Text & PackageListSourceName
         labelSourceLocation.Text = labelSourceLocation.Text & PackageListUrl
-        labelDownloadingPackageList.Text = CurrentAction
+        labelDownloadingPackageList.Text = CurrentAction & ", please wait..."
 
         ' Update titlebar.
         Me.Text = CurrentAction
@@ -50,7 +50,7 @@ Public Class DownloadProgressForm
 
     ' What action is currently being taken.
     ' This can be downloading or extracting.
-    Public Property CurrentAction As String = "Downloading package list..."
+    Public Property CurrentAction As String = "Downloading manifests"
 #End Region
 
 End Class

@@ -136,7 +136,7 @@ Public Class PackageListTools
         Using progressform As New DownloadProgressForm
             progressform.labelSourceLocation.Hide()
             progressform.labelSourceName.Hide()
-            progressform.CurrentAction = "Extracting package list..."
+            progressform.CurrentAction = "Extracting manifests"
 
             ' Show progress form.
             progressform.Show()
@@ -171,7 +171,7 @@ Public Class PackageListTools
         Using progressform As New DownloadProgressForm
             progressform.labelSourceLocation.Hide()
             progressform.labelSourceName.Hide()
-            progressform.CurrentAction = "Copying manifests..."
+            progressform.CurrentAction = "Copying manifests"
 
             ' Show progress form.
             progressform.Show()
