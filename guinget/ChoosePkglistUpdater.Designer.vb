@@ -22,6 +22,7 @@ Partial Class ChoosePkglistUpdater
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ChoosePkglistUpdater))
         Me.buttonUpdateWithUpdateManifests = New System.Windows.Forms.Button()
         Me.buttonUpdateWithBuiltin = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -50,22 +51,20 @@ Partial Class ChoosePkglistUpdater
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 85)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(349, 68)
+        Me.Label1.Size = New System.Drawing.Size(395, 238)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Please note that the built-in updater is unfinished, and" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "this window is here mai" &
-    "nly to allow people to choose if" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "they want to try the built-in updater instead " &
-    "of" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "update-manifests.bat."
+        Me.Label1.Text = resources.GetString("Label1.Text")
         '
         'ChoosePkglistUpdater
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(388, 167)
+        Me.ClientSize = New System.Drawing.Size(412, 334)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.buttonUpdateWithBuiltin)
         Me.Controls.Add(Me.buttonUpdateWithUpdateManifests)
         Me.Name = "ChoosePkglistUpdater"
-        Me.Text = "Choose package list updater"
+        Me.Text = "Choose cache updater"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

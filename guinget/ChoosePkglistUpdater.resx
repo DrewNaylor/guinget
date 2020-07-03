@@ -117,4 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Please note that the built-in updater is unfinished, and
+this window is here mainly to allow people to choose if
+they want to try the built-in updater instead of
+update-manifests.bat.
+
+This window will be removed by the time guinget version
+0.1 alpha is released, and the built-in updater will be set
+as the default with the option in the config file
+to switch back to using update-manifests.bat until it's
+removed in a future version.
+
+Additionally, update-manifests.bat is deprecated in version
+0.1 alpha, and is only recommended temporarily as it's known
+to generally work.</value>
+  </data>
 </root>
