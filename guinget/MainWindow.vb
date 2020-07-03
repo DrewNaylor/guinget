@@ -378,22 +378,38 @@ Public Class aaformMainWindow
         Return
     End Function
 
-    Private Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
+    Private Async Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Refresh package list and package cache.
-        'RefreshCache()
-        ' Once the built-in updater is finished,
-        ' we can uncomment "Await UpdatePackageListBuiltinAsync()"
-        ' so it can update without blocking the ui.
-        ' It would be a really good idea to disable most of the buttons
-        ' (such as the Refresh and Apply changes buttons) while it's updating.
-        'Await UpdatePackageListBuiltinAsync()
-        ChoosePkglistUpdater.ShowDialog(Me)
+        If My.Settings.UseBuiltinCacheUpdater = False Then
+            ' If the user doesn't want to use the new updater,
+            ' then use update-manifests.bat.
+            ' Be sure to tell the user it's deprecated.
+            RefreshCache()
+        Else
+            ' Otherwise, we default to using the new, built-in updater
+            ' provided by libguinget.
+            ' It would be a really good idea to disable most of the buttons
+            ' (such as the Refresh and Apply changes buttons) while it's updating.
+            Await aaformMainWindow.UpdatePackageListBuiltinAsync
+        End If
+        'ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
-    Private Sub RefreshCacheMenuButton_Click(sender As Object, e As EventArgs) Handles RefreshCacheMenuButton.Click
+    Private Async Sub RefreshCacheMenuButton_Click(sender As Object, e As EventArgs) Handles RefreshCacheMenuButton.Click
         ' Refresh package list and package cache.
-        'RefreshCache()
-        ChoosePkglistUpdater.ShowDialog(Me)
+        If My.Settings.UseBuiltinCacheUpdater = False Then
+            ' If the user doesn't want to use the new updater,
+            ' then use update-manifests.bat.
+            ' Be sure to tell the user it's deprecated.
+            RefreshCache()
+        Else
+            ' Otherwise, we default to using the new, built-in updater
+            ' provided by libguinget.
+            ' It would be a really good idea to disable most of the buttons
+            ' (such as the Refresh and Apply changes buttons) while it's updating.
+            Await aaformMainWindow.UpdatePackageListBuiltinAsync
+        End If
+        'ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
     Friend Shared Sub RefreshCache()
