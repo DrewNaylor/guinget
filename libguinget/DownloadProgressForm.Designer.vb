@@ -81,6 +81,8 @@ Partial Class DownloadProgressForm
         '
         'buttonCancel
         '
+        Me.buttonCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.buttonCancel.Location = New System.Drawing.Point(339, 132)
         Me.buttonCancel.Name = "buttonCancel"
         Me.buttonCancel.Size = New System.Drawing.Size(95, 30)
@@ -93,7 +95,7 @@ Partial Class DownloadProgressForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.buttonCancel
-        Me.ClientSize = New System.Drawing.Size(447, 171)
+        Me.ClientSize = New System.Drawing.Size(447, 174)
         Me.Controls.Add(Me.buttonCancel)
         Me.Controls.Add(Me.panelSourceInfo)
         Me.Controls.Add(Me.labelDownloadingPackageList)
