@@ -100,11 +100,8 @@ Public Class PackageListTools
         ' but for now it's hardcoded until source configuration is supported.
         ' This will probably use a YAML file to store source names, locations, and types.
 
-        ' Check if the user clicked Cancel or not in the download part first.
-        If CancelUpdateFlag = False Then
-
-            ' Re-create the temp folder.
-            Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+        ' Re-create the temp folder.
+        Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
 
             If Not System.IO.Directory.Exists(tempDir) Then
@@ -126,11 +123,14 @@ Public Class PackageListTools
                                              "Microsoft/winget-pkgs")
             End If
 
-            ' Trying to use this code to display progress as
-            ' we update:
-            ' https://stackoverflow.com/a/19459595
+        ' Trying to use this code to display progress as
+        ' we update:
+        ' https://stackoverflow.com/a/19459595
 
-            'MessageBox.Show("Done downloading.")
+        'MessageBox.Show("Done downloading.")
+
+        ' Check if the user clicked Cancel or not in the download part first.
+        If CancelUpdateFlag = False Then
 
             ' Now we extract that file, but first we need to delete old manifests.
             Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
@@ -207,7 +207,7 @@ Public Class PackageListTools
 
             End Using
 
-            ' End of part where we check if the user clicked Cancel.
+            ' End checking if user clicked Cancel in the download phase.
         End If
 
     End Function
