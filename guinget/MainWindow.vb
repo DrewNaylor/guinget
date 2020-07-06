@@ -380,6 +380,8 @@ Public Class aaformMainWindow
 
     Private Async Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
         ' Refresh package list and package cache.
+        EnableOrDisableControlsDuringUpdate(False)
+
         If My.Settings.UseBuiltinCacheUpdater = False Then
             ' If the user doesn't want to use the new updater,
             ' then use update-manifests.bat.
@@ -392,11 +394,14 @@ Public Class aaformMainWindow
             ' (such as the Refresh and Apply changes buttons) while it's updating.
             Await aaformMainWindow.UpdatePackageListBuiltinAsync
         End If
+        EnableOrDisableControlsDuringUpdate(True)
+
         'ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
     Private Async Sub RefreshCacheMenuButton_Click(sender As Object, e As EventArgs) Handles RefreshCacheMenuButton.Click
         ' Refresh package list and package cache.
+        EnableOrDisableControlsDuringUpdate(False)
         If My.Settings.UseBuiltinCacheUpdater = False Then
             ' If the user doesn't want to use the new updater,
             ' then use update-manifests.bat.
@@ -409,10 +414,20 @@ Public Class aaformMainWindow
             ' (such as the Refresh and Apply changes buttons) while it's updating.
             Await aaformMainWindow.UpdatePackageListBuiltinAsync
         End If
+        EnableOrDisableControlsDuringUpdate(True)
+
         'ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
-    Private Sub BlockControlsFromBeingClickedDuringUpdate(Block As Boolean)
+    Private Sub EnableOrDisableControlsDuringUpdate(ControlsEnabled As Boolean)
+
+        ' Don't let the user click things like Refresh cache if we're updating.
+        ' We need ControlsEnabled to see if they should be enabled or not.
+
+        toolstripbuttonRefreshCache.Enabled = ControlsEnabled
+        RefreshCacheMenuButton.Enabled = ControlsEnabled
+
+        Me.Update()
 
     End Sub
 
