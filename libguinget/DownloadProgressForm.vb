@@ -41,6 +41,12 @@ Public Class DownloadProgressForm
 
     End Sub
 
+    Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
+        ' Set the cancel flag if the user clicks Cancel.
+        ' This can't be done if we're copying the package list files.
+        PackageListTools.CancelUpdateFlag = True
+    End Sub
+
 #Region "Package list properties"
     ' Package list URL.
     Public Property PackageListUrl As String = String.Empty
