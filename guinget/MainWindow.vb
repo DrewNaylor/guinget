@@ -378,8 +378,10 @@ Public Class aaformMainWindow
         Return
     End Function
 
-    Private Async Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
-        ' Refresh package list and package cache.
+    Private Async Function BeginRefreshCacheAsync() As Task
+
+        ' Disable some controls so nothing bad happens
+        ' by accident while we're updating.
         EnableOrDisableControlsDuringUpdate(False)
 
         If My.Settings.UseBuiltinCacheUpdater = False Then
@@ -394,25 +396,25 @@ Public Class aaformMainWindow
             ' (such as the Refresh and Apply changes buttons) while it's updating.
             Await aaformMainWindow.UpdatePackageListBuiltinAsync
         End If
+
+        ' Re-enable those controls now that we're done updating.
         EnableOrDisableControlsDuringUpdate(True)
+
+        Return
+    End Function
+
+    Private Async Sub toolstripbuttonRefreshCache_Click(sender As Object, e As EventArgs) Handles toolstripbuttonRefreshCache.Click
+        ' Refresh package list and package cache.
+
+        ' Moved to its own function so it's easier to update.
+        Await BeginRefreshCacheAsync()
     End Sub
 
     Private Async Sub RefreshCacheMenuButton_Click(sender As Object, e As EventArgs) Handles RefreshCacheMenuButton.Click
         ' Refresh package list and package cache.
-        EnableOrDisableControlsDuringUpdate(False)
-        If My.Settings.UseBuiltinCacheUpdater = False Then
-            ' If the user doesn't want to use the new updater,
-            ' then use update-manifests.bat.
-            ' Be sure to tell the user it's deprecated.
-            RefreshCache()
-        Else
-            ' Otherwise, we default to using the new, built-in updater
-            ' provided by libguinget.
-            ' It would be a really good idea to disable most of the buttons
-            ' (such as the Refresh and Apply changes buttons) while it's updating.
-            Await aaformMainWindow.UpdatePackageListBuiltinAsync
-        End If
-        EnableOrDisableControlsDuringUpdate(True)
+
+        ' Moved to its own function so it's easier to update.
+        Await BeginRefreshCacheAsync()
     End Sub
 
     Private Sub EnableOrDisableControlsDuringUpdate(ControlsEnabled As Boolean)
