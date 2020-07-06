@@ -136,15 +136,9 @@ Public Class PackageListTools
         If CancelUpdateFlag = False Then
 
             ' Now we extract that file, but first we need to delete old manifests.
+            ' We'll wait to delete the old ones until the copying phase.
             Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                        "\winget-frontends\source\winget-pkgs\pkglist\manifests"
-            ' Make sure the package list zip file exists first.
-            ' It might not exist if the user is running guinget offline,
-            ' in which case the package list cache will just be loaded from
-            ' disk and won't be updated.
-            If System.IO.Directory.Exists(ManifestDir) AndAlso IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
-                System.IO.Directory.Delete(ManifestDir, True)
-            End If
 
             ' We can now extract the manifests.
 
@@ -203,6 +197,14 @@ Public Class PackageListTools
 
                     ' Update the progress form.
                     progressform.Update()
+
+                    ' Make sure the package list zip file exists first.
+                    ' It might not exist if the user is running guinget offline,
+                    ' in which case the package list cache will just be loaded from
+                    ' disk and won't be updated.
+                    If System.IO.Directory.Exists(ManifestDir) AndAlso IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+                        System.IO.Directory.Delete(ManifestDir, True)
+                    End If
 
                     ' Copy manifests.
                     Await Task.Run(Sub()
