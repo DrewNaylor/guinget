@@ -465,6 +465,9 @@ Public Class aaformMainWindow
         ' Why not just disable the entire menu while updating.
         PackageToolStripMenuItem.Enabled = ControlsEnabled
 
+        ' Sidebar.
+        tabcontrolSidebar.Enabled = ControlsEnabled
+
         Me.Update()
 
     End Sub
