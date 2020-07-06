@@ -51,7 +51,9 @@ Public Class AboutWindow
                         "https://github.com/aaubry/YamlDotNet" & vbCrLf &
                         "YamlDotNet falls under the MIT license, which you can read a copy of below the Apache License summary." & vbCrLf &
                         vbCrLf &
-                        "Apache License 2.0 summary as it applies to guinget:" & vbCrLf &
+                        My.Resources.AboutSeparator & vbCrLf &
+                        vbCrLf &
+                        "Apache License 2.0 summary as it applies to guinget and libguinget:" & vbCrLf &
                         "Licensed under the Apache License, Version 2.0 (the ""License"");" & vbCrLf &
 "you may not use this file except in compliance with the License." & vbCrLf &
 "You may obtain a copy of the License at" & vbCrLf &
@@ -64,6 +66,7 @@ vbCrLf &
 "See the License for the specific language governing permissions and" & vbCrLf &
 "limitations under the License." & vbCrLf &
 vbCrLf &
+My.Resources.AboutSeparator & vbCrLf &
 vbCrLf &
 "MIT license as it applies to YamlDotNet:" & vbCrLf &
 "Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry and contributors" & vbCrLf &
