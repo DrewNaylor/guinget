@@ -198,20 +198,21 @@ Public Class PackageListTools
                     ' Update the progress form.
                     progressform.Update()
 
-                    ' Make sure the package list zip file exists first.
-                    ' It might not exist if the user is running guinget offline,
-                    ' in which case the package list cache will just be loaded from
-                    ' disk and won't be updated.
-                    If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
-                        System.IO.Directory.Delete(ManifestDir, True)
-                    End If
-
                     ' Copy manifests.
                     Await Task.Run(Sub()
 
                                        ' Temporary, basic error handler in case
                                        ' we can't find the manifests folder.
                                        Try
+
+                                           ' Make sure the package list zip file exists first.
+                                           ' It might not exist if the user is running guinget offline,
+                                           ' in which case the package list cache will just be loaded from
+                                           ' disk and won't be updated.
+                                           If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
+                                               System.IO.Directory.Delete(ManifestDir, True)
+                                           End If
+
                                            My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
                                        Catch ex As System.IO.DirectoryNotFoundException
                                            MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
