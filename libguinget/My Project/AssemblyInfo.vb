@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("libguinget")>
-<Assembly: AssemblyDescription("Package tools for guinget and other programs that want to use them.")>
+<Assembly: AssemblyDescription("Package and package list tools for guinget and other programs that want to use them.")>
 <Assembly: AssemblyCompany("")> 
 <Assembly: AssemblyProduct("libguinget")>
 <Assembly: AssemblyCopyright("Copyright (C) 2020 Drew Naylor. Licensed under Apache License 2.0.")>
