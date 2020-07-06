@@ -31,6 +31,10 @@ Public Class PackageListTools
     ' Define an http client we'll use.
     Shared ReadOnly PkgClient As Net.Http.HttpClient = New Net.Http.HttpClient()
 
+    ' Define a flag we'll use to see if updating should be canceled.
+    ' Updating can't be stopped once the package list is extracted.
+    Public Shared CancelUpdateFlag As Boolean = False
+
     Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task
 
         ' Download a file with HttpClient:
