@@ -38,8 +38,8 @@ Partial Class ApplyChangesWindow
         '
         Me.tablelayoutpanelApplyChanges.ColumnCount = 3
         Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105.0!))
-        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90.0!))
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131.0!))
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112.0!))
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.datagridviewAppsBeingInstalled, 0, 0)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonCancel, 2, 1)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonConfirmChanges, 1, 1)
@@ -49,8 +49,8 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.Name = "tablelayoutpanelApplyChanges"
         Me.tablelayoutpanelApplyChanges.RowCount = 2
         Me.tablelayoutpanelApplyChanges.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tablelayoutpanelApplyChanges.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
-        Me.tablelayoutpanelApplyChanges.Size = New System.Drawing.Size(518, 366)
+        Me.tablelayoutpanelApplyChanges.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
+        Me.tablelayoutpanelApplyChanges.Size = New System.Drawing.Size(648, 458)
         Me.tablelayoutpanelApplyChanges.TabIndex = 0
         '
         'datagridviewAppsBeingInstalled
@@ -74,7 +74,7 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.datagridviewAppsBeingInstalled.RowTemplate.Height = 24
         Me.datagridviewAppsBeingInstalled.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(514, 330)
+        Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(644, 414)
         Me.datagridviewAppsBeingInstalled.StandardTab = True
         Me.datagridviewAppsBeingInstalled.TabIndex = 0
         '
@@ -99,7 +99,7 @@ Partial Class ApplyChangesWindow
         Me.PackageAction.MinimumWidth = 6
         Me.PackageAction.Name = "PackageAction"
         Me.PackageAction.ReadOnly = True
-        Me.PackageAction.Width = 62
+        Me.PackageAction.Width = 76
         '
         'PackageCurrentStatus
         '
@@ -108,16 +108,16 @@ Partial Class ApplyChangesWindow
         Me.PackageCurrentStatus.MinimumWidth = 6
         Me.PackageCurrentStatus.Name = "PackageCurrentStatus"
         Me.PackageCurrentStatus.ReadOnly = True
-        Me.PackageCurrentStatus.Width = 97
+        Me.PackageCurrentStatus.Width = 126
         '
         'buttonCancel
         '
         Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonCancel.Location = New System.Drawing.Point(430, 336)
+        Me.buttonCancel.Location = New System.Drawing.Point(538, 420)
         Me.buttonCancel.Margin = New System.Windows.Forms.Padding(2)
         Me.buttonCancel.Name = "buttonCancel"
-        Me.buttonCancel.Size = New System.Drawing.Size(86, 28)
+        Me.buttonCancel.Size = New System.Drawing.Size(108, 36)
         Me.buttonCancel.TabIndex = 1
         Me.buttonCancel.Text = "Close"
         Me.buttonCancel.UseVisualStyleBackColor = True
@@ -125,23 +125,25 @@ Partial Class ApplyChangesWindow
         'buttonConfirmChanges
         '
         Me.buttonConfirmChanges.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonConfirmChanges.Location = New System.Drawing.Point(325, 336)
+        Me.buttonConfirmChanges.Location = New System.Drawing.Point(407, 420)
         Me.buttonConfirmChanges.Margin = New System.Windows.Forms.Padding(2)
         Me.buttonConfirmChanges.Name = "buttonConfirmChanges"
-        Me.buttonConfirmChanges.Size = New System.Drawing.Size(101, 28)
+        Me.buttonConfirmChanges.Size = New System.Drawing.Size(127, 36)
         Me.buttonConfirmChanges.TabIndex = 2
         Me.buttonConfirmChanges.Text = "Confirm changes"
         Me.buttonConfirmChanges.UseVisualStyleBackColor = True
         '
         'ApplyChangesWindow
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.buttonCancel
-        Me.ClientSize = New System.Drawing.Size(518, 366)
+        Me.ClientSize = New System.Drawing.Size(648, 458)
         Me.Controls.Add(Me.tablelayoutpanelApplyChanges)
         Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.MinimizeBox = False
         Me.Name = "ApplyChangesWindow"
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Apply changes"
         Me.tablelayoutpanelApplyChanges.ResumeLayout(False)
