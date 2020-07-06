@@ -435,6 +435,12 @@ Public Class aaformMainWindow
         ' updating, but some people might get bored while it
         ' updates and they might want to read something.
 
+        ' Package context menu.
+        ' Only affects the entry point in the Package list
+        ' menu under the Selected package submenu since the
+        ' package list is disabled.
+        contextmenustripPackageMenu.Enabled = ControlsEnabled
+
         ' Apply changes buttons.
         ApplyChangesMenuItem.Enabled = ControlsEnabled
         toolstripbuttonApplyChanges.Enabled = ControlsEnabled
