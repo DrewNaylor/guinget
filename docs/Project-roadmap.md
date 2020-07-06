@@ -29,13 +29,13 @@ https://github.com/DrewNaylor/guinget/milestone/1
 ## Version 0.1 Alpha
 
 - [ ] ~~Use 7z.exe (7-Zip CLI) for extracting the manifests instead of PowerShell Extract-Archive to speed things up~~ **Since this version will default to a built-in updater, it probably wouldn't be a good idea to work more on update-manifests.bat as this version will deprecate update-manifests.bat**
-- [ ] Default to using the built-in updater, which uses the .Net `ZipFile` class for extraction, so it's much faster
-- [ ] Deprecate `update-manifests.bat`
+- [X] Default to using the built-in updater, which uses the .Net `ZipFile` class for extraction, so it's much faster
+- [X] Deprecate `update-manifests.bat`
 - [ ] ~~Make marking everything in the list for installation (or for doing nothing) an async operation, so it doesn't lock up the UI~~ **While this is a good idea, it might not be a problem for now since this operation has already gotten way faster in version 0.1 pre-alpha 2.**
-- [ ] Keep search terms in a listbox for quick use until closing guinget
 
 ## Version 0.1.1 Alpha
 
+- [ ] Keep search terms in a listbox for quick use until closing guinget
 - [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
 - [ ] Show number of packages marked for changes, like Synaptic
 - [ ] Allow filtering by things like name, description, and tags
