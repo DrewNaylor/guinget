@@ -452,6 +452,10 @@ Public Class aaformMainWindow
         toolstripsplitbuttonSearch.Enabled = ControlsEnabled
         toolstriptextboxSearch.Enabled = ControlsEnabled
 
+        ' Properties buttons.
+        PackagePropertiesMenuItem.Enabled = ControlsEnabled
+        toolstripbuttonProperties.Enabled = ControlsEnabled
+
 
         Me.Update()
 
