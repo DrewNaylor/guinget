@@ -167,6 +167,8 @@ Public Class PackageListTools
                                        ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
                                    Catch ex As System.IO.FileNotFoundException
                                        MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip")
+                                   Catch ex As System.IO.DirectoryNotFoundException
+                                       MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master")
                                    End Try
                                End Sub)
 
