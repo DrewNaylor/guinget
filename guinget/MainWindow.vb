@@ -466,6 +466,11 @@ Public Class aaformMainWindow
         PackageToolStripMenuItem.Enabled = ControlsEnabled
 
         ' Sidebar.
+        ' Might change it to a dropdown that switches tabs to what's
+        ' in the dropdown so it's easier to see what tabs are available,
+        ' but this is all that's necessary for now.
+        ' If that dropdown idea is implemented, then the tabs need to be
+        ' hidden.
         tabcontrolSidebar.Enabled = ControlsEnabled
 
         Me.Update()
