@@ -205,7 +205,8 @@ Public Class PackageListTools
                                        ' we can't find the manifests folder.
                                        Try
 
-                                           ' Make sure the package list zip file exists first.
+                                           ' Make sure the manifest temp folder exists before deleting
+                                           ' the manifest dir.
                                            ' It might not exist if the user is running guinget offline,
                                            ' in which case the package list cache will just be loaded from
                                            ' disk and won't be updated.
