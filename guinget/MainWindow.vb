@@ -395,8 +395,6 @@ Public Class aaformMainWindow
             Await aaformMainWindow.UpdatePackageListBuiltinAsync
         End If
         EnableOrDisableControlsDuringUpdate(True)
-
-        'ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
     Private Async Sub RefreshCacheMenuButton_Click(sender As Object, e As EventArgs) Handles RefreshCacheMenuButton.Click
@@ -415,8 +413,6 @@ Public Class aaformMainWindow
             Await aaformMainWindow.UpdatePackageListBuiltinAsync
         End If
         EnableOrDisableControlsDuringUpdate(True)
-
-        'ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
     Private Sub EnableOrDisableControlsDuringUpdate(ControlsEnabled As Boolean)
