@@ -27,6 +27,7 @@ Partial Class DownloadProgressForm
         Me.labelSourceName = New System.Windows.Forms.Label()
         Me.labelSourceLocation = New System.Windows.Forms.Label()
         Me.panelSourceInfo = New System.Windows.Forms.Panel()
+        Me.buttonCancel = New System.Windows.Forms.Button()
         Me.panelSourceInfo.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -78,11 +79,22 @@ Partial Class DownloadProgressForm
         Me.panelSourceInfo.Size = New System.Drawing.Size(422, 68)
         Me.panelSourceInfo.TabIndex = 4
         '
+        'buttonCancel
+        '
+        Me.buttonCancel.Location = New System.Drawing.Point(339, 132)
+        Me.buttonCancel.Name = "buttonCancel"
+        Me.buttonCancel.Size = New System.Drawing.Size(95, 30)
+        Me.buttonCancel.TabIndex = 5
+        Me.buttonCancel.Text = "Cancel"
+        Me.buttonCancel.UseVisualStyleBackColor = True
+        '
         'DownloadProgressForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(447, 138)
+        Me.CancelButton = Me.buttonCancel
+        Me.ClientSize = New System.Drawing.Size(447, 171)
+        Me.Controls.Add(Me.buttonCancel)
         Me.Controls.Add(Me.panelSourceInfo)
         Me.Controls.Add(Me.labelDownloadingPackageList)
         Me.Controls.Add(Me.progressbarDownloadProgress)
@@ -105,4 +117,5 @@ Partial Class DownloadProgressForm
     Friend WithEvents labelSourceName As Windows.Forms.Label
     Friend WithEvents labelSourceLocation As Windows.Forms.Label
     Friend WithEvents panelSourceInfo As Windows.Forms.Panel
+    Friend WithEvents buttonCancel As Windows.Forms.Button
 End Class
