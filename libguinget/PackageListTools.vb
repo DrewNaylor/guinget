@@ -181,36 +181,41 @@ Public Class PackageListTools
 
             'MessageBox.Show("Done extracting.")
 
-            ' Now we just need to copy the right files over.
-            ' Probably should add a dialog to not make it
-            ' look like nothing is happening.
-            Using progressform As New DownloadProgressForm
-                progressform.labelSourceLocation.Hide()
-                progressform.labelSourceName.Hide()
-                progressform.CurrentAction = "Copying manifests"
+            ' Check if the user wants to cancel before the copying phase.
+            If CancelUpdateFlag = False Then
 
-                ' Show progress form.
-                progressform.Show()
+                ' Now we just need to copy the right files over.
+                ' Probably should add a dialog to not make it
+                ' look like nothing is happening.
+                Using progressform As New DownloadProgressForm
+                    progressform.labelSourceLocation.Hide()
+                    progressform.labelSourceName.Hide()
+                    progressform.CurrentAction = "Copying manifests"
 
-                ' Start the progress bar.
-                progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
-                progressform.Update()
+                    ' Show progress form.
+                    progressform.Show()
 
-                ' Copy manifests.
-                Await Task.Run(Sub()
+                    ' Start the progress bar.
+                    progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
+                    progressform.Update()
 
-                                   ' Temporary, basic error handler in case
-                                   ' we can't find the manifests folder.
-                                   Try
-                                       My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
-                                   Catch ex As System.IO.DirectoryNotFoundException
-                                       MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
-                                   End Try
-                               End Sub)
+                    ' Copy manifests.
+                    Await Task.Run(Sub()
 
-            End Using
+                                       ' Temporary, basic error handler in case
+                                       ' we can't find the manifests folder.
+                                       Try
+                                           My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                                       Catch ex As System.IO.DirectoryNotFoundException
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
+                                       End Try
+                                   End Sub)
 
-            ' End checking if user clicked Cancel in the download phase.
+                End Using
+                ' End checking if user clicked Cancel in the extracting phase.
+            End If
+
+            ' End checking if user clicked Cancel in the downloading phase.
         End If
 
     End Function
