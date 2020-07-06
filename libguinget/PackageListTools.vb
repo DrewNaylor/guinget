@@ -86,7 +86,7 @@ Public Class PackageListTools
         Return
     End Function
 
-    Public Shared Async Function UpdateManifests() As Task
+    Public Shared Async Function UpdateManifestsAsync() As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
