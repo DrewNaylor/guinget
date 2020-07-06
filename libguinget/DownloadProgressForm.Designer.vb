@@ -86,7 +86,10 @@ Partial Class DownloadProgressForm
         Me.Controls.Add(Me.panelSourceInfo)
         Me.Controls.Add(Me.labelDownloadingPackageList)
         Me.Controls.Add(Me.progressbarDownloadProgress)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.MaximizeBox = False
         Me.Name = "DownloadProgressForm"
+        Me.ShowIcon = False
         Me.Text = "DownloadProgressForm"
         Me.panelSourceInfo.ResumeLayout(False)
         Me.panelSourceInfo.PerformLayout()
