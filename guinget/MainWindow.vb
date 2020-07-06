@@ -412,6 +412,10 @@ Public Class aaformMainWindow
         'ChoosePkglistUpdater.ShowDialog(Me)
     End Sub
 
+    Private Sub BlockControlsFromBeingClickedDuringUpdate(Block As Boolean)
+
+    End Sub
+
     Friend Shared Sub RefreshCache()
         ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
         MessageBox.Show(aaformMainWindow, "We'll update the manifests with update-manifests.bat instead of the much faster built-in updater." &
