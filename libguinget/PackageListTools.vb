@@ -124,9 +124,10 @@ Public Class PackageListTools
         'MessageBox.Show("Done downloading.")
 
         ' Now we extract that file, but first we need to delete old manifests.
+        ' Make sure the package list zip file exists first.
         Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\pkglist\manifests"
-        If System.IO.Directory.Exists(ManifestDir) Then
+        If System.IO.Directory.Exists(ManifestDir) AndAlso IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
             System.IO.Directory.Delete(ManifestDir, True)
         End If
 
