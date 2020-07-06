@@ -197,6 +197,11 @@ Public Class PackageListTools
 
                     ' Start the progress bar.
                     progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
+
+                    ' At this point, the user can't cancel the update.
+                    progressform.buttonCancel.Enabled = False
+
+                    ' Update the progress form.
                     progressform.Update()
 
                     ' Copy manifests.
