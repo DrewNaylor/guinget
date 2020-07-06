@@ -100,6 +100,9 @@ Public Class PackageListTools
         ' but for now it's hardcoded until source configuration is supported.
         ' This will probably use a YAML file to store source names, locations, and types.
 
+        ' Reset the cancel update flag.
+        CancelUpdateFlag = False
+
         ' Re-create the temp folder.
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
