@@ -100,109 +100,115 @@ Public Class PackageListTools
         ' but for now it's hardcoded until source configuration is supported.
         ' This will probably use a YAML file to store source names, locations, and types.
 
-        ' Re-create the temp folder.
-        Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+        ' Check if the user clicked Cancel or not in the download part first.
+        If CancelUpdateFlag = False Then
+
+            ' Re-create the temp folder.
+            Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
 
-        If Not System.IO.Directory.Exists(tempDir) Then
-            ' If it doesn't exist, create it.
-            System.IO.Directory.CreateDirectory(tempDir)
-            ' Now we can download the package.
-            ' This is copied here so it doesn't crash
-            ' when it can't find the temp folder.
-            Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                         "Microsoft/winget-pkgs")
-        Else
-            ' Otherwise, re-create it.
-            System.IO.Directory.Delete(tempDir, True)
-            System.IO.Directory.CreateDirectory(tempDir)
-            ' Now we can download the package.
-            ' This is copied here so it doesn't crash
-            ' when it can't find the temp folder.
-            Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                         "Microsoft/winget-pkgs")
+            If Not System.IO.Directory.Exists(tempDir) Then
+                ' If it doesn't exist, create it.
+                System.IO.Directory.CreateDirectory(tempDir)
+                ' Now we can download the package.
+                ' This is copied here so it doesn't crash
+                ' when it can't find the temp folder.
+                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                             "Microsoft/winget-pkgs")
+            Else
+                ' Otherwise, re-create it.
+                System.IO.Directory.Delete(tempDir, True)
+                System.IO.Directory.CreateDirectory(tempDir)
+                ' Now we can download the package.
+                ' This is copied here so it doesn't crash
+                ' when it can't find the temp folder.
+                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                             "Microsoft/winget-pkgs")
+            End If
+
+            ' Trying to use this code to display progress as
+            ' we update:
+            ' https://stackoverflow.com/a/19459595
+
+            'MessageBox.Show("Done downloading.")
+
+            ' Now we extract that file, but first we need to delete old manifests.
+            Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                       "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+            ' Make sure the package list zip file exists first.
+            ' It might not exist if the user is running guinget offline,
+            ' in which case the package list cache will just be loaded from
+            ' disk and won't be updated.
+            If System.IO.Directory.Exists(ManifestDir) AndAlso IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+                System.IO.Directory.Delete(ManifestDir, True)
+            End If
+
+            ' We can now extract the manifests.
+
+            ' Display a window to show progress.
+            Using progressform As New DownloadProgressForm
+                progressform.labelSourceLocation.Hide()
+                progressform.labelSourceName.Hide()
+                progressform.CurrentAction = "Extracting manifests"
+
+                ' Show progress form.
+                progressform.Show()
+
+                ' Start the progress bar.
+                progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
+                progressform.Update()
+
+                ' Extract manifests.
+                ' To monitor progress, maybe something like the following
+                ' StackOverflow answer would work:
+                ' https://stackoverflow.com/a/39668142
+                Await Task.Run(Sub()
+
+                                   ' Temporary, basic error handler in case we can't find
+                                   ' the zip file we want to extract.
+                                   Try
+                                       ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+                                   Catch ex As System.IO.FileNotFoundException
+                                       MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip")
+                                   End Try
+                               End Sub)
+
+
+            End Using
+
+            'MessageBox.Show("Done extracting.")
+
+            ' Now we just need to copy the right files over.
+            ' Probably should add a dialog to not make it
+            ' look like nothing is happening.
+            Using progressform As New DownloadProgressForm
+                progressform.labelSourceLocation.Hide()
+                progressform.labelSourceName.Hide()
+                progressform.CurrentAction = "Copying manifests"
+
+                ' Show progress form.
+                progressform.Show()
+
+                ' Start the progress bar.
+                progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
+                progressform.Update()
+
+                ' Copy manifests.
+                Await Task.Run(Sub()
+
+                                   ' Temporary, basic error handler in case
+                                   ' we can't find the manifests folder.
+                                   Try
+                                       My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                                   Catch ex As System.IO.DirectoryNotFoundException
+                                       MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
+                                   End Try
+                               End Sub)
+
+            End Using
+
+            ' End of part where we check if the user clicked Cancel.
         End If
-
-        ' Trying to use this code to display progress as
-        ' we update:
-        ' https://stackoverflow.com/a/19459595
-
-        'MessageBox.Show("Done downloading.")
-
-        ' Now we extract that file, but first we need to delete old manifests.
-        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                   "\winget-frontends\source\winget-pkgs\pkglist\manifests"
-        ' Make sure the package list zip file exists first.
-        ' It might not exist if the user is running guinget offline,
-        ' in which case the package list cache will just be loaded from
-        ' disk and won't be updated.
-        If System.IO.Directory.Exists(ManifestDir) AndAlso IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
-            System.IO.Directory.Delete(ManifestDir, True)
-        End If
-
-        ' We can now extract the manifests.
-
-        ' Display a window to show progress.
-        Using progressform As New DownloadProgressForm
-            progressform.labelSourceLocation.Hide()
-            progressform.labelSourceName.Hide()
-            progressform.CurrentAction = "Extracting manifests"
-
-            ' Show progress form.
-            progressform.Show()
-
-            ' Start the progress bar.
-            progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
-            progressform.Update()
-
-            ' Extract manifests.
-            ' To monitor progress, maybe something like the following
-            ' StackOverflow answer would work:
-            ' https://stackoverflow.com/a/39668142
-            Await Task.Run(Sub()
-
-                               ' Temporary, basic error handler in case we can't find
-                               ' the zip file we want to extract.
-                               Try
-                                   ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
-                               Catch ex As System.IO.FileNotFoundException
-                                   MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip")
-                               End Try
-                           End Sub)
-
-
-        End Using
-
-        'MessageBox.Show("Done extracting.")
-
-        ' Now we just need to copy the right files over.
-        ' Probably should add a dialog to not make it
-        ' look like nothing is happening.
-        Using progressform As New DownloadProgressForm
-            progressform.labelSourceLocation.Hide()
-            progressform.labelSourceName.Hide()
-            progressform.CurrentAction = "Copying manifests"
-
-            ' Show progress form.
-            progressform.Show()
-
-            ' Start the progress bar.
-            progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
-            progressform.Update()
-
-            ' Copy manifests.
-            Await Task.Run(Sub()
-
-                               ' Temporary, basic error handler in case
-                               ' we can't find the manifests folder.
-                               Try
-                                   My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
-                               Catch ex As System.IO.DirectoryNotFoundException
-                                   MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
-                               End Try
-                           End Sub)
-
-        End Using
 
     End Function
 
