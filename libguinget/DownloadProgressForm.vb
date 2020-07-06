@@ -45,6 +45,13 @@ Public Class DownloadProgressForm
         ' Set the cancel flag if the user clicks Cancel.
         ' This can't be done if we're copying the package list files.
         PackageListTools.CancelUpdateFlag = True
+
+        ' Change text to let the user know we're canceling.
+        Me.Text = "Canceling Manifest Update"
+        labelDownloadingPackageList.Text = "Canceling manifest update, please wait for this phase to complete..."
+
+        ' Disable cancel button.
+        buttonCancel.Enabled = False
     End Sub
 
 #Region "Package list properties"
