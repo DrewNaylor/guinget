@@ -431,6 +431,10 @@ Public Class aaformMainWindow
         ' Package list.
         datagridviewPackageList.Enabled = ControlsEnabled
 
+        ' Was going to disable the package details textbox while
+        ' updating, but some people might get bored while it
+        ' updates and they might want to read something.
+
         ' Apply changes buttons.
         ApplyChangesMenuItem.Enabled = ControlsEnabled
         toolstripbuttonApplyChanges.Enabled = ControlsEnabled
