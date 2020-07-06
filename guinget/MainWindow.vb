@@ -432,6 +432,14 @@ Public Class aaformMainWindow
         ApplyChangesMenuItem.Enabled = ControlsEnabled
         toolstripbuttonApplyChanges.Enabled = ControlsEnabled
 
+        ' Search-related controls.
+        SearchMenuItem.Enabled = ControlsEnabled
+        SearchToolstripButton.Enabled = ControlsEnabled
+        AdvancedSearchMenuItem.Enabled = ControlsEnabled
+        toolstripsplitbuttonSearch.Enabled = ControlsEnabled
+        toolstriptextboxSearch.Enabled = ControlsEnabled
+
+
         Me.Update()
 
     End Sub
