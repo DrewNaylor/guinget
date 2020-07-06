@@ -424,8 +424,13 @@ Public Class aaformMainWindow
         ' Don't let the user click things like Refresh cache if we're updating.
         ' We need ControlsEnabled to see if they should be enabled or not.
 
+        ' Refresh buttons.
         toolstripbuttonRefreshCache.Enabled = ControlsEnabled
         RefreshCacheMenuButton.Enabled = ControlsEnabled
+
+        ' Apply changes buttons.
+        ApplyChangesMenuItem.Enabled = ControlsEnabled
+        toolstripbuttonApplyChanges.Enabled = ControlsEnabled
 
         Me.Update()
 
