@@ -33,6 +33,8 @@ Public Class PackageListTools
 
     ' Define a flag we'll use to see if updating should be canceled.
     ' Updating can't be stopped once the package list is extracted.
+    ' As of right now, the current task has to complete before it
+    ' updating is stopped.
     Public Shared CancelUpdateFlag As Boolean = False
 
     Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task
