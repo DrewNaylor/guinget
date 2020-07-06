@@ -461,6 +461,9 @@ Public Class aaformMainWindow
         PackagePropertiesMenuItem.Enabled = ControlsEnabled
         toolstripbuttonProperties.Enabled = ControlsEnabled
 
+        ' Package list menu.
+        ' Why not just disable the entire menu while updating.
+        PackageToolStripMenuItem.Enabled = ControlsEnabled
 
         Me.Update()
 
