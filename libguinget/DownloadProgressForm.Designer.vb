@@ -107,6 +107,7 @@ Partial Class DownloadProgressForm
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.Text = "DownloadProgressForm"
+        Me.TopMost = True
         Me.panelSourceInfo.ResumeLayout(False)
         Me.panelSourceInfo.PerformLayout()
         Me.ResumeLayout(False)
