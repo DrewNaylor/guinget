@@ -108,21 +108,26 @@ Public Class PackageListTools
                                    "\winget-frontends\source\winget-pkgs\temp"
 
             If Not System.IO.Directory.Exists(tempDir) Then
-                ' If it doesn't exist, create it.
-                System.IO.Directory.CreateDirectory(tempDir)
-                ' Now we can download the package.
-                ' This is copied here so it doesn't crash
-                ' when it can't find the temp folder.
-                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+            ' If it doesn't exist, create it.
+            Await Task.Run(Sub()
+                               System.IO.Directory.CreateDirectory(tempDir)
+                           End Sub)
+            ' Now we can download the package.
+            ' This is copied here so it doesn't crash
+            ' when it can't find the temp folder.
+            Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
             Else
-                ' Otherwise, re-create it.
-                System.IO.Directory.Delete(tempDir, True)
-                System.IO.Directory.CreateDirectory(tempDir)
-                ' Now we can download the package.
-                ' This is copied here so it doesn't crash
-                ' when it can't find the temp folder.
-                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+            ' Otherwise, re-create it.
+            Await Task.Run(Sub()
+                               System.IO.Directory.Delete(tempDir, True)
+                               System.IO.Directory.CreateDirectory(tempDir)
+                           End Sub)
+
+            ' Now we can download the package.
+            ' This is copied here so it doesn't crash
+            ' when it can't find the temp folder.
+            Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
             End If
 
