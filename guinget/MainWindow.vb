@@ -39,8 +39,6 @@ Public Class aaformMainWindow
         ' Update 5/27/2020: This sub is now async for getting
         ' package details, but not async for getting the package
         ' list yet.
-        ' One issue with this code is that if the manifests can't be found,
-        ' it'll just hang here.
 
         ' Change mouse cursor to the "working" one.
         ' For some reason this doesn't work if the mouse is outside
@@ -320,6 +318,7 @@ Public Class aaformMainWindow
             ' loading the package list, or just load the package list. This
             ' should be a setting to allow for people to choose whether it
             ' always updates the cache automatically, or have it ask to update every time.
+            ' This should be based on a time thing, so only update after 5 minutes for example.
             textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
                 "You can load the package list by using the Refresh cache toolbar button, by going to Package list" &
                 ">Refresh cache, or by pressing Ctrl+R."

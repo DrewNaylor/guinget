@@ -66,7 +66,6 @@ Public Class PackageListTools
             progressform.Update()
 
             ' Define HTTP response message.
-            ' TODO: Be sure to prevent URLs that we can't find from crashing.
             Try
                 Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
