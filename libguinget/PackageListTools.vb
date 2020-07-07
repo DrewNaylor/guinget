@@ -238,6 +238,7 @@ Public Class PackageListTools
                                    End Sub)
 
                 End Using
+
                 ' End checking if user clicked Cancel in the extracting phase.
             End If
 
