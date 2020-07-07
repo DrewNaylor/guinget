@@ -102,7 +102,7 @@ A more-detailed usage guide is available in "docs/How to use guinget.html".
 
 3. Refresh the package cache using the "Refresh cache" button on the toolbar, choosing "Refresh cache" from the "Package list" menu, or by pressing "Ctrl+R".
 
-4. Follow the prompts in update-manifests after reading and closing the messagebox. Be sure to wait to close the second messagebox until after update-manifests is finished running.
+4. Wait until the package list cache has been updated and the package details have been loaded. This may take a bit, though it's much faster than it used to be when using "update-manifests.bat".
 
 5. Mark the packages as you wish by right-clicking or double-clicking on them and selecting what you want them to be marked as from the "Action" submenu (either install or "do nothing"/ignore for now).
 
