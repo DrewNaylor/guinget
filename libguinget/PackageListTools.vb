@@ -90,6 +90,7 @@ Public Class PackageListTools
                 ' Catch directory not found exceptions if the user cancels the update early
                 ' after deleting the package list zip file downloaded during the previous update.
                 MessageBox.Show(ex.Message)
+                Exit Function
             End Try
 
         End Using
