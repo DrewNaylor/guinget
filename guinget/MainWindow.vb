@@ -628,8 +628,10 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub SearchMenuItem_Click(sender As Object, e As EventArgs) Handles SearchMenuItem.Click
-        ' Focus search textbox.
+        ' Focus search textbox and select its text
+        ' to make it easier to type something else.
         toolstriptextboxSearch.Focus()
+        toolstriptextboxSearch.SelectAll()
     End Sub
 
     Private Sub SearchToolstripButton_Click(sender As Object, e As EventArgs) Handles SearchToolstripButton.Click
