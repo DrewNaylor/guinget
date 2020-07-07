@@ -85,6 +85,11 @@ Public Class PackageListTools
                 ' no Internet connection.
                 MessageBox.Show("Couldn't find " & SourceUrl)
                 Exit Function
+
+            Catch ex As IO.DirectoryNotFoundException
+                ' Catch directory not found exceptions if the user cancels the update early
+                ' after deleting the package list zip file downloaded during the previous update.
+                MessageBox.Show(ex.Message)
             End Try
 
         End Using

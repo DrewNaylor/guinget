@@ -392,16 +392,7 @@ Public Class aaformMainWindow
         Else
             ' Otherwise, we default to using the new, built-in updater
             ' provided by libguinget.
-            ' It would be a really good idea to disable most of the buttons
-            ' (such as the Refresh and Apply changes buttons) while it's updating.
-
-            ' Catch directory not found exceptions if the user cancels the update early
-            ' after deleting the package list zip file downloaded during the previous update.
-            Try
-                Await aaformMainWindow.UpdatePackageListBuiltinAsync
-            Catch ex As IO.DirectoryNotFoundException
-                MessageBox.Show(ex.Message)
-            End Try
+            Await aaformMainWindow.UpdatePackageListBuiltinAsync
         End If
 
         ' Re-enable those controls now that we're done updating.
