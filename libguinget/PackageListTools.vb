@@ -164,7 +164,12 @@ Public Class PackageListTools
                                    ' Temporary, basic error handler in case we can't find
                                    ' the zip file we want to extract.
                                    Try
-                                       ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+
+                                       ' Check if the zip file exists before extracting it.
+
+                                       If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+                                           ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+                                       End If
                                    Catch ex As System.IO.FileNotFoundException
                                        MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip")
                                    Catch ex As System.IO.DirectoryNotFoundException
