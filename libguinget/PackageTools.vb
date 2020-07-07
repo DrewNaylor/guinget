@@ -110,84 +110,84 @@ Public Class PackageTools
 #End Region
 
 #Region "Get package details from winget."
-    ' Get package details from winget.
-    ' These functions are deprecated and are mainly
-    ' meant to be examples for a way to get info from
-    ' winget.
-    Public Shared Async Function GetPkgDetailsFromWingetAsync(PackageId As String) As Task(Of String)
+    '' Get package details from winget.
+    '' These functions are deprecated and are mainly
+    '' meant to be examples for a way to get info from
+    '' winget.
+    'Public Shared Async Function GetPkgDetailsFromWingetAsync(PackageId As String) As Task(Of String)
 
-        ' Async stuff based on this code:
-        ' https://docs.microsoft.com/en-us/archive/blogs/lucian/how-to-await-a-command-line-process-and-capture-its-output
+    '    ' Async stuff based on this code:
+    '    ' https://docs.microsoft.com/en-us/archive/blogs/lucian/how-to-await-a-command-line-process-and-capture-its-output
 
-        ' Stream reader output code based on this SO answer:
-        ' https://stackoverflow.com/a/8811377
-        Dim procOutput As String = Await GetPkgInfoFromWingetAsync(PackageId)
+    '    ' Stream reader output code based on this SO answer:
+    '    ' https://stackoverflow.com/a/8811377
+    '    Dim procOutput As String = Await GetPkgInfoFromWingetAsync(PackageId)
 
 
-        Return procOutput
-    End Function
+    '    Return procOutput
+    'End Function
 
-    Shared Async Function GetPkgInfoFromWingetAsync(PackageId As String, Optional RequestedInfo As String = "Everything", Optional cancel As CancellationToken = Nothing) As Task(Of String)
+    'Shared Async Function GetPkgInfoFromWingetAsync(PackageId As String, Optional RequestedInfo As String = "Everything", Optional cancel As CancellationToken = Nothing) As Task(Of String)
 
-        ' Based partially on the code in this video:
-        ' https://www.youtube.com/watch?v=APyteDZMpYw
-        Using proc As New Process
-            proc.StartInfo.FileName = "winget"
+    '    ' Based partially on the code in this video:
+    '    ' https://www.youtube.com/watch?v=APyteDZMpYw
+    '    Using proc As New Process
+    '        proc.StartInfo.FileName = "winget"
 
-            ' If we want to get everything, do so.
-            If RequestedInfo = "Everything" Then
-                proc.StartInfo.Arguments = "show -e " & """" & PackageId & """"
-            Else
-                ' Otherwise, just get the stuff if we want everything.
-                proc.StartInfo.Arguments = "show -e " & """" & PackageId & """"
-            End If
+    '        ' If we want to get everything, do so.
+    '        If RequestedInfo = "Everything" Then
+    '            proc.StartInfo.Arguments = "show -e " & """" & PackageId & """"
+    '        Else
+    '            ' Otherwise, just get the stuff if we want everything.
+    '            proc.StartInfo.Arguments = "show -e " & """" & PackageId & """"
+    '        End If
 
-            ' Setup procinfo properties.
-            proc.StartInfo.UseShellExecute = False
-            proc.StartInfo.RedirectStandardError = True
-            proc.StartInfo.RedirectStandardInput = True
-            proc.StartInfo.RedirectStandardOutput = True
-            proc.StartInfo.CreateNoWindow = True
+    '        ' Setup procinfo properties.
+    '        proc.StartInfo.UseShellExecute = False
+    '        proc.StartInfo.RedirectStandardError = True
+    '        proc.StartInfo.RedirectStandardInput = True
+    '        proc.StartInfo.RedirectStandardOutput = True
+    '        proc.StartInfo.CreateNoWindow = True
 
-            'If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
+    '        'If Not proc.Start Then Throw New InvalidOperationException("winget is not installed or could not be started.")
 
-            Using cancelRegister = cancel.Register(Sub() proc.Kill())
+    '        Using cancelRegister = cancel.Register(Sub() proc.Kill())
 
-                ' Start winget so we can get output from it.
-                proc.Start()
+    '            ' Start winget so we can get output from it.
+    '            proc.Start()
 
-                ' Assign and create variables to store its output.
-                Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
-                Dim wingetError = proc.StandardError.ReadToEndAsync
+    '            ' Assign and create variables to store its output.
+    '            Dim wingetOutput = proc.StandardOutput.ReadToEndAsync
+    '            Dim wingetError = proc.StandardError.ReadToEndAsync
 
-                ' Wait for the output and error tasks to complete.
-                Await Task.WhenAll(wingetOutput, wingetError)
+    '            ' Wait for the output and error tasks to complete.
+    '            Await Task.WhenAll(wingetOutput, wingetError)
 
-                ' Close winget's standard output and standard error.
-                proc.StandardOutput.Close()
-                proc.StandardError.Close()
+    '            ' Close winget's standard output and standard error.
+    '            proc.StandardOutput.Close()
+    '            proc.StandardError.Close()
 
-                ' Run the process and wait for exit (why didn't this work before? I have no idea.)
-                Await Task.Run(AddressOf proc.WaitForExit)
+    '            ' Run the process and wait for exit (why didn't this work before? I have no idea.)
+    '            Await Task.Run(AddressOf proc.WaitForExit)
 
-                ' Assign variables for standard output and error to winget's output stuff.
-                Dim standardOut = Await wingetOutput
-                Dim standardErr = Await wingetError
+    '            ' Assign variables for standard output and error to winget's output stuff.
+    '            Dim standardOut = Await wingetOutput
+    '            Dim standardErr = Await wingetError
 
-                ' If canceling is requested, then throw an operation canceled exception.
-                If cancel.IsCancellationRequested = True Then
-                    Throw New OperationCanceledException(standardErr)
-                ElseIf String.IsNullOrEmpty(standardOut) = True Then
-                    ' If the output is null or empty, throw an exception.
-                    Throw New Exception(standardErr)
-                Else
-                    ' Otherwise, if it's all good, return the output.
-                    Return standardOut
-                End If
+    '            ' If canceling is requested, then throw an operation canceled exception.
+    '            If cancel.IsCancellationRequested = True Then
+    '                Throw New OperationCanceledException(standardErr)
+    '            ElseIf String.IsNullOrEmpty(standardOut) = True Then
+    '                ' If the output is null or empty, throw an exception.
+    '                Throw New Exception(standardErr)
+    '            Else
+    '                ' Otherwise, if it's all good, return the output.
+    '                Return standardOut
+    '            End If
 
-            End Using
-        End Using
-    End Function
+    '        End Using
+    '    End Using
+    'End Function
 #End Region
 
 End Class
