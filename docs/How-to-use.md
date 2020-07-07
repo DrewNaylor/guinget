@@ -2,6 +2,14 @@
 
 ## Refreshing package cache
 
+### Updating with the built-in cache updater
+As of guinget version 0.1 alpha, refreshing the cache no longer relies on `update-manifests.bat`. Instead, it uses a much faster set of code provided by `libguinget`. All you have to do is click the `Refresh cache` button on the toolbar or use the `Package list>Refresh cache` menu item. You can also refresh the cache with `Ctrl+R`. Once you've started the update, just wait for it to complete, and try again if there are issues.
+
+Loading the package list and details will take a bit and may lock up slightly on slower systems, such as virtual machines. Additionally, please be aware that the main window cannot be moved while loading the package list and details, though this is something I want to allow.
+
+### Updating with update-manifests.bat
+`update-manifests.bat` is deprecated in version 0.1 alpha, but if you still wish to use it until support is removed, open the guinget config file and change `UseBuiltinCacheUpdater` from `True` to `False`. Please be aware that support for `update-manifests.bat` may be fully removed without notice at some point in the future. The following usage instructions are unchanged from when `update-manifests.bat` was the only way to update the package list.
+
 Refreshing the package cache is done either by using the `Refresh cache` button on the toolbar or by using the `Package list>Refresh cache` menu item. You can also refresh the cache with `Ctrl+R`. At the moment, refreshing the cache is partially done using a batch script named `update-manifests.bat`, and it doesn't support running automatically yet (which is something I want to allow but it was kinda difficult), so it has prompts that ask for input. Extracting the package cache may take a while as PowerShell's `Expand-Archive` command is kinda slow, so eventually I'll probably use a command-line 7-zip EXE file to do it instead. May be a good idea to allow the user to choose to use an already-installed copy of 7-zip if they want to slim down guinget's installation.
 
 After following the prompts in the script, you'll click `OK` in a message box to let it know that you're ready to load the package list. Loading the package list may take a bit, and you won't be able to interact with the window during that time. I want to allow the window to be moved and resized during this operation, but that's something I need to figure out how to do properly first.
