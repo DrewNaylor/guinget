@@ -36,9 +36,17 @@ https://github.com/DrewNaylor/guinget/milestone/1
 ## Version 0.1.1 Alpha
 
 - [ ] Keep search terms in a listbox for quick use until closing guinget
+- [ ] Hide sidebar tab control tabs and use a dropdown to switch between them ([issue #22](https://github.com/DrewNaylor/guinget/issues/22))
+- [ ] Add a button to the top-right of the sidebar to close it and a menu item to determine if the sidebar should be shown on application startup ([issue #21](https://github.com/DrewNaylor/guinget/issues/21)
+
+
+## Version 0.1.2 Alpha
+
+- [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
+- [ ] Allow packages to be re-installed (also issue #23)
+- [ ] Allow searching through things like friendly name, description, and tags
 - [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
 - [ ] Show number of packages marked for changes, like Synaptic
-- [ ] Allow filtering by things like name, description, and tags
 
 ## Version 0.2 Beta
 
