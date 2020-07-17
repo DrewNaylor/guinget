@@ -64,7 +64,7 @@ Source: "..\..\..\..\My Applications\guinget\v0.1-alpha\LICENSE-YamlDotNet.txt";
 Source: "..\..\..\..\My Applications\guinget\v0.1-alpha\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1-alpha\YamlDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1-alpha\libguinget.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1-alpha\docs\*"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs
+Source: "..\..\..\..\My Applications\guinget\v0.1-alpha\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -76,3 +76,5 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 [Messages]
 UninstalledAll=%1 was successfully removed from your computer. Configuration files may still be present in (username)\AppData\Roaming\guinget, where (username) is your user profile usually in C:\Users.
 
+[Dirs]
+Name: "{app}\docs"
