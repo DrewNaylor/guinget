@@ -32,17 +32,19 @@ SHA-256 sum for "YamlDotNet.dll" in the archive:
 GENERAL NOTES
 ~~~~~~~~~~~~~~~~
 
---> guinget uses YamlDotNet to read package manifests, and its license is available in "LICENSE-YamlDotNet.txt"
+--> Some packages like CrystalDiskMark and LibreOffice may require administrative permissions to install, so you'll have to run guinget as an administrator.
 
---> The source code should be included in this archive in a Zip file called "source-code.zip". Visual Studio 2019 is required to open this project as it uses a NuGet package (YamlDotNet), and there were changes in the past where older Visual Studio versions can't use newer NuGet packages or something.
+--> Before running guinget, please extract the entire archive to an easy-to-access location. It won't work correctly if it's temporarily extracted without its config file ("guinget.exe.config") and helper libraries/tools ("libguinget.dll" and "YamlDotNet.dll"). You don't have to do this if you used the installer.
 
 --> Some documentation is available in the "/docs" folder included in this archive, while all of it is available online as linked below. Please be aware that it's not comprehensive by any means.
 
---> Make sure to read the changelog included in this archive named "v0.1-alpha_changelog_from-v0.1-prealpha2.txt". There may be some documentation in this file that's not actually in the /docs (and online) documentation since I have a hard time making good documentation unless I know exactly what to talk about. The changelog does have markdown so that it looks nice on GitHub, but it shouldn't be too intrusive.
+--> Make sure to read the changelog included in this archive. There may be some documentation in this file that's not actually in the /docs (and online) documentation since I have a hard time making good documentation unless I know exactly what to talk about. The changelog does have markdown so that it looks nice on GitHub, but it shouldn't be too intrusive.
 
---> Before running guinget, please extract the entire archive to an easy-to-access location. It won't work correctly if it's temporarily extracted without its config file ("guinget.exe.config") and helper libraries/tools ("libguinget.dll" and "YamlDotNet.dll").
+--> "update-manifests.bat" was deprecated in version 0.1 alpha and may be removed in the future without notice. If you still wish to use it for now, you can find instructions in "/docs/How to use guinget.html".
 
---> "update-manifests.bat" is deprecated in version 0.1 alpha and may be removed in the future without notice. If you still wish to use it for now, you can find instructions in "/docs/How to use guinget.html".
+--> guinget uses YamlDotNet to read package manifests, and its license is available in "LICENSE-YamlDotNet.txt"
+
+--> The source code should be included in this archive in a Zip file called "source-code.zip". Visual Studio 2019 is required to open this project as it uses a NuGet package (YamlDotNet), and there were changes in the past where older Visual Studio versions can't use newer NuGet packages or something.
 
 --> If you find any bugs, please report them at the GitHub Issues page linked at the end of this document.
 
