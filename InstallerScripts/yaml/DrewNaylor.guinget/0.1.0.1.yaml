@@ -12,7 +12,7 @@ Description: Unofficial GUI for Microsoft's Windows Package Manager (winget). Ki
 Homepage: https://github.com/DrewNaylor/guinget/
 Installers:
   - Arch: x86
-    InstallerType: EXE
+    InstallerType: inno
     Url: https://github.com/DrewNaylor/guinget/releases/download/v0.1.0.1-alpha/guinget_v0.1.0.1-alpha.exe
     Sha256: BFEFEEC74F545AE7D81FA09D2F79CDEA8FCE26A583AFAC34E6A0DE39DE26D8BA
     Switches:
