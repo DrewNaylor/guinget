@@ -475,7 +475,7 @@ Public Class aaformMainWindow
     Friend Shared Sub RefreshCache()
         ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
         MessageBox.Show(aaformMainWindow, "We'll update the manifests with update-manifests.bat instead of the much faster built-in updater." &
-                        " Please be aware that update-manifests.bat is deprecated in guinget version 0.1 alpha and may be removed in a future version without prior notice." & vbCrLf &
+                        " Please be aware that update-manifests.bat was deprecated in guinget version 0.1 alpha and may be removed in a future version without prior notice." & vbCrLf &
                         vbCrLf & "When ready, please click OK and follow the prompts in update-manifests.bat.", "Refresh cache")
         Using updatemanifestsscript As New Process
             ' Run update-manifests.bat.
