@@ -1,0 +1,78 @@
+# guinget Version 0.1.0.1 Alpha Changelog
+Released on 7/22/2020 (MM/DD/YYYY).
+
+Didn't think the `-e` would be important when the package is passed to winget, but it [turns out that there's a bug](https://github.com/DrewNaylor/guinget/issues/24) where some packages can't be installed without specifying the exact package name. This issue didn't show up until I tried to install CrystalDiskMark and it wouldn't work since there were conflicting package names. Ended up that the `-e` (exact) is just as important here as it is in some other situations outside winget. Since this is a major bug, I'm doing a quick bugfix update.
+
+Please be sure to read the Readme included with this version of guinget or [online](https://github.com/DrewNaylor/guinget/blob/master/docs/readmes/readme-v0.1.0.1-alpha.txt) as it has important info. Also refer to the [System Requirements](https://github.com/DrewNaylor/guinget/blob/master/docs/system-requirements.md).
+
+If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word Wrap. Word Wrap is automatically done if viewing on GitHub or on the website.
+
+## Hashes
+
+MD5 checksums/hashes are not used for guinget as they are weaker than SHA-256. [More details](https://github.com/DrewNaylor/UXL-Launcher/issues/124), though they're not as relevant to guinget:
+
+
+You can use Windows PowerShell to confirm the hash of the main guinget EXE file by running
+`Get-FileHash .\guinget.exe -Algorithm SHA256` in the folder you extracted the archive to and comparing the output to my sums listed below. HowToGeek has a nice [article on this](https://www.howtogeek.com/67241/htg-explains-what-are-md5-sha-1-hashes-and-how-do-i-check-them/), but the Windows section is a bit further down on the page.
+
+The PowerShell method can be used for all files listed below, though you'll have to switch out the filenames.
+
+SHA-256 sum for "guinget_v0.1-alpha.exe", which is the installer attached to this release:
+AFB4E6D91DA3BAA92655F70052D1E91667234D5EC7252181ECF182F26A6D5BA7
+
+SHA-256 sum for "guinget.exe" in the archive:
+41013DC21A36FF348AD9B2727059D2AFA10F3D7098042A154DE4D3E90A35F3C4
+
+SHA-256 sum for "libguinget.dll" in the archive:
+826B675C6666489B0F3D53D05502E3CD79B7E78AE04852E9808D9E473EEBC936
+
+SHA-256 sum for "update-manifests.bat" in the archive:
+AFA421669D4856FB9136656B97CD2098478B1FE67AD5CB2326DA5A8BDA4BD36A
+
+SHA-256 sum for "YamlDotNet.dll" in the archive:
+632E1C37E67E5BE46766FFC9ED7790C22D1FE75A5B83AAB9EC4C0678414E5B82
+
+
+
+## Added
+
+- `libguinget` is now in charge of updating the package list instead of `update-manifests.bat`. Benefits and implications:
+  - Much faster package list zip file downloads and extractions (sadly the copying is a bit slower, but it doesn't matter much)
+  - A pretty GUI to look at while it does its thing (unfortunately, with indeterminate progress bars for now since I don't know how to actually get the progress numbers to increment the progress bar)
+  - Cancel buttons in the download and extract phases if you wish to stop the update and just load the package list from what's currently in the folder that's loaded into the package list data grid view
+    - You can press the `Esc` key instead of clicking `Cancel` if that's easier or faster.
+    - Please be aware that the cancel button is only available during the download and extract phases, and isn't available when copying. This is due to the package manifest folder being deleted before copying begins.
+    - Additionally, canceling currently requires the current phase to complete before fully stopping the update.
+    - Closing the progress windows doesn't cancel the task at the moment; clicking the cancel button is required.
+  - `update-manifests.bat` is still available for now if you wish to use it, but it's deprecated and may be removed without warning. See [here](https://github.com/DrewNaylor/guinget/blob/master/docs/How-to-use.md#updating-with-update-manifestsbat) for instructions on re-enabling `update-manifests.bat`. This manual change will not persist guinget updates.
+  
+## Fixed
+
+- Double-clicking on the column separators displays the package context menu. ([issue #16](https://github.com/DrewNaylor/guinget/issues/16))
+
+## Changed
+
+- When focusing the Search box with `Ctrl+F`, the text in it is now selected so it's easier to type something else.
+- The `Apply changes` window no longer displays in the taskbar, and it also no longer has a minimize button.
+- Controls that could interfere with the update process are blocked from being used, though some are still available such as `File>Exit`, `Help>About`, and the package details textbox (if people get bored and want to read something while it updates). This really only impacts the built-in update system provided by `libguinget`.
+- `update-manifests.bat`'s message box now talks about how it's deprecated and that it's being used instead of the built-in updater.
+- About window text updates:
+  - Separators to make it a bit easier to visualize where text starts and stops for the license parts
+  - `libguinget` is now mentioned here: "Apache License 2.0 summary as it applies to guinget **and libguinget**:" (new text in bold)
+- Code for getting package details from winget has been commented out to save space in `libguinget.dll`'s `PackageTools` class. This code is for example purposes and is deprecated.
+- `libguinget`'s assembly info now has "Package **and package list** tools for guinget and other programs that want to use them." (new text in bold)
+- Documentation updates:
+  - Project roadmap had some things moved around a bit.
+  - System requirements are now a bit more detailed, especially with regards to minimum and recommended hardware requirements based on my testing.
+  - Usage instructions now talk about how to use the new, built-in package list updater.
+  
+
+## Deprecated
+
+- `update-manifests.bat` is deprecated as mentioned above. Its removal will be done in stages to slowly transition to a world that no longer relies on `update-manifests.bat` for any scenario:
+  - For now it'll stay in the package, but be unused by default.  **<-- You Are Here**
+  - Eventually the version in the package will be changed to be a simple script that tells you where to download the main script.
+  - After a while it'll be fully removed from the package.
+  - A while after that support for it will be fully removed from guinget. It's expected that support will be fully removed by the time guinget (and winget, but it may take longer for guinget to gain that feature) supports multiple sources, if not in the same version.
+  - It may be possible that it'll go from being supported in a way that requires it to be enabled manually to being removed from the package, or having support be removed completely, all at once.
+- Since the code to get details from winget is deprecated, it's been commented out as mentioned above. This code may continue to exist in this state as an example for how to get info from winget.
