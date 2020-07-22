@@ -13,8 +13,8 @@ Homepage: https://github.com/DrewNaylor/guinget/
 Installers:
   - Arch: x86
     InstallerType: Inno
-    Url: https://github.com/DrewNaylor/guinget/releases/download/v0.1.0.1-alpha/guinget_v0.1.0.1-alpha.exe
-    Sha256: BFEFEEC74F545AE7D81FA09D2F79CDEA8FCE26A583AFAC34E6A0DE39DE26D8BA
+    Url: https://github.com/DrewNaylor/guinget/releases/download/v0.1.0.1-alpha/guinget_v0.1.0.1-alpha-quieter.exe
+    Sha256: 9063573663D99ADF58397B9D7E683F437BE362E850DCECF346CF62BCE5A292E5
     Switches:
       Silent: /VERYSILENT /ALLUSERS
       SilentWithProgress: /SILENT /ALLUSERS
