@@ -5,10 +5,10 @@ Version: 0.1.0.1
 License: Apache License 2.0
 InstallerType: EXE
 LicenseUrl: https://github.com/DrewNaylor/guinget/blob/master/LICENSE.txt
-AppMoniker: 
+AppMoniker: guinget
 Tags: winget, package, gui, frontend, utility, tool
 # Some tags are based on what HandyWinget-GUI used.
-Description: Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Synaptic, but for Windows. Not associated with either Microsoft or the Synaptic project, and Microsoft does not endorse this software. You may need to run winget as an administrator to install this package.
+Description: Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Synaptic, but for Windows. Not associated with either Microsoft or the Synaptic project, and Microsoft does not endorse this software. You may need to run winget as an administrator to install this package due to issues where Inno Setup doesn't properly ask for UAC when installing with winget. Not associated with Inno Setup.
 Homepage: https://github.com/DrewNaylor/guinget/
 Installers:
   - Arch: x86
