@@ -22,11 +22,17 @@ https://github.com/DrewNaylor/guinget/milestone/1
 
 ## Version 0.1 Pre-Alpha 2
 
+GitHub milestone:
+https://github.com/DrewNaylor/guinget/milestone/2
+
 - [ ] ~~Allow the user to hide the progress bar and status label for loading so loading the package list goes faster~~ **The problem was having a text label updating; a progress bar is fine.**
 - [X] Filtering/searching the package list (by id for now, but maybe name, description, and tags would be a good idea for a future version)
 - [X] Dramatically speed up marking lots of packages at once by turning off auto-size columns while marking packages if we're marking an excessive amount at once, like 25 packages for example
 
 ## Version 0.1 Alpha
+
+GitHub milestone:
+https://github.com/DrewNaylor/guinget/milestone/3
 
 - [ ] ~~Use 7z.exe (7-Zip CLI) for extracting the manifests instead of PowerShell Extract-Archive to speed things up~~ **Since this version will default to a built-in updater, it probably wouldn't be a good idea to work more on update-manifests.bat as this version will deprecate update-manifests.bat**
 - [X] Default to using the built-in updater, which uses the .Net `ZipFile` class for extraction, so it's much faster
