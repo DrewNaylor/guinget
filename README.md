@@ -4,6 +4,8 @@ Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Syna
 Not associated with Microsoft, and Microsoft does not endorse guinget.
 Not associated with the Synaptic project, either.
 
+You can install guinget by running `winget install guinget` in an Admin command prompt/PowerShell window, or by using an installer attached to the latest release.
+
 Master branch build status:<br>
 [![Master branch build status](https://ci.appveyor.com/api/projects/status/ec0r3vwr0wmvtc23/branch/master?svg=true)](https://ci.appveyor.com/project/DrewNaylor/guinget/branch/master)
 
