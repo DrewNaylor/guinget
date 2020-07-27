@@ -48,6 +48,10 @@ https://github.com/DrewNaylor/guinget/milestone/1
 - [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
 - [ ] Show number of packages marked for changes, like Synaptic
 
+## Version 0.1.3 Alpha
+
+- [ ] Allow choosing whether to install packages interactively or just to have installers run silently with progress, which is the default ([issue #25] https://github.com/DrewNaylor/guinget/issues/25))
+
 ## Version 0.2 Beta
 
 - [ ] Load the package list and package details async so that the UI doesn't lock up
