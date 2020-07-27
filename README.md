@@ -4,7 +4,7 @@ Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Syna
 Not associated with Microsoft, and Microsoft does not endorse guinget.
 Not associated with the Synaptic project, either.
 
-You can install guinget by running `winget install guinget` in an Admin command prompt/PowerShell window, or by using an installer attached to the latest release.
+You can install guinget by running `winget install guinget` in an Admin command prompt/PowerShell window, or by using an installer attached to the [latest release](https://github.com/DrewNaylor/guinget/releases/latest). Please note that it may take a few days for new versions to be published to winget, so the Releases page is the fastest way to get new versions.
 
 Master branch build status:<br>
 [![Master branch build status](https://ci.appveyor.com/api/projects/status/ec0r3vwr0wmvtc23/branch/master?svg=true)](https://ci.appveyor.com/project/DrewNaylor/guinget/branch/master)
@@ -12,6 +12,8 @@ Master branch build status:<br>
 Visual Studio 2019 Community is being used for this project's development, and .Net Framework 4.6.1 or greater is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
 
 Since it may be a bit complicated for new users, there's a guide on [how to use guinget](/docs/How-to-use.md). I tried to make it work as closely as I could to Synaptic, so if you have experience with Synaptic, guinget should work similarly (mainly with marking packages) with a few exceptions in places I'm less experienced and/or wouldn't work as well on Windows.
+
+The [system requirements](https://github.com/DrewNaylor/guinget/blob/master/docs/system-requirements.md) include .Net 4.6.1 as mentioned above and winget, but otherwise they don't require all that much power.
 
 There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
 
