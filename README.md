@@ -18,7 +18,7 @@ There's a [project roadmap](./docs/Project-roadmap.md) available, if you're inte
 Pre-alpha 1 screenshot:
 ![](/docs/images/screenshot-pre-alpha-1.png?raw=true)
 
-Packages displayed here are loaded from a package list cache stored in `%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests`, which is downloaded from `Microsoft\winget-pkgs` on GitHub. The `update-manifests.bat` script can be used to automate the downloading and updating of these manifests.
+Packages displayed here are loaded from a package list cache stored in `%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests`, which is downloaded from `Microsoft\winget-pkgs` on GitHub. The `Refresh cache` button on the toolbar is the primary way to update these manifests. `update-manifests.bat` was the old way to do it, but it's deprecated and may be removed at any time.
 
 Loading these YAML files takes a bit at the moment, as it's not async. I'd like to make it async, but for now this is good enough. Besides, there's a progress bar and progress label at the bottom and a label that says "please wait", so it's not like the window shows nothing while it loads. One issue is the window can't be moved around while it loads, which is something async loading would fix. Something that's ended up making it faster is just loading details directly from the YAML files, bypassing `winget show -e` entirely.
 
