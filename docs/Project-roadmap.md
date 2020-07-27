@@ -50,7 +50,7 @@ https://github.com/DrewNaylor/guinget/milestone/1
 
 ## Version 0.1.3 Alpha
 
-- [ ] Allow choosing whether to install packages interactively or just to have installers run silently with progress, which is the default ([issue #25] https://github.com/DrewNaylor/guinget/issues/25))
+- [ ] Allow choosing whether to install packages interactively or just to have installers run silently with progress, which is the default ([issue #26](https://github.com/DrewNaylor/guinget/issues/26))
 
 ## Version 0.2 Beta
 
