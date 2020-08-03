@@ -44,7 +44,7 @@ Public Class PackageTools
             ' Define interactive installation flag.
             Dim InteractiveFlag As String = ""
             If InstallInteractively = True Then
-                InteractiveFlag = " -i "
+                InteractiveFlag = " -i"
             End If
 
             ' Define CMD args.

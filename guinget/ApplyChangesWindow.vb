@@ -67,7 +67,8 @@ Public Class ApplyChangesWindow
                 ' for now until configuration is possible and until we display winget output
                 ' in a textbox below the datagridview.
                 PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
-                                                   datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString)
+                                        datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
+                                        My.Settings.InstallInteractively)
 
             End If
         End If
