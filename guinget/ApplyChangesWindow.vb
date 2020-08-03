@@ -67,7 +67,8 @@ Public Class ApplyChangesWindow
                 ' for now until configuration is possible and until we display winget output
                 ' in a textbox below the datagridview.
                 PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
-                                                   datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString)
+                                        datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
+                                        My.Settings.InstallInteractively)
 
             End If
         End If
@@ -81,5 +82,17 @@ Public Class ApplyChangesWindow
             InstallSinglePackage()
 
         End If
+    End Sub
+
+    Private Sub checkboxInstallInteractively_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxInstallInteractively.CheckedChanged
+        ' Update the setting for interactive installation so the value persists.
+        My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
+        My.Settings.Save()
+        My.Settings.Reload()
+    End Sub
+
+    Private Sub ApplyChangesWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Match the install interactively checkbox check state to the setting.
+        checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
     End Sub
 End Class

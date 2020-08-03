@@ -77,6 +77,18 @@ Namespace My
                 Me("UseBuiltinCacheUpdater") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property InstallInteractively() As Boolean
+            Get
+                Return CType(Me("InstallInteractively"),Boolean)
+            End Get
+            Set
+                Me("InstallInteractively") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

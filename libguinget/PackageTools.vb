@@ -31,8 +31,7 @@ Imports YamlDotNet.RepresentationModel
 Public Class PackageTools
 
 #Region "Install package with winget."
-
-    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String)
+    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, Optional InstallInteractively As Boolean = False)
 
         ' Define variables for storing the winget process. We'll run CMD
         ' so that we can keep it open with /k.
@@ -41,15 +40,20 @@ Public Class PackageTools
 
             proc.StartInfo.FileName = "cmd"
 
+            ' Define interactive installation flag.
+            Dim InteractiveFlag As String = ""
+            If InstallInteractively = True Then
+                InteractiveFlag = " -i"
+            End If
+
             ' Define CMD args.
-            proc.StartInfo.Arguments = "/k winget install --id " & PackageId & " -v " & PackageVersion & " -e"
+            proc.StartInfo.Arguments = "/k winget install --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e"
 
             proc.Start()
 
         End Using
 
     End Sub
-
 #End Region
 
 #Region "Get package details from YAML"

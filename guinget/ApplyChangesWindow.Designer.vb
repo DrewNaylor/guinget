@@ -22,6 +22,7 @@ Partial Class ApplyChangesWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
         Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
         Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -30,19 +31,23 @@ Partial Class ApplyChangesWindow
         Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
+        Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
+        Me.tooltipInstallInteractively = New System.Windows.Forms.ToolTip(Me.components)
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tablelayoutpanelApplyChanges
         '
-        Me.tablelayoutpanelApplyChanges.ColumnCount = 3
+        Me.tablelayoutpanelApplyChanges.ColumnCount = 4
+        Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179.0!))
         Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131.0!))
         Me.tablelayoutpanelApplyChanges.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112.0!))
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.datagridviewAppsBeingInstalled, 0, 0)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonCancel, 2, 1)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonConfirmChanges, 1, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonCancel, 3, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonConfirmChanges, 2, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxInstallInteractively, 0, 1)
         Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelApplyChanges.Margin = New System.Windows.Forms.Padding(2)
@@ -61,9 +66,10 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.AllowUserToResizeRows = False
         Me.datagridviewAppsBeingInstalled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewAppsBeingInstalled.BackgroundColor = System.Drawing.SystemColors.Window
-        Me.datagridviewAppsBeingInstalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.datagridviewAppsBeingInstalled.ColumnHeadersHeight = 29
+        Me.datagridviewAppsBeingInstalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.datagridviewAppsBeingInstalled.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PackageName, Me.PackageVersion, Me.PackageAction, Me.PackageCurrentStatus})
-        Me.tablelayoutpanelApplyChanges.SetColumnSpan(Me.datagridviewAppsBeingInstalled, 3)
+        Me.tablelayoutpanelApplyChanges.SetColumnSpan(Me.datagridviewAppsBeingInstalled, 4)
         Me.datagridviewAppsBeingInstalled.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewAppsBeingInstalled.Location = New System.Drawing.Point(2, 2)
         Me.datagridviewAppsBeingInstalled.Margin = New System.Windows.Forms.Padding(2)
@@ -133,6 +139,18 @@ Partial Class ApplyChangesWindow
         Me.buttonConfirmChanges.Text = "Confirm changes"
         Me.buttonConfirmChanges.UseVisualStyleBackColor = True
         '
+        'checkboxInstallInteractively
+        '
+        Me.checkboxInstallInteractively.AutoSize = True
+        Me.checkboxInstallInteractively.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.checkboxInstallInteractively.Location = New System.Drawing.Point(3, 421)
+        Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
+        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(173, 34)
+        Me.checkboxInstallInteractively.TabIndex = 3
+        Me.checkboxInstallInteractively.Text = "Install interactively (-i)"
+        Me.tooltipInstallInteractively.SetToolTip(Me.checkboxInstallInteractively, "Packages will be installed interactively when checked.")
+        Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
+        '
         'ApplyChangesWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -147,6 +165,7 @@ Partial Class ApplyChangesWindow
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Apply changes"
         Me.tablelayoutpanelApplyChanges.ResumeLayout(False)
+        Me.tablelayoutpanelApplyChanges.PerformLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -160,4 +179,6 @@ Partial Class ApplyChangesWindow
     Friend WithEvents PackageVersion As DataGridViewTextBoxColumn
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
+    Friend WithEvents checkboxInstallInteractively As CheckBox
+    Friend WithEvents tooltipInstallInteractively As ToolTip
 End Class
