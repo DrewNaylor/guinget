@@ -31,7 +31,6 @@ Imports YamlDotNet.RepresentationModel
 Public Class PackageTools
 
 #Region "Install package with winget."
-
     Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, Optional InstallInteractively As Boolean = False)
 
         ' Define variables for storing the winget process. We'll run CMD
@@ -55,7 +54,6 @@ Public Class PackageTools
         End Using
 
     End Sub
-
 #End Region
 
 #Region "Get package details from YAML"
