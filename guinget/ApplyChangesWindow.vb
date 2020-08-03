@@ -82,4 +82,11 @@ Public Class ApplyChangesWindow
 
         End If
     End Sub
+
+    Private Sub checkboxInstallInteractively_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxInstallInteractively.CheckedChanged
+        ' Update the setting for interactive installation so the value persists.
+        My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
+        My.Settings.Save()
+        My.Settings.Reload()
+    End Sub
 End Class
