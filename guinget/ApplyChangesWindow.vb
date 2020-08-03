@@ -89,4 +89,9 @@ Public Class ApplyChangesWindow
         My.Settings.Save()
         My.Settings.Reload()
     End Sub
+
+    Private Sub ApplyChangesWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Match the install interactively checkbox check state to the setting.
+        checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
+    End Sub
 End Class
