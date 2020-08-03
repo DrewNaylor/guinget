@@ -32,7 +32,7 @@ Public Class PackageTools
 
 #Region "Install package with winget."
 
-    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, InstallInteractively As Boolean)
+    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, Optional InstallInteractively As Boolean = False)
 
         ' Define variables for storing the winget process. We'll run CMD
         ' so that we can keep it open with /k.
