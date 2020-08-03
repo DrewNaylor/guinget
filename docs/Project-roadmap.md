@@ -41,22 +41,20 @@ https://github.com/DrewNaylor/guinget/milestone/3
 
 ## Version 0.1.1 Alpha
 
+- [ ] Allow choosing whether to install packages interactively or just to have installers run silently with progress, which is the default ([issue #26](https://github.com/DrewNaylor/guinget/issues/26))
+
+## Version 0.1.2 Alpha
+
 - [ ] Keep search terms in a listbox for quick use until closing guinget
 - [ ] Hide sidebar tab control tabs and use a dropdown to switch between them ([issue #22](https://github.com/DrewNaylor/guinget/issues/22))
 - [ ] Add a button to the top-right of the sidebar to close it and a menu item to determine if the sidebar should be shown on application startup ([issue #21](https://github.com/DrewNaylor/guinget/issues/21))
-
-
-## Version 0.1.2 Alpha
+## Version 0.1.3 Alpha
 
 - [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
 - [ ] Allow packages to be re-installed (also issue #23)
 - [ ] Allow searching through things like friendly name, description, and tags
 - [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
 - [ ] Show number of packages marked for changes, like Synaptic
-
-## Version 0.1.3 Alpha
-
-- [ ] Allow choosing whether to install packages interactively or just to have installers run silently with progress, which is the default ([issue #26](https://github.com/DrewNaylor/guinget/issues/26))
 
 ## Version 0.2 Beta
 
