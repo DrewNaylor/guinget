@@ -7,7 +7,7 @@ To run guinget, your computer requires the following:
 - [winget](https://github.com/microsoft/winget-cli/releases/latest)
   - I personally installed from there, but there are [other methods you could use instead](https://github.com/microsoft/winget-cli#installing-the-client)
 - Windows versions: Windows 10 version 1903 or higher recommended.
-  - guinget has only been tested on Windows 10 versions 1803, 1903, 1909 and 2004. Windows 7-8.1 and all other versions of Windows 10 are untested although they might work for everything that's not directly reliant on winget, such as installing packages.
+  - guinget has only been tested on Windows 10 versions 1803, 1903, 1909, and 2004. Windows 7-8.1 and all other versions of Windows 10 are untested although they might work for everything that's not directly reliant on winget, such as installing packages.
   - winget requires Windows 10 version 1709 or greater.
 - Architectures: x86 (32-bit) and x64 (64-bit). May also work on Windows 10 on ARM as a 32-bit application, though that's untested.
 - Hardware requirements: 
