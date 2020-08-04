@@ -45,6 +45,7 @@ https://github.com/DrewNaylor/guinget/milestone/3
 
 ## Version 0.1.2 Alpha
 
+- [ ] Re-do searches after updating manifests ([issue #27](https://github.com/DrewNaylor/guinget/issues/27))
 - [ ] Keep search terms in a listbox for quick use until closing guinget
 - [ ] Hide sidebar tab control tabs and use a dropdown to switch between them ([issue #22](https://github.com/DrewNaylor/guinget/issues/22))
 - [ ] Add a button to the top-right of the sidebar to close it and a menu item to determine if the sidebar should be shown on application startup ([issue #21](https://github.com/DrewNaylor/guinget/issues/21))
