@@ -36,8 +36,11 @@ Public Class ApplyChangesWindow
         ' installing or uninstalling the package.
         ' Necessary for now as we don't support batch installs yet.
 
-        ' Now we install the selected package.
-        InstallSinglePackage()
+        ' Now we install the selected package after making sure we didn't
+        ' double-click on the header.
+        If e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
+            InstallSinglePackage()
+        End If
 
     End Sub
 

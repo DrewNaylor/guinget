@@ -73,6 +73,7 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewAppsBeingInstalled.Location = New System.Drawing.Point(2, 2)
         Me.datagridviewAppsBeingInstalled.Margin = New System.Windows.Forms.Padding(2)
+        Me.datagridviewAppsBeingInstalled.MultiSelect = False
         Me.datagridviewAppsBeingInstalled.Name = "datagridviewAppsBeingInstalled"
         Me.datagridviewAppsBeingInstalled.ReadOnly = True
         Me.datagridviewAppsBeingInstalled.RowHeadersVisible = False
