@@ -48,7 +48,12 @@ https://github.com/DrewNaylor/guinget/milestone/3
 - [ ] Keep search terms in a listbox for quick use until closing guinget
 - [ ] Hide sidebar tab control tabs and use a dropdown to switch between them ([issue #22](https://github.com/DrewNaylor/guinget/issues/22))
 - [ ] Add a button to the top-right of the sidebar to close it and a menu item to determine if the sidebar should be shown on application startup ([issue #21](https://github.com/DrewNaylor/guinget/issues/21))
+
 ## Version 0.1.3 Alpha
+
+- [ ] Allow batch installing of packages ([issue #30](https://github.com/DrewNaylor/guinget/issues/30))
+
+## Version 0.1.4 Alpha
 
 - [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
 - [ ] Allow packages to be re-installed (also issue #23)
@@ -59,4 +64,7 @@ https://github.com/DrewNaylor/guinget/milestone/3
 ## Version 0.2 Beta
 
 - [ ] Load the package list and package details async so that the UI doesn't lock up
-- [ ] Allow batch installing of packages
+
+## Some later version
+
+- [ ] If the user wants to, allow batch package installs to go through the package list in the Apply changes window individually rather than passing them all to winget at once
