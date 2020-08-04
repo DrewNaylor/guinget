@@ -73,7 +73,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 [Messages]
-UninstalledAll=%1 was successfully removed from your computer. Configuration files may still be present in (username)\AppData\Roaming\guinget, where (username) is your user profile usually in C:\Users.
+UninstalledAll=%1 was successfully removed from your computer. Configuration files may still be present in (username)\AppData\Roaming\winget-frontends and (username)\AppData\Local\guinget, where (username) is your user profile usually in C:\Users.
 
 [Dirs]
 Name: "{app}\docs"
