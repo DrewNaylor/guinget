@@ -18,6 +18,8 @@ After following the prompts in the script, you'll click `OK` in a message box to
 
 To mark a package, you can double-click or right-click on it and select `Action>Install`, open the `Package list` menu and select `Selected package>Action>Install`, open the combobox dropdown menu for the package in the `Action` column (may take a few clicks to open the dropdown), or move the cell selection over to the `Action` column and press `spacebar` then use the arrow keys to select `Install`. This also applies to marking a package for uninstallation, or for marking a package as one you want to ignore (ignoring is `Do nothing`).
 
+Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
+
 Please be aware that [the package context menu may appear in the wrong area](https://github.com/DrewNaylor/guinget/issues/14).
 
 ## Marking multiple packages
@@ -34,7 +36,7 @@ Starting in version 0.1.1, you can have packages install interactively with the 
 
 You can search for packages using the search bar in the toolbar at the top of the window. As of version 0.1 pre-alpha 2, this only filters the `Package` column, but other columns are planned to be supported. To search, either click in the textbox, press `Ctrl+F` to automatically set focus to it, or use `Package list>Search`. After typing in what you want to search for, either press `Enter` or click the `Search` toolbar button. Please be aware that [using `Ctrl+A` to select all packages in the search results currently selects even non-filtered packages](https://github.com/DrewNaylor/guinget/issues/13).
 
-At the moment, you'll have to manually clear the search box and search again to get back to the non-filtered package list.
+At the moment, you'll have to manually clear the search box and search again to get back to the non-filtered package list. Once you've finished searching, you can press the `Tab` key to focus the package list again.
 
 ## Showing unfinished controls
 
