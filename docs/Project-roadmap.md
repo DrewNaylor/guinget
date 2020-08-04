@@ -45,6 +45,8 @@ https://github.com/DrewNaylor/guinget/milestone/3
 
 ## Version 0.1.2 Alpha
 
+GitHub milestone: [Version 0.1.2](https://github.com/DrewNaylor/guinget/milestone/4)
+
 - [ ] Re-do searches after updating manifests ([issue #27](https://github.com/DrewNaylor/guinget/issues/27))
 - [ ] Keep search terms in a listbox for quick use until closing guinget
 - [ ] Hide sidebar tab control tabs and use a dropdown to switch between them ([issue #22](https://github.com/DrewNaylor/guinget/issues/22))
