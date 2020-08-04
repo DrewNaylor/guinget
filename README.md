@@ -6,6 +6,8 @@ Not associated with the Synaptic project, either.
 
 You can install guinget by running `winget install guinget` in an Admin command prompt/PowerShell window, or by using an installer attached to the [latest release](https://github.com/DrewNaylor/guinget/releases/latest). Please note that it may take a few days for new versions to be published to winget, so the Releases page is the fastest way to get new versions.
 
+There's [a video showing how to install and use guinget](https://youtu.be/t2OhzNE4yj0), if you wish to watch it.
+
 **NB:**
 If you installed winget in a regular user account, you may need to re-install it in an account with Admin permissions before installing guinget or any other packages that use Inno Setup installers. Be sure to update winget's sources before logging off the Admin account and back into your regular account, or winget's sources cache may claim it's corrupted when trying to use it in an Admin command prompt in your regular account.
 
