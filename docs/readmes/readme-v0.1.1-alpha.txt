@@ -1,7 +1,7 @@
 If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word wrap.
 
 
-guinget -- Version 0.1.0.1 Alpha -- 7/21/2020 (MM/DD/YYYY).
+guinget -- Version 0.1.1 Alpha -- 8/4/2020 (MM/DD/YYYY).
 
 If you have any trouble, you might be able to find an answer in the documentation. It's linked at the end of this readme file. If not, you can submit a bug report at the "Report a problem" link at the end of this readme file. Your report will be labeled by the developers accordingly in a reasonable amount of time.
 
@@ -16,10 +16,10 @@ https://www.howtogeek.com/67241/htg-explains-what-are-md5-sha-1-hashes-and-how-d
 The PowerShell method can be used for all files listed below, though you'll have to switch out the filenames.
 
 SHA-256 sum for "guinget.exe" in the archive:
-6A6954811AB858A8F078B67D74579AA2716894EDF14C18697CC775CF10C3CA8C
+77BE11957E22E4A3341F0D671E510981E7E7D45794FA89B861133EA71241A170
 
 SHA-256 sum for "libguinget.dll" in the archive:
-2FE467A29806D3B7901A39B3B2A0D54A46BBB7E586FCE59AE777D81DD3028BF0
+BE071A6B17AE209E0242777A7385250BD549E697B69F5B73425FDF597C6D971D
 
 SHA-256 sum for "update-manifests.bat" in the archive:
 AFA421669D4856FB9136656B97CD2098478B1FE67AD5CB2326DA5A8BDA4BD36A
@@ -39,8 +39,6 @@ GENERAL NOTES
 --> Some documentation is available in the "/docs" folder included in this archive, while all of it is available online as linked below. Please be aware that it's not comprehensive by any means.
 
 --> Make sure to read the changelog included in this archive. There may be some documentation in this file that's not actually in the /docs (and online) documentation since I have a hard time making good documentation unless I know exactly what to talk about. The changelog does have markdown so that it looks nice on GitHub, but it shouldn't be too intrusive.
-
---> "update-manifests.bat" was deprecated in version 0.1 alpha and may be removed in the future without notice. If you still wish to use it for now, you can find instructions in "/docs/How to use guinget.html".
 
 --> guinget uses YamlDotNet to read package manifests, and its license is available in "LICENSE-YamlDotNet.txt"
 
@@ -74,7 +72,7 @@ To run guinget, your computer requires the following:
     https://github.com/microsoft/winget-cli#installing-the-client
 
 - Windows versions: Windows 10 version 1903 or higher recommended.
-  - guinget has only been tested on Windows 10 versions 1803, 1903, and 1909. Windows 7-8.1 and all other versions of Windows 10 are untested although they might work for everything that's not directly reliant on winget, such as installing packages.
+  - guinget has only been tested on Windows 10 versions 1803, 1903, 1909, and 2004. Windows 7-8.1 and all other versions of Windows 10 are untested although they might work for everything that's not directly reliant on winget, such as installing packages.
   - winget requires Windows 10 version 1709 or greater.
 
 - Architectures: x86 (32-bit) and x64 (64-bit). May also work on Windows 10 on ARM as a 32-bit application, though that's untested.
@@ -98,21 +96,21 @@ HOW TO USE
 
 A more-detailed usage guide is available in "docs/How to use guinget.html".
 
-1. Extract this archive to a folder. I don't really want to mess around with making an installer.
+1. Extract this archive to a folder. There's an installer available if you want to use one, though it may be easier to run "winget install guinget", with the caveat that the version in winget may be outdated: https://github.com/DrewNaylor/guinget/releases/latest
 
 2. Open the file titled "guinget.exe". I recommend making a shortcut to the app on your desktop or taskbar for easy access.
 
 3. Refresh the package cache using the "Refresh cache" button on the toolbar, choosing "Refresh cache" from the "Package list" menu, or by pressing "Ctrl+R".
 
-4. Wait until the package list cache has been updated and the package details have been loaded. This may take a bit, though it's much faster than it used to be when using "update-manifests.bat".
+4. Wait until the package list cache has been updated and the package details have been loaded. This may take a bit.
 
 5. Mark the packages as you wish by right-clicking or double-clicking on them and selecting what you want them to be marked as from the "Action" submenu (either install or "do nothing"/ignore for now).
 
-You can also mark packages from the "Package list>Selected package>Action" menu, or by opening the package's combobox/dropdown in the "Action" column (may require several clicks). This combobox/dropdown can also be activated by moving over to it with the arrow keys and pressing "space".
+You can also mark packages from the "Package list>Selected package>Action" menu, or by opening the package's combobox/dropdown in the "Action" column (may require a few clicks). This combobox/dropdown can also be activated by moving over to it with the arrow keys and pressing "space", though sometimes I have a bit of issue with this.
 
 Each version of a package is listed as a separate package for now. I want to have it be like Synaptic where you open a different window to choose a different version of a package.
 
-Searching is available as of version 0.1 pre-alpha 2, so you can use the search box to make finding packages faster. At the moment, you'll have to manually clear the search box and search again to get back to the non-filtered package list.
+Searching is available, so you can use the search box to make finding packages faster. At the moment, you'll have to manually clear the search box and search again to get back to the non-filtered package list. After searching, you can use the `Tab` key to focus the package list again.
 
 6. Once you've marked your packages, you can apply them by opening the "Apply changes" dialog, either from the toolbar or from the "Package list" menu.
 
@@ -137,7 +135,7 @@ Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 guinget
-Version 0.1.0.1 Alpha
+Version 0.1.1 Alpha
 Copyright (C) 2020 Drew Naylor. Licensed under Apache License 2.0.
 
 Unofficial GUI for Microsoft's Windows Package Manager (winget).
