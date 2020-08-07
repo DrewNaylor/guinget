@@ -4,23 +4,33 @@ Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Syna
 Not associated with Microsoft, and Microsoft does not endorse guinget.
 Not associated with the Synaptic project, either.
 
-You can install guinget by running `winget install guinget` in an Admin command prompt/PowerShell window, or by using an installer attached to the [latest release](https://github.com/DrewNaylor/guinget/releases/latest). Please note that it may take a few days for new versions to be published to winget, so the Releases page is the fastest way to get new versions.
-
-There's [a video showing how to install and use guinget](https://youtu.be/t2OhzNE4yj0), if you wish to watch it.
-
 **NB:**
 If you installed winget in a regular user account, you may need to re-install it in an account with Admin permissions before installing guinget or any other packages that use Inno Setup installers. Be sure to update winget's sources before logging off the Admin account and back into your regular account, or winget's sources cache may claim it's corrupted when trying to use it in an Admin command prompt in your regular account.
+
+## Project Info
 
 Master branch build status:<br>
 [![Master branch build status](https://ci.appveyor.com/api/projects/status/ec0r3vwr0wmvtc23/branch/master?svg=true)](https://ci.appveyor.com/project/DrewNaylor/guinget/branch/master)
 
 Visual Studio 2019 Community is being used for this project's development, and .Net Framework 4.6.1 or greater is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
 
+There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
+
+## Installation and Usage
+
+You can install guinget by running `winget install guinget` in an Admin command prompt/PowerShell window, or by using an installer attached to the [latest release](https://github.com/DrewNaylor/guinget/releases/latest). Please note that it may take a few days for new versions to be published to winget, so the Releases page is the fastest way to get new versions.
+
+There's [a video showing how to install and use guinget](https://youtu.be/t2OhzNE4yj0), if you wish to watch it.
+
 Since it may be a bit complicated for new users, there's a guide on [how to use guinget](/docs/How-to-use.md). I tried to make it work as closely as I could to Synaptic, so if you have experience with Synaptic, guinget should work similarly (mainly with marking packages) with a few exceptions in places I'm less experienced and/or wouldn't work as well on Windows.
+
+## Requirements
 
 The [system requirements](https://github.com/DrewNaylor/guinget/blob/master/docs/system-requirements.md) include .Net 4.6.1 as mentioned above and winget, but otherwise they don't require all that much power.
 
-There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
+## Screenshots
+
+The ones below are currently rather outdated, so new ones of version 0.1.1 will need to be taken.
 
 Pre-alpha 1 screenshot:
 ![](/docs/images/screenshot-pre-alpha-1.png?raw=true)
@@ -41,7 +51,7 @@ By default, controls that don't have features implemented yet are hidden, but yo
 
 More screenshots available in the [devlog archive](./docs/devlog.md). This document has a few things similar to the readme, but organized more by date and what I tried to do/did do around each time.
 
-TODO:
+## TODO
 - [ ] Create graphical sources manager app, one that's kinda like Mintsources. May need a drop-down to select the primary source, since winget only uses one right now, but a list of sources would be a good idea to have at the same time.
 - [X] Create library that can be used by guinget (as well as other winget front-ends that want to use it) that makes it easier to get package info from winget.
 - [ ] Everything that would make guinget a functional front-end.
