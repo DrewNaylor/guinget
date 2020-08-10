@@ -67,6 +67,8 @@ GitHub milestone: [Version 0.1.2](https://github.com/DrewNaylor/guinget/mileston
 ## Version 0.2 Beta
 
 - [ ] Load the package list and package details async so that the UI doesn't lock up
+<br>Seems like this page has some good ideas on how to do this:
+https://stackoverflow.com/questions/570537/update-label-while-processing-in-windows-forms
 
 ## Some later version
 
