@@ -579,6 +579,9 @@ Public Class aaformMainWindow
         If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
 
             ' Change progress label text.
+            ' If it's empty, say that we're emptying the search.
+            ' TODO: change it to something reasonable if the search
+            ' box were empty.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Searching for " & aaformMainWindow.toolstriptextboxSearch.Text & "..."
 
             ' Show progress bar; this'll take a while.
