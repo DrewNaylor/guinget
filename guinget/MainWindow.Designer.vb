@@ -788,7 +788,7 @@ Partial Class aaformMainWindow
         Me.MainMenuStrip = Me.menustripMainWindow
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "aaformMainWindow"
-        Me.Text = "guinget version 0.1.1 alpha"
+        Me.Text = "guinget"
         Me.menustripMainWindow.ResumeLayout(False)
         Me.menustripMainWindow.PerformLayout()
         Me.contextmenustripPackageMenu.ResumeLayout(False)
