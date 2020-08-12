@@ -14,5 +14,14 @@
     <Setting Name="RerunSearchAfterCacheUpdate" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="Use7zipForExtraction" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PathTo7zip" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"C:\Program Files\7-Zip\7z.exe"</Value>
+    </Setting>
+    <Setting Name="UseRobocopyForCopying" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

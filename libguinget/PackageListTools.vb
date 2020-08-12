@@ -97,7 +97,9 @@ Public Class PackageListTools
         Return
     End Function
 
-    Public Shared Async Function UpdateManifestsAsync() As Task
+    Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
+                                                      Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
+                                                      Optional UseRobocopy As Boolean = False) As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
@@ -112,7 +114,7 @@ Public Class PackageListTools
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
 
-            If Not System.IO.Directory.Exists(tempDir) Then
+        If Not System.IO.Directory.Exists(tempDir) Then
             ' If it doesn't exist, create it.
             Await Task.Run(Sub()
                                System.IO.Directory.CreateDirectory(tempDir)
@@ -122,7 +124,7 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
-            Else
+        Else
             ' Otherwise, re-create it.
             Await Task.Run(Sub()
                                System.IO.Directory.Delete(tempDir, True)
@@ -134,7 +136,7 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
-            End If
+        End If
 
         ' Trying to use this code to display progress as
         ' we update:
@@ -169,23 +171,39 @@ Public Class PackageListTools
                 ' To monitor progress, maybe something like the following
                 ' StackOverflow answer would work:
                 ' https://stackoverflow.com/a/39668142
-                Await Task.Run(Sub()
 
-                                   ' Temporary, basic error handler in case we can't find
-                                   ' the zip file we want to extract.
-                                   Try
+                ' Temporary, basic error handler in case we can't find
+                ' the zip file we want to extract.
+                Await Task.Run(Sub()
+                                   If Use7zip = False Then
+                                       ' If the calling app doesn't want to use 7zip, use the built-in .Net extraction.
+
 
                                        ' Check if the zip file exists before extracting it.
 
-                                       If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
-                                           ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
-                                       End If
-                                   Catch ex As System.IO.FileNotFoundException
-                                       MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip")
-                                   Catch ex As System.IO.DirectoryNotFoundException
-                                       MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master")
-                                   End Try
+                                       Try
+                                           If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+                                               ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+                                           End If
+                                       Catch ex As System.IO.FileNotFoundException
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip")
+                                       Catch ex As System.IO.DirectoryNotFoundException
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master")
+                                       End Try
+
+                                   Else
+                                       ' The calling app wants to use 7zip, so use it.
+                                       Dim extraction7z As New Process
+                                       extraction7z.StartInfo.FileName = PathTo7zip
+                                       extraction7z.StartInfo.Arguments = "x " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master"
+                                       extraction7z.Start()
+                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                       extraction7z.WaitForExit()
+                                   End If
                                End Sub)
+
+                'MessageBox.Show("7zip finished")
+
 
 
             End Using

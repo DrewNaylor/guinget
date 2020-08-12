@@ -101,6 +101,42 @@ Namespace My
                 Me("RerunSearchAfterCacheUpdate") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Use7zipForExtraction() As Boolean
+            Get
+                Return CType(Me("Use7zipForExtraction"),Boolean)
+            End Get
+            Set
+                Me("Use7zipForExtraction") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("""C:\Program Files\7-Zip\7z.exe""")>  _
+        Public Property PathTo7zip() As String
+            Get
+                Return CType(Me("PathTo7zip"),String)
+            End Get
+            Set
+                Me("PathTo7zip") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property UseRobocopyForCopying() As Boolean
+            Get
+                Return CType(Me("UseRobocopyForCopying"),Boolean)
+            End Get
+            Set
+                Me("UseRobocopyForCopying") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
