@@ -578,6 +578,9 @@ Public Class aaformMainWindow
         ' Make sure there are packages to begin with.
         If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
 
+            ' Change progress label text.
+            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Searching for " & aaformMainWindow.toolstriptextboxSearch.Text & "..."
+
             ' Show progress bar; this'll take a while.
             ProgressInfoVisibility(True)
 
