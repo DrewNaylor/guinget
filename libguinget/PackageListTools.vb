@@ -236,23 +236,38 @@ Public Class PackageListTools
                     ' Copy manifests.
                     Await Task.Run(Sub()
 
-                                       ' Temporary, basic error handler in case
-                                       ' we can't find the manifests folder.
-                                       Try
+                                       If UseRobocopy = False Then
 
-                                           ' Make sure the manifest temp folder exists before deleting
-                                           ' the manifest dir.
-                                           ' It might not exist if the user is running guinget offline,
-                                           ' in which case the package list cache will just be loaded from
-                                           ' disk and won't be updated.
-                                           If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
-                                               System.IO.Directory.Delete(ManifestDir, True)
-                                           End If
+                                           ' The calling app doesn't want to use Robocopy.
 
-                                           My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
-                                       Catch ex As System.IO.DirectoryNotFoundException
-                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
-                                       End Try
+                                           ' Temporary, basic error handler in case
+                                           ' we can't find the manifests folder.
+                                           Try
+
+                                               ' Make sure the manifest temp folder exists before deleting
+                                               ' the manifest dir.
+                                               ' It might not exist if the user is running guinget offline,
+                                               ' in which case the package list cache will just be loaded from
+                                               ' disk and won't be updated.
+                                               If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
+                                                   System.IO.Directory.Delete(ManifestDir, True)
+                                               End If
+
+                                               My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                                           Catch ex As System.IO.DirectoryNotFoundException
+                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
+                                           End Try
+
+                                       Else
+
+                                           ' The calling app wants to use Robocopy.
+                                           ' Partially copying code from update-manifests.bat.
+                                           Dim RobocopyFileCopying As New Process
+                                           RobocopyFileCopying.StartInfo.FileName = "robocopy"
+                                           RobocopyFileCopying.StartInfo.Arguments = "/NFL /NDL /S " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests " & ManifestDir
+                                           RobocopyFileCopying.Start()
+                                           RobocopyFileCopying.WaitForExit()
+                                       End If
                                    End Sub)
 
                 End Using
