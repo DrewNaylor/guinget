@@ -21,7 +21,7 @@
       <Value Profile="(Default)">"C:\Program Files\7-Zip\7z.exe"</Value>
     </Setting>
     <Setting Name="UseRobocopyForCopying" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>
