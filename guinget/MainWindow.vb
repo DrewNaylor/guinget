@@ -398,7 +398,7 @@ Public Class aaformMainWindow
         EnableOrDisableControlsDuringUpdate(True)
 
         ' Re-run search if the user wants to.
-        If My.Settings.RerunSearchAfterCacheUpdate = True Then
+        If My.Settings.RerunSearchAfterCacheUpdate = True AndAlso toolstriptextboxSearch.Text IsNot String.Empty Then
             BeginPackageIdSearch()
         End If
 

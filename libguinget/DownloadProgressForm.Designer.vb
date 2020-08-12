@@ -36,6 +36,7 @@ Partial Class DownloadProgressForm
         Me.progressbarDownloadProgress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.progressbarDownloadProgress.Location = New System.Drawing.Point(12, 29)
+        Me.progressbarDownloadProgress.MarqueeAnimationSpeed = 63
         Me.progressbarDownloadProgress.Name = "progressbarDownloadProgress"
         Me.progressbarDownloadProgress.Size = New System.Drawing.Size(422, 23)
         Me.progressbarDownloadProgress.TabIndex = 0
