@@ -63,6 +63,9 @@ Public Class aaformMainWindow
         ' Clear the rows.
         aaformMainWindow.datagridviewPackageList.Rows.Clear()
 
+        ' Reset progress bar to 0.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+
         ' Display loading progress bar and stuff.
         ProgressInfoVisibility()
 
