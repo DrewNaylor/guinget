@@ -618,6 +618,9 @@ Public Class aaformMainWindow
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
 
+            ' Reset progress label text.
+            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
+
             ' Turn autosize back on for certain columns.
             aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
