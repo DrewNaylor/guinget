@@ -397,6 +397,11 @@ Public Class aaformMainWindow
         ' Re-enable those controls now that we're done updating.
         EnableOrDisableControlsDuringUpdate(True)
 
+        ' Re-run search if the user wants to.
+        If My.Settings.RerunSearchAfterCacheUpdate = True Then
+            BeginPackageIdSearch()
+        End If
+
         Return
     End Function
 
@@ -565,34 +570,34 @@ Public Class aaformMainWindow
         BeginPackageIdSearch()
     End Sub
 
-    Private Sub BeginPackageIdSearch()
+    Friend Shared Sub BeginPackageIdSearch()
 
         ' Make sure there are packages to begin with.
-        If datagridviewPackageList.Rows.Count >= 1 Then
+        If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
 
             ' Show progress bar; this'll take a while.
             ProgressInfoVisibility(True)
 
             ' Hide the package list.
-            datagridviewPackageList.Visible = False
+            aaformMainWindow.datagridviewPackageList.Visible = False
 
             ' Turn off autosize to make it go way faster.
             ' Credits to this SO answer:
             ' https://stackoverflow.com/a/19518340
-            For Each column As DataGridViewColumn In datagridviewPackageList.Columns
+            For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
             Next
 
             ' Set progress bar maximum to number of rows.
-            toolstripprogressbarLoadingPackages.Maximum = datagridviewPackageList.Rows.Count - 1
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = aaformMainWindow.datagridviewPackageList.Rows.Count - 1
             ' Set progress bar value to 0.
-            toolstripprogressbarLoadingPackages.Value = 0
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
             ' Update main window.
-            Me.Update()
+            aaformMainWindow.Update()
 
-            For Each searchRow As DataGridViewRow In datagridviewPackageList.Rows
+            For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Look in each row in the datagridview, and see what text it has.
-                If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(toolstriptextboxSearch.Text.ToLowerInvariant) Then
+                If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(aaformMainWindow.toolstriptextboxSearch.Text.ToLowerInvariant) Then
                     ' If the Package ID cell contains what's in the search box, show it.
                     searchRow.Visible = True
                 Else
@@ -600,22 +605,22 @@ Public Class aaformMainWindow
                     searchRow.Visible = False
                 End If
                 ' Make the progress bar progress.
-                toolstripprogressbarLoadingPackages.PerformStep()
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
                 ' Update the status bar.
-                statusbarMainWindow.Update()
+                aaformMainWindow.statusbarMainWindow.Update()
             Next
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
 
             ' Turn autosize back on for certain columns.
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
             ' Show the package list again.
-            datagridviewPackageList.Visible = True
+            aaformMainWindow.datagridviewPackageList.Visible = True
 
             ' Update the main window.
-            Me.Update()
+            aaformMainWindow.Update()
 
         End If
     End Sub
