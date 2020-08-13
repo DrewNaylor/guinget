@@ -23,9 +23,9 @@ Partial Class aaformMainWindow
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aaformMainWindow))
         Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -303,37 +303,37 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewPackageList.BackgroundColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.FriendlyName, Me.AvailableVersion, Me.PkgDescription, Me.Manifest})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle2
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Margin = New System.Windows.Forms.Padding(2)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewPackageList.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewPackageList.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.datagridviewPackageList.RowHeadersVisible = False
         Me.datagridviewPackageList.RowHeadersWidth = 51
         Me.datagridviewPackageList.RowTemplate.Height = 24
@@ -555,26 +555,29 @@ Partial Class aaformMainWindow
         Me.tabcontrolSidebar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabcontrolSidebar.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSearchTerms)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageStatus)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageCustomFilters)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSections)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSource)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageArchitecture)
+        Me.tabcontrolSidebar.ItemSize = New System.Drawing.Size(0, 1)
         Me.tabcontrolSidebar.Location = New System.Drawing.Point(4, 26)
         Me.tabcontrolSidebar.Margin = New System.Windows.Forms.Padding(2)
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
         Me.tabcontrolSidebar.SelectedIndex = 0
         Me.tabcontrolSidebar.Size = New System.Drawing.Size(229, 400)
+        Me.tabcontrolSidebar.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabcontrolSidebar.TabIndex = 2
         '
         'tabpageSearchTerms
         '
         Me.tabpageSearchTerms.Controls.Add(Me.listboxSearchTerms)
-        Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
-        Me.tabpageSearchTerms.Size = New System.Drawing.Size(221, 374)
+        Me.tabpageSearchTerms.Size = New System.Drawing.Size(221, 391)
         Me.tabpageSearchTerms.TabIndex = 4
         Me.tabpageSearchTerms.Text = "Search terms"
         Me.tabpageSearchTerms.UseVisualStyleBackColor = True
@@ -589,7 +592,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.Location = New System.Drawing.Point(0, 0)
         Me.listboxSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
-        Me.listboxSearchTerms.Size = New System.Drawing.Size(221, 374)
+        Me.listboxSearchTerms.Size = New System.Drawing.Size(221, 391)
         Me.listboxSearchTerms.TabIndex = 2
         '
         'contextmenuSearchTerm
@@ -619,11 +622,11 @@ Partial Class aaformMainWindow
         'tabpageStatus
         '
         Me.tabpageStatus.Controls.Add(Me.listboxStatusTab)
-        Me.tabpageStatus.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageStatus.Location = New System.Drawing.Point(4, 5)
         Me.tabpageStatus.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageStatus.Name = "tabpageStatus"
         Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageStatus.Size = New System.Drawing.Size(229, 408)
+        Me.tabpageStatus.Size = New System.Drawing.Size(221, 391)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -637,16 +640,16 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.Location = New System.Drawing.Point(2, 2)
         Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(225, 404)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(217, 387)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
         '
         Me.tabpageCustomFilters.Controls.Add(Me.listboxCustomFilters)
-        Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 5)
         Me.tabpageCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(228, 402)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(221, 391)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -660,17 +663,17 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(228, 402)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(221, 391)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'tabpageSections
         '
         Me.tabpageSections.Controls.Add(Me.listboxSections)
-        Me.tabpageSections.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageSections.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSections.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSections.Name = "tabpageSections"
         Me.tabpageSections.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSections.Size = New System.Drawing.Size(229, 408)
+        Me.tabpageSections.Size = New System.Drawing.Size(221, 391)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
@@ -684,16 +687,16 @@ Partial Class aaformMainWindow
         Me.listboxSections.Location = New System.Drawing.Point(2, 2)
         Me.listboxSections.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(225, 404)
+        Me.listboxSections.Size = New System.Drawing.Size(217, 387)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
         '
         Me.tabpageSource.Controls.Add(Me.listboxSourceTab)
-        Me.tabpageSource.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageSource.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSource.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(229, 408)
+        Me.tabpageSource.Size = New System.Drawing.Size(221, 391)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -707,16 +710,16 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(229, 408)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(221, 391)
         Me.listboxSourceTab.TabIndex = 1
         '
         'tabpageArchitecture
         '
         Me.tabpageArchitecture.Controls.Add(Me.listboxArchitecture)
-        Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 5)
         Me.tabpageArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(229, 408)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(221, 391)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -730,7 +733,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(229, 408)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(221, 391)
         Me.listboxArchitecture.TabIndex = 1
         '
         'panelMainForm

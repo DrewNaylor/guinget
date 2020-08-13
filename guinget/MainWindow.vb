@@ -540,6 +540,11 @@ Public Class aaformMainWindow
         ' Saying "Not" here makes it the inverse of Visible.
         aaformMainWindow.splitcontainerSidebarAndPkgList.Panel1Collapsed = Not Visible
 
+        ' Sidebar tab control.
+        ' We need to use properties based on this answer:
+        ' https://stackoverflow.com/a/30231315
+        ' Properties set in the designer.
+
         ' Tools menu.
         aaformMainWindow.ToolsToolStripMenuItem.Visible = Visible
 
