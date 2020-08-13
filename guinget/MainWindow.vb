@@ -668,7 +668,7 @@ Public Class aaformMainWindow
     End Sub
 
     Private Async Sub listboxSearchTerms_DoubleClick(sender As Object, e As EventArgs) Handles listboxSearchTerms.DoubleClick
-        Await BeginSearchFromSidebar()
+        BeginSearchFromSidebar()
     End Sub
 
     Private Shared Async Function BeginSearchFromSidebar() As Task
@@ -676,7 +676,7 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstriptextboxSearch.Text = aaformMainWindow.listboxSearchTerms.SelectedItem.ToString
 
         ' Begin search.
-        Await BeginPackageIdSearch()
+        BeginPackageIdSearch()
     End Function
 
 
