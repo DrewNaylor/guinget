@@ -707,6 +707,12 @@ Public Class aaformMainWindow
         End If
     End Sub
 
+    Private Sub ClearAllSearchTermsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearAllSearchTermsToolStripMenuItem.Click
+        ' Clear all search terms, and put "All" back in there.
+        listboxSearchTerms.Items.Clear()
+        listboxSearchTerms.Items.Add("All")
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
