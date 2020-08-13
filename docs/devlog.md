@@ -51,3 +51,10 @@ select distinct ids.id, manifest.id from ids, manifest where manifest.id = ids._
 ```
 
 This one seems to work better than the earlier one in that it gets the id spelled out and puts them next to the line in the manifest table. Will need to do testing to ensure this is correct.
+
+Now I'm trying to get the versions at the same time, and this is what may work better:
+```sqlite
+select distinct ids.id, manifest.id, versions.version, manifest.version from ids, manifest, versions where manifest.id = ids._rowid_ and manifest.version = versions._rowid_ order by ids.id;
+```
+
+That one brings in the `version` column from the `manifest` and `versions` tables, and compares the value in the `manifest.version` column to the line number in `versions.version`. Not sure if that's what Microsoft intended, but it's the only thing that makes sense as to why there are only numbers in the `manifest` table. It could be like this, as when running this command 7zip version 16.0.4 is displayed as version entry 90 in the `manifest.version` column, while 7zip version 19.0.0 is displayed as version entry 91 in the `manifest.version` column.
