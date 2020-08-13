@@ -567,6 +567,9 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub aaformMainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set text for sidebar dropdown.
+        comboboxSidebarTabSelector.SelectedIndex = 0
+
         ' Hide unfinished controls on startup if My.Settings.HideUnfinishedControls = True.
         If My.Settings.HideUnfinishedControls = True Then
             UnfinishedControlsVisible(False)
