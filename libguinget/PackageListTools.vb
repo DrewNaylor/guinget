@@ -82,13 +82,17 @@ Public Class PackageListTools
                 ' Temporary, basic error handler in case we can't find
                 ' the source's URL. This may happen if there's
                 ' no Internet connection.
-                MessageBox.Show("Couldn't find " & SourceUrl)
+                MessageBox.Show("Couldn't find " & SourceUrl ". Please check your connection and try again. If you're online, the source may be unavailable.",
+                                "Downloading manifests")
                 Exit Function
 
             Catch ex As IO.DirectoryNotFoundException
                 ' Catch directory not found exceptions if the user cancels the update early
                 ' after deleting the package list zip file downloaded during the previous update.
-                MessageBox.Show(ex.Message)
+                MessageBox.Show(ex.Message & vbCrLf &
+                                vbCrLf &
+                                "This may be caused by having the directory above open in another program like Explorer. Please try again.",
+                                "Downloading manifests")
                 Exit Function
             End Try
 
@@ -187,9 +191,11 @@ Public Class PackageListTools
                                                ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
                                            End If
                                        Catch ex As System.IO.FileNotFoundException
-                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip")
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
+                                           "Extracting manifests")
                                        Catch ex As System.IO.DirectoryNotFoundException
-                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master")
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master",
+                                           "Extracting manifests")
                                        End Try
 
                                    Else
@@ -256,7 +262,8 @@ Public Class PackageListTools
 
                                                My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
                                            Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests")
+                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests",
+                                               "Copying manifests")
                                            End Try
 
                                        Else
@@ -267,6 +274,7 @@ Public Class PackageListTools
                                            RobocopyFileCopying.StartInfo.FileName = "robocopy"
                                            RobocopyFileCopying.StartInfo.Arguments = "/NFL /NDL /S " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests " & ManifestDir
                                            RobocopyFileCopying.Start()
+                                           ' Wait for robocopy to exit, or else it'll move on too soon.
                                            RobocopyFileCopying.WaitForExit()
                                        End If
                                    End Sub)
