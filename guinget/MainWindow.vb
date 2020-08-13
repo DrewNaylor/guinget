@@ -699,6 +699,14 @@ Public Class aaformMainWindow
         End If
     End Sub
 
+    Private Sub ClearSelectedSearchTermToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearSelectedSearchTermToolStripMenuItem.Click
+        ' Clear selected search term as long as it's not the first item.
+        ' We also need to make sure something is selected.
+        If listboxSearchTerms.SelectedIndex > 0 Then
+            listboxSearchTerms.Items.RemoveAt(listboxSearchTerms.SelectedIndex)
+        End If
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
