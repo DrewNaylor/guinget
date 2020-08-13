@@ -667,6 +667,18 @@ Public Class aaformMainWindow
         BeginPackageIdSearch()
     End Sub
 
+    Private Async Sub listboxSearchTerms_DoubleClick(sender As Object, e As EventArgs) Handles listboxSearchTerms.DoubleClick
+        Await BeginSearchFromSidebar()
+    End Sub
+
+    Private Shared Async Function BeginSearchFromSidebar() As Task
+        ' Send current index to the search bar and begin searching.
+        aaformMainWindow.toolstriptextboxSearch.Text = aaformMainWindow.listboxSearchTerms.SelectedItem.ToString
+
+        ' Begin search.
+        Await BeginPackageIdSearch()
+    End Function
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
