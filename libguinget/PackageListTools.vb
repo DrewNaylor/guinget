@@ -82,7 +82,7 @@ Public Class PackageListTools
                 ' Temporary, basic error handler in case we can't find
                 ' the source's URL. This may happen if there's
                 ' no Internet connection.
-                MessageBox.Show("Couldn't find " & SourceUrl ". Please check your connection and try again. If you're online, the source may be unavailable.",
+                MessageBox.Show("Couldn't find " & SourceUrl & ". Please check your connection and try again. If you're online, the source may be unavailable.",
                                 "Downloading manifests")
                 Exit Function
 
