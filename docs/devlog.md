@@ -36,3 +36,8 @@ select *, row_number() over (order by ids.id) as row_number from ids order by id
 ```
 
 That command above will print out all the IDs along with their row numbers. Now I just need to figure out how to get versions at the same time.
+
+Here's a new command that gets row numbers and the manifest id with the regular id, but it displays 1 for everything:
+```sqlite
+select ids.id, manifest.id, (select row_number() over (order by ids.id)) rownum from ids, manifest where rownum = manifest.id;
+```
