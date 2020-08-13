@@ -207,7 +207,7 @@ Public Class PackageListTools
                                        ' The calling app wants to use 7zip, so use it.
                                        Dim extraction7z As New Process
                                        extraction7z.StartInfo.FileName = PathTo7zip
-                                       extraction7z.StartInfo.Arguments = "x " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master"
+                                       extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master"
                                        extraction7z.Start()
                                        ' Wait for 7zip to exit, otherwise it'll move on too soon.
                                        extraction7z.WaitForExit()
