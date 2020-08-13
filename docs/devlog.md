@@ -28,3 +28,11 @@ Here's what it looks like when loading the package list:
 ![](images/screenshot-loading-progress.png?raw=true)
 
 The data grid view that's used for the package list is hidden while loading so that things go faster. If the data grid view were still visible, it would show all the rows as they're added and slow things down until rows that aren't on screen are being added, at which point it would speed up a lot.
+
+## UPDATE 8/13/2020
+I've figured out part of an SQLite command that may help using the SQLite website's documentation:
+```sqlite
+select *, row_number() over (order by ids.id) as row_number from ids order by ids.id;
+```
+
+That command above will print out all the IDs along with their row numbers. Now I just need to figure out how to get versions at the same time.
