@@ -177,7 +177,8 @@ Public Class PackageListTools
                 Await Task.Run(Sub()
                                    If Use7zip = False Then
                                        ' If the calling app doesn't want to use 7zip, use the built-in .Net extraction.
-
+                                       ' During testing on my laptop, using 7zip and robocopy reduced the cache updating time from
+                                       ' 1 minute 40 seconds to about 1 minute 4 seconds.
 
                                        ' Check if the zip file exists before extracting it.
 
