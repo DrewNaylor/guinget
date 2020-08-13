@@ -680,6 +680,14 @@ Public Class aaformMainWindow
         BeginPackageIdSearch()
     End Sub
 
+    Private Sub listboxSearchTerms_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxSearchTerms.KeyDown
+        ' Start searching if the "Enter" key is pressed.
+        If e.KeyCode = Keys.Enter Then
+            ' Start searching.
+            BeginSearchFromSidebar()
+        End If
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
