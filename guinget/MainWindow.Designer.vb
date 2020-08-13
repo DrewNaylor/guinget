@@ -96,6 +96,8 @@ Partial Class aaformMainWindow
         Me.toolstripstatusSplitter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
         Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -538,6 +540,8 @@ Partial Class aaformMainWindow
         '
         'panelSidebarHolder
         '
+        Me.panelSidebarHolder.Controls.Add(Me.Button1)
+        Me.panelSidebarHolder.Controls.Add(Me.ComboBox1)
         Me.panelSidebarHolder.Controls.Add(Me.tabcontrolSidebar)
         Me.panelSidebarHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelSidebarHolder.Location = New System.Drawing.Point(0, 0)
@@ -557,11 +561,11 @@ Partial Class aaformMainWindow
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSections)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSource)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageArchitecture)
-        Me.tabcontrolSidebar.Location = New System.Drawing.Point(0, 49)
+        Me.tabcontrolSidebar.Location = New System.Drawing.Point(4, 26)
         Me.tabcontrolSidebar.Margin = New System.Windows.Forms.Padding(2)
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
         Me.tabcontrolSidebar.SelectedIndex = 0
-        Me.tabcontrolSidebar.Size = New System.Drawing.Size(237, 377)
+        Me.tabcontrolSidebar.Size = New System.Drawing.Size(229, 400)
         Me.tabcontrolSidebar.TabIndex = 2
         '
         'tabpageSearchTerms
@@ -570,7 +574,7 @@ Partial Class aaformMainWindow
         Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 22)
         Me.tabpageSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
-        Me.tabpageSearchTerms.Size = New System.Drawing.Size(229, 351)
+        Me.tabpageSearchTerms.Size = New System.Drawing.Size(221, 374)
         Me.tabpageSearchTerms.TabIndex = 4
         Me.tabpageSearchTerms.Text = "Search terms"
         Me.tabpageSearchTerms.UseVisualStyleBackColor = True
@@ -585,7 +589,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.Location = New System.Drawing.Point(0, 0)
         Me.listboxSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
-        Me.listboxSearchTerms.Size = New System.Drawing.Size(229, 351)
+        Me.listboxSearchTerms.Size = New System.Drawing.Size(221, 374)
         Me.listboxSearchTerms.TabIndex = 2
         '
         'contextmenuSearchTerm
@@ -776,6 +780,25 @@ Partial Class aaformMainWindow
         Me.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
         Me.toolstripstatuslabelLoadingPackageCount.Visible = False
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(4, 3)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(202, 21)
+        Me.ComboBox1.TabIndex = 3
+        '
+        'Button1
+        '
+        Me.Button1.AutoSize = True
+        Me.Button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Button1.Location = New System.Drawing.Point(209, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(24, 23)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "X"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -808,6 +831,7 @@ Partial Class aaformMainWindow
         CType(Me.splitcontainerSidebarAndPkgList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.splitcontainerSidebarAndPkgList.ResumeLayout(False)
         Me.panelSidebarHolder.ResumeLayout(False)
+        Me.panelSidebarHolder.PerformLayout()
         Me.tabcontrolSidebar.ResumeLayout(False)
         Me.tabpageSearchTerms.ResumeLayout(False)
         Me.contextmenuSearchTerm.ResumeLayout(False)
@@ -893,4 +917,6 @@ Partial Class aaformMainWindow
     Friend WithEvents Manifest As DataGridViewTextBoxColumn
     Friend WithEvents SearchMenuItem As ToolStripMenuItem
     Friend WithEvents SearchToolstripButton As ToolStripButton
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Button1 As Button
 End Class
