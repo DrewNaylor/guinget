@@ -688,7 +688,7 @@ Public Class aaformMainWindow
         End If
 
         ' Begin search.
-        BeginPackageIdSearch()
+        BeginPackageIdSearch(True)
     End Sub
 
     Private Sub listboxSearchTerms_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxSearchTerms.KeyDown
