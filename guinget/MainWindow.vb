@@ -674,7 +674,13 @@ Public Class aaformMainWindow
 
     Private Shared Sub BeginSearchFromSidebar()
         ' Send current index to the search bar and begin searching.
-        aaformMainWindow.toolstriptextboxSearch.Text = aaformMainWindow.listboxSearchTerms.SelectedItem.ToString
+        ' First check if index 0 is selected.
+        ' Index 0 is "All", and this allows an easier way to show everything.
+        If aaformMainWindow.listboxSearchTerms.SelectedIndex = 0 Then
+            aaformMainWindow.toolstriptextboxSearch.Text = String.Empty
+        Else
+            aaformMainWindow.toolstriptextboxSearch.Text = aaformMainWindow.listboxSearchTerms.SelectedItem.ToString
+        End If
 
         ' Begin search.
         BeginPackageIdSearch()
