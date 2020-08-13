@@ -581,10 +581,15 @@ Public Class aaformMainWindow
         BeginPackageIdSearch()
     End Sub
 
-    Friend Shared Sub BeginPackageIdSearch()
+    Friend Shared Sub BeginPackageIdSearch(Optional SearchStartedFromSidebar As Boolean = False)
 
         ' Make sure there are packages to begin with.
         If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
+
+            ' Place search term into the sidebar if it wasn't started from the sidebar.
+            If SearchStartedFromSidebar = False Then
+                aaformMainWindow.listboxSearchTerms.Items.Add(aaformMainWindow.toolstriptextboxSearch.Text)
+            End If
 
             ' Change progress label text.
             If Not aaformMainWindow.toolstriptextboxSearch.Text = String.Empty Then
