@@ -197,9 +197,9 @@ Public Class PackageListTools
                                            MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master",
                                            "Extracting manifests")
                                        Catch ex As System.IO.InvalidDataException
-                                           MessageBox.Show(ex.GetType.ToString & ": " & ex.Message & vbCrLf &
-                                           vbCrLf &
-                                           "We couldn't extract the manifest package. Please verify that the source URL is correct, and try again.",
+                                           MessageBox.Show("We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                                           vbCrLf & "Details:" & vbCrLf &
+                                           ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
                                        End Try
 
