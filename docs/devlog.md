@@ -58,3 +58,6 @@ select distinct ids.id, manifest.id, versions.version, manifest.version from ids
 ```
 
 That one brings in the `version` column from the `manifest` and `versions` tables, and compares the value in the `manifest.version` column to the line number in `versions.version`. Not sure if that's what Microsoft intended, but it's the only thing that makes sense as to why there are only numbers in the `manifest` table. It could be like this, as when running this command 7zip version 16.0.4 is displayed as version entry 90 in the `manifest.version` column, while 7zip version 19.0.0 is displayed as version entry 91 in the `manifest.version` column.
+
+Screenshot for comparison, although the index I'm using is a few months old:
+![](images/potential-breakthrough-in-understanding-the-source-index.png?raw=true)
