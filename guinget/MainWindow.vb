@@ -667,17 +667,18 @@ Public Class aaformMainWindow
         BeginPackageIdSearch()
     End Sub
 
-    Private Async Sub listboxSearchTerms_DoubleClick(sender As Object, e As EventArgs) Handles listboxSearchTerms.DoubleClick
+    Private Sub listboxSearchTerms_DoubleClick(sender As Object, e As EventArgs) Handles listboxSearchTerms.DoubleClick
+        ' Start searching.
         BeginSearchFromSidebar()
     End Sub
 
-    Private Shared Async Function BeginSearchFromSidebar() As Task
+    Private Shared Sub BeginSearchFromSidebar()
         ' Send current index to the search bar and begin searching.
         aaformMainWindow.toolstriptextboxSearch.Text = aaformMainWindow.listboxSearchTerms.SelectedItem.ToString
 
         ' Begin search.
         BeginPackageIdSearch()
-    End Function
+    End Sub
 
 
 
