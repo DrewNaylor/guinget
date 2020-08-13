@@ -570,6 +570,13 @@ Public Class aaformMainWindow
         ' Set text for sidebar dropdown.
         comboboxSidebarTabSelector.SelectedIndex = 0
 
+        ' Show or hide the sidebar.
+        If My.Settings.ShowSidebar = True Then
+            splitcontainerSidebarAndPkgList.Panel1Collapsed = False
+        Else
+            splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+        End If
+
         ' Hide unfinished controls on startup if My.Settings.HideUnfinishedControls = True.
         If My.Settings.HideUnfinishedControls = True Then
             UnfinishedControlsVisible(False)
@@ -711,6 +718,14 @@ Public Class aaformMainWindow
         ' Clear all search terms, and put "All" back in there.
         listboxSearchTerms.Items.Clear()
         listboxSearchTerms.Items.Add("All")
+    End Sub
+
+    Private Sub buttonCloseSidebar_Click(sender As Object, e As EventArgs) Handles buttonCloseSidebar.Click
+        ' Hide sidebar and turn off showing the sidebar.
+        splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+        My.Settings.ShowSidebar = False
+        My.Settings.Save()
+        My.Settings.Reload()
     End Sub
 
 
