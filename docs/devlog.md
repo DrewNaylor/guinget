@@ -41,3 +41,6 @@ Here's a new command that gets row numbers and the manifest id with the regular 
 ```sqlite
 select ids.id, manifest.id, (select row_number() over (order by ids.id)) rownum from ids, manifest where rownum = manifest.id;
 ```
+
+This page is somewhat helpful:
+https://www.sqlitetutorial.net/sqlite-window-functions/sqlite-row_number/
