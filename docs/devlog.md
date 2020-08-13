@@ -44,3 +44,10 @@ select ids.id, manifest.id, (select row_number() over (order by ids.id)) rownum 
 
 This page is somewhat helpful:
 https://www.sqlitetutorial.net/sqlite-window-functions/sqlite-row_number/
+
+After waking up, I tried again and got to this command:
+```sqlite
+select distinct ids.id, manifest.id from ids, manifest where manifest.id = ids._rowid_ order by ids.id;
+```
+
+This one seems to work better than the earlier one in that it gets the id spelled out and puts them next to the line in the manifest table. Will need to do testing to ensure this is correct.
