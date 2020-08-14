@@ -343,7 +343,7 @@ Public Class aaformMainWindow
 
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected.
-        If datagridviewPackageList.SelectedRows.Count = 1 AndAlso My.Settings.LoadFromSqliteDb = False Then
+        If datagridviewPackageList.SelectedRows.Count = 1 AndAlso IO.File.Exists(datagridviewPackageList.SelectedRows.Item(0).Cells(6).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
