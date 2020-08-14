@@ -38,7 +38,7 @@ Public Class PackageListTools
     ' updating is stopped.
     Public Shared CancelUpdateFlag As Boolean = False
 
-    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal SourceFileExtension As String) As Task
+    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task
 
         ' Download a file with HttpClient:
         ' https://stackoverflow.com/a/54475013
@@ -72,7 +72,7 @@ Public Class PackageListTools
 
                 ' Set up the filestream we'll write to.
                 Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                           "\winget-frontends\source\winget-pkgs\temp\" & SourceName & SourceFileExtension, IO.FileMode.CreateNew)
+                                           "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
                     'MessageBox.Show(OutputStream.ToString)
 
                     ' Copy out the stream.
@@ -129,12 +129,12 @@ Public Class PackageListTools
             ' This is copied here so it doesn't crash
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                             "Microsoft\winget-pkgs", ".zip")
+                                             "Microsoft/winget-pkgs")
 
             ' If the user wants to use the database, download that, too.
             If LoadFromDatabase = True Then
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
-                                             "winget", ".msix")
+                                             "winget")
             End If
         Else
             ' Otherwise, re-create it.
