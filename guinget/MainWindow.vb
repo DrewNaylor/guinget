@@ -95,17 +95,23 @@ Public Class aaformMainWindow
             Exit Function
         End If
 
-        ' Go through everything in the manifest paths array until it's out.
-        For i As Integer = 0 To ManifestPaths.Count - 2
+        ' Go through everything in the manifest paths array until it's out if
+        ' we don't want to load from a database.
+        If My.Settings.LoadFromSqliteDb = False Then
+            For i As Integer = 0 To ManifestPaths.Count - 2
 
-            ' Read the file into the manifest column and make a new row with it.
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
+                ' Read the file into the manifest column and make a new row with it.
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
 
-            ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
-            ' Update the statusbar to show the current info.
-            aaformMainWindow.statusbarMainWindow.Update()
-        Next
+                ' Make the progress bar progress.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
+                ' Update the statusbar to show the current info.
+                aaformMainWindow.statusbarMainWindow.Update()
+            Next
+        Else
+            ' We do want to load from the database, so do it.
+
+        End If
 
         ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
