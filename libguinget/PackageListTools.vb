@@ -213,6 +213,9 @@ Public Class PackageListTools
             Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                        "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
+            Dim DatabaseDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                       "\winget-frontends\source\winget-db"
+
             ' We can now extract the manifests.
 
             ' Display a window to show progress.
@@ -336,6 +339,29 @@ Public Class PackageListTools
                                                ' the manifest dir.
                                                ' It might not exist if the user is running guinget offline,
                                                ' in which case the package list cache will just be loaded from
+                                               ' disk and won't be updated.
+                                               If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
+                                                   System.IO.Directory.Delete(ManifestDir, True)
+                                               End If
+
+                                               My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                                           Catch ex As System.IO.DirectoryNotFoundException
+                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
+                                                               "Please close any Explorer windows that may be open in this directory, and try again.",
+                                               "Copying manifests")
+                                           Catch ex As System.IO.IOException
+                                               MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                                               vbCrLf &
+                                                               "Details:" & vbCrLf &
+                                                               ex.Message, "Copying manifests")
+                                           End Try
+
+                                           Try
+
+                                               ' Make sure the database temp folder exists before deleting
+                                               ' the database dir.
+                                               ' It might not exist if the user is running guinget offline,
+                                               ' in which case the database cache will just be loaded from
                                                ' disk and won't be updated.
                                                If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
                                                    System.IO.Directory.Delete(ManifestDir, True)
