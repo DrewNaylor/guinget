@@ -111,7 +111,8 @@ Public Class aaformMainWindow
         Else
             ' We do want to load from the database, so do it.
             Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
-            aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
+            'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
+            'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
             For Each PackageRow As DataRow In SqliteList.Rows
                 aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), "Loading...", "C:\Users\drewn\AppData\Roaming\winget-frontends\source\winget-pkgs\pkglist\manifests\DrewNaylor\guinget\0.1.1.yaml")
 
@@ -319,7 +320,7 @@ Public Class aaformMainWindow
 
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected.
-        If datagridviewPackageList.SelectedRows.Count = 1 Then
+        If datagridviewPackageList.SelectedRows.Count = 1 AndAlso My.Settings.LoadFromSqliteDb = False Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
