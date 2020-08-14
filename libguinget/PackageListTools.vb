@@ -192,6 +192,11 @@ Public Class PackageListTools
                                        System.IO.Directory.Delete(DatabaseTempDir, True)
                                        System.IO.Directory.CreateDirectory(DatabaseTempDir)
                                    End Sub)
+                ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
+                    ' Doesn't exist; create it.
+                    Await Task.Run(Sub()
+                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
+                                   End Sub)
                 End If
                 ' Now download.
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
