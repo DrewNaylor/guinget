@@ -149,6 +149,12 @@ Public Class PackageListTools
             If UpdateDatabase = True Then
                 ' Check if the directory exists for the database as well,
                 ' if necessary.
+
+                ' TODO: Move the database updating outside this code so
+                ' that it doesn't get confused when the manifest dir exists
+                ' but this one doesn't.
+                ' Will make it easier to update as well, if there are
+                ' ever multiple sources supported.
                 If Not IO.Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                            "\winget-frontends\source\winget-db\temp\") Then
                     Await Task.Run(Sub()
