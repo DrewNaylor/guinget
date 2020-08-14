@@ -179,18 +179,20 @@ Public Class aaformMainWindow
         ' we need to get them now.
         ' These have to be grabbed now or else updating the manifests
         ' will crash when the path doesn't exist.
-        PackageListTools.FallbackPathList = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
+        If My.Settings.LoadFromSqliteDb = True Then
+            PackageListTools.FallbackPathList = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
 
-        ' Now we need to load the manifests and the descriptions.
-        For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            ' Find the manifest and get its description.
-            PackageRow.Cells.Item(6).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
+            ' Now we need to load the manifests and the descriptions.
+            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+                ' Find the manifest and get its description.
+                PackageRow.Cells.Item(6).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
 
-            ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            ' Update the statusbar to show the current info.
-            aaformMainWindow.Update()
-        Next
+                ' Make the progress bar progress.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                ' Update the statusbar to show the current info.
+                aaformMainWindow.Update()
+            Next
+        End If
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
