@@ -295,6 +295,15 @@ Public Class PackageListTools
                                        extraction7z.Start()
                                        ' Wait for 7zip to exit, otherwise it'll move on too soon.
                                        extraction7z.WaitForExit()
+
+                                       ' The calling app wants to use 7zip, so use it.
+                                       ' This is for the database.
+                                       Dim extraction7zDatabase As New Process
+                                       extraction7z.StartInfo.FileName = PathTo7zip
+                                       extraction7z.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source"
+                                       extraction7z.Start()
+                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                       extraction7z.WaitForExit()
                                    End If
                                End Sub)
 
