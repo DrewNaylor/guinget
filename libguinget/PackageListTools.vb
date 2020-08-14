@@ -269,8 +269,6 @@ Public Class PackageListTools
                                            "Extracting manifests")
                                        End Try
 
-                                       Try
-                                           If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
                                        If UpdateDatabase = True Then
                                            Try
                                                If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
