@@ -127,7 +127,7 @@ Public Class aaformMainWindow
             ' Now we need to load the manifests and the descriptions.
             For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Find the manifest and get its description.
-                Await LoadManifestPaths
+                PackageRow.Cells.Item(6).Value = Await LoadManifestPaths()
 
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
@@ -170,7 +170,7 @@ Public Class aaformMainWindow
 
     End Function
 
-    Friend Shared Async Function LoadManifestPaths() As Task
+    Friend Shared Async Function LoadManifestPaths() As Task(Of String)
 
     End Function
 
