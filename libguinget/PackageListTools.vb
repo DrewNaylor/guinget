@@ -147,6 +147,15 @@ Public Class PackageListTools
 
             ' Update the database if the user wants to.
             If UpdateDatabase = True Then
+                ' Check if the directory exists for the database as well,
+                ' if necessary.
+                If Not IO.Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                           "\winget-frontends\source\winget-db\temp\") Then
+                    Await Task.Run(Sub()
+                                       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                           "\winget-frontends\source\winget-db\temp\")
+                                   End Sub)
+                End If
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
                                              "winget-db")
             End If
@@ -165,6 +174,17 @@ Public Class PackageListTools
 
             ' Update the database if the user wants to.
             If UpdateDatabase = True Then
+                ' Check if the directory exists for the database as well,
+                ' if necessary.
+                Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                           "\winget-frontends\source\winget-db\temp\"
+                If IO.Directory.Exists(DatabaseTempDir) Then
+                    Await Task.Run(Sub()
+                                       System.IO.Directory.Delete(DatabaseTempDir, True)
+                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
+                                   End Sub)
+                End If
+
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
                                              "winget-db")
             End If
