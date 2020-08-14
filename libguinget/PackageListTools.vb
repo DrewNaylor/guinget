@@ -314,6 +314,10 @@ Public Class PackageListTools
         Return ManifestPath
     End Function
 
+    ' This is used as a fallback if we can't figure out where the manifest is by
+    ' just using the package id and version.
+    Friend Shared FallbackPathList() As String = GetManifests.TrimEnd.Split(CType("?", Char()))
+
     Public Shared Async Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String) As Task(Of String)
         ' We'll look through the manifests in the cache, and if there's a version number match,
         ' we'll open it and check the ID. If it's a match, we'll return the path.
@@ -323,29 +327,36 @@ Public Class PackageListTools
 
         ' If we can't do a simple replacement on each "." in the ID,
         ' we'll have to fall back to the slower method.
-        Dim QuickPathReplace As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
+        Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
+        Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\").IndexOf(".") & "\" & ManifestVersion & ".yaml"
         'MessageBox.Show(QuickPathReplace)
-        If IO.File.Exists(QuickPathReplace) Then
-            Return QuickPathReplace
+        If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) AndAlso Not IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
+            Return QuickPathReplaceReplaceAllPeriods
+        ElseIf Not IO.File.Exists(QuickPathReplaceReplaceAllPeriods) AndAlso IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
+            ' If we can't do the fastest one, try only replacing the first period.
+            Return QuickPathReplaceReplaceOnlyFirstPeriod
         Else
+            ' We can't use either of these two methods, so use the fallback one.
 
-        ' Take the Id string for each package file and append it to the
-        ' package list array variable.
-        For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
-            'MessageBox.Show("ManifestAppDataFolder: " & ManifestAppDataFolder & vbCrLf &
-            '"PackageManifest: " & PackageManifest & vbCrLf &
-            '"ManifestVersion: " & ManifestVersion & vbCrLf &
-            '"ManifestId: " & ManifestId)
-            ' Check if the manifest has the version number we're looking for.
-            If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
-                ' Open and read the manifest ID.
-                Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
-                'MessageBox.Show(LocalId)
-                If LocalId = ManifestId Then
-                    Return PackageManifest
+            ' Take the Id string for each package file and append it to the
+            ' package list array variable.
+            For Each PackageManifest As String In FallbackPathList
+                'Debug.WriteLine("ManifestAppDataFolder: " & ManifestAppDataFolder & vbCrLf &
+                '"PackageManifest: " & PackageManifest & vbCrLf &
+                '"ManifestVersion: " & ManifestVersion & vbCrLf &
+                '"ManifestId: " & ManifestId)
+
+                ' Check if the manifest has the version number we're looking for.
+                If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
+                    Debug.WriteLine("Hit")
+                    ' Open and read the manifest ID.
+                    Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
+                    'MessageBox.Show(LocalId)
+                    If LocalId = ManifestId Then
+                        Return PackageManifest
+                    End If
                 End If
-            End If
-        Next
+            Next
         End If
     End Function
 
