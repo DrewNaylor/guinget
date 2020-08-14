@@ -104,7 +104,8 @@ Public Class PackageListTools
 
     Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
                                                       Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
-                                                      Optional UseRobocopy As Boolean = False) As Task
+                                                      Optional UseRobocopy As Boolean = False,
+                                                      Optional UpdateDatabase As Boolean = False) As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
