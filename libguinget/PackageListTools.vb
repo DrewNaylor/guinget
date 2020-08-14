@@ -330,9 +330,9 @@ Public Class PackageListTools
         Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
         Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\").IndexOf(".") & "\" & ManifestVersion & ".yaml"
         'MessageBox.Show(QuickPathReplace)
-        If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) AndAlso Not IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
+        If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
             Return QuickPathReplaceReplaceAllPeriods
-        ElseIf Not IO.File.Exists(QuickPathReplaceReplaceAllPeriods) AndAlso IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
+        ElseIf IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
             ' If we can't do the fastest one, try only replacing the first period.
             Return QuickPathReplaceReplaceOnlyFirstPeriod
         Else
