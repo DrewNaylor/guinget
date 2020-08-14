@@ -321,6 +321,9 @@ Public Class PackageListTools
         ' but for now we just need a messagebox to display it.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
+        ' If we can't do a simple replacement on each "." in the ID,
+        ' we'll have to fall back to the slower method.
+
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
