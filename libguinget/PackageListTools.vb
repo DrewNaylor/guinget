@@ -80,6 +80,10 @@ Public Class PackageListTools
                         ' Copy out the stream.
                         Await ClientResponse.Content.CopyToAsync(OutputStream)
                     End Using
+
+                ElseIf SourceUrl.EndsWith(".msix") Then
+                    ' If the source url ends with .msix, then it's
+                    ' probably the database.
                 End If
 
             Catch ex As System.Net.Http.HttpRequestException
