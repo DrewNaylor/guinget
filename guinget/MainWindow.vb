@@ -175,6 +175,12 @@ Public Class aaformMainWindow
         ' Update the main window again.
         aaformMainWindow.Update()
 
+        ' In case there are manifests we can't find easily,
+        ' we need to get them now.
+        ' These have to be grabbed now or else updating the manifests
+        ' will crash when the path doesn't exist.
+        PackageListTools.FallbackPathList = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
+
         ' Now we need to load the manifests and the descriptions.
         For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Find the manifest and get its description.

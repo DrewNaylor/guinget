@@ -104,8 +104,7 @@ Public Class PackageListTools
 
     Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
                                                       Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
-                                                      Optional UseRobocopy As Boolean = False,
-                                                      Optional UpdateDatabase As Boolean = False) As Task
+                                                      Optional UseRobocopy As Boolean = False) As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
@@ -304,6 +303,8 @@ Public Class PackageListTools
 
     Public Shared Function GetManifests() As String
         ' Get and return each manifest in the manifests folder.
+        ' This should only be used after ensuring that there's
+        ' stuff in this folder, or it'll crash.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' Define a variable so we can store the manifest paths.
@@ -323,7 +324,10 @@ Public Class PackageListTools
 
     ' This is used as a fallback if we can't figure out where the manifest is by
     ' just using the package id and version.
-    Friend Shared FallbackPathList() As String = GetManifests.TrimEnd.Split(CType("?", Char()))
+    ' If the folder used here doesn't exist, applications using this
+    ' library will crash, so it has to be set by the calling application before
+    ' being used.
+    Public Shared FallbackPathList() As String
 
     Public Shared Async Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String) As Task(Of String)
         ' We'll look through the manifests in the cache, and if there's a version number match,
@@ -339,9 +343,11 @@ Public Class PackageListTools
         'MessageBox.Show(QuickPathReplace)
         If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
             Return QuickPathReplaceReplaceAllPeriods
+
         ElseIf IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
             ' If we can't do the fastest one, try only replacing the first period.
             Return QuickPathReplaceReplaceOnlyFirstPeriod
+
         Else
             ' We can't use either of these two methods, so use the fallback one.
 
