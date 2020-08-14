@@ -114,7 +114,7 @@ Public Class aaformMainWindow
             'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
             'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
             For Each PackageRow As DataRow In SqliteList.Rows
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), "Loading...", "C:\Users\drewn\AppData\Roaming\winget-frontends\source\winget-pkgs\pkglist\manifests\DrewNaylor\guinget\0.1.1.yaml")
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), "Loading...", "Loading...")
 
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
@@ -173,21 +173,22 @@ Public Class aaformMainWindow
         ' We're waiting until the loading is done so it finishes faster.
         aaformMainWindow.datagridviewPackageList.Visible = True
 
+        ' Reset progress bar to 0.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+
         ' Update the main window again.
         aaformMainWindow.Update()
 
         ' Now we need to load the manifests and the descriptions.
-        Await Task.Run(Sub()
-                           For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                               ' Find the manifest and get its description.
-                               PackageRow.Cells.Item(6).Value = LoadManifestPaths(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
+        For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+            ' Find the manifest and get its description.
+            PackageRow.Cells.Item(6).Value = Await LoadManifestPaths(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
 
-                               ' Make the progress bar progress.
-                               aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-                               ' Update the statusbar to show the current info.
-                               aaformMainWindow.statusbarMainWindow.Update()
-                           Next
-                       End Sub)
+            ' Make the progress bar progress.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ' Update the statusbar to show the current info.
+            aaformMainWindow.Update()
+        Next
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
