@@ -314,7 +314,10 @@ Public Class PackageListTools
     End Function
 
     Public Shared Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String)
-
+        ' We'll look through the manifests in the cache, and if there's a version number match,
+        ' we'll open it and check the ID. If it's a match, we'll return the path.
+        ' This path will eventually be used in the manifest path column in the main window,
+        ' but for now we just need a messagebox to display it.
     End Function
 
 End Class
