@@ -130,12 +130,6 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
-
-            ' If the user wants to update the database, do so.
-            If UpdateDatabase = True Then
-                Await DownloadPkgListWithProgressAsync("http://winget.azureedge.net/cache/source.msix",
-                                             "winget-db")
-            End If
         Else
             ' Otherwise, re-create it.
             Await Task.Run(Sub()
@@ -148,12 +142,6 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
-
-            ' If the user wants to update the database, do so.
-            If UpdateDatabase = True Then
-                Await DownloadPkgListWithProgressAsync("http://winget.azureedge.net/cache/source.msix",
-                                             "winget-db")
-            End If
         End If
 
         ' Trying to use this code to display progress as
