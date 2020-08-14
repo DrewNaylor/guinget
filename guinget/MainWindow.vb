@@ -112,6 +112,14 @@ Public Class aaformMainWindow
             ' We do want to load from the database, so do it.
             Dim SqliteList As String = PackageListTools.GetPackageListFromSqliteDB()
             Dim SplitSqliteList As String() = SqliteList.Split(CType(",", Char()))
+            For Each PackageId As String In SplitSqliteList
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageId, "Loading...", "Loading...", "Loading...", "")
+
+                ' Make the progress bar progress.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
+                ' Update the statusbar to show the current info.
+                aaformMainWindow.statusbarMainWindow.Update()
+            Next
         End If
 
         ' Update the main window now that the list is loaded.
@@ -127,19 +135,21 @@ Public Class aaformMainWindow
         aaformMainWindow.Update()
 
         ' Now we load the details for each row.
-        For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            ' Load package ID column.
-            Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Id")
-            ' Load package name column.
-            Row.Cells.Item(3).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Name")
-            ' Load package version column.
-            Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Version")
-            ' Load package description column.
-            Row.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Description")
-            ' Update the progressbar so it doesn't look frozen.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
-            aaformMainWindow.statusbarMainWindow.Update()
-        Next
+        If My.Settings.LoadFromSqliteDb = False Then
+            For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+                ' Load package ID column.
+                Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Id")
+                ' Load package name column.
+                Row.Cells.Item(3).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Name")
+                ' Load package version column.
+                Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Version")
+                ' Load package description column.
+                Row.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Description")
+                ' Update the progressbar so it doesn't look frozen.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
+                aaformMainWindow.statusbarMainWindow.Update()
+            Next
+        End If
 
         ' We're done updating the package list, so call the post-update sub.
         PackageListPostUpdate()
