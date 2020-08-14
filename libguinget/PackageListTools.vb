@@ -38,7 +38,7 @@ Public Class PackageListTools
     ' updating is stopped.
     Public Shared CancelUpdateFlag As Boolean = False
 
-    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal SourceFilename As String) As Task
+    Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String, ByVal SourceFileExtension As String) As Task
 
         ' Download a file with HttpClient:
         ' https://stackoverflow.com/a/54475013
@@ -72,7 +72,7 @@ Public Class PackageListTools
 
                 ' Set up the filestream we'll write to.
                 Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                           "\winget-frontends\source\winget-pkgs\temp\" & SourceFilename, IO.FileMode.CreateNew)
+                                           "\winget-frontends\source\winget-pkgs\temp\" & SourceName & SourceFileExtension, IO.FileMode.CreateNew)
                     'MessageBox.Show(OutputStream.ToString)
 
                     ' Copy out the stream.
@@ -129,12 +129,12 @@ Public Class PackageListTools
             ' This is copied here so it doesn't crash
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                             "Microsoft/winget-pkgs", "\winget-pkgs-master.zip")
+                                             "Microsoft\winget-pkgs", ".zip")
 
             ' If the user wants to use the database, download that, too.
             If LoadFromDatabase = True Then
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
-                                             "winget", "\source.msix")
+                                             "winget", ".msix")
             End If
         Else
             ' Otherwise, re-create it.
@@ -147,12 +147,12 @@ Public Class PackageListTools
             ' This is copied here so it doesn't crash
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                             "Microsoft\winget-pkgs", "\winget-pkgs-master.zip")
+                                             "Microsoft\winget-pkgs", ".zip")
 
             ' If the user wants to use the database, download that, too.
             If LoadFromDatabase = True Then
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
-                                             "winget", "\source.msix")
+                                             "winget", ".msix")
             End If
         End If
 
@@ -168,7 +168,7 @@ Public Class PackageListTools
             ' Now we extract that file, but first we need to delete old manifests.
             ' We'll wait to delete the old ones until the copying phase.
             Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                       "\winget-frontends\source"
+                                       "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
             ' We can now extract the manifests.
 
@@ -316,7 +316,7 @@ Public Class PackageListTools
 
     Public Shared Function GetManifests() As String
         ' Get and return each manifest in the manifests folder.
-        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\Microsoft\winget-pkgs\pkglist\manifests"
+        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' Define a variable so we can store the manifest paths.
         Dim ManifestPath As String = String.Empty

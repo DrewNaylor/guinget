@@ -401,7 +401,7 @@ Public Class aaformMainWindow
         Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying)
 
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
-        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\Microsoft\winget-pkgs\pkglist\manifests"
+        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' If the manifest directory exists, we can add the
         ' packages to the list.
