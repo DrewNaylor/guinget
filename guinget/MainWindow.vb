@@ -730,8 +730,9 @@ Public Class aaformMainWindow
 
     Private Async Sub FindManifestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FindManifestToolStripMenuItem.Click
         ' Send the currently-selected ID and version to the manifest finder.
-        MessageBox.Show(Await PackageListTools.FindManifestByVersionAndId(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString,
-                              datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString))
+        Dim ManifestPath As String = Await PackageListTools.FindManifestByVersionAndId(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString,
+                              datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString)
+        MessageBox.Show(ManifestPath)
     End Sub
 
 
