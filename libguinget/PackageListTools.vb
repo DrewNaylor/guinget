@@ -373,28 +373,30 @@ Public Class PackageListTools
                                                                ex.Message, "Copying manifests")
                                            End Try
 
-                                           Try
+                                           If UpdateDatabase = True Then
+                                               Try
 
-                                               ' Make sure the database temp folder exists before deleting
-                                               ' the database dir.
-                                               ' It might not exist if the user is running guinget offline,
-                                               ' in which case the database cache will just be loaded from
-                                               ' disk and won't be updated.
-                                               If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
-                                                   System.IO.Directory.Delete(DatabaseDir, True)
-                                               End If
+                                                   ' Make sure the database temp folder exists before deleting
+                                                   ' the database dir.
+                                                   ' It might not exist if the user is running guinget offline,
+                                                   ' in which case the database cache will just be loaded from
+                                                   ' disk and won't be updated.
+                                                   If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
+                                                       System.IO.Directory.Delete(DatabaseDir, True)
+                                                   End If
 
-                                               My.Computer.FileSystem.CopyDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
-                                           Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
+                                                   My.Computer.FileSystem.CopyDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
+                                               Catch ex As System.IO.DirectoryNotFoundException
+                                                   MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
                                                "Copying manifests")
-                                           Catch ex As System.IO.IOException
-                                               MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                               Catch ex As System.IO.IOException
+                                                   MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
                                                                ex.Message, "Copying manifests")
-                                           End Try
+                                               End Try
+                                           End If
 
                                        Else
 
@@ -406,6 +408,18 @@ Public Class PackageListTools
                                            RobocopyFileCopying.Start()
                                            ' Wait for robocopy to exit, or else it'll move on too soon.
                                            RobocopyFileCopying.WaitForExit()
+
+                                           ' The calling app wants to use Robocopy.
+                                           ' Partially copying code from update-manifests.bat.
+                                           ' Update the database.
+                                           If UpdateDatabase = True Then
+                                               Dim RobocopyFileCopyingDatabaseUpdate As New Process
+                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
+                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
+                                               RobocopyFileCopyingDatabaseUpdate.Start()
+                                               ' Wait for robocopy to exit, or else it'll move on too soon.
+                                               RobocopyFileCopyingDatabaseUpdate.WaitForExit()
+                                           End If
                                        End If
                                    End Sub)
 
