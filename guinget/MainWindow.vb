@@ -121,19 +121,6 @@ Public Class aaformMainWindow
                 ' Update the statusbar to show the current info.
                 aaformMainWindow.statusbarMainWindow.Update()
             Next
-
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
-
-            ' Now we need to load the manifests and the descriptions.
-            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                ' Find the manifest and get its description.
-                PackageRow.Cells.Item(6).Value = Await LoadManifestPaths()
-
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-                ' Update the statusbar to show the current info.
-                aaformMainWindow.statusbarMainWindow.Update()
-            Next
         End If
 
         ' Update the main window now that the list is loaded.
@@ -170,11 +157,11 @@ Public Class aaformMainWindow
 
     End Function
 
-    Friend Shared Async Function LoadManifestPaths() As Task(Of String)
-
+    Friend Shared Async Function LoadManifestPaths(PackageId As String, PackageVersion As String) As Task(Of String)
+        Return Await PackageListTools.FindManifestByVersionAndId(PackageId, PackageVersion)
     End Function
 
-    Private Shared Sub PackageListPostUpdate()
+    Friend Shared Async Sub PackageListPostUpdate()
 
         ' Show the package list again.
 
@@ -188,6 +175,19 @@ Public Class aaformMainWindow
 
         ' Update the main window again.
         aaformMainWindow.Update()
+
+        ' Now we need to load the manifests and the descriptions.
+        Await Task.Run(Sub()
+                           For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+                               ' Find the manifest and get its description.
+                               PackageRow.Cells.Item(6).Value = LoadManifestPaths(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
+
+                               ' Make the progress bar progress.
+                               aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                               ' Update the statusbar to show the current info.
+                               aaformMainWindow.statusbarMainWindow.Update()
+                           Next
+                       End Sub)
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
