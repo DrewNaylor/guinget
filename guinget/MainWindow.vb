@@ -113,10 +113,10 @@ Public Class aaformMainWindow
             Dim SqliteList As String = PackageListTools.GetPackageListFromSqliteDB()
             Dim SplitSqliteList As String() = SqliteList.Split(CType(",", Char()))
             For Each PackageId As String In SplitSqliteList
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageId, "Loading...", "Loading...", "Loading...", "")
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageId, "Loading...", "Loading...", "Loading...", "C:\Users\drewn\AppData\Roaming\winget-frontends\source\winget-pkgs\pkglist\manifests\DrewNaylor\guinget\0.1.1.yaml")
 
                 ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
                 ' Update the statusbar to show the current info.
                 aaformMainWindow.statusbarMainWindow.Update()
             Next
