@@ -728,6 +728,10 @@ Public Class aaformMainWindow
         My.Settings.Reload()
     End Sub
 
+    Private Sub FindManifestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FindManifestToolStripMenuItem.Click
+
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application

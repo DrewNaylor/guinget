@@ -313,4 +313,8 @@ Public Class PackageListTools
         Return ManifestPath
     End Function
 
+    Public Shared Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String)
+
+    End Function
+
 End Class
