@@ -104,8 +104,7 @@ Public Class PackageListTools
 
     Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
                                                       Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
-                                                      Optional UseRobocopy As Boolean = False,
-                                                      Optional LoadFromDatabase As Boolean = False) As Task
+                                                      Optional UseRobocopy As Boolean = False) As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
@@ -130,11 +129,6 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
-            ' If the user wants to use the database, download that, too.
-            If LoadFromDatabase = True Then
-                Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
-                                             "winget")
-            End If
         Else
             ' Otherwise, re-create it.
             Await Task.Run(Sub()
