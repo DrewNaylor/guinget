@@ -262,9 +262,9 @@ Public Class PackageListTools
                                        End Try
 
                                        Try
-                                           If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
-
-                                               ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+                                           If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
+                                               ' Now extract.
+                                               ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source")
                                            End If
                                        Catch ex As System.IO.FileNotFoundException
                                            MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
