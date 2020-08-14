@@ -271,39 +271,44 @@ Public Class PackageListTools
 
                                        Try
                                            If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
-                                               ' Now extract.
-                                               ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source")
-                                           End If
-                                       Catch ex As System.IO.FileNotFoundException
-                                           MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
+                                       If UpdateDatabase = True Then
+                                           Try
+                                               If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
+                                                   ' Now extract.
+                                                   ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source")
+                                               End If
+                                           Catch ex As System.IO.FileNotFoundException
+                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
                                            "Extracting manifests")
-                                       Catch ex As System.IO.DirectoryNotFoundException
-                                           MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
+                                           Catch ex As System.IO.DirectoryNotFoundException
+                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
                                            "Extracting manifests")
-                                       Catch ex As System.IO.InvalidDataException
-                                           MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                                           Catch ex As System.IO.InvalidDataException
+                                               MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
                                            vbCrLf & "Details:" & vbCrLf &
                                            ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
-                                       End Try
-
+                                           End Try
+                                       End If
                                    Else
-                                       ' The calling app wants to use 7zip, so use it.
-                                       Dim extraction7z As New Process
-                                       extraction7z.StartInfo.FileName = PathTo7zip
-                                       extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master"
-                                       extraction7z.Start()
-                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                       extraction7z.WaitForExit()
+                                           ' The calling app wants to use 7zip, so use it.
+                                           Dim extraction7z As New Process
+                                           extraction7z.StartInfo.FileName = PathTo7zip
+                                           extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master"
+                                           extraction7z.Start()
+                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                           extraction7z.WaitForExit()
 
-                                       ' The calling app wants to use 7zip, so use it.
-                                       ' This is for the database.
-                                       Dim extraction7zDatabase As New Process
-                                       extraction7zDatabase.StartInfo.FileName = PathTo7zip
-                                       extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source"
-                                       extraction7zDatabase.Start()
-                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                       extraction7zDatabase.WaitForExit()
+                                       If UpdateDatabase = True Then
+                                           ' The calling app wants to use 7zip, so use it.
+                                           ' This is for the database.
+                                           Dim extraction7zDatabase As New Process
+                                           extraction7zDatabase.StartInfo.FileName = PathTo7zip
+                                           extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source"
+                                           extraction7zDatabase.Start()
+                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                           extraction7zDatabase.WaitForExit()
+                                       End If
                                    End If
                                End Sub)
 
