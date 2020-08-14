@@ -326,12 +326,13 @@ Public Class PackageListTools
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
-
+            MessageBox.Show("ManifestVersion: " & ManifestVersion & vbCrLf &
+                            "PackageManifest: " & PackageManifest)
             ' Check if the manifest has the version number we're looking for.
             If PackageManifest = ManifestVersion & ".yaml" Then
                 ' Open and read the manifest ID.
                 If Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath & PackageManifest, "Id") = ManifestId Then
-                    Return ManifestPath & PackageManifest
+                    Return ManifestAppDataFolder & PackageManifest
                 End If
             End If
         Next
