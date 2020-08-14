@@ -110,7 +110,8 @@ Public Class aaformMainWindow
             Next
         Else
             ' We do want to load from the database, so do it.
-
+            Dim SqliteList As String = PackageListTools.GetPackageListFromSqliteDB()
+            Dim SplitSqliteList As String() = SqliteList.Split(CType(",", Char()))
         End If
 
         ' Update the main window now that the list is loaded.
