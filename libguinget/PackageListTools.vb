@@ -84,6 +84,13 @@ Public Class PackageListTools
                 ElseIf SourceUrl.EndsWith(".msix") Then
                     ' If the source url ends with .msix, then it's
                     ' probably the database.
+                    Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                           "\winget-frontends\source\winget-db\temp\source.msix", IO.FileMode.CreateNew)
+                        'MessageBox.Show(OutputStream.ToString)
+
+                        ' Copy out the stream.
+                        Await ClientResponse.Content.CopyToAsync(OutputStream)
+                    End Using
                 End If
 
             Catch ex As System.Net.Http.HttpRequestException
