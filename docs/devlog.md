@@ -61,3 +61,8 @@ That one brings in the `version` column from the `manifest` and `versions` table
 
 Screenshot for comparison, although the index I'm using is a few months old:
 ![](images/potential-breakthrough-in-understanding-the-source-index.png?raw=true)
+
+You can use this command to get names, versions, and ids all at once:
+```sqlite
+select distinct ids.id, manifest.id, versions.version, manifest.version, names.name, manifest.name from ids, manifest, versions, names where manifest.id = ids._rowid_ and manifest.version = versions._rowid_ and manifest.name = names._rowid_ order by ids.id;
+```
