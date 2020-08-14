@@ -157,11 +157,13 @@ Public Class PackageListTools
                 ' ever multiple sources supported.
                 If Not IO.Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                            "\winget-frontends\source\winget-db\temp\") Then
+                    ' Doesn't exist; create it.
                     Await Task.Run(Sub()
                                        System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                            "\winget-frontends\source\winget-db\temp\")
                                    End Sub)
                 End If
+                ' Now download.
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
                                              "winget-db")
             End If
@@ -185,12 +187,13 @@ Public Class PackageListTools
                 Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                            "\winget-frontends\source\winget-db\temp\"
                 If IO.Directory.Exists(DatabaseTempDir) Then
+                    ' Exists; re-create it.
                     Await Task.Run(Sub()
                                        System.IO.Directory.Delete(DatabaseTempDir, True)
                                        System.IO.Directory.CreateDirectory(DatabaseTempDir)
                                    End Sub)
                 End If
-
+                ' Now download.
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
                                              "winget-db")
             End If
