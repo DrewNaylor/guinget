@@ -121,6 +121,12 @@ Public Class aaformMainWindow
                 ' Update the statusbar to show the current info.
                 aaformMainWindow.statusbarMainWindow.Update()
             Next
+
+            ' Now we need to load the manifests and the descriptions.
+            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+                ' Find the manifest and get its description.
+
+            Next
         End If
 
         ' Update the main window now that the list is loaded.
