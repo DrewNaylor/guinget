@@ -313,7 +313,7 @@ Public Class PackageListTools
         Return ManifestPath
     End Function
 
-    Public Shared Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String)
+    Public Shared Async Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String) As Task(Of String)
         ' We'll look through the manifests in the cache, and if there's a version number match,
         ' we'll open it and check the ID. If it's a match, we'll return the path.
         ' This path will eventually be used in the manifest path column in the main window,
@@ -330,16 +330,11 @@ Public Class PackageListTools
             ' Check if the manifest has the version number we're looking for.
             If PackageManifest = ManifestVersion & ".yaml" Then
                 ' Open and read the manifest ID.
-                If PackageTools.GetPackageInfoFromYamlAsync(ManifestPath & PackageManifest, "Id") = ManifestId Then
+                If Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath & PackageManifest, "Id") = ManifestId Then
                     Return ManifestPath & PackageManifest
                 End If
             End If
-                ' Append the current package manifest's path to the ManifestPath string.
-                ' Using a question mark since it's not allowed in path names.
-                ManifestPath = ManifestPath & PackageManifest & "?"
         Next
-
-        Return ManifestPath
     End Function
 
 End Class
