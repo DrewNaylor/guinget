@@ -136,7 +136,7 @@ Public Class PackageListTools
 
         ' Specify the database folder.
         Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                           "\winget-frontends\source\winget-db\temp\"
+                                           "\winget-frontends\source\winget-db\temp"
 
         If Not System.IO.Directory.Exists(tempDir) Then
             ' If it doesn't exist, create it.
