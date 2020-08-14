@@ -363,8 +363,8 @@ Public Class PackageListTools
                                                ' It might not exist if the user is running guinget offline,
                                                ' in which case the database cache will just be loaded from
                                                ' disk and won't be updated.
-                                               If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
-                                                   System.IO.Directory.Delete(ManifestDir, True)
+                                               If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
+                                                   System.IO.Directory.Delete(DatabaseDir, True)
                                                End If
 
                                                My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
