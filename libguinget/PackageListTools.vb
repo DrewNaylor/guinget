@@ -104,7 +104,8 @@ Public Class PackageListTools
 
     Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
                                                       Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
-                                                      Optional UseRobocopy As Boolean = False) As Task
+                                                      Optional UseRobocopy As Boolean = False,
+                                                      Optional UpdateDatabase As Boolean = False) As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
@@ -129,6 +130,12 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
+
+            ' Update the database if the user wants to.
+            If UpdateDatabase = True Then
+                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                             "Microsoft/winget-pkgs")
+            End If
         Else
             ' Otherwise, re-create it.
             Await Task.Run(Sub()
@@ -141,6 +148,12 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
+
+            ' Update the database if the user wants to.
+            If UpdateDatabase = True Then
+                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
+                                             "Microsoft/winget-pkgs")
+            End If
         End If
 
         ' Trying to use this code to display progress as
