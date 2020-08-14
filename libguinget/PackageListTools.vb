@@ -501,7 +501,8 @@ Public Class PackageListTools
 
         ' Specify winget package list database file we want
         ' to read from.
-        Dim PackageListPath As String = "Data Source=""C:\Users\drewn\Desktop\source_8-13-2020\Public\index.db"""
+        Dim PackageListPath As String = "Data Source=" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                       "\winget-frontends\source\winget-db\source\Public\index.db"
         Dim SqlConnection As New SqliteConnection(PackageListPath)
         Dim SqlCommand As New SqliteCommand(SqlConnection.ToString)
         Dim SqlDataReader As SqliteDataReader
