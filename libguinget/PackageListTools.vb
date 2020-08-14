@@ -71,13 +71,16 @@ Public Class PackageListTools
                 Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
                 ' Set up the filestream we'll write to.
-                Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                ' We need to check if the path ends with .zip or .msix.
+                If SourceUrl.EndsWith(".zip") Then
+                    Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                            "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
-                    'MessageBox.Show(OutputStream.ToString)
+                        'MessageBox.Show(OutputStream.ToString)
 
-                    ' Copy out the stream.
-                    Await ClientResponse.Content.CopyToAsync(OutputStream)
-                End Using
+                        ' Copy out the stream.
+                        Await ClientResponse.Content.CopyToAsync(OutputStream)
+                    End Using
+                End If
 
             Catch ex As System.Net.Http.HttpRequestException
                 ' Temporary, basic error handler in case we can't find
