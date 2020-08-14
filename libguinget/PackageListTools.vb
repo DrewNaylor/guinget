@@ -268,8 +268,14 @@ Public Class PackageListTools
 
                                                My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
                                            Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests",
+                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
+                                                               "Please close any Explorer windows that may be open in this directory, and try again.",
                                                "Copying manifests")
+                                           Catch ex As System.IO.IOException
+                                               MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                                               vbCrLf &
+                                                               "Details:" & vbCrLf &
+                                                               ex.Message, "Copying manifests")
                                            End Try
 
                                        Else
@@ -348,7 +354,7 @@ Public Class PackageListTools
 
                 ' Check if the manifest has the version number we're looking for.
                 If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
-                    Debug.WriteLine("Hit")
+                    'Debug.WriteLine("Hit")
                     ' Open and read the manifest ID.
                     Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
                     'MessageBox.Show(LocalId)
