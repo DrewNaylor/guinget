@@ -147,12 +147,12 @@ Public Class PackageListTools
             ' This is copied here so it doesn't crash
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                             "Microsoft/winget-pkgs")
+                                             "Microsoft\winget-pkgs", ".zip")
 
             ' If the user wants to use the database, download that, too.
             If LoadFromDatabase = True Then
                 Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
-                                             "winget")
+                                             "winget", ".msix")
             End If
         End If
 
