@@ -149,6 +149,18 @@ Namespace My
                 Me("ShowSidebar") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property LoadFromSqliteDb() As Boolean
+            Get
+                Return CType(Me("LoadFromSqliteDb"),Boolean)
+            End Get
+            Set
+                Me("LoadFromSqliteDb") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
