@@ -122,10 +122,17 @@ Public Class aaformMainWindow
                 aaformMainWindow.statusbarMainWindow.Update()
             Next
 
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+
             ' Now we need to load the manifests and the descriptions.
             For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Find the manifest and get its description.
+                Await LoadManifestPaths
 
+                ' Make the progress bar progress.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                ' Update the statusbar to show the current info.
+                aaformMainWindow.statusbarMainWindow.Update()
             Next
         End If
 
@@ -160,6 +167,10 @@ Public Class aaformMainWindow
 
         ' We're done updating the package list, so call the post-update sub.
         PackageListPostUpdate()
+
+    End Function
+
+    Friend Shared Async Function LoadManifestPaths() As Task
 
     End Function
 
