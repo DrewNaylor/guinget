@@ -110,10 +110,9 @@ Public Class aaformMainWindow
             Next
         Else
             ' We do want to load from the database, so do it.
-            Dim SqliteList As String = PackageListTools.GetPackageListFromSqliteDB()
-            Dim SplitSqliteList As String() = SqliteList.Split(CType(",", Char()))
-            For Each PackageId As String In SplitSqliteList
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageId, "Loading...", "Loading...", "Loading...", "C:\Users\drewn\AppData\Roaming\winget-frontends\source\winget-pkgs\pkglist\manifests\DrewNaylor\guinget\0.1.1.yaml")
+            Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
+            For Each PackageRow As DataRow In SqliteList.Rows
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), "Loading...", "C:\Users\drewn\AppData\Roaming\winget-frontends\source\winget-pkgs\pkglist\manifests\DrewNaylor\guinget\0.1.1.yaml")
 
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
