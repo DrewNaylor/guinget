@@ -245,6 +245,14 @@ Public Class PackageListTools
 
                                        Try
                                            If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+                                               ' We should display text on the progress form, so
+                                               ' people know what's going on.
+                                               progressform.labelSourceLocation.Text = "Extracting file: " & tempDir & "\winget-pkgs-master.zip"
+                                               progressform.labelSourceName.Text = "Source name: Microsoft/winget-pkgs"
+                                               ' Show the labels again, too.
+                                               progressform.labelSourceName.Show()
+                                               progressform.labelSourceLocation.Show()
+                                               ' Now extract.
                                                ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
                                            End If
                                        Catch ex As System.IO.FileNotFoundException
@@ -262,14 +270,7 @@ Public Class PackageListTools
 
                                        Try
                                            If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
-                                               ' We should display text on the progress form, so
-                                               ' people know what's going on.
-                                               progressform.labelSourceLocation.Text = "Extracting file: " & tempDir & "\winget-pkgs-master.zip"
-                                               progressform.labelSourceName.Text = "Source name: Microsoft/winget-pkgs"
-                                               ' Show the labels again, too.
-                                               progressform.labelSourceName.Show()
-                                               progressform.labelSourceLocation.Show()
-                                               ' Now extract.
+
                                                ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
                                            End If
                                        Catch ex As System.IO.FileNotFoundException
