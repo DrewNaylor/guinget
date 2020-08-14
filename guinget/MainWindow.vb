@@ -187,6 +187,7 @@ Public Class aaformMainWindow
                 ' Find the manifest and get its description.
                 PackageRow.Cells.Item(6).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
 
+                PackageRow.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(6).Value.ToString, "Description")
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
                 ' Update the statusbar to show the current info.
