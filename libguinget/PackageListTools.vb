@@ -318,6 +318,28 @@ Public Class PackageListTools
         ' we'll open it and check the ID. If it's a match, we'll return the path.
         ' This path will eventually be used in the manifest path column in the main window,
         ' but for now we just need a messagebox to display it.
+        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+
+        ' Define a variable so we can store the manifest path.
+        Dim ManifestPath As String = String.Empty
+
+        ' Take the Id string for each package file and append it to the
+        ' package list array variable.
+        For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
+
+            ' Check if the manifest has the version number we're looking for.
+            If PackageManifest = ManifestVersion & ".yaml" Then
+                ' Open and read the manifest ID.
+                If PackageTools.GetPackageInfoFromYamlAsync(ManifestPath & PackageManifest, "Id") = ManifestId Then
+                    Return ManifestPath & PackageManifest
+                End If
+            End If
+                ' Append the current package manifest's path to the ManifestPath string.
+                ' Using a question mark since it's not allowed in path names.
+                ManifestPath = ManifestPath & PackageManifest & "?"
+        Next
+
+        Return ManifestPath
     End Function
 
 End Class
