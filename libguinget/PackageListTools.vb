@@ -133,8 +133,8 @@ Public Class PackageListTools
 
             ' Update the database if the user wants to.
             If UpdateDatabase = True Then
-                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                             "Microsoft/winget-pkgs")
+                Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
+                                             "winget-db")
             End If
         Else
             ' Otherwise, re-create it.
@@ -151,8 +151,8 @@ Public Class PackageListTools
 
             ' Update the database if the user wants to.
             If UpdateDatabase = True Then
-                Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
-                                             "Microsoft/winget-pkgs")
+                Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
+                                             "winget-db")
             End If
         End If
 
