@@ -367,7 +367,7 @@ Public Class PackageListTools
                                                    System.IO.Directory.Delete(DatabaseDir, True)
                                                End If
 
-                                               My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                                               My.Computer.FileSystem.CopyDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
                                            Catch ex As System.IO.DirectoryNotFoundException
                                                MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
