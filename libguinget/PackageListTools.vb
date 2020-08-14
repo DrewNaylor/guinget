@@ -219,7 +219,7 @@ Public Class PackageListTools
                                        "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
             Dim DatabaseDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                       "\winget-frontends\source\winget-db"
+                                       "\winget-frontends\source\winget-db\source\Public"
 
             ' We can now extract the manifests.
 
