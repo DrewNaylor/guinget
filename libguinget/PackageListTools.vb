@@ -346,7 +346,10 @@ Public Class PackageListTools
         ' https://stackoverflow.com/q/19553165
 
         'Value to search as SQL Query - return first match
-        Dim SqlQuery As String = "Select distinct id FROM ids;"
+        Dim SqlQuery As String = "select distinct ids.id, manifest.id, versions.version," &
+            " manifest.version, names.name, manifest.name from ids, manifest, versions," &
+            " names where manifest.id = ids._rowid_ and manifest.version = versions._rowid_ " &
+            " and manifest.name = names._rowid_ order by ids.id;"
 
         ' Specify winget package list database file we want
         ' to read from.
