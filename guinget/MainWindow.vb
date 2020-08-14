@@ -733,6 +733,10 @@ Public Class aaformMainWindow
         Dim ManifestPath As String = Await PackageListTools.FindManifestByVersionAndId(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString,
                               datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString)
         MessageBox.Show(ManifestPath)
+        ' Now we can copy the description into the details box, since we have the path.
+        ' This is just an example of what can be done here, so we'll comment it out for now.
+        'Dim Description As String = Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath, "Description")
+        'textboxPackageDetails.Text = Description
     End Sub
 
 

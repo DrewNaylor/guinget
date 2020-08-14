@@ -331,7 +331,7 @@ Public Class PackageListTools
             If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
                 ' Open and read the manifest ID.
                 Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
-                MessageBox.Show(LocalId)
+                'MessageBox.Show(LocalId)
                 If LocalId = ManifestId Then
                     Return PackageManifest
                 End If
