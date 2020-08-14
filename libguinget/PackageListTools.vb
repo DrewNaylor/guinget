@@ -366,7 +366,7 @@ Public Class PackageListTools
 
 
         ' Store the package name list in an array.
-        Dim packageArray As String = String.Empty
+        Dim packageArray As DataTable = New DataTable
 
         ' Get data from the name column based on this MSDN page:
         ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
@@ -376,7 +376,9 @@ Public Class PackageListTools
                 ' While reading the SQL db file, append the package name we're
                 ' looking at with the current package and add a comma
                 ' for separation.
-                packageArray = packageArray & SqlDataReader.GetString(0) & ","
+
+                ' Column 0 is ID, 4 is Name, and 2 is Version.
+                packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2))
             Loop
         End If
 
