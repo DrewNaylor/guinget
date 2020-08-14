@@ -369,7 +369,7 @@ Public Class PackageListTools
 
                                                My.Computer.FileSystem.CopyDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
                                            Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
+                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
                                                "Copying manifests")
                                            Catch ex As System.IO.IOException
