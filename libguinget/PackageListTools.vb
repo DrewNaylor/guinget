@@ -366,7 +366,14 @@ Public Class PackageListTools
 
 
         ' Store the package name list in an array.
-        Dim packageArray As DataTable = New DataTable
+        Dim packageArray As New DataTable
+
+        ' Create columns for storing data.
+        ' Based on this answer here:
+        ' https://stackoverflow.com/a/2350647
+        packageArray.Columns.Add("PackageId", GetType(String))
+        packageArray.Columns.Add("PackageName", GetType(String))
+        packageArray.Columns.Add("PackageVersion", GetType(String))
 
         ' Get data from the name column based on this MSDN page:
         ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
