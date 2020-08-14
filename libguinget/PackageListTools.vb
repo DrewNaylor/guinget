@@ -134,6 +134,10 @@ Public Class PackageListTools
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
 
+        ' Specify the database folder.
+        Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                           "\winget-frontends\source\winget-db\temp\"
+
         If Not System.IO.Directory.Exists(tempDir) Then
             ' If it doesn't exist, create it.
             Await Task.Run(Sub()
@@ -155,12 +159,10 @@ Public Class PackageListTools
                 ' but this one doesn't.
                 ' Will make it easier to update as well, if there are
                 ' ever multiple sources supported.
-                If Not IO.Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                           "\winget-frontends\source\winget-db\temp\") Then
+                If Not IO.Directory.Exists(DatabaseTempDir) Then
                     ' Doesn't exist; create it.
                     Await Task.Run(Sub()
-                                       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                           "\winget-frontends\source\winget-db\temp\")
+                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
                                    End Sub)
                 End If
                 ' Now download.
@@ -184,8 +186,6 @@ Public Class PackageListTools
             If UpdateDatabase = True Then
                 ' Check if the directory exists for the database as well,
                 ' if necessary.
-                Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
-                                           "\winget-frontends\source\winget-db\temp\"
                 If IO.Directory.Exists(DatabaseTempDir) Then
                     ' Exists; re-create it.
                     Await Task.Run(Sub()
@@ -242,6 +242,23 @@ Public Class PackageListTools
                                        ' 1 minute 40 seconds to about 1 minute 4 seconds.
 
                                        ' Check if the zip file exists before extracting it.
+
+                                       Try
+                                           If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+                                               ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
+                                           End If
+                                       Catch ex As System.IO.FileNotFoundException
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
+                                           "Extracting manifests")
+                                       Catch ex As System.IO.DirectoryNotFoundException
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master",
+                                           "Extracting manifests")
+                                       Catch ex As System.IO.InvalidDataException
+                                           MessageBox.Show("We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                                           vbCrLf & "Details:" & vbCrLf &
+                                           ex.GetType.ToString & ": " & ex.Message,
+                                           "Extracting manifests")
+                                       End Try
 
                                        Try
                                            If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
