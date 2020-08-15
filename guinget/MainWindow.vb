@@ -166,9 +166,6 @@ Public Class aaformMainWindow
         'aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         'aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
-        ' We're waiting until the loading is done so it finishes faster.
-        aaformMainWindow.datagridviewPackageList.Visible = True
-
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
@@ -194,6 +191,9 @@ Public Class aaformMainWindow
                 aaformMainWindow.Update()
             Next
         End If
+
+        ' We're waiting until the loading is done so it finishes faster.
+        aaformMainWindow.datagridviewPackageList.Visible = True
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
