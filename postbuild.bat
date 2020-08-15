@@ -3,10 +3,10 @@ REM Moves libraries into their own folder.
 
 REM Check if lib folder exists first.
 IF EXIST guinget\bin\Debug\lib\ (
-rmdir /s /q lib
+rmdir /s /q guinget\bin\Debug\lib
 GOTO STARTMOVE
 ) ELSE (
-mkdir lib
+mkdir guinget\bin\Debug\lib
 GOTO STARTMOVE
 )
 
