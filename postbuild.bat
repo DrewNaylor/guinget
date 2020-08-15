@@ -20,5 +20,8 @@ GOTO STARTMOVE
 REM Move all DLL files in the bin\Debug directory into the "lib" folder.
 move guinget\bin\Debug\*.dll guinget\bin\Debug\lib\
 
+REM Move the "runtimes" folder into \lib.
+move guinget\bin\Debug\runtimes\* guinget\bin\Debug\lib\runtimes
+
 REM Exit the script so VS doesn't say we exited with code 1.
 exit
