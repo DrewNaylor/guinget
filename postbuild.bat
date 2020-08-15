@@ -1,8 +1,8 @@
-@echo off
+REM @echo off
 REM Moves libraries into their own folder.
 
 REM Check if lib folder exists first.
-IF EXIST lib\ (
+IF EXIST guinget\bin\Debug\lib\ (
 rmdir /s /q lib
 GOTO STARTMOVE
 ) ELSE (
@@ -12,4 +12,4 @@ GOTO STARTMOVE
 
 :STARTMOVE
 
-move *.dll lib\
+move guinget\bin\Debug\*.dll guinget\bin\Debug\lib\
