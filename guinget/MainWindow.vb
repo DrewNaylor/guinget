@@ -95,17 +95,33 @@ Public Class aaformMainWindow
             Exit Function
         End If
 
-        ' Go through everything in the manifest paths array until it's out.
-        For i As Integer = 0 To ManifestPaths.Count - 2
+        ' Go through everything in the manifest paths array until it's out if
+        ' we don't want to load from a database.
+        If My.Settings.LoadFromSqliteDb = False Then
+            For i As Integer = 0 To ManifestPaths.Count - 2
 
-            ' Read the file into the manifest column and make a new row with it.
-            aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
+                ' Read the file into the manifest column and make a new row with it.
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Loading...", ManifestPaths(i))
 
-            ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
-            ' Update the statusbar to show the current info.
-            aaformMainWindow.statusbarMainWindow.Update()
-        Next
+                ' Make the progress bar progress.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
+                ' Update the statusbar to show the current info.
+                aaformMainWindow.statusbarMainWindow.Update()
+            Next
+        Else
+            ' We do want to load from the database, so do it.
+            Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
+            'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
+            'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
+            For Each PackageRow As DataRow In SqliteList.Rows
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), "Loading...", "Loading...")
+
+                ' Make the progress bar progress.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                ' Update the statusbar to show the current info.
+                aaformMainWindow.statusbarMainWindow.Update()
+            Next
+        End If
 
         ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
@@ -120,26 +136,28 @@ Public Class aaformMainWindow
         aaformMainWindow.Update()
 
         ' Now we load the details for each row.
-        For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            ' Load package ID column.
-            Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Id")
-            ' Load package name column.
-            Row.Cells.Item(3).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Name")
-            ' Load package version column.
-            Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Version")
-            ' Load package description column.
-            Row.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Description")
-            ' Update the progressbar so it doesn't look frozen.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
-            aaformMainWindow.statusbarMainWindow.Update()
-        Next
+        If My.Settings.LoadFromSqliteDb = False Then
+            For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+                ' Load package ID column.
+                Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Id")
+                ' Load package name column.
+                Row.Cells.Item(3).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Name")
+                ' Load package version column.
+                Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Version")
+                ' Load package description column.
+                Row.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(6).Value.ToString, "Description")
+                ' Update the progressbar so it doesn't look frozen.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
+                aaformMainWindow.statusbarMainWindow.Update()
+            Next
+        End If
 
         ' We're done updating the package list, so call the post-update sub.
         PackageListPostUpdate()
 
     End Function
 
-    Private Shared Sub PackageListPostUpdate()
+    Friend Shared Async Sub PackageListPostUpdate()
 
         ' Show the package list again.
 
@@ -148,11 +166,34 @@ Public Class aaformMainWindow
         'aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         'aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
-        ' We're waiting until the loading is done so it finishes faster.
-        aaformMainWindow.datagridviewPackageList.Visible = True
+        ' Reset progress bar to 0.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
         ' Update the main window again.
         aaformMainWindow.Update()
+
+        ' In case there are manifests we can't find easily,
+        ' we need to get them now.
+        ' These have to be grabbed now or else updating the manifests
+        ' will crash when the path doesn't exist.
+        If My.Settings.LoadFromSqliteDb = True Then
+            PackageListTools.FallbackPathList = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
+
+            ' Now we need to load the manifests and the descriptions.
+            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+                ' Find the manifest and get its description.
+                PackageRow.Cells.Item(6).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
+
+                PackageRow.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(6).Value.ToString, "Description")
+                ' Make the progress bar progress.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                ' Update the statusbar to show the current info.
+                aaformMainWindow.Update()
+            Next
+        End If
+
+        ' We're waiting until the loading is done so it finishes faster.
+        aaformMainWindow.datagridviewPackageList.Visible = True
 
         ' Hide the loading label and progress bar as well as the
         ' fake splitter label.
@@ -302,7 +343,7 @@ Public Class aaformMainWindow
 
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected.
-        If datagridviewPackageList.SelectedRows.Count = 1 Then
+        If datagridviewPackageList.SelectedRows.Count = 1 AndAlso IO.File.Exists(datagridviewPackageList.SelectedRows.Item(0).Cells(6).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
@@ -366,7 +407,7 @@ Public Class aaformMainWindow
     Friend Shared Async Function UpdatePackageListBuiltinAsync() As Task
 
         ' First, we need to download and update the manifests.
-        Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying)
+        Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying, My.Settings.LoadFromSqliteDb)
 
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
         Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
@@ -726,6 +767,17 @@ Public Class aaformMainWindow
         My.Settings.ShowSidebar = False
         My.Settings.Save()
         My.Settings.Reload()
+    End Sub
+
+    Private Async Sub FindManifestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FindManifestToolStripMenuItem.Click
+        ' Send the currently-selected ID and version to the manifest finder.
+        Dim ManifestPath As String = Await PackageListTools.FindManifestByVersionAndId(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString,
+                              datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString)
+        MessageBox.Show(ManifestPath)
+        ' Now we can copy the description into the details box, since we have the path.
+        ' This is just an example of what can be done here, so we'll comment it out for now.
+        'Dim Description As String = Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath, "Description")
+        'textboxPackageDetails.Text = Description
     End Sub
 
 

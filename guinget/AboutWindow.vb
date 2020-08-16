@@ -47,13 +47,17 @@ Public Class AboutWindow
                         vbCrLf &
                         "libguinget is used for things like loading the package list and uses the Apache License 2.0." & vbCrLf &
                         vbCrLf &
+                        "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the Apache License 2.0. " &
+                        "NuGet page for Microsoft.Data.Sqlite:" & vbCrLf &
+                        "https://www.nuget.org/packages/Microsoft.Data.Sqlite/" & vbCrLf &
+                        vbCrLf &
                         "YamlDotNet is used to read manifests, which you can get the source code for here:" & vbCrLf &
                         "https://github.com/aaubry/YamlDotNet" & vbCrLf &
                         "YamlDotNet falls under the MIT license, which you can read a copy of below the Apache License summary." & vbCrLf &
                         vbCrLf &
                         My.Resources.AboutSeparator & vbCrLf &
                         vbCrLf &
-                        "Apache License 2.0 summary as it applies to guinget and libguinget:" & vbCrLf &
+                        "Apache License 2.0 summary as it applies to guinget, libguinget, and Microsoft.Data.Sqlite:" & vbCrLf &
                         "Licensed under the Apache License, Version 2.0 (the ""License"");" & vbCrLf &
 "you may not use this file except in compliance with the License." & vbCrLf &
 "You may obtain a copy of the License at" & vbCrLf &

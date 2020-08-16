@@ -46,6 +46,7 @@ Partial Class aaformMainWindow
         Me.AdvancedSearchMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FindManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
@@ -240,7 +241,7 @@ Partial Class aaformMainWindow
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem, Me.FindManifestToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -248,8 +249,14 @@ Partial Class aaformMainWindow
         'VerifyManifestToolStripMenuItem
         '
         Me.VerifyManifestToolStripMenuItem.Name = "VerifyManifestToolStripMenuItem"
-        Me.VerifyManifestToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.VerifyManifestToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.VerifyManifestToolStripMenuItem.Text = "&Verify manifest"
+        '
+        'FindManifestToolStripMenuItem
+        '
+        Me.FindManifestToolStripMenuItem.Name = "FindManifestToolStripMenuItem"
+        Me.FindManifestToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.FindManifestToolStripMenuItem.Text = "Find manifest using version and ID..."
         '
         'HelpToolStripMenuItem
         '
@@ -279,8 +286,8 @@ Partial Class aaformMainWindow
         'splitcontainerMainWindow.Panel2
         '
         Me.splitcontainerMainWindow.Panel2.Controls.Add(Me.textboxPackageDetails)
-        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(660, 507)
-        Me.splitcontainerMainWindow.SplitterDistance = 341
+        Me.splitcontainerMainWindow.Size = New System.Drawing.Size(661, 507)
+        Me.splitcontainerMainWindow.SplitterDistance = 340
         Me.splitcontainerMainWindow.SplitterWidth = 3
         Me.splitcontainerMainWindow.TabIndex = 4
         '
@@ -292,7 +299,7 @@ Partial Class aaformMainWindow
         Me.panelPackageListHolder.Location = New System.Drawing.Point(0, 0)
         Me.panelPackageListHolder.Margin = New System.Windows.Forms.Padding(2)
         Me.panelPackageListHolder.Name = "panelPackageListHolder"
-        Me.panelPackageListHolder.Size = New System.Drawing.Size(660, 341)
+        Me.panelPackageListHolder.Size = New System.Drawing.Size(661, 340)
         Me.panelPackageListHolder.TabIndex = 2
         '
         'datagridviewPackageList
@@ -339,7 +346,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.RowTemplate.Height = 24
         Me.datagridviewPackageList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridviewPackageList.ShowEditingIcon = False
-        Me.datagridviewPackageList.Size = New System.Drawing.Size(660, 341)
+        Me.datagridviewPackageList.Size = New System.Drawing.Size(661, 340)
         Me.datagridviewPackageList.StandardTab = True
         Me.datagridviewPackageList.TabIndex = 0
         '
@@ -422,7 +429,7 @@ Partial Class aaformMainWindow
         Me.textboxPackageDetails.Name = "textboxPackageDetails"
         Me.textboxPackageDetails.ReadOnly = True
         Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textboxPackageDetails.Size = New System.Drawing.Size(660, 163)
+        Me.textboxPackageDetails.Size = New System.Drawing.Size(661, 164)
         Me.textboxPackageDetails.TabIndex = 1
         Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
         '
@@ -433,7 +440,7 @@ Partial Class aaformMainWindow
         Me.panelMainPkgArea.Location = New System.Drawing.Point(0, 0)
         Me.panelMainPkgArea.Margin = New System.Windows.Forms.Padding(2)
         Me.panelMainPkgArea.Name = "panelMainPkgArea"
-        Me.panelMainPkgArea.Size = New System.Drawing.Size(660, 507)
+        Me.panelMainPkgArea.Size = New System.Drawing.Size(661, 507)
         Me.panelMainPkgArea.TabIndex = 2
         '
         'toolstripMainWindow
@@ -534,7 +541,7 @@ Partial Class aaformMainWindow
         '
         Me.splitcontainerSidebarAndPkgList.Panel2.Controls.Add(Me.panelMainPkgArea)
         Me.splitcontainerSidebarAndPkgList.Size = New System.Drawing.Size(884, 507)
-        Me.splitcontainerSidebarAndPkgList.SplitterDistance = 221
+        Me.splitcontainerSidebarAndPkgList.SplitterDistance = 220
         Me.splitcontainerSidebarAndPkgList.SplitterWidth = 3
         Me.splitcontainerSidebarAndPkgList.TabIndex = 5
         '
@@ -547,7 +554,7 @@ Partial Class aaformMainWindow
         Me.panelSidebarHolder.Location = New System.Drawing.Point(0, 0)
         Me.panelSidebarHolder.Margin = New System.Windows.Forms.Padding(2)
         Me.panelSidebarHolder.Name = "panelSidebarHolder"
-        Me.panelSidebarHolder.Size = New System.Drawing.Size(221, 507)
+        Me.panelSidebarHolder.Size = New System.Drawing.Size(220, 507)
         Me.panelSidebarHolder.TabIndex = 0
         '
         'buttonCloseSidebar
@@ -555,7 +562,7 @@ Partial Class aaformMainWindow
         Me.buttonCloseSidebar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonCloseSidebar.AutoSize = True
         Me.buttonCloseSidebar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.buttonCloseSidebar.Location = New System.Drawing.Point(190, 3)
+        Me.buttonCloseSidebar.Location = New System.Drawing.Point(189, 3)
         Me.buttonCloseSidebar.Name = "buttonCloseSidebar"
         Me.buttonCloseSidebar.Size = New System.Drawing.Size(24, 23)
         Me.buttonCloseSidebar.TabIndex = 4
@@ -571,7 +578,7 @@ Partial Class aaformMainWindow
         Me.comboboxSidebarTabSelector.Items.AddRange(New Object() {"Search terms"})
         Me.comboboxSidebarTabSelector.Location = New System.Drawing.Point(8, 3)
         Me.comboboxSidebarTabSelector.Name = "comboboxSidebarTabSelector"
-        Me.comboboxSidebarTabSelector.Size = New System.Drawing.Size(176, 21)
+        Me.comboboxSidebarTabSelector.Size = New System.Drawing.Size(175, 21)
         Me.comboboxSidebarTabSelector.TabIndex = 3
         '
         'tabcontrolSidebar
@@ -591,7 +598,7 @@ Partial Class aaformMainWindow
         Me.tabcontrolSidebar.Margin = New System.Windows.Forms.Padding(2)
         Me.tabcontrolSidebar.Name = "tabcontrolSidebar"
         Me.tabcontrolSidebar.SelectedIndex = 0
-        Me.tabcontrolSidebar.Size = New System.Drawing.Size(214, 479)
+        Me.tabcontrolSidebar.Size = New System.Drawing.Size(213, 479)
         Me.tabcontrolSidebar.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabcontrolSidebar.TabIndex = 2
         '
@@ -601,7 +608,7 @@ Partial Class aaformMainWindow
         Me.tabpageSearchTerms.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearchTerms.Name = "tabpageSearchTerms"
-        Me.tabpageSearchTerms.Size = New System.Drawing.Size(206, 470)
+        Me.tabpageSearchTerms.Size = New System.Drawing.Size(205, 470)
         Me.tabpageSearchTerms.TabIndex = 4
         Me.tabpageSearchTerms.Text = "Search terms"
         Me.tabpageSearchTerms.UseVisualStyleBackColor = True
@@ -616,7 +623,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms.Location = New System.Drawing.Point(0, 0)
         Me.listboxSearchTerms.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSearchTerms.Name = "listboxSearchTerms"
-        Me.listboxSearchTerms.Size = New System.Drawing.Size(206, 470)
+        Me.listboxSearchTerms.Size = New System.Drawing.Size(205, 470)
         Me.listboxSearchTerms.TabIndex = 2
         '
         'contextmenuSearchTerm
@@ -650,7 +657,7 @@ Partial Class aaformMainWindow
         Me.tabpageStatus.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageStatus.Name = "tabpageStatus"
         Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageStatus.Size = New System.Drawing.Size(193, 391)
+        Me.tabpageStatus.Size = New System.Drawing.Size(206, 476)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -664,7 +671,7 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.Location = New System.Drawing.Point(2, 2)
         Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(189, 387)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(202, 472)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
@@ -673,7 +680,7 @@ Partial Class aaformMainWindow
         Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 5)
         Me.tabpageCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(193, 391)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(206, 476)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -687,7 +694,7 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(193, 391)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(206, 476)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'tabpageSections
@@ -697,7 +704,7 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSections.Name = "tabpageSections"
         Me.tabpageSections.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSections.Size = New System.Drawing.Size(193, 391)
+        Me.tabpageSections.Size = New System.Drawing.Size(206, 476)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
@@ -711,7 +718,7 @@ Partial Class aaformMainWindow
         Me.listboxSections.Location = New System.Drawing.Point(2, 2)
         Me.listboxSections.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(189, 387)
+        Me.listboxSections.Size = New System.Drawing.Size(202, 472)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
@@ -720,7 +727,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSource.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(193, 391)
+        Me.tabpageSource.Size = New System.Drawing.Size(206, 476)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -734,7 +741,7 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(193, 391)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(206, 476)
         Me.listboxSourceTab.TabIndex = 1
         '
         'tabpageArchitecture
@@ -743,7 +750,7 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 5)
         Me.tabpageArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(193, 391)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(206, 476)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -757,7 +764,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(193, 391)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(206, 476)
         Me.listboxArchitecture.TabIndex = 1
         '
         'panelMainForm
@@ -927,4 +934,5 @@ Partial Class aaformMainWindow
     Friend WithEvents SearchToolstripButton As ToolStripButton
     Friend WithEvents comboboxSidebarTabSelector As ComboBox
     Friend WithEvents buttonCloseSidebar As Button
+    Friend WithEvents FindManifestToolStripMenuItem As ToolStripMenuItem
 End Class

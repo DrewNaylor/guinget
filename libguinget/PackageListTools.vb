@@ -25,6 +25,7 @@
 
 Imports System.Windows.Forms
 Imports System.IO.Compression
+Imports Microsoft.Data.Sqlite
 
 Public Class PackageListTools
 
@@ -70,13 +71,27 @@ Public Class PackageListTools
                 Dim ClientResponse = Await PkgClient.GetAsync(PkgUri)
 
                 ' Set up the filestream we'll write to.
-                Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                ' We need to check if the path ends with .zip or .msix.
+                If SourceUrl.EndsWith(".zip") Then
+                    Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                            "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
-                    'MessageBox.Show(OutputStream.ToString)
+                        'MessageBox.Show(OutputStream.ToString)
 
-                    ' Copy out the stream.
-                    Await ClientResponse.Content.CopyToAsync(OutputStream)
-                End Using
+                        ' Copy out the stream.
+                        Await ClientResponse.Content.CopyToAsync(OutputStream)
+                    End Using
+
+                ElseIf SourceUrl.EndsWith(".msix") Then
+                    ' If the source url ends with .msix, then it's
+                    ' probably the database.
+                    Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                           "\winget-frontends\source\winget-db\temp\source.msix", IO.FileMode.CreateNew)
+                        'MessageBox.Show(OutputStream.ToString)
+
+                        ' Copy out the stream.
+                        Await ClientResponse.Content.CopyToAsync(OutputStream)
+                    End Using
+                End If
 
             Catch ex As System.Net.Http.HttpRequestException
                 ' Temporary, basic error handler in case we can't find
@@ -103,7 +118,8 @@ Public Class PackageListTools
 
     Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
                                                       Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
-                                                      Optional UseRobocopy As Boolean = False) As Task
+                                                      Optional UseRobocopy As Boolean = False,
+                                                      Optional UpdateDatabase As Boolean = False) As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
@@ -118,6 +134,10 @@ Public Class PackageListTools
         Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
 
+        ' Specify the database folder.
+        Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                           "\winget-frontends\source\winget-db\temp"
+
         If Not System.IO.Directory.Exists(tempDir) Then
             ' If it doesn't exist, create it.
             Await Task.Run(Sub()
@@ -128,6 +148,27 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
+
+            ' Update the database if the user wants to.
+            If UpdateDatabase = True Then
+                ' Check if the directory exists for the database as well,
+                ' if necessary.
+
+                ' TODO: Move the database updating outside this code so
+                ' that it doesn't get confused when the manifest dir exists
+                ' but this one doesn't.
+                ' Will make it easier to update as well, if there are
+                ' ever multiple sources supported.
+                If Not IO.Directory.Exists(DatabaseTempDir) Then
+                    ' Doesn't exist; create it.
+                    Await Task.Run(Sub()
+                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
+                                   End Sub)
+                End If
+                ' Now download.
+                Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
+                                             "winget-db")
+            End If
         Else
             ' Otherwise, re-create it.
             Await Task.Run(Sub()
@@ -140,6 +181,27 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
+
+            ' Update the database if the user wants to.
+            If UpdateDatabase = True Then
+                ' Check if the directory exists for the database as well,
+                ' if necessary.
+                If IO.Directory.Exists(DatabaseTempDir) Then
+                    ' Exists; re-create it.
+                    Await Task.Run(Sub()
+                                       System.IO.Directory.Delete(DatabaseTempDir, True)
+                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
+                                   End Sub)
+                ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
+                    ' Doesn't exist; create it.
+                    Await Task.Run(Sub()
+                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
+                                   End Sub)
+                End If
+                ' Now download.
+                Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
+                                             "winget-db")
+            End If
         End If
 
         ' Trying to use this code to display progress as
@@ -155,6 +217,9 @@ Public Class PackageListTools
             ' We'll wait to delete the old ones until the copying phase.
             Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
                                        "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+
+            Dim DatabaseDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                       "\winget-frontends\source\winget-db\source\Public"
 
             ' We can now extract the manifests.
 
@@ -188,6 +253,7 @@ Public Class PackageListTools
 
                                        Try
                                            If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+                                               ' Now extract.
                                                ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master")
                                            End If
                                        Catch ex As System.IO.FileNotFoundException
@@ -203,14 +269,44 @@ Public Class PackageListTools
                                            "Extracting manifests")
                                        End Try
 
+                                       If UpdateDatabase = True Then
+                                           Try
+                                               If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
+                                                   ' Now extract.
+                                                   ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source")
+                                               End If
+                                           Catch ex As System.IO.FileNotFoundException
+                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
+                                           "Extracting manifests")
+                                           Catch ex As System.IO.DirectoryNotFoundException
+                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
+                                           "Extracting manifests")
+                                           Catch ex As System.IO.InvalidDataException
+                                               MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                                           vbCrLf & "Details:" & vbCrLf &
+                                           ex.GetType.ToString & ": " & ex.Message,
+                                           "Extracting manifests")
+                                           End Try
+                                       End If
                                    Else
-                                       ' The calling app wants to use 7zip, so use it.
-                                       Dim extraction7z As New Process
-                                       extraction7z.StartInfo.FileName = PathTo7zip
-                                       extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master"
-                                       extraction7z.Start()
-                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                       extraction7z.WaitForExit()
+                                           ' The calling app wants to use 7zip, so use it.
+                                           Dim extraction7z As New Process
+                                           extraction7z.StartInfo.FileName = PathTo7zip
+                                           extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master"
+                                           extraction7z.Start()
+                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                           extraction7z.WaitForExit()
+
+                                       If UpdateDatabase = True Then
+                                           ' The calling app wants to use 7zip, so use it.
+                                           ' This is for the database.
+                                           Dim extraction7zDatabase As New Process
+                                           extraction7zDatabase.StartInfo.FileName = PathTo7zip
+                                           extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source"
+                                           extraction7zDatabase.Start()
+                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                           extraction7zDatabase.WaitForExit()
+                                       End If
                                    End If
                                End Sub)
 
@@ -267,9 +363,40 @@ Public Class PackageListTools
 
                                                My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
                                            Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests",
+                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
+                                                               "Please close any Explorer windows that may be open in this directory, and try again.",
                                                "Copying manifests")
+                                           Catch ex As System.IO.IOException
+                                               MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                                               vbCrLf &
+                                                               "Details:" & vbCrLf &
+                                                               ex.Message, "Copying manifests")
                                            End Try
+
+                                           If UpdateDatabase = True Then
+                                               Try
+
+                                                   ' Make sure the database temp folder exists before deleting
+                                                   ' the database dir.
+                                                   ' It might not exist if the user is running guinget offline,
+                                                   ' in which case the database cache will just be loaded from
+                                                   ' disk and won't be updated.
+                                                   If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
+                                                       System.IO.Directory.Delete(DatabaseDir, True)
+                                                   End If
+
+                                                   My.Computer.FileSystem.CopyDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
+                                               Catch ex As System.IO.DirectoryNotFoundException
+                                                   MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
+                                                               "Please close any Explorer windows that may be open in this directory, and try again.",
+                                               "Copying manifests")
+                                               Catch ex As System.IO.IOException
+                                                   MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                                               vbCrLf &
+                                                               "Details:" & vbCrLf &
+                                                               ex.Message, "Copying manifests")
+                                               End Try
+                                           End If
 
                                        Else
 
@@ -281,6 +408,18 @@ Public Class PackageListTools
                                            RobocopyFileCopying.Start()
                                            ' Wait for robocopy to exit, or else it'll move on too soon.
                                            RobocopyFileCopying.WaitForExit()
+
+                                           ' The calling app wants to use Robocopy.
+                                           ' Partially copying code from update-manifests.bat.
+                                           ' Update the database.
+                                           If UpdateDatabase = True Then
+                                               Dim RobocopyFileCopyingDatabaseUpdate As New Process
+                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
+                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
+                                               RobocopyFileCopyingDatabaseUpdate.Start()
+                                               ' Wait for robocopy to exit, or else it'll move on too soon.
+                                               RobocopyFileCopyingDatabaseUpdate.WaitForExit()
+                                           End If
                                        End If
                                    End Sub)
 
@@ -296,6 +435,8 @@ Public Class PackageListTools
 
     Public Shared Function GetManifests() As String
         ' Get and return each manifest in the manifests folder.
+        ' This should only be used after ensuring that there's
+        ' stuff in this folder, or it'll crash.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' Define a variable so we can store the manifest paths.
@@ -311,6 +452,116 @@ Public Class PackageListTools
         Next
 
         Return ManifestPath
+    End Function
+
+    ' This is used as a fallback if we can't figure out where the manifest is by
+    ' just using the package id and version.
+    ' If the folder used here doesn't exist, applications using this
+    ' library will crash, so it has to be set by the calling application before
+    ' being used.
+    Public Shared FallbackPathList() As String
+
+    Public Shared Async Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String) As Task(Of String)
+        ' We'll look through the manifests in the cache, and if there's a version number match,
+        ' we'll open it and check the ID. If it's a match, we'll return the path.
+        ' This path will eventually be used in the manifest path column in the main window,
+        ' but for now we just need a messagebox to display it.
+        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+
+        ' If we can't do a simple replacement on each "." in the ID,
+        ' we'll have to fall back to the slower method.
+        Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
+        Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\").IndexOf(".") & "\" & ManifestVersion & ".yaml"
+        'MessageBox.Show(QuickPathReplace)
+        If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
+            Return QuickPathReplaceReplaceAllPeriods
+
+        ElseIf IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
+            ' If we can't do the fastest one, try only replacing the first period.
+            Return QuickPathReplaceReplaceOnlyFirstPeriod
+
+        Else
+            ' We can't use either of these two methods, so use the fallback one.
+
+            ' Take the Id string for each package file and append it to the
+            ' package list array variable.
+            For Each PackageManifest As String In FallbackPathList
+                'Debug.WriteLine("ManifestAppDataFolder: " & ManifestAppDataFolder & vbCrLf &
+                '"PackageManifest: " & PackageManifest & vbCrLf &
+                '"ManifestVersion: " & ManifestVersion & vbCrLf &
+                '"ManifestId: " & ManifestId)
+
+                ' Check if the manifest has the version number we're looking for.
+                If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
+                    'Debug.WriteLine("Hit")
+                    ' Open and read the manifest ID.
+                    Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
+                    'MessageBox.Show(LocalId)
+                    If LocalId = ManifestId Then
+                        Return PackageManifest
+                    End If
+                End If
+            Next
+        End If
+    End Function
+
+    Public Shared Function GetPackageDetailsTableFromSqliteDB() As DataTable
+        ' Trying to load the package list as shown in this SO
+        ' question that has the solution with it:
+        ' https://stackoverflow.com/q/19553165
+
+        'Value to search as SQL Query - return first match
+        Dim SqlQuery As String = "select distinct ids.id, manifest.id, versions.version," &
+            " manifest.version, names.name, manifest.name from ids, manifest, versions," &
+            " names where manifest.id = ids._rowid_ and manifest.version = versions._rowid_ " &
+            " and manifest.name = names._rowid_ order by ids.id;"
+
+        ' Specify winget package list database file we want
+        ' to read from.
+        Dim PackageListPath As String = "Data Source=" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                                       "\winget-frontends\source\winget-db\source\Public\index.db"
+        Dim SqlConnection As New SqliteConnection(PackageListPath)
+        Dim SqlCommand As New SqliteCommand(SqlConnection.ToString)
+        Dim SqlDataReader As SqliteDataReader
+        ' Open connection to the database file.
+        SqlConnection.Open()
+
+        SqlCommand.Connection = SqlConnection
+        SqlCommand.CommandText = SqlQuery
+        SqlDataReader = SqlCommand.ExecuteReader()
+
+
+        ' Store the package name list in an array.
+        Dim packageArray As New DataTable
+
+        ' Create columns for storing data.
+        ' Based on this answer here:
+        ' https://stackoverflow.com/a/2350647
+        packageArray.Columns.Add("PackageId", GetType(String))
+        packageArray.Columns.Add("PackageName", GetType(String))
+        packageArray.Columns.Add("PackageVersion", GetType(String))
+
+        ' Get data from the name column based on this MSDN page:
+        ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
+        If SqlDataReader.HasRows Then
+            ' If the SQL data reader has rows, then read it.
+            Do While SqlDataReader.Read
+                ' While reading the SQL db file, append the package name we're
+                ' looking at with the current package and add a comma
+                ' for separation.
+
+                ' Column 0 is ID, 4 is Name, and 2 is Version.
+                packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2))
+            Loop
+        End If
+
+
+        'End the connection
+        SqlDataReader.Close()
+        SqlConnection.Close()
+
+        ' Return the list of packages.
+        Return packageArray
     End Function
 
 End Class
