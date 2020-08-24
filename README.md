@@ -30,19 +30,17 @@ The [system requirements](https://github.com/DrewNaylor/guinget/blob/master/docs
 
 ## Screenshots
 
-The ones below are currently rather outdated, so new ones of version 0.1.1 will need to be taken.
-
-Pre-alpha 1 screenshot:
-![](/docs/images/screenshot-pre-alpha-1.png?raw=true)
+Version 0.1.1 screenshot:
+![](/docs/images/screenshot-0.1.1.png?raw=true)
 
 Packages displayed here are loaded from a package list cache stored in `%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests`, which is downloaded from `Microsoft\winget-pkgs` on GitHub. The `Refresh cache` button on the toolbar is the primary way to update these manifests. `update-manifests.bat` was the old way to do it, but it's deprecated and may be removed at any time.
 
-Loading these YAML files takes a bit at the moment, as it's not async. I'd like to make it async, but for now this is good enough. Besides, there's a progress bar and progress label at the bottom and a label that says "please wait", so it's not like the window shows nothing while it loads. One issue is the window can't be moved around while it loads, which is something async loading would fix. Something that's ended up making it faster is just loading details directly from the YAML files, bypassing `winget show -e` entirely.
+Loading these YAML files takes a bit at the moment, as it's not async. I'd like to make it async, but for now this is good enough. Besides, there's a progress bar and progress label at the bottom and a label that says "please wait", so it's not like the window shows nothing while it loads. One issue is the window can't be moved around while it loads, which is something async loading would fix.
 
 Here's what it looks like when loading the package list:
-![](/docs/images/screenshot-loading-progress-pre-alpha-1.png?raw=true)
+![](/docs/images/screenshot-loading-progress-0.1.1.png?raw=true)
 
-The data grid view that's used for the package list is hidden while loading so that things go faster, but it's shown again once all the rows are added and before the package details are filled to make it look like things are going faster. If the data grid view were still visible, it would show all the rows as they're added and slow things down until rows that aren't on screen are being added, at which point it would speed up a lot.
+The data grid view that's used for the package list is hidden while loading so that things go faster. If the data grid view were still visible, it would show all the rows as they're added and slow things down until rows that aren't on screen are being added, at which point it would speed up a lot.
 
 Currently, the `Status` column cells just have arbitrary data for now; guinget doesn't check to see if an app is installed or not yet. Package details in the textbox at the bottom are loaded directly from the YAML files.
 
