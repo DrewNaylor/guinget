@@ -50,6 +50,7 @@ Currently, the `Status` column cells just have arbitrary data for now; guinget d
 By default, controls that don't have features implemented yet are hidden, but you can show them if you want to and this is what it looks like when you do so:
 ![](/docs/images/screenshot-hidden-controls-shown.png?raw=true)
 
+### More screenshots
 More screenshots available in the [devlog archive](./docs/devlog.md). This document has a few things similar to the readme, but organized more by date and what I tried to do/did do around each time.
 
 ## TODO
