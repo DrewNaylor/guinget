@@ -4,15 +4,16 @@ Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Syna
 Not associated with Microsoft, and Microsoft does not endorse guinget.
 Not associated with the Synaptic project, either.
 
-**NB:**
-If you installed winget in a regular user account, you may need to re-install it in an account with Admin permissions before installing guinget or any other packages that use Inno Setup installers. Be sure to update winget's sources before logging off the Admin account and back into your regular account, or winget's sources cache may claim it's corrupted when trying to use it in an Admin command prompt in your regular account.
+~~**NB:**
+If you installed winget in a regular user account, you may need to re-install it in an account with Admin permissions before installing guinget or any other packages that use Inno Setup installers. Be sure to update winget's sources before logging off the Admin account and back into your regular account, or winget's sources cache may claim it's corrupted when trying to use it in an Admin command prompt in your regular account.~~
+This may no longer be necessary, at least on the latest update for Windows 10 1903. The purpose for this text was to say that winget doesn't properly elevate Inno Setup installers so you'd have to install them from an elevated CMD, but it seems to do just fine now.
 
 ## Project Info
 
 Master branch build status:<br>
 [![Master branch build status](https://ci.appveyor.com/api/projects/status/ec0r3vwr0wmvtc23/branch/master?svg=true)](https://ci.appveyor.com/project/DrewNaylor/guinget/branch/master)
 
-Visual Studio 2019 Community is being used for this project's development, and .Net Framework 4.6.1 or greater is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
+Visual Studio 2019 Community is being used for this project's development, and .Net Framework 4.6.1 or greater (for version 0.1.1 or older; 0.1.2 or newer will require .NET Framework 4.8 or newer) is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
 
 There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
 
