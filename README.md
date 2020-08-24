@@ -30,13 +30,15 @@ The [system requirements](https://github.com/DrewNaylor/guinget/blob/master/docs
 
 ## Screenshots
 
-Version 0.1.1 screenshot:
+### Version 0.1.1 screenshot
+This is what it looks like as of version 0.1.1, which is the latest version available in winget as of August 24, 2020:
 ![](/docs/images/screenshot-0.1.1.png?raw=true)
 
 Packages displayed here are loaded from a package list cache stored in `%AppData%\winget-frontends\source\winget-pkgs\pkglist\manifests`, which is downloaded from `Microsoft\winget-pkgs` on GitHub. The `Refresh cache` button on the toolbar is the primary way to update these manifests. `update-manifests.bat` was the old way to do it, but it's deprecated and may be removed at any time.
 
 Loading these YAML files takes a bit at the moment, as it's not async. I'd like to make it async, but for now this is good enough. Besides, there's a progress bar and progress label at the bottom and a label that says "please wait", so it's not like the window shows nothing while it loads. One issue is the window can't be moved around while it loads, which is something async loading would fix.
 
+### Loading the package list
 Here's what it looks like when loading the package list:
 ![](/docs/images/screenshot-loading-progress-0.1.1.png?raw=true)
 
@@ -44,6 +46,7 @@ The data grid view that's used for the package list is hidden while loading so t
 
 Currently, the `Status` column cells just have arbitrary data for now; guinget doesn't check to see if an app is installed or not yet. Package details in the textbox at the bottom are loaded directly from the YAML files.
 
+### Showing hidden controls
 By default, controls that don't have features implemented yet are hidden, but you can show them if you want to and this is what it looks like when you do so:
 ![](/docs/images/screenshot-hidden-controls-shown.png?raw=true)
 
