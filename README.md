@@ -12,7 +12,7 @@ If you installed winget in a regular user account, you may need to re-install it
 Master branch build status:<br>
 [![Master branch build status](https://ci.appveyor.com/api/projects/status/ec0r3vwr0wmvtc23/branch/master?svg=true)](https://ci.appveyor.com/project/DrewNaylor/guinget/branch/master)
 
-Visual Studio 2019 Community is being used for this project's development, and .Net Framework 4.6.1 or greater is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
+Visual Studio 2019 Community is being used for this project's development, and .Net Framework 4.6.1 or greater (for version 0.1.1 or older; 0.1.2 or newer will require .NET Framework 4.8 or newer) is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
 
 There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
 
