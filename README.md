@@ -26,7 +26,7 @@ Since it may be a bit complicated for new users, there's a guide on [how to use 
 
 ## Requirements
 
-The [system requirements](https://github.com/DrewNaylor/guinget/blob/master/docs/system-requirements.md) include .Net 4.6.1 as mentioned above and winget, but otherwise they don't require all that much power.
+The [system requirements](https://github.com/DrewNaylor/guinget/blob/master/docs/system-requirements.md) include .NET Framework 4.6.1 (for version 0.1.1 and older; version 0.1.2 and newer will require .NET Framework 4.8.) as mentioned above and winget, but otherwise they don't require all that much power.
 
 ## Screenshots
 
