@@ -28,7 +28,7 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
@@ -97,7 +97,7 @@ Partial Class OptionsWindow
         '
         'tabpageSearch
         '
-        Me.tabpageSearch.Controls.Add(Me.CheckBox1)
+        Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
         Me.tabpageSearch.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearch.Name = "tabpageSearch"
         Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(3)
@@ -106,15 +106,15 @@ Partial Class OptionsWindow
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'checkboxRerunSearch
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(7, 7)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(244, 21)
-        Me.CheckBox1.TabIndex = 0
-        Me.CheckBox1.Text = "Re-run search after cache update"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxRerunSearch.AutoSize = True
+        Me.checkboxRerunSearch.Location = New System.Drawing.Point(7, 7)
+        Me.checkboxRerunSearch.Name = "checkboxRerunSearch"
+        Me.checkboxRerunSearch.Size = New System.Drawing.Size(244, 21)
+        Me.checkboxRerunSearch.TabIndex = 0
+        Me.checkboxRerunSearch.Text = "Re-run search after cache update"
+        Me.checkboxRerunSearch.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -144,5 +144,5 @@ Partial Class OptionsWindow
     Friend WithEvents buttonOk As Button
     Friend WithEvents tabcontrolOptions As TabControl
     Friend WithEvents tabpageSearch As TabPage
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents checkboxRerunSearch As CheckBox
 End Class
