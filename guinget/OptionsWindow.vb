@@ -26,6 +26,11 @@
 
 Public Class OptionsWindow
     Private Sub OptionsWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Update controls with their current value from My.Settings.
+        LoadSettings()
+    End Sub
 
+    Private Sub LoadSettings()
+        checkboxRerunSearch.Checked = My.Settings.RerunSearchAfterCacheUpdate
     End Sub
 End Class
