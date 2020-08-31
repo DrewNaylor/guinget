@@ -28,8 +28,10 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
+        Me.tabpageSearch.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -95,6 +97,7 @@ Partial Class OptionsWindow
         '
         'tabpageSearch
         '
+        Me.tabpageSearch.Controls.Add(Me.CheckBox1)
         Me.tabpageSearch.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearch.Name = "tabpageSearch"
         Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(3)
@@ -102,6 +105,16 @@ Partial Class OptionsWindow
         Me.tabpageSearch.TabIndex = 0
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(7, 7)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(244, 21)
+        Me.CheckBox1.TabIndex = 0
+        Me.CheckBox1.Text = "Re-run search after cache update"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -119,6 +132,8 @@ Partial Class OptionsWindow
         Me.Text = "Options"
         Me.tablelayoutpanelOptions.ResumeLayout(False)
         Me.tabcontrolOptions.ResumeLayout(False)
+        Me.tabpageSearch.ResumeLayout(False)
+        Me.tabpageSearch.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -129,4 +144,5 @@ Partial Class OptionsWindow
     Friend WithEvents buttonOk As Button
     Friend WithEvents tabcontrolOptions As TabControl
     Friend WithEvents tabpageSearch As TabPage
+    Friend WithEvents CheckBox1 As CheckBox
 End Class
