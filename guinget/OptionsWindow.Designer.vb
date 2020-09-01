@@ -29,6 +29,7 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
         Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
+        Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
@@ -97,6 +98,7 @@ Partial Class OptionsWindow
         '
         'tabpageSearch
         '
+        Me.tabpageSearch.Controls.Add(Me.checkboxShowSidebar)
         Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
         Me.tabpageSearch.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearch.Name = "tabpageSearch"
@@ -115,6 +117,16 @@ Partial Class OptionsWindow
         Me.checkboxRerunSearch.TabIndex = 0
         Me.checkboxRerunSearch.Text = "Re-run search after cache update"
         Me.checkboxRerunSearch.UseVisualStyleBackColor = True
+        '
+        'checkboxShowSidebar
+        '
+        Me.checkboxShowSidebar.AutoSize = True
+        Me.checkboxShowSidebar.Location = New System.Drawing.Point(7, 35)
+        Me.checkboxShowSidebar.Name = "checkboxShowSidebar"
+        Me.checkboxShowSidebar.Size = New System.Drawing.Size(115, 21)
+        Me.checkboxShowSidebar.TabIndex = 1
+        Me.checkboxShowSidebar.Text = "Show sidebar"
+        Me.checkboxShowSidebar.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -145,4 +157,5 @@ Partial Class OptionsWindow
     Friend WithEvents tabcontrolOptions As TabControl
     Friend WithEvents tabpageSearch As TabPage
     Friend WithEvents checkboxRerunSearch As CheckBox
+    Friend WithEvents checkboxShowSidebar As CheckBox
 End Class

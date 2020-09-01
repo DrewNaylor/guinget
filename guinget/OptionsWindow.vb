@@ -31,7 +31,10 @@ Public Class OptionsWindow
     End Sub
 
     Private Sub LoadSettings()
+        ' Re-run search.
         checkboxRerunSearch.Checked = My.Settings.RerunSearchAfterCacheUpdate
+        ' Show sidebar.
+        checkboxShowSidebar.Checked = My.Settings.ShowSidebar
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
@@ -51,7 +54,10 @@ Public Class OptionsWindow
     End Sub
 
     Private Sub SaveSettings()
+        ' Re-run search checkbox.
         My.Settings.RerunSearchAfterCacheUpdate = checkboxRerunSearch.Checked
+        ' Show sidebar checkbox.
+        My.Settings.ShowSidebar = checkboxShowSidebar.Checked
 
         My.Settings.Save()
         My.Settings.Reload()
@@ -66,6 +72,9 @@ Public Class OptionsWindow
     End Sub
 
     Private Sub ReloadDefaults()
+        ' Re-run search checkbox.
         checkboxRerunSearch.Checked = False
+        ' Show sidebar checkbox.
+        checkboxShowSidebar.Checked = False
     End Sub
 End Class
