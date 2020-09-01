@@ -593,7 +593,7 @@ Public Class aaformMainWindow
         ' Properties button on toolbar.
         aaformMainWindow.toolstripbuttonProperties.Visible = Visible
         ' Properties button in Package list menu.
-        aaformMainWindow.PackagePropertiesMenuItem.Visible = Visible
+        aaformMainWindow.PropertiesSelectedPackageDropdownToolStripMenuItem.Visible = Visible
 
         ' Toolstrip separators.
         ' Main toolbar.
