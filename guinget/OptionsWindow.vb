@@ -33,4 +33,27 @@ Public Class OptionsWindow
     Private Sub LoadSettings()
         checkboxRerunSearch.Checked = My.Settings.RerunSearchAfterCacheUpdate
     End Sub
+
+    Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
+        ' Reload the current settings.
+        My.Settings.Reload()
+
+        ' Close the window.
+        Me.Close()
+    End Sub
+
+    Private Sub buttonOk_Click(sender As Object, e As EventArgs) Handles buttonOk.Click
+        ' Save settings.
+        SaveSettings()
+
+        ' Close the window.
+        Me.Close()
+    End Sub
+
+    Private Sub SaveSettings()
+        My.Settings.RerunSearchAfterCacheUpdate = checkboxRerunSearch.Checked
+
+        My.Settings.Save()
+        My.Settings.Reload()
+    End Sub
 End Class
