@@ -47,10 +47,10 @@ https://github.com/DrewNaylor/guinget/milestone/3
 
 GitHub milestone: [Version 0.1.2](https://github.com/DrewNaylor/guinget/milestone/4)
 
-- [ ] Re-do searches after updating manifests ([issue #27](https://github.com/DrewNaylor/guinget/issues/27))
-- [ ] Keep search terms in a listbox for quick use until closing guinget
+- [X] Re-do searches after updating manifests ([issue #27](https://github.com/DrewNaylor/guinget/issues/27))
+- [X] Keep search terms in a listbox for quick use until closing guinget
 - [ ] Hide sidebar tab control tabs and use a dropdown to switch between them ([issue #22](https://github.com/DrewNaylor/guinget/issues/22))
-- [ ] Add a button to the top-right of the sidebar to close it and a menu item to determine if the sidebar should be shown on application startup ([issue #21](https://github.com/DrewNaylor/guinget/issues/21))
+- [X] Add a button to the top-right of the sidebar to close it and a menu item to determine if the sidebar should be shown on application startup ([issue #21](https://github.com/DrewNaylor/guinget/issues/21))
 
 ## Version 0.1.3 Alpha
 
@@ -58,7 +58,7 @@ GitHub milestone: [Version 0.1.2](https://github.com/DrewNaylor/guinget/mileston
 
 ## Version 0.1.4 Alpha
 
-- [ ] Allow users to show only packages that are listed in the SQLite database file, so that entries aren't duplicated with multiple versions ([issue #35](https://github.com/DrewNaylor/guinget/issues/35))
+- [ ] Allow users to show only packages that are listed in the SQLite database file, so that entries aren't duplicated with multiple versions (showing only the latest version may take longer to figure out as all the versions are in the database file) ([issue #35](https://github.com/DrewNaylor/guinget/issues/35))
 
 ## Version 0.1.5 Alpha
 - [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
