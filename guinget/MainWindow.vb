@@ -799,6 +799,10 @@ Public Class aaformMainWindow
         My.Settings.Reload()
     End Sub
 
+    Private Sub toolstripmenuitemAdvancedSearch_Click(sender As Object, e As EventArgs) Handles toolstripmenuitemAdvancedSearch.Click
+        OptionsWindow.ShowDialog(Me)
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application

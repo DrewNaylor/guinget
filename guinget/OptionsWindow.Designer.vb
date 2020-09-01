@@ -42,9 +42,9 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106.0!))
         Me.tablelayoutpanelOptions.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106.0!))
         Me.tablelayoutpanelOptions.Controls.Add(Me.buttonDefaults, 0, 1)
-        Me.tablelayoutpanelOptions.Controls.Add(Me.buttonCancel, 3, 1)
-        Me.tablelayoutpanelOptions.Controls.Add(Me.buttonOk, 2, 1)
         Me.tablelayoutpanelOptions.Controls.Add(Me.tabcontrolOptions, 0, 0)
+        Me.tablelayoutpanelOptions.Controls.Add(Me.buttonCancel, 2, 1)
+        Me.tablelayoutpanelOptions.Controls.Add(Me.buttonOk, 3, 1)
         Me.tablelayoutpanelOptions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelOptions.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelOptions.Name = "tablelayoutpanelOptions"
@@ -67,7 +67,7 @@ Partial Class OptionsWindow
         'buttonOk
         '
         Me.buttonOk.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonOk.Location = New System.Drawing.Point(256, 503)
+        Me.buttonOk.Location = New System.Drawing.Point(362, 503)
         Me.buttonOk.Name = "buttonOk"
         Me.buttonOk.Size = New System.Drawing.Size(100, 33)
         Me.buttonOk.TabIndex = 4
@@ -77,7 +77,7 @@ Partial Class OptionsWindow
         'buttonCancel
         '
         Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonCancel.Location = New System.Drawing.Point(362, 503)
+        Me.buttonCancel.Location = New System.Drawing.Point(256, 503)
         Me.buttonCancel.Name = "buttonCancel"
         Me.buttonCancel.Size = New System.Drawing.Size(100, 33)
         Me.buttonCancel.TabIndex = 5

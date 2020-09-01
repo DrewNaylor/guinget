@@ -162,7 +162,7 @@ Partial Class aaformMainWindow
         'SidebarToolStripMenuItem
         '
         Me.SidebarToolStripMenuItem.Name = "SidebarToolStripMenuItem"
-        Me.SidebarToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.SidebarToolStripMenuItem.Size = New System.Drawing.Size(143, 26)
         Me.SidebarToolStripMenuItem.Text = "&Sidebar"
         '
         'PackageToolStripMenuItem
@@ -527,7 +527,7 @@ Partial Class aaformMainWindow
         'toolstripmenuitemAdvancedSearch
         '
         Me.toolstripmenuitemAdvancedSearch.Name = "toolstripmenuitemAdvancedSearch"
-        Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(213, 26)
+        Me.toolstripmenuitemAdvancedSearch.Size = New System.Drawing.Size(224, 26)
         Me.toolstripmenuitemAdvancedSearch.Text = "&Advanced search..."
         '
         'SearchToolstripButton
