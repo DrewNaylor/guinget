@@ -488,7 +488,7 @@ Public Class aaformMainWindow
         ' Selected packages menu.
         ' Looks sloppy if this isn't included in the things that
         ' are disabled while updating.
-        PackageContextMenuDropdown.Enabled = ControlsEnabled
+        'PackageContextMenuDropdown.Enabled = ControlsEnabled
 
         ' Apply changes buttons.
         ApplyChangesMenuItem.Enabled = ControlsEnabled
@@ -594,7 +594,7 @@ Public Class aaformMainWindow
         ' Main toolbar.
         aaformMainWindow.ToolStripSeparator1.Visible = Visible
         ' Package list menu.
-        aaformMainWindow.ToolStripSeparator4.Visible = Visible
+        'aaformMainWindow.ToolStripSeparator4.Visible = Visible
 
     End Sub
 
