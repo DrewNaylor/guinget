@@ -41,8 +41,6 @@ Partial Class aaformMainWindow
         Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.PackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdvancedSearchMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -102,6 +100,8 @@ Partial Class aaformMainWindow
         Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -168,7 +168,7 @@ Partial Class aaformMainWindow
         '
         'PackageToolStripMenuItem
         '
-        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.ToolStripSeparator6, Me.PackageContextMenuDropdown, Me.ToolStripSeparator5, Me.PackagePropertiesMenuItem, Me.ToolStripSeparator4, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
+        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.ToolStripSeparator6, Me.PackageContextMenuDropdown, Me.ToolStripSeparator4, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
         Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
         Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(100, 24)
         Me.PackageToolStripMenuItem.Text = "&Package list"
@@ -223,17 +223,6 @@ Partial Class aaformMainWindow
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
         Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.InstallToolStripMenuItem.Text = "&Install"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(285, 6)
-        '
-        'PackagePropertiesMenuItem
-        '
-        Me.PackagePropertiesMenuItem.Name = "PackagePropertiesMenuItem"
-        Me.PackagePropertiesMenuItem.Size = New System.Drawing.Size(288, 26)
-        Me.PackagePropertiesMenuItem.Text = "Pa&ckage properties..."
         '
         'ToolStripSeparator4
         '
@@ -839,6 +828,17 @@ Partial Class aaformMainWindow
         Me.SelectedPackagesToolStripMenuItem.Size = New System.Drawing.Size(146, 24)
         Me.SelectedPackagesToolStripMenuItem.Text = "&Selected packages"
         '
+        'PackagePropertiesMenuItem
+        '
+        Me.PackagePropertiesMenuItem.Name = "PackagePropertiesMenuItem"
+        Me.PackagePropertiesMenuItem.Size = New System.Drawing.Size(213, 24)
+        Me.PackagePropertiesMenuItem.Text = "Pa&ckage properties..."
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(210, 6)
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -944,8 +944,6 @@ Partial Class aaformMainWindow
     Friend WithEvents ApplyChangesMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents PackageContextMenuDropdown As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
-    Friend WithEvents PackagePropertiesMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents AdvancedSearchMenuItem As ToolStripMenuItem
     Friend WithEvents PkgAction As DataGridViewComboBoxColumn
@@ -963,4 +961,6 @@ Partial Class aaformMainWindow
     Friend WithEvents SidebarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SelectedPackagesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SelectedPackageToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PackagePropertiesMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
 End Class
