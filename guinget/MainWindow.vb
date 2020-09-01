@@ -614,8 +614,10 @@ Public Class aaformMainWindow
         ' Show or hide the sidebar.
         If My.Settings.ShowSidebar = True Then
             splitcontainerSidebarAndPkgList.Panel1Collapsed = False
+            SidebarToolStripMenuItem.Checked = True
         Else
             splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+            SidebarToolStripMenuItem.Checked = False
         End If
 
         ' Hide unfinished controls on startup if My.Settings.HideUnfinishedControls = True.
