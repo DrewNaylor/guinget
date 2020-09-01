@@ -697,6 +697,9 @@ Public Class aaformMainWindow
         ' Start searching on pressing Enter.
         If e.KeyCode = Keys.Enter Then
             BeginPackageIdSearch()
+        ElseIf e.KeyCode = Keys.Escape Then
+            ' Otherwise if it's Escape, clear the search box.
+            toolstriptextboxSearch.Clear()
         End If
     End Sub
 
