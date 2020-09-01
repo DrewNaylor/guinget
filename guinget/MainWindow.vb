@@ -508,6 +508,12 @@ Public Class aaformMainWindow
         ' Why not just disable the entire menu while updating.
         PackageToolStripMenuItem.Enabled = ControlsEnabled
 
+        ' Selected packages menu.
+        SelectedPackagesToolStripMenuItem.Enabled = ControlsEnabled
+
+        ' View menu.
+        ViewToolStripMenuItem.Enabled = ControlsEnabled
+
         ' Sidebar.
         ' Might change it to a dropdown that switches tabs to what's
         ' in the dropdown so it's easier to see what tabs are available,
