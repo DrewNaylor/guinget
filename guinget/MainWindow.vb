@@ -800,6 +800,14 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripmenuitemAdvancedSearch_Click(sender As Object, e As EventArgs) Handles toolstripmenuitemAdvancedSearch.Click
+        ShowSearchOptions()
+    End Sub
+
+    Private Sub AdvancedSearchMenuItem_Click(sender As Object, e As EventArgs) Handles AdvancedSearchMenuItem.Click
+        ShowSearchOptions()
+    End Sub
+
+    Private Sub ShowSearchOptions()
         OptionsWindow.ShowDialog(Me)
     End Sub
 
