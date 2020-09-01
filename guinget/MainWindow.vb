@@ -786,17 +786,27 @@ Public Class aaformMainWindow
     Private Sub SidebarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SidebarToolStripMenuItem.Click
         ' Show or hide the sidebar.
         If My.Settings.ShowSidebar = False Then
-            SidebarToolStripMenuItem.Checked = True
-            splitcontainerSidebarAndPkgList.Panel1Collapsed = False
+            SidebarVisibility(True)
             My.Settings.ShowSidebar = True
         Else
-            SidebarToolStripMenuItem.Checked = False
-            splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+            SidebarVisibility(False)
             My.Settings.ShowSidebar = False
         End If
 
         My.Settings.Save()
         My.Settings.Reload()
+    End Sub
+
+    Friend Shared Sub SidebarVisibility(IsVisible As Boolean)
+
+        ' Show or hide the sidebar based on what's passed to this.
+        If IsVisible = True Then
+            SidebarToolStripMenuItem.Checked = True
+            splitcontainerSidebarAndPkgList.Panel1Collapsed = False
+        Else
+            SidebarToolStripMenuItem.Checked = False
+            splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+        End If
     End Sub
 
     Private Sub toolstripmenuitemAdvancedSearch_Click(sender As Object, e As EventArgs) Handles toolstripmenuitemAdvancedSearch.Click
