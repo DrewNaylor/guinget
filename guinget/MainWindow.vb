@@ -511,8 +511,6 @@ Public Class aaformMainWindow
         ' Selected packages menu.
         SelectedPackagesToolStripMenuItem.Enabled = ControlsEnabled
 
-        ' View menu.
-        ViewToolStripMenuItem.Enabled = ControlsEnabled
 
         ' Sidebar.
         ' Might change it to a dropdown that switches tabs to what's
@@ -521,6 +519,7 @@ Public Class aaformMainWindow
         ' If that dropdown idea is implemented, then the tabs need to be
         ' hidden.
         tabcontrolSidebar.Enabled = ControlsEnabled
+        comboboxSidebarTabSelector.Enabled = ControlsEnabled
 
         Me.Update()
 
