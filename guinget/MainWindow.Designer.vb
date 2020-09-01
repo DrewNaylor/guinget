@@ -100,6 +100,8 @@ Partial Class aaformMainWindow
         Me.toolstripstatusSplitter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
         Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectedPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,7 +132,7 @@ Partial Class aaformMainWindow
         'menustripMainWindow
         '
         Me.menustripMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.menustripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ViewToolStripMenuItem, Me.PackageToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.menustripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ViewToolStripMenuItem, Me.PackageToolStripMenuItem, Me.SelectedPackagesToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.menustripMainWindow.Location = New System.Drawing.Point(0, 0)
         Me.menustripMainWindow.Name = "menustripMainWindow"
         Me.menustripMainWindow.Size = New System.Drawing.Size(1105, 28)
@@ -161,7 +163,7 @@ Partial Class aaformMainWindow
         'SidebarToolStripMenuItem
         '
         Me.SidebarToolStripMenuItem.Name = "SidebarToolStripMenuItem"
-        Me.SidebarToolStripMenuItem.Size = New System.Drawing.Size(143, 26)
+        Me.SidebarToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.SidebarToolStripMenuItem.Text = "&Sidebar"
         '
         'PackageToolStripMenuItem
@@ -175,19 +177,19 @@ Partial Class aaformMainWindow
         '
         Me.RefreshCacheMenuButton.Name = "RefreshCacheMenuButton"
         Me.RefreshCacheMenuButton.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.RefreshCacheMenuButton.Size = New System.Drawing.Size(234, 26)
+        Me.RefreshCacheMenuButton.Size = New System.Drawing.Size(288, 26)
         Me.RefreshCacheMenuButton.Text = "&Refresh cache"
         '
         'ApplyChangesMenuItem
         '
         Me.ApplyChangesMenuItem.Name = "ApplyChangesMenuItem"
-        Me.ApplyChangesMenuItem.Size = New System.Drawing.Size(234, 26)
+        Me.ApplyChangesMenuItem.Size = New System.Drawing.Size(288, 26)
         Me.ApplyChangesMenuItem.Text = "&Apply changes..."
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(231, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(285, 6)
         '
         'PackageContextMenuDropdown
         '
@@ -213,30 +215,30 @@ Partial Class aaformMainWindow
         'DoNothingToolStripMenuItem
         '
         Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
-        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(167, 26)
+        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.DoNothingToolStripMenuItem.Text = "&Do nothing"
         '
         'InstallToolStripMenuItem
         '
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
-        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(167, 26)
+        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.InstallToolStripMenuItem.Text = "&Install"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(231, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(285, 6)
         '
         'PackagePropertiesMenuItem
         '
         Me.PackagePropertiesMenuItem.Name = "PackagePropertiesMenuItem"
-        Me.PackagePropertiesMenuItem.Size = New System.Drawing.Size(234, 26)
+        Me.PackagePropertiesMenuItem.Size = New System.Drawing.Size(288, 26)
         Me.PackagePropertiesMenuItem.Text = "Pa&ckage properties..."
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(231, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(285, 6)
         '
         'SearchMenuItem
         '
@@ -824,6 +826,18 @@ Partial Class aaformMainWindow
         Me.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
         Me.toolstripstatuslabelLoadingPackageCount.Visible = False
         '
+        'SelectedPackageToolStripMenuItem
+        '
+        Me.SelectedPackageToolStripMenuItem.Name = "SelectedPackageToolStripMenuItem"
+        Me.SelectedPackageToolStripMenuItem.Size = New System.Drawing.Size(32, 19)
+        Me.SelectedPackageToolStripMenuItem.Text = "Selected package"
+        '
+        'SelectedPackagesToolStripMenuItem
+        '
+        Me.SelectedPackagesToolStripMenuItem.Name = "SelectedPackagesToolStripMenuItem"
+        Me.SelectedPackagesToolStripMenuItem.Size = New System.Drawing.Size(146, 24)
+        Me.SelectedPackagesToolStripMenuItem.Text = "&Selected packages"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -946,4 +960,6 @@ Partial Class aaformMainWindow
     Friend WithEvents FindManifestToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SidebarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SelectedPackagesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SelectedPackageToolStripMenuItem As ToolStripMenuItem
 End Class
