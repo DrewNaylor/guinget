@@ -579,7 +579,7 @@ Public Class aaformMainWindow
         ' Hide controls that don't work yet.
         ' Fiters pane.
         ' Saying "Not" here makes it the inverse of Visible.
-        aaformMainWindow.splitcontainerSidebarAndPkgList.Panel1Collapsed = Not Visible
+        'aaformMainWindow.splitcontainerSidebarAndPkgList.Panel1Collapsed = Not Visible
 
         ' Sidebar tab control.
         ' We need to use properties based on this answer:
