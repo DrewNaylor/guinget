@@ -60,7 +60,7 @@ Partial Class OptionsWindow
         Me.buttonDefaults.Location = New System.Drawing.Point(3, 503)
         Me.buttonDefaults.Name = "buttonDefaults"
         Me.buttonDefaults.Size = New System.Drawing.Size(100, 33)
-        Me.buttonDefaults.TabIndex = 1
+        Me.buttonDefaults.TabIndex = 3
         Me.buttonDefaults.Text = "Defaults"
         Me.buttonDefaults.UseVisualStyleBackColor = True
         '
@@ -70,7 +70,7 @@ Partial Class OptionsWindow
         Me.buttonOk.Location = New System.Drawing.Point(362, 503)
         Me.buttonOk.Name = "buttonOk"
         Me.buttonOk.Size = New System.Drawing.Size(100, 33)
-        Me.buttonOk.TabIndex = 4
+        Me.buttonOk.TabIndex = 1
         Me.buttonOk.Text = "OK"
         Me.buttonOk.UseVisualStyleBackColor = True
         '
@@ -80,7 +80,7 @@ Partial Class OptionsWindow
         Me.buttonCancel.Location = New System.Drawing.Point(256, 503)
         Me.buttonCancel.Name = "buttonCancel"
         Me.buttonCancel.Size = New System.Drawing.Size(100, 33)
-        Me.buttonCancel.TabIndex = 5
+        Me.buttonCancel.TabIndex = 2
         Me.buttonCancel.Text = "Cancel"
         Me.buttonCancel.UseVisualStyleBackColor = True
         '
@@ -93,7 +93,7 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.Name = "tabcontrolOptions"
         Me.tabcontrolOptions.SelectedIndex = 0
         Me.tabcontrolOptions.Size = New System.Drawing.Size(459, 494)
-        Me.tabcontrolOptions.TabIndex = 6
+        Me.tabcontrolOptions.TabIndex = 0
         '
         'tabpageSearch
         '
