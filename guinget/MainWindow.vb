@@ -833,6 +833,16 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub SearchForPackageIDFromContextMenu_Click(sender As Object, e As EventArgs) Handles SearchForPackageIDFromContextMenu.Click
+        ' The last-selected package will have its ID searched for.
+        SearchForLastSelectedPackageID()
+    End Sub
+
+    Private Sub SelectedPackagesSearchForLastSelectedID_Click(sender As Object, e As EventArgs) Handles SelectedPackagesSearchForLastSelectedID.Click
+        ' The last-selected package will have its ID searched for.
+        SearchForLastSelectedPackageID()
+    End Sub
+
+    Private Sub SearchForLastSelectedPackageID()
         ' Search for the ID of the most-recently selected package.
         ' Make sure there are packages in the list.
         If datagridviewPackageList.Rows.Count > 0 Then
