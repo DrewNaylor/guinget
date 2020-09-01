@@ -782,6 +782,19 @@ Public Class aaformMainWindow
         'textboxPackageDetails.Text = Description
     End Sub
 
+    Private Sub SidebarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SidebarToolStripMenuItem.Click
+        ' Show or hide the sidebar.
+        If My.Settings.ShowSidebar = False Then
+            SidebarToolStripMenuItem.Checked = True
+            splitcontainerSidebarAndPkgList.Panel1Collapsed = False
+            My.Settings.ShowSidebar = True
+        Else
+            SidebarToolStripMenuItem.Checked = False
+            splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+            My.Settings.ShowSidebar = False
+        End If
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
