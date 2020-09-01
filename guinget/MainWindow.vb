@@ -496,11 +496,6 @@ Public Class aaformMainWindow
         ' package list is disabled.
         contextmenustripPackageMenu.Enabled = ControlsEnabled
 
-        ' Selected packages menu.
-        ' Looks sloppy if this isn't included in the things that
-        ' are disabled while updating.
-        'PackageContextMenuDropdown.Enabled = ControlsEnabled
-
         ' Apply changes buttons.
         ApplyChangesMenuItem.Enabled = ControlsEnabled
         toolstripbuttonApplyChanges.Enabled = ControlsEnabled
