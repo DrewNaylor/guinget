@@ -56,4 +56,16 @@ Public Class OptionsWindow
         My.Settings.Save()
         My.Settings.Reload()
     End Sub
+
+    Private Sub buttonDefaults_Click(sender As Object, e As EventArgs) Handles buttonDefaults.Click
+        ' Reload defaults.
+        ReloadDefaults()
+
+        ' Show a message saying it's been reset.
+        MessageBox.Show("Values reset to default. Please note that this won't apply until you click OK.", "Defaults")
+    End Sub
+
+    Private Sub ReloadDefaults()
+        checkboxRerunSearch.Checked = False
+    End Sub
 End Class
