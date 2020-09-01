@@ -496,7 +496,6 @@ Public Class aaformMainWindow
 
         ' Search-related controls.
         SearchMenuItem.Enabled = ControlsEnabled
-        SearchToolstripButton.Enabled = ControlsEnabled
         AdvancedSearchMenuItem.Enabled = ControlsEnabled
         toolstripsplitbuttonSearch.Enabled = ControlsEnabled
         toolstriptextboxSearch.Enabled = ControlsEnabled
@@ -577,9 +576,6 @@ Public Class aaformMainWindow
     Friend Shared Sub UnfinishedControlsVisible(Visible As Boolean)
 
         ' Hide controls that don't work yet.
-        ' Fiters pane.
-        ' Saying "Not" here makes it the inverse of Visible.
-        'aaformMainWindow.splitcontainerSidebarAndPkgList.Panel1Collapsed = Not Visible
 
         ' Sidebar tab control.
         ' We need to use properties based on this answer:
@@ -593,11 +589,6 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstripbuttonProperties.Visible = Visible
         ' Properties button in Package list menu.
         aaformMainWindow.PackagePropertiesMenuItem.Visible = Visible
-
-        ' Split Search button with Advanced search in its dropdown.
-        aaformMainWindow.toolstripsplitbuttonSearch.Visible = Visible
-        ' Advanced search button in Package list menu.
-        aaformMainWindow.AdvancedSearchMenuItem.Visible = Visible
 
         ' Toolstrip separators.
         ' Main toolbar.
@@ -709,11 +700,6 @@ Public Class aaformMainWindow
         ' to make it easier to type something else.
         toolstriptextboxSearch.Focus()
         toolstriptextboxSearch.SelectAll()
-    End Sub
-
-    Private Sub SearchToolstripButton_Click(sender As Object, e As EventArgs) Handles SearchToolstripButton.Click
-        ' Start searching.
-        BeginPackageIdSearch()
     End Sub
 
     Private Sub listboxSearchTerms_DoubleClick(sender As Object, e As EventArgs) Handles listboxSearchTerms.DoubleClick
