@@ -821,6 +821,15 @@ Public Class aaformMainWindow
         SidebarVisibility(My.Settings.ShowSidebar)
     End Sub
 
+    Private Sub SearchForPackageIDFromContextMenu_Click(sender As Object, e As EventArgs) Handles SearchForPackageIDFromContextMenu.Click
+        ' Search for the ID of the most-recently selected package.
+        ' Make sure there are packages in the list.
+        If datagridviewPackageList.Rows.Count > 0 Then
+            toolstriptextboxSearch.Text = datagridviewPackageList.SelectedRows.Item(0).Cells.Item(2).Value.ToString
+            BeginPackageIdSearch()
+        End If
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application

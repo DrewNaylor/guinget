@@ -102,6 +102,7 @@ Partial Class aaformMainWindow
         Me.SelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SearchForPackageIDFromContextMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -216,38 +217,39 @@ Partial Class aaformMainWindow
         'contextmenustripPackageMenu
         '
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem, Me.ToolStripSeparator7, Me.PropertiesSelectedPackageDropdownToolStripMenuItem})
+        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem, Me.SearchForPackageIDFromContextMenu, Me.ToolStripSeparator7, Me.PropertiesSelectedPackageDropdownToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(155, 58)
+        Me.contextmenustripPackageMenu.OwnerItem = Me.SelectedPackagesToolStripMenuItem
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(253, 110)
         '
         'ActionToolStripMenuItem
         '
         Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem})
         Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
-        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(154, 24)
+        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
         Me.ActionToolStripMenuItem.Text = "&Action"
         '
         'DoNothingToolStripMenuItem
         '
         Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
-        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(167, 26)
+        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.DoNothingToolStripMenuItem.Text = "&Do nothing"
         '
         'InstallToolStripMenuItem
         '
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
-        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(167, 26)
+        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.InstallToolStripMenuItem.Text = "&Install"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(151, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(249, 6)
         '
         'PropertiesSelectedPackageDropdownToolStripMenuItem
         '
         Me.PropertiesSelectedPackageDropdownToolStripMenuItem.Name = "PropertiesSelectedPackageDropdownToolStripMenuItem"
-        Me.PropertiesSelectedPackageDropdownToolStripMenuItem.Size = New System.Drawing.Size(154, 24)
+        Me.PropertiesSelectedPackageDropdownToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
         Me.PropertiesSelectedPackageDropdownToolStripMenuItem.Text = "&Properties..."
         '
         'ToolsToolStripMenuItem
@@ -838,6 +840,12 @@ Partial Class aaformMainWindow
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
         Me.ToolStripSeparator5.Size = New System.Drawing.Size(210, 6)
         '
+        'SearchForPackageIDFromContextMenu
+        '
+        Me.SearchForPackageIDFromContextMenu.Name = "SearchForPackageIDFromContextMenu"
+        Me.SearchForPackageIDFromContextMenu.Size = New System.Drawing.Size(252, 24)
+        Me.SearchForPackageIDFromContextMenu.Text = "&Search for last-selected ID"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -962,4 +970,5 @@ Partial Class aaformMainWindow
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents PropertiesSelectedPackageDropdownToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
+    Friend WithEvents SearchForPackageIDFromContextMenu As ToolStripMenuItem
 End Class
