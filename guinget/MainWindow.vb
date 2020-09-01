@@ -512,7 +512,7 @@ Public Class aaformMainWindow
         toolstriptextboxSearch.Enabled = ControlsEnabled
 
         ' Properties buttons.
-        PackagePropertiesMenuItem.Enabled = ControlsEnabled
+        zCantFindThisPackagePropertiesMenuItem.Enabled = ControlsEnabled
         toolstripbuttonProperties.Enabled = ControlsEnabled
 
         ' Package list menu.
@@ -603,14 +603,18 @@ Public Class aaformMainWindow
 
         ' Properties button on toolbar.
         aaformMainWindow.toolstripbuttonProperties.Visible = Visible
-        ' Properties button in Package list menu.
-        aaformMainWindow.PropertiesSelectedPackageDropdownToolStripMenuItem.Visible = Visible
+        ' Properties button in Selected packages menu.
+        aaformMainWindow.SelectedPackagesProperties.Visible = Visible
+        ' Properties button in package context menu.
+        aaformMainWindow.PropertiesPackageContextMenuToolStripMenuItem.Visible = Visible
 
         ' Toolstrip separators.
         ' Main toolbar.
-        aaformMainWindow.ToolStripSeparator1.Visible = Visible
+        aaformMainWindow.zSeparatorPropertiesAndSearchBox.Visible = Visible
         ' Selected package menu.
-        aaformMainWindow.ToolStripSeparator7.Visible = Visible
+        aaformMainWindow.zSeparatorSelectedPackagesMenu.Visible = Visible
+        ' Package context menu.
+        aaformMainWindow.zSeparatorPackageContextMenu.Visible = Visible
 
     End Sub
 

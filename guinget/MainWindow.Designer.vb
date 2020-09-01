@@ -23,9 +23,9 @@ Partial Class aaformMainWindow
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aaformMainWindow))
         Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,7 +35,7 @@ Partial Class aaformMainWindow
         Me.PackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RefreshCacheMenuButton = New System.Windows.Forms.ToolStripMenuItem()
         Me.ApplyChangesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.zSeparatorPackageListMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdvancedSearchMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -43,8 +43,8 @@ Partial Class aaformMainWindow
         Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.PropertiesSelectedPackageDropdownToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zSeparatorPackageContextMenu = New System.Windows.Forms.ToolStripSeparator()
+        Me.PropertiesPackageContextMenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FindManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -66,9 +66,9 @@ Partial Class aaformMainWindow
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
         Me.toolstripbuttonRefreshCache = New System.Windows.Forms.ToolStripButton()
         Me.toolstripbuttonApplyChanges = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.zSeparatorApplyChangesAndProperties = New System.Windows.Forms.ToolStripSeparator()
         Me.toolstripbuttonProperties = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.zSeparatorPropertiesAndSearchBox = New System.Windows.Forms.ToolStripSeparator()
         Me.toolstriptextboxSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.toolstripsplitbuttonSearch = New System.Windows.Forms.ToolStripSplitButton()
         Me.toolstripmenuitemAdvancedSearch = New System.Windows.Forms.ToolStripMenuItem()
@@ -81,7 +81,7 @@ Partial Class aaformMainWindow
         Me.listboxSearchTerms = New System.Windows.Forms.ListBox()
         Me.contextmenuSearchTerm = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ClearSelectedSearchTermToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.zSeparatorSearchSidebarContextMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.ClearAllSearchTermsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabpageStatus = New System.Windows.Forms.TabPage()
         Me.listboxStatusTab = New System.Windows.Forms.ListBox()
@@ -100,14 +100,14 @@ Partial Class aaformMainWindow
         Me.toolstripprogressbarLoadingPackages = New System.Windows.Forms.ToolStripProgressBar()
         Me.toolstripstatuslabelLoadingPackageCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchForPackageIDFromContextMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesAction = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesActionDoNothingMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesActionInstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesSearchForLastSelectedID = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.zSeparatorSelectedPackagesMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.SelectedPackagesProperties = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
@@ -175,7 +175,7 @@ Partial Class aaformMainWindow
         '
         'PackageToolStripMenuItem
         '
-        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.ToolStripSeparator6, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
+        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.zSeparatorPackageListMenu, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
         Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
         Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(100, 24)
         Me.PackageToolStripMenuItem.Text = "&Package list"
@@ -193,10 +193,10 @@ Partial Class aaformMainWindow
         Me.ApplyChangesMenuItem.Size = New System.Drawing.Size(288, 26)
         Me.ApplyChangesMenuItem.Text = "&Apply changes..."
         '
-        'ToolStripSeparator6
+        'zSeparatorPackageListMenu
         '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(285, 6)
+        Me.zSeparatorPackageListMenu.Name = "zSeparatorPackageListMenu"
+        Me.zSeparatorPackageListMenu.Size = New System.Drawing.Size(285, 6)
         '
         'SearchMenuItem
         '
@@ -215,7 +215,7 @@ Partial Class aaformMainWindow
         '
         'SelectedPackagesToolStripMenuItem
         '
-        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesAction, Me.SelectedPackagesSearchForLastSelectedID, Me.ToolStripSeparator4, Me.SelectedPackagesProperties})
+        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesAction, Me.SelectedPackagesSearchForLastSelectedID, Me.zSeparatorSelectedPackagesMenu, Me.SelectedPackagesProperties})
         Me.SelectedPackagesToolStripMenuItem.Name = "SelectedPackagesToolStripMenuItem"
         Me.SelectedPackagesToolStripMenuItem.Size = New System.Drawing.Size(146, 24)
         Me.SelectedPackagesToolStripMenuItem.Text = "&Selected packages"
@@ -223,7 +223,7 @@ Partial Class aaformMainWindow
         'contextmenustripPackageMenu
         '
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem, Me.SearchForPackageIDFromContextMenu, Me.ToolStripSeparator7, Me.PropertiesSelectedPackageDropdownToolStripMenuItem})
+        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.PropertiesPackageContextMenuToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
         Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(253, 82)
         '
@@ -246,16 +246,16 @@ Partial Class aaformMainWindow
         Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.InstallToolStripMenuItem.Text = "&Install"
         '
-        'ToolStripSeparator7
+        'zSeparatorPackageContextMenu
         '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(249, 6)
+        Me.zSeparatorPackageContextMenu.Name = "zSeparatorPackageContextMenu"
+        Me.zSeparatorPackageContextMenu.Size = New System.Drawing.Size(249, 6)
         '
-        'PropertiesSelectedPackageDropdownToolStripMenuItem
+        'PropertiesPackageContextMenuToolStripMenuItem
         '
-        Me.PropertiesSelectedPackageDropdownToolStripMenuItem.Name = "PropertiesSelectedPackageDropdownToolStripMenuItem"
-        Me.PropertiesSelectedPackageDropdownToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
-        Me.PropertiesSelectedPackageDropdownToolStripMenuItem.Text = "&Properties..."
+        Me.PropertiesPackageContextMenuToolStripMenuItem.Name = "PropertiesPackageContextMenuToolStripMenuItem"
+        Me.PropertiesPackageContextMenuToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
+        Me.PropertiesPackageContextMenuToolStripMenuItem.Text = "&Properties..."
         '
         'ToolsToolStripMenuItem
         '
@@ -327,37 +327,37 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewPackageList.BackgroundColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.FriendlyName, Me.AvailableVersion, Me.PkgDescription, Me.Manifest})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle2
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Margin = New System.Windows.Forms.Padding(2)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewPackageList.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewPackageList.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.datagridviewPackageList.RowHeadersVisible = False
         Me.datagridviewPackageList.RowHeadersWidth = 51
         Me.datagridviewPackageList.RowTemplate.Height = 24
@@ -463,7 +463,7 @@ Partial Class aaformMainWindow
         'toolstripMainWindow
         '
         Me.toolstripMainWindow.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.toolstripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripbuttonRefreshCache, Me.toolstripbuttonApplyChanges, Me.ToolStripSeparator2, Me.toolstripbuttonProperties, Me.ToolStripSeparator1, Me.toolstriptextboxSearch, Me.toolstripsplitbuttonSearch})
+        Me.toolstripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolstripbuttonRefreshCache, Me.toolstripbuttonApplyChanges, Me.zSeparatorApplyChangesAndProperties, Me.toolstripbuttonProperties, Me.zSeparatorPropertiesAndSearchBox, Me.toolstriptextboxSearch, Me.toolstripsplitbuttonSearch})
         Me.toolstripMainWindow.Location = New System.Drawing.Point(0, 28)
         Me.toolstripMainWindow.Name = "toolstripMainWindow"
         Me.toolstripMainWindow.Size = New System.Drawing.Size(1105, 27)
@@ -491,10 +491,10 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonApplyChanges.Text = "Apply changes..."
         Me.toolstripbuttonApplyChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'ToolStripSeparator2
+        'zSeparatorApplyChangesAndProperties
         '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        Me.zSeparatorApplyChangesAndProperties.Name = "zSeparatorApplyChangesAndProperties"
+        Me.zSeparatorApplyChangesAndProperties.Size = New System.Drawing.Size(6, 27)
         '
         'toolstripbuttonProperties
         '
@@ -506,10 +506,10 @@ Partial Class aaformMainWindow
         Me.toolstripbuttonProperties.Text = "Properties..."
         Me.toolstripbuttonProperties.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'ToolStripSeparator1
+        'zSeparatorPropertiesAndSearchBox
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        Me.zSeparatorPropertiesAndSearchBox.Name = "zSeparatorPropertiesAndSearchBox"
+        Me.zSeparatorPropertiesAndSearchBox.Size = New System.Drawing.Size(6, 27)
         '
         'toolstriptextboxSearch
         '
@@ -639,7 +639,7 @@ Partial Class aaformMainWindow
         'contextmenuSearchTerm
         '
         Me.contextmenuSearchTerm.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.contextmenuSearchTerm.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSelectedSearchTermToolStripMenuItem, Me.ToolStripSeparator3, Me.ClearAllSearchTermsToolStripMenuItem})
+        Me.contextmenuSearchTerm.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSelectedSearchTermToolStripMenuItem, Me.zSeparatorSearchSidebarContextMenu, Me.ClearAllSearchTermsToolStripMenuItem})
         Me.contextmenuSearchTerm.Name = "contextmenuSearchTerm"
         Me.contextmenuSearchTerm.Size = New System.Drawing.Size(253, 58)
         '
@@ -649,10 +649,10 @@ Partial Class aaformMainWindow
         Me.ClearSelectedSearchTermToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
         Me.ClearSelectedSearchTermToolStripMenuItem.Text = "Clear selected search term"
         '
-        'ToolStripSeparator3
+        'zSeparatorSearchSidebarContextMenu
         '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(249, 6)
+        Me.zSeparatorSearchSidebarContextMenu.Name = "zSeparatorSearchSidebarContextMenu"
+        Me.zSeparatorSearchSidebarContextMenu.Size = New System.Drawing.Size(249, 6)
         '
         'ClearAllSearchTermsToolStripMenuItem
         '
@@ -834,16 +834,16 @@ Partial Class aaformMainWindow
         Me.SelectedPackageToolStripMenuItem.Size = New System.Drawing.Size(32, 19)
         Me.SelectedPackageToolStripMenuItem.Text = "Selected package"
         '
-        'PackagePropertiesMenuItem
+        'zCantFindThisPackagePropertiesMenuItem
         '
-        Me.PackagePropertiesMenuItem.Name = "PackagePropertiesMenuItem"
-        Me.PackagePropertiesMenuItem.Size = New System.Drawing.Size(213, 24)
-        Me.PackagePropertiesMenuItem.Text = "Pa&ckage properties..."
+        Me.zCantFindThisPackagePropertiesMenuItem.Name = "zCantFindThisPackagePropertiesMenuItem"
+        Me.zCantFindThisPackagePropertiesMenuItem.Size = New System.Drawing.Size(213, 24)
+        Me.zCantFindThisPackagePropertiesMenuItem.Text = "Pa&ckage properties..."
         '
-        'ToolStripSeparator5
+        'zSeparatorNoIdeaWhereThisIs
         '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(210, 6)
+        Me.zSeparatorNoIdeaWhereThisIs.Name = "zSeparatorNoIdeaWhereThisIs"
+        Me.zSeparatorNoIdeaWhereThisIs.Size = New System.Drawing.Size(210, 6)
         '
         'SearchForPackageIDFromContextMenu
         '
@@ -876,10 +876,10 @@ Partial Class aaformMainWindow
         Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(266, 26)
         Me.SelectedPackagesSearchForLastSelectedID.Text = "&Search for last-selected ID"
         '
-        'ToolStripSeparator4
+        'zSeparatorSelectedPackagesMenu
         '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(263, 6)
+        Me.zSeparatorSelectedPackagesMenu.Name = "zSeparatorSelectedPackagesMenu"
+        Me.zSeparatorSelectedPackagesMenu.Size = New System.Drawing.Size(263, 6)
         '
         'SelectedPackagesProperties
         '
@@ -954,9 +954,9 @@ Partial Class aaformMainWindow
     Friend WithEvents DoNothingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InstallToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents toolstripbuttonRefreshCache As ToolStripButton
-    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents zSeparatorApplyChangesAndProperties As ToolStripSeparator
     Friend WithEvents toolstripbuttonProperties As ToolStripButton
-    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents zSeparatorPropertiesAndSearchBox As ToolStripSeparator
     Friend WithEvents toolstripbuttonApplyChanges As ToolStripButton
     Friend WithEvents splitcontainerSidebarAndPkgList As SplitContainer
     Friend WithEvents panelMainForm As Panel
@@ -977,7 +977,7 @@ Partial Class aaformMainWindow
     Friend WithEvents contextmenuSearchTerm As ContextMenuStrip
     Friend WithEvents ClearSelectedSearchTermToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClearAllSearchTermsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents zSeparatorSearchSidebarContextMenu As ToolStripSeparator
     Friend WithEvents statusbarMainWindow As StatusStrip
     Friend WithEvents toolstripstatuslabelPackageCount As ToolStripStatusLabel
     Friend WithEvents toolstripstatuslabelLoadingPackageCount As ToolStripStatusLabel
@@ -990,7 +990,7 @@ Partial Class aaformMainWindow
     Friend WithEvents PackageToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RefreshCacheMenuButton As ToolStripMenuItem
     Friend WithEvents ApplyChangesMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
+    Friend WithEvents zSeparatorPackageListMenu As ToolStripSeparator
     Friend WithEvents AdvancedSearchMenuItem As ToolStripMenuItem
     Friend WithEvents PkgAction As DataGridViewComboBoxColumn
     Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
@@ -1007,15 +1007,15 @@ Partial Class aaformMainWindow
     Friend WithEvents SidebarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SelectedPackagesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SelectedPackageToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PackagePropertiesMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
-    Friend WithEvents PropertiesSelectedPackageDropdownToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
+    Friend WithEvents zCantFindThisPackagePropertiesMenuItem As ToolStripMenuItem
+    Friend WithEvents zSeparatorNoIdeaWhereThisIs As ToolStripSeparator
+    Friend WithEvents PropertiesPackageContextMenuToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents zSeparatorPackageContextMenu As ToolStripSeparator
     Friend WithEvents SearchForPackageIDFromContextMenu As ToolStripMenuItem
     Friend WithEvents SelectedPackagesAction As ToolStripMenuItem
     Friend WithEvents SelectedPackagesActionDoNothingMenuItem As ToolStripMenuItem
     Friend WithEvents SelectedPackagesActionInstallMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents zSeparatorSelectedPackagesMenu As ToolStripSeparator
     Friend WithEvents SelectedPackagesSearchForLastSelectedID As ToolStripMenuItem
     Friend WithEvents SelectedPackagesProperties As ToolStripMenuItem
 End Class
