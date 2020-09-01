@@ -425,7 +425,7 @@ Public Class aaformMainWindow
 
         ' Disable some controls so nothing bad happens
         ' by accident while we're updating.
-        EnableOrDisableControlsDuringUpdate(False)
+        ControlStateDuringCacheUpdate(False)
 
         If My.Settings.UseBuiltinCacheUpdater = False Then
             ' If the user doesn't want to use the new updater,
@@ -439,7 +439,7 @@ Public Class aaformMainWindow
         End If
 
         ' Re-enable those controls now that we're done updating.
-        EnableOrDisableControlsDuringUpdate(True)
+        ControlStateDuringCacheUpdate(True)
 
         ' Re-run search if the user wants to.
         If My.Settings.RerunSearchAfterCacheUpdate = True AndAlso toolstriptextboxSearch.Text IsNot String.Empty Then
@@ -463,7 +463,7 @@ Public Class aaformMainWindow
         Await BeginRefreshCacheAsync()
     End Sub
 
-    Private Sub EnableOrDisableControlsDuringUpdate(ControlsEnabled As Boolean)
+    Private Sub ControlStateDuringCacheUpdate(ControlsEnabled As Boolean)
 
         ' Don't let the user click things like Refresh cache if we're updating.
         ' We need ControlsEnabled to see if they should be enabled or not.
