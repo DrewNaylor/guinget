@@ -103,6 +103,12 @@ Partial Class aaformMainWindow
         Me.PackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchForPackageIDFromContextMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectedPackagesAction = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectedPackagesActionDoNothingMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectedPackagesActionInstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectedPackagesSearchForLastSelectedID = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SelectedPackagesProperties = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -209,7 +215,7 @@ Partial Class aaformMainWindow
         '
         'SelectedPackagesToolStripMenuItem
         '
-        Me.SelectedPackagesToolStripMenuItem.DropDown = Me.contextmenustripPackageMenu
+        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesAction, Me.SelectedPackagesSearchForLastSelectedID, Me.ToolStripSeparator4, Me.SelectedPackagesProperties})
         Me.SelectedPackagesToolStripMenuItem.Name = "SelectedPackagesToolStripMenuItem"
         Me.SelectedPackagesToolStripMenuItem.Size = New System.Drawing.Size(146, 24)
         Me.SelectedPackagesToolStripMenuItem.Text = "&Selected packages"
@@ -219,8 +225,7 @@ Partial Class aaformMainWindow
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem, Me.SearchForPackageIDFromContextMenu, Me.ToolStripSeparator7, Me.PropertiesSelectedPackageDropdownToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.OwnerItem = Me.SelectedPackagesToolStripMenuItem
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(253, 110)
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(253, 82)
         '
         'ActionToolStripMenuItem
         '
@@ -846,6 +851,42 @@ Partial Class aaformMainWindow
         Me.SearchForPackageIDFromContextMenu.Size = New System.Drawing.Size(252, 24)
         Me.SearchForPackageIDFromContextMenu.Text = "&Search for last-selected ID"
         '
+        'SelectedPackagesAction
+        '
+        Me.SelectedPackagesAction.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesActionDoNothingMenuItem, Me.SelectedPackagesActionInstallMenuItem})
+        Me.SelectedPackagesAction.Name = "SelectedPackagesAction"
+        Me.SelectedPackagesAction.Size = New System.Drawing.Size(266, 26)
+        Me.SelectedPackagesAction.Text = "&Action"
+        '
+        'SelectedPackagesActionDoNothingMenuItem
+        '
+        Me.SelectedPackagesActionDoNothingMenuItem.Name = "SelectedPackagesActionDoNothingMenuItem"
+        Me.SelectedPackagesActionDoNothingMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.SelectedPackagesActionDoNothingMenuItem.Text = "&Do nothing"
+        '
+        'SelectedPackagesActionInstallMenuItem
+        '
+        Me.SelectedPackagesActionInstallMenuItem.Name = "SelectedPackagesActionInstallMenuItem"
+        Me.SelectedPackagesActionInstallMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.SelectedPackagesActionInstallMenuItem.Text = "&Install"
+        '
+        'SelectedPackagesSearchForLastSelectedID
+        '
+        Me.SelectedPackagesSearchForLastSelectedID.Name = "SelectedPackagesSearchForLastSelectedID"
+        Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(266, 26)
+        Me.SelectedPackagesSearchForLastSelectedID.Text = "&Search for last-selected ID"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(263, 6)
+        '
+        'SelectedPackagesProperties
+        '
+        Me.SelectedPackagesProperties.Name = "SelectedPackagesProperties"
+        Me.SelectedPackagesProperties.Size = New System.Drawing.Size(266, 26)
+        Me.SelectedPackagesProperties.Text = "&Properties..."
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -971,4 +1012,10 @@ Partial Class aaformMainWindow
     Friend WithEvents PropertiesSelectedPackageDropdownToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents SearchForPackageIDFromContextMenu As ToolStripMenuItem
+    Friend WithEvents SelectedPackagesAction As ToolStripMenuItem
+    Friend WithEvents SelectedPackagesActionDoNothingMenuItem As ToolStripMenuItem
+    Friend WithEvents SelectedPackagesActionInstallMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents SelectedPackagesSearchForLastSelectedID As ToolStripMenuItem
+    Friend WithEvents SelectedPackagesProperties As ToolStripMenuItem
 End Class

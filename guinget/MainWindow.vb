@@ -255,6 +255,12 @@ Public Class aaformMainWindow
         MarkPackages("Do nothing")
     End Sub
 
+
+    Private Sub SelectedPackagesActionDoNothingMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedPackagesActionDoNothingMenuItem.Click
+        ' Mark packages from the menubar.
+        MarkPackages("Do nothing")
+    End Sub
+
     Private Sub InstallToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallToolStripMenuItem.Click
         ' Set all selected packages to "do nothing", or whatever the text in the
         ' context menu item that was clicked is. This could allow for
@@ -269,6 +275,11 @@ Public Class aaformMainWindow
         ' Maybe add a messagebox that asks if the user is sure they want to
         ' mark more than 40 packages for installation/do nothing at once
         ' as that may take a long time to complete, with an option to not ask again.
+        MarkPackages("Install")
+    End Sub
+
+    Private Sub SelectedPackagesActionInstallMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedPackagesActionInstallMenuItem.Click
+        ' Mark packages from the menubar.
         MarkPackages("Install")
     End Sub
 
