@@ -604,6 +604,14 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub aaformMainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Upgrade settings if necessary.
+        If My.Settings.UpgradeSettingsFromPreviousVersion = True Then
+            My.Settings.Upgrade()
+            My.Settings.UpgradeSettingsFromPreviousVersion = False
+            My.Settings.Save()
+            My.Settings.Reload()
+        End If
+
         ' Set text for sidebar dropdown.
         comboboxSidebarTabSelector.SelectedIndex = 0
 
