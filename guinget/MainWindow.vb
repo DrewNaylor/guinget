@@ -766,6 +766,7 @@ Public Class aaformMainWindow
     Private Sub buttonCloseSidebar_Click(sender As Object, e As EventArgs) Handles buttonCloseSidebar.Click
         ' Hide sidebar and turn off showing the sidebar.
         splitcontainerSidebarAndPkgList.Panel1Collapsed = True
+        SidebarToolStripMenuItem.Checked = False
         My.Settings.ShowSidebar = False
         My.Settings.Save()
         My.Settings.Reload()
@@ -793,6 +794,9 @@ Public Class aaformMainWindow
             splitcontainerSidebarAndPkgList.Panel1Collapsed = True
             My.Settings.ShowSidebar = False
         End If
+
+        My.Settings.Save()
+        My.Settings.Reload()
     End Sub
 
 
