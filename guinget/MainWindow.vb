@@ -598,8 +598,8 @@ Public Class aaformMainWindow
         ' Toolstrip separators.
         ' Main toolbar.
         aaformMainWindow.ToolStripSeparator1.Visible = Visible
-        ' Package list menu.
-        'aaformMainWindow.ToolStripSeparator4.Visible = Visible
+        ' Selected package menu.
+        aaformMainWindow.ToolStripSeparator7.Visible = Visible
 
     End Sub
 
