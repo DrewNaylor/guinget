@@ -643,6 +643,8 @@ Public Class aaformMainWindow
         ' Hide unfinished controls on startup if My.Settings.HideUnfinishedControls = True.
         If My.Settings.HideUnfinishedControls = True Then
             UnfinishedControlsVisible(False)
+        Else
+            UnfinishedControlsVisible(True)
         End If
     End Sub
 
@@ -860,6 +862,11 @@ Public Class aaformMainWindow
             toolstriptextboxSearch.Text = datagridviewPackageList.SelectedRows.Item(0).Cells.Item(2).Value.ToString
             BeginPackageIdSearch()
         End If
+    End Sub
+
+    Private Sub comboboxSidebarTabSelector_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboboxSidebarTabSelector.SelectedIndexChanged
+        ' Change the tab page when the dropdown selection changes.
+        tabcontrolSidebar.SelectedIndex = comboboxSidebarTabSelector.SelectedIndex
     End Sub
 
 
