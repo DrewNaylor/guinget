@@ -591,6 +591,14 @@ Public Class aaformMainWindow
         ' We need to use properties based on this answer:
         ' https://stackoverflow.com/a/30231315
         ' Properties set in the designer.
+        ' Switch the dropdown list that's displayed.
+        If Visible = True Then
+            aaformMainWindow.comboboxSidebarTabSelector.Items.Clear()
+            Dim HiddenList As String() = My.Resources.HiddenSidebarList.Split(CChar(","))
+            For Each HiddenPage As String In HiddenList
+                aaformMainWindow.comboboxSidebarTabSelector.Items.Add(HiddenPage)
+            Next
+        End If
 
         ' Tools menu.
         aaformMainWindow.ToolsToolStripMenuItem.Visible = Visible
