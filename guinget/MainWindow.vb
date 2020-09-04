@@ -593,11 +593,15 @@ Public Class aaformMainWindow
         ' Properties set in the designer.
         ' Switch the dropdown list that's displayed.
         If Visible = True Then
+            ' Clear the items from the dropdown.
             aaformMainWindow.comboboxSidebarTabSelector.Items.Clear()
+            ' Take the list of pages that are currently hidden and split them.
             Dim HiddenList As String() = My.Resources.HiddenSidebarList.Split(CChar(","))
+            ' Go through the list and add them to the dropdown.
             For Each HiddenPage As String In HiddenList
                 aaformMainWindow.comboboxSidebarTabSelector.Items.Add(HiddenPage)
             Next
+            ' Set the selected index for the dropdown back to 0.
             aaformMainWindow.comboboxSidebarTabSelector.SelectedIndex = 0
         End If
 
