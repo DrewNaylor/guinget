@@ -598,6 +598,7 @@ Public Class aaformMainWindow
             For Each HiddenPage As String In HiddenList
                 aaformMainWindow.comboboxSidebarTabSelector.Items.Add(HiddenPage)
             Next
+            aaformMainWindow.comboboxSidebarTabSelector.SelectedIndex = 0
         End If
 
         ' Tools menu.
