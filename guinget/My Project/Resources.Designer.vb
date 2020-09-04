@@ -68,5 +68,23 @@ Namespace My.Resources
                 Return ResourceManager.GetString("AboutSeparator", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Search terms.
+        '''</summary>
+        Friend ReadOnly Property DefaultSidebarList() As String
+            Get
+                Return ResourceManager.GetString("DefaultSidebarList", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Search terms,Status,Custom filters,Categories,Source,Architecture.
+        '''</summary>
+        Friend ReadOnly Property HiddenSidebarList() As String
+            Get
+                Return ResourceManager.GetString("HiddenSidebarList", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

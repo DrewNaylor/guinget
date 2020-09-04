@@ -121,4 +121,10 @@
     <value>---------------------------------------------------------------</value>
     <comment>Separates sections of text in the About window.</comment>
   </data>
+  <data name="DefaultSidebarList" xml:space="preserve">
+    <value>Search terms</value>
+  </data>
+  <data name="HiddenSidebarList" xml:space="preserve">
+    <value>Search terms,Status,Custom filters,Categories,Source,Architecture</value>
+  </data>
 </root>
