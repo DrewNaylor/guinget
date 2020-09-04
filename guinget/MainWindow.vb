@@ -150,6 +150,25 @@ Public Class aaformMainWindow
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
                 aaformMainWindow.statusbarMainWindow.Update()
             Next
+
+            ' In case there are manifests we can't find easily,
+            ' we need to get them now.
+            ' These have to be grabbed now or else updating the manifests
+            ' will crash when the path doesn't exist.
+        ElseIf My.Settings.LoadFromSqliteDb = True Then
+            PackageListTools.FallbackPathList = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
+
+            ' Now we need to load the manifests and the descriptions.
+            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+                ' Find the manifest and get its description.
+                PackageRow.Cells.Item(6).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
+
+                PackageRow.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(6).Value.ToString, "Description")
+                ' Make the progress bar progress.
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
+                ' Update the statusbar to show the current info.
+                aaformMainWindow.statusbarMainWindow.Update()
+            Next
         End If
 
         ' We're done updating the package list, so call the post-update sub.
@@ -171,26 +190,6 @@ Public Class aaformMainWindow
 
         ' Update the main window again.
         aaformMainWindow.Update()
-
-        ' In case there are manifests we can't find easily,
-        ' we need to get them now.
-        ' These have to be grabbed now or else updating the manifests
-        ' will crash when the path doesn't exist.
-        If My.Settings.LoadFromSqliteDb = True Then
-            PackageListTools.FallbackPathList = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
-
-            ' Now we need to load the manifests and the descriptions.
-            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                ' Find the manifest and get its description.
-                PackageRow.Cells.Item(6).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
-
-                PackageRow.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(6).Value.ToString, "Description")
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-                ' Update the statusbar to show the current info.
-                aaformMainWindow.Update()
-            Next
-        End If
 
         ' We're waiting until the loading is done so it finishes faster.
         aaformMainWindow.datagridviewPackageList.Visible = True
