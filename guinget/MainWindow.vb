@@ -660,7 +660,10 @@ Public Class aaformMainWindow
 
             ' Place search term into the sidebar if it wasn't started from the sidebar.
             If SearchStartedFromSidebar = False Then
-                aaformMainWindow.listboxSearchTerms.Items.Add(aaformMainWindow.toolstriptextboxSearch.Text)
+                ' Make sure it's not already in the sidebar.
+                If Not aaformMainWindow.listboxSearchTerms.Items.Contains(aaformMainWindow.toolstriptextboxSearch.Text) Then
+                    aaformMainWindow.listboxSearchTerms.Items.Add(aaformMainWindow.toolstriptextboxSearch.Text)
+                End If
             End If
 
             ' Change progress label text.
