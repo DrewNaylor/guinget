@@ -172,8 +172,13 @@ Public Class PackageListTools
         Else
             ' Otherwise, re-create it.
             Await Task.Run(Sub()
-                               System.IO.Directory.Delete(tempDir, True)
-                               System.IO.Directory.CreateDirectory(tempDir)
+                               ' Make sure it's not in use at the moment.
+                               Try
+                                   System.IO.Directory.Delete(tempDir, True)
+                                   System.IO.Directory.CreateDirectory(tempDir)
+                               Catch ex As System.IO.IOException
+                                   MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
+                               End Try
                            End Sub)
 
             ' Now we can download the package.
