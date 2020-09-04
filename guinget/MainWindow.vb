@@ -829,10 +829,12 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripmenuitemAdvancedSearch_Click(sender As Object, e As EventArgs) Handles toolstripmenuitemAdvancedSearch.Click
+        ' Run the sub to show the Search options window.
         ShowSearchOptions()
     End Sub
 
     Private Sub AdvancedSearchMenuItem_Click(sender As Object, e As EventArgs) Handles AdvancedSearchMenuItem.Click
+        ' Run the sub to show the Search options window.
         ShowSearchOptions()
     End Sub
 
