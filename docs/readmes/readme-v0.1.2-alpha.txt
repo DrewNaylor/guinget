@@ -112,11 +112,16 @@ A more-detailed usage guide is available in "docs/How to use guinget.html".
 
 5. Mark the packages as you wish by right-clicking or double-clicking on them and selecting what you want them to be marked as from the "Action" submenu (either install or "do nothing"/ignore for now).
 
-You can also mark packages from the "Package list>Selected package>Action" menu, or by opening the package's combobox/dropdown in the "Action" column (may require a few clicks). This combobox/dropdown can also be activated by moving over to it with the arrow keys and pressing "space", though sometimes I have a bit of issue with this.
+You can also mark packages from the "Selected packages>Action" menu, or by opening the package's combobox/dropdown in the "Action" column (may require a few clicks). This combobox/dropdown can also be activated by moving over to it with the arrow keys and pressing "space", though sometimes I have a bit of issue with this.
 
 Each version of a package is listed as a separate package for now. I want to have it be like Synaptic where you open a different window to choose a different version of a package.
 
-Searching is available, so you can use the search box to make finding packages faster. At the moment, you'll have to manually clear the search box and search again to get back to the non-filtered package list. After searching, you can use the `Tab` key to focus the package list again.
+Search:
+Searching is available, so you can use the search box to make finding packages faster. At the moment, you'll have to manually clear the search box (either with `Backspace` or `Escape`) and search again to get back to the non-filtered package list. If you're showing the sidebar, you can double-click or press `Enter` on the `All` item at the top of the search terms list.
+
+After searching, you can use the `Tab` key to focus the package list again, although this may take several `Tab`s if the sidebar is shown.
+
+By default, searches are re-done after updating the package list, although you can turn this off from the `Options` window under `Package list>Search options...`; uncheck `Re-run search after cache update` and click `OK`.
 
 6. Once you've marked your packages, you can apply them by opening the "Apply changes" dialog, either from the toolbar or from the "Package list" menu.
 
