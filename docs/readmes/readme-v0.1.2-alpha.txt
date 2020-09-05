@@ -1,7 +1,7 @@
 If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word wrap.
 
 
-guinget -- Version 0.1.1 Alpha -- 8/3/2020 (MM/DD/YYYY).
+guinget -- Version 0.1.2 Alpha -- 8/3/2020 (MM/DD/YYYY).
 
 If you have any trouble, you might be able to find an answer in the documentation. It's linked at the end of this readme file. If not, you can submit a bug report at the "Report a problem" link at the end of this readme file. Your report will be labeled by the developers accordingly in a reasonable amount of time.
 
@@ -18,14 +18,17 @@ The PowerShell method can be used for all files listed below, though you'll have
 SHA-256 sum for "guinget.exe" in the archive:
 77BE11957E22E4A3341F0D671E510981E7E7D45794FA89B861133EA71241A170
 
-SHA-256 sum for "libguinget.dll" in the archive:
+SHA-256 sum for "lib\libguinget.dll" in the archive:
 BE071A6B17AE209E0242777A7385250BD549E697B69F5B73425FDF597C6D971D
 
 SHA-256 sum for "update-manifests.bat" in the archive:
 AFA421669D4856FB9136656B97CD2098478B1FE67AD5CB2326DA5A8BDA4BD36A
 
-SHA-256 sum for "YamlDotNet.dll" in the archive:
+SHA-256 sum for "lib\YamlDotNet.dll" in the archive:
 632E1C37E67E5BE46766FFC9ED7790C22D1FE75A5B83AAB9EC4C0678414E5B82
+
+The rest of the libraries in the "lib" folder are from Microsoft.Data.Sqlite:
+https://www.nuget.org/packages/Microsoft.Data.Sqlite/
 
 
 ----------------
