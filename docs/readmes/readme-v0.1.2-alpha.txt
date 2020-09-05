@@ -119,6 +119,8 @@ Each version of a package is listed as a separate package for now. I want to hav
 Search:
 Searching is available, so you can use the search box to make finding packages faster. At the moment, you'll have to manually clear the search box (either with `Backspace` or `Escape`) and search again to get back to the non-filtered package list. If you're showing the sidebar, you can double-click or press `Enter` on the `All` item at the top of the search terms list.
 
+You can also search for all packages containing a specific package's ID using `Search for last-selected ID`, either from the package context menu, or from the `Selected packages` menu.
+
 After searching, you can use the `Tab` key to focus the package list again, although this may take several `Tab`s if the sidebar is shown.
 
 By default, searches are re-done after updating the package list, although you can turn this off from the `Options` window under `Package list>Search options...`; uncheck `Re-run search after cache update` and click `OK`.
