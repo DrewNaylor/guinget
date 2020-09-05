@@ -27,7 +27,7 @@ AFA421669D4856FB9136656B97CD2098478B1FE67AD5CB2326DA5A8BDA4BD36A
 SHA-256 sum for "lib\YamlDotNet.dll" in the archive:
 632E1C37E67E5BE46766FFC9ED7790C22D1FE75A5B83AAB9EC4C0678414E5B82
 
-The rest of the libraries in the "lib" folder are from Microsoft.Data.Sqlite:
+The rest of the libraries in the "lib" folder are from Microsoft.Data.Sqlite and I don't want to list them all:
 https://www.nuget.org/packages/Microsoft.Data.Sqlite/
 
 
