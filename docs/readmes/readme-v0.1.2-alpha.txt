@@ -148,7 +148,7 @@ Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 guinget
-Version 0.1.1 Alpha
+Version 0.1.2.0 Alpha
 Copyright (C) 2020 Drew Naylor. Licensed under Apache License 2.0.
 
 Unofficial GUI for Microsoft's Windows Package Manager (winget).
@@ -160,13 +160,16 @@ https://github.com/DrewNaylor/guinget
 
 libguinget is used for things like loading the package list and uses the Apache License 2.0.
 
+Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the Apache License 2.0. NuGet page for Microsoft.Data.Sqlite:
+https://www.nuget.org/packages/Microsoft.Data.Sqlite/
+
 YamlDotNet is used to read manifests, which you can get the source code for here:
 https://github.com/aaubry/YamlDotNet
 YamlDotNet falls under the MIT license, which you can read a copy of below the Apache License summary.
 
 ---------------------------------------------------------------
 
-Apache License 2.0 summary as it applies to guinget and libguinget:
+Apache License 2.0 summary as it applies to guinget, libguinget, and Microsoft.Data.Sqlite:
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
