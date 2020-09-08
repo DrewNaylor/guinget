@@ -26,6 +26,8 @@ Please be aware that [the package context menu may appear in the wrong area](htt
 
 To mark multiple packages, either select them with the mouse (using `Shift` and `Ctrl` like you would for a list of files) or select them using `Shift` and the arrow keys. After selecting the packages you want to mark, right-click on one of the selected packages and use the `Action` menu, or use the `Package list>Selected package>Action` menu, to mark them as you wish.
 
+Version 0.1.2 moved the package-marking menu items into the `Selected packages` menu, so you'll need to use the `Selected packages>Action` menu to mark as necessary.
+
 ## Applying marked changes
 
 Marked changes are applied using the `Apply changes` dialog, accessible through either the `Apply changes...` toolbar button or via `Package list>Apply changes...`. Batch package installs (and uninstalls, when that's supported) are not supported yet, so you'll have to either double-click or press `Enter` on each package in the list to install it when ready.
