@@ -63,8 +63,8 @@ Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\v0.1.2-alpha_changelog
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
-Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\lib\*"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion createallsubdirs recursesubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -75,10 +75,6 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 
 [Messages]
 UninstalledAll=%1 was successfully removed from your computer. Configuration files may still be present in (username)\AppData\Roaming\winget-frontends and (username)\AppData\Local\guinget, where (username) is your user profile usually in C:\Users.
-
-[Dirs]
-Name: "{app}\docs"
-Name: "{app}\lib"
 
 [InstallDelete]
 Type: files; Name: "{app}\libguinget.dll"
