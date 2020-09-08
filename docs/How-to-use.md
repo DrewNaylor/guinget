@@ -51,7 +51,9 @@ Searches are now re-run after a cache update if there's text in the search box, 
 If you don't want to manually clear the search box, you can now use the `Esc`/`Escape` key instead.
 
 #### Sidebar
-By default, there's a sidebar that shows your search terms from the current session, but you can hide it with the `X` button in its top-right corner; using `View>Sidebar`; or by opening the `Options` window from `Package list>Search options`, unchecking `Show sidebar`, and clicking `OK`. You can clear all search terms or only selected search terms from this list using the context menu.
+By default, there's a sidebar that shows your search terms from the current session, but you can hide it with the `X` button in its top-right corner; using `View>Sidebar`; or by opening the `Options` window from `Package list>Search options`, unchecking `Show sidebar`, and clicking `OK`.
+
+You can clear all search terms or only selected search terms from the search terms list using the context menu.
 
 **NB:** It may take extra `Tab` presses to get back to the package list from the search bar when the sidebar is shown.
 
