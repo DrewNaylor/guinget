@@ -62,8 +62,6 @@ Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\v0.1.2-alpha_changelog
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\YamlDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\libguinget.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\lib\*"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs
 
