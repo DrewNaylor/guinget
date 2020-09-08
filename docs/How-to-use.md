@@ -22,6 +22,8 @@ Using the arrow keys to move the cell selection may not work sometimes, as I had
 
 Please be aware that [the package context menu may appear in the wrong area](https://github.com/DrewNaylor/guinget/issues/14), though this was fixed in version 0.1.2.
 
+**NB:** Version 0.1.2 moved the package-marking menu items into the `Selected packages` menu, so you'll need to use the `Selected packages>Action` menu to mark as necessary.
+
 ## Marking multiple packages
 
 To mark multiple packages, either select them with the mouse (using `Shift` and `Ctrl` like you would for a list of files) or select them using `Shift` and the arrow keys. After selecting the packages you want to mark, right-click on one of the selected packages and use the `Action` menu, or use the `Package list>Selected package>Action` menu, to mark them as you wish.
