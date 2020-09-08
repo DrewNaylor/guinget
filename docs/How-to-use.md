@@ -40,7 +40,9 @@ You can search for packages using the search bar in the toolbar at the top of th
 
 Before version 0.1.2, you had to manually clear the search box and search again to get back to the non-filtered package list; version 0.1.2 allows you to double-click/press `Enter` on the `All` entry at the top of the sidebar search terms list to get an unfiltered list. The `Esc`/`Escape` key also works to clear the search box in version 0.1.2. Once you've finished searching, you can press the `Tab` key to focus the package list again. If the sidebar as described below is shown, it may take extra `Tab` presses to get back to the package list.
 
-By default, version 0.1.2 displays a sidebar that shows your search terms from the current session, but you can hide it with the `X` button in its top-right corner; using `View>Sidebar`; or by opening the `Options` window from `Package list>Search options`, unchecking `Show sidebar`, and clicking `OK`.
+Starting with version 0.1.2, you can search for all packages containing the last-selected package's ID using `Search for last-selected ID` in either the package context menu or from the `Selected packages` menu.
+
+By default, version 0.1.2 displays a sidebar that shows your search terms from the current session, but you can hide it with the `X` button in its top-right corner; using `View>Sidebar`; or by opening the `Options` window from `Package list>Search options`, unchecking `Show sidebar`, and clicking `OK`. You can clear all search terms or only selected search terms from this list using the context menu.
 
 As of version 0.1.2, searches are now re-run after a cache update if there's text in the search box, but you can turn that off by unchecking `Re-run search after cache update` in the `Options` window as described above.
 
