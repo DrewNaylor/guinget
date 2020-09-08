@@ -64,6 +64,7 @@ Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\LICENSE-YamlDotNet.txt
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\lib\*"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
