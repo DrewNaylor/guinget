@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "guinget"
-#define MyAppVersion "0.1.1"
+#define MyAppVersion "0.1.2"
 #define MyAppPublisher "Drew Naylor"
 #define MyAppURL "https://github.com/DrewNaylor/guinget"
 #define MyAppUpdatesURL "https://github.com/DrewNaylor/guinget/releases/latest"
@@ -27,7 +27,7 @@ LicenseFile=C:\Users\drewn\My Applications\guinget\v0.1.1-alpha\LICENSE.txt
 InfoBeforeFile=C:\Users\drewn\My Applications\guinget\v0.1.1-alpha\README for guinget.txt
 InfoAfterFile=C:\Users\drewn\My Applications\guinget\v0.1.1-alpha\v0.1.1-alpha_changelog_from-v0.1.0.1-alpha.txt
 OutputDir=C:\Users\drewn\My Applications\guinget\v0.1.1-alpha\
-OutputBaseFilename=guinget_v0.1.1-alpha
+OutputBaseFilename=guinget_v0.1.2-alpha
 Compression=lzma
 SolidCompression=yes
 AppCopyright=Copyright 2020 Drew Naylor. Licensed under Apache License 2.0.
@@ -53,18 +53,18 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\guinget.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\README for guinget.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\source-code.zip"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\guinget.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\v0.1.1-alpha_changelog_from-v0.1.0.1-alpha.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\guinget.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\README for guinget.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\source-code.zip"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\guinget.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\v0.1.2-alpha_changelog_from-v0.1.1-alpha.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\YamlDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\libguinget.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.1-alpha\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\YamlDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\libguinget.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
