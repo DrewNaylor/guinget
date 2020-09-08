@@ -57,7 +57,6 @@ Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\guinget.exe"; DestDir:
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\README for guinget.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\source-code.zip"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\guinget.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\v0.1.2-alpha_changelog_from-v0.1.1-alpha.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "..\..\..\..\My Applications\guinget\v0.1.2-alpha\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
