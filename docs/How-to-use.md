@@ -26,7 +26,7 @@ Please be aware that [the package context menu may appear in the wrong area](htt
 
 To mark multiple packages, either select them with the mouse (using `Shift` and `Ctrl` like you would for a list of files) or select them using `Shift` and the arrow keys. After selecting the packages you want to mark, right-click on one of the selected packages and use the `Action` menu, or use the `Package list>Selected package>Action` menu, to mark them as you wish.
 
-Version 0.1.2 moved the package-marking menu items into the `Selected packages` menu, so you'll need to use the `Selected packages>Action` menu to mark as necessary.
+**NB:** Version 0.1.2 moved the package-marking menu items into the `Selected packages` menu, so you'll need to use the `Selected packages>Action` menu to mark as necessary.
 
 ## Applying marked changes
 
@@ -38,7 +38,11 @@ Starting in version 0.1.1, you can have packages install interactively with the 
 
 You can search for packages using the search bar in the toolbar at the top of the window. As of version 0.1 pre-alpha 2, this only filters the `Package` column, but other columns are planned to be supported. To search, either click in the textbox, press `Ctrl+F` to automatically set focus to it, or use `Package list>Search`. After typing in what you want to search for, either press `Enter` or click the `Search` toolbar button. Please be aware that [using `Ctrl+A` to select all packages in the search results currently selects even non-filtered packages](https://github.com/DrewNaylor/guinget/issues/13).
 
-At the moment, you'll have to manually clear the search box and search again to get back to the non-filtered package list. Once you've finished searching, you can press the `Tab` key to focus the package list again.
+Before version 0.1.2, you had to manually clear the search box and search again to get back to the non-filtered package list; version 0.1.2 allows you to double-click/press `Enter` on the `All` entry at the top of the sidebar search terms list to get an unfiltered list. The `Esc`/`Escape` key also works to clear the search box in version 0.1.2. Once you've finished searching, you can press the `Tab` key to focus the package list again.
+
+By default, version 0.1.2 displays a sidebar that shows your search terms from the current session, but you can hide it with the `X` button in its top-right corner; using `View>Sidebar`; or by opening the `Options` window from `Package list>Search options`, unchecking `Show sidebar`, and clicking `OK`.
+
+**NB:** Version 0.1.2 renamed the `Package list>Search` menu item to `Package list>Filter search box`.
 
 ## Showing unfinished controls
 
