@@ -20,7 +20,7 @@ To mark a package, you can double-click or right-click on it and select `Action>
 
 Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
 
-Please be aware that [the package context menu may appear in the wrong area](https://github.com/DrewNaylor/guinget/issues/14).
+Please be aware that [the package context menu may appear in the wrong area](https://github.com/DrewNaylor/guinget/issues/14), though this was fixed in version 0.1.2.
 
 ## Marking multiple packages
 
