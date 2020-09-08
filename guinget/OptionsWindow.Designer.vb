@@ -24,12 +24,12 @@ Partial Class OptionsWindow
     Private Sub InitializeComponent()
         Me.tablelayoutpanelOptions = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonDefaults = New System.Windows.Forms.Button()
-        Me.buttonOk = New System.Windows.Forms.Button()
-        Me.buttonCancel = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
-        Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
         Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
+        Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
+        Me.buttonCancel = New System.Windows.Forms.Button()
+        Me.buttonOk = New System.Windows.Forms.Button()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
@@ -65,26 +65,6 @@ Partial Class OptionsWindow
         Me.buttonDefaults.Text = "Defaults"
         Me.buttonDefaults.UseVisualStyleBackColor = True
         '
-        'buttonOk
-        '
-        Me.buttonOk.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonOk.Location = New System.Drawing.Point(362, 503)
-        Me.buttonOk.Name = "buttonOk"
-        Me.buttonOk.Size = New System.Drawing.Size(100, 33)
-        Me.buttonOk.TabIndex = 1
-        Me.buttonOk.Text = "OK"
-        Me.buttonOk.UseVisualStyleBackColor = True
-        '
-        'buttonCancel
-        '
-        Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonCancel.Location = New System.Drawing.Point(256, 503)
-        Me.buttonCancel.Name = "buttonCancel"
-        Me.buttonCancel.Size = New System.Drawing.Size(100, 33)
-        Me.buttonCancel.TabIndex = 2
-        Me.buttonCancel.Text = "Cancel"
-        Me.buttonCancel.UseVisualStyleBackColor = True
-        '
         'tabcontrolOptions
         '
         Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
@@ -108,16 +88,6 @@ Partial Class OptionsWindow
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
         '
-        'checkboxRerunSearch
-        '
-        Me.checkboxRerunSearch.AutoSize = True
-        Me.checkboxRerunSearch.Location = New System.Drawing.Point(7, 7)
-        Me.checkboxRerunSearch.Name = "checkboxRerunSearch"
-        Me.checkboxRerunSearch.Size = New System.Drawing.Size(244, 21)
-        Me.checkboxRerunSearch.TabIndex = 0
-        Me.checkboxRerunSearch.Text = "Re-run search after cache update"
-        Me.checkboxRerunSearch.UseVisualStyleBackColor = True
-        '
         'checkboxShowSidebar
         '
         Me.checkboxShowSidebar.AutoSize = True
@@ -128,10 +98,42 @@ Partial Class OptionsWindow
         Me.checkboxShowSidebar.Text = "Show sidebar"
         Me.checkboxShowSidebar.UseVisualStyleBackColor = True
         '
+        'checkboxRerunSearch
+        '
+        Me.checkboxRerunSearch.AutoSize = True
+        Me.checkboxRerunSearch.Location = New System.Drawing.Point(7, 7)
+        Me.checkboxRerunSearch.Name = "checkboxRerunSearch"
+        Me.checkboxRerunSearch.Size = New System.Drawing.Size(244, 21)
+        Me.checkboxRerunSearch.TabIndex = 0
+        Me.checkboxRerunSearch.Text = "Re-run search after cache update"
+        Me.checkboxRerunSearch.UseVisualStyleBackColor = True
+        '
+        'buttonCancel
+        '
+        Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonCancel.Location = New System.Drawing.Point(256, 503)
+        Me.buttonCancel.Name = "buttonCancel"
+        Me.buttonCancel.Size = New System.Drawing.Size(100, 33)
+        Me.buttonCancel.TabIndex = 2
+        Me.buttonCancel.Text = "Cancel"
+        Me.buttonCancel.UseVisualStyleBackColor = True
+        '
+        'buttonOk
+        '
+        Me.buttonOk.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonOk.Location = New System.Drawing.Point(362, 503)
+        Me.buttonOk.Name = "buttonOk"
+        Me.buttonOk.Size = New System.Drawing.Size(100, 33)
+        Me.buttonOk.TabIndex = 1
+        Me.buttonOk.Text = "OK"
+        Me.buttonOk.UseVisualStyleBackColor = True
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.CancelButton = Me.buttonCancel
         Me.ClientSize = New System.Drawing.Size(465, 539)
         Me.Controls.Add(Me.tablelayoutpanelOptions)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
