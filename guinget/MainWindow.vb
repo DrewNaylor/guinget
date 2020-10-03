@@ -695,14 +695,26 @@ Public Class aaformMainWindow
             ' Update main window.
             aaformMainWindow.Update()
 
+            Dim SearchTerm As String = aaformMainWindow.toolstriptextboxSearch.Text
+
             For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Look in each row in the datagridview, and see what text it has.
-                If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(aaformMainWindow.toolstriptextboxSearch.Text.ToLowerInvariant) Then
-                    ' If the Package ID cell contains what's in the search box, show it.
-                    searchRow.Visible = True
-                Else
-                    ' Otherwise, hide it.
-                    searchRow.Visible = False
+                ' If it starts and ends with double-quotes, remove them and do an exact match.
+                If SearchTerm.ToLowerInvariant.StartsWith("""") AndAlso SearchTerm.ToLowerInvariant.EndsWith("""") Then
+                    ' Set all rows visible to what's in the search box without the start and end.
+                    If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
+                        ' Set only exactly-matching rows to show.
+                        searchRow.Visible = True
+                    Else
+                        ' Otherwise, hide it.
+                        searchRow.Visible = False
+                    End If
+                ElseIf searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
+                        ' If the Package ID cell contains what's in the search box, show it.
+                        searchRow.Visible = True
+                    Else
+                        ' Otherwise, hide it.
+                        searchRow.Visible = False
                 End If
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
