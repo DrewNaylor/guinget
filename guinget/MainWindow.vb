@@ -876,7 +876,9 @@ Public Class aaformMainWindow
         ' Search for the ID of the most-recently selected package.
         ' Make sure there are packages in the list.
         If datagridviewPackageList.Rows.Count > 0 Then
-            toolstriptextboxSearch.Text = datagridviewPackageList.SelectedRows.Item(0).Cells.Item(2).Value.ToString
+            ' We have to wrap it with quotes to get an exact match, since
+            ' that's probably what the user wants.
+            toolstriptextboxSearch.Text = """" & datagridviewPackageList.SelectedRows.Item(0).Cells.Item(2).Value.ToString & """"
             BeginPackageIdSearch()
         End If
     End Sub
