@@ -173,6 +173,18 @@ Namespace My
                 Me("UpgradeSettingsFromPreviousVersion") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ExactMatchForLastSelectedIDSearch() As Boolean
+            Get
+                Return CType(Me("ExactMatchForLastSelectedIDSearch"),Boolean)
+            End Get
+            Set
+                Me("ExactMatchForLastSelectedIDSearch") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

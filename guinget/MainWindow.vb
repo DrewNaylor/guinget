@@ -878,7 +878,12 @@ Public Class aaformMainWindow
         If datagridviewPackageList.Rows.Count > 0 Then
             ' We have to wrap it with quotes to get an exact match, since
             ' that's probably what the user wants.
-            toolstriptextboxSearch.Text = """" & datagridviewPackageList.SelectedRows.Item(0).Cells.Item(2).Value.ToString & """"
+            If My.Settings.ExactMatchForLastSelectedIDSearch = True Then
+                ' Only run an exact match for the package ID if the user wants it.
+                toolstriptextboxSearch.Text = """" & datagridviewPackageList.SelectedRows.Item(0).Cells.Item(2).Value.ToString & """"
+            Else
+                toolstriptextboxSearch.Text = datagridviewPackageList.SelectedRows.Item(0).Cells.Item(2).Value.ToString
+            End If
             BeginPackageIdSearch()
         End If
     End Sub

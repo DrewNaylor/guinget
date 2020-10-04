@@ -32,5 +32,8 @@
     <Setting Name="UpgradeSettingsFromPreviousVersion" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ExactMatchForLastSelectedIDSearch" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
