@@ -416,8 +416,11 @@ Public Class aaformMainWindow
 
     Friend Shared Async Function UpdatePackageListBuiltinAsync() As Task
 
-        ' First, we need to download and update the manifests.
-        Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying, My.Settings.LoadFromSqliteDb)
+        ' First, we need to download and update the manifests if the
+        ' debugging setting to bypass updating is turned off.
+        If My.Settings.DebuggingBypassCacheUpdate = False Then
+            Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying, My.Settings.LoadFromSqliteDb)
+        End If
 
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
         Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
