@@ -35,6 +35,8 @@ Public Class OptionsWindow
         checkboxRerunSearch.Checked = My.Settings.RerunSearchAfterCacheUpdate
         ' Show sidebar.
         checkboxShowSidebar.Checked = My.Settings.ShowSidebar
+        ' Exact match for last-selected package ID.
+        checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked = My.Settings.ExactMatchForLastSelectedIDSearch
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
@@ -58,6 +60,8 @@ Public Class OptionsWindow
         My.Settings.RerunSearchAfterCacheUpdate = checkboxRerunSearch.Checked
         ' Show sidebar checkbox.
         My.Settings.ShowSidebar = checkboxShowSidebar.Checked
+        ' Exact match for last-selected package ID checkbox.
+        My.Settings.ExactMatchForLastSelectedIDSearch = checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked
 
         My.Settings.Save()
         My.Settings.Reload()
@@ -73,8 +77,10 @@ Public Class OptionsWindow
 
     Private Sub ReloadDefaults()
         ' Re-run search checkbox.
-        checkboxRerunSearch.Checked = False
+        checkboxRerunSearch.Checked = True
         ' Show sidebar checkbox.
-        checkboxShowSidebar.Checked = False
+        checkboxShowSidebar.Checked = True
+        ' Exact match for last-selected package ID checkbox.
+        checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked = True
     End Sub
 End Class
