@@ -521,6 +521,9 @@ Public Class PackageListTools
             " names where manifest.id = ids._rowid_ and manifest.version = versions._rowid_ " &
             " and manifest.name = names._rowid_ order by ids.id;"
 
+        ' SQL query for latest package version.
+        ' Based on the code at the bottom of this page:
+        ' https://www.sqlitetutorial.net/sqlite-window-functions/sqlite-last_value/#:~:text=The%20LAST_VALUE%20%28%29%20is%20a%20window%20function%20that,LAST_VALUE%20%28expression%29%20OVER%20%28%20PARTITION%20BY%20expression1%2C%20expression2%2C
         Dim SqlQueryWithLatestVersion As String = "SELECT DISTINCT
     ids.id, manifest.id, versions.version, manifest.version, names.name, manifest.name,
     LAST_VALUE ( versions.version ) OVER (
