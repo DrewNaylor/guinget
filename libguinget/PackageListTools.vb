@@ -521,6 +521,19 @@ Public Class PackageListTools
             " names where manifest.id = ids._rowid_ and manifest.version = versions._rowid_ " &
             " and manifest.name = names._rowid_ order by ids.id;"
 
+        Dim SqlQueryWithLatestVersion As String = "SELECT DISTINCT
+    ids.id, manifest.id, versions.version, manifest.version, names.name, manifest.name,
+    LAST_VALUE ( versions.version ) OVER (
+		PARTITION by ids.id
+        ORDER BY ids.id 
+        RANGE BETWEEN UNBOUNDED PRECEDING AND 
+        UNBOUNDED FOLLOWING
+    ) AS NewestVersion 
+FROM
+    ids, manifest, versions, names 
+WHERE
+    manifest.id = ids._rowid_ and manifest.version = versions._rowid_ and manifest.name = names._rowid_;"
+
         ' Specify winget package list database file we want
         ' to read from.
         Dim PackageListPath As String = "Data Source=" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
@@ -532,7 +545,7 @@ Public Class PackageListTools
         SqlConnection.Open()
 
         SqlCommand.Connection = SqlConnection
-        SqlCommand.CommandText = SqlQuery
+        SqlCommand.CommandText = SqlQueryWithLatestVersion
         SqlDataReader = SqlCommand.ExecuteReader()
 
 
@@ -545,6 +558,7 @@ Public Class PackageListTools
         packageArray.Columns.Add("PackageId", GetType(String))
         packageArray.Columns.Add("PackageName", GetType(String))
         packageArray.Columns.Add("PackageVersion", GetType(String))
+        packageArray.Columns.Add("PackageLatestVersion", GetType(String))
 
         ' Get data from the name column based on this MSDN page:
         ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
@@ -555,8 +569,8 @@ Public Class PackageListTools
                 ' looking at with the current package and add a comma
                 ' for separation.
 
-                ' Column 0 is ID, 4 is Name, and 2 is Version.
-                packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2))
+                ' Column 0 is ID, 4 is Name, 2 is Version, and 6 is latest version.
+                packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2), SqlDataReader.GetValue(6))
             Loop
         End If
 

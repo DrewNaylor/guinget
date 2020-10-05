@@ -197,6 +197,18 @@ Namespace My
                 Me("DebuggingBypassCacheUpdate") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property HideOlderPackageVersions() As Boolean
+            Get
+                Return CType(Me("HideOlderPackageVersions"),Boolean)
+            End Get
+            Set
+                Me("HideOlderPackageVersions") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

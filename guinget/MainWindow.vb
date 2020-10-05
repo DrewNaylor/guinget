@@ -114,7 +114,7 @@ Public Class aaformMainWindow
             'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
             'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
             For Each PackageRow As DataRow In SqliteList.Rows
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), "Loading...", "Loading...")
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
 
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
@@ -161,9 +161,9 @@ Public Class aaformMainWindow
             ' Now we need to load the manifests and the descriptions.
             For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Find the manifest and get its description.
-                PackageRow.Cells.Item(6).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
+                PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
 
-                PackageRow.Cells.Item(5).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(6).Value.ToString, "Description")
+                PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
                 ' Update the statusbar to show the current info.
@@ -187,6 +187,14 @@ Public Class aaformMainWindow
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+
+        For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+            If Not PackageRow.Cells.Item(2).Value.ToString = PackageRow.Cells.Item(3).Value.ToString Then
+                PackageRow.Visible = False
+            Else
+                PackageRow.Visible = True
+            End If
+        Next
 
         ' Update the main window again.
         aaformMainWindow.Update()
