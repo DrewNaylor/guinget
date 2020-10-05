@@ -438,14 +438,14 @@ Public Class PackageListTools
 
     End Function
 
-    Public Shared Function GetManifests() As String
+    Public Shared Function GetManifests() As List(Of String)
         ' Get and return each manifest in the manifests folder.
         ' This should only be used after ensuring that there's
         ' stuff in this folder, or it'll crash.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' Define a variable so we can store the manifest paths.
-        Dim ManifestPath As String = String.Empty
+        Dim ManifestPath As List(Of String) = New List(Of String)
 
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
@@ -453,7 +453,7 @@ Public Class PackageListTools
 
             ' Append the current package manifest's path to the ManifestPath string.
             ' Using a question mark since it's not allowed in path names.
-            ManifestPath = ManifestPath & PackageManifest & "?"
+            ManifestPath.Add(PackageManifest)
         Next
 
         Return ManifestPath
@@ -464,7 +464,7 @@ Public Class PackageListTools
     ' If the folder used here doesn't exist, applications using this
     ' library will crash, so it has to be set by the calling application before
     ' being used.
-    Public Shared FallbackPathList() As String
+    Public Shared FallbackPathList As List(Of String)
 
     Public Shared Async Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String) As Task(Of String)
         ' We'll look through the manifests in the cache, and if there's a version number match,
@@ -521,6 +521,22 @@ Public Class PackageListTools
             " names where manifest.id = ids._rowid_ and manifest.version = versions._rowid_ " &
             " and manifest.name = names._rowid_ order by ids.id;"
 
+        ' SQL query for latest package version.
+        ' Based on the code at the bottom of this page:
+        ' https://www.sqlitetutorial.net/sqlite-window-functions/sqlite-last_value/#:~:text=The%20LAST_VALUE%20%28%29%20is%20a%20window%20function%20that,LAST_VALUE%20%28expression%29%20OVER%20%28%20PARTITION%20BY%20expression1%2C%20expression2%2C
+        Dim SqlQueryWithLatestVersion As String = "SELECT DISTINCT
+    ids.id, manifest.id, versions.version, manifest.version, names.name, manifest.name,
+    LAST_VALUE ( versions.version ) OVER (
+		PARTITION by ids.id
+        ORDER BY ids.id 
+        RANGE BETWEEN UNBOUNDED PRECEDING AND 
+        UNBOUNDED FOLLOWING
+    ) AS NewestVersion 
+FROM
+    ids, manifest, versions, names 
+WHERE
+    manifest.id = ids._rowid_ and manifest.version = versions._rowid_ and manifest.name = names._rowid_;"
+
         ' Specify winget package list database file we want
         ' to read from.
         Dim PackageListPath As String = "Data Source=" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
@@ -532,7 +548,7 @@ Public Class PackageListTools
         SqlConnection.Open()
 
         SqlCommand.Connection = SqlConnection
-        SqlCommand.CommandText = SqlQuery
+        SqlCommand.CommandText = SqlQueryWithLatestVersion
         SqlDataReader = SqlCommand.ExecuteReader()
 
 
@@ -545,6 +561,7 @@ Public Class PackageListTools
         packageArray.Columns.Add("PackageId", GetType(String))
         packageArray.Columns.Add("PackageName", GetType(String))
         packageArray.Columns.Add("PackageVersion", GetType(String))
+        packageArray.Columns.Add("PackageLatestVersion", GetType(String))
 
         ' Get data from the name column based on this MSDN page:
         ' https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
@@ -555,8 +572,8 @@ Public Class PackageListTools
                 ' looking at with the current package and add a comma
                 ' for separation.
 
-                ' Column 0 is ID, 4 is Name, and 2 is Version.
-                packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2))
+                ' Column 0 is ID, 4 is Name, 2 is Version, and 6 is latest version.
+                packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2), SqlDataReader.GetValue(6))
             Loop
         End If
 

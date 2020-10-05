@@ -65,6 +65,7 @@ Partial Class aaformMainWindow
         Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LatestVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
@@ -142,7 +143,6 @@ Partial Class aaformMainWindow
         Me.menustripMainWindow.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ViewToolStripMenuItem, Me.PackageToolStripMenuItem, Me.SelectedPackagesToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.menustripMainWindow.Location = New System.Drawing.Point(0, 0)
         Me.menustripMainWindow.Name = "menustripMainWindow"
-        Me.menustripMainWindow.Padding = New System.Windows.Forms.Padding(6, 2, 0, 2)
         Me.menustripMainWindow.Size = New System.Drawing.Size(1105, 28)
         Me.menustripMainWindow.TabIndex = 0
         Me.menustripMainWindow.Text = "MenuStrip1"
@@ -380,7 +380,7 @@ Partial Class aaformMainWindow
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.FriendlyName, Me.AvailableVersion, Me.PkgDescription, Me.Manifest})
+        Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.FriendlyName, Me.AvailableVersion, Me.LatestVersion, Me.PkgDescription, Me.Manifest})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
@@ -453,6 +453,14 @@ Partial Class aaformMainWindow
         Me.AvailableVersion.ReadOnly = True
         Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
     "dow like Synaptic)"
+        '
+        'LatestVersion
+        '
+        Me.LatestVersion.HeaderText = "Latest version"
+        Me.LatestVersion.MinimumWidth = 6
+        Me.LatestVersion.Name = "LatestVersion"
+        Me.LatestVersion.ReadOnly = True
+        Me.LatestVersion.Visible = False
         '
         'PkgDescription
         '
@@ -615,7 +623,7 @@ Partial Class aaformMainWindow
         Me.buttonCloseSidebar.AutoSize = True
         Me.buttonCloseSidebar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.buttonCloseSidebar.Location = New System.Drawing.Point(237, 4)
-        Me.buttonCloseSidebar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.buttonCloseSidebar.Margin = New System.Windows.Forms.Padding(4)
         Me.buttonCloseSidebar.Name = "buttonCloseSidebar"
         Me.buttonCloseSidebar.Size = New System.Drawing.Size(27, 27)
         Me.buttonCloseSidebar.TabIndex = 4
@@ -630,7 +638,7 @@ Partial Class aaformMainWindow
         Me.comboboxSidebarTabSelector.FormattingEnabled = True
         Me.comboboxSidebarTabSelector.Items.AddRange(New Object() {"Search terms"})
         Me.comboboxSidebarTabSelector.Location = New System.Drawing.Point(10, 4)
-        Me.comboboxSidebarTabSelector.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.comboboxSidebarTabSelector.Margin = New System.Windows.Forms.Padding(4)
         Me.comboboxSidebarTabSelector.Name = "comboboxSidebarTabSelector"
         Me.comboboxSidebarTabSelector.Size = New System.Drawing.Size(214, 24)
         Me.comboboxSidebarTabSelector.TabIndex = 3
@@ -712,7 +720,7 @@ Partial Class aaformMainWindow
         Me.tabpageStatus.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageStatus.Name = "tabpageStatus"
         Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageStatus.Size = New System.Drawing.Size(256, 590)
+        Me.tabpageStatus.Size = New System.Drawing.Size(256, 597)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -727,7 +735,7 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.Location = New System.Drawing.Point(2, 2)
         Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(252, 586)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(252, 593)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
@@ -736,7 +744,7 @@ Partial Class aaformMainWindow
         Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 5)
         Me.tabpageCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(256, 590)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(256, 597)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -751,7 +759,7 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(256, 590)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(256, 597)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'tabpageSections
@@ -761,7 +769,7 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSections.Name = "tabpageSections"
         Me.tabpageSections.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSections.Size = New System.Drawing.Size(256, 590)
+        Me.tabpageSections.Size = New System.Drawing.Size(256, 597)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
@@ -776,7 +784,7 @@ Partial Class aaformMainWindow
         Me.listboxSections.Location = New System.Drawing.Point(2, 2)
         Me.listboxSections.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(252, 586)
+        Me.listboxSections.Size = New System.Drawing.Size(252, 593)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
@@ -785,7 +793,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSource.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(256, 590)
+        Me.tabpageSource.Size = New System.Drawing.Size(256, 597)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -800,7 +808,7 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(256, 590)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(256, 597)
         Me.listboxSourceTab.TabIndex = 1
         '
         'tabpageArchitecture
@@ -809,7 +817,7 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 5)
         Me.tabpageArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(256, 590)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(256, 597)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -824,7 +832,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(256, 590)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(256, 597)
         Me.listboxArchitecture.TabIndex = 1
         '
         'panelMainForm
@@ -995,13 +1003,6 @@ Partial Class aaformMainWindow
     Friend WithEvents ApplyChangesMenuItem As ToolStripMenuItem
     Friend WithEvents zSeparatorPackageListMenu As ToolStripSeparator
     Friend WithEvents AdvancedSearchMenuItem As ToolStripMenuItem
-    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
-    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
-    Friend WithEvents PkgName As DataGridViewTextBoxColumn
-    Friend WithEvents FriendlyName As DataGridViewTextBoxColumn
-    Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
-    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
-    Friend WithEvents Manifest As DataGridViewTextBoxColumn
     Friend WithEvents SearchMenuItem As ToolStripMenuItem
     Friend WithEvents comboboxSidebarTabSelector As ComboBox
     Friend WithEvents buttonCloseSidebar As Button
@@ -1021,4 +1022,12 @@ Partial Class aaformMainWindow
     Friend WithEvents zSeparatorSelectedPackagesMenu As ToolStripSeparator
     Friend WithEvents SelectedPackagesSearchForLastSelectedID As ToolStripMenuItem
     Friend WithEvents SelectedPackagesProperties As ToolStripMenuItem
+    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
+    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
+    Friend WithEvents PkgName As DataGridViewTextBoxColumn
+    Friend WithEvents FriendlyName As DataGridViewTextBoxColumn
+    Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
+    Friend WithEvents LatestVersion As DataGridViewTextBoxColumn
+    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
+    Friend WithEvents Manifest As DataGridViewTextBoxColumn
 End Class
