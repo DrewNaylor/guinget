@@ -75,7 +75,7 @@ Public Class aaformMainWindow
         aaformMainWindow.Update()
 
         ' Now we populate the Manifest column with each manifest.
-        Dim ManifestPaths() As String = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
+        Dim ManifestPaths As List(Of String) = PackageListTools.GetManifests
 
         ' Set progress bar maximum and step count.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
@@ -98,7 +98,7 @@ Public Class aaformMainWindow
         ' Go through everything in the manifest paths array until it's out if
         ' we don't want to load from a database.
         If My.Settings.LoadFromSqliteDb = False Then
-            For i As Integer = 0 To ManifestPaths.Count - 2
+            For i As Integer = 0 To ManifestPaths.Count - 1
 
                 ' Read the file into the manifest column and make a new row with it.
                 aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Unknown", "Loading...", ManifestPaths(i))
@@ -166,7 +166,7 @@ Public Class aaformMainWindow
             ' These have to be grabbed now or else updating the manifests
             ' will crash when the path doesn't exist.
         ElseIf My.Settings.LoadFromSqliteDb = True Then
-            PackageListTools.FallbackPathList = PackageListTools.GetManifests.TrimEnd.Split(CType("?", Char()))
+            PackageListTools.FallbackPathList = PackageListTools.GetManifests
 
             ' Now we need to load the manifests and the descriptions.
             For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows

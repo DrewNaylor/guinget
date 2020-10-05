@@ -438,14 +438,14 @@ Public Class PackageListTools
 
     End Function
 
-    Public Shared Function GetManifests() As String
+    Public Shared Function GetManifests() As List(Of String)
         ' Get and return each manifest in the manifests folder.
         ' This should only be used after ensuring that there's
         ' stuff in this folder, or it'll crash.
         Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' Define a variable so we can store the manifest paths.
-        Dim ManifestPath As String = String.Empty
+        Dim ManifestPath As List(Of String) = New List(Of String)
 
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
@@ -453,7 +453,7 @@ Public Class PackageListTools
 
             ' Append the current package manifest's path to the ManifestPath string.
             ' Using a question mark since it's not allowed in path names.
-            ManifestPath = ManifestPath & PackageManifest & "?"
+            ManifestPath.Add(PackageManifest)
         Next
 
         Return ManifestPath
@@ -464,7 +464,7 @@ Public Class PackageListTools
     ' If the folder used here doesn't exist, applications using this
     ' library will crash, so it has to be set by the calling application before
     ' being used.
-    Public Shared FallbackPathList() As String
+    Public Shared FallbackPathList As List(Of String)
 
     Public Shared Async Function FindManifestByVersionAndId(ManifestId As String, ManifestVersion As String) As Task(Of String)
         ' We'll look through the manifests in the cache, and if there's a version number match,
