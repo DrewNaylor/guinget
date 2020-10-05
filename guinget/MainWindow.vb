@@ -365,13 +365,13 @@ Public Class aaformMainWindow
 
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected.
-        If datagridviewPackageList.SelectedRows.Count = 1 AndAlso IO.File.Exists(datagridviewPackageList.SelectedRows.Item(0).Cells(6).Value.ToString) Then
+        If datagridviewPackageList.SelectedRows.Count = 1 AndAlso IO.File.Exists(datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
             ' Take text from the Manifest cell and use that
             ' file path to display text in the details textbox.
-            Dim ManifestPath As String = datagridviewPackageList.Item(6, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
+            Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
             ' Display full manifest in details textbox.
             textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
         ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
