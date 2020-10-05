@@ -84,3 +84,20 @@ FROM
 WHERE
     manifest.id = ids._rowid_ and manifest.version = versions._rowid_ and manifest.name = names._rowid_;
 ```
+
+A few minutes later, I think I got it:
+
+```sqlite
+SELECT DISTINCT
+    ids.id, manifest.id, versions.version, manifest.version, names.name, manifest.name,
+    LAST_VALUE ( versions.version ) OVER (
+		PARTITION by ids.id
+        ORDER BY ids.id 
+        RANGE BETWEEN UNBOUNDED PRECEDING AND 
+        UNBOUNDED FOLLOWING
+    ) AS NewestVersion 
+FROM
+    ids, manifest, versions, names 
+WHERE
+    manifest.id = ids._rowid_ and manifest.version = versions._rowid_ and manifest.name = names._rowid_;
+```
