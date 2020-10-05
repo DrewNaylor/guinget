@@ -188,8 +188,12 @@ Public Class aaformMainWindow
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
+        For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+        Next
+
         For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            If Not PackageRow.Cells.Item(2).Value.ToString = PackageRow.Cells.Item(3).Value.ToString Then
+            If Not PackageRow.Cells.Item(4).Value.ToString = PackageRow.Cells.Item(5).Value.ToString Then
                 PackageRow.Visible = False
             Else
                 PackageRow.Visible = True
