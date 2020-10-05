@@ -394,6 +394,7 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Margin = New System.Windows.Forms.Padding(2)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
+        Me.datagridviewPackageList.ReadOnly = True
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -839,6 +840,7 @@ Partial Class aaformMainWindow
         Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
         Me.PkgAction.MinimumWidth = 6
         Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.ReadOnly = True
         Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.PkgAction.Width = 76
         '
@@ -880,6 +882,7 @@ Partial Class aaformMainWindow
         Me.LatestVersion.MinimumWidth = 6
         Me.LatestVersion.Name = "LatestVersion"
         Me.LatestVersion.ReadOnly = True
+        Me.LatestVersion.Visible = False
         '
         'PkgDescription
         '
