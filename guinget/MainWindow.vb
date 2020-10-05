@@ -188,15 +188,19 @@ Public Class aaformMainWindow
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
-        For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
-            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
-        Next
+        If My.Settings.OnlyDisplayLatestPackageVersion = True Then
 
-        For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            If My.Settings.OnlyDisplayLatestPackageVersion = True AndAlso Not PackageRow.Cells.Item(4).Value.ToString = PackageRow.Cells.Item(5).Value.ToString Then
-                aaformMainWindow.datagridviewPackageList.Rows.Remove(PackageRow)
-            End If
-        Next
+            For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+            Next
+
+            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+                If Not PackageRow.Cells.Item(4).Value.ToString = PackageRow.Cells.Item(5).Value.ToString Then
+                    aaformMainWindow.datagridviewPackageList.Rows.Remove(PackageRow)
+                End If
+            Next
+
+        End If
 
         ' Update the main window again.
         aaformMainWindow.Update()
