@@ -201,12 +201,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property HideOlderPackageVersions() As Boolean
+        Public Property OnlyDisplayLatestPackageVersion() As Boolean
             Get
-                Return CType(Me("HideOlderPackageVersions"),Boolean)
+                Return CType(Me("OnlyDisplayLatestPackageVersion"),Boolean)
             End Get
             Set
-                Me("HideOlderPackageVersions") = value
+                Me("OnlyDisplayLatestPackageVersion") = value
             End Set
         End Property
     End Class

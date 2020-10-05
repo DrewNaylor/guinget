@@ -38,7 +38,7 @@
     <Setting Name="DebuggingBypassCacheUpdate" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="HideOlderPackageVersions" Type="System.Boolean" Scope="User">
+    <Setting Name="OnlyDisplayLatestPackageVersion" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

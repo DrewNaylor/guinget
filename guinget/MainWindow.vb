@@ -193,10 +193,8 @@ Public Class aaformMainWindow
         Next
 
         For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            If Not PackageRow.Cells.Item(4).Value.ToString = PackageRow.Cells.Item(5).Value.ToString Then
-                PackageRow.Visible = False
-            Else
-                PackageRow.Visible = True
+            If My.Settings.OnlyDisplayLatestPackageVersion = True AndAlso Not PackageRow.Cells.Item(4).Value.ToString = PackageRow.Cells.Item(5).Value.ToString Then
+                aaformMainWindow.datagridviewPackageList.Rows.Remove(PackageRow)
             End If
         Next
 
