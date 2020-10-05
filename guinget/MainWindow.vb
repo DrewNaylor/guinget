@@ -115,11 +115,16 @@ Public Class aaformMainWindow
             'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
             For Each PackageRow As DataRow In SqliteList.Rows
                 If My.Settings.OnlyDisplayLatestPackageVersion = True Then
+                    ' If the user wants to only display the latest package version,
+                    ' we'll have to compare it.
                     If PackageRow.Item(2).ToString = PackageRow.Item(3).ToString Then
+                        ' Only add the package to the list if the package row we're looking
+                        ' at is the latest version of the package.
                         aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
                     End If
                 Else
-                        aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
+                    ' Just add all the package versions.
+                    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
                 End If
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
@@ -192,23 +197,6 @@ Public Class aaformMainWindow
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
-
-        'If My.Settings.OnlyDisplayLatestPackageVersion = True Then
-
-        '    For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
-        '        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
-        '    Next
-
-        '    For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-        '        If Not PackageRow.Cells.Item(4).Value.ToString = PackageRow.Cells.Item(5).Value.ToString Then
-        '            'MessageBox.Show(PackageRow.Cells.Item(2).Value.ToString & ":" & vbCrLf &
-        '            '                "Outdated version: " & PackageRow.Cells.Item(4).Value.ToString & vbCrLf &
-        '            '                "Latest version: " & PackageRow.Cells.Item(5).Value.ToString)
-        '            aaformMainWindow.datagridviewPackageList.Rows.Remove(PackageRow)
-        '        End If
-        '    Next
-
-        'End If
 
         ' Update the main window again.
         aaformMainWindow.Update()
