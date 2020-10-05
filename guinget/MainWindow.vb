@@ -117,7 +117,7 @@ Public Class aaformMainWindow
                 If My.Settings.OnlyDisplayLatestPackageVersion = True Then
                     ' If the user wants to only display the latest package version,
                     ' we'll have to compare it.
-                    If PackageRow.Item(2).ToString = PackageRow.Item(3).ToString Then
+                    If PackageRow.Item(4).ToString = PackageRow.Item(5).ToString Then
                         ' Only add the package to the list if the package row we're looking
                         ' at is the latest version of the package.
                         aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
