@@ -1,5 +1,9 @@
 # update-manifests.bat Changelog
 
+## Version 2020.10-1 - October 5, 2020
+
+- Added trailing backslash to zip file extraction destination.
+
 ## Version 2020.05-2 - May 31, 2020
 
 - Fixed README URL.
