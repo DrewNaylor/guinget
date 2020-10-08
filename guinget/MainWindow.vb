@@ -173,7 +173,13 @@ Public Class aaformMainWindow
                 ' Find the manifest and get its description.
                 PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
 
-                PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
+                ' Ensure the manifest path cell isn't nothing.
+                If PackageRow.Cells.Item(7).Value IsNot Nothing Then
+                    PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
+                Else
+                    ' If the value in the manifest path cell is nothing, change the description.
+                    PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
+                End If
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
                 ' Update the statusbar to show the current info.
