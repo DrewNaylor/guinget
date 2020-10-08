@@ -174,6 +174,10 @@ Public Class aaformMainWindow
                 PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
 
                 ' Ensure the manifest path cell isn't nothing.
+                ' The database was broken just after 1 AM EDT
+                ' on October 8, 2020, so this is to prevent
+                ' future crashes, even if the database is broken
+                ' again.
                 If PackageRow.Cells.Item(7).Value IsNot Nothing Then
                     PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
                 Else
