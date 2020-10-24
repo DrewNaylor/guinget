@@ -54,9 +54,13 @@ GitHub milestone: [Version 0.1.2](https://github.com/DrewNaylor/guinget/mileston
 
 ## Version 0.1.3 Alpha
 
+GitHub milestone: [Version 0.1.3](https://github.com/DrewNaylor/guinget/milestone/5)
+
 - [ ] Allow batch installing of packages ([issue #30](https://github.com/DrewNaylor/guinget/issues/30))
 
 ## Version 0.1.4 Alpha
+
+GitHub milestone: [Version 0.1.4](https://github.com/DrewNaylor/guinget/milestone/6)
 
 - [ ] Allow users to show only packages that are listed in the SQLite database file, so that entries aren't duplicated with multiple versions (showing only the latest version may take longer to figure out as all the versions are in the database file) ([issue #35](https://github.com/DrewNaylor/guinget/issues/35))
 - [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
