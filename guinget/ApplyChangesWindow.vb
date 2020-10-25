@@ -56,7 +56,7 @@ Public Class ApplyChangesWindow
             PackageIDs.Add(Package.Cells(0).Value.ToString)
             PackageVersions.Add(Package.Cells(1).Value.ToString)
         Next
-        PackageTools.BulkInstallPkg(datagridviewAppsBeingInstalled.Columns(0))
+        PackageTools.BulkInstallPkg(PackageIDs, PackageVersions, My.Settings.InstallInteractively)
     End Sub
 
     Private Sub InstallSinglePackage()
