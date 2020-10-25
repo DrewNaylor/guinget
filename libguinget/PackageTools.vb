@@ -54,6 +54,26 @@ Public Class PackageTools
         End Using
 
     End Sub
+
+    Public Shared Sub BulkInstallPkg(PackageIDs As List(Of String), PackageVersions As List(Of String), Optional InstallInteractively As Boolean = False)
+        ' Define process variables to store winget's stuff.
+        ' CMD will be kept open with /k.
+
+        Using proc As New Process
+
+            proc.StartInfo.FileName = "cmd"
+
+            ' Define interactive install flag.
+            Dim InteractiveFlag As String = String.Empty
+            If InstallInteractively = True Then
+                InteractiveFlag = " -i"
+            End If
+
+            ' Define CMD args by going through the list of packages.
+            ' Be sure to only add && if there are packages left to add.
+            Dim BulkInstallCommandList As String = String.Empty
+        End Using
+    End Sub
 #End Region
 
 #Region "Get package details from YAML"
