@@ -45,12 +45,9 @@ Public Class ApplyChangesWindow
     End Sub
 
     Private Sub buttonConfirmChanges_Click(sender As Object, e As EventArgs) Handles buttonConfirmChanges.Click
-        ' Show a messagebox that says we don't support batch installs yet, and
-        ' ask the user to double-click or press Enter on each of the packages
-        ' when they're ready to start installing them.
-        MessageBox.Show("Sorry, we don't support automatic batch package installs yet, but you can double-click or press Enter" &
-                        " on each package in the list to install them individually when you're ready.", "Confirm changes")
-
+        ' Begin bulk-install process.
+        ' Needs to be updated to check for packages the user wants to
+        ' have uninstalled in the future when that's supported.
         BulkInstallPackages()
     End Sub
 
