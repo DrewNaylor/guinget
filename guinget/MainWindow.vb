@@ -383,6 +383,8 @@ Public Class aaformMainWindow
         If My.Settings.ShowLastSelectedPackageDetails = False Then
             PackageIndexForShowingDetails = 0
         Else
+            ' The .Index thing is from here:
+            ' https://stackoverflow.com/a/6124155
             PackageIndexForShowingDetails = datagridviewPackageList.SelectedRows(datagridviewPackageList.SelectedRows.Count - 1).Index
         End If
 
