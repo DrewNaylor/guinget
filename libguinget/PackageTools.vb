@@ -71,7 +71,13 @@ Public Class PackageTools
 
             ' Define CMD args by going through the list of packages.
             ' Be sure to only add && if there are packages left to add.
-            Dim BulkInstallCommandList As String = String.Empty
+            Dim BulkInstallCommandList As String = "/k "
+            For Each Package As String In PackageIDs
+                For Each Version As String In PackageVersions
+                    ' Begin adding packages to the list.
+                    BulkInstallCommandList = "winget install --id " & Package & " -v " & Version & InteractiveFlag & " -e"
+                Next
+            Next
         End Using
     End Sub
 #End Region
