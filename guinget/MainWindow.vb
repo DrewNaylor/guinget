@@ -371,18 +371,29 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = Visible
     End Sub
 
+    ' This variable can be changed depending on a setting.
+    Dim PackageIndexForShowingDetails As Integer = 0
+
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
         ' Get package details if only one package is selected, if the manifest cell isn't Nothing,
         ' and the manifest exists. This prevents crashes in case the database is broken.
-        If datagridviewPackageList.SelectedRows.Count = 1 AndAlso
-            datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
-            IO.File.Exists(datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
+
+        ' Determine the row index we want to load the manifest from based on
+        ' My.Settings.ShowLastSelectedPackageInfo.
+        If My.Settings.ShowLastSelectedPackageDetails = False Then
+            PackageIndexForShowingDetails = 0
+        Else
+            PackageIndexForShowingDetails = datagridviewPackageList.SelectedRows(datagridviewPackageList.SelectedRows.Count - 1).Index
+        End If
+
+        If datagridviewPackageList.SelectedRows.Item(PackageIndexForShowingDetails).Cells(7).Value IsNot Nothing AndAlso
+            IO.File.Exists(datagridviewPackageList.SelectedRows.Item(PackageIndexForShowingDetails).Cells(7).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
             ' Take text from the Manifest cell and use that
             ' file path to display text in the details textbox.
-            Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
+            Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(PackageIndexForShowingDetails).Index).Value.ToString
             ' Display full manifest in details textbox.
             textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
         ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
