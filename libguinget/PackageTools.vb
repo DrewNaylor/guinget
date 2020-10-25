@@ -75,7 +75,10 @@ Public Class PackageTools
             For i As Integer = 0 To PackageIDs.Count - 1
                 ' Begin adding packages to the list.
                 BulkInstallCommandList = BulkInstallCommandList & "winget install --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e"
-                '
+                ' Now see if we should add " && ".
+                If i < PackageIDs.Count - 1 Then
+                    BulkInstallCommandList = BulkInstallCommandList & " && "
+                End If
             Next
 
             MessageBox.Show(BulkInstallCommandList.ToString)
