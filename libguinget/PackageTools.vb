@@ -82,6 +82,12 @@ Public Class PackageTools
             Next
 
             MessageBox.Show(BulkInstallCommandList.ToString)
+
+            ' Define args for running winget and CMD.
+            proc.StartInfo.Arguments = "/k " & BulkInstallCommandList
+
+            ' Start installing.
+            proc.Start()
         End Using
     End Sub
 #End Region
