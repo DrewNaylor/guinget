@@ -50,6 +50,13 @@ Public Class ApplyChangesWindow
         ' when they're ready to start installing them.
         MessageBox.Show("Sorry, we don't support automatic batch package installs yet, but you can double-click or press Enter" &
                         " on each package in the list to install them individually when you're ready.", "Confirm changes")
+        Dim PackageIDs As New List(Of String)
+        Dim PackageVersions As New List(Of String)
+        For Each Package As DataGridViewRow In datagridviewAppsBeingInstalled.Rows
+            PackageIDs.Add(Package.Cells(0).Value.ToString)
+            PackageVersions.Add(Package.Cells(1).Value.ToString)
+        Next
+        PackageTools.BulkInstallPkg(datagridviewAppsBeingInstalled.Columns(0))
     End Sub
 
     Private Sub InstallSinglePackage()

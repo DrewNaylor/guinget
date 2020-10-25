@@ -76,8 +76,11 @@ Public Class PackageTools
                 For Each Version As String In PackageVersions
                     ' Begin adding packages to the list.
                     BulkInstallCommandList = "winget install --id " & Package & " -v " & Version & InteractiveFlag & " -e"
+                    '
                 Next
             Next
+
+            MessageBox.Show(BulkInstallCommandList.ToString)
         End Using
     End Sub
 #End Region
