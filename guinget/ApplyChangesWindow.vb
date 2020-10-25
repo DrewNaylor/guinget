@@ -45,11 +45,34 @@ Public Class ApplyChangesWindow
     End Sub
 
     Private Sub buttonConfirmChanges_Click(sender As Object, e As EventArgs) Handles buttonConfirmChanges.Click
-        ' Show a messagebox that says we don't support batch installs yet, and
-        ' ask the user to double-click or press Enter on each of the packages
-        ' when they're ready to start installing them.
-        MessageBox.Show("Sorry, we don't support automatic batch package installs yet, but you can double-click or press Enter" &
-                        " on each package in the list to install them individually when you're ready.", "Confirm changes")
+        ' Begin bulk-install process.
+        ' Needs to be updated to check for packages the user wants to
+        ' have uninstalled in the future when that's supported.
+        BulkInstallPackages()
+    End Sub
+
+    Private Sub BulkInstallPackages()
+        ' First make sure there are packages in the list.
+        If datagridviewAppsBeingInstalled.Rows.Count > 0 Then
+            ' Make sure we're not already installing by blocking out the "Confirm changes" button.
+            buttonConfirmChanges.Enabled = False
+
+            ' Change all the packages to say "Installing..."
+            For Each Package As DataGridViewRow In datagridviewAppsBeingInstalled.Rows
+                Package.Cells.Item(3).Value = Package.Cells.Item(2).Value.ToString & "ing..."
+            Next
+
+            ' Now we can start the install process.
+            Dim PackageIDs As New List(Of String)
+            Dim PackageVersions As New List(Of String)
+            ' Go through the datagridview and add the packages to the list.
+            For Each Package As DataGridViewRow In datagridviewAppsBeingInstalled.Rows
+                PackageIDs.Add(Package.Cells(0).Value.ToString)
+                PackageVersions.Add(Package.Cells(1).Value.ToString)
+            Next
+            ' Send the lists over to the bulk install code.
+            PackageTools.BulkInstallPkg(PackageIDs, PackageVersions, My.Settings.InstallInteractively)
+        End If
     End Sub
 
     Private Sub InstallSinglePackage()
