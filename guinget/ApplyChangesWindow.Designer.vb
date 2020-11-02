@@ -151,7 +151,7 @@ Partial Class ApplyChangesWindow
         Me.checkboxInstallInteractively.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
         Me.checkboxInstallInteractively.Size = New System.Drawing.Size(119, 28)
-        Me.checkboxInstallInteractively.TabIndex = 3
+        Me.checkboxInstallInteractively.TabIndex = 4
         Me.checkboxInstallInteractively.Text = "Interactive install (-i)"
         Me.tooltipInstallInteractively.SetToolTip(Me.checkboxInstallInteractively, "Packages will be installed interactively when checked.")
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
@@ -163,7 +163,7 @@ Partial Class ApplyChangesWindow
         Me.checkboxElevatedInstall.Location = New System.Drawing.Point(126, 344)
         Me.checkboxElevatedInstall.Name = "checkboxElevatedInstall"
         Me.checkboxElevatedInstall.Size = New System.Drawing.Size(127, 26)
-        Me.checkboxElevatedInstall.TabIndex = 4
+        Me.checkboxElevatedInstall.TabIndex = 3
         Me.checkboxElevatedInstall.Text = "Elevate winget (UAC)"
         Me.checkboxElevatedInstall.UseVisualStyleBackColor = True
         '
