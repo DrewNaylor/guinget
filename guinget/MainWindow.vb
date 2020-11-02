@@ -953,6 +953,10 @@ Public Class aaformMainWindow
         PackageListTools.UpdateWingetSources()
     End Sub
 
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
