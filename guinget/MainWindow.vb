@@ -910,7 +910,7 @@ Public Class aaformMainWindow
     Private Sub ShowSearchOptions()
         ' Show search options.
         ' Change it to the proper tab first.
-        OptionsWindow.tabcontrolOptions.SelectTab(0)
+        OptionsWindow.tabcontrolOptions.SelectTab(1)
         OptionsWindow.ShowDialog(Me)
 
         ' Change sidebar visibility if necessary.
@@ -954,7 +954,12 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+        ' Open Options window.
+        OptionsWindow.tabcontrolOptions.SelectTab(0)
+        OptionsWindow.ShowDialog(Me)
 
+        ' Change sidebar visibility if necessary.
+        SidebarVisibility(My.Settings.ShowSidebar)
     End Sub
 
 
