@@ -966,6 +966,15 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub ShowInWingetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowInWingetToolStripMenuItem.Click
+        ShowInWinget()
+    End Sub
+
+    Private Sub ShowInwingetToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ShowInwingetToolStripMenuItem1.Click
+        ShowInWinget()
+    End Sub
+
+    Private Sub ShowInWinget()
+        ' Shows the currently-selected package details in winget.
         PackageTools.ShowPkgInWinget(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString, datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString)
     End Sub
 
