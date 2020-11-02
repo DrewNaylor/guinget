@@ -965,6 +965,10 @@ Public Class aaformMainWindow
         SidebarVisibility(My.Settings.ShowSidebar)
     End Sub
 
+    Private Sub ShowInWingetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowInWingetToolStripMenuItem.Click
+        PackageTools.ShowPkgInWinget(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString, datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString)
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
