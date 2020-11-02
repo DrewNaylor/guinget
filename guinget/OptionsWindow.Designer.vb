@@ -34,10 +34,13 @@ Partial Class OptionsWindow
         Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
+        Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
+        Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
+        Me.tabpagePackageDetails.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -77,6 +80,7 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
         Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolOptions.Location = New System.Drawing.Point(2, 2)
         Me.tabcontrolOptions.Margin = New System.Windows.Forms.Padding(2)
@@ -163,7 +167,7 @@ Partial Class OptionsWindow
         Me.tabpageApplyChanges.Padding = New System.Windows.Forms.Padding(3)
         Me.tabpageApplyChanges.Size = New System.Drawing.Size(360, 370)
         Me.tabpageApplyChanges.TabIndex = 1
-        Me.tabpageApplyChanges.Text = "Apply changes"
+        Me.tabpageApplyChanges.Text = "Apply Changes"
         Me.tabpageApplyChanges.UseVisualStyleBackColor = True
         '
         'checkboxInstallInteractively
@@ -185,6 +189,28 @@ Partial Class OptionsWindow
         Me.checkboxElevateWinget.TabIndex = 1
         Me.checkboxElevateWinget.Text = "Elevate winget with UAC"
         Me.checkboxElevateWinget.UseVisualStyleBackColor = True
+        '
+        'tabpagePackageDetails
+        '
+        Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
+        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 22)
+        Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
+        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 370)
+        Me.tabpagePackageDetails.TabIndex = 2
+        Me.tabpagePackageDetails.Text = "Package Details"
+        Me.tabpagePackageDetails.UseVisualStyleBackColor = True
+        '
+        'checkboxLastSelectedPackageDetails
+        '
+        Me.checkboxLastSelectedPackageDetails.AutoSize = True
+        Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
+        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(222, 30)
+        Me.checkboxLastSelectedPackageDetails.TabIndex = 0
+        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "selecting multiple packages"
+        Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -208,6 +234,8 @@ Partial Class OptionsWindow
         Me.tabpageSearch.PerformLayout()
         Me.tabpageApplyChanges.ResumeLayout(False)
         Me.tabpageApplyChanges.PerformLayout()
+        Me.tabpagePackageDetails.ResumeLayout(False)
+        Me.tabpagePackageDetails.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -224,4 +252,6 @@ Partial Class OptionsWindow
     Friend WithEvents tabpageApplyChanges As TabPage
     Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents checkboxElevateWinget As CheckBox
+    Friend WithEvents tabpagePackageDetails As TabPage
+    Friend WithEvents checkboxLastSelectedPackageDetails As CheckBox
 End Class

@@ -42,6 +42,8 @@ Public Class OptionsWindow
         checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
         ' Elevate winget.
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget
+
+        checkboxLastSelectedPackageDetails.Checked = My.Settings.ShowLastSelectedPackageDetails
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
@@ -73,6 +75,9 @@ Public Class OptionsWindow
         ' Elevate winget.
         My.Settings.ElevateWinget = checkboxElevateWinget.Checked
 
+        ' Show last-selected package details.
+        My.Settings.ShowLastSelectedPackageDetails = checkboxLastSelectedPackageDetails.Checked
+
         My.Settings.Save()
         My.Settings.Reload()
     End Sub
@@ -97,5 +102,8 @@ Public Class OptionsWindow
         checkboxInstallInteractively.Checked = False
         ' Elevate winget.
         checkboxElevateWinget.Checked = False
+
+        ' Show last-selected package details.
+        checkboxLastSelectedPackageDetails.Checked = True
     End Sub
 End Class
