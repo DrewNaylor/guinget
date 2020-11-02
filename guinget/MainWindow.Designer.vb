@@ -23,9 +23,9 @@ Partial Class aaformMainWindow
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aaformMainWindow))
         Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -34,6 +34,8 @@ Partial Class aaformMainWindow
         Me.SidebarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RefreshCacheMenuButton = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateWingetSourcesMenuButton = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zSeparatorAfterRefreshPart = New System.Windows.Forms.ToolStripSeparator()
         Me.ApplyChangesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorPackageListMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -48,6 +50,7 @@ Partial Class aaformMainWindow
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FindManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -110,8 +113,6 @@ Partial Class aaformMainWindow
         Me.SelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
-        Me.UpdateWingetSourcesMenuButton = New System.Windows.Forms.ToolStripMenuItem()
-        Me.zSeparatorAfterRefreshPart = New System.Windows.Forms.ToolStripSeparator()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -161,7 +162,7 @@ Partial Class aaformMainWindow
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ViewToolStripMenuItem
@@ -175,7 +176,7 @@ Partial Class aaformMainWindow
         '
         Me.SidebarToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SidebarToolStripMenuItem.Name = "SidebarToolStripMenuItem"
-        Me.SidebarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SidebarToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
         Me.SidebarToolStripMenuItem.Text = "&Sidebar"
         '
         'PackageToolStripMenuItem
@@ -191,6 +192,17 @@ Partial Class aaformMainWindow
         Me.RefreshCacheMenuButton.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
         Me.RefreshCacheMenuButton.Size = New System.Drawing.Size(233, 22)
         Me.RefreshCacheMenuButton.Text = "&Refresh cache"
+        '
+        'UpdateWingetSourcesMenuButton
+        '
+        Me.UpdateWingetSourcesMenuButton.Name = "UpdateWingetSourcesMenuButton"
+        Me.UpdateWingetSourcesMenuButton.Size = New System.Drawing.Size(233, 22)
+        Me.UpdateWingetSourcesMenuButton.Text = "&Update winget sources"
+        '
+        'zSeparatorAfterRefreshPart
+        '
+        Me.zSeparatorAfterRefreshPart.Name = "zSeparatorAfterRefreshPart"
+        Me.zSeparatorAfterRefreshPart.Size = New System.Drawing.Size(230, 6)
         '
         'ApplyChangesMenuItem
         '
@@ -264,7 +276,7 @@ Partial Class aaformMainWindow
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem, Me.FindManifestToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem, Me.FindManifestToolStripMenuItem, Me.OptionsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -273,13 +285,19 @@ Partial Class aaformMainWindow
         '
         Me.VerifyManifestToolStripMenuItem.Name = "VerifyManifestToolStripMenuItem"
         Me.VerifyManifestToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.VerifyManifestToolStripMenuItem.Text = "&Verify manifest"
+        Me.VerifyManifestToolStripMenuItem.Text = "&Validate manifest"
         '
         'FindManifestToolStripMenuItem
         '
         Me.FindManifestToolStripMenuItem.Name = "FindManifestToolStripMenuItem"
         Me.FindManifestToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.FindManifestToolStripMenuItem.Text = "Find manifest using version and ID..."
+        '
+        'OptionsToolStripMenuItem
+        '
+        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.OptionsToolStripMenuItem.Text = "&Options..."
         '
         'HelpToolStripMenuItem
         '
@@ -299,7 +317,7 @@ Partial Class aaformMainWindow
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem, Me.zSeparatorAfterActionButtonsInPackageContextMenu, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.PropertiesPackageContextMenuToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(211, 126)
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(211, 104)
         '
         'DoNothingToolStripMenuItem
         '
@@ -374,37 +392,37 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewPackageList.BackgroundColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.FriendlyName, Me.AvailableVersion, Me.LatestVersion, Me.PkgDescription, Me.Manifest})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle5
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Margin = New System.Windows.Forms.Padding(2)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewPackageList.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewPackageList.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.datagridviewPackageList.RowHeadersVisible = False
         Me.datagridviewPackageList.RowHeadersWidth = 51
         Me.datagridviewPackageList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
@@ -895,17 +913,6 @@ Partial Class aaformMainWindow
         Me.zSeparatorNoIdeaWhereThisIs.Name = "zSeparatorNoIdeaWhereThisIs"
         Me.zSeparatorNoIdeaWhereThisIs.Size = New System.Drawing.Size(210, 6)
         '
-        'UpdateWingetSourcesMenuButton
-        '
-        Me.UpdateWingetSourcesMenuButton.Name = "UpdateWingetSourcesMenuButton"
-        Me.UpdateWingetSourcesMenuButton.Size = New System.Drawing.Size(233, 22)
-        Me.UpdateWingetSourcesMenuButton.Text = "&Update winget sources"
-        '
-        'zSeparatorAfterRefreshPart
-        '
-        Me.zSeparatorAfterRefreshPart.Name = "zSeparatorAfterRefreshPart"
-        Me.zSeparatorAfterRefreshPart.Size = New System.Drawing.Size(230, 6)
-        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1040,4 +1047,5 @@ Partial Class aaformMainWindow
     Friend WithEvents InstallToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateWingetSourcesMenuButton As ToolStripMenuItem
     Friend WithEvents zSeparatorAfterRefreshPart As ToolStripSeparator
+    Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
 End Class
