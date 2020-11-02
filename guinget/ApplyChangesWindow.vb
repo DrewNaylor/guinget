@@ -120,6 +120,9 @@ Public Class ApplyChangesWindow
     Private Sub ApplyChangesWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Match the install interactively checkbox check state to the setting.
         checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
+
+        ' Load the elevate winget setting from the config file.
+        checkboxElevateWinget.Checked = My.Settings.ElevateWinget
     End Sub
 
     Private Sub checkboxElevatedInstall_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxElevateWinget.CheckedChanged
