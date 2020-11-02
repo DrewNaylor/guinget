@@ -221,6 +221,18 @@ Namespace My
                 Me("ShowLastSelectedPackageDetails") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ElevateWinget() As Boolean
+            Get
+                Return CType(Me("ElevateWinget"),Boolean)
+            End Get
+            Set
+                Me("ElevateWinget") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

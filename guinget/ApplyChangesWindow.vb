@@ -121,4 +121,11 @@ Public Class ApplyChangesWindow
         ' Match the install interactively checkbox check state to the setting.
         checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
     End Sub
+
+    Private Sub checkboxElevatedInstall_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxElevateWinget.CheckedChanged
+        ' Update the setting for elevating winget so the value persists.
+        My.Settings.ElevateWinget = checkboxElevateWinget.Checked
+        My.Settings.Save()
+        My.Settings.Reload()
+    End Sub
 End Class

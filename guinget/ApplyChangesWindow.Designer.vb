@@ -33,7 +33,7 @@ Partial Class ApplyChangesWindow
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.tooltipInstallInteractively = New System.Windows.Forms.ToolTip(Me.components)
-        Me.checkboxElevatedInstall = New System.Windows.Forms.CheckBox()
+        Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -50,7 +50,7 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonCancel, 4, 1)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonConfirmChanges, 3, 1)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxInstallInteractively, 0, 1)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxElevatedInstall, 1, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxElevateWinget, 1, 1)
         Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelApplyChanges.Margin = New System.Windows.Forms.Padding(2)
@@ -156,16 +156,16 @@ Partial Class ApplyChangesWindow
         Me.tooltipInstallInteractively.SetToolTip(Me.checkboxInstallInteractively, "Packages will be installed interactively when checked.")
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
-        'checkboxElevatedInstall
+        'checkboxElevateWinget
         '
-        Me.checkboxElevatedInstall.AutoSize = True
-        Me.checkboxElevatedInstall.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.checkboxElevatedInstall.Location = New System.Drawing.Point(126, 344)
-        Me.checkboxElevatedInstall.Name = "checkboxElevatedInstall"
-        Me.checkboxElevatedInstall.Size = New System.Drawing.Size(127, 26)
-        Me.checkboxElevatedInstall.TabIndex = 3
-        Me.checkboxElevatedInstall.Text = "Elevate winget (UAC)"
-        Me.checkboxElevatedInstall.UseVisualStyleBackColor = True
+        Me.checkboxElevateWinget.AutoSize = True
+        Me.checkboxElevateWinget.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.checkboxElevateWinget.Location = New System.Drawing.Point(126, 344)
+        Me.checkboxElevateWinget.Name = "checkboxElevateWinget"
+        Me.checkboxElevateWinget.Size = New System.Drawing.Size(127, 26)
+        Me.checkboxElevateWinget.TabIndex = 3
+        Me.checkboxElevateWinget.Text = "Elevate winget (UAC)"
+        Me.checkboxElevateWinget.UseVisualStyleBackColor = True
         '
         'ApplyChangesWindow
         '
@@ -197,5 +197,5 @@ Partial Class ApplyChangesWindow
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
     Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents tooltipInstallInteractively As ToolTip
-    Friend WithEvents checkboxElevatedInstall As CheckBox
+    Friend WithEvents checkboxElevateWinget As CheckBox
 End Class
