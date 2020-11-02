@@ -80,10 +80,10 @@ Partial Class OptionsWindow
         'tabcontrolOptions
         '
         Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
         Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
         Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolOptions.Location = New System.Drawing.Point(2, 2)
         Me.tabcontrolOptions.Margin = New System.Windows.Forms.Padding(2)
