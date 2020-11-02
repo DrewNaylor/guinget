@@ -33,7 +33,7 @@ Partial Class ApplyChangesWindow
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.tooltipInstallInteractively = New System.Windows.Forms.ToolTip(Me.components)
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.checkboxElevatedInstall = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -50,7 +50,7 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonCancel, 4, 1)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonConfirmChanges, 3, 1)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxInstallInteractively, 0, 1)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.CheckBox1, 1, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxElevatedInstall, 1, 1)
         Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelApplyChanges.Margin = New System.Windows.Forms.Padding(2)
@@ -58,7 +58,7 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.RowCount = 2
         Me.tablelayoutpanelApplyChanges.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tablelayoutpanelApplyChanges.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
-        Me.tablelayoutpanelApplyChanges.Size = New System.Drawing.Size(518, 366)
+        Me.tablelayoutpanelApplyChanges.Size = New System.Drawing.Size(630, 373)
         Me.tablelayoutpanelApplyChanges.TabIndex = 0
         '
         'datagridviewAppsBeingInstalled
@@ -84,7 +84,7 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.datagridviewAppsBeingInstalled.RowTemplate.Height = 24
         Me.datagridviewAppsBeingInstalled.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(514, 330)
+        Me.datagridviewAppsBeingInstalled.Size = New System.Drawing.Size(626, 337)
         Me.datagridviewAppsBeingInstalled.StandardTab = True
         Me.datagridviewAppsBeingInstalled.TabIndex = 0
         '
@@ -124,7 +124,7 @@ Partial Class ApplyChangesWindow
         '
         Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonCancel.Location = New System.Drawing.Point(430, 336)
+        Me.buttonCancel.Location = New System.Drawing.Point(542, 343)
         Me.buttonCancel.Margin = New System.Windows.Forms.Padding(2)
         Me.buttonCancel.Name = "buttonCancel"
         Me.buttonCancel.Size = New System.Drawing.Size(86, 28)
@@ -135,7 +135,7 @@ Partial Class ApplyChangesWindow
         'buttonConfirmChanges
         '
         Me.buttonConfirmChanges.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonConfirmChanges.Location = New System.Drawing.Point(325, 336)
+        Me.buttonConfirmChanges.Location = New System.Drawing.Point(437, 343)
         Me.buttonConfirmChanges.Margin = New System.Windows.Forms.Padding(2)
         Me.buttonConfirmChanges.Name = "buttonConfirmChanges"
         Me.buttonConfirmChanges.Size = New System.Drawing.Size(101, 28)
@@ -147,32 +147,32 @@ Partial Class ApplyChangesWindow
         '
         Me.checkboxInstallInteractively.AutoSize = True
         Me.checkboxInstallInteractively.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.checkboxInstallInteractively.Location = New System.Drawing.Point(2, 336)
+        Me.checkboxInstallInteractively.Location = New System.Drawing.Point(2, 343)
         Me.checkboxInstallInteractively.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
-        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(90, 28)
+        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(119, 28)
         Me.checkboxInstallInteractively.TabIndex = 3
-        Me.checkboxInstallInteractively.Text = "Interactive (-i)"
+        Me.checkboxInstallInteractively.Text = "Interactive install (-i)"
         Me.tooltipInstallInteractively.SetToolTip(Me.checkboxInstallInteractively, "Packages will be installed interactively when checked.")
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'checkboxElevatedInstall
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckBox1.Location = New System.Drawing.Point(97, 337)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(95, 26)
-        Me.CheckBox1.TabIndex = 4
-        Me.CheckBox1.Text = "Elevated/UAC"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxElevatedInstall.AutoSize = True
+        Me.checkboxElevatedInstall.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.checkboxElevatedInstall.Location = New System.Drawing.Point(126, 344)
+        Me.checkboxElevatedInstall.Name = "checkboxElevatedInstall"
+        Me.checkboxElevatedInstall.Size = New System.Drawing.Size(127, 26)
+        Me.checkboxElevatedInstall.TabIndex = 4
+        Me.checkboxElevatedInstall.Text = "Elevate winget (UAC)"
+        Me.checkboxElevatedInstall.UseVisualStyleBackColor = True
         '
         'ApplyChangesWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.buttonCancel
-        Me.ClientSize = New System.Drawing.Size(518, 366)
+        Me.ClientSize = New System.Drawing.Size(630, 373)
         Me.Controls.Add(Me.tablelayoutpanelApplyChanges)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MinimizeBox = False
@@ -197,5 +197,5 @@ Partial Class ApplyChangesWindow
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
     Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents tooltipInstallInteractively As ToolTip
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents checkboxElevatedInstall As CheckBox
 End Class
