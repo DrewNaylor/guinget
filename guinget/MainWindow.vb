@@ -894,7 +894,8 @@ Public Class aaformMainWindow
 
     Private Sub ShowSearchOptions()
         ' Show search options.
-        ' We'll have to change this to the proper tab once more tabs are added.
+        ' Change it to the proper tab first.
+        OptionsWindow.tabcontrolOptions.SelectTab(0)
         OptionsWindow.ShowDialog(Me)
 
         ' Change sidebar visibility if necessary.
