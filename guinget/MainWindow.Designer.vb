@@ -110,6 +110,8 @@ Partial Class aaformMainWindow
         Me.SelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
+        Me.UpdateWingetSourcesMenuButton = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zSeparatorAfterRefreshPart = New System.Windows.Forms.ToolStripSeparator()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,7 +180,7 @@ Partial Class aaformMainWindow
         '
         'PackageToolStripMenuItem
         '
-        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.ApplyChangesMenuItem, Me.zSeparatorPackageListMenu, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
+        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.UpdateWingetSourcesMenuButton, Me.zSeparatorAfterRefreshPart, Me.ApplyChangesMenuItem, Me.zSeparatorPackageListMenu, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
         Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
         Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(81, 20)
         Me.PackageToolStripMenuItem.Text = "&Package list"
@@ -890,6 +892,17 @@ Partial Class aaformMainWindow
         Me.zSeparatorNoIdeaWhereThisIs.Name = "zSeparatorNoIdeaWhereThisIs"
         Me.zSeparatorNoIdeaWhereThisIs.Size = New System.Drawing.Size(210, 6)
         '
+        'UpdateWingetSourcesMenuButton
+        '
+        Me.UpdateWingetSourcesMenuButton.Name = "UpdateWingetSourcesMenuButton"
+        Me.UpdateWingetSourcesMenuButton.Size = New System.Drawing.Size(233, 22)
+        Me.UpdateWingetSourcesMenuButton.Text = "&Update winget sources"
+        '
+        'zSeparatorAfterRefreshPart
+        '
+        Me.zSeparatorAfterRefreshPart.Name = "zSeparatorAfterRefreshPart"
+        Me.zSeparatorAfterRefreshPart.Size = New System.Drawing.Size(230, 6)
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1022,4 +1035,6 @@ Partial Class aaformMainWindow
     Friend WithEvents zSeparatorAfterActionButtonsInPackageContextMenu As ToolStripSeparator
     Friend WithEvents DoNothingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InstallToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UpdateWingetSourcesMenuButton As ToolStripMenuItem
+    Friend WithEvents zSeparatorAfterRefreshPart As ToolStripSeparator
 End Class
