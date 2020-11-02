@@ -674,10 +674,6 @@ Public Class aaformMainWindow
         ' Toolstrip separators.
         ' Main toolbar.
         aaformMainWindow.zSeparatorPropertiesAndSearchBox.Visible = Visible
-        ' Selected package menu.
-        aaformMainWindow.zSeparatorSelectedPackagesMenu.Visible = Visible
-        ' Package context menu.
-        aaformMainWindow.zSeparatorPackageContextMenu.Visible = Visible
 
     End Sub
 
