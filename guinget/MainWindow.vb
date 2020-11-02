@@ -371,31 +371,35 @@ Public Class aaformMainWindow
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Visible = Visible
     End Sub
 
-    ' This variable can be changed depending on a setting.
-    Dim PackageIndexForShowingDetails As Integer = 0
-
     Private Sub datagridviewPackageList_SelectionChanged(sender As Object, e As EventArgs) Handles datagridviewPackageList.SelectionChanged
-        ' Get package details if only one package is selected, if the manifest cell isn't Nothing,
-        ' and the manifest exists. This prevents crashes in case the database is broken.
+        ' Get package details if the manifest cell isn't Nothing and the manifest exists.
+        ' This prevents crashes in case the database is broken.
 
-        ' Determine the row index we want to load the manifest from based on
-        ' My.Settings.ShowLastSelectedPackageInfo.
         If My.Settings.ShowLastSelectedPackageDetails = False Then
-            PackageIndexForShowingDetails = 0
+            ' Make sure we only show package details for the first-selected package.
+            If datagridviewPackageList.SelectedRows.Count = 1 Then
+                ShowSelectedPackageDetails()
+            End If
         Else
-            ' The .Index thing is from here:
-            ' https://stackoverflow.com/a/6124155
-            PackageIndexForShowingDetails = datagridviewPackageList.SelectedRows(datagridviewPackageList.SelectedRows.Count - 1).Index
+            ' If we want to show the last-selected package, then we can just do that.
+            ShowSelectedPackageDetails()
         End If
 
-        If datagridviewPackageList.SelectedRows.Item(PackageIndexForShowingDetails).Cells(7).Value IsNot Nothing AndAlso
-            IO.File.Exists(datagridviewPackageList.SelectedRows.Item(PackageIndexForShowingDetails).Cells(7).Value.ToString) Then
+
+    End Sub
+
+    Private Sub ShowSelectedPackageDetails()
+
+        ' We can now display the package details while making sure the manifest isn't
+        ' nothing.
+        If datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
+                    IO.File.Exists(datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
             textboxPackageDetails.Text = "Loading, please wait..."
             ' Take text from the Manifest cell and use that
             ' file path to display text in the details textbox.
-            Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(PackageIndexForShowingDetails).Index).Value.ToString
+            Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
             ' Display full manifest in details textbox.
             textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
         ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
@@ -685,6 +689,7 @@ Public Class aaformMainWindow
         Else
             UnfinishedControlsVisible(True)
         End If
+
     End Sub
 
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
