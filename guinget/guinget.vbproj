@@ -78,6 +78,9 @@
     <Reference Include="libguinget">
       <HintPath>..\libguinget\bin\Debug\libguinget.dll</HintPath>
     </Reference>
+    <Reference Include="libscrollswitchtabs">
+      <HintPath>..\libs\libscrollswitchtabs.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Data.Sqlite, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Sqlite.Core.3.1.8\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
     </Reference>

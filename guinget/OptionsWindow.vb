@@ -106,4 +106,9 @@ Public Class OptionsWindow
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = True
     End Sub
+
+    Private Sub tabcontrolOptions_MouseWheel(sender As Object, e As MouseEventArgs) Handles tabcontrolOptions.MouseWheel
+        ' Switch tabs on scroll.
+        libscrollswitchtabs.ScrollSwitchTabs.switch(tabcontrolOptions, e)
+    End Sub
 End Class
