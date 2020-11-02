@@ -25,24 +25,24 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonDefaults = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
+        Me.tabpageLayout = New System.Windows.Forms.TabPage()
+        Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch = New System.Windows.Forms.CheckBox()
         Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
+        Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
+        Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
         Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
-        Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
-        Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
-        Me.tabpageLayout = New System.Windows.Forms.TabPage()
-        Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
-        Me.tabpageSearch.SuspendLayout()
-        Me.tabpageApplyChanges.SuspendLayout()
-        Me.tabpagePackageDetails.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
+        Me.tabpageSearch.SuspendLayout()
+        Me.tabpagePackageDetails.SuspendLayout()
+        Me.tabpageApplyChanges.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -92,6 +92,28 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.Size = New System.Drawing.Size(368, 396)
         Me.tabcontrolOptions.TabIndex = 0
         '
+        'tabpageLayout
+        '
+        Me.tabpageLayout.Controls.Add(Me.checkboxShowSidebar)
+        Me.tabpageLayout.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageLayout.Name = "tabpageLayout"
+        Me.tabpageLayout.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageLayout.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageLayout.TabIndex = 3
+        Me.tabpageLayout.Text = "Layout"
+        Me.tabpageLayout.UseVisualStyleBackColor = True
+        '
+        'checkboxShowSidebar
+        '
+        Me.checkboxShowSidebar.AutoSize = True
+        Me.checkboxShowSidebar.Location = New System.Drawing.Point(5, 5)
+        Me.checkboxShowSidebar.Margin = New System.Windows.Forms.Padding(2)
+        Me.checkboxShowSidebar.Name = "checkboxShowSidebar"
+        Me.checkboxShowSidebar.Size = New System.Drawing.Size(90, 17)
+        Me.checkboxShowSidebar.TabIndex = 2
+        Me.checkboxShowSidebar.Text = "Show sidebar"
+        Me.checkboxShowSidebar.UseVisualStyleBackColor = True
+        '
         'tabpageSearch
         '
         Me.tabpageSearch.Controls.Add(Me.checkboxUseExactMatchForLastSelectedPackageIDSearch)
@@ -110,9 +132,9 @@ Partial Class OptionsWindow
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.AutoSize = True
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Location = New System.Drawing.Point(6, 28)
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Name = "checkboxUseExactMatchForLastSelectedPackageIDSearch"
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Size = New System.Drawing.Size(277, 17)
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Size = New System.Drawing.Size(258, 17)
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.TabIndex = 3
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Text = "Use exact match for last-selected package ID search"
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Text = "Use exact match for selected package ID search"
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.UseVisualStyleBackColor = True
         '
         'checkboxRerunSearch
@@ -125,6 +147,28 @@ Partial Class OptionsWindow
         Me.checkboxRerunSearch.TabIndex = 0
         Me.checkboxRerunSearch.Text = "Re-run search after cache update"
         Me.checkboxRerunSearch.UseVisualStyleBackColor = True
+        '
+        'tabpagePackageDetails
+        '
+        Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
+        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 22)
+        Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
+        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 370)
+        Me.tabpagePackageDetails.TabIndex = 2
+        Me.tabpagePackageDetails.Text = "Package Details"
+        Me.tabpagePackageDetails.UseVisualStyleBackColor = True
+        '
+        'checkboxLastSelectedPackageDetails
+        '
+        Me.checkboxLastSelectedPackageDetails.AutoSize = True
+        Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
+        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(222, 30)
+        Me.checkboxLastSelectedPackageDetails.TabIndex = 0
+        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "selecting multiple packages"
+        Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
         '
         'tabpageApplyChanges
         '
@@ -158,28 +202,6 @@ Partial Class OptionsWindow
         Me.checkboxInstallInteractively.Text = "Use interactive installation (winget -i)"
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
-        'tabpagePackageDetails
-        '
-        Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
-        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 22)
-        Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
-        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 370)
-        Me.tabpagePackageDetails.TabIndex = 2
-        Me.tabpagePackageDetails.Text = "Package Details"
-        Me.tabpagePackageDetails.UseVisualStyleBackColor = True
-        '
-        'checkboxLastSelectedPackageDetails
-        '
-        Me.checkboxLastSelectedPackageDetails.AutoSize = True
-        Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(6, 6)
-        Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
-        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(222, 30)
-        Me.checkboxLastSelectedPackageDetails.TabIndex = 0
-        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "selecting multiple packages"
-        Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
-        '
         'buttonCancel
         '
         Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -203,28 +225,6 @@ Partial Class OptionsWindow
         Me.buttonOk.Text = "OK"
         Me.buttonOk.UseVisualStyleBackColor = True
         '
-        'tabpageLayout
-        '
-        Me.tabpageLayout.Controls.Add(Me.checkboxShowSidebar)
-        Me.tabpageLayout.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageLayout.Name = "tabpageLayout"
-        Me.tabpageLayout.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageLayout.Size = New System.Drawing.Size(360, 370)
-        Me.tabpageLayout.TabIndex = 3
-        Me.tabpageLayout.Text = "Layout"
-        Me.tabpageLayout.UseVisualStyleBackColor = True
-        '
-        'checkboxShowSidebar
-        '
-        Me.checkboxShowSidebar.AutoSize = True
-        Me.checkboxShowSidebar.Location = New System.Drawing.Point(5, 5)
-        Me.checkboxShowSidebar.Margin = New System.Windows.Forms.Padding(2)
-        Me.checkboxShowSidebar.Name = "checkboxShowSidebar"
-        Me.checkboxShowSidebar.Size = New System.Drawing.Size(90, 17)
-        Me.checkboxShowSidebar.TabIndex = 2
-        Me.checkboxShowSidebar.Text = "Show sidebar"
-        Me.checkboxShowSidebar.UseVisualStyleBackColor = True
-        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -243,14 +243,14 @@ Partial Class OptionsWindow
         Me.Text = "Options"
         Me.tablelayoutpanelOptions.ResumeLayout(False)
         Me.tabcontrolOptions.ResumeLayout(False)
-        Me.tabpageSearch.ResumeLayout(False)
-        Me.tabpageSearch.PerformLayout()
-        Me.tabpageApplyChanges.ResumeLayout(False)
-        Me.tabpageApplyChanges.PerformLayout()
-        Me.tabpagePackageDetails.ResumeLayout(False)
-        Me.tabpagePackageDetails.PerformLayout()
         Me.tabpageLayout.ResumeLayout(False)
         Me.tabpageLayout.PerformLayout()
+        Me.tabpageSearch.ResumeLayout(False)
+        Me.tabpageSearch.PerformLayout()
+        Me.tabpagePackageDetails.ResumeLayout(False)
+        Me.tabpagePackageDetails.PerformLayout()
+        Me.tabpageApplyChanges.ResumeLayout(False)
+        Me.tabpageApplyChanges.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
