@@ -109,7 +109,12 @@ Public Class PackageTools
 
 #Region "Show package in winget"
     Public Shared Sub ShowPkgInWinget(PackageID As String, PackageVersion As String)
-
+        ' This'll open a CMD window and display the package info in winget.
+        Using proc As New Process
+            proc.StartInfo.FileName = "cmd"
+            proc.StartInfo.Arguments = "/k winget show --id " & PackageID & " -v " & PackageVersion & " -e"
+            proc.Start()
+        End Using
     End Sub
 #End Region
 
