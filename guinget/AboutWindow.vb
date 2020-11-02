@@ -47,6 +47,10 @@ Public Class AboutWindow
                         vbCrLf &
                         "libguinget is used for things like loading the package list and uses the Apache License 2.0." & vbCrLf &
                         vbCrLf &
+                        "libscrollswitchtabs is part of the drews-libs project and is used for switching tab control tabs using the mouse scroll wheel, just like in many Linux applications." & vbCrLf &
+                        "libscrollswitchtabs uses the Apace License 2.0 and you can get its source code here:" & vbCrLf &
+                        "https://github.com/DrewNaylor/drews-libs" & vbCrLf &
+                        vbCrLf &
                         "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the Apache License 2.0. " &
                         "NuGet page for Microsoft.Data.Sqlite:" & vbCrLf &
                         "https://www.nuget.org/packages/Microsoft.Data.Sqlite/" & vbCrLf &
@@ -57,7 +61,7 @@ Public Class AboutWindow
                         vbCrLf &
                         My.Resources.AboutSeparator & vbCrLf &
                         vbCrLf &
-                        "Apache License 2.0 summary as it applies to guinget, libguinget, and Microsoft.Data.Sqlite:" & vbCrLf &
+                        "Apache License 2.0 summary as it applies to guinget, libguinget, libscrollswitchtabs, and Microsoft.Data.Sqlite:" & vbCrLf &
                         "Licensed under the Apache License, Version 2.0 (the ""License"");" & vbCrLf &
 "you may not use this file except in compliance with the License." & vbCrLf &
 "You may obtain a copy of the License at" & vbCrLf &
