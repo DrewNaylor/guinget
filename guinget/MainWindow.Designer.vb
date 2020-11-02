@@ -263,7 +263,7 @@ Partial Class aaformMainWindow
         '
         Me.SelectedPackagesSearchForLastSelectedID.Name = "SelectedPackagesSearchForLastSelectedID"
         Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(217, 22)
-        Me.SelectedPackagesSearchForLastSelectedID.Text = "&Search for last-selected ID"
+        Me.SelectedPackagesSearchForLastSelectedID.Text = "&Search for package ID"
         '
         'zSeparatorSelectedPackagesMenu
         '
@@ -319,40 +319,40 @@ Partial Class aaformMainWindow
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem, Me.zSeparatorAfterActionButtonsInPackageContextMenu, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.ShowInwingetToolStripMenuItem1, Me.PropertiesPackageContextMenuToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(211, 148)
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(189, 126)
         '
         'DoNothingToolStripMenuItem
         '
         Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
-        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
         Me.DoNothingToolStripMenuItem.Text = "Action: &Do nothing"
         '
         'InstallToolStripMenuItem
         '
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
-        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
         Me.InstallToolStripMenuItem.Text = "Action: &Install"
         '
         'zSeparatorAfterActionButtonsInPackageContextMenu
         '
         Me.zSeparatorAfterActionButtonsInPackageContextMenu.Name = "zSeparatorAfterActionButtonsInPackageContextMenu"
-        Me.zSeparatorAfterActionButtonsInPackageContextMenu.Size = New System.Drawing.Size(207, 6)
+        Me.zSeparatorAfterActionButtonsInPackageContextMenu.Size = New System.Drawing.Size(185, 6)
         '
         'SearchForPackageIDFromContextMenu
         '
         Me.SearchForPackageIDFromContextMenu.Name = "SearchForPackageIDFromContextMenu"
-        Me.SearchForPackageIDFromContextMenu.Size = New System.Drawing.Size(210, 22)
-        Me.SearchForPackageIDFromContextMenu.Text = "&Search for last-selected ID"
+        Me.SearchForPackageIDFromContextMenu.Size = New System.Drawing.Size(188, 22)
+        Me.SearchForPackageIDFromContextMenu.Text = "&Search for package ID"
         '
         'zSeparatorPackageContextMenu
         '
         Me.zSeparatorPackageContextMenu.Name = "zSeparatorPackageContextMenu"
-        Me.zSeparatorPackageContextMenu.Size = New System.Drawing.Size(207, 6)
+        Me.zSeparatorPackageContextMenu.Size = New System.Drawing.Size(185, 6)
         '
         'PropertiesPackageContextMenuToolStripMenuItem
         '
         Me.PropertiesPackageContextMenuToolStripMenuItem.Name = "PropertiesPackageContextMenuToolStripMenuItem"
-        Me.PropertiesPackageContextMenuToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.PropertiesPackageContextMenuToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
         Me.PropertiesPackageContextMenuToolStripMenuItem.Text = "&Properties..."
         '
         'splitcontainerMainWindow
@@ -925,7 +925,7 @@ Partial Class aaformMainWindow
         'ShowInwingetToolStripMenuItem1
         '
         Me.ShowInwingetToolStripMenuItem1.Name = "ShowInwingetToolStripMenuItem1"
-        Me.ShowInwingetToolStripMenuItem1.Size = New System.Drawing.Size(210, 22)
+        Me.ShowInwingetToolStripMenuItem1.Size = New System.Drawing.Size(188, 22)
         Me.ShowInwingetToolStripMenuItem1.Text = "Show in &winget..."
         '
         'aaformMainWindow
