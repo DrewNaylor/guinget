@@ -51,9 +51,9 @@ Partial Class aaformMainWindow
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zSeparatorAfterActionButtonsInPackageContextMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchForPackageIDFromContextMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorPackageContextMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.PropertiesPackageContextMenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -292,28 +292,26 @@ Partial Class aaformMainWindow
         'contextmenustripPackageMenu
         '
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.PropertiesPackageContextMenuToolStripMenuItem})
+        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem, Me.zSeparatorAfterActionButtonsInPackageContextMenu, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.PropertiesPackageContextMenuToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(211, 76)
-        '
-        'ActionToolStripMenuItem
-        '
-        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem})
-        Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
-        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
-        Me.ActionToolStripMenuItem.Text = "&Action"
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(211, 104)
         '
         'DoNothingToolStripMenuItem
         '
         Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
-        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
-        Me.DoNothingToolStripMenuItem.Text = "&Do nothing"
+        Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.DoNothingToolStripMenuItem.Text = "Action: &Do nothing"
         '
         'InstallToolStripMenuItem
         '
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
-        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
-        Me.InstallToolStripMenuItem.Text = "&Install"
+        Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.InstallToolStripMenuItem.Text = "Action: &Install"
+        '
+        'zSeparatorAfterActionButtonsInPackageContextMenu
+        '
+        Me.zSeparatorAfterActionButtonsInPackageContextMenu.Name = "zSeparatorAfterActionButtonsInPackageContextMenu"
+        Me.zSeparatorAfterActionButtonsInPackageContextMenu.Size = New System.Drawing.Size(207, 6)
         '
         'SearchForPackageIDFromContextMenu
         '
@@ -955,9 +953,6 @@ Partial Class aaformMainWindow
     Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
     Friend WithEvents datagridviewPackageList As DataGridView
     Friend WithEvents contextmenustripPackageMenu As ContextMenuStrip
-    Friend WithEvents ActionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DoNothingToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents InstallToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents toolstripbuttonRefreshCache As ToolStripButton
     Friend WithEvents zSeparatorApplyChangesAndProperties As ToolStripSeparator
     Friend WithEvents toolstripbuttonProperties As ToolStripButton
@@ -1024,4 +1019,7 @@ Partial Class aaformMainWindow
     Friend WithEvents SelectedPackagesActionDoNothingMenuItem As ToolStripMenuItem
     Friend WithEvents SelectedPackagesActionInstallMenuItem As ToolStripMenuItem
     Friend WithEvents zSeparatorAfterActionsInSelectedPackagesMenu As ToolStripSeparator
+    Friend WithEvents zSeparatorAfterActionButtonsInPackageContextMenu As ToolStripSeparator
+    Friend WithEvents DoNothingToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InstallToolStripMenuItem As ToolStripMenuItem
 End Class
