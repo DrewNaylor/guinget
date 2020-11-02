@@ -933,6 +933,11 @@ Public Class aaformMainWindow
         tabcontrolSidebar.SelectedIndex = comboboxSidebarTabSelector.SelectedIndex
     End Sub
 
+    Private Sub UpdateWingetSourcesMenuButton_Click(sender As Object, e As EventArgs) Handles UpdateWingetSourcesMenuButton.Click
+        ' Tell library to update winget sources.
+        PackageListTools.UpdateWingetSources()
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
