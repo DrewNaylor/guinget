@@ -71,7 +71,7 @@ Public Class ApplyChangesWindow
                 PackageVersions.Add(Package.Cells(1).Value.ToString)
             Next
             ' Send the lists over to the bulk install code.
-            PackageTools.BulkInstallPkg(PackageIDs, PackageVersions, My.Settings.InstallInteractively)
+            PackageTools.BulkInstallPkg(PackageIDs, PackageVersions, My.Settings.InstallInteractively, My.Settings.ElevateWinget)
         End If
     End Sub
 
@@ -94,7 +94,7 @@ Public Class ApplyChangesWindow
                 ' in a textbox below the datagridview.
                 PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
                                         datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
-                                        My.Settings.InstallInteractively)
+                                        My.Settings.InstallInteractively, My.Settings.ElevateWinget)
 
             End If
         End If

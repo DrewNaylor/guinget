@@ -31,7 +31,7 @@ Imports YamlDotNet.RepresentationModel
 Public Class PackageTools
 
 #Region "Install package with winget."
-    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, Optional InstallInteractively As Boolean = False)
+    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, Optional InstallInteractively As Boolean = False, Optional ElevateWinget As Boolean = False)
 
         ' Define variables for storing the winget process. We'll run CMD
         ' so that we can keep it open with /k.
@@ -46,16 +46,25 @@ Public Class PackageTools
                 InteractiveFlag = " -i"
             End If
 
+            ' Determine whether winget should be elevated.
+            If ElevateWinget = True Then
+                proc.StartInfo.Verb = "runas"
+            End If
+
             ' Define CMD args.
             proc.StartInfo.Arguments = "/k winget install --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e"
 
-            proc.Start()
+            ' Start installing. Catch the exception in case the user cancels the UAC dialog.
+            Try
+                proc.Start()
+            Catch ex As System.ComponentModel.Win32Exception
+            End Try
 
         End Using
 
     End Sub
 
-    Public Shared Sub BulkInstallPkg(PackageIDs As List(Of String), PackageVersions As List(Of String), Optional InstallInteractively As Boolean = False)
+    Public Shared Sub BulkInstallPkg(PackageIDs As List(Of String), PackageVersions As List(Of String), Optional InstallInteractively As Boolean = False, Optional ElevateWinget As Boolean = False)
         ' Define process variables to store winget's stuff.
         ' CMD will be kept open with /k.
 
@@ -67,6 +76,11 @@ Public Class PackageTools
             Dim InteractiveFlag As String = String.Empty
             If InstallInteractively = True Then
                 InteractiveFlag = " -i"
+            End If
+
+            ' Determine whether winget should be elevated.
+            If ElevateWinget = True Then
+                proc.StartInfo.Verb = "runas"
             End If
 
             ' Define CMD args by going through the list of packages.
@@ -84,8 +98,11 @@ Public Class PackageTools
             ' Define args for running winget and CMD.
             proc.StartInfo.Arguments = "/k " & BulkInstallCommandList
 
-            ' Start installing.
-            proc.Start()
+            ' Start installing. Catch the exception in case the user cancels the UAC dialog.
+            Try
+                proc.Start()
+            Catch ex As System.ComponentModel.Win32Exception
+            End Try
         End Using
     End Sub
 #End Region
