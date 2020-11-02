@@ -56,7 +56,7 @@ GitHub milestone: [Version 0.1.2](https://github.com/DrewNaylor/guinget/mileston
 
 GitHub milestone: [Version 0.1.3](https://github.com/DrewNaylor/guinget/milestone/5)
 
-- [ ] Allow batch installing of packages ([issue #30](https://github.com/DrewNaylor/guinget/issues/30))
+- [X] Allow batch installing of packages ([issue #30](https://github.com/DrewNaylor/guinget/issues/30))
 
 ## Version 0.1.4 Alpha
 
