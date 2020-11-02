@@ -385,7 +385,22 @@ Public Class aaformMainWindow
             ShowSelectedPackageDetails()
         End If
 
+        ' Determine if menuitems should be allowed.
+        If datagridviewPackageList.SelectedRows.Count = 1 Then
+            AllowUsingStuffThatOnlyDoesThingsWhenOnePackageIsSelected(True)
+        Else
+            AllowUsingStuffThatOnlyDoesThingsWhenOnePackageIsSelected(False)
+        End If
 
+
+    End Sub
+
+    Private Sub AllowUsingStuffThatOnlyDoesThingsWhenOnePackageIsSelected(Optional AllowFunctions As Boolean = True)
+        ' Blocks or unblocks the menuitems for things like show in winget.
+        ShowInWingetToolStripMenuItem.Enabled = AllowFunctions
+        ShowInwingetToolStripMenuItem1.Enabled = AllowFunctions
+        SearchForPackageIDFromContextMenu.Enabled = AllowFunctions
+        SelectedPackagesSearchForLastSelectedID.Enabled = AllowFunctions
     End Sub
 
     Private Sub ShowSelectedPackageDetails()
