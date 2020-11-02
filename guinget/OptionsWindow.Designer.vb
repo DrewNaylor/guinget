@@ -32,8 +32,8 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
+        Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
@@ -156,8 +156,8 @@ Partial Class OptionsWindow
         '
         'tabpageApplyChanges
         '
-        Me.tabpageApplyChanges.Controls.Add(Me.CheckBox2)
-        Me.tabpageApplyChanges.Controls.Add(Me.CheckBox1)
+        Me.tabpageApplyChanges.Controls.Add(Me.checkboxElevateWinget)
+        Me.tabpageApplyChanges.Controls.Add(Me.checkboxInstallInteractively)
         Me.tabpageApplyChanges.Location = New System.Drawing.Point(4, 22)
         Me.tabpageApplyChanges.Name = "tabpageApplyChanges"
         Me.tabpageApplyChanges.Padding = New System.Windows.Forms.Padding(3)
@@ -166,25 +166,25 @@ Partial Class OptionsWindow
         Me.tabpageApplyChanges.Text = "Apply changes"
         Me.tabpageApplyChanges.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'checkboxInstallInteractively
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(6, 6)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(197, 17)
-        Me.CheckBox1.TabIndex = 0
-        Me.CheckBox1.Text = "Use interactive installation (winget -i)"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxInstallInteractively.AutoSize = True
+        Me.checkboxInstallInteractively.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
+        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(197, 17)
+        Me.checkboxInstallInteractively.TabIndex = 0
+        Me.checkboxInstallInteractively.Text = "Use interactive installation (winget -i)"
+        Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'checkboxElevateWinget
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(6, 29)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(143, 17)
-        Me.CheckBox2.TabIndex = 1
-        Me.CheckBox2.Text = "Elevate winget with UAC"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.checkboxElevateWinget.AutoSize = True
+        Me.checkboxElevateWinget.Location = New System.Drawing.Point(6, 29)
+        Me.checkboxElevateWinget.Name = "checkboxElevateWinget"
+        Me.checkboxElevateWinget.Size = New System.Drawing.Size(143, 17)
+        Me.checkboxElevateWinget.TabIndex = 1
+        Me.checkboxElevateWinget.Text = "Elevate winget with UAC"
+        Me.checkboxElevateWinget.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -222,6 +222,6 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxShowSidebar As CheckBox
     Friend WithEvents checkboxUseExactMatchForLastSelectedPackageIDSearch As CheckBox
     Friend WithEvents tabpageApplyChanges As TabPage
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents checkboxInstallInteractively As CheckBox
+    Friend WithEvents checkboxElevateWinget As CheckBox
 End Class

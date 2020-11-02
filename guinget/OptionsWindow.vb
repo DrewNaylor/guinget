@@ -37,6 +37,11 @@ Public Class OptionsWindow
         checkboxShowSidebar.Checked = My.Settings.ShowSidebar
         ' Exact match for last-selected package ID.
         checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked = My.Settings.ExactMatchForLastSelectedIDSearch
+
+        ' Install interactively.
+        checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
+        ' Elevate winget.
+        checkboxElevateWinget.Checked = My.Settings.ElevateWinget
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
@@ -63,6 +68,11 @@ Public Class OptionsWindow
         ' Exact match for last-selected package ID checkbox.
         My.Settings.ExactMatchForLastSelectedIDSearch = checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked
 
+        ' Interactive installation.
+        My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
+        ' Elevate winget.
+        My.Settings.ElevateWinget = checkboxElevateWinget.Checked
+
         My.Settings.Save()
         My.Settings.Reload()
     End Sub
@@ -82,5 +92,10 @@ Public Class OptionsWindow
         checkboxShowSidebar.Checked = True
         ' Exact match for last-selected package ID checkbox.
         checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked = True
+
+        ' Install interactively.
+        checkboxInstallInteractively.Checked = False
+        ' Elevate winget.
+        checkboxElevateWinget.Checked = False
     End Sub
 End Class
