@@ -195,8 +195,9 @@ Partial Class aaformMainWindow
         'ApplyChangesMenuItem
         '
         Me.ApplyChangesMenuItem.Name = "ApplyChangesMenuItem"
+        Me.ApplyChangesMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.H), System.Windows.Forms.Keys)
         Me.ApplyChangesMenuItem.Size = New System.Drawing.Size(233, 22)
-        Me.ApplyChangesMenuItem.Text = "&Apply changes..."
+        Me.ApplyChangesMenuItem.Text = "Apply c&hanges..."
         '
         'zSeparatorPackageListMenu
         '
@@ -228,37 +229,37 @@ Partial Class aaformMainWindow
         'SelectedPackagesActionDoNothingMenuItem
         '
         Me.SelectedPackagesActionDoNothingMenuItem.Name = "SelectedPackagesActionDoNothingMenuItem"
-        Me.SelectedPackagesActionDoNothingMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionDoNothingMenuItem.Size = New System.Drawing.Size(218, 22)
-        Me.SelectedPackagesActionDoNothingMenuItem.Text = "Action: Do &nothing"
+        Me.SelectedPackagesActionDoNothingMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
+        Me.SelectedPackagesActionDoNothingMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionDoNothingMenuItem.Text = "Action: &Do nothing"
         '
         'SelectedPackagesActionInstallMenuItem
         '
         Me.SelectedPackagesActionInstallMenuItem.Name = "SelectedPackagesActionInstallMenuItem"
         Me.SelectedPackagesActionInstallMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionInstallMenuItem.Size = New System.Drawing.Size(218, 22)
+        Me.SelectedPackagesActionInstallMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.SelectedPackagesActionInstallMenuItem.Text = "Action: &Install"
         '
         'zSeparatorAfterActionsInSelectedPackagesMenu
         '
         Me.zSeparatorAfterActionsInSelectedPackagesMenu.Name = "zSeparatorAfterActionsInSelectedPackagesMenu"
-        Me.zSeparatorAfterActionsInSelectedPackagesMenu.Size = New System.Drawing.Size(215, 6)
+        Me.zSeparatorAfterActionsInSelectedPackagesMenu.Size = New System.Drawing.Size(214, 6)
         '
         'SelectedPackagesSearchForLastSelectedID
         '
         Me.SelectedPackagesSearchForLastSelectedID.Name = "SelectedPackagesSearchForLastSelectedID"
-        Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(218, 22)
+        Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(217, 22)
         Me.SelectedPackagesSearchForLastSelectedID.Text = "&Search for last-selected ID"
         '
         'zSeparatorSelectedPackagesMenu
         '
         Me.zSeparatorSelectedPackagesMenu.Name = "zSeparatorSelectedPackagesMenu"
-        Me.zSeparatorSelectedPackagesMenu.Size = New System.Drawing.Size(215, 6)
+        Me.zSeparatorSelectedPackagesMenu.Size = New System.Drawing.Size(214, 6)
         '
         'SelectedPackagesProperties
         '
         Me.SelectedPackagesProperties.Name = "SelectedPackagesProperties"
-        Me.SelectedPackagesProperties.Size = New System.Drawing.Size(218, 22)
+        Me.SelectedPackagesProperties.Size = New System.Drawing.Size(217, 22)
         Me.SelectedPackagesProperties.Text = "&Properties..."
         '
         'ToolsToolStripMenuItem
@@ -304,7 +305,7 @@ Partial Class aaformMainWindow
         '
         Me.DoNothingToolStripMenuItem.Name = "DoNothingToolStripMenuItem"
         Me.DoNothingToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
-        Me.DoNothingToolStripMenuItem.Text = "Action: Do &nothing"
+        Me.DoNothingToolStripMenuItem.Text = "Action: &Do nothing"
         '
         'InstallToolStripMenuItem
         '
