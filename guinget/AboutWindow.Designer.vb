@@ -80,7 +80,6 @@ Partial Class AboutWindow
         Me.labelShowHiddenControls.Name = "labelShowHiddenControls"
         Me.labelShowHiddenControls.Size = New System.Drawing.Size(112, 31)
         Me.labelShowHiddenControls.TabIndex = 2
-        Me.labelShowHiddenControls.Text = "Show hidden controls"
         '
         'AboutWindow
         '
