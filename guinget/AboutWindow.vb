@@ -46,18 +46,22 @@ Public Class AboutWindow
                         "https://github.com/DrewNaylor/guinget" & vbCrLf &
                         vbCrLf &
                         "libguinget is used for things like loading the package list and uses the Apache License 2.0." & vbCrLf &
+                        "libguinget Copyright (C) 2020 Drew Naylor." & vbCrLf &
                         vbCrLf &
                         "libscrollswitchtabs is part of the drews-libs project and is used for switching tab control tabs using the mouse scroll wheel, just like in many Linux applications." & vbCrLf &
                         "libscrollswitchtabs uses the Apace License 2.0 and you can get its source code here:" & vbCrLf &
                         "https://github.com/DrewNaylor/drews-libs" & vbCrLf &
+                        "libscrollswitchtabs Copyright (C) 2020 Drew Naylor." & vbCrLf &
                         vbCrLf &
                         "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the Apache License 2.0. " &
                         "NuGet page for Microsoft.Data.Sqlite:" & vbCrLf &
                         "https://www.nuget.org/packages/Microsoft.Data.Sqlite/" & vbCrLf &
+                        "Microsoft.Data.Sqlite Copyright (C) Microsoft Corporation. All rights reserved." & vbCrLf &
                         vbCrLf &
                         "YamlDotNet is used to read manifests, which you can get the source code for here:" & vbCrLf &
                         "https://github.com/aaubry/YamlDotNet" & vbCrLf &
                         "YamlDotNet falls under the MIT license, which you can read a copy of below the Apache License summary." & vbCrLf &
+                        "YamlDotNet Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry and contributors" & vbCrLf &
                         vbCrLf &
                         My.Resources.AboutSeparator & vbCrLf &
                         vbCrLf &
