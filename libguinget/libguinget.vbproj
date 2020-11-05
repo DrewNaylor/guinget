@@ -111,6 +111,7 @@
     <Compile Include="DownloadProgressForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ConfigTools.vb" />
     <Compile Include="PackageListTools.vb" />
     <Compile Include="PackageTools.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
