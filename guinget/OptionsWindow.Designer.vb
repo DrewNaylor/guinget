@@ -42,6 +42,8 @@ Partial Class OptionsWindow
         Me.labelLoadFromManifests = New System.Windows.Forms.Label()
         Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.labelExperimentalSettingsHidden = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -49,6 +51,7 @@ Partial Class OptionsWindow
         Me.tabpagePackageDetails.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -221,9 +224,9 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
         Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
         Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolOptions.Location = New System.Drawing.Point(2, 2)
         Me.tabcontrolOptions.Margin = New System.Windows.Forms.Padding(2)
@@ -234,23 +237,21 @@ Partial Class OptionsWindow
         '
         'tabpageRefreshCache
         '
-        Me.tabpageRefreshCache.Controls.Add(Me.Label1)
-        Me.tabpageRefreshCache.Controls.Add(Me.checkboxShowOnlyLatestVersions)
-        Me.tabpageRefreshCache.Controls.Add(Me.labelLoadFromManifests)
-        Me.tabpageRefreshCache.Controls.Add(Me.checkboxLoadFromDatabase)
+        Me.tabpageRefreshCache.Controls.Add(Me.Panel1)
+        Me.tabpageRefreshCache.Controls.Add(Me.labelExperimentalSettingsHidden)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
         Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
         Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
         Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 370)
         Me.tabpageRefreshCache.TabIndex = 4
-        Me.tabpageRefreshCache.Text = "Refresh Cache"
+        Me.tabpageRefreshCache.Text = "Experimental"
         Me.tabpageRefreshCache.UseVisualStyleBackColor = True
         '
         'checkboxLoadFromDatabase
         '
         Me.checkboxLoadFromDatabase.AutoSize = True
         Me.checkboxLoadFromDatabase.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(3, 3)
         Me.checkboxLoadFromDatabase.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxLoadFromDatabase.Name = "checkboxLoadFromDatabase"
         Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(298, 30)
@@ -262,7 +263,7 @@ Partial Class OptionsWindow
         'labelLoadFromManifests
         '
         Me.labelLoadFromManifests.AutoSize = True
-        Me.labelLoadFromManifests.Location = New System.Drawing.Point(21, 36)
+        Me.labelLoadFromManifests.Location = New System.Drawing.Point(18, 33)
         Me.labelLoadFromManifests.Name = "labelLoadFromManifests"
         Me.labelLoadFromManifests.Size = New System.Drawing.Size(196, 13)
         Me.labelLoadFromManifests.TabIndex = 1
@@ -271,7 +272,7 @@ Partial Class OptionsWindow
         'checkboxShowOnlyLatestVersions
         '
         Me.checkboxShowOnlyLatestVersions.AutoSize = True
-        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(6, 53)
+        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(3, 50)
         Me.checkboxShowOnlyLatestVersions.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxShowOnlyLatestVersions.Name = "checkboxShowOnlyLatestVersions"
         Me.checkboxShowOnlyLatestVersions.Size = New System.Drawing.Size(308, 17)
@@ -282,12 +283,34 @@ Partial Class OptionsWindow
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 70)
+        Me.Label1.Location = New System.Drawing.Point(18, 67)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(293, 26)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Some packages will display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version" &
     ". Not sure how to fix this at the moment."
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.checkboxLoadFromDatabase)
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.labelLoadFromManifests)
+        Me.Panel1.Controls.Add(Me.checkboxShowOnlyLatestVersions)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(3, 3)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(354, 364)
+        Me.Panel1.TabIndex = 4
+        '
+        'labelExperimentalSettingsHidden
+        '
+        Me.labelExperimentalSettingsHidden.AutoSize = True
+        Me.labelExperimentalSettingsHidden.Location = New System.Drawing.Point(66, 166)
+        Me.labelExperimentalSettingsHidden.Name = "labelExperimentalSettingsHidden"
+        Me.labelExperimentalSettingsHidden.Size = New System.Drawing.Size(228, 39)
+        Me.labelExperimentalSettingsHidden.TabIndex = 5
+        Me.labelExperimentalSettingsHidden.Text = "Experimental settings are currently hidden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can show them by clicking in the" &
+    " lower-left" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "corner of the About window."
         '
         'OptionsWindow
         '
@@ -317,6 +340,8 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.ResumeLayout(False)
         Me.tabpageRefreshCache.ResumeLayout(False)
         Me.tabpageRefreshCache.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -341,4 +366,6 @@ Partial Class OptionsWindow
     Friend WithEvents labelLoadFromManifests As Label
     Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents labelExperimentalSettingsHidden As Label
 End Class
