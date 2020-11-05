@@ -43,6 +43,7 @@ Public Class OptionsWindow
         ' Elevate winget.
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget
 
+        ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = My.Settings.ShowLastSelectedPackageDetails
     End Sub
 
