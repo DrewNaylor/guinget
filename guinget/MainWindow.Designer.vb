@@ -46,6 +46,7 @@ Partial Class aaformMainWindow
         Me.zSeparatorAfterActionsInSelectedPackagesMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.SelectedPackagesSearchForLastSelectedID = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorSelectedPackagesMenu = New System.Windows.Forms.ToolStripSeparator()
+        Me.ShowInWingetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesProperties = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -59,6 +60,7 @@ Partial Class aaformMainWindow
         Me.zSeparatorAfterActionButtonsInPackageContextMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchForPackageIDFromContextMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorPackageContextMenu = New System.Windows.Forms.ToolStripSeparator()
+        Me.ShowInwingetToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PropertiesPackageContextMenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
         Me.panelPackageListHolder = New System.Windows.Forms.Panel()
@@ -113,8 +115,8 @@ Partial Class aaformMainWindow
         Me.SelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
-        Me.ShowInWingetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowInwingetToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditWingetSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zSeparatorAboveEditWingetSettings = New System.Windows.Forms.ToolStripSeparator()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -270,6 +272,13 @@ Partial Class aaformMainWindow
         Me.zSeparatorSelectedPackagesMenu.Name = "zSeparatorSelectedPackagesMenu"
         Me.zSeparatorSelectedPackagesMenu.Size = New System.Drawing.Size(214, 6)
         '
+        'ShowInWingetToolStripMenuItem
+        '
+        Me.ShowInWingetToolStripMenuItem.Name = "ShowInWingetToolStripMenuItem"
+        Me.ShowInWingetToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
+        Me.ShowInWingetToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.ShowInWingetToolStripMenuItem.Text = "Show in &winget..."
+        '
         'SelectedPackagesProperties
         '
         Me.SelectedPackagesProperties.Name = "SelectedPackagesProperties"
@@ -278,7 +287,7 @@ Partial Class aaformMainWindow
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem, Me.FindManifestToolStripMenuItem, Me.OptionsToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifyManifestToolStripMenuItem, Me.FindManifestToolStripMenuItem, Me.zSeparatorAboveEditWingetSettings, Me.EditWingetSettingsToolStripMenuItem, Me.OptionsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -348,6 +357,12 @@ Partial Class aaformMainWindow
         '
         Me.zSeparatorPackageContextMenu.Name = "zSeparatorPackageContextMenu"
         Me.zSeparatorPackageContextMenu.Size = New System.Drawing.Size(185, 6)
+        '
+        'ShowInwingetToolStripMenuItem1
+        '
+        Me.ShowInwingetToolStripMenuItem1.Name = "ShowInwingetToolStripMenuItem1"
+        Me.ShowInwingetToolStripMenuItem1.Size = New System.Drawing.Size(188, 22)
+        Me.ShowInwingetToolStripMenuItem1.Text = "Show in &winget..."
         '
         'PropertiesPackageContextMenuToolStripMenuItem
         '
@@ -915,18 +930,16 @@ Partial Class aaformMainWindow
         Me.zSeparatorNoIdeaWhereThisIs.Name = "zSeparatorNoIdeaWhereThisIs"
         Me.zSeparatorNoIdeaWhereThisIs.Size = New System.Drawing.Size(210, 6)
         '
-        'ShowInWingetToolStripMenuItem
+        'EditWingetSettingsToolStripMenuItem
         '
-        Me.ShowInWingetToolStripMenuItem.Name = "ShowInWingetToolStripMenuItem"
-        Me.ShowInWingetToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
-        Me.ShowInWingetToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
-        Me.ShowInWingetToolStripMenuItem.Text = "Show in &winget..."
+        Me.EditWingetSettingsToolStripMenuItem.Name = "EditWingetSettingsToolStripMenuItem"
+        Me.EditWingetSettingsToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.EditWingetSettingsToolStripMenuItem.Text = "&Edit winget settings"
         '
-        'ShowInwingetToolStripMenuItem1
+        'zSeparatorAboveEditWingetSettings
         '
-        Me.ShowInwingetToolStripMenuItem1.Name = "ShowInwingetToolStripMenuItem1"
-        Me.ShowInwingetToolStripMenuItem1.Size = New System.Drawing.Size(188, 22)
-        Me.ShowInwingetToolStripMenuItem1.Text = "Show in &winget..."
+        Me.zSeparatorAboveEditWingetSettings.Name = "zSeparatorAboveEditWingetSettings"
+        Me.zSeparatorAboveEditWingetSettings.Size = New System.Drawing.Size(262, 6)
         '
         'aaformMainWindow
         '
@@ -1065,4 +1078,6 @@ Partial Class aaformMainWindow
     Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ShowInWingetToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ShowInwingetToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents zSeparatorAboveEditWingetSettings As ToolStripSeparator
+    Friend WithEvents EditWingetSettingsToolStripMenuItem As ToolStripMenuItem
 End Class
