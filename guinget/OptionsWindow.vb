@@ -45,6 +45,9 @@ Public Class OptionsWindow
 
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = My.Settings.ShowLastSelectedPackageDetails
+
+        ' Load from database.
+        checkboxLoadFromDatabase.Checked = My.Settings.LoadFromSqliteDb
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
@@ -79,6 +82,9 @@ Public Class OptionsWindow
         ' Show last-selected package details.
         My.Settings.ShowLastSelectedPackageDetails = checkboxLastSelectedPackageDetails.Checked
 
+        ' Load from database.
+        My.Settings.LoadFromSqliteDb = checkboxLoadFromDatabase.Checked
+
         My.Settings.Save()
         My.Settings.Reload()
     End Sub
@@ -106,6 +112,9 @@ Public Class OptionsWindow
 
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = True
+
+        ' Load from database.
+        checkboxLoadFromDatabase.Checked = False
     End Sub
 
     Private Sub tabcontrolOptions_MouseWheel(sender As Object, e As MouseEventArgs) Handles tabcontrolOptions.MouseWheel

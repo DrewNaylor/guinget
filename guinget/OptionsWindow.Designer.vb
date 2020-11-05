@@ -37,12 +37,16 @@ Partial Class OptionsWindow
         Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
         Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
+        Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
+        Me.checkboxLoadFromDatabase = New System.Windows.Forms.CheckBox()
+        Me.labelLoadFromManifests = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
+        Me.tabpageRefreshCache.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -205,9 +209,9 @@ Partial Class OptionsWindow
         Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
         Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(6, 6)
         Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
-        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(222, 30)
+        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(267, 30)
         Me.checkboxLastSelectedPackageDetails.TabIndex = 0
-        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "selecting multiple packages"
+        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when selecting" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "multiple packages"
         Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
         '
         'tabcontrolOptions
@@ -215,6 +219,7 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
         Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
         Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
@@ -224,6 +229,40 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.SelectedIndex = 0
         Me.tabcontrolOptions.Size = New System.Drawing.Size(368, 396)
         Me.tabcontrolOptions.TabIndex = 0
+        '
+        'tabpageRefreshCache
+        '
+        Me.tabpageRefreshCache.Controls.Add(Me.labelLoadFromManifests)
+        Me.tabpageRefreshCache.Controls.Add(Me.checkboxLoadFromDatabase)
+        Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
+        Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageRefreshCache.TabIndex = 4
+        Me.tabpageRefreshCache.Text = "Refresh Cache"
+        Me.tabpageRefreshCache.UseVisualStyleBackColor = True
+        '
+        'checkboxLoadFromDatabase
+        '
+        Me.checkboxLoadFromDatabase.AutoSize = True
+        Me.checkboxLoadFromDatabase.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxLoadFromDatabase.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxLoadFromDatabase.Name = "checkboxLoadFromDatabase"
+        Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(298, 30)
+        Me.checkboxLoadFromDatabase.TabIndex = 0
+        Me.checkboxLoadFromDatabase.Text = "(Experimental) Update and load package list from winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default community data" &
+    "base"
+        Me.checkboxLoadFromDatabase.UseVisualStyleBackColor = True
+        '
+        'labelLoadFromManifests
+        '
+        Me.labelLoadFromManifests.AutoSize = True
+        Me.labelLoadFromManifests.Location = New System.Drawing.Point(21, 36)
+        Me.labelLoadFromManifests.Name = "labelLoadFromManifests"
+        Me.labelLoadFromManifests.Size = New System.Drawing.Size(196, 13)
+        Me.labelLoadFromManifests.TabIndex = 1
+        Me.labelLoadFromManifests.Text = "Details will still be loaded from manifests."
         '
         'OptionsWindow
         '
@@ -251,6 +290,8 @@ Partial Class OptionsWindow
         Me.tabpagePackageDetails.ResumeLayout(False)
         Me.tabpagePackageDetails.PerformLayout()
         Me.tabcontrolOptions.ResumeLayout(False)
+        Me.tabpageRefreshCache.ResumeLayout(False)
+        Me.tabpageRefreshCache.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -270,4 +311,7 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents tabpageLayout As TabPage
     Friend WithEvents checkboxShowSidebar As CheckBox
+    Friend WithEvents tabpageRefreshCache As TabPage
+    Friend WithEvents checkboxLoadFromDatabase As CheckBox
+    Friend WithEvents labelLoadFromManifests As Label
 End Class
