@@ -41,13 +41,14 @@ Partial Class OptionsWindow
         Me.checkboxLoadFromDatabase = New System.Windows.Forms.CheckBox()
         Me.labelLoadFromManifests = New System.Windows.Forms.Label()
         Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.labelLoadLatestVersion = New System.Windows.Forms.Label()
         Me.panelExperimentalSettings = New System.Windows.Forms.Panel()
         Me.labelExperimentalSettingsHidden = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.checkboxUse7zip = New System.Windows.Forms.CheckBox()
+        Me.label7zExePath = New System.Windows.Forms.Label()
+        Me.textbox7zExePath = New System.Windows.Forms.TextBox()
+        Me.buttonBrowse7zExePath = New System.Windows.Forms.Button()
+        Me.checkboxUseRobocopy = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -284,24 +285,25 @@ Partial Class OptionsWindow
         Me.checkboxShowOnlyLatestVersions.Text = "(Experimental) Load only the latest version of each package"
         Me.checkboxShowOnlyLatestVersions.UseVisualStyleBackColor = True
         '
-        'Label1
+        'labelLoadLatestVersion
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(18, 67)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(293, 26)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Some packages will display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version" &
+        Me.labelLoadLatestVersion.AutoSize = True
+        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 67)
+        Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
+        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(293, 26)
+        Me.labelLoadLatestVersion.TabIndex = 3
+        Me.labelLoadLatestVersion.Text = "Some packages will display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version" &
     ". Not sure how to fix this at the moment."
         '
         'panelExperimentalSettings
         '
-        Me.panelExperimentalSettings.Controls.Add(Me.Button1)
-        Me.panelExperimentalSettings.Controls.Add(Me.TextBox1)
-        Me.panelExperimentalSettings.Controls.Add(Me.Label2)
-        Me.panelExperimentalSettings.Controls.Add(Me.CheckBox1)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxUseRobocopy)
+        Me.panelExperimentalSettings.Controls.Add(Me.buttonBrowse7zExePath)
+        Me.panelExperimentalSettings.Controls.Add(Me.textbox7zExePath)
+        Me.panelExperimentalSettings.Controls.Add(Me.label7zExePath)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxUse7zip)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxLoadFromDatabase)
-        Me.panelExperimentalSettings.Controls.Add(Me.Label1)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelLoadLatestVersion)
         Me.panelExperimentalSettings.Controls.Add(Me.labelLoadFromManifests)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxShowOnlyLatestVersions)
         Me.panelExperimentalSettings.Dock = System.Windows.Forms.DockStyle.Fill
@@ -320,41 +322,51 @@ Partial Class OptionsWindow
         Me.labelExperimentalSettingsHidden.Text = "Experimental settings are currently hidden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can show them by clicking in the" &
     " lower-left" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "corner of the About window."
         '
-        'CheckBox1
+        'checkboxUse7zip
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(3, 97)
-        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(235, 17)
-        Me.CheckBox1.TabIndex = 4
-        Me.CheckBox1.Text = "(Experimental) Use 7-Zip to extract manifests"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxUse7zip.AutoSize = True
+        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 97)
+        Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxUse7zip.Name = "checkboxUse7zip"
+        Me.checkboxUse7zip.Size = New System.Drawing.Size(303, 17)
+        Me.checkboxUse7zip.TabIndex = 4
+        Me.checkboxUse7zip.Text = "(Experimental) Use 7-Zip to extract manifests and database"
+        Me.checkboxUse7zip.UseVisualStyleBackColor = True
         '
-        'Label2
+        'label7zExePath
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(19, 118)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 13)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "7z.exe path:"
+        Me.label7zExePath.AutoSize = True
+        Me.label7zExePath.Location = New System.Drawing.Point(19, 118)
+        Me.label7zExePath.Name = "label7zExePath"
+        Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
+        Me.label7zExePath.TabIndex = 5
+        Me.label7zExePath.Text = "7z.exe path:"
         '
-        'TextBox1
+        'textbox7zExePath
         '
-        Me.TextBox1.Location = New System.Drawing.Point(90, 114)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(148, 20)
-        Me.TextBox1.TabIndex = 6
+        Me.textbox7zExePath.Location = New System.Drawing.Point(90, 114)
+        Me.textbox7zExePath.Name = "textbox7zExePath"
+        Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
+        Me.textbox7zExePath.TabIndex = 6
         '
-        'Button1
+        'buttonBrowse7zExePath
         '
-        Me.Button1.Location = New System.Drawing.Point(244, 113)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Browse..."
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(244, 113)
+        Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
+        Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
+        Me.buttonBrowse7zExePath.TabIndex = 7
+        Me.buttonBrowse7zExePath.Text = "Browse..."
+        Me.buttonBrowse7zExePath.UseVisualStyleBackColor = True
+        '
+        'checkboxUseRobocopy
+        '
+        Me.checkboxUseRobocopy.AutoSize = True
+        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 135)
+        Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
+        Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
+        Me.checkboxUseRobocopy.TabIndex = 8
+        Me.checkboxUseRobocopy.Text = "(Experimental) Use Robocopy to copy manifests and database"
+        Me.checkboxUseRobocopy.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -409,11 +421,12 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxLoadFromDatabase As CheckBox
     Friend WithEvents labelLoadFromManifests As Label
     Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents labelLoadLatestVersion As Label
     Friend WithEvents panelExperimentalSettings As Panel
     Friend WithEvents labelExperimentalSettingsHidden As Label
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents checkboxUse7zip As CheckBox
+    Friend WithEvents label7zExePath As Label
+    Friend WithEvents buttonBrowse7zExePath As Button
+    Friend WithEvents textbox7zExePath As TextBox
+    Friend WithEvents checkboxUseRobocopy As CheckBox
 End Class
