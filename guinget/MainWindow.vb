@@ -382,7 +382,11 @@ Public Class aaformMainWindow
             End If
         Else
             ' If we want to show the last-selected package, then we can just do that.
-            ShowSelectedPackageDetails()
+            ' Make sure it's greater than 0, or else it'll crash when turning the
+            ' database mode on and off then refreshing the cache during the same session.
+            If datagridviewPackageList.SelectedRows.Count > 0 Then
+                ShowSelectedPackageDetails()
+            End If
         End If
 
         ' Determine if menuitems should be allowed.
