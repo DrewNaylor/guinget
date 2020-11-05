@@ -123,6 +123,9 @@ Public Class ApplyChangesWindow
 
         ' Load the elevate winget setting from the config file.
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget
+
+        ' Focus the "Confirm changes" button.
+        buttonConfirmChanges.Select()
     End Sub
 
     Private Sub checkboxElevatedInstall_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxElevateWinget.CheckedChanged
