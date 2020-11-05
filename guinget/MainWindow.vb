@@ -712,7 +712,7 @@ Public Class aaformMainWindow
         aaformMainWindow.zSeparatorAboveEditWingetSettings.Visible = Visible
 
         ' Experimental settings panel in Options window.
-        OptionsWindow.Panel1.Visible = Visible
+        OptionsWindow.panelExperimentalSettings.Visible = Visible
 
     End Sub
 #End Region

@@ -42,8 +42,10 @@ Partial Class OptionsWindow
         Me.labelLoadFromManifests = New System.Windows.Forms.Label()
         Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.panelExperimentalSettings = New System.Windows.Forms.Panel()
         Me.labelExperimentalSettingsHidden = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -51,7 +53,7 @@ Partial Class OptionsWindow
         Me.tabpagePackageDetails.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.panelExperimentalSettings.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -237,7 +239,7 @@ Partial Class OptionsWindow
         '
         'tabpageRefreshCache
         '
-        Me.tabpageRefreshCache.Controls.Add(Me.Panel1)
+        Me.tabpageRefreshCache.Controls.Add(Me.panelExperimentalSettings)
         Me.tabpageRefreshCache.Controls.Add(Me.labelExperimentalSettingsHidden)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
         Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
@@ -290,17 +292,19 @@ Partial Class OptionsWindow
         Me.Label1.Text = "Some packages will display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version" &
     ". Not sure how to fix this at the moment."
         '
-        'Panel1
+        'panelExperimentalSettings
         '
-        Me.Panel1.Controls.Add(Me.checkboxLoadFromDatabase)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.labelLoadFromManifests)
-        Me.Panel1.Controls.Add(Me.checkboxShowOnlyLatestVersions)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(3, 3)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(354, 364)
-        Me.Panel1.TabIndex = 4
+        Me.panelExperimentalSettings.Controls.Add(Me.Label2)
+        Me.panelExperimentalSettings.Controls.Add(Me.CheckBox1)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxLoadFromDatabase)
+        Me.panelExperimentalSettings.Controls.Add(Me.Label1)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelLoadFromManifests)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxShowOnlyLatestVersions)
+        Me.panelExperimentalSettings.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelExperimentalSettings.Location = New System.Drawing.Point(3, 3)
+        Me.panelExperimentalSettings.Name = "panelExperimentalSettings"
+        Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 364)
+        Me.panelExperimentalSettings.TabIndex = 4
         '
         'labelExperimentalSettingsHidden
         '
@@ -311,6 +315,26 @@ Partial Class OptionsWindow
         Me.labelExperimentalSettingsHidden.TabIndex = 5
         Me.labelExperimentalSettingsHidden.Text = "Experimental settings are currently hidden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can show them by clicking in the" &
     " lower-left" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "corner of the About window."
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(3, 97)
+        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(235, 17)
+        Me.CheckBox1.TabIndex = 4
+        Me.CheckBox1.Text = "(Experimental) Use 7-Zip to extract manifests"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(18, 114)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(65, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "7z.exe path:"
         '
         'OptionsWindow
         '
@@ -340,8 +364,8 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.ResumeLayout(False)
         Me.tabpageRefreshCache.ResumeLayout(False)
         Me.tabpageRefreshCache.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.panelExperimentalSettings.ResumeLayout(False)
+        Me.panelExperimentalSettings.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -366,6 +390,8 @@ Partial Class OptionsWindow
     Friend WithEvents labelLoadFromManifests As Label
     Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents panelExperimentalSettings As Panel
     Friend WithEvents labelExperimentalSettingsHidden As Label
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Label2 As Label
 End Class
