@@ -115,6 +115,16 @@ Public Class OptionsWindow
 
         ' Load from database.
         checkboxLoadFromDatabase.Checked = False
+        ' Load only latest versions.
+        checkboxShowOnlyLatestVersions.Checked = False
+        ' Use 7-Zip.
+        checkboxUse7zip.Checked = False
+        ' Use Robocopy.
+        checkboxUseRobocopy.Checked = False
+        ' 7z.exe path.
+        textbox7zExePath.Text = "C:\Program Files\7-Zip\7z.exe"
+        ' Hide unfinished controls.
+        checkboxHideUnfinishedControls.Checked = True
     End Sub
 
     Private Sub tabcontrolOptions_MouseWheel(sender As Object, e As MouseEventArgs) Handles tabcontrolOptions.MouseWheel

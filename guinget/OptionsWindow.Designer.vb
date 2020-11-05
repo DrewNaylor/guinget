@@ -50,6 +50,8 @@ Partial Class OptionsWindow
         Me.buttonBrowse7zExePath = New System.Windows.Forms.Button()
         Me.checkboxUseRobocopy = New System.Windows.Forms.CheckBox()
         Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -291,13 +293,16 @@ Partial Class OptionsWindow
         Me.labelLoadLatestVersion.AutoSize = True
         Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 67)
         Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
-        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(293, 26)
+        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(293, 52)
         Me.labelLoadLatestVersion.TabIndex = 3
         Me.labelLoadLatestVersion.Text = "Some packages will display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version" &
-    ". Not sure how to fix this at the moment."
+    ". Not sure how to fix this at the moment." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Requires loading from the community d" &
+    "atabase checkbox to" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "be checked."
         '
         'panelExperimentalSettings
         '
+        Me.panelExperimentalSettings.Controls.Add(Me.Label2)
+        Me.panelExperimentalSettings.Controls.Add(Me.Label1)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxHideUnfinishedControls)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxUseRobocopy)
         Me.panelExperimentalSettings.Controls.Add(Me.buttonBrowse7zExePath)
@@ -327,7 +332,7 @@ Partial Class OptionsWindow
         'checkboxUse7zip
         '
         Me.checkboxUse7zip.AutoSize = True
-        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 97)
+        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 122)
         Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUse7zip.Name = "checkboxUse7zip"
         Me.checkboxUse7zip.Size = New System.Drawing.Size(303, 17)
@@ -338,7 +343,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(19, 118)
+        Me.label7zExePath.Location = New System.Drawing.Point(18, 163)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
@@ -346,14 +351,14 @@ Partial Class OptionsWindow
         '
         'textbox7zExePath
         '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(90, 114)
+        Me.textbox7zExePath.Location = New System.Drawing.Point(89, 159)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
         Me.textbox7zExePath.TabIndex = 6
         '
         'buttonBrowse7zExePath
         '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(244, 113)
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(243, 158)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
         Me.buttonBrowse7zExePath.TabIndex = 7
@@ -363,7 +368,8 @@ Partial Class OptionsWindow
         'checkboxUseRobocopy
         '
         Me.checkboxUseRobocopy.AutoSize = True
-        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 135)
+        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 187)
+        Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
         Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
         Me.checkboxUseRobocopy.TabIndex = 8
@@ -373,12 +379,30 @@ Partial Class OptionsWindow
         'checkboxHideUnfinishedControls
         '
         Me.checkboxHideUnfinishedControls.AutoSize = True
-        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 159)
+        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 240)
         Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
         Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
         Me.checkboxHideUnfinishedControls.TabIndex = 9
         Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls and experimental stuff"
         Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(18, 139)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(164, 13)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "7-Zip is Copyright (C) Igor Pavlov."
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(21, 204)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(235, 26)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "Robocopy is Copyright (C) Microsoft Corporation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All rights reserved."
         '
         'OptionsWindow
         '
@@ -442,4 +466,6 @@ Partial Class OptionsWindow
     Friend WithEvents textbox7zExePath As TextBox
     Friend WithEvents checkboxUseRobocopy As CheckBox
     Friend WithEvents checkboxHideUnfinishedControls As CheckBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class
