@@ -40,6 +40,8 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
         Me.checkboxLoadFromDatabase = New System.Windows.Forms.CheckBox()
         Me.labelLoadFromManifests = New System.Windows.Forms.Label()
+        Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -232,6 +234,8 @@ Partial Class OptionsWindow
         '
         'tabpageRefreshCache
         '
+        Me.tabpageRefreshCache.Controls.Add(Me.Label1)
+        Me.tabpageRefreshCache.Controls.Add(Me.checkboxShowOnlyLatestVersions)
         Me.tabpageRefreshCache.Controls.Add(Me.labelLoadFromManifests)
         Me.tabpageRefreshCache.Controls.Add(Me.checkboxLoadFromDatabase)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
@@ -263,6 +267,27 @@ Partial Class OptionsWindow
         Me.labelLoadFromManifests.Size = New System.Drawing.Size(196, 13)
         Me.labelLoadFromManifests.TabIndex = 1
         Me.labelLoadFromManifests.Text = "Details will still be loaded from manifests."
+        '
+        'checkboxShowOnlyLatestVersions
+        '
+        Me.checkboxShowOnlyLatestVersions.AutoSize = True
+        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(6, 53)
+        Me.checkboxShowOnlyLatestVersions.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxShowOnlyLatestVersions.Name = "checkboxShowOnlyLatestVersions"
+        Me.checkboxShowOnlyLatestVersions.Size = New System.Drawing.Size(308, 17)
+        Me.checkboxShowOnlyLatestVersions.TabIndex = 2
+        Me.checkboxShowOnlyLatestVersions.Text = "(Experimental) Load only the latest version of each package"
+        Me.checkboxShowOnlyLatestVersions.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(21, 70)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(293, 26)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Some packages will display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version" &
+    ". Not sure how to fix this at the moment."
         '
         'OptionsWindow
         '
@@ -314,4 +339,6 @@ Partial Class OptionsWindow
     Friend WithEvents tabpageRefreshCache As TabPage
     Friend WithEvents checkboxLoadFromDatabase As CheckBox
     Friend WithEvents labelLoadFromManifests As Label
+    Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
+    Friend WithEvents Label1 As Label
 End Class
