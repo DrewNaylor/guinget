@@ -689,6 +689,8 @@ Public Class aaformMainWindow
         ' Toolstrip separators.
         ' Main toolbar.
         aaformMainWindow.zSeparatorPropertiesAndSearchBox.Visible = Visible
+        ' Tools menu.
+        aaformMainWindow.zSeparatorAboveEditWingetSettings.Visible = Visible
 
     End Sub
 
@@ -989,6 +991,11 @@ Public Class aaformMainWindow
         If datagridviewPackageList.SelectedRows.Count = 1 Then
             PackageTools.ShowPkgInWinget(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString, datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString)
         End If
+    End Sub
+
+    Private Sub EditWingetSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditWingetSettingsToolStripMenuItem.Click
+        ' Run the stuff in the helper library to edit winget settings.
+        ConfigTools.RunWingetSettings()
     End Sub
 
 
