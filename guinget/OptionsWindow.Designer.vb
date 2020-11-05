@@ -375,9 +375,9 @@ Partial Class OptionsWindow
         Me.checkboxHideUnfinishedControls.AutoSize = True
         Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 159)
         Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
-        Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(139, 17)
+        Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
         Me.checkboxHideUnfinishedControls.TabIndex = 9
-        Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls"
+        Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls and experimental stuff"
         Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
         '
         'OptionsWindow
