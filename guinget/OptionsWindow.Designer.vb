@@ -49,6 +49,7 @@ Partial Class OptionsWindow
         Me.textbox7zExePath = New System.Windows.Forms.TextBox()
         Me.buttonBrowse7zExePath = New System.Windows.Forms.Button()
         Me.checkboxUseRobocopy = New System.Windows.Forms.CheckBox()
+        Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -297,6 +298,7 @@ Partial Class OptionsWindow
         '
         'panelExperimentalSettings
         '
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxHideUnfinishedControls)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxUseRobocopy)
         Me.panelExperimentalSettings.Controls.Add(Me.buttonBrowse7zExePath)
         Me.panelExperimentalSettings.Controls.Add(Me.textbox7zExePath)
@@ -368,6 +370,16 @@ Partial Class OptionsWindow
         Me.checkboxUseRobocopy.Text = "(Experimental) Use Robocopy to copy manifests and database"
         Me.checkboxUseRobocopy.UseVisualStyleBackColor = True
         '
+        'checkboxHideUnfinishedControls
+        '
+        Me.checkboxHideUnfinishedControls.AutoSize = True
+        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 159)
+        Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
+        Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(139, 17)
+        Me.checkboxHideUnfinishedControls.TabIndex = 9
+        Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls"
+        Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -429,4 +441,5 @@ Partial Class OptionsWindow
     Friend WithEvents buttonBrowse7zExePath As Button
     Friend WithEvents textbox7zExePath As TextBox
     Friend WithEvents checkboxUseRobocopy As CheckBox
+    Friend WithEvents checkboxHideUnfinishedControls As CheckBox
 End Class
