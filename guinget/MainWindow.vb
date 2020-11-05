@@ -27,6 +27,7 @@ Imports libguinget
 
 Public Class aaformMainWindow
 
+#Region "Add package entry to list."
     Friend Shared Async Function AddPackageEntryToListAsync() As Task
 
         ' Adds a package to the package list based on what's in the manifests folder.
@@ -239,7 +240,9 @@ Public Class aaformMainWindow
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
     End Sub
+#End Region
 
+#Region "Right-click to select cells in the package list."
     Private Sub datagridviewPackageList_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewPackageList.CellMouseDown
         ' Code based on this SO answer:
         ' https://stackoverflow.com/a/939275
@@ -256,7 +259,10 @@ Public Class aaformMainWindow
             End If
         End If
     End Sub
+#End Region
 
+#Region "Marking packages."
+#Region "Menu items for do nothing, install, etc."
     Private Sub DoNothingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoNothingToolStripMenuItem.Click
         ' Set all selected packages to "do nothing", or whatever the text in the
         ' context menu item that was clicked is. This could allow for
@@ -301,7 +307,9 @@ Public Class aaformMainWindow
         ' Mark packages from the menubar.
         MarkPackages("Install")
     End Sub
+#End Region
 
+#Region "Where the package-marking takes place."
     Friend Shared Sub MarkPackages(Action As String)
 
         ' Mark each package with an action based on what
@@ -361,6 +369,8 @@ Public Class aaformMainWindow
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
     End Sub
+#End Region
+#End Region
 
     Friend Shared Sub ProgressInfoVisibility(Optional Visible As Boolean = True)
 
@@ -493,6 +503,7 @@ Public Class aaformMainWindow
         Return
     End Function
 
+#Region "Refresh cache."
     Private Async Function BeginRefreshCacheAsync() As Task
 
         ' Disable some controls so nothing bad happens
@@ -595,6 +606,7 @@ Public Class aaformMainWindow
 
     End Sub
 
+#Region "update-manifests.bat cache updater."
     Friend Shared Sub RefreshCache()
         ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
         MessageBox.Show(aaformMainWindow, "We'll update the manifests with update-manifests.bat instead of the much faster built-in updater." &
@@ -623,6 +635,8 @@ Public Class aaformMainWindow
             AddPackageEntryToListAsync()
         End If
     End Sub
+#End Region
+#End Region
 
     Private Sub datagridviewPackageList_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellDoubleClick
         ' Show package context menu on cell double-click, like Synaptic.
@@ -648,6 +662,7 @@ Public Class aaformMainWindow
         AboutWindow.ShowDialog(Me)
     End Sub
 
+#Region "Unfinished controls visibility"
     Friend Shared Sub UnfinishedControlsVisible(Visible As Boolean)
 
         ' Hide controls that don't work yet.
@@ -697,6 +712,7 @@ Public Class aaformMainWindow
         aaformMainWindow.zSeparatorAboveEditWingetSettings.Visible = Visible
 
     End Sub
+#End Region
 
     Private Sub aaformMainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Upgrade settings if necessary.
@@ -722,6 +738,7 @@ Public Class aaformMainWindow
 
     End Sub
 
+#Region "Package ID search."
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
         ' Start searching.
         BeginPackageIdSearch()
@@ -830,7 +847,9 @@ Public Class aaformMainWindow
         toolstriptextboxSearch.Focus()
         toolstriptextboxSearch.SelectAll()
     End Sub
+#End Region
 
+#Region "Sidebar search."
     Private Sub listboxSearchTerms_DoubleClick(sender As Object, e As EventArgs) Handles listboxSearchTerms.DoubleClick
         ' Start searching.
         BeginSearchFromSidebar()
@@ -857,6 +876,7 @@ Public Class aaformMainWindow
             BeginSearchFromSidebar()
         End If
     End Sub
+#End Region
 
     Private Sub ClearSelectedSearchTermToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearSelectedSearchTermToolStripMenuItem.Click
         ' Clear selected search term as long as it's not the first item.
