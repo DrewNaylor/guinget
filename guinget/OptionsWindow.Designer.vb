@@ -46,6 +46,8 @@ Partial Class OptionsWindow
         Me.labelExperimentalSettingsHidden = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -294,6 +296,8 @@ Partial Class OptionsWindow
         '
         'panelExperimentalSettings
         '
+        Me.panelExperimentalSettings.Controls.Add(Me.Button1)
+        Me.panelExperimentalSettings.Controls.Add(Me.TextBox1)
         Me.panelExperimentalSettings.Controls.Add(Me.Label2)
         Me.panelExperimentalSettings.Controls.Add(Me.CheckBox1)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxLoadFromDatabase)
@@ -330,11 +334,27 @@ Partial Class OptionsWindow
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(18, 114)
+        Me.Label2.Location = New System.Drawing.Point(19, 118)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(65, 13)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "7z.exe path:"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(90, 114)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(148, 20)
+        Me.TextBox1.TabIndex = 6
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(244, 113)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Browse..."
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -394,4 +414,6 @@ Partial Class OptionsWindow
     Friend WithEvents labelExperimentalSettingsHidden As Label
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents TextBox1 As TextBox
 End Class
