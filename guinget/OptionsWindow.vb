@@ -155,7 +155,7 @@ Public Class OptionsWindow
         ' Use Robocopy.
         checkboxUseRobocopy.Checked = False
         ' 7z.exe path.
-        textbox7zExePath.Text = "C:\Program Files\7-Zip\7z.exe"
+        textbox7zExePath.Text = """C:\Program Files\7-Zip\7z.exe"""
         ' Hide unfinished controls.
         checkboxHideUnfinishedControls.Checked = True
     End Sub
