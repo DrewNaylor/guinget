@@ -151,4 +151,11 @@ Public Class OptionsWindow
         ' Switch tabs on scroll.
         libscrollswitchtabs.ScrollSwitchTabs.switch(tabcontrolOptions, e)
     End Sub
+
+    Private Sub buttonBrowse7zExePath_Click(sender As Object, e As EventArgs) Handles buttonBrowse7zExePath.Click
+        ' Show a Browse window so people can choose the 7z.exe path.
+        Using SevenZExeBrowse As New OpenFileDialog
+
+        End Using
+    End Sub
 End Class
