@@ -50,10 +50,10 @@ Partial Class OptionsWindow
         Me.buttonBrowse7zExePath = New System.Windows.Forms.Button()
         Me.checkboxUseRobocopy = New System.Windows.Forms.CheckBox()
         Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.labelCopyrightForSevenZip = New System.Windows.Forms.Label()
+        Me.labelCopyrightForRobocopy = New System.Windows.Forms.Label()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.labelRequiresApplicationRestart = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -303,9 +303,9 @@ Partial Class OptionsWindow
         '
         'panelExperimentalSettings
         '
-        Me.panelExperimentalSettings.Controls.Add(Me.Label3)
-        Me.panelExperimentalSettings.Controls.Add(Me.Label2)
-        Me.panelExperimentalSettings.Controls.Add(Me.Label1)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelRequiresApplicationRestart)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForRobocopy)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForSevenZip)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxHideUnfinishedControls)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxUseRobocopy)
         Me.panelExperimentalSettings.Controls.Add(Me.buttonBrowse7zExePath)
@@ -391,37 +391,37 @@ Partial Class OptionsWindow
         Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls and experimental stuff"
         Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
         '
-        'Label1
+        'labelCopyrightForSevenZip
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(18, 139)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(164, 13)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "7-Zip is Copyright (C) Igor Pavlov."
+        Me.labelCopyrightForSevenZip.AutoSize = True
+        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 139)
+        Me.labelCopyrightForSevenZip.Name = "labelCopyrightForSevenZip"
+        Me.labelCopyrightForSevenZip.Size = New System.Drawing.Size(164, 13)
+        Me.labelCopyrightForSevenZip.TabIndex = 10
+        Me.labelCopyrightForSevenZip.Text = "7-Zip is Copyright (C) Igor Pavlov."
         '
-        'Label2
+        'labelCopyrightForRobocopy
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(18, 196)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(235, 26)
-        Me.Label2.TabIndex = 11
-        Me.Label2.Text = "Robocopy is Copyright (C) Microsoft Corporation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All rights reserved."
+        Me.labelCopyrightForRobocopy.AutoSize = True
+        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 196)
+        Me.labelCopyrightForRobocopy.Name = "labelCopyrightForRobocopy"
+        Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(235, 26)
+        Me.labelCopyrightForRobocopy.TabIndex = 11
+        Me.labelCopyrightForRobocopy.Text = "Robocopy is Copyright (C) Microsoft Corporation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All rights reserved."
         '
         'SevenZExeOpenFileDialog
         '
         Me.SevenZExeOpenFileDialog.FileName = "7z.exe"
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         '
-        'Label3
+        'labelRequiresApplicationRestart
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(18, 242)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(138, 13)
-        Me.Label3.TabIndex = 12
-        Me.Label3.Text = "Requires application restart."
+        Me.labelRequiresApplicationRestart.AutoSize = True
+        Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 242)
+        Me.labelRequiresApplicationRestart.Name = "labelRequiresApplicationRestart"
+        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(138, 13)
+        Me.labelRequiresApplicationRestart.TabIndex = 12
+        Me.labelRequiresApplicationRestart.Text = "Requires application restart."
         '
         'OptionsWindow
         '
@@ -485,8 +485,8 @@ Partial Class OptionsWindow
     Friend WithEvents textbox7zExePath As TextBox
     Friend WithEvents checkboxUseRobocopy As CheckBox
     Friend WithEvents checkboxHideUnfinishedControls As CheckBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents labelCopyrightForSevenZip As Label
+    Friend WithEvents labelCopyrightForRobocopy As Label
     Friend WithEvents SevenZExeOpenFileDialog As OpenFileDialog
-    Friend WithEvents Label3 As Label
+    Friend WithEvents labelRequiresApplicationRestart As Label
 End Class
