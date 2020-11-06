@@ -265,7 +265,7 @@ Partial Class OptionsWindow
         Me.checkboxLoadFromDatabase.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxLoadFromDatabase.Name = "checkboxLoadFromDatabase"
         Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(298, 30)
-        Me.checkboxLoadFromDatabase.TabIndex = 0
+        Me.checkboxLoadFromDatabase.TabIndex = 1
         Me.checkboxLoadFromDatabase.Text = "(Experimental) Update and load package list from winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default community data" &
     "base"
         Me.checkboxLoadFromDatabase.UseVisualStyleBackColor = True
@@ -341,7 +341,7 @@ Partial Class OptionsWindow
         Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUse7zip.Name = "checkboxUse7zip"
         Me.checkboxUse7zip.Size = New System.Drawing.Size(303, 17)
-        Me.checkboxUse7zip.TabIndex = 4
+        Me.checkboxUse7zip.TabIndex = 3
         Me.checkboxUse7zip.Text = "(Experimental) Use 7-Zip to extract manifests and database"
         Me.checkboxUse7zip.UseVisualStyleBackColor = True
         '
@@ -360,14 +360,14 @@ Partial Class OptionsWindow
         Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
-        Me.textbox7zExePath.TabIndex = 6
+        Me.textbox7zExePath.TabIndex = 4
         '
         'buttonBrowse7zExePath
         '
         Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 236)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
-        Me.buttonBrowse7zExePath.TabIndex = 7
+        Me.buttonBrowse7zExePath.TabIndex = 5
         Me.buttonBrowse7zExePath.Text = "Browse..."
         Me.buttonBrowse7zExePath.UseVisualStyleBackColor = True
         '
@@ -378,7 +378,7 @@ Partial Class OptionsWindow
         Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
         Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
-        Me.checkboxUseRobocopy.TabIndex = 8
+        Me.checkboxUseRobocopy.TabIndex = 6
         Me.checkboxUseRobocopy.Text = "(Experimental) Use Robocopy to copy manifests and database"
         Me.checkboxUseRobocopy.UseVisualStyleBackColor = True
         '
@@ -389,7 +389,7 @@ Partial Class OptionsWindow
         Me.checkboxHideUnfinishedControls.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
         Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
-        Me.checkboxHideUnfinishedControls.TabIndex = 9
+        Me.checkboxHideUnfinishedControls.TabIndex = 0
         Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls and experimental stuff"
         Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
         '
