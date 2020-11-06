@@ -418,6 +418,7 @@ Partial Class OptionsWindow
         '
         Me.SevenZExeOpenFileDialog.FileName = "7z.exe"
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
+        Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
         'labelRequiresApplicationRestart
         '
