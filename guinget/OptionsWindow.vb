@@ -102,19 +102,26 @@ Public Class OptionsWindow
         My.Settings.UseRobocopyForCopying = checkboxUseRobocopy.Checked
         ' 7z.exe path.
         ' Add double-quotes if necessary.
-        If Not textbox7zExePath.Text.StartsWith("""") AndAlso Not textbox7zExePath.Text.EndsWith("""") Then
-            ' If it doesn't have double-quotes at the start or end, add them.
-            My.Settings.PathTo7zip = """" & textbox7zExePath.Text & """"
-        ElseIf Not textbox7zExePath.Text.StartsWith("""") AndAlso textbox7zExePath.Text.EndsWith("""") Then
-            ' If it doesn't start with quotes but ends with them, add them to the start.
-            My.Settings.PathTo7zip = """" & textbox7zExePath.Text
-        ElseIf textbox7zExePath.Text.StartsWith("""") AndAlso Not textbox7zExePath.Text.EndsWith("""") Then
-            ' If it ends without double-quotes, add them.
-            My.Settings.PathTo7zip = textbox7zExePath.Text & """"
+        ' Make sure it doesn't contain "://", either.
+        If Not textbox7zExePath.Text.Contains("://") Then
+            If Not textbox7zExePath.Text.StartsWith("""") AndAlso Not textbox7zExePath.Text.EndsWith("""") Then
+                ' If it doesn't have double-quotes at the start or end, add them.
+                My.Settings.PathTo7zip = """" & textbox7zExePath.Text & """"
+            ElseIf Not textbox7zExePath.Text.StartsWith("""") AndAlso textbox7zExePath.Text.EndsWith("""") Then
+                ' If it doesn't start with quotes but ends with them, add them to the start.
+                My.Settings.PathTo7zip = """" & textbox7zExePath.Text
+            ElseIf textbox7zExePath.Text.StartsWith("""") AndAlso Not textbox7zExePath.Text.EndsWith("""") Then
+                ' If it ends without double-quotes, add them.
+                My.Settings.PathTo7zip = textbox7zExePath.Text & """"
+            Else
+                ' Otherwise just use it.
+                My.Settings.PathTo7zip = textbox7zExePath.Text
+            End If
         Else
-            ' Otherwise just use it.
-            My.Settings.PathTo7zip = textbox7zExePath.Text
+            ' If it contains "://", use the default.
+            My.Settings.PathTo7zip = """C:\Program Files\7-Zip\7z.exe"""
         End If
+
         ' Hide unfinished controls.
         My.Settings.HideUnfinishedControls = checkboxHideUnfinishedControls.Checked
 
