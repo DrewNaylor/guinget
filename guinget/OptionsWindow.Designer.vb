@@ -343,7 +343,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(18, 163)
+        Me.label7zExePath.Location = New System.Drawing.Point(17, 157)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
@@ -351,14 +351,15 @@ Partial Class OptionsWindow
         '
         'textbox7zExePath
         '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(89, 159)
+        Me.textbox7zExePath.Location = New System.Drawing.Point(88, 153)
+        Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
         Me.textbox7zExePath.TabIndex = 6
         '
         'buttonBrowse7zExePath
         '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(243, 158)
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 152)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
         Me.buttonBrowse7zExePath.TabIndex = 7
@@ -368,7 +369,7 @@ Partial Class OptionsWindow
         'checkboxUseRobocopy
         '
         Me.checkboxUseRobocopy.AutoSize = True
-        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 187)
+        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 179)
         Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
         Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
@@ -379,7 +380,7 @@ Partial Class OptionsWindow
         'checkboxHideUnfinishedControls
         '
         Me.checkboxHideUnfinishedControls.AutoSize = True
-        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 240)
+        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 225)
         Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
         Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
         Me.checkboxHideUnfinishedControls.TabIndex = 9
@@ -398,7 +399,7 @@ Partial Class OptionsWindow
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(21, 204)
+        Me.Label2.Location = New System.Drawing.Point(21, 196)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(235, 26)
         Me.Label2.TabIndex = 11

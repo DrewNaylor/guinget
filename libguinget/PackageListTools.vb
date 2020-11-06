@@ -307,8 +307,13 @@ Public Class PackageListTools
                                            End Try
                                        End If
                                    Else
-                                           ' The calling app wants to use 7zip, so use it.
-                                           Dim extraction7z As New Process
+                                       ' The calling app wants to use 7zip, so use it.
+                                       ' Make sure it doesn't have "://" in the path.
+                                       If PathTo7zip.Contains("://") Then
+                                           PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
+                                       End If
+
+                                       Dim extraction7z As New Process
                                            extraction7z.StartInfo.FileName = PathTo7zip
                                        extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
                                        extraction7z.Start()
