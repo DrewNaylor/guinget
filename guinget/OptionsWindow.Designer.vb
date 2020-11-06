@@ -275,14 +275,16 @@ Partial Class OptionsWindow
         Me.labelLoadFromManifests.AutoSize = True
         Me.labelLoadFromManifests.Location = New System.Drawing.Point(18, 66)
         Me.labelLoadFromManifests.Name = "labelLoadFromManifests"
-        Me.labelLoadFromManifests.Size = New System.Drawing.Size(196, 13)
+        Me.labelLoadFromManifests.Size = New System.Drawing.Size(270, 39)
         Me.labelLoadFromManifests.TabIndex = 1
-        Me.labelLoadFromManifests.Text = "Details will still be loaded from manifests."
+        Me.labelLoadFromManifests.Text = "This will ensure guinget only displays packages winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default source knows ab" &
+    "out and may be faster" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "in some cases. Details will still be loaded from manifest" &
+    "s."
         '
         'checkboxShowOnlyLatestVersions
         '
         Me.checkboxShowOnlyLatestVersions.AutoSize = True
-        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(3, 83)
+        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(3, 108)
         Me.checkboxShowOnlyLatestVersions.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxShowOnlyLatestVersions.Name = "checkboxShowOnlyLatestVersions"
         Me.checkboxShowOnlyLatestVersions.Size = New System.Drawing.Size(308, 17)
@@ -293,7 +295,7 @@ Partial Class OptionsWindow
         'labelLoadLatestVersion
         '
         Me.labelLoadLatestVersion.AutoSize = True
-        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 100)
+        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 125)
         Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
         Me.labelLoadLatestVersion.Size = New System.Drawing.Size(293, 52)
         Me.labelLoadLatestVersion.TabIndex = 3
@@ -335,7 +337,7 @@ Partial Class OptionsWindow
         'checkboxUse7zip
         '
         Me.checkboxUse7zip.AutoSize = True
-        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 155)
+        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 180)
         Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUse7zip.Name = "checkboxUse7zip"
         Me.checkboxUse7zip.Size = New System.Drawing.Size(303, 17)
@@ -346,7 +348,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(17, 216)
+        Me.label7zExePath.Location = New System.Drawing.Point(17, 241)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
@@ -354,7 +356,7 @@ Partial Class OptionsWindow
         '
         'textbox7zExePath
         '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(88, 212)
+        Me.textbox7zExePath.Location = New System.Drawing.Point(88, 237)
         Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
@@ -362,7 +364,7 @@ Partial Class OptionsWindow
         '
         'buttonBrowse7zExePath
         '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 211)
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 236)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
         Me.buttonBrowse7zExePath.TabIndex = 7
@@ -372,7 +374,7 @@ Partial Class OptionsWindow
         'checkboxUseRobocopy
         '
         Me.checkboxUseRobocopy.AutoSize = True
-        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 238)
+        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 263)
         Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
         Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
@@ -394,7 +396,7 @@ Partial Class OptionsWindow
         'labelCopyrightForSevenZip
         '
         Me.labelCopyrightForSevenZip.AutoSize = True
-        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 172)
+        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 197)
         Me.labelCopyrightForSevenZip.Name = "labelCopyrightForSevenZip"
         Me.labelCopyrightForSevenZip.Size = New System.Drawing.Size(234, 39)
         Me.labelCopyrightForSevenZip.TabIndex = 10
@@ -404,7 +406,7 @@ Partial Class OptionsWindow
         'labelCopyrightForRobocopy
         '
         Me.labelCopyrightForRobocopy.AutoSize = True
-        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 255)
+        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 280)
         Me.labelCopyrightForRobocopy.Name = "labelCopyrightForRobocopy"
         Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(238, 52)
         Me.labelCopyrightForRobocopy.TabIndex = 11
