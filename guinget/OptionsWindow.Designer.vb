@@ -346,7 +346,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(17, 157)
+        Me.label7zExePath.Location = New System.Drawing.Point(17, 183)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
@@ -354,7 +354,7 @@ Partial Class OptionsWindow
         '
         'textbox7zExePath
         '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(88, 153)
+        Me.textbox7zExePath.Location = New System.Drawing.Point(88, 179)
         Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
@@ -362,7 +362,7 @@ Partial Class OptionsWindow
         '
         'buttonBrowse7zExePath
         '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 152)
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 178)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
         Me.buttonBrowse7zExePath.TabIndex = 7
@@ -372,7 +372,7 @@ Partial Class OptionsWindow
         'checkboxUseRobocopy
         '
         Me.checkboxUseRobocopy.AutoSize = True
-        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 179)
+        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 205)
         Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
         Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
@@ -383,7 +383,7 @@ Partial Class OptionsWindow
         'checkboxHideUnfinishedControls
         '
         Me.checkboxHideUnfinishedControls.AutoSize = True
-        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 225)
+        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 277)
         Me.checkboxHideUnfinishedControls.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
         Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
@@ -396,18 +396,21 @@ Partial Class OptionsWindow
         Me.labelCopyrightForSevenZip.AutoSize = True
         Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 139)
         Me.labelCopyrightForSevenZip.Name = "labelCopyrightForSevenZip"
-        Me.labelCopyrightForSevenZip.Size = New System.Drawing.Size(164, 13)
+        Me.labelCopyrightForSevenZip.Size = New System.Drawing.Size(234, 39)
         Me.labelCopyrightForSevenZip.TabIndex = 10
-        Me.labelCopyrightForSevenZip.Text = "7-Zip is Copyright (C) Igor Pavlov."
+        Me.labelCopyrightForSevenZip.Text = "7-Zip is Copyright (C) Igor Pavlov." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "7-Zip may extract faster than the .NET extra" &
+    "ctor," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "but it's not fully tested for this purpose." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'labelCopyrightForRobocopy
         '
         Me.labelCopyrightForRobocopy.AutoSize = True
-        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 196)
+        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 222)
         Me.labelCopyrightForRobocopy.Name = "labelCopyrightForRobocopy"
-        Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(235, 26)
+        Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(238, 52)
         Me.labelCopyrightForRobocopy.TabIndex = 11
-        Me.labelCopyrightForRobocopy.Text = "Robocopy is Copyright (C) Microsoft Corporation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All rights reserved."
+        Me.labelCopyrightForRobocopy.Text = "Robocopy is Copyright (C) Microsoft Corporation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All rights reserved." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Robocopy " &
+    "may copy faster than the .NET copier," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "but it's not fully tested for this purpos" &
+    "e."
         '
         'SevenZExeOpenFileDialog
         '
@@ -417,7 +420,7 @@ Partial Class OptionsWindow
         'labelRequiresApplicationRestart
         '
         Me.labelRequiresApplicationRestart.AutoSize = True
-        Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 242)
+        Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 294)
         Me.labelRequiresApplicationRestart.Name = "labelRequiresApplicationRestart"
         Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(138, 13)
         Me.labelRequiresApplicationRestart.TabIndex = 12
