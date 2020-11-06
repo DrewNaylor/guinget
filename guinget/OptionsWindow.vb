@@ -48,6 +48,16 @@ Public Class OptionsWindow
 
         ' Load from database.
         checkboxLoadFromDatabase.Checked = My.Settings.LoadFromSqliteDb
+        ' Load only latest versions.
+        checkboxShowOnlyLatestVersions.Checked = My.Settings.OnlyDisplayLatestPackageVersion
+        ' Use 7-Zip.
+        checkboxUse7zip.Checked = My.Settings.Use7zipForExtraction
+        ' Use Robocopy.
+        checkboxUseRobocopy.Checked = My.Settings.UseRobocopyForCopying
+        ' 7z.exe path.
+        textbox7zExePath.Text = My.Settings.PathTo7zip
+        ' Hide unfinished controls.
+        checkboxHideUnfinishedControls.Checked = My.Settings.HideUnfinishedControls
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
