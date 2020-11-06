@@ -53,6 +53,7 @@ Partial Class OptionsWindow
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -302,6 +303,7 @@ Partial Class OptionsWindow
         '
         'panelExperimentalSettings
         '
+        Me.panelExperimentalSettings.Controls.Add(Me.Label3)
         Me.panelExperimentalSettings.Controls.Add(Me.Label2)
         Me.panelExperimentalSettings.Controls.Add(Me.Label1)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxHideUnfinishedControls)
@@ -382,6 +384,7 @@ Partial Class OptionsWindow
         '
         Me.checkboxHideUnfinishedControls.AutoSize = True
         Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 225)
+        Me.checkboxHideUnfinishedControls.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
         Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
         Me.checkboxHideUnfinishedControls.TabIndex = 9
@@ -400,7 +403,7 @@ Partial Class OptionsWindow
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(21, 196)
+        Me.Label2.Location = New System.Drawing.Point(18, 196)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(235, 26)
         Me.Label2.TabIndex = 11
@@ -410,6 +413,15 @@ Partial Class OptionsWindow
         '
         Me.SevenZExeOpenFileDialog.FileName = "7z.exe"
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(18, 242)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(138, 13)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Requires application restart."
         '
         'OptionsWindow
         '
@@ -476,4 +488,5 @@ Partial Class OptionsWindow
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents SevenZExeOpenFileDialog As OpenFileDialog
+    Friend WithEvents Label3 As Label
 End Class
