@@ -52,6 +52,7 @@ Partial Class OptionsWindow
         Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
@@ -405,6 +406,11 @@ Partial Class OptionsWindow
         Me.Label2.TabIndex = 11
         Me.Label2.Text = "Robocopy is Copyright (C) Microsoft Corporation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All rights reserved."
         '
+        'SevenZExeOpenFileDialog
+        '
+        Me.SevenZExeOpenFileDialog.FileName = "7z.exe"
+        Me.SevenZExeOpenFileDialog.Filter = """EXE files|*.exe|All files|*.*"""
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -469,4 +475,5 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxHideUnfinishedControls As CheckBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents SevenZExeOpenFileDialog As OpenFileDialog
 End Class
