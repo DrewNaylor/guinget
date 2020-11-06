@@ -101,7 +101,20 @@ Public Class OptionsWindow
         ' Use Robocopy.
         My.Settings.UseRobocopyForCopying = checkboxUseRobocopy.Checked
         ' 7z.exe path.
-        My.Settings.PathTo7zip = textbox7zExePath.Text
+        ' Add double-quotes if necessary.
+        If Not textbox7zExePath.Text.StartsWith("""") AndAlso Not textbox7zExePath.Text.EndsWith("""") Then
+            ' If it doesn't have double-quotes at the start or end, add them.
+            My.Settings.PathTo7zip = """" & textbox7zExePath.Text & """"
+        ElseIf Not textbox7zExePath.Text.StartsWith("""") AndAlso textbox7zExePath.Text.EndsWith("""") Then
+            ' If it doesn't start with quotes but ends with them, add them to the start.
+            My.Settings.PathTo7zip = """" & textbox7zExePath.Text
+        ElseIf textbox7zExePath.Text.StartsWith("""") AndAlso Not textbox7zExePath.Text.EndsWith("""") Then
+            ' If it ends without double-quotes, add them.
+            My.Settings.PathTo7zip = textbox7zExePath.Text & """"
+        Else
+            ' Otherwise just use it.
+            My.Settings.PathTo7zip = textbox7zExePath.Text
+        End If
         ' Hide unfinished controls.
         My.Settings.HideUnfinishedControls = checkboxHideUnfinishedControls.Checked
 

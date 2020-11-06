@@ -409,7 +409,7 @@ Partial Class OptionsWindow
         'SevenZExeOpenFileDialog
         '
         Me.SevenZExeOpenFileDialog.FileName = "7z.exe"
-        Me.SevenZExeOpenFileDialog.Filter = """EXE files|*.exe|All files|*.*"""
+        Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         '
         'OptionsWindow
         '
