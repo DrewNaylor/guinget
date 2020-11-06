@@ -159,7 +159,12 @@ Public Class OptionsWindow
             If SevenZExeOpenFileDialog.SafeFileName.ToLowerInvariant = "7z.exe" Then
                 textbox7zExePath.Text = SevenZExeOpenFileDialog.FileName
             Else
-                MessageBox.Show("The selected file is not 7z.exe. This may cause problems. Use this file?", "Browse for 7z.exe", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                ' If it's not 7z.exe, let the user know and allow them to use it anyway if they want.
+                Dim msgResult As Integer = MessageBox.Show("The selected file is not 7z.exe. This may cause problems. Use this file?", "Browse for 7z.exe", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+                If msgResult = DialogResult.Yes Then
+                    textbox7zExePath.Text = SevenZExeOpenFileDialog.FileName
+                End If
             End If
         End If
     End Sub
