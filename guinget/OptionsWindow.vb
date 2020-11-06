@@ -154,6 +154,13 @@ Public Class OptionsWindow
 
     Private Sub buttonBrowse7zExePath_Click(sender As Object, e As EventArgs) Handles buttonBrowse7zExePath.Click
         ' Show a Browse window so people can choose the 7z.exe path.
-
+        If SevenZExeOpenFileDialog.ShowDialog = DialogResult.OK Then
+            ' Make sure it's 7z.exe.
+            If SevenZExeOpenFileDialog.SafeFileName.ToLowerInvariant = "7z.exe" Then
+                textbox7zExePath.Text = SevenZExeOpenFileDialog.FileName
+            Else
+                MessageBox.Show("The selected file is not 7z.exe. This may cause problems. Use this file?", "Browse for 7z.exe", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            End If
+        End If
     End Sub
 End Class
