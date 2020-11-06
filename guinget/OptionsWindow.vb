@@ -94,6 +94,16 @@ Public Class OptionsWindow
 
         ' Load from database.
         My.Settings.LoadFromSqliteDb = checkboxLoadFromDatabase.Checked
+        ' Load only latest versions.
+        My.Settings.OnlyDisplayLatestPackageVersion = checkboxShowOnlyLatestVersions.Checked
+        ' Use 7-Zip.
+        My.Settings.Use7zipForExtraction = checkboxUse7zip.Checked
+        ' Use Robocopy.
+        My.Settings.UseRobocopyForCopying = checkboxUseRobocopy.Checked
+        ' 7z.exe path.
+        My.Settings.PathTo7zip = textbox7zExePath.Text
+        ' Hide unfinished controls.
+        My.Settings.HideUnfinishedControls = checkboxHideUnfinishedControls.Checked
 
         My.Settings.Save()
         My.Settings.Reload()
