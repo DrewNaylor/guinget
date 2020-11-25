@@ -37,9 +37,21 @@ Please refer to the `Marking a package` section for more details.
 
 ## Applying marked changes
 
-Marked changes are applied using the `Apply changes` dialog, accessible through either the `Apply changes...` toolbar button or via `Package list>Apply changes...`. Batch package installs (and uninstalls, when that's supported) are not supported yet, so you'll have to either double-click or press `Enter` on each package in the list to install it when ready.
+Marked changes are applied using the `Apply changes` dialog, accessible through any of the following:
+- The `Apply changes...` toolbar button
+- `Package list>Apply changes...`
+- Pressing `Ctrl+H` 
 
-Starting in version 0.1.1, you can have packages install interactively with the `Install interactively (-i)` checkbox in the `Apply changes` window. This will persist across closing the window and restarting the application.
+You can install one package at a time by double-clicking or pressing `Enter` on each package in the list to install it when ready.
+
+### Installation options
+
+The following installation options are available:
+- Interactive installation: check the `Interactive install (-i)` checkbox to have winget give you an interactive installer instead of an automated one.
+- Elevated winget: check the `Elevate winget (UAC)` checkbox to run winget as an administrator. This may help for some packages that complain about not having permissions when installing them. Typically it's used in case you usually run Windows from a standard/limited user account and have an administrator account for system modification and application installation. Please note that Windows 10 version 2004 might not be compatible with this option.
+
+These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
+Additionally, some options may also apply to actions like uninstallation.
 
 ## Searching for packages
 
