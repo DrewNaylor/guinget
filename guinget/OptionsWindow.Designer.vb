@@ -24,42 +24,42 @@ Partial Class OptionsWindow
     Private Sub InitializeComponent()
         Me.tablelayoutpanelOptions = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonDefaults = New System.Windows.Forms.Button()
-        Me.buttonCancel = New System.Windows.Forms.Button()
-        Me.buttonOk = New System.Windows.Forms.Button()
-        Me.tabpageLayout = New System.Windows.Forms.TabPage()
-        Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
-        Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
-        Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
-        Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
-        Me.tabpageSearch = New System.Windows.Forms.TabPage()
-        Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch = New System.Windows.Forms.CheckBox()
+        Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
         Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
         Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
-        Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
+        Me.tabpageSearch = New System.Windows.Forms.TabPage()
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch = New System.Windows.Forms.CheckBox()
+        Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
+        Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
+        Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
+        Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
+        Me.tabpageLayout = New System.Windows.Forms.TabPage()
+        Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
         Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
+        Me.panelExperimentalSettings = New System.Windows.Forms.Panel()
+        Me.labelRequiresApplicationRestart = New System.Windows.Forms.Label()
+        Me.labelCopyrightForRobocopy = New System.Windows.Forms.Label()
+        Me.labelCopyrightForSevenZip = New System.Windows.Forms.Label()
+        Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
+        Me.checkboxUseRobocopy = New System.Windows.Forms.CheckBox()
+        Me.buttonBrowse7zExePath = New System.Windows.Forms.Button()
+        Me.textbox7zExePath = New System.Windows.Forms.TextBox()
+        Me.label7zExePath = New System.Windows.Forms.Label()
+        Me.checkboxUse7zip = New System.Windows.Forms.CheckBox()
         Me.checkboxLoadFromDatabase = New System.Windows.Forms.CheckBox()
+        Me.labelLoadLatestVersion = New System.Windows.Forms.Label()
         Me.labelLoadFromManifests = New System.Windows.Forms.Label()
         Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
-        Me.labelLoadLatestVersion = New System.Windows.Forms.Label()
-        Me.panelExperimentalSettings = New System.Windows.Forms.Panel()
         Me.labelExperimentalSettingsHidden = New System.Windows.Forms.Label()
-        Me.checkboxUse7zip = New System.Windows.Forms.CheckBox()
-        Me.label7zExePath = New System.Windows.Forms.Label()
-        Me.textbox7zExePath = New System.Windows.Forms.TextBox()
-        Me.buttonBrowse7zExePath = New System.Windows.Forms.Button()
-        Me.checkboxUseRobocopy = New System.Windows.Forms.CheckBox()
-        Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
-        Me.labelCopyrightForSevenZip = New System.Windows.Forms.Label()
-        Me.labelCopyrightForRobocopy = New System.Windows.Forms.Label()
+        Me.buttonCancel = New System.Windows.Forms.Button()
+        Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.labelRequiresApplicationRestart = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
-        Me.tabpageLayout.SuspendLayout()
-        Me.tabpageApplyChanges.SuspendLayout()
-        Me.tabpageSearch.SuspendLayout()
-        Me.tabpagePackageDetails.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
+        Me.tabpagePackageDetails.SuspendLayout()
+        Me.tabpageSearch.SuspendLayout()
+        Me.tabpageApplyChanges.SuspendLayout()
+        Me.tabpageLayout.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
         Me.SuspendLayout()
@@ -96,116 +96,21 @@ Partial Class OptionsWindow
         Me.buttonDefaults.Text = "Defaults"
         Me.buttonDefaults.UseVisualStyleBackColor = True
         '
-        'buttonCancel
+        'tabcontrolOptions
         '
-        Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonCancel.Location = New System.Drawing.Point(204, 402)
-        Me.buttonCancel.Margin = New System.Windows.Forms.Padding(2)
-        Me.buttonCancel.Name = "buttonCancel"
-        Me.buttonCancel.Size = New System.Drawing.Size(81, 27)
-        Me.buttonCancel.TabIndex = 5
-        Me.buttonCancel.Text = "Cancel"
-        Me.buttonCancel.UseVisualStyleBackColor = True
-        '
-        'buttonOk
-        '
-        Me.buttonOk.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.buttonOk.Location = New System.Drawing.Point(289, 402)
-        Me.buttonOk.Margin = New System.Windows.Forms.Padding(2)
-        Me.buttonOk.Name = "buttonOk"
-        Me.buttonOk.Size = New System.Drawing.Size(81, 27)
-        Me.buttonOk.TabIndex = 4
-        Me.buttonOk.Text = "OK"
-        Me.buttonOk.UseVisualStyleBackColor = True
-        '
-        'tabpageLayout
-        '
-        Me.tabpageLayout.Controls.Add(Me.checkboxShowSidebar)
-        Me.tabpageLayout.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageLayout.Name = "tabpageLayout"
-        Me.tabpageLayout.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageLayout.Size = New System.Drawing.Size(360, 370)
-        Me.tabpageLayout.TabIndex = 3
-        Me.tabpageLayout.Text = "Layout"
-        Me.tabpageLayout.UseVisualStyleBackColor = True
-        '
-        'checkboxShowSidebar
-        '
-        Me.checkboxShowSidebar.AutoSize = True
-        Me.checkboxShowSidebar.Location = New System.Drawing.Point(5, 5)
-        Me.checkboxShowSidebar.Margin = New System.Windows.Forms.Padding(2)
-        Me.checkboxShowSidebar.Name = "checkboxShowSidebar"
-        Me.checkboxShowSidebar.Size = New System.Drawing.Size(90, 17)
-        Me.checkboxShowSidebar.TabIndex = 2
-        Me.checkboxShowSidebar.Text = "Show sidebar"
-        Me.checkboxShowSidebar.UseVisualStyleBackColor = True
-        '
-        'tabpageApplyChanges
-        '
-        Me.tabpageApplyChanges.Controls.Add(Me.checkboxElevateWinget)
-        Me.tabpageApplyChanges.Controls.Add(Me.checkboxInstallInteractively)
-        Me.tabpageApplyChanges.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageApplyChanges.Name = "tabpageApplyChanges"
-        Me.tabpageApplyChanges.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageApplyChanges.Size = New System.Drawing.Size(360, 370)
-        Me.tabpageApplyChanges.TabIndex = 1
-        Me.tabpageApplyChanges.Text = "Apply Changes"
-        Me.tabpageApplyChanges.UseVisualStyleBackColor = True
-        '
-        'checkboxInstallInteractively
-        '
-        Me.checkboxInstallInteractively.AutoSize = True
-        Me.checkboxInstallInteractively.Location = New System.Drawing.Point(6, 6)
-        Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
-        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(197, 17)
-        Me.checkboxInstallInteractively.TabIndex = 0
-        Me.checkboxInstallInteractively.Text = "Use interactive installation (winget -i)"
-        Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
-        '
-        'checkboxElevateWinget
-        '
-        Me.checkboxElevateWinget.AutoSize = True
-        Me.checkboxElevateWinget.Location = New System.Drawing.Point(6, 29)
-        Me.checkboxElevateWinget.Name = "checkboxElevateWinget"
-        Me.checkboxElevateWinget.Size = New System.Drawing.Size(143, 17)
-        Me.checkboxElevateWinget.TabIndex = 1
-        Me.checkboxElevateWinget.Text = "Elevate winget with UAC"
-        Me.checkboxElevateWinget.UseVisualStyleBackColor = True
-        '
-        'tabpageSearch
-        '
-        Me.tabpageSearch.Controls.Add(Me.checkboxUseExactMatchForLastSelectedPackageIDSearch)
-        Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
-        Me.tabpageSearch.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageSearch.Margin = New System.Windows.Forms.Padding(2)
-        Me.tabpageSearch.Name = "tabpageSearch"
-        Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSearch.Size = New System.Drawing.Size(360, 370)
-        Me.tabpageSearch.TabIndex = 0
-        Me.tabpageSearch.Text = "Search"
-        Me.tabpageSearch.UseVisualStyleBackColor = True
-        '
-        'checkboxRerunSearch
-        '
-        Me.checkboxRerunSearch.AutoSize = True
-        Me.checkboxRerunSearch.Location = New System.Drawing.Point(6, 6)
-        Me.checkboxRerunSearch.Margin = New System.Windows.Forms.Padding(2)
-        Me.checkboxRerunSearch.Name = "checkboxRerunSearch"
-        Me.checkboxRerunSearch.Size = New System.Drawing.Size(186, 17)
-        Me.checkboxRerunSearch.TabIndex = 0
-        Me.checkboxRerunSearch.Text = "Re-run search after cache update"
-        Me.checkboxRerunSearch.UseVisualStyleBackColor = True
-        '
-        'checkboxUseExactMatchForLastSelectedPackageIDSearch
-        '
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.AutoSize = True
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Location = New System.Drawing.Point(6, 28)
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Name = "checkboxUseExactMatchForLastSelectedPackageIDSearch"
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Size = New System.Drawing.Size(258, 17)
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.TabIndex = 3
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Text = "Use exact match for selected package ID search"
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.UseVisualStyleBackColor = True
+        Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
+        Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tabcontrolOptions.Location = New System.Drawing.Point(2, 2)
+        Me.tabcontrolOptions.Margin = New System.Windows.Forms.Padding(2)
+        Me.tabcontrolOptions.Name = "tabcontrolOptions"
+        Me.tabcontrolOptions.SelectedIndex = 0
+        Me.tabcontrolOptions.Size = New System.Drawing.Size(368, 396)
+        Me.tabcontrolOptions.TabIndex = 0
         '
         'tabpagePackageDetails
         '
@@ -229,21 +134,93 @@ Partial Class OptionsWindow
         Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when selecting" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "multiple packages"
         Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
         '
-        'tabcontrolOptions
+        'tabpageSearch
         '
-        Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
-        Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tabcontrolOptions.Location = New System.Drawing.Point(2, 2)
-        Me.tabcontrolOptions.Margin = New System.Windows.Forms.Padding(2)
-        Me.tabcontrolOptions.Name = "tabcontrolOptions"
-        Me.tabcontrolOptions.SelectedIndex = 0
-        Me.tabcontrolOptions.Size = New System.Drawing.Size(368, 396)
-        Me.tabcontrolOptions.TabIndex = 0
+        Me.tabpageSearch.Controls.Add(Me.checkboxUseExactMatchForLastSelectedPackageIDSearch)
+        Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
+        Me.tabpageSearch.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageSearch.Margin = New System.Windows.Forms.Padding(2)
+        Me.tabpageSearch.Name = "tabpageSearch"
+        Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(2)
+        Me.tabpageSearch.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageSearch.TabIndex = 0
+        Me.tabpageSearch.Text = "Search"
+        Me.tabpageSearch.UseVisualStyleBackColor = True
+        '
+        'checkboxUseExactMatchForLastSelectedPackageIDSearch
+        '
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.AutoSize = True
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Location = New System.Drawing.Point(6, 28)
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Name = "checkboxUseExactMatchForLastSelectedPackageIDSearch"
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Size = New System.Drawing.Size(258, 17)
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.TabIndex = 3
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Text = "Use exact match for selected package ID search"
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.UseVisualStyleBackColor = True
+        '
+        'checkboxRerunSearch
+        '
+        Me.checkboxRerunSearch.AutoSize = True
+        Me.checkboxRerunSearch.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxRerunSearch.Margin = New System.Windows.Forms.Padding(2)
+        Me.checkboxRerunSearch.Name = "checkboxRerunSearch"
+        Me.checkboxRerunSearch.Size = New System.Drawing.Size(186, 17)
+        Me.checkboxRerunSearch.TabIndex = 0
+        Me.checkboxRerunSearch.Text = "Re-run search after cache update"
+        Me.checkboxRerunSearch.UseVisualStyleBackColor = True
+        '
+        'tabpageApplyChanges
+        '
+        Me.tabpageApplyChanges.Controls.Add(Me.checkboxElevateWinget)
+        Me.tabpageApplyChanges.Controls.Add(Me.checkboxInstallInteractively)
+        Me.tabpageApplyChanges.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageApplyChanges.Name = "tabpageApplyChanges"
+        Me.tabpageApplyChanges.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageApplyChanges.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageApplyChanges.TabIndex = 1
+        Me.tabpageApplyChanges.Text = "Apply Changes"
+        Me.tabpageApplyChanges.UseVisualStyleBackColor = True
+        '
+        'checkboxElevateWinget
+        '
+        Me.checkboxElevateWinget.AutoSize = True
+        Me.checkboxElevateWinget.Location = New System.Drawing.Point(6, 29)
+        Me.checkboxElevateWinget.Name = "checkboxElevateWinget"
+        Me.checkboxElevateWinget.Size = New System.Drawing.Size(143, 17)
+        Me.checkboxElevateWinget.TabIndex = 1
+        Me.checkboxElevateWinget.Text = "Elevate winget with UAC"
+        Me.checkboxElevateWinget.UseVisualStyleBackColor = True
+        '
+        'checkboxInstallInteractively
+        '
+        Me.checkboxInstallInteractively.AutoSize = True
+        Me.checkboxInstallInteractively.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
+        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(197, 17)
+        Me.checkboxInstallInteractively.TabIndex = 0
+        Me.checkboxInstallInteractively.Text = "Use interactive installation (winget -i)"
+        Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
+        '
+        'tabpageLayout
+        '
+        Me.tabpageLayout.Controls.Add(Me.checkboxShowSidebar)
+        Me.tabpageLayout.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageLayout.Name = "tabpageLayout"
+        Me.tabpageLayout.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageLayout.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageLayout.TabIndex = 3
+        Me.tabpageLayout.Text = "Layout"
+        Me.tabpageLayout.UseVisualStyleBackColor = True
+        '
+        'checkboxShowSidebar
+        '
+        Me.checkboxShowSidebar.AutoSize = True
+        Me.checkboxShowSidebar.Location = New System.Drawing.Point(5, 5)
+        Me.checkboxShowSidebar.Margin = New System.Windows.Forms.Padding(2)
+        Me.checkboxShowSidebar.Name = "checkboxShowSidebar"
+        Me.checkboxShowSidebar.Size = New System.Drawing.Size(90, 17)
+        Me.checkboxShowSidebar.TabIndex = 2
+        Me.checkboxShowSidebar.Text = "Show sidebar"
+        Me.checkboxShowSidebar.UseVisualStyleBackColor = True
         '
         'tabpageRefreshCache
         '
@@ -257,6 +234,117 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.Text = "Experimental"
         Me.tabpageRefreshCache.UseVisualStyleBackColor = True
         '
+        'panelExperimentalSettings
+        '
+        Me.panelExperimentalSettings.Controls.Add(Me.labelRequiresApplicationRestart)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForRobocopy)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForSevenZip)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxHideUnfinishedControls)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxUseRobocopy)
+        Me.panelExperimentalSettings.Controls.Add(Me.buttonBrowse7zExePath)
+        Me.panelExperimentalSettings.Controls.Add(Me.textbox7zExePath)
+        Me.panelExperimentalSettings.Controls.Add(Me.label7zExePath)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxUse7zip)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxLoadFromDatabase)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelLoadLatestVersion)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelLoadFromManifests)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxShowOnlyLatestVersions)
+        Me.panelExperimentalSettings.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelExperimentalSettings.Location = New System.Drawing.Point(3, 3)
+        Me.panelExperimentalSettings.Name = "panelExperimentalSettings"
+        Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 364)
+        Me.panelExperimentalSettings.TabIndex = 4
+        '
+        'labelRequiresApplicationRestart
+        '
+        Me.labelRequiresApplicationRestart.AutoSize = True
+        Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 20)
+        Me.labelRequiresApplicationRestart.Name = "labelRequiresApplicationRestart"
+        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(277, 26)
+        Me.labelRequiresApplicationRestart.TabIndex = 12
+        Me.labelRequiresApplicationRestart.Text = "Requires application restart. The rest of these settings still" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "apply even if thi" &
+    "s is on."
+        '
+        'labelCopyrightForRobocopy
+        '
+        Me.labelCopyrightForRobocopy.AutoSize = True
+        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 293)
+        Me.labelCopyrightForRobocopy.Name = "labelCopyrightForRobocopy"
+        Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(238, 52)
+        Me.labelCopyrightForRobocopy.TabIndex = 11
+        Me.labelCopyrightForRobocopy.Text = "Robocopy is Copyright (C) Microsoft Corporation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All rights reserved." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Robocopy " &
+    "may copy faster than the .NET copier," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "but it's not fully tested for this purpos" &
+    "e."
+        '
+        'labelCopyrightForSevenZip
+        '
+        Me.labelCopyrightForSevenZip.AutoSize = True
+        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 210)
+        Me.labelCopyrightForSevenZip.Name = "labelCopyrightForSevenZip"
+        Me.labelCopyrightForSevenZip.Size = New System.Drawing.Size(234, 39)
+        Me.labelCopyrightForSevenZip.TabIndex = 10
+        Me.labelCopyrightForSevenZip.Text = "7-Zip is Copyright (C) Igor Pavlov." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "7-Zip may extract faster than the .NET extra" &
+    "ctor," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "but it's not fully tested for this purpose." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'checkboxHideUnfinishedControls
+        '
+        Me.checkboxHideUnfinishedControls.AutoSize = True
+        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 3)
+        Me.checkboxHideUnfinishedControls.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
+        Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
+        Me.checkboxHideUnfinishedControls.TabIndex = 0
+        Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls and experimental stuff"
+        Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
+        '
+        'checkboxUseRobocopy
+        '
+        Me.checkboxUseRobocopy.AutoSize = True
+        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 276)
+        Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
+        Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
+        Me.checkboxUseRobocopy.TabIndex = 6
+        Me.checkboxUseRobocopy.Text = "(Experimental) Use Robocopy to copy manifests and database"
+        Me.checkboxUseRobocopy.UseVisualStyleBackColor = True
+        '
+        'buttonBrowse7zExePath
+        '
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 249)
+        Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
+        Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
+        Me.buttonBrowse7zExePath.TabIndex = 5
+        Me.buttonBrowse7zExePath.Text = "Browse..."
+        Me.buttonBrowse7zExePath.UseVisualStyleBackColor = True
+        '
+        'textbox7zExePath
+        '
+        Me.textbox7zExePath.Location = New System.Drawing.Point(88, 250)
+        Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
+        Me.textbox7zExePath.Name = "textbox7zExePath"
+        Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
+        Me.textbox7zExePath.TabIndex = 4
+        '
+        'label7zExePath
+        '
+        Me.label7zExePath.AutoSize = True
+        Me.label7zExePath.Location = New System.Drawing.Point(17, 254)
+        Me.label7zExePath.Name = "label7zExePath"
+        Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
+        Me.label7zExePath.TabIndex = 5
+        Me.label7zExePath.Text = "7z.exe path:"
+        '
+        'checkboxUse7zip
+        '
+        Me.checkboxUse7zip.AutoSize = True
+        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 193)
+        Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxUse7zip.Name = "checkboxUse7zip"
+        Me.checkboxUse7zip.Size = New System.Drawing.Size(303, 17)
+        Me.checkboxUse7zip.TabIndex = 3
+        Me.checkboxUse7zip.Text = "(Experimental) Use 7-Zip to extract manifests and database"
+        Me.checkboxUse7zip.UseVisualStyleBackColor = True
+        '
         'checkboxLoadFromDatabase
         '
         Me.checkboxLoadFromDatabase.AutoSize = True
@@ -269,6 +357,17 @@ Partial Class OptionsWindow
         Me.checkboxLoadFromDatabase.Text = "(Experimental) Update and load package list from winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default community data" &
     "base"
         Me.checkboxLoadFromDatabase.UseVisualStyleBackColor = True
+        '
+        'labelLoadLatestVersion
+        '
+        Me.labelLoadLatestVersion.AutoSize = True
+        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 138)
+        Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
+        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(298, 52)
+        Me.labelLoadLatestVersion.TabIndex = 3
+        Me.labelLoadLatestVersion.Text = "Some packages may display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version." &
+    " Not sure how to fix this at the moment." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Requires loading from the community da" &
+    "tabase checkbox to" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "be checked."
         '
         'labelLoadFromManifests
         '
@@ -292,38 +391,6 @@ Partial Class OptionsWindow
         Me.checkboxShowOnlyLatestVersions.Text = "(Experimental) Load only the latest version of each package"
         Me.checkboxShowOnlyLatestVersions.UseVisualStyleBackColor = True
         '
-        'labelLoadLatestVersion
-        '
-        Me.labelLoadLatestVersion.AutoSize = True
-        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 138)
-        Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
-        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(293, 52)
-        Me.labelLoadLatestVersion.TabIndex = 3
-        Me.labelLoadLatestVersion.Text = "Some packages will display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version" &
-    ". Not sure how to fix this at the moment." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Requires loading from the community d" &
-    "atabase checkbox to" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "be checked."
-        '
-        'panelExperimentalSettings
-        '
-        Me.panelExperimentalSettings.Controls.Add(Me.labelRequiresApplicationRestart)
-        Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForRobocopy)
-        Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForSevenZip)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxHideUnfinishedControls)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxUseRobocopy)
-        Me.panelExperimentalSettings.Controls.Add(Me.buttonBrowse7zExePath)
-        Me.panelExperimentalSettings.Controls.Add(Me.textbox7zExePath)
-        Me.panelExperimentalSettings.Controls.Add(Me.label7zExePath)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxUse7zip)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxLoadFromDatabase)
-        Me.panelExperimentalSettings.Controls.Add(Me.labelLoadLatestVersion)
-        Me.panelExperimentalSettings.Controls.Add(Me.labelLoadFromManifests)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxShowOnlyLatestVersions)
-        Me.panelExperimentalSettings.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelExperimentalSettings.Location = New System.Drawing.Point(3, 3)
-        Me.panelExperimentalSettings.Name = "panelExperimentalSettings"
-        Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 364)
-        Me.panelExperimentalSettings.TabIndex = 4
-        '
         'labelExperimentalSettingsHidden
         '
         Me.labelExperimentalSettingsHidden.AutoSize = True
@@ -334,101 +401,34 @@ Partial Class OptionsWindow
         Me.labelExperimentalSettingsHidden.Text = "Experimental settings are currently hidden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can show them by clicking in the" &
     " lower-left" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "corner of the About window."
         '
-        'checkboxUse7zip
+        'buttonCancel
         '
-        Me.checkboxUse7zip.AutoSize = True
-        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 193)
-        Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.checkboxUse7zip.Name = "checkboxUse7zip"
-        Me.checkboxUse7zip.Size = New System.Drawing.Size(303, 17)
-        Me.checkboxUse7zip.TabIndex = 3
-        Me.checkboxUse7zip.Text = "(Experimental) Use 7-Zip to extract manifests and database"
-        Me.checkboxUse7zip.UseVisualStyleBackColor = True
+        Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonCancel.Location = New System.Drawing.Point(204, 402)
+        Me.buttonCancel.Margin = New System.Windows.Forms.Padding(2)
+        Me.buttonCancel.Name = "buttonCancel"
+        Me.buttonCancel.Size = New System.Drawing.Size(81, 27)
+        Me.buttonCancel.TabIndex = 5
+        Me.buttonCancel.Text = "Cancel"
+        Me.buttonCancel.UseVisualStyleBackColor = True
         '
-        'label7zExePath
+        'buttonOk
         '
-        Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(17, 254)
-        Me.label7zExePath.Name = "label7zExePath"
-        Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
-        Me.label7zExePath.TabIndex = 5
-        Me.label7zExePath.Text = "7z.exe path:"
-        '
-        'textbox7zExePath
-        '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(88, 250)
-        Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
-        Me.textbox7zExePath.Name = "textbox7zExePath"
-        Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
-        Me.textbox7zExePath.TabIndex = 4
-        '
-        'buttonBrowse7zExePath
-        '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 249)
-        Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
-        Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
-        Me.buttonBrowse7zExePath.TabIndex = 5
-        Me.buttonBrowse7zExePath.Text = "Browse..."
-        Me.buttonBrowse7zExePath.UseVisualStyleBackColor = True
-        '
-        'checkboxUseRobocopy
-        '
-        Me.checkboxUseRobocopy.AutoSize = True
-        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 276)
-        Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
-        Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
-        Me.checkboxUseRobocopy.TabIndex = 6
-        Me.checkboxUseRobocopy.Text = "(Experimental) Use Robocopy to copy manifests and database"
-        Me.checkboxUseRobocopy.UseVisualStyleBackColor = True
-        '
-        'checkboxHideUnfinishedControls
-        '
-        Me.checkboxHideUnfinishedControls.AutoSize = True
-        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 3)
-        Me.checkboxHideUnfinishedControls.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
-        Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
-        Me.checkboxHideUnfinishedControls.TabIndex = 0
-        Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls and experimental stuff"
-        Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
-        '
-        'labelCopyrightForSevenZip
-        '
-        Me.labelCopyrightForSevenZip.AutoSize = True
-        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 210)
-        Me.labelCopyrightForSevenZip.Name = "labelCopyrightForSevenZip"
-        Me.labelCopyrightForSevenZip.Size = New System.Drawing.Size(234, 39)
-        Me.labelCopyrightForSevenZip.TabIndex = 10
-        Me.labelCopyrightForSevenZip.Text = "7-Zip is Copyright (C) Igor Pavlov." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "7-Zip may extract faster than the .NET extra" &
-    "ctor," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "but it's not fully tested for this purpose." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'labelCopyrightForRobocopy
-        '
-        Me.labelCopyrightForRobocopy.AutoSize = True
-        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 293)
-        Me.labelCopyrightForRobocopy.Name = "labelCopyrightForRobocopy"
-        Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(238, 52)
-        Me.labelCopyrightForRobocopy.TabIndex = 11
-        Me.labelCopyrightForRobocopy.Text = "Robocopy is Copyright (C) Microsoft Corporation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All rights reserved." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Robocopy " &
-    "may copy faster than the .NET copier," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "but it's not fully tested for this purpos" &
-    "e."
+        Me.buttonOk.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.buttonOk.Location = New System.Drawing.Point(289, 402)
+        Me.buttonOk.Margin = New System.Windows.Forms.Padding(2)
+        Me.buttonOk.Name = "buttonOk"
+        Me.buttonOk.Size = New System.Drawing.Size(81, 27)
+        Me.buttonOk.TabIndex = 4
+        Me.buttonOk.Text = "OK"
+        Me.buttonOk.UseVisualStyleBackColor = True
         '
         'SevenZExeOpenFileDialog
         '
         Me.SevenZExeOpenFileDialog.FileName = "7z.exe"
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
-        '
-        'labelRequiresApplicationRestart
-        '
-        Me.labelRequiresApplicationRestart.AutoSize = True
-        Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 20)
-        Me.labelRequiresApplicationRestart.Name = "labelRequiresApplicationRestart"
-        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(277, 26)
-        Me.labelRequiresApplicationRestart.TabIndex = 12
-        Me.labelRequiresApplicationRestart.Text = "Requires application restart. The rest of these settings still" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "apply even if thi" &
-    "s is on."
         '
         'OptionsWindow
         '
@@ -447,15 +447,15 @@ Partial Class OptionsWindow
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Options"
         Me.tablelayoutpanelOptions.ResumeLayout(False)
-        Me.tabpageLayout.ResumeLayout(False)
-        Me.tabpageLayout.PerformLayout()
-        Me.tabpageApplyChanges.ResumeLayout(False)
-        Me.tabpageApplyChanges.PerformLayout()
-        Me.tabpageSearch.ResumeLayout(False)
-        Me.tabpageSearch.PerformLayout()
+        Me.tabcontrolOptions.ResumeLayout(False)
         Me.tabpagePackageDetails.ResumeLayout(False)
         Me.tabpagePackageDetails.PerformLayout()
-        Me.tabcontrolOptions.ResumeLayout(False)
+        Me.tabpageSearch.ResumeLayout(False)
+        Me.tabpageSearch.PerformLayout()
+        Me.tabpageApplyChanges.ResumeLayout(False)
+        Me.tabpageApplyChanges.PerformLayout()
+        Me.tabpageLayout.ResumeLayout(False)
+        Me.tabpageLayout.PerformLayout()
         Me.tabpageRefreshCache.ResumeLayout(False)
         Me.tabpageRefreshCache.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
