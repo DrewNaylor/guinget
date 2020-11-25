@@ -12,13 +12,15 @@ Loading the package list and details will take a bit and may lock up slightly on
 
 ## Marking a package
 
-To mark a package, you can double-click or right-click on it and select `Action>Install`, open the `Package list` menu and select `Selected package>Action>Install`, open the combobox dropdown menu for the package in the `Action` column (may take a few clicks to open the dropdown), or move the cell selection over to the `Action` column and press `spacebar` then use the arrow keys to select `Install`. This also applies to marking a package for uninstallation, or for marking a package as one you want to ignore (ignoring is `Do nothing`).
+Marking a package involves doing one of the following actions:
+- Double-click or right-click on a selected package and click `Action: Install`
+- Open the `Selected packages` menu and click `Action: Install`
+- Press `Ctrl+I` (capital "i", in case it looks similar to a lowercase "L")
+- Open the combobox dropdown menu for the selected package in the `Action` column (may take a few clicks to open the dropdown)
+- Move the cell selection over to the `Action` column with the arrow keys then press `spacebar`, then use the arrow keys to select `Install`. May need to press `Enter` to apply the choice.
+This also applies to marking a package for uninstallation (once that's available), or for marking a package as one you want to ignore (ignoring is `Do nothing`).
 
 Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
-
-Please be aware that [the package context menu may appear in the wrong area](https://github.com/DrewNaylor/guinget/issues/14), though this was fixed in version 0.1.2.
-
-**NB:** Version 0.1.2 moved the package-marking menu items from the `Package list` menu into the `Selected packages` menu, so you'll need to use the `Selected packages>Action` menu to mark as necessary.
 
 ## Marking multiple packages
 
