@@ -28,13 +28,17 @@ Public Class ConfigTools
     ' but does fit into config-related stuff.
     ' Probably should move the winget source update thing to a source-related class.
 
-    Public Shared Sub RunWingetSettings()
+    Public Shared Sub RunWingetSettings(Optional RunAsAdmin As Boolean = False)
         ' Run winget settings.
         Using proc As New Process
 
             proc.StartInfo.FileName = "cmd"
             ' Probably don't need to keep CMD open for this.
             proc.StartInfo.Arguments = "/c winget settings"
+            ' Set the verb in case it's supposed to run as admin.
+            If RunAsAdmin = True Then
+                proc.StartInfo.Verb = "runas"
+            End If
             proc.Start()
         End Using
     End Sub

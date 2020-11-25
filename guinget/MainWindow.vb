@@ -1022,7 +1022,12 @@ Public Class aaformMainWindow
 
     Private Sub EditWingetSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditWingetSettingsToolStripMenuItem.Click
         ' Run the stuff in the helper library to edit winget settings.
-        ConfigTools.RunWingetSettings()
+        ConfigTools.RunWingetSettings(False)
+    End Sub
+
+    Private Sub EditWingetSettingsAsAdminToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditWingetSettingsAsAdminToolStripMenuItem.Click
+        ' Run the helper library's code for editing winget settings but have it be as admin.
+        ConfigTools.RunWingetSettings(True)
     End Sub
 
 
