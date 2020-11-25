@@ -20,13 +20,20 @@ Marking a package involves doing one of the following actions:
 - Move the cell selection over to the `Action` column with the arrow keys then press `spacebar`, then use the arrow keys to select `Install`. May need to press `Enter` to apply the choice.
 This also applies to marking a package for uninstallation (once that's available), or for marking a package as one you want to ignore (ignoring is `Do nothing`).
 
+If you wish to unmark or ignore a package, press `Ctrl+D` or use `Action: Do nothing` in either the package context menu or the `Selected packages` menu. You can also use the combobox dropdown menu as described above.
+
 Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
 
 ## Marking multiple packages
 
-To mark multiple packages, either select them with the mouse (using `Shift` and `Ctrl` like you would for a list of files) or select them using `Shift` and the arrow keys. After selecting the packages you want to mark, right-click on one of the selected packages and use the `Action` menu, or use the `Package list>Selected package>Action` menu, to mark them as you wish.
-
-**NB:** Version 0.1.2 moved the package-marking menu items from the `Package list` menu into the `Selected packages` menu, so you'll need to use the `Selected packages>Action` menu to mark as necessary.
+To mark multiple packages, use these instructions:
+1. First, select them with the mouse (using `Shift` and `Ctrl` like you would for a list of files) or select them using `Shift` and the arrow keys.
+2. After selecting the packages you want to mark, do one of the following to mark them as you wish:
+  - Right-click on one of the selected packages and use `Action: (action)` menu items
+  - Use the `Selected package>Action: (action)` menu items
+  - Press `Ctrl+I` to mark them all for install or `Ctrl+D` to unmark/ignore them
+  
+Please refer to the `Marking a package` section for more details.
 
 ## Applying marked changes
 
