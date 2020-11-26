@@ -56,6 +56,8 @@ Marked changes are applied using the `Apply changes` dialog, accessible through 
 
 Using the `Confirm changes` button will bulk-apply all listed changes. Alternatively, you can apply one change at a time by double-clicking or pressing `Enter` on each package in the list to install (or uninstall, when that's available) it when ready.
 
+If you have issues with winget while applying changes, you can close and reopen the `Apply changes` window to reset the controls and packages to the `Ready` state to try again, perhaps with different options as described below.
+
 ### Installation options
 
 The following installation options are available:
