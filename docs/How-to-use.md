@@ -17,6 +17,8 @@ Sometimes winget's sources will be out of date when you try to install something
 - `Package list>Update winget sources`
 - `Ctrl+U` (or whatever it is; be sure to put that in here)
 
+After it's finished, the window will stay open and you can close it. Currently it stays open just in case there's a problem that has to be fixed manually.
+
 ## Marking a package
 
 Marking a package involves doing one of the following actions:
@@ -59,6 +61,7 @@ The following installation options are available:
 - Elevated winget: check the `Elevate winget (UAC)` checkbox to run winget as an administrator. This may help for some packages that complain about not having permissions when installing them. 
   - Typically it's used in case you usually run Windows from a standard/limited user account and have an administrator account for system modification and application installation. 
   - Please note that Windows 10 version 2004 might not be compatible with this option as it sometimes elevates package installers when necessary and says it can't run winget if it's started from an elevated CMD.
+  - Since this is one of the only reasons winget would need to be run elevated, **it's not recommended to run guinget as administrator as of version 0.1.3**.
 
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
 Additionally, some options may also apply to actions like uninstallation.
