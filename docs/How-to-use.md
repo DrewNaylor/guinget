@@ -50,7 +50,9 @@ Using the `Confirm changes` button will bulk-apply all listed changes. Alternati
 
 The following installation options are available:
 - Interactive installation: check the `Interactive install (-i)` checkbox to have winget give you an interactive installer instead of an automated one.
-- Elevated winget: check the `Elevate winget (UAC)` checkbox to run winget as an administrator. This may help for some packages that complain about not having permissions when installing them. Typically it's used in case you usually run Windows from a standard/limited user account and have an administrator account for system modification and application installation. Please note that Windows 10 version 2004 might not be compatible with this option.
+- Elevated winget: check the `Elevate winget (UAC)` checkbox to run winget as an administrator. This may help for some packages that complain about not having permissions when installing them. 
+  - Typically it's used in case you usually run Windows from a standard/limited user account and have an administrator account for system modification and application installation. 
+  - Please note that Windows 10 version 2004 might not be compatible with this option as it sometimes elevates package installers when necessary and says it can't run winget if it's started from an elevated CMD.
 
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
 Additionally, some options may also apply to actions like uninstallation.
