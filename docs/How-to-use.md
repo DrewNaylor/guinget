@@ -1,5 +1,7 @@
 # How to use guinget
 
+This guide is up-to-date as of version 0.1.3. [Version 0.1.2's usage guide](https://github.com/DrewNaylor/guinget/blob/master/docs/How-to-use_0.1.2.md) isn't as refined, but it doesn't describe features that aren't in version 0.1.2.
+
 ## Refreshing package cache
 
 To refresh the cache, all you have to do is one of the following:
