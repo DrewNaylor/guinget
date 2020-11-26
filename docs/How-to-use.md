@@ -11,6 +11,12 @@ Once you've started the update, just wait for it to complete, and try again if t
 
 Loading the package list and details will take a bit and may lock up slightly on slower systems, such as virtual machines. Additionally, please be aware that the main window cannot be moved while loading the package list and details, though this is something I want to allow.
 
+## Updating winget sources
+
+Sometimes winget's sources will be out of date when you try to install something (even though it should automatically update before installation). If that's the case, you can update winget's sources without dropping into CMD using one of the choices below:
+- `Package list>Update winget sources`
+- `Ctrl+U` (or whatever it is; be sure to put that in here)
+
 ## Marking a package
 
 Marking a package involves doing one of the following actions:
