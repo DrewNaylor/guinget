@@ -6,6 +6,7 @@ To refresh the cache, all you have to do is one of the following:
 - Click the `Refresh cache` button on the toolbar
 - Use the `Package list>Refresh cache` menu item
 - Press `Ctrl+R`
+
 Once you've started the update, just wait for it to complete, and try again if there are issues.
 
 Loading the package list and details will take a bit and may lock up slightly on slower systems, such as virtual machines. Additionally, please be aware that the main window cannot be moved while loading the package list and details, though this is something I want to allow.
@@ -18,6 +19,7 @@ Marking a package involves doing one of the following actions:
 - Press `Ctrl+I` (capital "i", in case it looks similar to a lowercase "L")
 - Open the combobox dropdown menu for the selected package in the `Action` column (may take a few clicks to open the dropdown)
 - Move the cell selection over to the `Action` column with the arrow keys then press `spacebar`, then use the arrow keys to select `Install`. May need to press `Enter` to apply the choice.
+
 This also applies to marking a package for uninstallation (once that's available), or for marking a package as one you want to ignore (ignoring is `Do nothing`).
 
 If you wish to unmark or ignore a package, press `Ctrl+D` or use `Action: Do nothing` in either the package context menu or the `Selected packages` menu. You can also use the combobox dropdown menu as described above.
@@ -42,7 +44,7 @@ Marked changes are applied using the `Apply changes` dialog, accessible through 
 - `Package list>Apply changes...`
 - Pressing `Ctrl+H` 
 
-You can install one package at a time by double-clicking or pressing `Enter` on each package in the list to install it when ready.
+Using the `Confirm changes` button will bulk-apply all listed changes. Alternatively, you can apply one change at a time by double-clicking or pressing `Enter` on each package in the list to install (or uninstall, when that's available) it when ready.
 
 ### Installation options
 
