@@ -94,7 +94,12 @@ Double-clicking/pressing `Enter` on the `All` entry at the top of the sidebar se
 
 ### Search options
 
-Searches are now re-run after a cache update if there's text in the search box, but you can turn that off by unchecking `Re-run search after cache update` in the `Options` window as described in the `Sidebar` section.
+Search options can be changed from the `Tools>Options...>Search` tab, though there's a shortcut to this tab available in the following ways:
+- `Ctrl+Shift+F`
+- `Package list>Search options...`
+- `Search options...` from the `Search` toolbar button dropdown menu
+
+Searches are now re-run after a cache update if there's text in the search box at the time of re-loading the package list, but you can turn that off by unchecking the `Re-run search after cache update` checkbox from the `Search` tab in the `Options` window as described above.
 
 
 ## Showing unfinished controls
