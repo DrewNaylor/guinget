@@ -31,6 +31,15 @@ Package details are displayed in the textbox below the package list. By default,
 
 Please be aware that showing the last-selected package details might not work properly if you [use `Shift+Click` and the selection switches to go above the first-selected package as that makes it show the first-clicked package's details.](https://github.com/DrewNaylor/guinget/issues/42#issuecomment-716090028)
 
+### Show in winget
+
+You can show a single package's details in winget in a few ways:
+- `Ctrl+W`
+- Right-clicking on a package and clicking `Show in winget...`
+- `Selected package>Show in winget...`
+
+Please note this isn't available if more than one package is selected at once.
+
 ## Marking a package
 
 Marking a package involves doing one of the following actions:
