@@ -278,7 +278,7 @@ Partial Class aaformMainWindow
         Me.ShowInWingetToolStripMenuItem.Name = "ShowInWingetToolStripMenuItem"
         Me.ShowInWingetToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
         Me.ShowInWingetToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
-        Me.ShowInWingetToolStripMenuItem.Text = "Show in &winget"
+        Me.ShowInWingetToolStripMenuItem.Text = "Show in &winget..."
         '
         'SelectedPackagesProperties
         '
