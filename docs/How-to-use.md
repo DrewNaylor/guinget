@@ -93,9 +93,7 @@ By default, there's a sidebar that shows your search terms from the current sess
 - Using `View>Sidebar`
 - By unchecking the `Show sidebar` checkbox from `Tools>Options...>Layout`
 
-You can clear all search terms or only selected search terms from the search terms list using the context menu.
-
-**NB:** It may take extra `Tab` presses to get back to the package list from the search bar when the sidebar is shown as mentioned previously.
+You can clear all search terms or only selected search terms from the search terms list using the context menu. Please note that the `All` entry at the top will always be there and trying to remove it by clearing all search terms will put it back.
 
 Double-clicking/pressing `Enter` on the `All` entry at the top of the sidebar search terms list returns you to an unfiltered list.
 
