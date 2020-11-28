@@ -54,6 +54,7 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.labelWhyElevate = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
@@ -170,6 +171,7 @@ Partial Class OptionsWindow
         '
         'tabpageApplyChanges
         '
+        Me.tabpageApplyChanges.Controls.Add(Me.labelWhyElevate)
         Me.tabpageApplyChanges.Controls.Add(Me.checkboxElevateWinget)
         Me.tabpageApplyChanges.Controls.Add(Me.checkboxInstallInteractively)
         Me.tabpageApplyChanges.Location = New System.Drawing.Point(4, 22)
@@ -184,6 +186,7 @@ Partial Class OptionsWindow
         '
         Me.checkboxElevateWinget.AutoSize = True
         Me.checkboxElevateWinget.Location = New System.Drawing.Point(6, 29)
+        Me.checkboxElevateWinget.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxElevateWinget.Name = "checkboxElevateWinget"
         Me.checkboxElevateWinget.Size = New System.Drawing.Size(143, 17)
         Me.checkboxElevateWinget.TabIndex = 1
@@ -430,6 +433,17 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
+        'labelWhyElevate
+        '
+        Me.labelWhyElevate.AutoSize = True
+        Me.labelWhyElevate.Location = New System.Drawing.Point(23, 46)
+        Me.labelWhyElevate.Name = "labelWhyElevate"
+        Me.labelWhyElevate.Size = New System.Drawing.Size(283, 52)
+        Me.labelWhyElevate.TabIndex = 2
+        Me.labelWhyElevate.Text = "Some packages require winget to be run elevated for them" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to install properly if " &
+    "your account is a limited one." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This may not work on Windows 10 version 2004 as " &
+    "it" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "might say it couldn't run winget."
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -496,4 +510,5 @@ Partial Class OptionsWindow
     Friend WithEvents labelCopyrightForRobocopy As Label
     Friend WithEvents SevenZExeOpenFileDialog As OpenFileDialog
     Friend WithEvents labelRequiresApplicationRestart As Label
+    Friend WithEvents labelWhyElevate As Label
 End Class
