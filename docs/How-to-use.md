@@ -74,6 +74,8 @@ The following installation options are available:
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
 Additionally, some options may also apply to actions like uninstallation.
 
+Installation options can also be changed from `Tools>Options...>Apply Changes`. This tab will have slightly more detailed names for the options, but they're similar to the equivalent ones in the `Apply changes` window. In some cases, this will be the only place to change certain options, but a link will be added to the `Apply changes` window to open this tab if that's ever the case.
+
 ## Searching for packages
 
 You can search for packages using the search bar in the toolbar at the top of the window. This only filters the `Package` column for now, but other columns are planned to be supported. To start a search, do one of the following:
