@@ -81,7 +81,7 @@ You can search for packages using the search bar in the toolbar at the top of th
 - Press `Ctrl+F` to automatically set focus to it
 - Use `Package list>Focus search box`
 
-After typing in what you want to search for, either press `Enter` or click the `Search` toolbar button. Once you've finished searching, you can press the `Tab` key to focus the package list again. If the sidebar is showing, it may take a few times to get back to the list and I don't know how to fix that. Please be aware that [using `Ctrl+A` to select all packages in the search results currently selects even non-filtered packages](https://github.com/DrewNaylor/guinget/issues/13).
+After typing in what you want to search for, either press `Enter` or click the `Search` toolbar button. Once you've finished searching, you can press `Ctrl+F` again to set focus back to the package list if the search box is still focused. Please be aware that [using `Ctrl+A` to select all packages in the search results currently selects even non-filtered packages](https://github.com/DrewNaylor/guinget/issues/13).
 
 You can use `Esc`/`Escape` and press `Enter` or, as described below, double-click the sidebar search term list's `All` entry at the top to get back to the full package list.
 
