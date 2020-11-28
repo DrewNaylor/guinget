@@ -32,7 +32,7 @@ Marking a package involves doing one of the following actions:
 - Open the `Selected packages` menu and click `Action: Install`
 - Press `Ctrl+I` (capital "i", in case it looks similar to a lowercase "L")
 - Open the combobox dropdown menu for the selected package in the `Action` column (may take a few clicks to open the dropdown)
-- Move the cell selection over to the `Action` column with the arrow keys then press `spacebar`, then use the arrow keys to select `Install`. May need to press `Enter` to apply the choice.
+- Move the cell selection over to the `Action` column with the arrow keys then press `spacebar`, then use the arrow keys to select `Install`. Pressing `Enter` will move to the next package row.
 
 This also applies to marking a package for uninstallation (once that's available), or for marking a package as one you want to ignore (ignoring is `Do nothing`).
 
