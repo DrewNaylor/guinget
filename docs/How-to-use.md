@@ -72,11 +72,14 @@ Additionally, some options may also apply to actions like uninstallation.
 
 ## Searching for packages
 
-You can search for packages using the search bar in the toolbar at the top of the window. As of version 0.1 pre-alpha 2, this only filters the `Package` column, but other columns are planned to be supported. To search, either click in the textbox, press `Ctrl+F` to automatically set focus to it, or use `Package list>Search`. After typing in what you want to search for, either press `Enter` or click the `Search` toolbar button. Please be aware that [using `Ctrl+A` to select all packages in the search results currently selects even non-filtered packages](https://github.com/DrewNaylor/guinget/issues/13).
+You can search for packages using the search bar in the toolbar at the top of the window. This only filters the `Package` column for now, but other columns are planned to be supported. To start a search, do one of the following:
+- Click in the search textbox
+- Press `Ctrl+F` to automatically set focus to it
+- Use `Package list>Focus search box`
 
-Before version 0.1.2, you had to manually clear the search box and search again to get back to the non-filtered package list, but as described below in the `New in Version 0.1.2` section, you can use `Esc`/`Escape` or the sidebar search term list's `All` entry. Once you've finished searching, you can press the `Tab` key to focus the package list again.
+After typing in what you want to search for, either press `Enter` or click the `Search` toolbar button. Once you've finished searching, you can press the `Tab` key to focus the package list again. If the sidebar is showing, it may take a few times to get back to the list and I don't know how to fix that. Please be aware that [using `Ctrl+A` to select all packages in the search results currently selects even non-filtered packages](https://github.com/DrewNaylor/guinget/issues/13).
 
-**NB:** Version 0.1.2 renamed the `Package list>Search` menu item to `Package list>Filter search box`.
+You can use `Esc`/`Escape` and press `Enter` or double-click the sidebar search term list's `All` entry at the top of the list to get back to the full package list.
 
 ### New in Version 0.1.2
 
