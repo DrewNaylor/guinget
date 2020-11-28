@@ -19,7 +19,7 @@ Once you've started the update, just wait for it to complete, and try again if t
 
 Loading the package list and details will take a bit and may lock up slightly on slower systems, such as virtual machines. Additionally, please be aware that the main window cannot be moved while loading the package list and details, though this is something I want to allow.
 
-## Updating winget sources
+### Updating winget sources
 
 Sometimes winget's sources will be out of date when you try to install something (even though it should automatically update before installation). If that's the case, you can update winget's sources without dropping into CMD using `Package list>Update winget sources`.
 
@@ -55,7 +55,7 @@ If you wish to unmark or ignore a package, press `Ctrl+D` or use `Action: Do not
 
 Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
 
-## Marking multiple packages
+### Marking multiple packages
 
 To mark multiple packages, use these instructions:
 1. First, select them with the mouse (using `Shift` and `Ctrl` like you would for a list of files) or select them using `Shift` and the arrow keys.
