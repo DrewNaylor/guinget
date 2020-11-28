@@ -79,16 +79,19 @@ You can search for packages using the search bar in the toolbar at the top of th
 
 After typing in what you want to search for, either press `Enter` or click the `Search` toolbar button. Once you've finished searching, you can press the `Tab` key to focus the package list again. If the sidebar is showing, it may take a few times to get back to the list and I don't know how to fix that. Please be aware that [using `Ctrl+A` to select all packages in the search results currently selects even non-filtered packages](https://github.com/DrewNaylor/guinget/issues/13).
 
-You can use `Esc`/`Escape` and press `Enter` or double-click the sidebar search term list's `All` entry at the top of the list to get back to the full package list.
+You can use `Esc`/`Escape` and press `Enter` or, as described below, double-click the sidebar search term list's `All` entry at the top to get back to the full package list.
 
 `Search for package ID` in either the package context menu or in the `Selected packages` menu will, as the name implies, search for the package ID as long as only one package is selected. This won't be available if more than one package is selected at a time in version 0.1.3 and above.
 
 ### Sidebar
-By default, there's a sidebar that shows your search terms from the current session, but you can hide it with the `X` button in its top-right corner; using `View>Sidebar`; or by opening the `Options` window from `Package list>Search options`, unchecking `Show sidebar`, and clicking `OK`.
+By default, there's a sidebar that shows your search terms from the current session, but you can hide it in a few ways:
+- With the `X` button in its top-right corner
+- Using `View>Sidebar`
+- By unchecking the `Show sidebar` checkbox from `Tools>Options...>Layout`
 
 You can clear all search terms or only selected search terms from the search terms list using the context menu.
 
-**NB:** It may take extra `Tab` presses to get back to the package list from the search bar when the sidebar is shown.
+**NB:** It may take extra `Tab` presses to get back to the package list from the search bar when the sidebar is shown as mentioned previously.
 
 Double-clicking/pressing `Enter` on the `All` entry at the top of the sidebar search terms list returns you to an unfiltered list.
 
