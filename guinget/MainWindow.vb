@@ -847,8 +847,16 @@ Public Class aaformMainWindow
     Private Sub SearchMenuItem_Click(sender As Object, e As EventArgs) Handles SearchMenuItem.Click
         ' Focus search textbox and select its text
         ' to make it easier to type something else.
-        toolstriptextboxSearch.Focus()
-        toolstriptextboxSearch.SelectAll()
+        If Not toolstriptextboxSearch.Focused = True Then
+            ' First check if it's not focused.
+            ' If it isn't, focus and select all the text in it.
+            toolstriptextboxSearch.Focus()
+            toolstriptextboxSearch.SelectAll()
+        Else
+            ' Focus the package list if the search box is focused
+            ' right now.
+            datagridviewPackageList.Focus()
+        End If
     End Sub
 #End Region
 
