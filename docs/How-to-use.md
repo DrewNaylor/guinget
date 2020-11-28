@@ -99,8 +99,9 @@ Search options can be changed from the `Tools>Options...>Search` tab, though the
 - `Package list>Search options...`
 - `Search options...` from the `Search` toolbar button dropdown menu
 
-Searches are now re-run after a cache update if there's text in the search box at the time of re-loading the package list, but you can turn that off by unchecking the `Re-run search after cache update` checkbox from the `Search` tab in the `Options` window as described above.
+Searches are now re-run after a cache update if there's text in the search box at the time of re-loading the package list, but you can turn that off by unchecking the `Re-run search after cache update` checkbox from the search options tab as described above.
 
+By default, using the selected package ID search feature will do an exact match, but you can turn that off using the `Use exact match for selected package ID search` checkbox in the search options tab as described above.
 
 ## Showing unfinished controls
 
