@@ -81,15 +81,9 @@ After typing in what you want to search for, either press `Enter` or click the `
 
 You can use `Esc`/`Escape` and press `Enter` or double-click the sidebar search term list's `All` entry at the top of the list to get back to the full package list.
 
-### New in Version 0.1.2
+`Search for package ID` in either the package context menu or in the `Selected packages` menu will, as the name implies, search for the package ID as long as only one package is selected. This won't be available if more than one package is selected at a time in version 0.1.3 and above.
 
-You can search for all packages containing the last-selected package's ID using `Search for last-selected ID` in either the package context menu or from the `Selected packages` menu.
-
-Searches are now re-run after a cache update if there's text in the search box, but you can turn that off by unchecking `Re-run search after cache update` in the `Options` window as described in the `Sidebar` section.
-
-If you don't want to manually clear the search box, you can now use the `Esc`/`Escape` key instead.
-
-#### Sidebar
+### Sidebar
 By default, there's a sidebar that shows your search terms from the current session, but you can hide it with the `X` button in its top-right corner; using `View>Sidebar`; or by opening the `Options` window from `Package list>Search options`, unchecking `Show sidebar`, and clicking `OK`.
 
 You can clear all search terms or only selected search terms from the search terms list using the context menu.
@@ -97,6 +91,11 @@ You can clear all search terms or only selected search terms from the search ter
 **NB:** It may take extra `Tab` presses to get back to the package list from the search bar when the sidebar is shown.
 
 Double-clicking/pressing `Enter` on the `All` entry at the top of the sidebar search terms list returns you to an unfiltered list.
+
+### Search options
+
+Searches are now re-run after a cache update if there's text in the search box, but you can turn that off by unchecking `Re-run search after cache update` in the `Options` window as described in the `Sidebar` section.
+
 
 ## Showing unfinished controls
 
