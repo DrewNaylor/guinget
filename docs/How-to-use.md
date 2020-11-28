@@ -15,9 +15,7 @@ Loading the package list and details will take a bit and may lock up slightly on
 
 ## Updating winget sources
 
-Sometimes winget's sources will be out of date when you try to install something (even though it should automatically update before installation). If that's the case, you can update winget's sources without dropping into CMD using one of the choices below:
-- `Package list>Update winget sources`
-- `Ctrl+U` (or whatever it is; be sure to put that in here)
+Sometimes winget's sources will be out of date when you try to install something (even though it should automatically update before installation). If that's the case, you can update winget's sources without dropping into CMD using `Package list>Update winget sources`.
 
 After it's finished, the window will stay open and you can close it. Currently it stays open just in case there's a problem that has to be fixed manually.
 
