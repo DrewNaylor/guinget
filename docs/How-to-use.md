@@ -6,7 +6,7 @@ This guide is up-to-date as of version 0.1.3. [Version 0.1.2's usage guide](http
 
 Please don't run guinget as administrator in version 0.1.3 or higher, as winget seems to have an issue updating its sources when running elevated (which is what guinget does if guinget itself is elevated). If you need to install a package with winget elevated, please use the `Elevate winget (UAC)` checkbox in the `Apply changes` window as described in the `Installation options` section below. Be sure to use the `Update winget sources` menu item described in the `Updating winget sources` section below if winget complains that it can't find that package/package version, then try installing that package again.
 
-Hopefully some day this won't be a problem, but it will be until then.
+Hopefully someday this won't be a problem, but it will be until then.
 
 ## Refreshing package cache
 
