@@ -32,8 +32,8 @@ Partial Class ApplyChangesWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
-        Me.tooltipInstallInteractively = New System.Windows.Forms.ToolTip(Me.components)
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
+        Me.tooltipInstallOptions = New System.Windows.Forms.ToolTip(Me.components)
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -148,12 +148,12 @@ Partial Class ApplyChangesWindow
         Me.checkboxInstallInteractively.AutoSize = True
         Me.checkboxInstallInteractively.Dock = System.Windows.Forms.DockStyle.Fill
         Me.checkboxInstallInteractively.Location = New System.Drawing.Point(2, 343)
-        Me.checkboxInstallInteractively.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.checkboxInstallInteractively.Margin = New System.Windows.Forms.Padding(2)
         Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
         Me.checkboxInstallInteractively.Size = New System.Drawing.Size(119, 28)
         Me.checkboxInstallInteractively.TabIndex = 4
         Me.checkboxInstallInteractively.Text = "Interactive install (-i)"
-        Me.tooltipInstallInteractively.SetToolTip(Me.checkboxInstallInteractively, "Packages will be installed interactively when checked.")
+        Me.tooltipInstallOptions.SetToolTip(Me.checkboxInstallInteractively, "Packages will be installed interactively when checked.")
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
         'checkboxElevateWinget
@@ -165,7 +165,16 @@ Partial Class ApplyChangesWindow
         Me.checkboxElevateWinget.Size = New System.Drawing.Size(127, 26)
         Me.checkboxElevateWinget.TabIndex = 3
         Me.checkboxElevateWinget.Text = "Elevate winget (UAC)"
+        Me.tooltipInstallOptions.SetToolTip(Me.checkboxElevateWinget, "Some packages require winget to be run elevated" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "for them to install properly if " &
+        "your account is a" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "limited one. This may not work on Windows 10" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "version 2004 as" &
+        " it might say it couldn't run winget.")
         Me.checkboxElevateWinget.UseVisualStyleBackColor = True
+        '
+        'tooltipInstallOptions
+        '
+        Me.tooltipInstallOptions.AutoPopDelay = 10000
+        Me.tooltipInstallOptions.InitialDelay = 500
+        Me.tooltipInstallOptions.ReshowDelay = 100
         '
         'ApplyChangesWindow
         '
@@ -196,6 +205,6 @@ Partial Class ApplyChangesWindow
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
     Friend WithEvents checkboxInstallInteractively As CheckBox
-    Friend WithEvents tooltipInstallInteractively As ToolTip
+    Friend WithEvents tooltipInstallOptions As ToolTip
     Friend WithEvents checkboxElevateWinget As CheckBox
 End Class
