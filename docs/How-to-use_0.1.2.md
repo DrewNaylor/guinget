@@ -42,7 +42,7 @@ You can search for packages using the search bar in the toolbar at the top of th
 
 Before version 0.1.2, you had to manually clear the search box and search again to get back to the non-filtered package list, but as described below in the `New in Version 0.1.2` section, you can use `Esc`/`Escape` or the sidebar search term list's `All` entry. Once you've finished searching, you can press the `Tab` key to focus the package list again.
 
-**NB:** Version 0.1.2 renamed the `Package list>Search` menu item to `Package list>Filter search box`.
+**NB:** Version 0.1.2 renamed the `Package list>Search` menu item to `Package list>Focus search box`.
 
 ### New in Version 0.1.2
 
