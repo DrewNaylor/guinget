@@ -260,10 +260,10 @@ Partial Class OptionsWindow
         Me.labelRequiresApplicationRestart.AutoSize = True
         Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 20)
         Me.labelRequiresApplicationRestart.Name = "labelRequiresApplicationRestart"
-        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(277, 26)
+        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(275, 26)
         Me.labelRequiresApplicationRestart.TabIndex = 12
-        Me.labelRequiresApplicationRestart.Text = "Requires application restart. The rest of these settings still" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "apply even if thi" &
-    "s is on."
+        Me.labelRequiresApplicationRestart.Text = "Requires application restart. The rest of these options still" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "apply even if this" &
+    " is on."
         '
         'labelCopyrightForRobocopy
         '
@@ -398,8 +398,8 @@ Partial Class OptionsWindow
         Me.labelExperimentalSettingsHidden.Name = "labelExperimentalSettingsHidden"
         Me.labelExperimentalSettingsHidden.Size = New System.Drawing.Size(228, 39)
         Me.labelExperimentalSettingsHidden.TabIndex = 5
-        Me.labelExperimentalSettingsHidden.Text = "Experimental settings are currently hidden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can show them by clicking in the" &
-    " lower-left" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "corner of the About window."
+        Me.labelExperimentalSettingsHidden.Text = "Experimental options are currently hidden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can show them by clicking in the " &
+    "lower-left" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "corner of the About window."
         '
         'buttonCancel
         '
