@@ -25,6 +25,12 @@ Sometimes winget's sources will be out of date when you try to install something
 
 After it's finished, the window will stay open and you can close it. Currently it stays open just in case there's a problem that has to be fixed manually.
 
+## Viewing package details
+
+Package details are displayed in the textbox below the package list. By default, the last package selected will have its details shown, but you can change it so only the first package selected (when using multi-select) has its details shown by unchecking `Show last-selected package details when selecting multiple packages` in `Tools>Options...>Package Details`.
+
+Please be aware that showing the last-selected package details might not work properly if you [use `Shift+Click` and the selection switches to go above the first-selected package as that makes it show the first-clicked package's details.](https://github.com/DrewNaylor/guinget/issues/42#issuecomment-716090028)
+
 ## Marking a package
 
 Marking a package involves doing one of the following actions:
