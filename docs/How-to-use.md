@@ -108,8 +108,8 @@ By default, using the selected package ID search feature will do an exact match,
 
 ## Showing unfinished controls
 
-Controls that don't yet have their features implemented are hidden by default, but you can show them if you wish. There are two ways to do this detailed as follows:
-- The first way is temporary until the next application start, and involves clicking on a hidden label in the bottom-left corner of the About window. Uncheck `Hide unfinished controls and experimental stuff` from `Tools>Options...>Experimental` if you wish to keep these controls visible the next time guinget starts and across updates.
-- The second way is semi-permanent and involves opening the config file and changing the value for `HideUnfinishedControls` from `True` to `False`. This method may not persist guinget updates, however.
+Controls that don't yet have their features implemented are hidden by default, but you can show them if you wish. Here's how to do this:
+1. Click the hidden label in the bottom-left corner of the About window.
+2. (Optional) Uncheck `Hide unfinished controls and experimental stuff` from `Tools>Options...>Experimental` if you wish to keep these controls visible the next time guinget starts and across updates.
 
 Version 0.1.3 also hides experimental options behind this feature, so you'll have to show experimental controls if you want to change experimental options. Please note that experimental options will stay active even if the controls are hidden again.
