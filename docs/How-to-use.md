@@ -125,6 +125,10 @@ Searches are now re-run after a cache update if there's text in the search box a
 
 By default, using the selected package ID search feature will do an exact match, but you can turn that off using the `Use exact match for selected package ID search` checkbox in the search options tab as described above.
 
+## Edit winget settings
+
+You can edit winget's settings using `Tools>Edit winget settings`. If you wish to edit winget's settings for an administrator account, use `Tools>Edit winget settings as admin (UAC)` instead. Both will run `winget settings`, with the second one running it elevated.
+
 ## Showing unfinished controls
 
 Controls that don't yet have their features implemented are hidden by default, but you can show them if you wish. Here's how to do this:
