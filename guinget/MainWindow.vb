@@ -726,6 +726,15 @@ Public Class aaformMainWindow
             My.Settings.Reload()
         End If
 
+        ' Change timer interval if it's not the default.
+        ' Make sure it's not 0, but if it is, set it to 1.
+        If My.Settings.SearchWhenTypingTimerInterval < 1 Then
+            TypeTimer.Interval = 1
+        Else
+            TypeTimer.Interval = My.Settings.SearchWhenTypingTimerInterval
+        End If
+
+
         ' Set text for sidebar dropdown.
         comboboxSidebarTabSelector.SelectedIndex = 0
 
