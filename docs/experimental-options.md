@@ -2,43 +2,41 @@
 
 This is a list of experimental options as of version 0.1.3, and they can all be configured from `Tools>Options...>Experimental`. To show the controls on this tab, first open the `About` window and click in the bottom-left corner, then re-open the `Options` window and go to the `Experimental` tab where the options will now be visible.
 
-## Running guinget as administrator
+## Hide unfinished controls and experimental stuff
 
-Please don't run guinget as administrator in version 0.1.3 or higher, as winget seems to have an issue updating its sources when running elevated (which is what guinget does if guinget itself is elevated). If you need to install a package with winget elevated, please use the `Elevate winget (UAC)` checkbox in the `Apply changes` window as described in the `Installation options` section below. Be sure to use the `Update winget sources` menu item described in the `Updating winget sources` section below if winget complains that it can't find that package/package version, then try installing that package again.
+Description:
+Requires application restart. The rest of these options still apply even if this is on.
 
-Hopefully someday this won't be a problem, but it will be until then.
+If unchecked, these options and other unfinished controls will remain visible even after restarting or upgrading guinget.
 
-## Refreshing package cache
+## Using winget's database
 
-To refresh the cache, all you have to do is one of the following:
-- Click the `Refresh cache` button on the toolbar
-- Use the `Package list>Refresh cache` menu item
-- Press `Ctrl+R`
+Checkbox text:
+(Experimental) Update and load package list from winget's default community database
 
-Once you've started the update, just wait for it to complete, and try again if there are issues.
+Description:
+This will ensure guinget only displays packages winget's default source knows about and may be faster in some cases. Details will still be loaded from manifests.
 
-Loading the package list and details will take a bit and may lock up slightly on slower systems, such as virtual machines. Additionally, please be aware that the main window cannot be moved while loading the package list and details, though this is something I want to allow.
+## Loading only the latest package versions
 
-### Updating winget sources
+Checkbox text:
+(Experimental) Load only the latest version of each package
 
-Sometimes winget's sources will be out of date when you try to install something (even though it should automatically update before installation). If that's the case, you can update winget's sources without dropping into CMD using `Package list>Update winget sources`. This will run `winget source update`.
+Description:
+Some packages may display a version number that's not really the latest version. Not sure how to fix this at the moment. Requires loading from the community database checkbox to be checked.
 
-After it's finished, the window will stay open and you can close it. Currently it stays open just in case there's a problem that has to be fixed manually.
+## Use 7-Zip for extraction
 
-## Viewing package details
+Checkbox text:
+(Experimental) Use 7-Zip to extract manifests and database
 
-Package details are displayed in the textbox below the package list. By default, the last package selected will have its details shown, but you can change it so only the first package selected (when using multi-select) has its details shown by unchecking `Show last-selected package details when selecting multiple packages` in `Tools>Options...>Package Details`.
+Description:
+7-Zip is Copyright (C) Igor Pavlov.
+7-Zip may extract faster than the .NET extractor, but it's not fully tested for this purpose.
 
-Please be aware that showing the last-selected package details might not work properly if you [use `Shift+Click` and the selection switches to go above the first-selected package as that makes it show the first-clicked package's details.](https://github.com/DrewNaylor/guinget/issues/42#issuecomment-716090028)
+### 7z.exe path
 
-### Show in winget
-
-You can show a single package's details in winget in a few ways:
-- `Ctrl+W`
-- Right-clicking on a package and clicking `Show in winget...`
-- `Selected package>Show in winget...`
-
-Please note this isn't available if more than one package is selected at once.
+`7z.exe` is used when using 7-Zip to extract the manifests and database. Not everyone has `7z.exe` installed to `"C:\Program Files\7-Zip\7z.exe"`, so you can change that here, with a `Browse` dialog for convenience.
 
 ## Marking a package
 
