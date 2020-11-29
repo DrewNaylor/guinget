@@ -118,6 +118,7 @@ Partial Class aaformMainWindow
         Me.SelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
+        Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -948,6 +949,10 @@ Partial Class aaformMainWindow
         Me.zSeparatorNoIdeaWhereThisIs.Name = "zSeparatorNoIdeaWhereThisIs"
         Me.zSeparatorNoIdeaWhereThisIs.Size = New System.Drawing.Size(210, 6)
         '
+        'TypeTimer
+        '
+        Me.TypeTimer.Interval = 500
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1088,4 +1093,5 @@ Partial Class aaformMainWindow
     Friend WithEvents zSeparatorAboveEditWingetSettings As ToolStripSeparator
     Friend WithEvents EditWingetSettingsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EditWingetSettingsAsAdminToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TypeTimer As Timer
 End Class

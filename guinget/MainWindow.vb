@@ -842,6 +842,11 @@ Public Class aaformMainWindow
             ' Otherwise if it's Escape, clear the search box.
             toolstriptextboxSearch.Clear()
         End If
+
+        ' Stop timer, if necessary.
+        If My.Settings.SearchWhenTyping = True Then
+            TypeTimer.Stop()
+        End If
     End Sub
 
     Private Sub SearchMenuItem_Click(sender As Object, e As EventArgs) Handles SearchMenuItem.Click
@@ -876,6 +881,11 @@ Public Class aaformMainWindow
             aaformMainWindow.toolstriptextboxSearch.Text = aaformMainWindow.listboxSearchTerms.SelectedItem.ToString
         End If
 
+        ' Stop timer, if necessary.
+        If My.Settings.SearchWhenTyping = True Then
+            aaformMainWindow.TypeTimer.Stop()
+        End If
+
         ' Begin search.
         BeginPackageIdSearch(True)
     End Sub
@@ -883,6 +893,10 @@ Public Class aaformMainWindow
     Private Sub listboxSearchTerms_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxSearchTerms.KeyDown
         ' Start searching if the "Enter" key is pressed.
         If e.KeyCode = Keys.Enter Then
+            ' Stop timer, if necessary.
+            If My.Settings.SearchWhenTyping = True Then
+                TypeTimer.Stop()
+            End If
             ' Start searching.
             BeginSearchFromSidebar()
         End If
@@ -979,6 +993,7 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub SearchForLastSelectedPackageID()
+
         ' Search for the ID of the most-recently selected package.
         ' Make sure there are packages in the list.
         If datagridviewPackageList.Rows.Count > 0 Then
@@ -990,6 +1005,12 @@ Public Class aaformMainWindow
             Else
                 toolstriptextboxSearch.Text = datagridviewPackageList.SelectedRows.Item(0).Cells.Item(2).Value.ToString
             End If
+
+            ' Stop timer, if necessary.
+            If My.Settings.SearchWhenTyping = True Then
+                TypeTimer.Stop()
+            End If
+
             BeginPackageIdSearch()
         End If
     End Sub
@@ -1036,6 +1057,27 @@ Public Class aaformMainWindow
     Private Sub EditWingetSettingsAsAdminToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditWingetSettingsAsAdminToolStripMenuItem.Click
         ' Run the helper library's code for editing winget settings but have it be as admin.
         ConfigTools.RunWingetSettings(True)
+    End Sub
+
+    Private Sub toolstriptextboxSearch_TextChanged(sender As Object, e As EventArgs) Handles toolstriptextboxSearch.TextChanged
+        ' Restart the textbox typing timer for search when typing if it's on.
+        ' Got the idea for this particular code from this post:
+        ' https://stackoverflow.com/a/671735
+        If My.Settings.SearchWhenTyping = True Then
+            TypeTimer.Stop()
+            TypeTimer.Start()
+        End If
+    End Sub
+
+    Private Sub TypeTimer_Tick(sender As Object, e As EventArgs) Handles TypeTimer.Tick
+        ' Once the search when typing timer reaches its interval,
+        ' stop the timer and start the search.
+        ' Got the idea for this particular code from this post:
+        ' https://stackoverflow.com/a/671735
+        If My.Settings.SearchWhenTyping = True Then
+            TypeTimer.Stop()
+            BeginPackageIdSearch()
+        End If
     End Sub
 
 
