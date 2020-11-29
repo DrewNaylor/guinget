@@ -1,5 +1,7 @@
 # Devlog based on readme
 
+[Homepage](index)
+
 Early screenshot:
 ![](images/screenshot.png?raw=true)
 

@@ -1,5 +1,7 @@
 # How to use guinget
 
+[Homepage](index) &bull; [Back to usage guide](How-to-use)
+
 ## Refreshing package cache
 
 ### Updating with the built-in cache updater

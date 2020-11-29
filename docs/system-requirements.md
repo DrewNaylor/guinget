@@ -1,5 +1,7 @@
 # System Requirements
 
+[Homepage](index)
+
 To run guinget, your computer requires the following:
 
 - guinget version 0.1.1 or older

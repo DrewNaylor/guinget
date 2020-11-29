@@ -1,5 +1,7 @@
 # update-manifests.bat Changelog
 
+[Homepage](index)
+
 ## Version 2020.10-1 - October 5, 2020
 
 - Added trailing backslash to zip file extraction destination.

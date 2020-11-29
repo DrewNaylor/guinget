@@ -1,5 +1,7 @@
 # Proposed source types
 
+[Homepage](index)
+
 These are proposed source types that guinget can get manifests from.
 
 - guinget.ZipDownload (Default): Just a zip file that's downloaded and extracted. Doesn't support checking if any changes have occurred since the last manifest update before downloading.

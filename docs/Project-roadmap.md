@@ -1,5 +1,7 @@
 # Project roadmap
 
+[Homepage](index)
+
 ## Version 0.1 Pre-Alpha 1
 
 GitHub milestone:
