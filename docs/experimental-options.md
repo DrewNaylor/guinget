@@ -69,3 +69,18 @@ Robocopy may copy faster than the .NET copier, but it's not fully tested for thi
 If it weren't for Wine not having Robocopy by default and me not really understanding how to parse output from command-line programs yet, this would be checked by default since it's so much faster.
 
 Defaults to `False`.
+
+## Search when typing
+
+Checkbox text: (Experimental) Search when typing
+
+Instead of requiring you to press `Enter` or click `Search` on the toolbar, you can just wait a bit (325 milliseconds by default) for search to run automatically. This feature would probably have been a regular, non-experimental one had it been implemented sooner and not within a week of the expected release phase.
+
+Defaults to `False`.
+
+### Wait time (ms)
+
+This is how long it'll wait after you finish typing before running a search (in milliseconds).<br>
+Minimum value is `1`, and maximum value is `9999`.
+
+Defaults to `325`.
