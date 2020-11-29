@@ -58,6 +58,21 @@ Public Class OptionsWindow
         textbox7zExePath.Text = My.Settings.PathTo7zip
         ' Hide unfinished controls.
         checkboxHideUnfinishedControls.Checked = My.Settings.HideUnfinishedControls
+        ' Search when typing.
+        checkboxSearchWhenTyping.Checked = My.Settings.SearchWhenTyping
+        ' Search when typing wait amount.
+        ' Make sure it's within the range.
+        If My.Settings.SearchWhenTypingTimerInterval < 1 Then
+            ' If it's below 1, set it to 1.
+            numericupdownSearchWhenTypingWaitTime.Value = 1
+        ElseIf My.Settings.SearchWhenTypingTimerInterval > 9999 Then
+            ' If it's above 9999, set it to 9999.
+            numericupdownSearchWhenTypingWaitTime.Value = 9999
+        Else
+            ' If it falls between those two numbers, it's fine.
+            numericupdownSearchWhenTypingWaitTime.Value = My.Settings.SearchWhenTypingTimerInterval
+        End If
+
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
@@ -125,6 +140,11 @@ Public Class OptionsWindow
         ' Hide unfinished controls.
         My.Settings.HideUnfinishedControls = checkboxHideUnfinishedControls.Checked
 
+        ' Search when typing.
+        My.Settings.SearchWhenTyping = checkboxSearchWhenTyping.Checked
+        ' Search when typing wait amount.
+        My.Settings.SearchWhenTypingTimerInterval = CInt(numericupdownSearchWhenTypingWaitTime.Value)
+
         My.Settings.Save()
         My.Settings.Reload()
     End Sub
@@ -165,6 +185,10 @@ Public Class OptionsWindow
         textbox7zExePath.Text = """C:\Program Files\7-Zip\7z.exe"""
         ' Hide unfinished controls.
         checkboxHideUnfinishedControls.Checked = True
+        ' Search when typing.
+        checkboxSearchWhenTyping.Checked = False
+        ' Search when typing wait amount.
+        numericupdownSearchWhenTypingWaitTime.Value = 500
     End Sub
 
     Private Sub tabcontrolOptions_MouseWheel(sender As Object, e As MouseEventArgs) Handles tabcontrolOptions.MouseWheel
