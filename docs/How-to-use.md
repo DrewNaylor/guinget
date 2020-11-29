@@ -135,6 +135,10 @@ You can edit winget's settings using `Tools>Edit winget settings`. If you wish t
 
 If something breaks, you can use the `Defaults` button in the bottom-left corner of the `Options` window to reset everything, then click `OK` to save the default values. Some options like the one to hide unfinished controls and experimental stuff requires guinget to be restarted to take effect. Please be aware that if the guinget cache is what's broken, you'll have to manually delete it from `%AppData%\winget-frontends\source` for now. However, if winget's cache is broken, that may require resetting its sources from a command-line since there's no option for that in guinget yet.
 
+## Switch tabs with mouse scroll wheel
+
+You can switch tab control tabs like the ones in the `Options` window using the mouse scroll wheel, just like many Linux applications. This is provided by [libscrollswitchtabs](https://drew-naylor.com/drews-libs/libscrollswitchtabs-how-to-use.html).
+
 ## Showing unfinished controls
 
 Controls that don't yet have their features implemented are hidden by default, but you can show them if you wish. Here's how to do this:
