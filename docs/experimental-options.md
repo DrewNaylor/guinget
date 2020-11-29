@@ -21,27 +21,27 @@ Defaults to `True`.
 ## Using winget's database file
 
 Checkbox text:
-(Experimental) Update and load package list from winget's default community database
+Update and load package list from winget's default community database
 
 Description:
 This will ensure guinget only displays packages winget's default source knows about and may be faster in some cases. Details will still be loaded from manifests.
 
 Defaults to `False`.
 
-## Loading only the latest package versions
+## Loading only latest versions
 
 Checkbox text:
-(Experimental) Load only the latest version of each package
+Load only the latest version of each package
 
 Description:
 Some packages may display a version number that's not really the latest version. Not sure how to fix this at the moment. Requires loading from the community database checkbox to be checked.
 
 Defaults to `False`.
 
-## Use 7-Zip for extraction
+## Use 7-Zip
 
 Checkbox text:
-(Experimental) Use 7-Zip to extract manifests and database
+Use 7-Zip to extract manifests and database
 
 Description:
 7-Zip is Copyright (C) Igor Pavlov.<br>
@@ -57,10 +57,10 @@ Defaults to `False`.
 
 Defaults to `"C:\Program Files\7-Zip\7z.exe"`.
 
-## Use Robocopy for copying
+## Use Robocopy
 
 Checkbox text:
-(Experimental) Use Robocopy to copy manifests and database
+Use Robocopy to copy manifests and database
 
 Description:
 Robocopy is Copyright (C) Microsoft Corporation. All rights reserved.<br>
@@ -71,8 +71,6 @@ If it weren't for Wine not having Robocopy by default and me not really understa
 Defaults to `False`.
 
 ## Search when typing
-
-Checkbox text: (Experimental) Search when typing
 
 Instead of requiring you to press `Enter` or click `Search` on the toolbar, you can just wait a bit (325 milliseconds by default) for search to run automatically. This feature would probably have been a regular, non-experimental one had it been implemented sooner and not within a week of the expected release phase.
 

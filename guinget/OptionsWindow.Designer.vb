@@ -325,9 +325,9 @@ Partial Class OptionsWindow
         Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 276)
         Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
-        Me.checkboxUseRobocopy.Size = New System.Drawing.Size(319, 17)
+        Me.checkboxUseRobocopy.Size = New System.Drawing.Size(250, 17)
         Me.checkboxUseRobocopy.TabIndex = 6
-        Me.checkboxUseRobocopy.Text = "(Experimental) Use Robocopy to copy manifests and database"
+        Me.checkboxUseRobocopy.Text = "Use Robocopy to copy manifests and database"
         Me.checkboxUseRobocopy.UseVisualStyleBackColor = True
         '
         'buttonBrowse7zExePath
@@ -362,9 +362,9 @@ Partial Class OptionsWindow
         Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 193)
         Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUse7zip.Name = "checkboxUse7zip"
-        Me.checkboxUse7zip.Size = New System.Drawing.Size(303, 17)
+        Me.checkboxUse7zip.Size = New System.Drawing.Size(234, 17)
         Me.checkboxUse7zip.TabIndex = 3
-        Me.checkboxUse7zip.Text = "(Experimental) Use 7-Zip to extract manifests and database"
+        Me.checkboxUse7zip.Text = "Use 7-Zip to extract manifests and database"
         Me.checkboxUse7zip.UseVisualStyleBackColor = True
         '
         'checkboxLoadFromDatabase
@@ -374,10 +374,9 @@ Partial Class OptionsWindow
         Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(3, 49)
         Me.checkboxLoadFromDatabase.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxLoadFromDatabase.Name = "checkboxLoadFromDatabase"
-        Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(298, 30)
+        Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(229, 30)
         Me.checkboxLoadFromDatabase.TabIndex = 1
-        Me.checkboxLoadFromDatabase.Text = "(Experimental) Update and load package list from winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default community data" &
-    "base"
+        Me.checkboxLoadFromDatabase.Text = "Update and load package list from winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default community database"
         Me.checkboxLoadFromDatabase.UseVisualStyleBackColor = True
         '
         'labelLoadLatestVersion
@@ -408,9 +407,9 @@ Partial Class OptionsWindow
         Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(3, 121)
         Me.checkboxShowOnlyLatestVersions.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxShowOnlyLatestVersions.Name = "checkboxShowOnlyLatestVersions"
-        Me.checkboxShowOnlyLatestVersions.Size = New System.Drawing.Size(308, 17)
+        Me.checkboxShowOnlyLatestVersions.Size = New System.Drawing.Size(239, 17)
         Me.checkboxShowOnlyLatestVersions.TabIndex = 2
-        Me.checkboxShowOnlyLatestVersions.Text = "(Experimental) Load only the latest version of each package"
+        Me.checkboxShowOnlyLatestVersions.Text = "Load only the latest version of each package"
         Me.checkboxShowOnlyLatestVersions.UseVisualStyleBackColor = True
         '
         'labelExperimentalSettingsHidden
@@ -457,9 +456,9 @@ Partial Class OptionsWindow
         Me.checkboxSearchWhenTyping.AutoSize = True
         Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(3, 348)
         Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
-        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(189, 17)
+        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(120, 17)
         Me.checkboxSearchWhenTyping.TabIndex = 13
-        Me.checkboxSearchWhenTyping.Text = "(Experimental) Search when typing"
+        Me.checkboxSearchWhenTyping.Text = "Search when typing"
         Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
         '
         'numericupdownSearchWhenTypingWaitTime
