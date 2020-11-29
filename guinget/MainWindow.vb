@@ -1098,6 +1098,11 @@ Public Class aaformMainWindow
         End If
     End Sub
 
+    Private Sub HowToUseGuingetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HowToUseGuingetToolStripMenuItem.Click
+        ' Go to the usage guide.
+        Process.Start("https://drew-naylor.com/guinget/How-to-use")
+    End Sub
+
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
