@@ -55,9 +55,9 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
+        Me.numericupdownSearchWhenTypingWaitTime = New System.Windows.Forms.NumericUpDown()
+        Me.labelWaitTime = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
@@ -66,7 +66,7 @@ Partial Class OptionsWindow
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -255,9 +255,9 @@ Partial Class OptionsWindow
         'panelExperimentalSettings
         '
         Me.panelExperimentalSettings.AutoScroll = True
-        Me.panelExperimentalSettings.Controls.Add(Me.Label1)
-        Me.panelExperimentalSettings.Controls.Add(Me.NumericUpDown1)
-        Me.panelExperimentalSettings.Controls.Add(Me.CheckBox1)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelWaitTime)
+        Me.panelExperimentalSettings.Controls.Add(Me.numericupdownSearchWhenTypingWaitTime)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxSearchWhenTyping)
         Me.panelExperimentalSettings.Controls.Add(Me.labelRequiresApplicationRestart)
         Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForRobocopy)
         Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForSevenZip)
@@ -452,31 +452,34 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'CheckBox1
+        'checkboxSearchWhenTyping
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(3, 348)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(189, 17)
-        Me.CheckBox1.TabIndex = 13
-        Me.CheckBox1.Text = "(Experimental) Search when typing"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxSearchWhenTyping.AutoSize = True
+        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(3, 348)
+        Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
+        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(189, 17)
+        Me.checkboxSearchWhenTyping.TabIndex = 13
+        Me.checkboxSearchWhenTyping.Text = "(Experimental) Search when typing"
+        Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
         '
-        'NumericUpDown1
+        'numericupdownSearchWhenTypingWaitTime
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(103, 364)
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(89, 20)
-        Me.NumericUpDown1.TabIndex = 14
+        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(103, 364)
+        Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
+        Me.numericupdownSearchWhenTypingWaitTime.Size = New System.Drawing.Size(89, 20)
+        Me.numericupdownSearchWhenTypingWaitTime.TabIndex = 14
+        Me.numericupdownSearchWhenTypingWaitTime.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
-        'Label1
+        'labelWaitTime
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 366)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(76, 13)
-        Me.Label1.TabIndex = 15
-        Me.Label1.Text = "Wait time (ms):"
+        Me.labelWaitTime.AutoSize = True
+        Me.labelWaitTime.Location = New System.Drawing.Point(21, 366)
+        Me.labelWaitTime.Name = "labelWaitTime"
+        Me.labelWaitTime.Size = New System.Drawing.Size(76, 13)
+        Me.labelWaitTime.TabIndex = 15
+        Me.labelWaitTime.Text = "Wait time (ms):"
         '
         'OptionsWindow
         '
@@ -508,7 +511,7 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -546,7 +549,7 @@ Partial Class OptionsWindow
     Friend WithEvents SevenZExeOpenFileDialog As OpenFileDialog
     Friend WithEvents labelRequiresApplicationRestart As Label
     Friend WithEvents labelWhyElevate As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents NumericUpDown1 As NumericUpDown
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents labelWaitTime As Label
+    Friend WithEvents numericupdownSearchWhenTypingWaitTime As NumericUpDown
+    Friend WithEvents checkboxSearchWhenTyping As CheckBox
 End Class
