@@ -992,6 +992,9 @@ Public Class aaformMainWindow
 
         ' Change sidebar visibility if necessary.
         SidebarVisibility(My.Settings.ShowSidebar)
+
+        ' Update search when typing timer if necessary.
+        TypeTimer.Interval = My.Settings.SearchWhenTypingTimerInterval
     End Sub
 
     Private Sub SearchForPackageIDFromContextMenu_Click(sender As Object, e As EventArgs) Handles SearchForPackageIDFromContextMenu.Click
@@ -1044,6 +1047,9 @@ Public Class aaformMainWindow
 
         ' Change sidebar visibility if necessary.
         SidebarVisibility(My.Settings.ShowSidebar)
+
+        ' Update search when typing timer if necessary.
+        TypeTimer.Interval = My.Settings.SearchWhenTypingTimerInterval
     End Sub
 
     Private Sub ShowInWingetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowInWingetToolStripMenuItem.Click
