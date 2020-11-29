@@ -31,6 +31,7 @@ Partial Class OptionsWindow
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch = New System.Windows.Forms.CheckBox()
         Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
         Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
+        Me.labelWhyElevate = New System.Windows.Forms.Label()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.tabpageLayout = New System.Windows.Forms.TabPage()
@@ -54,7 +55,9 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.labelWhyElevate = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
@@ -63,6 +66,7 @@ Partial Class OptionsWindow
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -182,6 +186,17 @@ Partial Class OptionsWindow
         Me.tabpageApplyChanges.Text = "Apply Changes"
         Me.tabpageApplyChanges.UseVisualStyleBackColor = True
         '
+        'labelWhyElevate
+        '
+        Me.labelWhyElevate.AutoSize = True
+        Me.labelWhyElevate.Location = New System.Drawing.Point(23, 46)
+        Me.labelWhyElevate.Name = "labelWhyElevate"
+        Me.labelWhyElevate.Size = New System.Drawing.Size(283, 52)
+        Me.labelWhyElevate.TabIndex = 2
+        Me.labelWhyElevate.Text = "Some packages require winget to be run elevated for them" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to install properly if " &
+    "your account is a limited one." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This may not work on Windows 10 version 2004 as " &
+    "it" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "might say it couldn't run winget."
+        '
         'checkboxElevateWinget
         '
         Me.checkboxElevateWinget.AutoSize = True
@@ -239,6 +254,10 @@ Partial Class OptionsWindow
         '
         'panelExperimentalSettings
         '
+        Me.panelExperimentalSettings.AutoScroll = True
+        Me.panelExperimentalSettings.Controls.Add(Me.Label1)
+        Me.panelExperimentalSettings.Controls.Add(Me.NumericUpDown1)
+        Me.panelExperimentalSettings.Controls.Add(Me.CheckBox1)
         Me.panelExperimentalSettings.Controls.Add(Me.labelRequiresApplicationRestart)
         Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForRobocopy)
         Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForSevenZip)
@@ -433,16 +452,31 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'labelWhyElevate
+        'CheckBox1
         '
-        Me.labelWhyElevate.AutoSize = True
-        Me.labelWhyElevate.Location = New System.Drawing.Point(23, 46)
-        Me.labelWhyElevate.Name = "labelWhyElevate"
-        Me.labelWhyElevate.Size = New System.Drawing.Size(283, 52)
-        Me.labelWhyElevate.TabIndex = 2
-        Me.labelWhyElevate.Text = "Some packages require winget to be run elevated for them" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to install properly if " &
-    "your account is a limited one." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This may not work on Windows 10 version 2004 as " &
-    "it" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "might say it couldn't run winget."
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(3, 348)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(189, 17)
+        Me.CheckBox1.TabIndex = 13
+        Me.CheckBox1.Text = "(Experimental) Search when typing"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'NumericUpDown1
+        '
+        Me.NumericUpDown1.Location = New System.Drawing.Point(103, 364)
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(89, 20)
+        Me.NumericUpDown1.TabIndex = 14
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(21, 366)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(76, 13)
+        Me.Label1.TabIndex = 15
+        Me.Label1.Text = "Wait time (ms):"
         '
         'OptionsWindow
         '
@@ -474,6 +508,7 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -511,4 +546,7 @@ Partial Class OptionsWindow
     Friend WithEvents SevenZExeOpenFileDialog As OpenFileDialog
     Friend WithEvents labelRequiresApplicationRestart As Label
     Friend WithEvents labelWhyElevate As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents CheckBox1 As CheckBox
 End Class
