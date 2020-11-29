@@ -27,7 +27,7 @@ After it's finished, the window will stay open and you can close it. Currently i
 
 ## Viewing package details
 
-Package details are displayed in the textbox below the package list. By default, the last package selected will have its details shown, but you can change it so only the first package selected (when using multi-select) has its details shown by unchecking `Show last-selected package details when selecting multiple packages` in `Tools>Options...>Package Details`.
+In addition to a few details in the package list, full package details are displayed in the textbox below the package list. By default, the last package selected will have its details shown, but you can change it so only the first package selected (when using multi-select) has its details shown by unchecking `Show last-selected package details when selecting multiple packages` in `Tools>Options...>Package Details`.
 
 Please be aware that showing the last-selected package details might not work properly if you [use `Shift+Click` and the selection switches to go above the first-selected package as that makes it show the first-clicked package's details.](https://github.com/DrewNaylor/guinget/issues/42#issuecomment-716090028)
 
@@ -129,10 +129,14 @@ By default, using the selected package ID search feature will do an exact match,
 
 You can edit winget's settings using `Tools>Edit winget settings`. If you wish to edit winget's settings for an administrator account, use `Tools>Edit winget settings as admin (UAC)` instead. Both will run `winget settings`, with the second one running it elevated.
 
+## Resetting guinget's options to default
+
+If something breaks, you can use the `Defaults` button in the bottom-left corner of the `Options` window to reset everything, then click `OK` to save the default values. Some options like the one to hide unfinished controls and experimental stuff requires guinget to be restarted to take effect. Please be aware that if the guinget cache is what's broken, you'll have to manually delete it from `%AppData%\winget-frontends\source` for now. However, if winget's cache is broken, that may require resetting its sources from a command-line since there's no option for that in guinget yet.
+
 ## Showing unfinished controls
 
 Controls that don't yet have their features implemented are hidden by default, but you can show them if you wish. Here's how to do this:
 1. Click the hidden label in the bottom-left corner of the About window.
 2. (Optional) Uncheck `Hide unfinished controls and experimental stuff` from `Tools>Options...>Experimental` if you wish to keep these controls visible the next time guinget starts and across updates.
 
-Version 0.1.3 also hides experimental options behind this feature, so you'll have to show experimental controls if you want to change experimental options. Please note that experimental options will stay active even if the controls are hidden again.
+Version 0.1.3 also hides [experimental options](experimental-options) behind this feature, so you'll have to show experimental controls if you want to change experimental options. Please note that experimental options will stay active even if the controls are hidden again.
