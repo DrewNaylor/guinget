@@ -730,10 +730,13 @@ Public Class aaformMainWindow
         ' Make sure it's not 0, but if it is, set it to 1.
         If My.Settings.SearchWhenTypingTimerInterval < 1 Then
             TypeTimer.Interval = 1
+        ElseIf My.Settings.SearchWhenTypingTimerInterval > 9999 Then
+            ' If it's above 9999, set it to 9999.
+            TypeTimer.Interval = 9999
         Else
+            ' It's fine, so just use the thing in here.
             TypeTimer.Interval = My.Settings.SearchWhenTypingTimerInterval
         End If
-
 
         ' Set text for sidebar dropdown.
         comboboxSidebarTabSelector.SelectedIndex = 0
