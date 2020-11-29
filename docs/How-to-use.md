@@ -2,7 +2,7 @@
 
 [Homepage](https://drew-naylor.com/guinget)
 
-This guide is up-to-date as of version 0.1.3. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. [Version 0.1.2's usage guide](https://github.com/DrewNaylor/guinget/blob/master/docs/How-to-use_0.1.2.md) isn't as refined, but it only describes features that are in version 0.1.2.
+This guide is up-to-date as of version 0.1.3. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. [Version 0.1.2's usage guide](https://drew-naylor.com/guinget/How-to-use_0.1.2) isn't as refined, but it only describes features that are in version 0.1.2.
 
 ## Running guinget as administrator
 
