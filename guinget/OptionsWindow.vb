@@ -188,7 +188,7 @@ Public Class OptionsWindow
         ' Search when typing.
         checkboxSearchWhenTyping.Checked = False
         ' Search when typing wait amount.
-        numericupdownSearchWhenTypingWaitTime.Value = 500
+        numericupdownSearchWhenTypingWaitTime.Value = 325
     End Sub
 
     Private Sub tabcontrolOptions_MouseWheel(sender As Object, e As MouseEventArgs) Handles tabcontrolOptions.MouseWheel

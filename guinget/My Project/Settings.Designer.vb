@@ -248,7 +248,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("500")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("325")>  _
         Public Property SearchWhenTypingTimerInterval() As Integer
             Get
                 Return CType(Me("SearchWhenTypingTimerInterval"),Integer)
