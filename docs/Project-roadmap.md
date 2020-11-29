@@ -1,6 +1,6 @@
 # Project roadmap
 
-[Homepage](index)
+[Homepage](https://drew-naylor.com/guinget)
 
 ## Version 0.1 Pre-Alpha 1
 

@@ -1,6 +1,6 @@
 # Experimental options
 
-[Homepage](index) &bull; [Back to usage guide](How-to-use)
+[Homepage](https://drew-naylor.com/guinget) &bull; [Back to usage guide](How-to-use)
 
 This is a list of experimental options as of version 0.1.3, and they can all be configured from `Tools>Options...>Experimental`. To show the controls on this tab, first open the `About` window and click in the bottom-left corner, then re-open the `Options` window and go to the `Experimental` tab where the options will now be visible.
 

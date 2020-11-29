@@ -1,6 +1,6 @@
 # Devlog based on readme
 
-[Homepage](index)
+[Homepage](https://drew-naylor.com/guinget)
 
 Early screenshot:
 ![](images/screenshot.png?raw=true)

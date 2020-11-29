@@ -1,6 +1,6 @@
 # update-manifests.bat Changelog
 
-[Homepage](index)
+[Homepage](https://drew-naylor.com/guinget)
 
 ## Version 2020.10-1 - October 5, 2020
 

@@ -1,6 +1,6 @@
 # How to use guinget
 
-[Homepage](index) &bull; [Back to usage guide](How-to-use)
+[Homepage](https://drew-naylor.com/guinget) &bull; [Back to usage guide](How-to-use)
 
 ## Refreshing package cache
 

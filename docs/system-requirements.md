@@ -1,6 +1,6 @@
 # System Requirements
 
-[Homepage](index)
+[Homepage](https://drew-naylor.com/guinget)
 
 To run guinget, your computer requires the following:
 

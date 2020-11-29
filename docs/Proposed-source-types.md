@@ -1,6 +1,6 @@
 # Proposed source types
 
-[Homepage](index)
+[Homepage](https://drew-naylor.com/guinget)
 
 These are proposed source types that guinget can get manifests from.
 
