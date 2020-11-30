@@ -6,28 +6,30 @@ Not associated with the Synaptic project, either.
 
 ~~**NB:**
 If you installed winget in a regular user account, you may need to re-install it in an account with Admin permissions before installing guinget or any other packages that use Inno Setup installers. Be sure to update winget's sources before logging off the Admin account and back into your regular account, or winget's sources cache may claim it's corrupted when trying to use it in an Admin command prompt in your regular account.~~
-This may no longer be necessary, at least on the latest update for Windows 10 1903. The purpose for this text was to say that winget doesn't properly elevate Inno Setup installers so you'd have to install them from an elevated CMD, but it seems to do just fine now.
+This may no longer be necessary, at least on the latest update for Windows 10 2004. The purpose for this text was to say that winget doesn't properly elevate Inno Setup installers so you'd have to install them from an elevated CMD, but it seems to do just fine now. In fact, winget doesn't like to run elevated on 2004 from a limited account anymore, but at least it usually elevates installers. Whether this affects other versions of Windows 10 or if it's a bug are uncertain, but 1909 doesn't seem to have this issue.
 
 ## Project Info
 
-Master branch build status:<br>
-[![Master branch build status](https://ci.appveyor.com/api/projects/status/ec0r3vwr0wmvtc23/branch/master?svg=true)](https://ci.appveyor.com/project/DrewNaylor/guinget/branch/master)
+Main branch build status/nightly build:<br>
+[![Main branch build status/nightly build](https://ci.appveyor.com/api/projects/status/ec0r3vwr0wmvtc23/branch/master?svg=true)](https://ci.appveyor.com/project/DrewNaylor/guinget/branch/master)
 
-Visual Studio 2019 Community is being used for this project's development, and .Net Framework 4.6.1 or greater (for version 0.1.1 or older; 0.1.2 or newer will require .NET Framework 4.8 or newer) is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
+Visual Studio 2019 Community is being used for this project's development, and .NET Framework 4.8 or newer for version 0.1.2 and newer (0.1.1 and older require at least .NET Framework 4.6.1) is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
 
 There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
 
 ## Installation and Usage
 
-You can install guinget by running `winget install guinget` in an Admin command prompt/PowerShell window, or by using an installer attached to the [latest release](https://github.com/DrewNaylor/guinget/releases/latest). Please note that it may take a few days for new versions to be published to winget, so the Releases page is the fastest way to get new versions.
+You can install guinget by running `winget install guinget` in an elevated CMD/PowerShell window (just use a regular CMD window on 2004 if elevating it doesn't work), or by using an installer attached to the [latest release](https://github.com/DrewNaylor/guinget/releases/latest). Please note that it may take a few days for new versions to be published to winget, so the Releases page is the fastest way to get new versions.
 
 There's [a video showing how to install and use guinget](https://youtu.be/t2OhzNE4yj0), if you wish to watch it.
 
-Since it may be a bit complicated for new users, there's a guide on [how to use guinget](/docs/How-to-use.md). I tried to make it work as closely as I could to Synaptic, so if you have experience with Synaptic, guinget should work similarly (mainly with marking packages) with a few exceptions in places I'm less experienced and/or wouldn't work as well on Windows.
+Since it may be a bit complicated for new users, there's a guide on [how to use guinget](https://drew-naylor.com/guinget/How-to-use). I tried to make it work as closely as I could to Synaptic, so if you have experience with Synaptic, guinget should work similarly (mainly with marking packages) with a few exceptions in places I'm less experienced and/or wouldn't work as well on Windows.
 
 ## Requirements
 
-The [system requirements](https://github.com/DrewNaylor/guinget/blob/master/docs/system-requirements.md) include .NET Framework 4.6.1 (for version 0.1.1 and older; version 0.1.2 and newer will require .NET Framework 4.8.) as mentioned above and winget, but otherwise they don't require all that much power.
+The [system requirements](https://drew-naylor.com/guinget/system-requirements) include .NET Framework 4.8 for version 0.1.2 and newer (previous versions require at least .NET Framework 4.6.1) as mentioned above and winget, but otherwise they don't require all that much power. 
+
+Faster computers will perform better with few (if any) lock-ups when it comes to extracting and loading the package list, though. One goal is to eventually eliminate or reduce that lock-up as much as possible, which will require async loading. Not sure how to reliably do it with a datagridview yet, though.
 
 ## Screenshots
 
