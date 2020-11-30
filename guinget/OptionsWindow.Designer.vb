@@ -38,6 +38,9 @@ Partial Class OptionsWindow
         Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
         Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
         Me.panelExperimentalSettings = New System.Windows.Forms.Panel()
+        Me.labelWaitTime = New System.Windows.Forms.Label()
+        Me.numericupdownSearchWhenTypingWaitTime = New System.Windows.Forms.NumericUpDown()
+        Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
         Me.labelRequiresApplicationRestart = New System.Windows.Forms.Label()
         Me.labelCopyrightForRobocopy = New System.Windows.Forms.Label()
         Me.labelCopyrightForSevenZip = New System.Windows.Forms.Label()
@@ -55,9 +58,6 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
-        Me.numericupdownSearchWhenTypingWaitTime = New System.Windows.Forms.NumericUpDown()
-        Me.labelWaitTime = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
@@ -277,6 +277,35 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 364)
         Me.panelExperimentalSettings.TabIndex = 4
         '
+        'labelWaitTime
+        '
+        Me.labelWaitTime.AutoSize = True
+        Me.labelWaitTime.Location = New System.Drawing.Point(21, 366)
+        Me.labelWaitTime.Name = "labelWaitTime"
+        Me.labelWaitTime.Size = New System.Drawing.Size(76, 13)
+        Me.labelWaitTime.TabIndex = 15
+        Me.labelWaitTime.Text = "Wait time (ms):"
+        '
+        'numericupdownSearchWhenTypingWaitTime
+        '
+        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(103, 364)
+        Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
+        Me.numericupdownSearchWhenTypingWaitTime.Size = New System.Drawing.Size(89, 20)
+        Me.numericupdownSearchWhenTypingWaitTime.TabIndex = 14
+        Me.numericupdownSearchWhenTypingWaitTime.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'checkboxSearchWhenTyping
+        '
+        Me.checkboxSearchWhenTyping.AutoSize = True
+        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(3, 348)
+        Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
+        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(120, 17)
+        Me.checkboxSearchWhenTyping.TabIndex = 13
+        Me.checkboxSearchWhenTyping.Text = "Search when typing"
+        Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
+        '
         'labelRequiresApplicationRestart
         '
         Me.labelRequiresApplicationRestart.AutoSize = True
@@ -332,7 +361,7 @@ Partial Class OptionsWindow
         '
         'buttonBrowse7zExePath
         '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(242, 249)
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(243, 251)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
         Me.buttonBrowse7zExePath.TabIndex = 5
@@ -341,8 +370,7 @@ Partial Class OptionsWindow
         '
         'textbox7zExePath
         '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(88, 250)
-        Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
+        Me.textbox7zExePath.Location = New System.Drawing.Point(89, 252)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
         Me.textbox7zExePath.TabIndex = 4
@@ -350,7 +378,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(17, 254)
+        Me.label7zExePath.Location = New System.Drawing.Point(18, 256)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
@@ -450,35 +478,6 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.FileName = "7z.exe"
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
-        '
-        'checkboxSearchWhenTyping
-        '
-        Me.checkboxSearchWhenTyping.AutoSize = True
-        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(3, 348)
-        Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
-        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(120, 17)
-        Me.checkboxSearchWhenTyping.TabIndex = 13
-        Me.checkboxSearchWhenTyping.Text = "Search when typing"
-        Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
-        '
-        'numericupdownSearchWhenTypingWaitTime
-        '
-        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(103, 364)
-        Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
-        Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
-        Me.numericupdownSearchWhenTypingWaitTime.Size = New System.Drawing.Size(89, 20)
-        Me.numericupdownSearchWhenTypingWaitTime.TabIndex = 14
-        Me.numericupdownSearchWhenTypingWaitTime.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'labelWaitTime
-        '
-        Me.labelWaitTime.AutoSize = True
-        Me.labelWaitTime.Location = New System.Drawing.Point(21, 366)
-        Me.labelWaitTime.Name = "labelWaitTime"
-        Me.labelWaitTime.Size = New System.Drawing.Size(76, 13)
-        Me.labelWaitTime.TabIndex = 15
-        Me.labelWaitTime.Text = "Wait time (ms):"
         '
         'OptionsWindow
         '
