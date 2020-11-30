@@ -738,6 +738,9 @@ Public Class aaformMainWindow
             TypeTimer.Interval = My.Settings.SearchWhenTypingTimerInterval
         End If
 
+        ' Configure HiDPI-related stuff.
+        HiDPIModeToggle(My.Settings.HiDPIMode)
+
         ' Set text for sidebar dropdown.
         comboboxSidebarTabSelector.SelectedIndex = 0
 
@@ -752,6 +755,19 @@ Public Class aaformMainWindow
         End If
 
     End Sub
+
+#Region "HiDPI-related stuff."
+    Private Sub HiDPIModeToggle(UseHiDPIMode As Boolean)
+        ' Turn on or off HiDPI mode as needed.
+        If UseHiDPIMode = True Then
+            ' Make the package list double height.
+            datagridviewPackageList.RowTemplate.Height = 48
+        Else
+            ' Turn off HiDPI mode.
+            datagridviewPackageList.RowTemplate.Height = 24
+        End If
+    End Sub
+#End Region
 
 #Region "Package ID search."
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick

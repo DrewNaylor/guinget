@@ -53,5 +53,8 @@
     <Setting Name="SearchWhenTypingTimerInterval" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">325</Value>
     </Setting>
+    <Setting Name="HiDPIMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

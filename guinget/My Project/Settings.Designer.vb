@@ -257,6 +257,18 @@ Namespace My
                 Me("SearchWhenTypingTimerInterval") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property HiDPIMode() As Boolean
+            Get
+                Return CType(Me("HiDPIMode"),Boolean)
+            End Get
+            Set
+                Me("HiDPIMode") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
