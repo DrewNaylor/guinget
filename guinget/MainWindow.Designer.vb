@@ -56,6 +56,8 @@ Partial Class aaformMainWindow
         Me.EditWingetSettingsAsAdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HowToUseGuingetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpMenuToolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -119,8 +121,6 @@ Partial Class aaformMainWindow
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.HowToUseGuingetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpMenuToolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -337,6 +337,20 @@ Partial Class aaformMainWindow
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "&Help"
+        '
+        'HowToUseGuingetToolStripMenuItem
+        '
+        Me.HowToUseGuingetToolStripMenuItem.Name = "HowToUseGuingetToolStripMenuItem"
+        Me.HowToUseGuingetToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
+        Me.HowToUseGuingetToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
+        Me.HowToUseGuingetToolStripMenuItem.Text = "&How to use guinget"
+        Me.HowToUseGuingetToolStripMenuItem.ToolTipText = "Navigates to https://drew-naylor.com/guinget/How-to-use" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "in your default browser." &
+    ""
+        '
+        'HelpMenuToolStripSeparator
+        '
+        Me.HelpMenuToolStripSeparator.Name = "HelpMenuToolStripSeparator"
+        Me.HelpMenuToolStripSeparator.Size = New System.Drawing.Size(194, 6)
         '
         'AboutToolStripMenuItem
         '
@@ -954,20 +968,6 @@ Partial Class aaformMainWindow
         'TypeTimer
         '
         Me.TypeTimer.Interval = 325
-        '
-        'HowToUseGuingetToolStripMenuItem
-        '
-        Me.HowToUseGuingetToolStripMenuItem.Name = "HowToUseGuingetToolStripMenuItem"
-        Me.HowToUseGuingetToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.HowToUseGuingetToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
-        Me.HowToUseGuingetToolStripMenuItem.Text = "&How to use guinget"
-        Me.HowToUseGuingetToolStripMenuItem.ToolTipText = "Navigates to https://drew-naylor.com/guinget/How-to-use" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "in your default browser." &
-    ""
-        '
-        'HelpMenuToolStripSeparator
-        '
-        Me.HelpMenuToolStripSeparator.Name = "HelpMenuToolStripSeparator"
-        Me.HelpMenuToolStripSeparator.Size = New System.Drawing.Size(194, 6)
         '
         'aaformMainWindow
         '

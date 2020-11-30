@@ -762,9 +762,24 @@ Public Class aaformMainWindow
         If UseHiDPIMode = True Then
             ' Make the package list double height.
             datagridviewPackageList.RowTemplate.Height = 48
+            ' Change the height of all the packages in there.
+            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            For Each PackageRow As DataGridViewRow In datagridviewPackageList.Rows
+                PackageRow.Height = 48
+            Next
+            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         Else
             ' Turn off HiDPI mode.
             datagridviewPackageList.RowTemplate.Height = 24
+            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            For Each PackageRow As DataGridViewRow In datagridviewPackageList.Rows
+                PackageRow.Height = 24
+            Next
+            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         End If
     End Sub
 #End Region
