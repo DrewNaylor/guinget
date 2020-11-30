@@ -58,8 +58,8 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.checkboxHiDPIMode = New System.Windows.Forms.CheckBox()
+        Me.labelHiDPIMode = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
@@ -257,8 +257,8 @@ Partial Class OptionsWindow
         'panelExperimentalSettings
         '
         Me.panelExperimentalSettings.AutoScroll = True
-        Me.panelExperimentalSettings.Controls.Add(Me.Label1)
-        Me.panelExperimentalSettings.Controls.Add(Me.CheckBox1)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelHiDPIMode)
+        Me.panelExperimentalSettings.Controls.Add(Me.checkboxHiDPIMode)
         Me.panelExperimentalSettings.Controls.Add(Me.labelWaitTime)
         Me.panelExperimentalSettings.Controls.Add(Me.numericupdownSearchWhenTypingWaitTime)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxSearchWhenTyping)
@@ -483,25 +483,25 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'CheckBox1
+        'checkboxHiDPIMode
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(3, 388)
-        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(84, 17)
-        Me.CheckBox1.TabIndex = 16
-        Me.CheckBox1.Text = "HiDPI Mode"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxHiDPIMode.AutoSize = True
+        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(3, 388)
+        Me.checkboxHiDPIMode.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxHiDPIMode.Name = "checkboxHiDPIMode"
+        Me.checkboxHiDPIMode.Size = New System.Drawing.Size(84, 17)
+        Me.checkboxHiDPIMode.TabIndex = 16
+        Me.checkboxHiDPIMode.Text = "HiDPI Mode"
+        Me.checkboxHiDPIMode.UseVisualStyleBackColor = True
         '
-        'Label1
+        'labelHiDPIMode
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 405)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(293, 39)
-        Me.Label1.TabIndex = 17
-        Me.Label1.Text = "For now, only doubles the height of items in the package list." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "May eventually be" &
+        Me.labelHiDPIMode.AutoSize = True
+        Me.labelHiDPIMode.Location = New System.Drawing.Point(21, 405)
+        Me.labelHiDPIMode.Name = "labelHiDPIMode"
+        Me.labelHiDPIMode.Size = New System.Drawing.Size(293, 39)
+        Me.labelHiDPIMode.TabIndex = 17
+        Me.labelHiDPIMode.Text = "For now, only doubles the height of items in the package list." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "May eventually be" &
     " expanded to cover the rest of the controls" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "that are difficult to use on HiDPI " &
     "devices."
         '
@@ -576,6 +576,6 @@ Partial Class OptionsWindow
     Friend WithEvents labelWaitTime As Label
     Friend WithEvents numericupdownSearchWhenTypingWaitTime As NumericUpDown
     Friend WithEvents checkboxSearchWhenTyping As CheckBox
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents checkboxHiDPIMode As CheckBox
+    Friend WithEvents labelHiDPIMode As Label
 End Class

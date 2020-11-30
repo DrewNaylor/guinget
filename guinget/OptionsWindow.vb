@@ -72,7 +72,8 @@ Public Class OptionsWindow
             ' If it falls between those two numbers, it's fine.
             numericupdownSearchWhenTypingWaitTime.Value = My.Settings.SearchWhenTypingTimerInterval
         End If
-
+        ' HiDPI Mode.
+        checkboxHiDPIMode.Checked = My.Settings.HiDPIMode
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
@@ -144,6 +145,8 @@ Public Class OptionsWindow
         My.Settings.SearchWhenTyping = checkboxSearchWhenTyping.Checked
         ' Search when typing wait amount.
         My.Settings.SearchWhenTypingTimerInterval = CInt(numericupdownSearchWhenTypingWaitTime.Value)
+        ' HiDPI Mode.
+        My.Settings.HiDPIMode = checkboxHiDPIMode.Checked
 
         My.Settings.Save()
         My.Settings.Reload()
@@ -189,6 +192,8 @@ Public Class OptionsWindow
         checkboxSearchWhenTyping.Checked = False
         ' Search when typing wait amount.
         numericupdownSearchWhenTypingWaitTime.Value = 325
+        ' HiDPI Mode checkbox.
+        checkboxHiDPIMode.Checked = False
     End Sub
 
     Private Sub tabcontrolOptions_MouseWheel(sender As Object, e As MouseEventArgs) Handles tabcontrolOptions.MouseWheel
