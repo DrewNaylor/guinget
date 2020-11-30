@@ -991,19 +991,19 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub toolstripmenuitemAdvancedSearch_Click(sender As Object, e As EventArgs) Handles toolstripmenuitemAdvancedSearch.Click
-        ' Run the sub to show the Search options window.
-        ShowSearchOptions()
+        ' Run the sub to show the Options window, Search tab.
+        ShowOptions(1)
     End Sub
 
     Private Sub AdvancedSearchMenuItem_Click(sender As Object, e As EventArgs) Handles AdvancedSearchMenuItem.Click
-        ' Run the sub to show the Search options window.
-        ShowSearchOptions()
+        ' Run the sub to show the Options window, Search tab.
+        ShowOptions(1)
     End Sub
 
-    Private Sub ShowSearchOptions()
+    Private Sub ShowOptions(Optional SelectedTab As Integer = 0)
         ' Show search options.
         ' Change it to the proper tab first.
-        OptionsWindow.tabcontrolOptions.SelectTab(1)
+        OptionsWindow.tabcontrolOptions.SelectTab(SelectedTab)
         OptionsWindow.ShowDialog(Me)
 
         ' Change sidebar visibility if necessary.
@@ -1011,6 +1011,9 @@ Public Class aaformMainWindow
 
         ' Update search when typing timer if necessary.
         TypeTimer.Interval = My.Settings.SearchWhenTypingTimerInterval
+
+        ' Update HiDPI Mode status.
+        HiDPIModeToggle(My.Settings.HiDPIMode)
     End Sub
 
     Private Sub SearchForPackageIDFromContextMenu_Click(sender As Object, e As EventArgs) Handles SearchForPackageIDFromContextMenu.Click
@@ -1058,14 +1061,7 @@ Public Class aaformMainWindow
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
         ' Open Options window.
-        OptionsWindow.tabcontrolOptions.SelectTab(0)
-        OptionsWindow.ShowDialog(Me)
-
-        ' Change sidebar visibility if necessary.
-        SidebarVisibility(My.Settings.ShowSidebar)
-
-        ' Update search when typing timer if necessary.
-        TypeTimer.Interval = My.Settings.SearchWhenTypingTimerInterval
+        ShowOptions(0)
     End Sub
 
     Private Sub ShowInWingetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowInWingetToolStripMenuItem.Click
