@@ -20,7 +20,7 @@ Other libraries used (besides .NET):
 - To load the SQLite database, we're using [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.SQLite/), available under the Apache License 2.0.<br>
 - Scrolling tab control tabs with the mouse wheel is provided by [libscrollswitchtabs](https://github.com/DrewNaylor/drews-libs/blob/master/docs/libscrollswitchtabs-how-to-use.md), also available under the Apache License 2.0.
 
-There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
+There's a [project roadmap](https://drew-naylor.com/guinget/Project-roadmap) available, if you're interested.
 
 ## Installation and Usage
 
