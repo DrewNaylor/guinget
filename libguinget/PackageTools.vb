@@ -52,7 +52,7 @@ Public Class PackageTools
             End If
 
             ' Define CMD args.
-            proc.StartInfo.Arguments = "/k winget install --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e"
+            proc.StartInfo.Arguments = "/k winget install --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e -s ""winget"""
 
             ' Start installing. Catch the exception in case the user cancels the UAC dialog.
             Try
@@ -88,7 +88,7 @@ Public Class PackageTools
             Dim BulkInstallCommandList As String = String.Empty
             For i As Integer = 0 To PackageIDs.Count - 1
                 ' Begin adding packages to the list.
-                BulkInstallCommandList = BulkInstallCommandList & "winget install --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e"
+                BulkInstallCommandList = BulkInstallCommandList & "winget install --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e -s ""winget"""
                 ' Now see if we should add " && ".
                 If i < PackageIDs.Count - 1 Then
                     BulkInstallCommandList = BulkInstallCommandList & " && "
@@ -112,7 +112,7 @@ Public Class PackageTools
         ' This'll open a CMD window and display the package info in winget.
         Using proc As New Process
             proc.StartInfo.FileName = "cmd"
-            proc.StartInfo.Arguments = "/k winget show --id " & PackageID & " -v " & PackageVersion & " -e"
+            proc.StartInfo.Arguments = "/k winget show --id " & PackageID & " -v " & PackageVersion & " -e -s ""winget"""
             proc.Start()
         End Using
     End Sub
