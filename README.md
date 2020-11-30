@@ -13,7 +13,12 @@ This may no longer be necessary, at least on the latest update for Windows 10 20
 Main branch build status/nightly build:<br>
 [![Main branch build status/nightly build](https://ci.appveyor.com/api/projects/status/ec0r3vwr0wmvtc23/branch/master?svg=true)](https://ci.appveyor.com/project/DrewNaylor/guinget/branch/master)
 
-Visual Studio 2019 Community is being used for this project's development, and .NET Framework 4.8 or newer for version 0.1.2 and newer (0.1.1 and older require at least .NET Framework 4.6.1) is required to run it. YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
+Visual Studio 2019 Community is being used for this project's development, and .NET Framework 4.8 or newer for version 0.1.2 and newer (0.1.1 and older require at least .NET Framework 4.6.1) is required to run it.
+
+Other libraries used (besides .NET):
+- YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.<br>
+- To load the SQLite database, we're using [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.SQLite/), available under the Apache License 2.0.<br>
+- Scrolling tab control tabs with the mouse wheel is provided by [libscrollswitchtabs](https://github.com/DrewNaylor/drews-libs/blob/master/docs/libscrollswitchtabs-how-to-use.md), also available under the Apache License 2.0.
 
 There's a [project roadmap](./docs/Project-roadmap.md) available, if you're interested.
 
