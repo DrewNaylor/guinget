@@ -329,7 +329,7 @@ Partial Class OptionsWindow
         'labelCopyrightForRobocopy
         '
         Me.labelCopyrightForRobocopy.AutoSize = True
-        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 247)
+        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(21, 247)
         Me.labelCopyrightForRobocopy.Name = "labelCopyrightForRobocopy"
         Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(238, 52)
         Me.labelCopyrightForRobocopy.TabIndex = 11
@@ -388,7 +388,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(18, 256)
+        Me.label7zExePath.Location = New System.Drawing.Point(21, 210)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
