@@ -93,6 +93,9 @@ Closing guinget before the cache update is completed if using Robocopy and/or 7-
 
 ## Search when typing
 
+Config file setting name:
+`SearchWhenTyping`
+
 Instead of requiring you to press `Enter` or click `Search` on the toolbar, you can just wait a bit (325 milliseconds by default) for search to run automatically. This feature would probably have been a regular, non-experimental one had it been implemented sooner and not within a week of the expected release phase.
 
 Defaults to `False`/unchecked.
