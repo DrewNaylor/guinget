@@ -102,6 +102,9 @@ Defaults to `False`/unchecked.
 
 ### Wait time (ms)
 
+Config file setting name:
+`SearchWhenTypingTimerInterval`
+
 This is how long it'll wait after you finish typing before running a search (in milliseconds).<br>
 Minimum value is `1`, and maximum value is `9999`.
 
@@ -109,7 +112,10 @@ Defaults to `325`.
 
 ## HiDPI Mode
 
-For now, only doubles the height of items in the package list.
+Config file setting name:
+`HiDPIMode`
+
+For now, only doubles the height of items in the package list.<br>
 May eventually be expanded to cover the rest of the controls that are difficult to use on HiDPI devices.
 
 Defaults to `False`/unchecked.
