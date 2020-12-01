@@ -57,19 +57,18 @@ Public Class ApplyChangesWindow
             ' Make sure we're not already installing by blocking out the "Confirm changes" button.
             buttonConfirmChanges.Enabled = False
 
-            ' Change all the packages to say "Installing..."
-            For Each Package As DataGridViewRow In datagridviewAppsBeingInstalled.Rows
-                Package.Cells.Item(3).Value = Package.Cells.Item(2).Value.ToString & "ing..."
-            Next
-
-            ' Now we can start the install process.
+            ' Start the install process.
             Dim PackageIDs As New List(Of String)
             Dim PackageVersions As New List(Of String)
             ' Go through the datagridview and add the packages to the list.
             For Each Package As DataGridViewRow In datagridviewAppsBeingInstalled.Rows
-                PackageIDs.Add(Package.Cells(0).Value.ToString)
-                PackageVersions.Add(Package.Cells(1).Value.ToString)
+                If Package.Cells.Item(3).Value.ToString = "Ready" Then
+                    PackageIDs.Add(Package.Cells(0).Value.ToString)
+                    PackageVersions.Add(Package.Cells(1).Value.ToString)
+                    Package.Cells.Item(3).Value = Package.Cells.Item(2).Value.ToString & "ing..."
+                End If
             Next
+
             ' Send the lists over to the bulk install code.
             PackageTools.BulkInstallPkg(PackageIDs, PackageVersions, My.Settings.InstallInteractively, My.Settings.ElevateWinget,
                                         My.Settings.DefaultSourceName)
