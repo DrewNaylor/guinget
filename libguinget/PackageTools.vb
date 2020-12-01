@@ -31,7 +31,8 @@ Imports YamlDotNet.RepresentationModel
 Public Class PackageTools
 
 #Region "Install package with winget."
-    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, Optional InstallInteractively As Boolean = False, Optional ElevateWinget As Boolean = False)
+    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, Optional InstallInteractively As Boolean = False,
+                                 Optional ElevateWinget As Boolean = False, Optional DefaultSourceName As String = "winget")
 
         ' Define variables for storing the winget process. We'll run CMD
         ' so that we can keep it open with /k.
@@ -52,7 +53,7 @@ Public Class PackageTools
             End If
 
             ' Define CMD args.
-            proc.StartInfo.Arguments = "/k winget install --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e -s ""winget"""
+            proc.StartInfo.Arguments = "/k winget install --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e -s " & DefaultSourceName
 
             ' Start installing. Catch the exception in case the user cancels the UAC dialog.
             Try
@@ -64,7 +65,8 @@ Public Class PackageTools
 
     End Sub
 
-    Public Shared Sub BulkInstallPkg(PackageIDs As List(Of String), PackageVersions As List(Of String), Optional InstallInteractively As Boolean = False, Optional ElevateWinget As Boolean = False)
+    Public Shared Sub BulkInstallPkg(PackageIDs As List(Of String), PackageVersions As List(Of String), Optional InstallInteractively As Boolean = False,
+                                     Optional ElevateWinget As Boolean = False, Optional DefaultSourceName As String = "winget")
         ' Define process variables to store winget's stuff.
         ' CMD will be kept open with /k.
 
@@ -88,7 +90,7 @@ Public Class PackageTools
             Dim BulkInstallCommandList As String = String.Empty
             For i As Integer = 0 To PackageIDs.Count - 1
                 ' Begin adding packages to the list.
-                BulkInstallCommandList = BulkInstallCommandList & "winget install --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e -s ""winget"""
+                BulkInstallCommandList = BulkInstallCommandList & "winget install --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e -s " & DefaultSourceName
                 ' Now see if we should add " && ".
                 If i < PackageIDs.Count - 1 Then
                     BulkInstallCommandList = BulkInstallCommandList & " && "
@@ -108,11 +110,11 @@ Public Class PackageTools
 #End Region
 
 #Region "Show package in winget"
-    Public Shared Sub ShowPkgInWinget(PackageID As String, PackageVersion As String)
+    Public Shared Sub ShowPkgInWinget(PackageID As String, PackageVersion As String, Optional DefaultSourceName As String = "winget")
         ' This'll open a CMD window and display the package info in winget.
         Using proc As New Process
             proc.StartInfo.FileName = "cmd"
-            proc.StartInfo.Arguments = "/k winget show --id " & PackageID & " -v " & PackageVersion & " -e -s ""winget"""
+            proc.StartInfo.Arguments = "/k winget show --id " & PackageID & " -v " & PackageVersion & " -e -s " & DefaultSourceName
             proc.Start()
         End Using
     End Sub

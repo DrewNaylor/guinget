@@ -56,5 +56,8 @@
     <Setting Name="HiDPIMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="DefaultSourceName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"winget"</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

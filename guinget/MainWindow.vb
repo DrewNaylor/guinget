@@ -1090,7 +1090,9 @@ Public Class aaformMainWindow
     Private Sub ShowInWinget()
         ' Shows the currently-selected package details in winget.
         If datagridviewPackageList.SelectedRows.Count = 1 Then
-            PackageTools.ShowPkgInWinget(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString, datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString)
+            PackageTools.ShowPkgInWinget(datagridviewPackageList.SelectedRows(0).Cells(2).Value.ToString,
+                                         datagridviewPackageList.SelectedRows(0).Cells(4).Value.ToString,
+                                         My.Settings.DefaultSourceName)
         End If
     End Sub
 

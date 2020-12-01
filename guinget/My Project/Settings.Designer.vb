@@ -269,6 +269,18 @@ Namespace My
                 Me("HiDPIMode") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("""winget""")>  _
+        Public Property DefaultSourceName() As String
+            Get
+                Return CType(Me("DefaultSourceName"),String)
+            End Get
+            Set
+                Me("DefaultSourceName") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
