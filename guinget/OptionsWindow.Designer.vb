@@ -388,7 +388,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(21, 210)
+        Me.label7zExePath.Location = New System.Drawing.Point(18, 206)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
@@ -422,11 +422,11 @@ Partial Class OptionsWindow
         Me.labelLoadLatestVersion.AutoSize = True
         Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 92)
         Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
-        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(298, 52)
+        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(271, 52)
         Me.labelLoadLatestVersion.TabIndex = 3
-        Me.labelLoadLatestVersion.Text = "Some packages may display a version number that's not really" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the latest version." &
-    " Not sure how to fix this at the moment." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Requires loading from the community da" &
-    "tabase checkbox to" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "be checked."
+        Me.labelLoadLatestVersion.Text = "Some packages may display a version number that's not" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "really the latest version." &
+    " Not sure how to fix this at the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "moment. Requires loading from the community" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "d" &
+    "atabase checkbox to be checked."
         '
         'labelLoadFromManifests
         '
