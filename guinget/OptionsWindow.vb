@@ -199,7 +199,7 @@ Public Class OptionsWindow
         ' HiDPI Mode checkbox.
         checkboxHiDPIMode.Checked = False
         ' Default source name.
-        textboxDefaultSourceName.Text = "winget"
+        textboxDefaultSourceName.Text = """winget"""
     End Sub
 
     Private Sub tabcontrolOptions_MouseWheel(sender As Object, e As MouseEventArgs) Handles tabcontrolOptions.MouseWheel
