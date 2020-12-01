@@ -32,7 +32,7 @@ Since it may be a bit complicated for new users, there's a guide on [how to use 
 
 ## Requirements
 
-The [system requirements](https://drew-naylor.com/guinget/system-requirements) include .NET Framework 4.8 for version 0.1.2 and newer (previous versions require at least .NET Framework 4.6.1) as mentioned above and winget, but otherwise they don't require all that much power. 
+The [system requirements](https://drew-naylor.com/guinget/system-requirements) include .NET Framework 4.8 for version 0.1.2 and newer (previous versions require at least .NET Framework 4.6.1) as mentioned above and [winget](https://github.com/microsoft/winget-cli/releases/latest), but otherwise they don't require all that much power. 
 
 Faster computers will perform better with few (if any) lock-ups when it comes to extracting and loading the package list, though. One goal is to eventually eliminate or reduce that lock-up as much as possible, which will require async loading. Not sure how to reliably do it with a datagridview yet, though.
 
