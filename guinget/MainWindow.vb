@@ -1026,6 +1026,9 @@ Public Class aaformMainWindow
         ' Change sidebar visibility if necessary.
         SidebarVisibility(My.Settings.ShowSidebar)
 
+        ' Show or hide unfinished controls.
+        UnfinishedControlsVisible(Not My.Settings.HideUnfinishedControls)
+
         ' Update search when typing timer if necessary.
         TypeTimer.Interval = My.Settings.SearchWhenTypingTimerInterval
 

@@ -321,10 +321,10 @@ Partial Class OptionsWindow
         Me.labelRequiresApplicationRestart.AutoSize = True
         Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 20)
         Me.labelRequiresApplicationRestart.Name = "labelRequiresApplicationRestart"
-        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(275, 26)
+        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(251, 26)
         Me.labelRequiresApplicationRestart.TabIndex = 12
-        Me.labelRequiresApplicationRestart.Text = "Requires application restart. The rest of these options still" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "apply even if this" &
-    " is on."
+        Me.labelRequiresApplicationRestart.Text = "May require application restart to take full effect." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The rest of these options s" &
+    "till apply even if this is on."
         '
         'labelCopyrightForRobocopy
         '
