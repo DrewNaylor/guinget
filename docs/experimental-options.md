@@ -111,3 +111,5 @@ Defaults to `False`/unchecked.
 ## Default source name
 
 In case the default source for winget is renamed, you can change it so guinget still works. This is used when passing packages to winget to do things like show or install them, because it gets confused when a package is available in multiple sources and there are multiple sources active. One affected package is Windows Terminal.
+
+Defaults to `"winget"`.
