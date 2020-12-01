@@ -2,7 +2,7 @@
 
 [Homepage](https://drew-naylor.com/guinget) &bull; [Back to usage guide](https://drew-naylor.com/guinget/How-to-use)
 
-This is a list of experimental options as of version 0.1.3, and they can all be configured from `Tools>Options...>Experimental`. To show the controls on this tab, first open the `About` window and click in the bottom-left corner, then re-open the `Options` window and go to the `Experimental` tab where the options will now be visible.
+This is a list of experimental options as of version 0.1.3, and they can all be configured from `Tools>Options...>Experimental`. To show the controls on this tab, first check the `Hide unfinished controls and experimental stuff` checkbox on the `Tools>Options...>Experimental` tab, then restart guinget. They'll be visible the next time you open that tab.
 
 If something breaks, you can use the `Defaults` button in the bottom-left corner of the `Options` window to reset everything, then click `OK` to save the default values. Some options like the one to hide unfinished controls and experimental stuff requires guinget to be restarted to take effect. Please be aware that if the guinget cache is what's broken, you'll have to manually delete it from `%AppData%\winget-frontends\source` for now. However, if winget's cache is broken, that may require resetting its sources from a command-line since there's no option for that in guinget yet.
 

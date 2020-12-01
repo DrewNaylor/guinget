@@ -144,7 +144,7 @@ You can switch tab control tabs like the ones in the `Options` window using the 
 ## Showing unfinished controls
 
 Controls that don't yet have their features implemented are hidden by default, but you can show them if you wish. Here's how to do this:
-1. Click the hidden label in the bottom-left corner of the `About` window.
-2. (Optional) Uncheck `Hide unfinished controls and experimental stuff` from `Tools>Options...>Experimental` if you wish to keep these controls visible the next time guinget starts and across updates.
+1. Uncheck `Hide unfinished controls and experimental stuff` from `Tools>Options...>Experimental`.
+2. Restart guinget and go back to that tab.
 
 Version 0.1.3 also hides [experimental options](experimental-options) behind this feature, so you'll have to show experimental controls if you want to change experimental options. Please note that experimental options will stay active even if the controls are hidden again.
