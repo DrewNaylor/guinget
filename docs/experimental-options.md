@@ -8,6 +8,9 @@ If something breaks, you can use the `Defaults` button in the bottom-left corner
 
 ## Hide unfinished controls and experimental stuff
 
+Config file setting name:
+`HideUnfinishedControls`
+
 Description:
 May require application restart to take full effect. The rest of these options still apply even if this is on.
 
@@ -16,6 +19,9 @@ If unchecked, these options and other unfinished controls will remain visible ev
 Defaults to `True`/checked.
 
 ## Update and load package list from winget's default community database
+
+Config file setting name:
+`LoadFromSqliteDb`
 
 Description:
 This will ensure guinget only displays packages winget's default source knows about and may be faster in some cases. Details will still be loaded from manifests.
@@ -44,6 +50,9 @@ Defaults to `False`/unchecked.
 
 ## Use 7-Zip to extract manifests and database
 
+Config file setting name:
+`Use7zipForExtraction`
+
 Description:
 7-Zip is Copyright (C) Igor Pavlov.<br>
 7-Zip may extract faster than the .NET extractor, but it's not fully tested for this purpose.
@@ -56,6 +65,9 @@ Defaults to `False`/unchecked.
 
 ### 7z.exe path
 
+Config file setting name:
+`PathTo7zip`
+
 `7z.exe` is used when using 7-Zip to extract the manifests and database. Not everyone has `7z.exe` installed to `"C:\Program Files\7-Zip\7z.exe"`, so you can change that here, with a `Browse` dialog for convenience.
 
 If the path contains `://`, it'll be reset to default.
@@ -63,6 +75,9 @@ If the path contains `://`, it'll be reset to default.
 Defaults to `"C:\Program Files\7-Zip\7z.exe"`.
 
 ## Use Robocopy to copy manifests and database
+
+Config file setting name:
+`UseRobocopyForCopying`
 
 Description:
 Robocopy is Copyright (C) Microsoft Corporation. All rights reserved.<br>
@@ -108,6 +123,9 @@ May eventually be expanded to cover the rest of the controls that are difficult 
 Defaults to `False`/unchecked.
 
 ## Default source name
+
+Config file setting name:
+`DefaultSourceName`
 
 In case the default source for winget is renamed, you can change it so guinget still works. This is used when passing packages to winget to do things like show or install them, because it gets confused when a package is available in multiple sources and there are multiple sources active. One affected package is Windows Terminal.
 
