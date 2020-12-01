@@ -1,7 +1,7 @@
 If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word wrap.
 
 
-guinget -- Version 0.1.2 Alpha -- 9/7/2020 (MM/DD/YYYY).
+guinget -- Version 0.1.3 Alpha -- 12/1/2020 (MM/DD/YYYY).
 
 If you have any trouble, you might be able to find an answer in the documentation. It's linked at the end of this readme file. If not, you can submit a bug report at the "Report a problem" link at the end of this readme file. Your report will be labeled by the developers accordingly in a reasonable amount of time.
 
@@ -27,6 +27,9 @@ AFA421669D4856FB9136656B97CD2098478B1FE67AD5CB2326DA5A8BDA4BD36A
 SHA-256 sum for "lib\YamlDotNet.dll" in the archive:
 8838A6EC1F2DED411D7C72CAA5DA2F524CFF08145850D2496A758F072FC96F67
 
+SHA-256 sum for "lib\libscrollswitchtabs.dll" in the archive:
+8838A6EC1F2DED411D7C72CAA5DA2F524CFF08145850D2496A758F072FC96F67
+
 The rest of the libraries in the "lib" folder are from Microsoft.Data.Sqlite and I don't want to list them all:
 https://www.nuget.org/packages/Microsoft.Data.Sqlite/
 
@@ -35,13 +38,17 @@ https://www.nuget.org/packages/Microsoft.Data.Sqlite/
 GENERAL NOTES
 ~~~~~~~~~~~~~~~~
 
---> Some packages like CrystalDiskMark and LibreOffice may require administrative permissions to install, so you'll have to run guinget as an administrator.
+--> Some packages like CrystalDiskMark and LibreOffice may require administrative permissions to install, so you'll have to check the "Elevate winget (UAC)" checkbox in the "Apply changes" window before confirming changes. Please don't run guinget itself as an administrator for versions 0.1.3 and above.
+
+Sometimes you'll have to update winget's sources as well since winget doesn't like updating its sources while elevated from a non-administrator account, so you can use "Package list>Update winget sources", or run "winget source update".
+
+Windows 10 version 2004 might have issues with elevating winget, so in that case you'll have to hope it automatically elevates package installers, but I've had a problem with that in the past, and I'm not entirely sure how to fix it.
 
 --> Before running guinget, please extract the entire archive to an easy-to-access location. It won't work correctly if it's temporarily extracted without its config file ("guinget.exe.config") and helper libraries (everything in the "lib" folder). You don't have to do this if you used the installer.
 
---> Some documentation is available in the "/docs" folder included in this archive, while all of it is available online as linked below. Please be aware that it's not comprehensive by any means.
+--> Some documentation is available in the "/docs" folder included in this archive, while all of it is available online as linked below. Please be aware that it might not be comprehensive.
 
---> There are brief instructions on how to use guinget available in the "HOW TO USE" section below.
+--> There are brief instructions on how to use guinget available in the "HOW TO USE" section below, with more detailed ones available in the usage guide (https://drew-naylor.com/guinget/How-to-use), in "How to use guinget.html" located in the "/docs" folder, or linked from "Help>How to use guinget".
 
 --> Make sure to read the changelog included in this archive. There may be some documentation in this file that's not actually in the /docs (and online) documentation since I have a hard time making good documentation unless I know exactly what to talk about. The changelog does have markdown so that it looks nice on GitHub, but it shouldn't be too intrusive.
 
@@ -49,7 +56,9 @@ GENERAL NOTES
 
 --> guinget uses YamlDotNet to read package manifests, and its license is available in "LICENSE-YamlDotNet.txt"
 
---> Reading SQLite databases (if turned on) is done using Microsot.Data.Sqlite, which falls under the Apache License 2.0.
+--> Reading SQLite databases (if turned on) is done using Microsoft.Data.Sqlite, which falls under the Apache License 2.0.
+
+--> Switching tab control tabs with the mouse scroll wheel is provided by libscrollswitchtabs.
 
 --> The source code should be included in this archive in a Zip file called "source-code.zip". Visual Studio 2019 is required to open this project as it uses NuGet packages, and there were changes in the past where older Visual Studio versions can't use newer NuGet packages or something.
 
@@ -61,7 +70,9 @@ GENERAL NOTES
 KNOWN ISSUES
 ~~~~~~~~~~~~~~~~
 
-- Selecting all packages with Ctrl+A while searching will select every package, even the ones that aren't visible. (issue #13 https://github.com/DrewNaylor/guinget/issues/13 )
+- Selecting all packages with Ctrl+A while searching will select every package, even the ones that aren't visible. (issue #13 https://github.com/DrewNaylor/guinget/issues/13)
+- Applying changes with too many packages at once makes guinget lock up. (issue #57 https://github.com/DrewNaylor/guinget/issues/57)
+- When displaying only the latest version of a package, some of them aren't really the latest version as shown in winget. (issue #63 https://github.com/DrewNaylor/guinget/issues/63)
 
 See all known issues: https://github.com/DrewNaylor/guinget/labels/known%20issue
 
@@ -112,24 +123,24 @@ A more-detailed usage guide is available in "docs/How to use guinget.html".
 
 4. Wait until the package list cache has been updated and the package details have been loaded. This may take a bit.
 
-5. Mark the packages as you wish by right-clicking or double-clicking on them and selecting what you want them to be marked as from the "Action" submenu (either install or "do nothing"/ignore for now).
+5. Mark the packages as you wish by right-clicking or double-clicking on them and selecting what you want them to be marked as using the "Action: (action)" items (either install or "do nothing"/ignore for now). For example, to mark a package to install, double-click on it and select "Action: Install".
 
-You can also mark packages from the "Selected packages>Action" menu, or by opening the package's combobox/dropdown in the "Action" column (may require a few clicks). This combobox/dropdown can also be activated by moving over to it with the arrow keys and pressing "space", though sometimes I have a bit of issue with this.
+You can also mark packages from the "Selected packages" menu, or by opening the package's combobox/dropdown in the "Action" column (may require a few clicks). This combobox/dropdown can also be activated by moving over to it with the arrow keys and pressing "space", though sometimes I have a bit of issue with this.
 
 Each version of a package is listed as a separate package for now. I want to have it be like Synaptic where you open a different window to choose a different version of a package.
 
 Search:
-Searching is available, so you can use the search box to make finding packages faster. At the moment, you'll have to manually clear the search box (either with `Backspace` or `Escape`) and search again to get back to the non-filtered package list. If you're showing the sidebar, you can double-click or press `Enter` on the `All` item at the top of the search terms list.
+Searching is available, so you can use the search box to make finding packages faster. If you're showing the sidebar, you can double-click or press `Enter` on the `All` item at the top of the search terms list.
 
-You can also search for all packages containing a specific package's ID using `Search for last-selected ID`, either from the package context menu, or from the `Selected packages` menu.
+You can also search for all packages containing a specific package's ID using `Search for package ID`, either from the package context menu, or from the `Selected packages` menu.
 
-After searching, you can use the `Tab` key to focus the package list again, although this may take several `Tab`s if the sidebar is shown.
+After searching, you can press `Ctrl+F` a second time to focus the package list again.
 
 By default, searches are re-done after updating the package list, although you can turn this off from the `Options` window under `Package list>Search options...`; uncheck `Re-run search after cache update` and click `OK`.
 
 6. Once you've marked your packages, you can apply them by opening the "Apply changes" dialog, either from the toolbar or from the "Package list" menu.
 
-7. guinget doesn't support batch installs (or uninstalls, but uninstalls aren't supported by winget yet, either) yet, so you'll have to either press "Enter" or double-click on each package entry in the list when you want to start installing it.
+7. guinget supports batch installs, so you can just click the "Confirm changes" button when ready. If you want to install packages one at a time, either press "Enter" or double-click on each package entry in the list when you want to start installing it.
 
 ----------------------------------
 CONTACT AND COPYRIGHT/LICENSING
@@ -150,7 +161,7 @@ Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 guinget
-Version 0.1.2.0 Alpha
+Version 0.1.3.0 Alpha
 Copyright (C) 2020 Drew Naylor. Licensed under Apache License 2.0.
 
 Unofficial GUI for Microsoft's Windows Package Manager (winget).
@@ -161,17 +172,25 @@ You can get the source code for guinget from
 https://github.com/DrewNaylor/guinget
 
 libguinget is used for things like loading the package list and uses the Apache License 2.0.
+libguinget Copyright (C) 2020 Drew Naylor.
+
+libscrollswitchtabs is part of the drews-libs project and is used for switching tab control tabs using the mouse scroll wheel, just like in many Linux applications.
+libscrollswitchtabs uses the Apace License 2.0 and you can get its source code here:
+https://github.com/DrewNaylor/drews-libs
+libscrollswitchtabs Copyright (C) 2020 Drew Naylor.
 
 Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the Apache License 2.0. NuGet page for Microsoft.Data.Sqlite:
 https://www.nuget.org/packages/Microsoft.Data.Sqlite/
+Microsoft.Data.Sqlite Copyright (C) Microsoft Corporation. All rights reserved.
 
 YamlDotNet is used to read manifests, which you can get the source code for here:
 https://github.com/aaubry/YamlDotNet
 YamlDotNet falls under the MIT license, which you can read a copy of below the Apache License summary.
+YamlDotNet Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry and contributors
 
 ---------------------------------------------------------------
 
-Apache License 2.0 summary as it applies to guinget, libguinget, and Microsoft.Data.Sqlite:
+Apache License 2.0 summary as it applies to guinget, libguinget, libscrollswitchtabs, and Microsoft.Data.Sqlite:
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
