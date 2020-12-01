@@ -16,7 +16,7 @@ Requires application restart. The rest of these options still apply even if this
 
 If unchecked, these options and other unfinished controls will remain visible even after restarting or upgrading guinget.
 
-Defaults to `True`.
+Defaults to `True`/checked.
 
 ## Using winget's database file
 
@@ -26,7 +26,7 @@ Update and load package list from winget's default community database
 Description:
 This will ensure guinget only displays packages winget's default source knows about and may be faster in some cases. Details will still be loaded from manifests.
 
-Defaults to `False`.
+Defaults to `False`/unchecked.
 
 ## Loading only latest versions
 
@@ -36,7 +36,7 @@ Load only the latest version of each package
 Description:
 Some packages may display a version number that's not really the latest version. Not sure how to fix this at the moment. Requires loading from the community database checkbox to be checked.
 
-Defaults to `False`.
+Defaults to `False`/unchecked.
 
 ## Use 7-Zip
 
@@ -49,7 +49,7 @@ Description:
 
 7-Zip would be used by default if it weren't for the fact that not all computers have it and that I don't know how to really parse command-line output yet. The issue with not all computers having it could be worked around by bundling it with guinget, but I don't really want to do that because it's another dependency and would make the package larger.
 
-Defaults to `False`.
+Defaults to `False`/unchecked.
 
 ### 7z.exe path
 
@@ -68,13 +68,13 @@ Robocopy may copy faster than the .NET copier, but it's not fully tested for thi
 
 If it weren't for Wine not having Robocopy by default and me not really understanding how to parse output from command-line programs yet, this would be checked by default since it's so much faster.
 
-Defaults to `False`.
+Defaults to `False`/unchecked.
 
 ## Search when typing
 
 Instead of requiring you to press `Enter` or click `Search` on the toolbar, you can just wait a bit (325 milliseconds by default) for search to run automatically. This feature would probably have been a regular, non-experimental one had it been implemented sooner and not within a week of the expected release phase.
 
-Defaults to `False`.
+Defaults to `False`/unchecked.
 
 ### Wait time (ms)
 
@@ -82,3 +82,10 @@ This is how long it'll wait after you finish typing before running a search (in 
 Minimum value is `1`, and maximum value is `9999`.
 
 Defaults to `325`.
+
+## HiDPI Mode
+
+For now, only doubles the height of items in the package list.
+May eventually be expanded to cover the rest of the controls that are difficult to use on HiDPI devices.
+
+Defaults to `False`/unchecked.
