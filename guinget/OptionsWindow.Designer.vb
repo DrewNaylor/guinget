@@ -22,6 +22,7 @@ Partial Class OptionsWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OptionsWindow))
         Me.tablelayoutpanelOptions = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonDefaults = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
@@ -532,9 +533,9 @@ Partial Class OptionsWindow
         Me.labelDefaultSourceNameDescription.AutoSize = True
         Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 473)
         Me.labelDefaultSourceNameDescription.Name = "labelDefaultSourceNameDescription"
-        Me.labelDefaultSourceNameDescription.Size = New System.Drawing.Size(254, 26)
+        Me.labelDefaultSourceNameDescription.Size = New System.Drawing.Size(261, 91)
         Me.labelDefaultSourceNameDescription.TabIndex = 20
-        Me.labelDefaultSourceNameDescription.Text = "This is here just in case the default source for winget" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "is renamed."
+        Me.labelDefaultSourceNameDescription.Text = resources.GetString("labelDefaultSourceNameDescription.Text")
         '
         'OptionsWindow
         '
