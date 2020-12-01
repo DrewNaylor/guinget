@@ -250,6 +250,8 @@ Partial Class OptionsWindow
         '
         Me.tabpageRefreshCache.Controls.Add(Me.panelExperimentalSettings)
         Me.tabpageRefreshCache.Controls.Add(Me.labelExperimentalSettingsHidden)
+        Me.tabpageRefreshCache.Controls.Add(Me.checkboxHideUnfinishedControls)
+        Me.tabpageRefreshCache.Controls.Add(Me.labelRequiresApplicationRestart)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
         Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
         Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
@@ -269,10 +271,8 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.Controls.Add(Me.labelWaitTime)
         Me.panelExperimentalSettings.Controls.Add(Me.numericupdownSearchWhenTypingWaitTime)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxSearchWhenTyping)
-        Me.panelExperimentalSettings.Controls.Add(Me.labelRequiresApplicationRestart)
         Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForRobocopy)
         Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForSevenZip)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxHideUnfinishedControls)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxUseRobocopy)
         Me.panelExperimentalSettings.Controls.Add(Me.buttonBrowse7zExePath)
         Me.panelExperimentalSettings.Controls.Add(Me.textbox7zExePath)
@@ -282,16 +282,15 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.Controls.Add(Me.labelLoadLatestVersion)
         Me.panelExperimentalSettings.Controls.Add(Me.labelLoadFromManifests)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxShowOnlyLatestVersions)
-        Me.panelExperimentalSettings.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelExperimentalSettings.Location = New System.Drawing.Point(3, 3)
+        Me.panelExperimentalSettings.Location = New System.Drawing.Point(3, 49)
         Me.panelExperimentalSettings.Name = "panelExperimentalSettings"
-        Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 364)
+        Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 318)
         Me.panelExperimentalSettings.TabIndex = 4
         '
         'labelWaitTime
         '
         Me.labelWaitTime.AutoSize = True
-        Me.labelWaitTime.Location = New System.Drawing.Point(21, 366)
+        Me.labelWaitTime.Location = New System.Drawing.Point(21, 320)
         Me.labelWaitTime.Name = "labelWaitTime"
         Me.labelWaitTime.Size = New System.Drawing.Size(76, 13)
         Me.labelWaitTime.TabIndex = 15
@@ -299,7 +298,7 @@ Partial Class OptionsWindow
         '
         'numericupdownSearchWhenTypingWaitTime
         '
-        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(103, 364)
+        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(103, 318)
         Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
@@ -310,7 +309,7 @@ Partial Class OptionsWindow
         'checkboxSearchWhenTyping
         '
         Me.checkboxSearchWhenTyping.AutoSize = True
-        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(3, 348)
+        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(3, 302)
         Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
         Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(120, 17)
         Me.checkboxSearchWhenTyping.TabIndex = 13
@@ -330,7 +329,7 @@ Partial Class OptionsWindow
         'labelCopyrightForRobocopy
         '
         Me.labelCopyrightForRobocopy.AutoSize = True
-        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 293)
+        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(18, 247)
         Me.labelCopyrightForRobocopy.Name = "labelCopyrightForRobocopy"
         Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(238, 52)
         Me.labelCopyrightForRobocopy.TabIndex = 11
@@ -341,7 +340,7 @@ Partial Class OptionsWindow
         'labelCopyrightForSevenZip
         '
         Me.labelCopyrightForSevenZip.AutoSize = True
-        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 210)
+        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 164)
         Me.labelCopyrightForSevenZip.Name = "labelCopyrightForSevenZip"
         Me.labelCopyrightForSevenZip.Size = New System.Drawing.Size(234, 39)
         Me.labelCopyrightForSevenZip.TabIndex = 10
@@ -362,7 +361,7 @@ Partial Class OptionsWindow
         'checkboxUseRobocopy
         '
         Me.checkboxUseRobocopy.AutoSize = True
-        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 276)
+        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 230)
         Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
         Me.checkboxUseRobocopy.Size = New System.Drawing.Size(250, 17)
@@ -372,7 +371,7 @@ Partial Class OptionsWindow
         '
         'buttonBrowse7zExePath
         '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(243, 251)
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(243, 205)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
         Me.buttonBrowse7zExePath.TabIndex = 5
@@ -381,7 +380,7 @@ Partial Class OptionsWindow
         '
         'textbox7zExePath
         '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(89, 252)
+        Me.textbox7zExePath.Location = New System.Drawing.Point(89, 206)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
         Me.textbox7zExePath.TabIndex = 4
@@ -398,7 +397,7 @@ Partial Class OptionsWindow
         'checkboxUse7zip
         '
         Me.checkboxUse7zip.AutoSize = True
-        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 193)
+        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 147)
         Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUse7zip.Name = "checkboxUse7zip"
         Me.checkboxUse7zip.Size = New System.Drawing.Size(234, 17)
@@ -410,7 +409,7 @@ Partial Class OptionsWindow
         '
         Me.checkboxLoadFromDatabase.AutoSize = True
         Me.checkboxLoadFromDatabase.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(3, 49)
+        Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(3, 3)
         Me.checkboxLoadFromDatabase.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxLoadFromDatabase.Name = "checkboxLoadFromDatabase"
         Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(229, 30)
@@ -421,7 +420,7 @@ Partial Class OptionsWindow
         'labelLoadLatestVersion
         '
         Me.labelLoadLatestVersion.AutoSize = True
-        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 138)
+        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 92)
         Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
         Me.labelLoadLatestVersion.Size = New System.Drawing.Size(298, 52)
         Me.labelLoadLatestVersion.TabIndex = 3
@@ -432,7 +431,7 @@ Partial Class OptionsWindow
         'labelLoadFromManifests
         '
         Me.labelLoadFromManifests.AutoSize = True
-        Me.labelLoadFromManifests.Location = New System.Drawing.Point(18, 79)
+        Me.labelLoadFromManifests.Location = New System.Drawing.Point(18, 33)
         Me.labelLoadFromManifests.Name = "labelLoadFromManifests"
         Me.labelLoadFromManifests.Size = New System.Drawing.Size(270, 39)
         Me.labelLoadFromManifests.TabIndex = 1
@@ -443,7 +442,7 @@ Partial Class OptionsWindow
         'checkboxShowOnlyLatestVersions
         '
         Me.checkboxShowOnlyLatestVersions.AutoSize = True
-        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(3, 121)
+        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(3, 75)
         Me.checkboxShowOnlyLatestVersions.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxShowOnlyLatestVersions.Name = "checkboxShowOnlyLatestVersions"
         Me.checkboxShowOnlyLatestVersions.Size = New System.Drawing.Size(239, 17)
@@ -454,12 +453,11 @@ Partial Class OptionsWindow
         'labelExperimentalSettingsHidden
         '
         Me.labelExperimentalSettingsHidden.AutoSize = True
-        Me.labelExperimentalSettingsHidden.Location = New System.Drawing.Point(66, 166)
+        Me.labelExperimentalSettingsHidden.Location = New System.Drawing.Point(79, 179)
         Me.labelExperimentalSettingsHidden.Name = "labelExperimentalSettingsHidden"
-        Me.labelExperimentalSettingsHidden.Size = New System.Drawing.Size(228, 39)
+        Me.labelExperimentalSettingsHidden.Size = New System.Drawing.Size(203, 13)
         Me.labelExperimentalSettingsHidden.TabIndex = 5
-        Me.labelExperimentalSettingsHidden.Text = "Experimental options are currently hidden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can show them by clicking in the " &
-    "lower-left" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "corner of the About window."
+        Me.labelExperimentalSettingsHidden.Text = "Experimental options are currently hidden."
         '
         'buttonCancel
         '
@@ -493,7 +491,7 @@ Partial Class OptionsWindow
         'checkboxHiDPIMode
         '
         Me.checkboxHiDPIMode.AutoSize = True
-        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(3, 388)
+        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(3, 342)
         Me.checkboxHiDPIMode.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxHiDPIMode.Name = "checkboxHiDPIMode"
         Me.checkboxHiDPIMode.Size = New System.Drawing.Size(84, 17)
@@ -504,7 +502,7 @@ Partial Class OptionsWindow
         'labelHiDPIMode
         '
         Me.labelHiDPIMode.AutoSize = True
-        Me.labelHiDPIMode.Location = New System.Drawing.Point(21, 405)
+        Me.labelHiDPIMode.Location = New System.Drawing.Point(21, 359)
         Me.labelHiDPIMode.Name = "labelHiDPIMode"
         Me.labelHiDPIMode.Size = New System.Drawing.Size(293, 39)
         Me.labelHiDPIMode.TabIndex = 17
@@ -515,7 +513,7 @@ Partial Class OptionsWindow
         'labelDefaultSourceName
         '
         Me.labelDefaultSourceName.AutoSize = True
-        Me.labelDefaultSourceName.Location = New System.Drawing.Point(3, 453)
+        Me.labelDefaultSourceName.Location = New System.Drawing.Point(3, 407)
         Me.labelDefaultSourceName.Name = "labelDefaultSourceName"
         Me.labelDefaultSourceName.Size = New System.Drawing.Size(108, 13)
         Me.labelDefaultSourceName.TabIndex = 18
@@ -523,7 +521,7 @@ Partial Class OptionsWindow
         '
         'textboxDefaultSourceName
         '
-        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(117, 450)
+        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(117, 404)
         Me.textboxDefaultSourceName.Name = "textboxDefaultSourceName"
         Me.textboxDefaultSourceName.Size = New System.Drawing.Size(201, 20)
         Me.textboxDefaultSourceName.TabIndex = 19
@@ -531,7 +529,7 @@ Partial Class OptionsWindow
         'labelDefaultSourceNameDescription
         '
         Me.labelDefaultSourceNameDescription.AutoSize = True
-        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 473)
+        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 427)
         Me.labelDefaultSourceNameDescription.Name = "labelDefaultSourceNameDescription"
         Me.labelDefaultSourceNameDescription.Size = New System.Drawing.Size(261, 91)
         Me.labelDefaultSourceNameDescription.TabIndex = 20
