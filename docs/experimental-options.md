@@ -58,6 +58,8 @@ Defaults to `False`/unchecked.
 
 `7z.exe` is used when using 7-Zip to extract the manifests and database. Not everyone has `7z.exe` installed to `"C:\Program Files\7-Zip\7z.exe"`, so you can change that here, with a `Browse` dialog for convenience.
 
+If the path contains `://`, it'll be reset to default.
+
 Defaults to `"C:\Program Files\7-Zip\7z.exe"`.
 
 ## Use Robocopy to copy manifests and database
