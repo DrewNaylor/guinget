@@ -43,6 +43,9 @@ Defaults to `False`/unchecked.
 Checkbox text:
 Load only the latest version of each package
 
+Config file setting name:
+`OnlyDisplayLatestPackageVersion`
+
 Description:
 Some packages may display a version number that's not really the latest version. Not sure how to fix this at the moment. Requires loading from the community database checkbox to be checked.
 
