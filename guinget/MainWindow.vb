@@ -910,8 +910,10 @@ Public Class aaformMainWindow
 
 #Region "Sidebar search."
     Private Sub listboxSearchTerms_DoubleClick(sender As Object, e As EventArgs) Handles listboxSearchTerms.DoubleClick
-        ' Start searching.
-        BeginSearchFromSidebar()
+        ' Start searching if something is selected.
+        If listboxSearchTerms.SelectedItems.Count = 1 Then
+            BeginSearchFromSidebar()
+        End If
     End Sub
 
     Private Shared Sub BeginSearchFromSidebar()
