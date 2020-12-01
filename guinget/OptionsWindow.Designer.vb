@@ -60,9 +60,9 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.checkboxHiDPIMode = New System.Windows.Forms.CheckBox()
         Me.labelHiDPIMode = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.labelDefaultSourceName = New System.Windows.Forms.Label()
+        Me.textboxDefaultSourceName = New System.Windows.Forms.TextBox()
+        Me.labelDefaultSourceNameDescription = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
@@ -260,9 +260,9 @@ Partial Class OptionsWindow
         'panelExperimentalSettings
         '
         Me.panelExperimentalSettings.AutoScroll = True
-        Me.panelExperimentalSettings.Controls.Add(Me.Label2)
-        Me.panelExperimentalSettings.Controls.Add(Me.TextBox1)
-        Me.panelExperimentalSettings.Controls.Add(Me.Label1)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelDefaultSourceNameDescription)
+        Me.panelExperimentalSettings.Controls.Add(Me.textboxDefaultSourceName)
+        Me.panelExperimentalSettings.Controls.Add(Me.labelDefaultSourceName)
         Me.panelExperimentalSettings.Controls.Add(Me.labelHiDPIMode)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxHiDPIMode)
         Me.panelExperimentalSettings.Controls.Add(Me.labelWaitTime)
@@ -511,30 +511,30 @@ Partial Class OptionsWindow
     " expanded to cover the rest of the controls" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "that are difficult to use on HiDPI " &
     "devices."
         '
-        'Label1
+        'labelDefaultSourceName
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 453)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(108, 13)
-        Me.Label1.TabIndex = 18
-        Me.Label1.Text = "Default source name:"
+        Me.labelDefaultSourceName.AutoSize = True
+        Me.labelDefaultSourceName.Location = New System.Drawing.Point(3, 453)
+        Me.labelDefaultSourceName.Name = "labelDefaultSourceName"
+        Me.labelDefaultSourceName.Size = New System.Drawing.Size(108, 13)
+        Me.labelDefaultSourceName.TabIndex = 18
+        Me.labelDefaultSourceName.Text = "Default source name:"
         '
-        'TextBox1
+        'textboxDefaultSourceName
         '
-        Me.TextBox1.Location = New System.Drawing.Point(117, 450)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(201, 20)
-        Me.TextBox1.TabIndex = 19
+        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(117, 450)
+        Me.textboxDefaultSourceName.Name = "textboxDefaultSourceName"
+        Me.textboxDefaultSourceName.Size = New System.Drawing.Size(201, 20)
+        Me.textboxDefaultSourceName.TabIndex = 19
         '
-        'Label2
+        'labelDefaultSourceNameDescription
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(21, 473)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(254, 26)
-        Me.Label2.TabIndex = 20
-        Me.Label2.Text = "This is here just in case the default source for winget" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "is renamed."
+        Me.labelDefaultSourceNameDescription.AutoSize = True
+        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 473)
+        Me.labelDefaultSourceNameDescription.Name = "labelDefaultSourceNameDescription"
+        Me.labelDefaultSourceNameDescription.Size = New System.Drawing.Size(254, 26)
+        Me.labelDefaultSourceNameDescription.TabIndex = 20
+        Me.labelDefaultSourceNameDescription.Text = "This is here just in case the default source for winget" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "is renamed."
         '
         'OptionsWindow
         '
@@ -609,7 +609,7 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxSearchWhenTyping As CheckBox
     Friend WithEvents checkboxHiDPIMode As CheckBox
     Friend WithEvents labelHiDPIMode As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents textboxDefaultSourceName As TextBox
+    Friend WithEvents labelDefaultSourceName As Label
+    Friend WithEvents labelDefaultSourceNameDescription As Label
 End Class

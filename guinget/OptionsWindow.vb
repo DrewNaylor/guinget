@@ -74,6 +74,8 @@ Public Class OptionsWindow
         End If
         ' HiDPI Mode.
         checkboxHiDPIMode.Checked = My.Settings.HiDPIMode
+        ' Default source name.
+        textboxDefaultSourceName.Text = My.Settings.DefaultSourceName
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
@@ -147,6 +149,8 @@ Public Class OptionsWindow
         My.Settings.SearchWhenTypingTimerInterval = CInt(numericupdownSearchWhenTypingWaitTime.Value)
         ' HiDPI Mode.
         My.Settings.HiDPIMode = checkboxHiDPIMode.Checked
+        ' Default source name.
+        My.Settings.DefaultSourceName = textboxDefaultSourceName.Text
 
         My.Settings.Save()
         My.Settings.Reload()
@@ -194,6 +198,8 @@ Public Class OptionsWindow
         numericupdownSearchWhenTypingWaitTime.Value = 325
         ' HiDPI Mode checkbox.
         checkboxHiDPIMode.Checked = False
+        ' Default source name.
+        textboxDefaultSourceName.Text = "winget"
     End Sub
 
     Private Sub tabcontrolOptions_MouseWheel(sender As Object, e As MouseEventArgs) Handles tabcontrolOptions.MouseWheel
