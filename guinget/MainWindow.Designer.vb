@@ -121,6 +121,9 @@ Partial Class aaformMainWindow
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.RunCMDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zFileMenuSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.RunCMDElevatedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -161,7 +164,7 @@ Partial Class aaformMainWindow
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RunCMDToolStripMenuItem, Me.RunCMDElevatedToolStripMenuItem, Me.zFileMenuSeparator, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -170,7 +173,7 @@ Partial Class aaformMainWindow
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(284, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ViewToolStripMenuItem
@@ -969,6 +972,23 @@ Partial Class aaformMainWindow
         '
         Me.TypeTimer.Interval = 325
         '
+        'RunCMDToolStripMenuItem
+        '
+        Me.RunCMDToolStripMenuItem.Name = "RunCMDToolStripMenuItem"
+        Me.RunCMDToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.RunCMDToolStripMenuItem.Text = "Run CMD"
+        '
+        'zFileMenuSeparator
+        '
+        Me.zFileMenuSeparator.Name = "zFileMenuSeparator"
+        Me.zFileMenuSeparator.Size = New System.Drawing.Size(281, 6)
+        '
+        'RunCMDElevatedToolStripMenuItem
+        '
+        Me.RunCMDElevatedToolStripMenuItem.Name = "RunCMDElevatedToolStripMenuItem"
+        Me.RunCMDElevatedToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.RunCMDElevatedToolStripMenuItem.Text = "Run CMD as admin (UAC)"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1112,4 +1132,7 @@ Partial Class aaformMainWindow
     Friend WithEvents TypeTimer As Timer
     Friend WithEvents HowToUseGuingetToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HelpMenuToolStripSeparator As ToolStripSeparator
+    Friend WithEvents RunCMDToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RunCMDElevatedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents zFileMenuSeparator As ToolStripSeparator
 End Class
