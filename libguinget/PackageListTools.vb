@@ -43,10 +43,26 @@ Public Class PackageListTools
         ' elevated but winget doesn't update properly when it's elevated.
         ' In that situation, it's expected to run guinget non-elevated,
         ' then run winget elevated in the Apply Changes window.
+        WingetStarter("source update")
+    End Sub
+
+    Public Shared Sub ListUpgrades()
+        ' Lists available upgrades if the feature is available.
+        WingetStarter("upgrade")
+    End Sub
+
+    Public Shared Sub ListInstalled()
+        ' Lists installed packages if the feature is available.
+        WingetStarter("list")
+    End Sub
+
+    Private Shared Sub WingetStarter(Command As String)
+        ' To reduce code duplication, simple winget commands
+        ' are passed into here.
         Using proc As New Process
 
             proc.StartInfo.FileName = "cmd"
-            proc.StartInfo.Arguments = "/k winget source update"
+            proc.StartInfo.Arguments = "/k winget " & Command
             proc.Start()
         End Using
     End Sub

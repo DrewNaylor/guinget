@@ -1158,6 +1158,16 @@ Public Class aaformMainWindow
         End Using
     End Sub
 
+    Private Sub ShowUpgradesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowUpgradesToolStripMenuItem.Click
+        ' Show available upgrades in winget.
+        PackageListTools.ListUpgrades()
+    End Sub
+
+    Private Sub ListInstalledPackagesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListInstalledPackagesToolStripMenuItem.Click
+        ' List installed apps in winget.
+        PackageListTools.ListInstalled()
+    End Sub
+
 
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
