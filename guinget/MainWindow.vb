@@ -1148,7 +1148,14 @@ Public Class aaformMainWindow
     End Sub
 
     Private Shared Sub RunCMD(Elevated As Boolean)
-
+        ' Run CMD and elevate it if necessary.
+        Using CMD As New Process
+            CMD.StartInfo.FileName = "cmd"
+            If Elevated = True Then
+                CMD.StartInfo.Verb = "runas"
+            End If
+            CMD.Start()
+        End Using
     End Sub
 
 
