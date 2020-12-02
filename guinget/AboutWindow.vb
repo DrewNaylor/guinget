@@ -41,6 +41,7 @@ Public Class AboutWindow
                         "Unofficial GUI for Microsoft's Windows Package Manager (winget)." & vbCrLf &
                         "Kinda like Synaptic, but for Windows. Not associated with either" & vbCrLf &
                         "Microsoft or the Synaptic project. Microsoft does not endorse guinget." & vbCrLf &
+                        "winget is Copyright (c) Microsoft Corporation. All rights reserved." & vbCrLf &
                         vbCrLf &
                         "You can get the source code for guinget from" & vbCrLf &
                         "https://github.com/DrewNaylor/guinget" & vbCrLf &
