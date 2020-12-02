@@ -1137,6 +1137,19 @@ Public Class aaformMainWindow
         Process.Start("https://drew-naylor.com/guinget/How-to-use")
     End Sub
 
+    Private Sub RunCMDToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RunCMDToolStripMenuItem.Click
+        ' Run CMD.
+        RunCMD(False)
+    End Sub
+
+    Private Sub RunCMDElevatedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RunCMDElevatedToolStripMenuItem.Click
+        ' Run CMD elevated.
+        RunCMD(True)
+    End Sub
+
+    Private Shared Sub RunCMD(Elevated As Boolean)
+
+    End Sub
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
