@@ -847,11 +847,11 @@ Public Class aaformMainWindow
                         searchRow.Visible = False
                     End If
                 ElseIf searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
-                        ' If the Package ID cell contains what's in the search box, show it.
-                        searchRow.Visible = True
-                    Else
-                        ' Otherwise, hide it.
-                        searchRow.Visible = False
+                    ' If the Package ID cell contains what's in the search box, show it.
+                    searchRow.Visible = True
+                Else
+                    ' Otherwise, hide it.
+                    searchRow.Visible = False
                 End If
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
