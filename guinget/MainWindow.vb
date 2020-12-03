@@ -936,8 +936,8 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub listboxSearchTerms_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxSearchTerms.KeyDown
-        ' Start searching if the "Enter" key is pressed.
-        If e.KeyCode = Keys.Enter Then
+        ' Start searching if the "Enter" key is pressed and something is selected.
+        If e.KeyCode = Keys.Enter AndAlso listboxSearchTerms.SelectedItems.Count = 1 Then
             ' Stop timer, if necessary.
             If My.Settings.SearchWhenTyping = True Then
                 TypeTimer.Stop()
