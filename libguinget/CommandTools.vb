@@ -23,19 +23,50 @@
 
 
 
-Public Class ConfigTools
+Public Class CommandTools
     ' Stuff that doesn't fit into package/package list stuff or sources-related stuff,
-    ' but does fit into config-related stuff.
+    ' but does fit into command-related stuff.
     ' Probably should move the winget source update thing to a source-related class.
 
     Public Shared Sub RunWingetSettings(Optional RunAsAdmin As Boolean = False)
         ' Run winget settings.
+        WingetStarter("settings", RunAsAdmin, False)
+    End Sub
+
+    Public Shared Sub UpdateWingetSources()
+        ' Update winget sources. This helps in case the user wants to run winget
+        ' elevated but winget doesn't update properly when it's elevated.
+        ' In that situation, it's expected to run guinget non-elevated,
+        ' then run winget elevated in the Apply Changes window.
+        WingetStarter("source update")
+    End Sub
+
+    Public Shared Sub ListUpgrades()
+        ' Lists available upgrades if the feature is available.
+        WingetStarter("upgrade")
+    End Sub
+
+    Public Shared Sub ListInstalled()
+        ' Lists installed packages if the feature is available.
+        WingetStarter("list")
+    End Sub
+
+    Private Shared Sub WingetStarter(Command As String, Optional RunAsAdmin As Boolean = False, Optional KeepOpen As Boolean = True)
+        ' To reduce code duplication, simple winget commands
+        ' are passed into here.
         Using proc As New Process
 
-            proc.StartInfo.FileName = "cmd"
-            ' Probably don't need to keep CMD open for this.
-            proc.StartInfo.Arguments = "/c winget settings"
-            ' Set the verb in case it's supposed to run as admin.
+            proc.StartInfo.FileName = "powershell"
+            ' Determine if PowerShell should stay open.
+            Dim Args As String = String.Empty
+            If KeepOpen = True Then
+                Args = "-noexit winget "
+            Else
+                Args = "winget "
+            End If
+            ' Now pass the args into the startinfo.
+            proc.StartInfo.Arguments = Args & Command
+            ' Specify whether this should be run as admin or not.
             If RunAsAdmin = True Then
                 proc.StartInfo.Verb = "runas"
             End If

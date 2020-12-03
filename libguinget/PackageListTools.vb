@@ -38,35 +38,6 @@ Public Class PackageListTools
     ' updating is stopped.
     Public Shared CancelUpdateFlag As Boolean = False
 
-    Public Shared Sub UpdateWingetSources()
-        ' Update winget sources. This helps in case the user wants to run winget
-        ' elevated but winget doesn't update properly when it's elevated.
-        ' In that situation, it's expected to run guinget non-elevated,
-        ' then run winget elevated in the Apply Changes window.
-        WingetStarter("source update")
-    End Sub
-
-    Public Shared Sub ListUpgrades()
-        ' Lists available upgrades if the feature is available.
-        WingetStarter("upgrade")
-    End Sub
-
-    Public Shared Sub ListInstalled()
-        ' Lists installed packages if the feature is available.
-        WingetStarter("list")
-    End Sub
-
-    Private Shared Sub WingetStarter(Command As String)
-        ' To reduce code duplication, simple winget commands
-        ' are passed into here.
-        Using proc As New Process
-
-            proc.StartInfo.FileName = "cmd"
-            proc.StartInfo.Arguments = "/k winget " & Command
-            proc.Start()
-        End Using
-    End Sub
-
     Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task
 
         ' Download a file with HttpClient:

@@ -1076,7 +1076,7 @@ Public Class aaformMainWindow
 
     Private Sub UpdateWingetSourcesMenuButton_Click(sender As Object, e As EventArgs) Handles UpdateWingetSourcesMenuButton.Click
         ' Tell library to update winget sources.
-        PackageListTools.UpdateWingetSources()
+        CommandTools.UpdateWingetSources()
     End Sub
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
@@ -1103,12 +1103,12 @@ Public Class aaformMainWindow
 
     Private Sub EditWingetSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditWingetSettingsToolStripMenuItem.Click
         ' Run the stuff in the helper library to edit winget settings.
-        ConfigTools.RunWingetSettings(False)
+        CommandTools.RunWingetSettings(False)
     End Sub
 
     Private Sub EditWingetSettingsAsAdminToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditWingetSettingsAsAdminToolStripMenuItem.Click
         ' Run the helper library's code for editing winget settings but have it be as admin.
-        ConfigTools.RunWingetSettings(True)
+        CommandTools.RunWingetSettings(True)
     End Sub
 
     Private Sub toolstriptextboxSearch_TextChanged(sender As Object, e As EventArgs) Handles toolstriptextboxSearch.TextChanged
@@ -1160,12 +1160,12 @@ Public Class aaformMainWindow
 
     Private Sub ShowUpgradesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowUpgradesToolStripMenuItem.Click
         ' Show available upgrades in winget.
-        PackageListTools.ListUpgrades()
+        CommandTools.ListUpgrades()
     End Sub
 
     Private Sub ListInstalledPackagesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListInstalledPackagesToolStripMenuItem.Click
         ' List installed apps in winget.
-        PackageListTools.ListInstalled()
+        CommandTools.ListInstalled()
     End Sub
 
 
