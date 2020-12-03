@@ -113,8 +113,8 @@ Public Class PackageTools
     Public Shared Sub ShowPkgInWinget(PackageID As String, PackageVersion As String, Optional DefaultSourceName As String = "winget")
         ' This'll open a CMD window and display the package info in winget.
         Using proc As New Process
-            proc.StartInfo.FileName = "cmd"
-            proc.StartInfo.Arguments = "/k winget show --id " & PackageID & " -v " & PackageVersion & " -e -s " & DefaultSourceName
+            proc.StartInfo.FileName = "powershell"
+            proc.StartInfo.Arguments = "-noexit winget show --id " & PackageID & " -v " & PackageVersion & " -e -s " & DefaultSourceName
             proc.Start()
         End Using
     End Sub
