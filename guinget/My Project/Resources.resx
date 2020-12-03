@@ -125,6 +125,6 @@
     <value>Search terms</value>
   </data>
   <data name="HiddenSidebarList" xml:space="preserve">
-    <value>Search terms,Status,Custom filters,Categories,Source,Architecture</value>
+    <value>Search terms,Action,Status,Custom filters,Categories,Source,Architecture</value>
   </data>
 </root>

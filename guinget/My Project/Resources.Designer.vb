@@ -79,7 +79,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Search terms,Status,Custom filters,Categories,Source,Architecture.
+        '''  Looks up a localized string similar to Search terms,Action,Status,Custom filters,Categories,Source,Architecture.
         '''</summary>
         Friend ReadOnly Property HiddenSidebarList() As String
             Get

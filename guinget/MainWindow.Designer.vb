@@ -108,7 +108,6 @@ Partial Class aaformMainWindow
         Me.zSeparatorSearchSidebarContextMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.ClearAllSearchTermsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabpageStatus = New System.Windows.Forms.TabPage()
-        Me.listboxStatusTab = New System.Windows.Forms.ListBox()
         Me.tabpageCustomFilters = New System.Windows.Forms.TabPage()
         Me.listboxCustomFilters = New System.Windows.Forms.ListBox()
         Me.tabpageSections = New System.Windows.Forms.TabPage()
@@ -127,6 +126,9 @@ Partial Class aaformMainWindow
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.tabpageAction = New System.Windows.Forms.TabPage()
+        Me.listboxStatusTab = New System.Windows.Forms.ListBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -152,6 +154,7 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.SuspendLayout()
         Me.panelMainForm.SuspendLayout()
         Me.statusbarMainWindow.SuspendLayout()
+        Me.tabpageAction.SuspendLayout()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -762,6 +765,7 @@ Partial Class aaformMainWindow
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tabcontrolSidebar.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSearchTerms)
+        Me.tabcontrolSidebar.Controls.Add(Me.tabpageAction)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageStatus)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageCustomFilters)
         Me.tabcontrolSidebar.Controls.Add(Me.tabpageSections)
@@ -830,23 +834,10 @@ Partial Class aaformMainWindow
         Me.tabpageStatus.Location = New System.Drawing.Point(4, 5)
         Me.tabpageStatus.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageStatus.Name = "tabpageStatus"
-        Me.tabpageStatus.Padding = New System.Windows.Forms.Padding(2)
         Me.tabpageStatus.Size = New System.Drawing.Size(202, 470)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
-        '
-        'listboxStatusTab
-        '
-        Me.listboxStatusTab.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.listboxStatusTab.FormattingEnabled = True
-        Me.listboxStatusTab.IntegralHeight = False
-        Me.listboxStatusTab.Items.AddRange(New Object() {"All", "Do nothing", "Install"})
-        Me.listboxStatusTab.Location = New System.Drawing.Point(2, 2)
-        Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2)
-        Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(198, 466)
-        Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
         '
@@ -877,7 +868,6 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSections.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSections.Name = "tabpageSections"
-        Me.tabpageSections.Padding = New System.Windows.Forms.Padding(2)
         Me.tabpageSections.Size = New System.Drawing.Size(202, 470)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
@@ -889,10 +879,10 @@ Partial Class aaformMainWindow
         Me.listboxSections.FormattingEnabled = True
         Me.listboxSections.IntegralHeight = False
         Me.listboxSections.Items.AddRange(New Object() {"All"})
-        Me.listboxSections.Location = New System.Drawing.Point(2, 2)
+        Me.listboxSections.Location = New System.Drawing.Point(0, 0)
         Me.listboxSections.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(198, 466)
+        Me.listboxSections.Size = New System.Drawing.Size(202, 470)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
@@ -1009,6 +999,41 @@ Partial Class aaformMainWindow
         '
         Me.TypeTimer.Interval = 325
         '
+        'tabpageAction
+        '
+        Me.tabpageAction.Controls.Add(Me.ListBox1)
+        Me.tabpageAction.Location = New System.Drawing.Point(4, 5)
+        Me.tabpageAction.Margin = New System.Windows.Forms.Padding(2)
+        Me.tabpageAction.Name = "tabpageAction"
+        Me.tabpageAction.Size = New System.Drawing.Size(202, 470)
+        Me.tabpageAction.TabIndex = 6
+        Me.tabpageAction.Text = "Action"
+        Me.tabpageAction.UseVisualStyleBackColor = True
+        '
+        'listboxStatusTab
+        '
+        Me.listboxStatusTab.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.listboxStatusTab.FormattingEnabled = True
+        Me.listboxStatusTab.IntegralHeight = False
+        Me.listboxStatusTab.Items.AddRange(New Object() {"All", "Installed", "Not installed", "Unknown"})
+        Me.listboxStatusTab.Location = New System.Drawing.Point(0, 0)
+        Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2)
+        Me.listboxStatusTab.Name = "listboxStatusTab"
+        Me.listboxStatusTab.Size = New System.Drawing.Size(202, 470)
+        Me.listboxStatusTab.TabIndex = 0
+        '
+        'ListBox1
+        '
+        Me.ListBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.IntegralHeight = False
+        Me.ListBox1.Items.AddRange(New Object() {"All", "Do nothing", "Install"})
+        Me.ListBox1.Location = New System.Drawing.Point(0, 0)
+        Me.ListBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(202, 470)
+        Me.ListBox1.TabIndex = 2
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1053,6 +1078,7 @@ Partial Class aaformMainWindow
         Me.panelMainForm.ResumeLayout(False)
         Me.statusbarMainWindow.ResumeLayout(False)
         Me.statusbarMainWindow.PerformLayout()
+        Me.tabpageAction.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1087,7 +1113,6 @@ Partial Class aaformMainWindow
     Friend WithEvents tabpageCustomFilters As TabPage
     Friend WithEvents tabpageSearchTerms As TabPage
     Friend WithEvents listboxSearchTerms As ListBox
-    Friend WithEvents listboxStatusTab As ListBox
     Friend WithEvents tabpageArchitecture As TabPage
     Friend WithEvents listboxSections As ListBox
     Friend WithEvents listboxSourceTab As ListBox
@@ -1158,4 +1183,7 @@ Partial Class aaformMainWindow
     Friend WithEvents ListInstalledPackagesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ShowUpgradesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents zToolStripSeparatorViewMenu As ToolStripSeparator
+    Friend WithEvents tabpageAction As TabPage
+    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents listboxStatusTab As ListBox
 End Class
