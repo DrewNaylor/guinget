@@ -70,7 +70,12 @@ Public Class CommandTools
             If RunAsAdmin = True Then
                 proc.StartInfo.Verb = "runas"
             End If
-            proc.Start()
+            ' Make sure if the user cancels that it
+            ' doesn't crash.
+            Try
+                proc.Start()
+            Catch ex As System.ComponentModel.Win32Exception
+            End Try
         End Using
     End Sub
 

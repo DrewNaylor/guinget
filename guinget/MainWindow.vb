@@ -1139,22 +1139,27 @@ Public Class aaformMainWindow
 
     Private Sub RunCMDToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RunCMDToolStripMenuItem.Click
         ' Run CMD.
-        RunCMD(False)
+        RunPowerShell(False)
     End Sub
 
     Private Sub RunCMDElevatedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RunCMDElevatedToolStripMenuItem.Click
         ' Run CMD elevated.
-        RunCMD(True)
+        RunPowerShell(True)
     End Sub
 
-    Private Shared Sub RunCMD(Elevated As Boolean)
+    Private Shared Sub RunPowerShell(Elevated As Boolean)
         ' Run CMD and elevate it if necessary.
-        Using CMD As New Process
-            CMD.StartInfo.FileName = "cmd"
+        Using PowerShell As New Process
+            PowerShell.StartInfo.FileName = "powershell"
             If Elevated = True Then
-                CMD.StartInfo.Verb = "runas"
+                PowerShell.StartInfo.Verb = "runas"
             End If
-            CMD.Start()
+            ' Make sure if the user cancels that it
+            ' doesn't crash.
+            Try
+                PowerShell.Start()
+            Catch ex As System.ComponentModel.Win32Exception
+            End Try
         End Using
     End Sub
 
