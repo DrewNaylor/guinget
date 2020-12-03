@@ -42,7 +42,7 @@ Public Class PackageTools
             proc.StartInfo.FileName = "cmd"
 
             ' Define interactive installation flag.
-            Dim InteractiveFlag As String = ""
+            Dim InteractiveFlag As String = String.Empty
             If InstallInteractively = True Then
                 InteractiveFlag = " -i"
             End If
