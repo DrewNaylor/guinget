@@ -29,6 +29,9 @@ Partial Class aaformMainWindow
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aaformMainWindow))
         Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RunCMDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RunCMDElevatedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zFileMenuSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SidebarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -121,12 +124,9 @@ Partial Class aaformMainWindow
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.RunCMDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.zFileMenuSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.RunCMDElevatedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowUpgradesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.zToolStripSeparatorListAndUpgradePart = New System.Windows.Forms.ToolStripSeparator()
         Me.ListInstalledPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zToolStripSeparatorViewMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -172,6 +172,23 @@ Partial Class aaformMainWindow
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
+        'RunCMDToolStripMenuItem
+        '
+        Me.RunCMDToolStripMenuItem.Name = "RunCMDToolStripMenuItem"
+        Me.RunCMDToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.RunCMDToolStripMenuItem.Text = "Run CMD"
+        '
+        'RunCMDElevatedToolStripMenuItem
+        '
+        Me.RunCMDElevatedToolStripMenuItem.Name = "RunCMDElevatedToolStripMenuItem"
+        Me.RunCMDElevatedToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.RunCMDElevatedToolStripMenuItem.Text = "Run CMD as admin (UAC)"
+        '
+        'zFileMenuSeparator
+        '
+        Me.zFileMenuSeparator.Name = "zFileMenuSeparator"
+        Me.zFileMenuSeparator.Size = New System.Drawing.Size(208, 6)
+        '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
@@ -181,7 +198,7 @@ Partial Class aaformMainWindow
         '
         'ViewToolStripMenuItem
         '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SidebarToolStripMenuItem})
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SidebarToolStripMenuItem, Me.zToolStripSeparatorViewMenu, Me.ListInstalledPackagesToolStripMenuItem, Me.ShowUpgradesToolStripMenuItem})
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
         Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.ViewToolStripMenuItem.Text = "&View"
@@ -190,12 +207,12 @@ Partial Class aaformMainWindow
         '
         Me.SidebarToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SidebarToolStripMenuItem.Name = "SidebarToolStripMenuItem"
-        Me.SidebarToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
+        Me.SidebarToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.SidebarToolStripMenuItem.Text = "&Sidebar"
         '
         'PackageToolStripMenuItem
         '
-        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.UpdateWingetSourcesMenuButton, Me.zToolStripSeparatorListAndUpgradePart, Me.ShowUpgradesToolStripMenuItem, Me.ListInstalledPackagesToolStripMenuItem, Me.zSeparatorAfterRefreshPart, Me.ApplyChangesMenuItem, Me.zSeparatorPackageListMenu, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
+        Me.PackageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshCacheMenuButton, Me.UpdateWingetSourcesMenuButton, Me.zSeparatorAfterRefreshPart, Me.ApplyChangesMenuItem, Me.zSeparatorPackageListMenu, Me.SearchMenuItem, Me.AdvancedSearchMenuItem})
         Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
         Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(81, 20)
         Me.PackageToolStripMenuItem.Text = "&Package list"
@@ -204,37 +221,37 @@ Partial Class aaformMainWindow
         '
         Me.RefreshCacheMenuButton.Name = "RefreshCacheMenuButton"
         Me.RefreshCacheMenuButton.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.RefreshCacheMenuButton.Size = New System.Drawing.Size(256, 22)
+        Me.RefreshCacheMenuButton.Size = New System.Drawing.Size(233, 22)
         Me.RefreshCacheMenuButton.Text = "&Refresh cache"
         '
         'UpdateWingetSourcesMenuButton
         '
         Me.UpdateWingetSourcesMenuButton.Name = "UpdateWingetSourcesMenuButton"
-        Me.UpdateWingetSourcesMenuButton.Size = New System.Drawing.Size(256, 22)
+        Me.UpdateWingetSourcesMenuButton.Size = New System.Drawing.Size(233, 22)
         Me.UpdateWingetSourcesMenuButton.Text = "&Update winget sources"
         '
         'zSeparatorAfterRefreshPart
         '
         Me.zSeparatorAfterRefreshPart.Name = "zSeparatorAfterRefreshPart"
-        Me.zSeparatorAfterRefreshPart.Size = New System.Drawing.Size(253, 6)
+        Me.zSeparatorAfterRefreshPart.Size = New System.Drawing.Size(230, 6)
         '
         'ApplyChangesMenuItem
         '
         Me.ApplyChangesMenuItem.Name = "ApplyChangesMenuItem"
         Me.ApplyChangesMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.H), System.Windows.Forms.Keys)
-        Me.ApplyChangesMenuItem.Size = New System.Drawing.Size(256, 22)
+        Me.ApplyChangesMenuItem.Size = New System.Drawing.Size(233, 22)
         Me.ApplyChangesMenuItem.Text = "Apply c&hanges..."
         '
         'zSeparatorPackageListMenu
         '
         Me.zSeparatorPackageListMenu.Name = "zSeparatorPackageListMenu"
-        Me.zSeparatorPackageListMenu.Size = New System.Drawing.Size(253, 6)
+        Me.zSeparatorPackageListMenu.Size = New System.Drawing.Size(230, 6)
         '
         'SearchMenuItem
         '
         Me.SearchMenuItem.Name = "SearchMenuItem"
         Me.SearchMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.SearchMenuItem.Size = New System.Drawing.Size(256, 22)
+        Me.SearchMenuItem.Size = New System.Drawing.Size(233, 22)
         Me.SearchMenuItem.Text = "&Focus search box"
         '
         'AdvancedSearchMenuItem
@@ -242,7 +259,7 @@ Partial Class aaformMainWindow
         Me.AdvancedSearchMenuItem.Name = "AdvancedSearchMenuItem"
         Me.AdvancedSearchMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
             Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.AdvancedSearchMenuItem.Size = New System.Drawing.Size(256, 22)
+        Me.AdvancedSearchMenuItem.Size = New System.Drawing.Size(233, 22)
         Me.AdvancedSearchMenuItem.Text = "Search &options..."
         '
         'SelectedPackagesToolStripMenuItem
@@ -975,39 +992,22 @@ Partial Class aaformMainWindow
         '
         Me.TypeTimer.Interval = 325
         '
-        'RunCMDToolStripMenuItem
-        '
-        Me.RunCMDToolStripMenuItem.Name = "RunCMDToolStripMenuItem"
-        Me.RunCMDToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.RunCMDToolStripMenuItem.Text = "Run CMD"
-        '
-        'zFileMenuSeparator
-        '
-        Me.zFileMenuSeparator.Name = "zFileMenuSeparator"
-        Me.zFileMenuSeparator.Size = New System.Drawing.Size(208, 6)
-        '
-        'RunCMDElevatedToolStripMenuItem
-        '
-        Me.RunCMDElevatedToolStripMenuItem.Name = "RunCMDElevatedToolStripMenuItem"
-        Me.RunCMDElevatedToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.RunCMDElevatedToolStripMenuItem.Text = "Run CMD as admin (UAC)"
-        '
         'ShowUpgradesToolStripMenuItem
         '
         Me.ShowUpgradesToolStripMenuItem.Name = "ShowUpgradesToolStripMenuItem"
-        Me.ShowUpgradesToolStripMenuItem.Size = New System.Drawing.Size(256, 22)
-        Me.ShowUpgradesToolStripMenuItem.Text = "Show available upgrades in winget"
-        '
-        'zToolStripSeparatorListAndUpgradePart
-        '
-        Me.zToolStripSeparatorListAndUpgradePart.Name = "zToolStripSeparatorListAndUpgradePart"
-        Me.zToolStripSeparatorListAndUpgradePart.Size = New System.Drawing.Size(253, 6)
+        Me.ShowUpgradesToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.ShowUpgradesToolStripMenuItem.Text = "Available upgrades..."
         '
         'ListInstalledPackagesToolStripMenuItem
         '
         Me.ListInstalledPackagesToolStripMenuItem.Name = "ListInstalledPackagesToolStripMenuItem"
-        Me.ListInstalledPackagesToolStripMenuItem.Size = New System.Drawing.Size(256, 22)
-        Me.ListInstalledPackagesToolStripMenuItem.Text = "List installed packages in winget"
+        Me.ListInstalledPackagesToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.ListInstalledPackagesToolStripMenuItem.Text = "Installed packages..."
+        '
+        'zToolStripSeparatorViewMenu
+        '
+        Me.zToolStripSeparatorViewMenu.Name = "zToolStripSeparatorViewMenu"
+        Me.zToolStripSeparatorViewMenu.Size = New System.Drawing.Size(180, 6)
         '
         'aaformMainWindow
         '
@@ -1155,7 +1155,7 @@ Partial Class aaformMainWindow
     Friend WithEvents RunCMDToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RunCMDElevatedToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents zFileMenuSeparator As ToolStripSeparator
-    Friend WithEvents zToolStripSeparatorListAndUpgradePart As ToolStripSeparator
-    Friend WithEvents ShowUpgradesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListInstalledPackagesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ShowUpgradesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents zToolStripSeparatorViewMenu As ToolStripSeparator
 End Class
