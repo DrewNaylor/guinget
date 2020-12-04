@@ -51,18 +51,19 @@ Public Class CommandTools
         WingetStarter("list")
     End Sub
 
-    Private Shared Sub WingetStarter(Command As String, Optional RunAsAdmin As Boolean = False, Optional KeepOpen As Boolean = True)
+    Private Shared Sub WingetStarter(Command As String, Optional RunAsAdmin As Boolean = False, Optional ShowWindow As Boolean = True)
         ' To reduce code duplication, simple winget commands
         ' are passed into here.
         Using proc As New Process
 
-            proc.StartInfo.FileName = "powershell"
-            ' Determine if PowerShell should stay open.
+            proc.StartInfo.FileName = "cmd"
+            ' Determine if CMD should stay open.
             Dim Args As String = String.Empty
-            If KeepOpen = True Then
-                Args = "-noexit winget "
+            If ShowWindow = True Then
+                Args = "/k winget "
             Else
-                Args = "winget "
+                Args = "/c winget "
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
             End If
             ' Now pass the args into the startinfo.
             proc.StartInfo.Arguments = Args & Command
