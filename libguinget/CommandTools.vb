@@ -74,13 +74,16 @@ Public Class CommandTools
             ' Make sure if the user cancels that it
             ' doesn't crash.
             Try
-                proc.Start()
+                Dim OutputWindow As New LotsOfCommandOutputForm
+                ' Update winget in the console then switch the tab when
+                ' ready to display the list.
+                OutputWindow.TabControl1.SelectTab(1)
+                OutputWindow.Show()
+                OutputWindow.ConsoleControl1.StartProcess(proc.StartInfo)
             Catch ex As System.ComponentModel.Win32Exception
             End Try
         End Using
 
-        Dim Output As New LotsOfCommandOutputForm
-        Output.Show()
     End Sub
 
 End Class
