@@ -115,6 +115,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CommandTools.vb" />
+    <Compile Include="LotsOfCommandOutputForm.Designer.vb">
+      <DependentUpon>LotsOfCommandOutputForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LotsOfCommandOutputForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PackageListTools.vb" />
     <Compile Include="PackageTools.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -137,6 +143,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DownloadProgressForm.resx">
       <DependentUpon>DownloadProgressForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LotsOfCommandOutputForm.resx">
+      <DependentUpon>LotsOfCommandOutputForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
