@@ -27,9 +27,9 @@ Partial Class LotsOfCommandOutputForm
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.ConsoleControl1 = New ConsoleControl.ConsoleControl()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.ConEmuControl1 = New ConEmu.WinForms.ConEmuControl()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -90,7 +90,7 @@ Partial Class LotsOfCommandOutputForm
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.ConsoleControl1)
+        Me.TabPage2.Controls.Add(Me.ConEmuControl1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -98,17 +98,6 @@ Partial Class LotsOfCommandOutputForm
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'ConsoleControl1
-        '
-        Me.ConsoleControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ConsoleControl1.IsInputEnabled = True
-        Me.ConsoleControl1.Location = New System.Drawing.Point(3, 3)
-        Me.ConsoleControl1.Name = "ConsoleControl1"
-        Me.ConsoleControl1.SendKeyboardCommandsToProcess = False
-        Me.ConsoleControl1.ShowDiagnostics = False
-        Me.ConsoleControl1.Size = New System.Drawing.Size(609, 371)
-        Me.ConsoleControl1.TabIndex = 0
         '
         'Button1
         '
@@ -129,6 +118,18 @@ Partial Class LotsOfCommandOutputForm
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'ConEmuControl1
+        '
+        Me.ConEmuControl1.AutoStartInfo = Nothing
+        Me.ConEmuControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ConEmuControl1.IsStatusbarVisible = True
+        Me.ConEmuControl1.Location = New System.Drawing.Point(3, 3)
+        Me.ConEmuControl1.MinimumSize = New System.Drawing.Size(1, 1)
+        Me.ConEmuControl1.Name = "ConEmuControl1"
+        Me.ConEmuControl1.Size = New System.Drawing.Size(609, 371)
+        Me.ConEmuControl1.TabIndex = 1
+        Me.ConEmuControl1.Text = "ConEmuControl1"
         '
         'LotsOfCommandOutputForm
         '
@@ -154,5 +155,5 @@ Partial Class LotsOfCommandOutputForm
     Friend WithEvents Button1 As Windows.Forms.Button
     Friend WithEvents Button2 As Windows.Forms.Button
     Friend WithEvents TextBox1 As Windows.Forms.TextBox
-    Friend WithEvents ConsoleControl1 As ConsoleControl.ConsoleControl
+    Friend WithEvents ConEmuControl1 As ConEmu.WinForms.ConEmuControl
 End Class

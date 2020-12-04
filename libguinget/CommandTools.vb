@@ -60,9 +60,9 @@ Public Class CommandTools
             ' Determine if CMD should stay open.
             Dim Args As String = String.Empty
             If ShowWindow = True Then
-                Args = "/k winget "
+                Args = "winget "
             Else
-                Args = "/c winget "
+                Args = "winget "
                 proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
             End If
             ' Now pass the args into the startinfo.
@@ -79,7 +79,11 @@ Public Class CommandTools
                 ' ready to display the list.
                 OutputWindow.TabControl1.SelectTab(1)
                 OutputWindow.Show()
-                OutputWindow.ConsoleControl1.StartProcess(proc.StartInfo)
+                Dim ConEmuStarter As New ConEmu.WinForms.ConEmuStartInfo
+                ConEmuStarter.ConEmuExecutablePath = "C:\Users\Drew\Documents\0GitHub\guinget\packages\ConEmu.Core.20.11.24\Tools\ConEmu\ConEmu.exe"
+                ConEmuStarter.ConsoleProcessCommandLine = proc.StartInfo.Arguments
+                ConEmuStarter.WhenConsoleProcessExits = ConEmu.WinForms.WhenConsoleProcessExits.KeepConsoleEmulator
+                OutputWindow.ConEmuControl1.Start(ConEmuStarter)
             Catch ex As System.ComponentModel.Win32Exception
             End Try
         End Using

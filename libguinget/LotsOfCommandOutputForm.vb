@@ -27,8 +27,10 @@ Imports System.ComponentModel
 
 Public Class LotsOfCommandOutputForm
     Private Sub LotsOfCommandOutputForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        ConsoleControl1.StopProcess()
+        'ConsoleControl1.StopProcess()
     End Sub
+
+
 
     ' Update winget in the console then switch the tab when
     ' ready to display the list.
