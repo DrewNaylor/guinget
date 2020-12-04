@@ -77,6 +77,13 @@ Public Class CommandTools
                 proc.Start()
             Catch ex As System.ComponentModel.Win32Exception
             End Try
+
+            'proc.WaitForExit()
+
+            'If proc.ExitCode.ToString = "-2147012889" Then
+            '    Windows.Forms.MessageBox.Show("We couldn't connect to the sources to check for updates. Please try again.")
+            'End If
+
         End Using
     End Sub
 
