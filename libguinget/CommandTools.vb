@@ -82,7 +82,6 @@ Public Class CommandTools
                 Dim ConEmuStarter As New ConEmu.WinForms.ConEmuStartInfo
                 ConEmuStarter.ConEmuExecutablePath = "C:\Users\Drew\Documents\0GitHub\guinget\packages\ConEmu.Core.20.11.24\Tools\ConEmu\ConEmu.exe"
                 ConEmuStarter.ConsoleProcessCommandLine = "{cmd} " & proc.StartInfo.Arguments
-                ConEmuStarter.WhenConsoleProcessExits = ConEmu.WinForms.WhenConsoleProcessExits.KeepConsoleEmulator
                 OutputWindow.ConEmuControl1.Start(ConEmuStarter)
             Catch ex As System.ComponentModel.Win32Exception
             End Try
