@@ -78,6 +78,9 @@ Public Class CommandTools
             Catch ex As System.ComponentModel.Win32Exception
             End Try
         End Using
+
+        Dim Output As New LotsOfCommandOutputForm
+        Output.Show()
     End Sub
 
 End Class
