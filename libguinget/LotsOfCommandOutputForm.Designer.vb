@@ -26,6 +26,8 @@ Partial Class LotsOfCommandOutputForm
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.SuspendLayout()
@@ -37,6 +39,8 @@ Partial Class LotsOfCommandOutputForm
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.97753!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.TabControl1, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Button1, 2, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.Button2, 1, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -78,6 +82,26 @@ Partial Class LotsOfCommandOutputForm
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button1.Location = New System.Drawing.Point(537, 411)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(89, 36)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button2.Location = New System.Drawing.Point(441, 411)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(90, 36)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'LotsOfCommandOutputForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -96,4 +120,6 @@ Partial Class LotsOfCommandOutputForm
     Friend WithEvents TabControl1 As Windows.Forms.TabControl
     Friend WithEvents TabPage1 As Windows.Forms.TabPage
     Friend WithEvents TabPage2 As Windows.Forms.TabPage
+    Friend WithEvents Button1 As Windows.Forms.Button
+    Friend WithEvents Button2 As Windows.Forms.Button
 End Class
