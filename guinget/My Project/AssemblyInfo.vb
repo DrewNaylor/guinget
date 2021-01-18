@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Unofficial GUI for Microsoft's Windows Package Manager (winget). Windows and all related words are copyright and trademark Microsoft Corporation.")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("guinget")>
-<Assembly: AssemblyCopyright("Copyright (C) 2020 Drew Naylor. Licensed under Apache License 2.0.")>
+<Assembly: AssemblyCopyright("Copyright (C) 2020-2021 Drew Naylor. Licensed under Apache License 2.0.")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
