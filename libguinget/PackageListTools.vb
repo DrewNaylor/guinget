@@ -38,6 +38,12 @@ Public Class PackageListTools
     ' updating is stopped.
     Public Shared CancelUpdateFlag As Boolean = False
 
+    ' Add a variable to store the root form so the progress dialog
+    ' doesn't stay on top of everything.
+    ' If the form isn't specified, it'll just fall back to being
+    ' on top of everything.
+    Public Shared RootForm As Form = Nothing
+
     Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task
 
         ' Download a file with HttpClient:
@@ -49,8 +55,18 @@ Public Class PackageListTools
             progressform.PackageListUrl = SourceUrl
             progressform.PackageListSourceName = SourceName
 
-            ' Show progress form.
-            progressform.Show()
+            ' Specify whether or not the form should stay on top
+            ' of everything.
+            If RootForm IsNot Nothing Then
+                progressform.Show(RootForm)
+                progressform.TopMost = False
+            Else
+                ' Show progress form.
+                progressform.Show()
+                progressform.TopMost = True
+            End If
+
+
 
             ' Define uri with source url.
             Dim PkgUri As Uri = New Uri(SourceUrl)
@@ -234,8 +250,16 @@ Public Class PackageListTools
                 progressform.labelSourceName.Hide()
                 progressform.CurrentAction = "Extracting manifests"
 
-                ' Show progress form.
-                progressform.Show()
+                ' Specify whether or not the form should stay on top
+                ' of everything.
+                If RootForm IsNot Nothing Then
+                    progressform.Show(RootForm)
+                    progressform.TopMost = False
+                Else
+                    ' Show progress form.
+                    progressform.Show()
+                    progressform.TopMost = True
+                End If
 
                 ' Start the progress bar.
                 progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
@@ -339,8 +363,16 @@ Public Class PackageListTools
                     progressform.labelSourceName.Hide()
                     progressform.CurrentAction = "Copying manifests"
 
-                    ' Show progress form.
-                    progressform.Show()
+                    ' Specify whether or not the form should stay on top
+                    ' of everything.
+                    If RootForm IsNot Nothing Then
+                        progressform.Show(RootForm)
+                        progressform.TopMost = False
+                    Else
+                        ' Show progress form.
+                        progressform.Show()
+                        progressform.TopMost = True
+                    End If
 
                     ' Start the progress bar.
                     progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee

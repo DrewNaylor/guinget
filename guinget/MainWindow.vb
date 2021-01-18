@@ -488,6 +488,7 @@ Public Class aaformMainWindow
         ' First, we need to download and update the manifests if the
         ' debugging setting to bypass updating is turned off.
         If My.Settings.DebuggingBypassCacheUpdate = False Then
+            PackageListTools.RootForm = aaformMainWindow
             Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying, My.Settings.LoadFromSqliteDb)
         End If
 
