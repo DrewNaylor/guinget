@@ -104,14 +104,14 @@ Public Class PackageListTools
                 ' Temporary, basic error handler in case we can't find
                 ' the source's URL. This may happen if there's
                 ' no Internet connection.
-                RootFormTools.MessageBoxShowWithRootForm(progressform, "Couldn't find " & SourceUrl & ". Please check your connection and try again. If you're online, the source may be unavailable.",
+                MessageBox.Show("Couldn't find " & SourceUrl & ". Please check your connection and try again. If you're online, the source may be unavailable.",
                                 "Downloading manifests")
                 Exit Function
 
             Catch ex As IO.DirectoryNotFoundException
                 ' Catch directory not found exceptions if the user cancels the update early
                 ' after deleting the package list zip file downloaded during the previous update.
-                RootFormTools.MessageBoxShowWithRootForm(progressform, ex.Message & vbCrLf &
+                MessageBox.Show(ex.Message & vbCrLf &
                                 vbCrLf &
                                 "This may be caused by having the directory above open in another program like Explorer. Please try again.",
                                 "Downloading manifests")
@@ -184,7 +184,7 @@ Public Class PackageListTools
                                    System.IO.Directory.Delete(tempDir, True)
                                    System.IO.Directory.CreateDirectory(tempDir)
                                Catch ex As System.IO.IOException
-                                   RootFormTools.MessageBoxShowWithRootForm(RootForm, "A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
+                                   MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
                                End Try
                            End Sub)
 
@@ -270,13 +270,13 @@ Public Class PackageListTools
                                                ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
                                            End If
                                        Catch ex As System.IO.FileNotFoundException
-                                           MessageBox.Show(progressform, "Couldn't find " & tempDir & "\winget-pkgs-master.zip",
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
                                            "Extracting manifests")
                                        Catch ex As System.IO.DirectoryNotFoundException
-                                           MessageBox.Show(progressform, "Couldn't find " & tempDir & "\winget-pkgs-master",
+                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master",
                                            "Extracting manifests")
                                        Catch ex As System.IO.InvalidDataException
-                                           MessageBox.Show(progressform, "We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                                           MessageBox.Show("We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
                                            vbCrLf & "Details:" & vbCrLf &
                                            ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
@@ -289,13 +289,13 @@ Public Class PackageListTools
                                                    ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source\")
                                                End If
                                            Catch ex As System.IO.FileNotFoundException
-                                               MessageBox.Show(progressform, "Couldn't find " & DatabaseTempDir & "\source.msix",
+                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
                                            "Extracting manifests")
                                            Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show(progressform, "Couldn't find " & DatabaseTempDir & "\source",
+                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
                                            "Extracting manifests")
                                            Catch ex As System.IO.InvalidDataException
-                                               MessageBox.Show(progressform, "We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                                               MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
                                            vbCrLf & "Details:" & vbCrLf &
                                            ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
@@ -389,11 +389,11 @@ Public Class PackageListTools
 
                                                My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
                                            Catch ex As System.IO.DirectoryNotFoundException
-                                               RootFormTools.MessageBoxShowWithRootForm(progressform, "Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
+                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
                                                "Copying manifests")
                                            Catch ex As System.IO.IOException
-                                               RootFormTools.MessageBoxShowWithRootForm(progressform, "Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                               MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
                                                                ex.Message, "Copying manifests")
