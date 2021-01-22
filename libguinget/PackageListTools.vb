@@ -50,7 +50,7 @@ Public Class PackageListTools
         ' https://stackoverflow.com/a/54475013
 
         ' Show a progress form that says what's being done.
-        Using progressform As New libguinget.DownloadProgressForm
+        Using progressform As New DownloadProgressForm
             ' Set progress form properties.
             progressform.PackageListUrl = SourceUrl
             progressform.PackageListSourceName = SourceName
@@ -349,14 +349,7 @@ Public Class PackageListTools
 
                     ' Specify whether or not the form should stay on top
                     ' of everything.
-                    If RootForm IsNot Nothing Then
-                        progressform.Show(RootForm)
-                        progressform.TopMost = False
-                    Else
-                        ' Show progress form.
-                        progressform.Show()
-                        progressform.TopMost = True
-                    End If
+                    RootFormTools.ProgressFormShow(RootForm, progressform)
 
                     ' Start the progress bar.
                     progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
