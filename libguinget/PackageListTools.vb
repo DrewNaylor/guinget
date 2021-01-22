@@ -57,15 +57,7 @@ Public Class PackageListTools
 
             ' Specify whether or not the form should stay on top
             ' of everything.
-            If RootForm IsNot Nothing Then
-                progressform.Show(RootForm)
-                progressform.TopMost = False
-            Else
-                ' Show progress form.
-                progressform.Show()
-                progressform.TopMost = True
-            End If
-
+            RootFormTools.ProgressFormShow(RootForm, progressform)
 
 
             ' Define uri with source url.
@@ -113,14 +105,14 @@ Public Class PackageListTools
                 ' Temporary, basic error handler in case we can't find
                 ' the source's URL. This may happen if there's
                 ' no Internet connection.
-                MessageBox.Show(progressform, "Couldn't find " & SourceUrl & ". Please check your connection and try again. If you're online, the source may be unavailable.",
+                RootFormTools.MessageBoxShowWithRootForm(progressform, "Couldn't find " & SourceUrl & ". Please check your connection and try again. If you're online, the source may be unavailable.",
                                 "Downloading manifests")
                 Exit Function
 
             Catch ex As IO.DirectoryNotFoundException
                 ' Catch directory not found exceptions if the user cancels the update early
                 ' after deleting the package list zip file downloaded during the previous update.
-                MessageBox.Show(progressform, ex.Message & vbCrLf &
+                RootFormTools.MessageBoxShowWithRootForm(progressform, ex.Message & vbCrLf &
                                 vbCrLf &
                                 "This may be caused by having the directory above open in another program like Explorer. Please try again.",
                                 "Downloading manifests")
@@ -193,7 +185,7 @@ Public Class PackageListTools
                                    System.IO.Directory.Delete(tempDir, True)
                                    System.IO.Directory.CreateDirectory(tempDir)
                                Catch ex As System.IO.IOException
-                                   MessageBox.Show(RootForm, "A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
+                                   RootFormTools.MessageBoxShowWithRootForm(RootForm, "A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
                                End Try
                            End Sub)
 
@@ -325,11 +317,11 @@ Public Class PackageListTools
                                        End If
 
                                        Dim extraction7z As New Process
-                                           extraction7z.StartInfo.FileName = PathTo7zip
+                                       extraction7z.StartInfo.FileName = PathTo7zip
                                        extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
                                        extraction7z.Start()
-                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                           extraction7z.WaitForExit()
+                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                       extraction7z.WaitForExit()
 
                                        If UpdateDatabase = True Then
                                            ' The calling app wants to use 7zip, so use it.
@@ -405,11 +397,11 @@ Public Class PackageListTools
 
                                                My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
                                            Catch ex As System.IO.DirectoryNotFoundException
-                                               Dim message As String = "Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
-                                                               "Please close any Explorer windows that may be open in this directory, and try again."
-                                               MessageBox.Show(progressform, message, "Copying manifests")
+                                               RootFormTools.MessageBoxShowWithRootForm(progressform, "Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
+                                                               "Please close any Explorer windows that may be open in this directory, and try again.",
+                                               "Copying manifests")
                                            Catch ex As System.IO.IOException
-                                               MessageBox.Show(progressform, "Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                               RootFormTools.MessageBoxShowWithRootForm(progressform, "Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
                                                                ex.Message, "Copying manifests")

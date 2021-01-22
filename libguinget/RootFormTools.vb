@@ -22,13 +22,36 @@
 '   limitations under the License.
 
 
+Imports System.Windows.Forms
 
-Public Class ExtraTools
+Public Class RootFormTools
 
     ' Replacement MessageBox sub so that I don't have to do If/Else statements everywhere
     ' and can instead reuse code.
-    Friend Shared Sub MessageBoxShowWithRootForm(RootForm As System.Windows.Forms.Form, MessageText As String, MessageCaption As String)
+    Friend Shared Sub MessageBoxShowWithRootForm(RootForm As Form, MessageText As String, MessageCaption As String)
 
+        ' Check if the root form is Nothing.
+        If RootForm Is Nothing Then
+            ' If it is, just do the regular message.
+            MessageBox.Show(MessageText, MessageCaption)
+        Else
+            ' Otherwise, use the root form.
+            MessageBox.Show(RootForm, MessageText, MessageCaption)
+        End If
+    End Sub
+
+    Friend Shared Sub ProgressFormShow(RootForm As Form, ProgressForm As Form)
+        ' Specify whether or not the form should stay on top
+        ' of everything.
+        ' Moved here from the code so it can be modified in one place.
+        If RootForm IsNot Nothing Then
+            ProgressForm.Show(RootForm)
+            ProgressForm.TopMost = False
+        Else
+            ' Show progress form.
+            ProgressForm.Show()
+            ProgressForm.TopMost = True
+        End If
     End Sub
 
 End Class
