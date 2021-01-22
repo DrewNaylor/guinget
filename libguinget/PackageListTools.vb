@@ -50,23 +50,14 @@ Public Class PackageListTools
         ' https://stackoverflow.com/a/54475013
 
         ' Show a progress form that says what's being done.
-        Using progressform As New libguinget.DownloadProgressForm
+        Using progressform As New DownloadProgressForm
             ' Set progress form properties.
             progressform.PackageListUrl = SourceUrl
             progressform.PackageListSourceName = SourceName
 
             ' Specify whether or not the form should stay on top
             ' of everything.
-            If RootForm IsNot Nothing Then
-                progressform.Show(RootForm)
-                progressform.TopMost = False
-            Else
-                ' Show progress form.
-                progressform.Show()
-                progressform.TopMost = True
-            End If
-
-
+            RootFormTools.ProgressFormShow(RootForm, progressform)
 
             ' Define uri with source url.
             Dim PkgUri As Uri = New Uri(SourceUrl)
@@ -252,14 +243,7 @@ Public Class PackageListTools
 
                 ' Specify whether or not the form should stay on top
                 ' of everything.
-                If RootForm IsNot Nothing Then
-                    progressform.Show(RootForm)
-                    progressform.TopMost = False
-                Else
-                    ' Show progress form.
-                    progressform.Show()
-                    progressform.TopMost = True
-                End If
+                RootFormTools.ProgressFormShow(RootForm, progressform)
 
                 ' Start the progress bar.
                 progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
@@ -325,11 +309,11 @@ Public Class PackageListTools
                                        End If
 
                                        Dim extraction7z As New Process
-                                           extraction7z.StartInfo.FileName = PathTo7zip
+                                       extraction7z.StartInfo.FileName = PathTo7zip
                                        extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
                                        extraction7z.Start()
-                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                           extraction7z.WaitForExit()
+                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                       extraction7z.WaitForExit()
 
                                        If UpdateDatabase = True Then
                                            ' The calling app wants to use 7zip, so use it.
@@ -365,14 +349,7 @@ Public Class PackageListTools
 
                     ' Specify whether or not the form should stay on top
                     ' of everything.
-                    If RootForm IsNot Nothing Then
-                        progressform.Show(RootForm)
-                        progressform.TopMost = False
-                    Else
-                        ' Show progress form.
-                        progressform.Show()
-                        progressform.TopMost = True
-                    End If
+                    RootFormTools.ProgressFormShow(RootForm, progressform)
 
                     ' Start the progress bar.
                     progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
