@@ -945,6 +945,9 @@ Public Class aaformMainWindow
             End If
             ' Start searching.
             BeginSearchFromSidebar()
+        ElseIf e.KeyCode = Keys.Delete AndAlso listboxSearchTerms.SelectedItems.Count = 1 AndAlso listboxSearchTerms.SelectedIndex > 0 Then
+            ' Delete the selected search term as long as it's not the first item.
+            listboxSearchTerms.Items.Remove(listboxSearchTerms.SelectedItem)
         End If
     End Sub
 #End Region
