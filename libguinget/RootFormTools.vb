@@ -31,12 +31,12 @@ Public Class RootFormTools
     Friend Shared Sub MessageBoxShowWithRootForm(RootForm As Form, MessageText As String, MessageCaption As String)
 
         ' Check if the root form is Nothing.
-        If RootForm Is Nothing Then
-            ' If it is, just do the regular message.
-            MessageBox.Show(MessageText, MessageCaption)
-        Else
-            ' Otherwise, use the root form.
+        If RootForm IsNot Nothing Then
+            ' Use the root form.
             MessageBox.Show(RootForm, MessageText, MessageCaption)
+        Else
+            ' Otherwise, just do the regular message.
+            MessageBox.Show(MessageText, MessageCaption)
         End If
     End Sub
 

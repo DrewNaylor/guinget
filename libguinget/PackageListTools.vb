@@ -59,7 +59,6 @@ Public Class PackageListTools
             ' of everything.
             RootFormTools.ProgressFormShow(RootForm, progressform)
 
-
             ' Define uri with source url.
             Dim PkgUri As Uri = New Uri(SourceUrl)
 
@@ -244,14 +243,7 @@ Public Class PackageListTools
 
                 ' Specify whether or not the form should stay on top
                 ' of everything.
-                If RootForm IsNot Nothing Then
-                    progressform.Show(RootForm)
-                    progressform.TopMost = False
-                Else
-                    ' Show progress form.
-                    progressform.Show()
-                    progressform.TopMost = True
-                End If
+                RootFormTools.ProgressFormShow(RootForm, progressform)
 
                 ' Start the progress bar.
                 progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
