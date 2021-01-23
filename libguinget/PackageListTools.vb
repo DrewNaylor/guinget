@@ -45,11 +45,21 @@ Public Class PackageListTools
     Public Shared RootForm As Form = Nothing
 
 #Region "Delete cache in Roaming"
-    Public Shared Sub DeleteCacheFilesInRoaming()
+    Public Shared Sub DeleteCacheFilesInRoaming(CallingForm As Form)
         ' Ask the user if they're sure they want to delete the folder.
-        Dim response As Integer = MessageBox.Show("Are you sure you want to delete the files and folders located in " &
-                                                  """" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\""? This cannot be undone.",
-                                                  "Delete cache files in Roaming", MessageBoxButtons.YesNo)
+        Dim path As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\"
+        Dim response As DialogResult = MessageBox.Show(CallingForm, "Are you sure you want to delete the files and folders located in " &
+                                                  """" & path & """? This cannot be undone.",
+                                                  "Delete cache files In Roaming", MessageBoxButtons.YesNo)
+        ' If the user clicks Yes, delete the folder then let them know if it was successful.
+        ' Make sure it's not in use at the moment.
+        If response = DialogResult.Yes Then
+            Try
+                System.IO.Directory.Delete(path, True)
+            Catch ex As System.IO.IOException
+                MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
+            End Try
+        End If
     End Sub
 #End Region
 
