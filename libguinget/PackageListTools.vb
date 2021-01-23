@@ -59,6 +59,8 @@ Public Class PackageListTools
             Catch ex As System.IO.IOException
                 MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
             End Try
+
+            ' TODO: messagebox feedback when successful.
         End If
     End Sub
 #End Region
