@@ -65,7 +65,8 @@ Partial Class OptionsWindow
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.checkboxDeleteTempFilesAfterRefresh = New System.Windows.Forms.CheckBox()
+        Me.labelDeleteTempFilesAfterRefresh = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
@@ -541,7 +542,8 @@ Partial Class OptionsWindow
         '
         'tabpageRefreshCache
         '
-        Me.tabpageRefreshCache.Controls.Add(Me.CheckBox1)
+        Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
+        Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
         Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
         Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
@@ -550,15 +552,24 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.Text = "Refresh cache"
         Me.tabpageRefreshCache.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'checkboxDeleteTempFilesAfterRefresh
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(6, 6)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(220, 17)
-        Me.CheckBox1.TabIndex = 0
-        Me.CheckBox1.Text = "Delete temporary files after cache update"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxDeleteTempFilesAfterRefresh.AutoSize = True
+        Me.checkboxDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxDeleteTempFilesAfterRefresh.Name = "checkboxDeleteTempFilesAfterRefresh"
+        Me.checkboxDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(220, 17)
+        Me.checkboxDeleteTempFilesAfterRefresh.TabIndex = 0
+        Me.checkboxDeleteTempFilesAfterRefresh.Text = "Delete temporary files after cache update"
+        Me.checkboxDeleteTempFilesAfterRefresh.UseVisualStyleBackColor = True
+        '
+        'labelDeleteTempFilesAfterRefresh
+        '
+        Me.labelDeleteTempFilesAfterRefresh.AutoSize = True
+        Me.labelDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(23, 26)
+        Me.labelDeleteTempFilesAfterRefresh.Name = "labelDeleteTempFilesAfterRefresh"
+        Me.labelDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(202, 26)
+        Me.labelDeleteTempFilesAfterRefresh.TabIndex = 1
+        Me.labelDeleteTempFilesAfterRefresh.Text = "Temporary files are always deleted before" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "refreshing the cache."
         '
         'OptionsWindow
         '
@@ -639,5 +650,6 @@ Partial Class OptionsWindow
     Friend WithEvents labelDefaultSourceName As Label
     Friend WithEvents labelDefaultSourceNameDescription As Label
     Friend WithEvents tabpageRefreshCache As TabPage
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents checkboxDeleteTempFilesAfterRefresh As CheckBox
+    Friend WithEvents labelDeleteTempFilesAfterRefresh As Label
 End Class
