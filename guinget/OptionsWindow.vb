@@ -31,6 +31,9 @@ Public Class OptionsWindow
     End Sub
 
     Private Sub LoadSettings()
+        ' Delete temp files after cache refresh.
+        checkboxDeleteTempFilesAfterRefresh.Checked = My.Settings.DeleteTempFilesAfterRefresh
+
         ' Re-run search.
         checkboxRerunSearch.Checked = My.Settings.RerunSearchAfterCacheUpdate
         ' Show sidebar.
@@ -95,6 +98,9 @@ Public Class OptionsWindow
     End Sub
 
     Private Sub SaveSettings()
+        ' Delete temp files after cache update.
+        My.Settings.DeleteTempFilesAfterRefresh = checkboxDeleteTempFilesAfterRefresh.Checked
+
         ' Re-run search checkbox.
         My.Settings.RerunSearchAfterCacheUpdate = checkboxRerunSearch.Checked
         ' Show sidebar checkbox.
@@ -165,6 +171,9 @@ Public Class OptionsWindow
     End Sub
 
     Private Sub ReloadDefaults()
+        ' Delete temp files after update.
+        checkboxDeleteTempFilesAfterRefresh.Checked = False
+
         ' Re-run search checkbox.
         checkboxRerunSearch.Checked = True
         ' Show sidebar checkbox.
