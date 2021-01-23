@@ -48,7 +48,8 @@ Public Class PackageListTools
     Public Shared Sub DeleteCacheFilesInRoaming()
         ' Ask the user if they're sure they want to delete the folder.
         Dim response As Integer = MessageBox.Show("Are you sure you want to delete the files and folders located in " &
-                                                  """" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\""? This cannot be undone.")
+                                                  """" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\""? This cannot be undone.",
+                                                  "Delete cache files in Roaming")
     End Sub
 #End Region
 
