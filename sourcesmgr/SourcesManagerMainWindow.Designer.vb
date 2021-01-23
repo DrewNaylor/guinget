@@ -22,26 +22,26 @@ Partial Class aaformMainWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.tabcontrolMain = New System.Windows.Forms.TabControl()
         Me.tabpageWinget = New System.Windows.Forms.TabPage()
         Me.tabpageGuingetAndOtherFrontends = New System.Windows.Forms.TabPage()
         Me.tabpageMaintenance = New System.Windows.Forms.TabPage()
         Me.tabpageAbout = New System.Windows.Forms.TabPage()
-        Me.TabControl1.SuspendLayout()
+        Me.tabcontrolMain.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TabControl1
+        'tabcontrolMain
         '
-        Me.TabControl1.Controls.Add(Me.tabpageWinget)
-        Me.TabControl1.Controls.Add(Me.tabpageGuingetAndOtherFrontends)
-        Me.TabControl1.Controls.Add(Me.tabpageMaintenance)
-        Me.TabControl1.Controls.Add(Me.tabpageAbout)
-        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(594, 409)
-        Me.TabControl1.TabIndex = 0
+        Me.tabcontrolMain.Controls.Add(Me.tabpageWinget)
+        Me.tabcontrolMain.Controls.Add(Me.tabpageGuingetAndOtherFrontends)
+        Me.tabcontrolMain.Controls.Add(Me.tabpageMaintenance)
+        Me.tabcontrolMain.Controls.Add(Me.tabpageAbout)
+        Me.tabcontrolMain.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tabcontrolMain.Location = New System.Drawing.Point(0, 0)
+        Me.tabcontrolMain.Name = "tabcontrolMain"
+        Me.tabcontrolMain.SelectedIndex = 0
+        Me.tabcontrolMain.Size = New System.Drawing.Size(594, 409)
+        Me.tabcontrolMain.TabIndex = 0
         '
         'tabpageWinget
         '
@@ -88,15 +88,15 @@ Partial Class aaformMainWindow
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(594, 409)
-        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.tabcontrolMain)
         Me.Name = "aaformMainWindow"
         Me.Text = "Sources Manager"
-        Me.TabControl1.ResumeLayout(False)
+        Me.tabcontrolMain.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents tabcontrolMain As TabControl
     Friend WithEvents tabpageWinget As TabPage
     Friend WithEvents tabpageGuingetAndOtherFrontends As TabPage
     Friend WithEvents tabpageMaintenance As TabPage
