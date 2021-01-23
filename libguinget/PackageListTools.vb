@@ -44,6 +44,15 @@ Public Class PackageListTools
     ' on top of everything.
     Public Shared RootForm As Form = Nothing
 
+#Region "Delete cache in Roaming"
+    Public Shared Sub DeleteCacheFilesInRoaming()
+        ' Ask the user if they're sure they want to delete the folder.
+        Dim response As Integer = MessageBox.Show("Are you sure you want to delete the files and folders located in " &
+                                                  """" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\""? This cannot be undone.")
+    End Sub
+#End Region
+
+#Region "Download package list with progress async"
     Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task
 
         ' Download a file with HttpClient:
@@ -122,7 +131,9 @@ Public Class PackageListTools
 
         Return
     End Function
+#End Region
 
+#Region "Update manifests async"
     Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
                                                       Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
                                                       Optional UseRobocopy As Boolean = False,
@@ -451,7 +462,9 @@ Public Class PackageListTools
         End If
 
     End Function
+#End Region
 
+#Region "Get manifest paths list"
     Public Shared Function GetManifests() As List(Of String)
         ' Get and return each manifest in the manifests folder.
         ' This should only be used after ensuring that there's
@@ -472,7 +485,9 @@ Public Class PackageListTools
 
         Return ManifestPath
     End Function
+#End Region
 
+#Region "Find manifest by version and ID"
     ' This is used as a fallback if we can't figure out where the manifest is by
     ' just using the package id and version.
     ' If the folder used here doesn't exist, applications using this
@@ -523,7 +538,9 @@ Public Class PackageListTools
             Next
         End If
     End Function
+#End Region
 
+#Region "Get package details table from SQLite database"
     Public Shared Function GetPackageDetailsTableFromSqliteDB() As DataTable
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
@@ -599,5 +616,6 @@ WHERE
         ' Return the list of packages.
         Return packageArray
     End Function
+#End Region
 
 End Class

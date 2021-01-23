@@ -232,4 +232,9 @@ Public Class OptionsWindow
             End If
         End If
     End Sub
+
+    Private Sub buttonDeleteCacheFilesInRoaming_Click(sender As Object, e As EventArgs) Handles buttonDeleteCacheFilesInRoaming.Click
+        ' Run the delete cache files in roaming code in the library.
+        libguinget.PackageListTools.DeleteCacheFilesInRoaming()
+    End Sub
 End Class
