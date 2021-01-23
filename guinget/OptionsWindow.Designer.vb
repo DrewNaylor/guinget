@@ -26,11 +26,14 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonDefaults = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
-        Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
-        Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
+        Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
+        Me.labelDeleteTempFilesAfterRefresh = New System.Windows.Forms.Label()
+        Me.checkboxDeleteTempFilesAfterRefresh = New System.Windows.Forms.CheckBox()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch = New System.Windows.Forms.CheckBox()
         Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
+        Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
+        Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
         Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
         Me.labelWhyElevate = New System.Windows.Forms.Label()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
@@ -64,19 +67,16 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
-        Me.checkboxDeleteTempFilesAfterRefresh = New System.Windows.Forms.CheckBox()
-        Me.labelDeleteTempFilesAfterRefresh = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
-        Me.tabpagePackageDetails.SuspendLayout()
+        Me.tabpageRefreshCache.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
+        Me.tabpagePackageDetails.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageExperimental.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
         CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabpageRefreshCache.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -128,27 +128,36 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.Size = New System.Drawing.Size(368, 396)
         Me.tabcontrolOptions.TabIndex = 0
         '
-        'tabpagePackageDetails
+        'tabpageRefreshCache
         '
-        Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
-        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 22)
-        Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
-        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 370)
-        Me.tabpagePackageDetails.TabIndex = 2
-        Me.tabpagePackageDetails.Text = "Package Details"
-        Me.tabpagePackageDetails.UseVisualStyleBackColor = True
+        Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
+        Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
+        Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
+        Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageRefreshCache.TabIndex = 5
+        Me.tabpageRefreshCache.Text = "Refresh cache"
+        Me.tabpageRefreshCache.UseVisualStyleBackColor = True
         '
-        'checkboxLastSelectedPackageDetails
+        'labelDeleteTempFilesAfterRefresh
         '
-        Me.checkboxLastSelectedPackageDetails.AutoSize = True
-        Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(6, 6)
-        Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
-        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(267, 30)
-        Me.checkboxLastSelectedPackageDetails.TabIndex = 0
-        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when selecting" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "multiple packages"
-        Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
+        Me.labelDeleteTempFilesAfterRefresh.AutoSize = True
+        Me.labelDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(23, 26)
+        Me.labelDeleteTempFilesAfterRefresh.Name = "labelDeleteTempFilesAfterRefresh"
+        Me.labelDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(202, 26)
+        Me.labelDeleteTempFilesAfterRefresh.TabIndex = 1
+        Me.labelDeleteTempFilesAfterRefresh.Text = "Temporary files are always deleted before" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "refreshing the cache."
+        '
+        'checkboxDeleteTempFilesAfterRefresh
+        '
+        Me.checkboxDeleteTempFilesAfterRefresh.AutoSize = True
+        Me.checkboxDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxDeleteTempFilesAfterRefresh.Name = "checkboxDeleteTempFilesAfterRefresh"
+        Me.checkboxDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(220, 17)
+        Me.checkboxDeleteTempFilesAfterRefresh.TabIndex = 0
+        Me.checkboxDeleteTempFilesAfterRefresh.Text = "Delete temporary files after cache update"
+        Me.checkboxDeleteTempFilesAfterRefresh.UseVisualStyleBackColor = True
         '
         'tabpageSearch
         '
@@ -183,6 +192,28 @@ Partial Class OptionsWindow
         Me.checkboxRerunSearch.TabIndex = 0
         Me.checkboxRerunSearch.Text = "Re-run search after cache update"
         Me.checkboxRerunSearch.UseVisualStyleBackColor = True
+        '
+        'tabpagePackageDetails
+        '
+        Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
+        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 22)
+        Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
+        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 370)
+        Me.tabpagePackageDetails.TabIndex = 2
+        Me.tabpagePackageDetails.Text = "Package Details"
+        Me.tabpagePackageDetails.UseVisualStyleBackColor = True
+        '
+        'checkboxLastSelectedPackageDetails
+        '
+        Me.checkboxLastSelectedPackageDetails.AutoSize = True
+        Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
+        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(267, 30)
+        Me.checkboxLastSelectedPackageDetails.TabIndex = 0
+        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when selecting" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "multiple packages"
+        Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
         '
         'tabpageApplyChanges
         '
@@ -540,37 +571,6 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'tabpageRefreshCache
-        '
-        Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
-        Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
-        Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
-        Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 370)
-        Me.tabpageRefreshCache.TabIndex = 5
-        Me.tabpageRefreshCache.Text = "Refresh cache"
-        Me.tabpageRefreshCache.UseVisualStyleBackColor = True
-        '
-        'checkboxDeleteTempFilesAfterRefresh
-        '
-        Me.checkboxDeleteTempFilesAfterRefresh.AutoSize = True
-        Me.checkboxDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(6, 6)
-        Me.checkboxDeleteTempFilesAfterRefresh.Name = "checkboxDeleteTempFilesAfterRefresh"
-        Me.checkboxDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(220, 17)
-        Me.checkboxDeleteTempFilesAfterRefresh.TabIndex = 0
-        Me.checkboxDeleteTempFilesAfterRefresh.Text = "Delete temporary files after cache update"
-        Me.checkboxDeleteTempFilesAfterRefresh.UseVisualStyleBackColor = True
-        '
-        'labelDeleteTempFilesAfterRefresh
-        '
-        Me.labelDeleteTempFilesAfterRefresh.AutoSize = True
-        Me.labelDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(23, 26)
-        Me.labelDeleteTempFilesAfterRefresh.Name = "labelDeleteTempFilesAfterRefresh"
-        Me.labelDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(202, 26)
-        Me.labelDeleteTempFilesAfterRefresh.TabIndex = 1
-        Me.labelDeleteTempFilesAfterRefresh.Text = "Temporary files are always deleted before" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "refreshing the cache."
-        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -589,10 +589,12 @@ Partial Class OptionsWindow
         Me.Text = "Options"
         Me.tablelayoutpanelOptions.ResumeLayout(False)
         Me.tabcontrolOptions.ResumeLayout(False)
-        Me.tabpagePackageDetails.ResumeLayout(False)
-        Me.tabpagePackageDetails.PerformLayout()
+        Me.tabpageRefreshCache.ResumeLayout(False)
+        Me.tabpageRefreshCache.PerformLayout()
         Me.tabpageSearch.ResumeLayout(False)
         Me.tabpageSearch.PerformLayout()
+        Me.tabpagePackageDetails.ResumeLayout(False)
+        Me.tabpagePackageDetails.PerformLayout()
         Me.tabpageApplyChanges.ResumeLayout(False)
         Me.tabpageApplyChanges.PerformLayout()
         Me.tabpageLayout.ResumeLayout(False)
@@ -602,8 +604,6 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
         CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabpageRefreshCache.ResumeLayout(False)
-        Me.tabpageRefreshCache.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
