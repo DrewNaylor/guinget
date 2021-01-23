@@ -80,7 +80,7 @@ Public Class PackageListTools
                 ' Set up the filestream we'll write to.
                 ' We need to check if the path ends with .zip or .msix.
                 If SourceUrl.EndsWith(".zip") Then
-                    Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                    Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                            "\winget-frontends\source\winget-pkgs\temp\winget-pkgs-master.zip", IO.FileMode.CreateNew)
                         'MessageBox.Show(OutputStream.ToString)
 
@@ -91,7 +91,7 @@ Public Class PackageListTools
                 ElseIf SourceUrl.EndsWith(".msix") Then
                     ' If the source url ends with .msix, then it's
                     ' probably the database.
-                    Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+                    Using OutputStream As IO.FileStream = New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                            "\winget-frontends\source\winget-db\temp\source.msix", IO.FileMode.CreateNew)
                         'MessageBox.Show(OutputStream.ToString)
 
@@ -138,11 +138,11 @@ Public Class PackageListTools
         CancelUpdateFlag = False
 
         ' Re-create the temp folder.
-        Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+        Dim tempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                    "\winget-frontends\source\winget-pkgs\temp"
 
         ' Specify the database folder.
-        Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+        Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                            "\winget-frontends\source\winget-db\temp"
 
         If Not System.IO.Directory.Exists(tempDir) Then
@@ -227,10 +227,10 @@ Public Class PackageListTools
 
             ' Now we extract that file, but first we need to delete old manifests.
             ' We'll wait to delete the old ones until the copying phase.
-            Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+            Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                        "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
-            Dim DatabaseDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+            Dim DatabaseDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                        "\winget-frontends\source\winget-db\source\Public"
 
             ' We can now extract the manifests.
@@ -456,7 +456,7 @@ Public Class PackageListTools
         ' Get and return each manifest in the manifests folder.
         ' This should only be used after ensuring that there's
         ' stuff in this folder, or it'll crash.
-        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' Define a variable so we can store the manifest paths.
         Dim ManifestPath As List(Of String) = New List(Of String)
@@ -485,7 +485,7 @@ Public Class PackageListTools
         ' we'll open it and check the ID. If it's a match, we'll return the path.
         ' This path will eventually be used in the manifest path column in the main window,
         ' but for now we just need a messagebox to display it.
-        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+        Dim ManifestAppDataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' If we can't do a simple replacement on each "." in the ID,
         ' we'll have to fall back to the slower method.
@@ -553,7 +553,7 @@ WHERE
 
         ' Specify winget package list database file we want
         ' to read from.
-        Dim PackageListPath As String = "Data Source=" & Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) &
+        Dim PackageListPath As String = "Data Source=" & Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                        "\winget-frontends\source\winget-db\source\Public\index.db"
         Dim SqlConnection As New SqliteConnection(PackageListPath)
         Dim SqlCommand As New SqliteCommand(SqlConnection.ToString)

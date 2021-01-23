@@ -493,7 +493,7 @@ Public Class aaformMainWindow
         End If
 
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
-        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         ' If the manifest directory exists, we can add the
         ' packages to the list.
@@ -630,7 +630,7 @@ Public Class aaformMainWindow
         ' Trying to do this without blocking with this example:
         ' https://www.codeproject.com/Tips/729674/Simple-Net-progress-bar-using-async-await
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
-        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
+        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
 
         If My.Computer.FileSystem.DirectoryExists(ManifestDir) Then
             AddPackageEntryToListAsync()
