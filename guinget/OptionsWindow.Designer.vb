@@ -67,6 +67,8 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
+        Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -130,6 +132,8 @@ Partial Class OptionsWindow
         '
         'tabpageRefreshCache
         '
+        Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteCacheFilesInRoaming)
+        Me.tabpageRefreshCache.Controls.Add(Me.buttonDeleteCacheFilesInRoaming)
         Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
@@ -571,6 +575,24 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
+        'buttonDeleteCacheFilesInRoaming
+        '
+        Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(6, 67)
+        Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
+        Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(264, 38)
+        Me.buttonDeleteCacheFilesInRoaming.TabIndex = 2
+        Me.buttonDeleteCacheFilesInRoaming.Text = "Delete cache files in Roaming"
+        Me.buttonDeleteCacheFilesInRoaming.UseVisualStyleBackColor = True
+        '
+        'labelDeleteCacheFilesInRoaming
+        '
+        Me.labelDeleteCacheFilesInRoaming.AutoSize = True
+        Me.labelDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(23, 108)
+        Me.labelDeleteCacheFilesInRoaming.Name = "labelDeleteCacheFilesInRoaming"
+        Me.labelDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(247, 65)
+        Me.labelDeleteCacheFilesInRoaming.TabIndex = 3
+        Me.labelDeleteCacheFilesInRoaming.Text = resources.GetString("labelDeleteCacheFilesInRoaming.Text")
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -652,4 +674,6 @@ Partial Class OptionsWindow
     Friend WithEvents tabpageRefreshCache As TabPage
     Friend WithEvents checkboxDeleteTempFilesAfterRefresh As CheckBox
     Friend WithEvents labelDeleteTempFilesAfterRefresh As Label
+    Friend WithEvents buttonDeleteCacheFilesInRoaming As Button
+    Friend WithEvents labelDeleteCacheFilesInRoaming As Label
 End Class
