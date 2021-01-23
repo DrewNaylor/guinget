@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class aaformMainWindow
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,13 +24,13 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'Form1
+        'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.ClientSize = New System.Drawing.Size(511, 369)
+        Me.Name = "aaformMainWindow"
+        Me.Text = "Source Manager"
         Me.ResumeLayout(False)
 
     End Sub
