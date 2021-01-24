@@ -1146,10 +1146,7 @@ Public Class aaformMainWindow
         ' Restart the textbox typing timer for search when typing if it's on.
         ' Got the idea for this particular code from this post:
         ' https://stackoverflow.com/a/671735
-        If My.Settings.SearchWhenTyping = True Then
-            TypeTimer.Stop()
-            TypeTimer.Start()
-        End If
+        StopStartTypeTimer(True)
     End Sub
 
     Private Sub TypeTimer_Tick(sender As Object, e As EventArgs) Handles TypeTimer.Tick
