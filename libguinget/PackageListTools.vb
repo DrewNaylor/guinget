@@ -53,7 +53,7 @@ Public Class PackageListTools
         Dim path As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\"
         Dim response As DialogResult = MessageBox.Show(CallingForm, "Are you sure you want to delete the files and folders located in " &
                                                   """" & path & """? This cannot be undone.",
-                                                  "Delete cache files In Roaming", MessageBoxButtons.YesNo)
+                                                  "Delete cache files in Roaming", MessageBoxButtons.YesNo)
         ' If the user clicks Yes, delete the folder then let them know if it was successful.
         ' Make sure it's not in use at the moment.
         If response = DialogResult.Yes AndAlso IO.Directory.Exists(path) Then
@@ -61,10 +61,15 @@ Public Class PackageListTools
                 System.IO.Directory.Delete(path, True)
             Catch ex As System.IO.IOException
                 MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again. It may also be possible that the directory " &
-                                "was deleted between when its existence was checked and when we tried to delete it.", "Deleting temp dir")
+                                "was deleted between when its existence was checked and when we tried to delete it.", "Delete cache files in Roaming")
             End Try
 
             ' TODO: messagebox feedback when successful.
+            ' Check if the folder exists now for a feedback message.
+            If Not IO.Directory.Exists(path) Then
+                ' Let the user know it was deleted.
+                MessageBox.Show("Cache files deleted successfully.", "Delete cache files In Roaming")
+            End If
         End If
     End Sub
 #End Region
