@@ -56,11 +56,12 @@ Public Class PackageListTools
                                                   "Delete cache files In Roaming", MessageBoxButtons.YesNo)
         ' If the user clicks Yes, delete the folder then let them know if it was successful.
         ' Make sure it's not in use at the moment.
-        If response = DialogResult.Yes Then
+        If response = DialogResult.Yes AndAlso IO.Directory.Exists(path) Then
             Try
                 System.IO.Directory.Delete(path, True)
             Catch ex As System.IO.IOException
-                MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
+                MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again. It may also be possible that the directory " &
+                                "was deleted between when its existence was checked and when we tried to delete it.", "Deleting temp dir")
             End Try
 
             ' TODO: messagebox feedback when successful.
