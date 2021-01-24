@@ -64,12 +64,15 @@ Public Class PackageListTools
                                 "was deleted between when its existence was checked and when we tried to delete it.", "Delete cache files in Roaming")
             End Try
 
-            ' TODO: messagebox feedback when successful.
             ' Check if the folder exists now for a feedback message.
             If Not IO.Directory.Exists(path) Then
                 ' Let the user know it was deleted.
                 MessageBox.Show("Cache files deleted successfully.", "Delete cache files In Roaming")
             End If
+
+        ElseIf response = DialogResult.Yes AndAlso Not IO.Directory.Exists(path) Then
+            ' Let the user know if the folder doesn't exist.
+            MessageBox.Show("The requested directory """ & path & """ does not exist; there's nothing to delete.", "Delete cache files in Roaming")
         End If
     End Sub
 #End Region
