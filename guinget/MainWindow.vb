@@ -890,16 +890,33 @@ Public Class aaformMainWindow
 
     Private Sub toolstriptextboxSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles toolstriptextboxSearch.KeyDown
         ' Start searching on pressing Enter.
+
         If e.KeyCode = Keys.Enter Then
             BeginPackageIdSearch()
+            ' Stop search when typing timer.
+            StopStartTypeTimer(False)
+
         ElseIf e.KeyCode = Keys.Escape Then
             ' Otherwise if it's Escape, clear the search box.
             toolstriptextboxSearch.Clear()
+            ' Restart search when typing timer.
+            StopStartTypeTimer(True)
+
+        ElseIf e.KeyCode = Keys.Back Or e.KeyCode = Keys.Delete Then
+            ' If the backspace or delete keys are pressed, restart search timer.
+            StopStartTypeTimer(True)
         End If
 
+    End Sub
+
+    Private Sub StopStartTypeTimer(Restart As Boolean)
         ' Stop timer, if necessary.
         If My.Settings.SearchWhenTyping = True Then
             TypeTimer.Stop()
+            ' Run search again if requested.
+            If Restart = True Then
+                TypeTimer.Start()
+            End If
         End If
     End Sub
 
