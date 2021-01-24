@@ -202,7 +202,10 @@ Public Class PackageListTools
             End If
         Else
             ' Otherwise, re-create it.
-            Await DeleteTempDir("winget-pkgs", True)
+            If Await DeleteTempDir("winget-pkgs", True) = False Then
+                ' Make sure it was successful before moving on.
+                Exit Function
+            End If
 
             ' Now we can download the package.
             ' This is copied here so it doesn't crash
@@ -470,25 +473,26 @@ Public Class PackageListTools
 #End Region
 
 #Region "Deleting temp directories."
-    Public Shared Async Function DeleteTempDir(SourceRootDir As String, Optional RecreateTempDir As Boolean = False) As Task
+    Public Shared Async Function DeleteTempDir(SourceRootDir As String, Optional RecreateTempDir As Boolean = False) As Task(Of Boolean)
         ' Delete the temp dir of the source specified in SourceRootDir.
         ' Define a variable to store the path.
         Dim tempPath As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                    "\winget-frontends\source\" & SourceRootDir & "\temp"
         ' Now begin deletion process.
-        Await Task.Run(Sub()
-                           ' Make sure it's not in use at the moment.
-                           Try
-                               System.IO.Directory.Delete(tempPath, True)
-                               ' Re-create the dir if necessary.
-                               If RecreateTempDir = True Then
-                                   System.IO.Directory.CreateDirectory(tempPath)
-                               End If
-                           Catch ex As System.IO.IOException
-                               MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
-                           End Try
-                       End Sub)
-        Return
+        ' Make sure it's not in use at the moment.
+        Try
+            System.IO.Directory.Delete(tempPath, True)
+            ' Re-create the dir if necessary.
+            If RecreateTempDir = True Then
+                System.IO.Directory.CreateDirectory(tempPath)
+            End If
+        Catch ex As System.IO.IOException
+            MessageBox.Show("A file in " & tempPath & " is in use by another process. Please close it and try again. Loading last session's package list.", "Deleting temp dir")
+            ' Task unsuccessful.
+            Return False
+        End Try
+        ' Task successful.
+        Return True
     End Function
 #End Region
 
