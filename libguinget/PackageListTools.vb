@@ -44,6 +44,9 @@ Public Class PackageListTools
     ' on top of everything.
     Public Shared RootForm As Form = Nothing
 
+    ' Specify whether temp files should be deleted after an update.
+    Public Shared DeleteTempDirsAfterCacheUpdate As Boolean = False
+
 #Region "Delete cache in Roaming"
     Public Shared Sub DeleteCacheFilesInRoaming(CallingForm As Form)
         ' Ask the user if they're sure they want to delete the folder.
@@ -462,6 +465,20 @@ Public Class PackageListTools
                                    End Sub)
 
                 End Using
+
+                ' Delete temp files if the user wants to do so once updating is complete.
+                If DeleteTempDirsAfterCacheUpdate = True Then
+                    ' winget-pkgs
+                    If Await DeleteTempDir("winget-pkgs") = False Then
+                        ' If there's an issue deleting it here, exit the function.
+                        Exit Function
+                    End If
+                    ' winget-db
+                    If Await DeleteTempDir("winget-db") = False Then
+                        ' If there's an issue deleting it here, exit the function.
+                        Exit Function
+                    End If
+                End If
 
                 ' End checking if user clicked Cancel in the extracting phase.
             End If
