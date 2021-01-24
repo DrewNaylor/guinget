@@ -219,10 +219,10 @@ Public Class PackageListTools
                 ' if necessary.
                 If IO.Directory.Exists(DatabaseTempDir) Then
                     ' Exists; re-create it.
-                    Await Task.Run(Sub()
-                                       System.IO.Directory.Delete(DatabaseTempDir, True)
-                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
-                                   End Sub)
+                    If Await DeleteTempDir("winget-db", True) = False Then
+                        ' If there's an issue and a file is open, stop updating.
+                        Exit Function
+                    End If
                 ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
                     ' Doesn't exist; create it.
                     Await Task.Run(Sub()
