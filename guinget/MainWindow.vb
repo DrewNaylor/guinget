@@ -562,6 +562,10 @@ Public Class aaformMainWindow
         toolstripbuttonRefreshCache.Enabled = ControlsEnabled
         RefreshCacheMenuButton.Enabled = ControlsEnabled
 
+        ' Installed packages and available updates.
+        ListInstalledPackagesToolStripMenuItem.Enabled = ControlsEnabled
+        ShowUpgradesToolStripMenuItem.Enabled = ControlsEnabled
+
         ' Package list.
         datagridviewPackageList.Enabled = ControlsEnabled
 
