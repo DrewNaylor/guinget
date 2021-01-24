@@ -488,7 +488,13 @@ Public Class aaformMainWindow
         ' First, we need to download and update the manifests if the
         ' debugging setting to bypass updating is turned off.
         If My.Settings.DebuggingBypassCacheUpdate = False Then
+            ' Set the updater progress window's root form
+            ' to the main window.
             PackageListTools.RootForm = aaformMainWindow
+            ' Set the setting for cleaning up temp files
+            ' after updating is complete.
+            PackageListTools.DeleteTempDirsAfterCacheUpdate = My.Settings.DeleteTempFilesAfterRefresh
+            ' Now run the update.
             Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying, My.Settings.LoadFromSqliteDb)
         End If
 

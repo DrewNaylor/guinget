@@ -44,6 +44,42 @@ Public Class PackageListTools
     ' on top of everything.
     Public Shared RootForm As Form = Nothing
 
+    ' Specify whether temp files should be deleted after an update.
+    Public Shared DeleteTempDirsAfterCacheUpdate As Boolean = False
+
+#Region "Delete cache in Roaming"
+    Public Shared Sub DeleteCacheFilesInRoaming(CallingForm As Form)
+        ' Ask the user if they're sure they want to delete the folder.
+        Dim path As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\"
+        Dim response As DialogResult = MessageBox.Show(CallingForm, "Are you sure you want to delete the files and folders located in " &
+                                                  """" & path & """? This cannot be undone.",
+                                                  "Delete cache files in Roaming", MessageBoxButtons.YesNo)
+        ' If the user clicks Yes, delete the folder then let them know if it was successful.
+        ' Make sure it's not in use at the moment.
+        If response = DialogResult.Yes AndAlso IO.Directory.Exists(path) Then
+            Try
+                System.IO.Directory.Delete(path, True)
+            Catch ex As System.IO.IOException
+                MessageBox.Show(CallingForm, "A file in the requested directory """ & path & """ is in use by another process. Please close it and try again. It may also be possible that the directory " &
+                                "was deleted between when its existence was checked and when we tried to delete it.", "Delete cache files in Roaming")
+                ' Don't keep going as there's an issue.
+                Exit Sub
+            End Try
+
+            ' Check if the folder exists now for a feedback message.
+            If Not IO.Directory.Exists(path) Then
+                ' Let the user know it was deleted.
+                MessageBox.Show(CallingForm, "Cache files deleted successfully.", "Delete cache files In Roaming")
+            End If
+
+        ElseIf response = DialogResult.Yes AndAlso Not IO.Directory.Exists(path) Then
+            ' Let the user know if the folder doesn't exist.
+            MessageBox.Show(CallingForm, "The requested directory """ & path & """ does not exist; there's nothing to delete.", "Delete cache files in Roaming")
+        End If
+    End Sub
+#End Region
+
+#Region "Download package list with progress async"
     Private Shared Async Function DownloadPkgListWithProgressAsync(ByVal SourceUrl As String, ByVal SourceName As String) As Task
 
         ' Download a file with HttpClient:
@@ -122,7 +158,9 @@ Public Class PackageListTools
 
         Return
     End Function
+#End Region
 
+#Region "Update manifests async"
     Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
                                                       Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
                                                       Optional UseRobocopy As Boolean = False,
@@ -178,15 +216,10 @@ Public Class PackageListTools
             End If
         Else
             ' Otherwise, re-create it.
-            Await Task.Run(Sub()
-                               ' Make sure it's not in use at the moment.
-                               Try
-                                   System.IO.Directory.Delete(tempDir, True)
-                                   System.IO.Directory.CreateDirectory(tempDir)
-                               Catch ex As System.IO.IOException
-                                   MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again.", "Deleting temp dir")
-                               End Try
-                           End Sub)
+            If Await DeleteTempDirAsync("winget-pkgs", True) = False Then
+                ' Make sure it was successful before moving on.
+                Exit Function
+            End If
 
             ' Now we can download the package.
             ' This is copied here so it doesn't crash
@@ -200,10 +233,10 @@ Public Class PackageListTools
                 ' if necessary.
                 If IO.Directory.Exists(DatabaseTempDir) Then
                     ' Exists; re-create it.
-                    Await Task.Run(Sub()
-                                       System.IO.Directory.Delete(DatabaseTempDir, True)
-                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
-                                   End Sub)
+                    If Await DeleteTempDirAsync("winget-db", True) = False Then
+                        ' If there's an issue and a file is open, stop updating.
+                        Exit Function
+                    End If
                 ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
                     ' Doesn't exist; create it.
                     Await Task.Run(Sub()
@@ -444,14 +477,60 @@ Public Class PackageListTools
 
                 End Using
 
-                ' End checking if user clicked Cancel in the extracting phase.
-            End If
+                ' Delete temp files if the user wants to do so once updating is complete.
+                ' Make sure the cancel update flag is off before doing this, as
+                ' there may be a reason why people want to keep the temp files
+                ' around at the last minute.
+                If DeleteTempDirsAfterCacheUpdate = True AndAlso CancelUpdateFlag = False Then
+                    ' winget-pkgs
+                    If Await DeleteTempDirAsync("winget-pkgs") = False Then
+                        ' If there's an issue deleting it here, exit the function.
+                        Exit Function
+                    End If
+                    ' winget-db
+                    ' Make sure people want to delete it first.
+                    If UpdateDatabase = True Then
+                        If Await DeleteTempDirAsync("winget-db") = False Then
+                            ' If there's an issue deleting it here, exit the function.
+                            Exit Function
+                        End If
+                    End If
+                End If
+
+                    ' End checking if user clicked Cancel in the extracting phase.
+                End If
 
             ' End checking if user clicked Cancel in the downloading phase.
         End If
 
     End Function
+#End Region
 
+#Region "Deleting temp directories."
+    Public Shared Async Function DeleteTempDirAsync(SourceRootDir As String, Optional RecreateTempDir As Boolean = False) As Task(Of Boolean)
+        ' Delete the temp dir of the source specified in SourceRootDir.
+        ' Define a variable to store the path.
+        Dim tempPath As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
+                                   "\winget-frontends\source\" & SourceRootDir & "\temp"
+        ' Now begin deletion process.
+        ' Make sure it's not in use at the moment.
+        Try
+            System.IO.Directory.Delete(tempPath, True)
+            ' Re-create the dir if necessary.
+            If RecreateTempDir = True Then
+                System.IO.Directory.CreateDirectory(tempPath)
+            End If
+        Catch ex As System.IO.IOException
+            MessageBox.Show("A file in " & tempPath & " is in use by another process. Please close it and try again. Loading last session's package list.", "Deleting temp dir")
+            ' Task unsuccessful.
+            Return False
+        End Try
+        ' Task successful.
+        Return True
+    End Function
+#End Region
+
+#Region "Get manifest paths list"
     Public Shared Function GetManifests() As List(Of String)
         ' Get and return each manifest in the manifests folder.
         ' This should only be used after ensuring that there's
@@ -472,7 +551,9 @@ Public Class PackageListTools
 
         Return ManifestPath
     End Function
+#End Region
 
+#Region "Find manifest by version and ID"
     ' This is used as a fallback if we can't figure out where the manifest is by
     ' just using the package id and version.
     ' If the folder used here doesn't exist, applications using this
@@ -523,7 +604,9 @@ Public Class PackageListTools
             Next
         End If
     End Function
+#End Region
 
+#Region "Get package details table from SQLite database"
     Public Shared Function GetPackageDetailsTableFromSqliteDB() As DataTable
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
@@ -599,5 +682,6 @@ WHERE
         ' Return the list of packages.
         Return packageArray
     End Function
+#End Region
 
 End Class

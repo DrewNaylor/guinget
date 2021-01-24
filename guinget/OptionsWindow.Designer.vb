@@ -26,26 +26,32 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions = New System.Windows.Forms.TableLayoutPanel()
         Me.buttonDefaults = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
-        Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
-        Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
+        Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
+        Me.labelDeleteTempFilesAfterRefresh = New System.Windows.Forms.Label()
+        Me.checkboxDeleteTempFilesAfterRefresh = New System.Windows.Forms.CheckBox()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch = New System.Windows.Forms.CheckBox()
         Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
+        Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
+        Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
         Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
         Me.labelWhyElevate = New System.Windows.Forms.Label()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.tabpageLayout = New System.Windows.Forms.TabPage()
         Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
-        Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
+        Me.tabpageExperimental = New System.Windows.Forms.TabPage()
         Me.panelExperimentalSettings = New System.Windows.Forms.Panel()
+        Me.labelDefaultSourceNameDescription = New System.Windows.Forms.Label()
+        Me.textboxDefaultSourceName = New System.Windows.Forms.TextBox()
+        Me.labelDefaultSourceName = New System.Windows.Forms.Label()
+        Me.labelHiDPIMode = New System.Windows.Forms.Label()
+        Me.checkboxHiDPIMode = New System.Windows.Forms.CheckBox()
         Me.labelWaitTime = New System.Windows.Forms.Label()
         Me.numericupdownSearchWhenTypingWaitTime = New System.Windows.Forms.NumericUpDown()
         Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
-        Me.labelRequiresApplicationRestart = New System.Windows.Forms.Label()
         Me.labelCopyrightForRobocopy = New System.Windows.Forms.Label()
         Me.labelCopyrightForSevenZip = New System.Windows.Forms.Label()
-        Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
         Me.checkboxUseRobocopy = New System.Windows.Forms.CheckBox()
         Me.buttonBrowse7zExePath = New System.Windows.Forms.Button()
         Me.textbox7zExePath = New System.Windows.Forms.TextBox()
@@ -56,21 +62,21 @@ Partial Class OptionsWindow
         Me.labelLoadFromManifests = New System.Windows.Forms.Label()
         Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
         Me.labelExperimentalSettingsHidden = New System.Windows.Forms.Label()
+        Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
+        Me.labelRequiresApplicationRestart = New System.Windows.Forms.Label()
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.checkboxHiDPIMode = New System.Windows.Forms.CheckBox()
-        Me.labelHiDPIMode = New System.Windows.Forms.Label()
-        Me.labelDefaultSourceName = New System.Windows.Forms.Label()
-        Me.textboxDefaultSourceName = New System.Windows.Forms.TextBox()
-        Me.labelDefaultSourceNameDescription = New System.Windows.Forms.Label()
+        Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
+        Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
-        Me.tabpagePackageDetails.SuspendLayout()
+        Me.tabpageRefreshCache.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
+        Me.tabpagePackageDetails.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
-        Me.tabpageRefreshCache.SuspendLayout()
+        Me.tabpageExperimental.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
         CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -110,11 +116,12 @@ Partial Class OptionsWindow
         'tabcontrolOptions
         '
         Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageExperimental)
         Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolOptions.Location = New System.Drawing.Point(2, 2)
         Me.tabcontrolOptions.Margin = New System.Windows.Forms.Padding(2)
@@ -123,27 +130,38 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.Size = New System.Drawing.Size(368, 396)
         Me.tabcontrolOptions.TabIndex = 0
         '
-        'tabpagePackageDetails
+        'tabpageRefreshCache
         '
-        Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
-        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 22)
-        Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
-        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 370)
-        Me.tabpagePackageDetails.TabIndex = 2
-        Me.tabpagePackageDetails.Text = "Package Details"
-        Me.tabpagePackageDetails.UseVisualStyleBackColor = True
+        Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteCacheFilesInRoaming)
+        Me.tabpageRefreshCache.Controls.Add(Me.buttonDeleteCacheFilesInRoaming)
+        Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
+        Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
+        Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
+        Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageRefreshCache.TabIndex = 5
+        Me.tabpageRefreshCache.Text = "Refresh cache"
+        Me.tabpageRefreshCache.UseVisualStyleBackColor = True
         '
-        'checkboxLastSelectedPackageDetails
+        'labelDeleteTempFilesAfterRefresh
         '
-        Me.checkboxLastSelectedPackageDetails.AutoSize = True
-        Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(6, 6)
-        Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
-        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(267, 30)
-        Me.checkboxLastSelectedPackageDetails.TabIndex = 0
-        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when selecting" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "multiple packages"
-        Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
+        Me.labelDeleteTempFilesAfterRefresh.AutoSize = True
+        Me.labelDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(23, 26)
+        Me.labelDeleteTempFilesAfterRefresh.Name = "labelDeleteTempFilesAfterRefresh"
+        Me.labelDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(202, 26)
+        Me.labelDeleteTempFilesAfterRefresh.TabIndex = 1
+        Me.labelDeleteTempFilesAfterRefresh.Text = "Temporary files are always deleted before" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "refreshing the cache."
+        '
+        'checkboxDeleteTempFilesAfterRefresh
+        '
+        Me.checkboxDeleteTempFilesAfterRefresh.AutoSize = True
+        Me.checkboxDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxDeleteTempFilesAfterRefresh.Name = "checkboxDeleteTempFilesAfterRefresh"
+        Me.checkboxDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(220, 17)
+        Me.checkboxDeleteTempFilesAfterRefresh.TabIndex = 0
+        Me.checkboxDeleteTempFilesAfterRefresh.Text = "Delete temporary files after cache update"
+        Me.checkboxDeleteTempFilesAfterRefresh.UseVisualStyleBackColor = True
         '
         'tabpageSearch
         '
@@ -178,6 +196,28 @@ Partial Class OptionsWindow
         Me.checkboxRerunSearch.TabIndex = 0
         Me.checkboxRerunSearch.Text = "Re-run search after cache update"
         Me.checkboxRerunSearch.UseVisualStyleBackColor = True
+        '
+        'tabpagePackageDetails
+        '
+        Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
+        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 22)
+        Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
+        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 370)
+        Me.tabpagePackageDetails.TabIndex = 2
+        Me.tabpagePackageDetails.Text = "Package Details"
+        Me.tabpagePackageDetails.UseVisualStyleBackColor = True
+        '
+        'checkboxLastSelectedPackageDetails
+        '
+        Me.checkboxLastSelectedPackageDetails.AutoSize = True
+        Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(6, 6)
+        Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
+        Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(267, 30)
+        Me.checkboxLastSelectedPackageDetails.TabIndex = 0
+        Me.checkboxLastSelectedPackageDetails.Text = "Show last-selected package details when selecting" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "multiple packages"
+        Me.checkboxLastSelectedPackageDetails.UseVisualStyleBackColor = True
         '
         'tabpageApplyChanges
         '
@@ -246,19 +286,19 @@ Partial Class OptionsWindow
         Me.checkboxShowSidebar.Text = "Show sidebar"
         Me.checkboxShowSidebar.UseVisualStyleBackColor = True
         '
-        'tabpageRefreshCache
+        'tabpageExperimental
         '
-        Me.tabpageRefreshCache.Controls.Add(Me.panelExperimentalSettings)
-        Me.tabpageRefreshCache.Controls.Add(Me.labelExperimentalSettingsHidden)
-        Me.tabpageRefreshCache.Controls.Add(Me.checkboxHideUnfinishedControls)
-        Me.tabpageRefreshCache.Controls.Add(Me.labelRequiresApplicationRestart)
-        Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
-        Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 370)
-        Me.tabpageRefreshCache.TabIndex = 4
-        Me.tabpageRefreshCache.Text = "Experimental"
-        Me.tabpageRefreshCache.UseVisualStyleBackColor = True
+        Me.tabpageExperimental.Controls.Add(Me.panelExperimentalSettings)
+        Me.tabpageExperimental.Controls.Add(Me.labelExperimentalSettingsHidden)
+        Me.tabpageExperimental.Controls.Add(Me.checkboxHideUnfinishedControls)
+        Me.tabpageExperimental.Controls.Add(Me.labelRequiresApplicationRestart)
+        Me.tabpageExperimental.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageExperimental.Name = "tabpageExperimental"
+        Me.tabpageExperimental.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageExperimental.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageExperimental.TabIndex = 4
+        Me.tabpageExperimental.Text = "Experimental"
+        Me.tabpageExperimental.UseVisualStyleBackColor = True
         '
         'panelExperimentalSettings
         '
@@ -286,6 +326,53 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.Name = "panelExperimentalSettings"
         Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 318)
         Me.panelExperimentalSettings.TabIndex = 4
+        '
+        'labelDefaultSourceNameDescription
+        '
+        Me.labelDefaultSourceNameDescription.AutoSize = True
+        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 427)
+        Me.labelDefaultSourceNameDescription.Name = "labelDefaultSourceNameDescription"
+        Me.labelDefaultSourceNameDescription.Size = New System.Drawing.Size(261, 91)
+        Me.labelDefaultSourceNameDescription.TabIndex = 20
+        Me.labelDefaultSourceNameDescription.Text = resources.GetString("labelDefaultSourceNameDescription.Text")
+        '
+        'textboxDefaultSourceName
+        '
+        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(117, 404)
+        Me.textboxDefaultSourceName.Name = "textboxDefaultSourceName"
+        Me.textboxDefaultSourceName.Size = New System.Drawing.Size(201, 20)
+        Me.textboxDefaultSourceName.TabIndex = 19
+        '
+        'labelDefaultSourceName
+        '
+        Me.labelDefaultSourceName.AutoSize = True
+        Me.labelDefaultSourceName.Location = New System.Drawing.Point(3, 407)
+        Me.labelDefaultSourceName.Name = "labelDefaultSourceName"
+        Me.labelDefaultSourceName.Size = New System.Drawing.Size(108, 13)
+        Me.labelDefaultSourceName.TabIndex = 18
+        Me.labelDefaultSourceName.Text = "Default source name:"
+        '
+        'labelHiDPIMode
+        '
+        Me.labelHiDPIMode.AutoSize = True
+        Me.labelHiDPIMode.Location = New System.Drawing.Point(21, 359)
+        Me.labelHiDPIMode.Name = "labelHiDPIMode"
+        Me.labelHiDPIMode.Size = New System.Drawing.Size(293, 39)
+        Me.labelHiDPIMode.TabIndex = 17
+        Me.labelHiDPIMode.Text = "For now, only doubles the height of items in the package list." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "May eventually be" &
+    " expanded to cover the rest of the controls" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "that are difficult to use on HiDPI " &
+    "devices."
+        '
+        'checkboxHiDPIMode
+        '
+        Me.checkboxHiDPIMode.AutoSize = True
+        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(3, 342)
+        Me.checkboxHiDPIMode.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxHiDPIMode.Name = "checkboxHiDPIMode"
+        Me.checkboxHiDPIMode.Size = New System.Drawing.Size(84, 17)
+        Me.checkboxHiDPIMode.TabIndex = 16
+        Me.checkboxHiDPIMode.Text = "HiDPI Mode"
+        Me.checkboxHiDPIMode.UseVisualStyleBackColor = True
         '
         'labelWaitTime
         '
@@ -316,16 +403,6 @@ Partial Class OptionsWindow
         Me.checkboxSearchWhenTyping.Text = "Search when typing"
         Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
         '
-        'labelRequiresApplicationRestart
-        '
-        Me.labelRequiresApplicationRestart.AutoSize = True
-        Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 20)
-        Me.labelRequiresApplicationRestart.Name = "labelRequiresApplicationRestart"
-        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(251, 26)
-        Me.labelRequiresApplicationRestart.TabIndex = 12
-        Me.labelRequiresApplicationRestart.Text = "May require application restart to take full effect." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The rest of these options s" &
-    "till apply even if this is on."
-        '
         'labelCopyrightForRobocopy
         '
         Me.labelCopyrightForRobocopy.AutoSize = True
@@ -346,17 +423,6 @@ Partial Class OptionsWindow
         Me.labelCopyrightForSevenZip.TabIndex = 10
         Me.labelCopyrightForSevenZip.Text = "7-Zip is Copyright (C) Igor Pavlov." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "7-Zip may extract faster than the .NET extra" &
     "ctor," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "but it's not fully tested for this purpose." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'checkboxHideUnfinishedControls
-        '
-        Me.checkboxHideUnfinishedControls.AutoSize = True
-        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 3)
-        Me.checkboxHideUnfinishedControls.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
-        Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
-        Me.checkboxHideUnfinishedControls.TabIndex = 0
-        Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls and experimental stuff"
-        Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
         '
         'checkboxUseRobocopy
         '
@@ -459,6 +525,27 @@ Partial Class OptionsWindow
         Me.labelExperimentalSettingsHidden.TabIndex = 5
         Me.labelExperimentalSettingsHidden.Text = "Experimental options are currently hidden."
         '
+        'checkboxHideUnfinishedControls
+        '
+        Me.checkboxHideUnfinishedControls.AutoSize = True
+        Me.checkboxHideUnfinishedControls.Location = New System.Drawing.Point(3, 3)
+        Me.checkboxHideUnfinishedControls.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxHideUnfinishedControls.Name = "checkboxHideUnfinishedControls"
+        Me.checkboxHideUnfinishedControls.Size = New System.Drawing.Size(245, 17)
+        Me.checkboxHideUnfinishedControls.TabIndex = 0
+        Me.checkboxHideUnfinishedControls.Text = "Hide unfinished controls and experimental stuff"
+        Me.checkboxHideUnfinishedControls.UseVisualStyleBackColor = True
+        '
+        'labelRequiresApplicationRestart
+        '
+        Me.labelRequiresApplicationRestart.AutoSize = True
+        Me.labelRequiresApplicationRestart.Location = New System.Drawing.Point(18, 20)
+        Me.labelRequiresApplicationRestart.Name = "labelRequiresApplicationRestart"
+        Me.labelRequiresApplicationRestart.Size = New System.Drawing.Size(251, 26)
+        Me.labelRequiresApplicationRestart.TabIndex = 12
+        Me.labelRequiresApplicationRestart.Text = "May require application restart to take full effect." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The rest of these options s" &
+    "till apply even if this is on."
+        '
         'buttonCancel
         '
         Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -488,52 +575,23 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'checkboxHiDPIMode
+        'buttonDeleteCacheFilesInRoaming
         '
-        Me.checkboxHiDPIMode.AutoSize = True
-        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(3, 342)
-        Me.checkboxHiDPIMode.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.checkboxHiDPIMode.Name = "checkboxHiDPIMode"
-        Me.checkboxHiDPIMode.Size = New System.Drawing.Size(84, 17)
-        Me.checkboxHiDPIMode.TabIndex = 16
-        Me.checkboxHiDPIMode.Text = "HiDPI Mode"
-        Me.checkboxHiDPIMode.UseVisualStyleBackColor = True
+        Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(6, 67)
+        Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
+        Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(264, 38)
+        Me.buttonDeleteCacheFilesInRoaming.TabIndex = 2
+        Me.buttonDeleteCacheFilesInRoaming.Text = "Delete cache files in Roaming"
+        Me.buttonDeleteCacheFilesInRoaming.UseVisualStyleBackColor = True
         '
-        'labelHiDPIMode
+        'labelDeleteCacheFilesInRoaming
         '
-        Me.labelHiDPIMode.AutoSize = True
-        Me.labelHiDPIMode.Location = New System.Drawing.Point(21, 359)
-        Me.labelHiDPIMode.Name = "labelHiDPIMode"
-        Me.labelHiDPIMode.Size = New System.Drawing.Size(293, 39)
-        Me.labelHiDPIMode.TabIndex = 17
-        Me.labelHiDPIMode.Text = "For now, only doubles the height of items in the package list." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "May eventually be" &
-    " expanded to cover the rest of the controls" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "that are difficult to use on HiDPI " &
-    "devices."
-        '
-        'labelDefaultSourceName
-        '
-        Me.labelDefaultSourceName.AutoSize = True
-        Me.labelDefaultSourceName.Location = New System.Drawing.Point(3, 407)
-        Me.labelDefaultSourceName.Name = "labelDefaultSourceName"
-        Me.labelDefaultSourceName.Size = New System.Drawing.Size(108, 13)
-        Me.labelDefaultSourceName.TabIndex = 18
-        Me.labelDefaultSourceName.Text = "Default source name:"
-        '
-        'textboxDefaultSourceName
-        '
-        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(117, 404)
-        Me.textboxDefaultSourceName.Name = "textboxDefaultSourceName"
-        Me.textboxDefaultSourceName.Size = New System.Drawing.Size(201, 20)
-        Me.textboxDefaultSourceName.TabIndex = 19
-        '
-        'labelDefaultSourceNameDescription
-        '
-        Me.labelDefaultSourceNameDescription.AutoSize = True
-        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 427)
-        Me.labelDefaultSourceNameDescription.Name = "labelDefaultSourceNameDescription"
-        Me.labelDefaultSourceNameDescription.Size = New System.Drawing.Size(261, 91)
-        Me.labelDefaultSourceNameDescription.TabIndex = 20
-        Me.labelDefaultSourceNameDescription.Text = resources.GetString("labelDefaultSourceNameDescription.Text")
+        Me.labelDeleteCacheFilesInRoaming.AutoSize = True
+        Me.labelDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(23, 108)
+        Me.labelDeleteCacheFilesInRoaming.Name = "labelDeleteCacheFilesInRoaming"
+        Me.labelDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(247, 65)
+        Me.labelDeleteCacheFilesInRoaming.TabIndex = 3
+        Me.labelDeleteCacheFilesInRoaming.Text = resources.GetString("labelDeleteCacheFilesInRoaming.Text")
         '
         'OptionsWindow
         '
@@ -553,16 +611,18 @@ Partial Class OptionsWindow
         Me.Text = "Options"
         Me.tablelayoutpanelOptions.ResumeLayout(False)
         Me.tabcontrolOptions.ResumeLayout(False)
-        Me.tabpagePackageDetails.ResumeLayout(False)
-        Me.tabpagePackageDetails.PerformLayout()
+        Me.tabpageRefreshCache.ResumeLayout(False)
+        Me.tabpageRefreshCache.PerformLayout()
         Me.tabpageSearch.ResumeLayout(False)
         Me.tabpageSearch.PerformLayout()
+        Me.tabpagePackageDetails.ResumeLayout(False)
+        Me.tabpagePackageDetails.PerformLayout()
         Me.tabpageApplyChanges.ResumeLayout(False)
         Me.tabpageApplyChanges.PerformLayout()
         Me.tabpageLayout.ResumeLayout(False)
         Me.tabpageLayout.PerformLayout()
-        Me.tabpageRefreshCache.ResumeLayout(False)
-        Me.tabpageRefreshCache.PerformLayout()
+        Me.tabpageExperimental.ResumeLayout(False)
+        Me.tabpageExperimental.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
         CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).EndInit()
@@ -585,7 +645,7 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents tabpageLayout As TabPage
     Friend WithEvents checkboxShowSidebar As CheckBox
-    Friend WithEvents tabpageRefreshCache As TabPage
+    Friend WithEvents tabpageExperimental As TabPage
     Friend WithEvents checkboxLoadFromDatabase As CheckBox
     Friend WithEvents labelLoadFromManifests As Label
     Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
@@ -611,4 +671,9 @@ Partial Class OptionsWindow
     Friend WithEvents textboxDefaultSourceName As TextBox
     Friend WithEvents labelDefaultSourceName As Label
     Friend WithEvents labelDefaultSourceNameDescription As Label
+    Friend WithEvents tabpageRefreshCache As TabPage
+    Friend WithEvents checkboxDeleteTempFilesAfterRefresh As CheckBox
+    Friend WithEvents labelDeleteTempFilesAfterRefresh As Label
+    Friend WithEvents buttonDeleteCacheFilesInRoaming As Button
+    Friend WithEvents labelDeleteCacheFilesInRoaming As Label
 End Class
