@@ -60,7 +60,7 @@ Public Class PackageListTools
             Try
                 System.IO.Directory.Delete(path, True)
             Catch ex As System.IO.IOException
-                MessageBox.Show("A file in the requested directory is in use by another process. Please close it and try again. It may also be possible that the directory " &
+                MessageBox.Show("A file in the requested directory """ & path & """ is in use by another process. Please close it and try again. It may also be possible that the directory " &
                                 "was deleted between when its existence was checked and when we tried to delete it.", "Delete cache files in Roaming")
             End Try
 
