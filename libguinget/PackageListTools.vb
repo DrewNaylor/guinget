@@ -60,19 +60,21 @@ Public Class PackageListTools
             Try
                 System.IO.Directory.Delete(path, True)
             Catch ex As System.IO.IOException
-                MessageBox.Show("A file in the requested directory """ & path & """ is in use by another process. Please close it and try again. It may also be possible that the directory " &
+                MessageBox.Show(CallingForm, "A file in the requested directory """ & path & """ is in use by another process. Please close it and try again. It may also be possible that the directory " &
                                 "was deleted between when its existence was checked and when we tried to delete it.", "Delete cache files in Roaming")
+                ' Don't keep going as there's an issue.
+                Exit Sub
             End Try
 
             ' Check if the folder exists now for a feedback message.
             If Not IO.Directory.Exists(path) Then
                 ' Let the user know it was deleted.
-                MessageBox.Show("Cache files deleted successfully.", "Delete cache files In Roaming")
+                MessageBox.Show(CallingForm, "Cache files deleted successfully.", "Delete cache files In Roaming")
             End If
 
         ElseIf response = DialogResult.Yes AndAlso Not IO.Directory.Exists(path) Then
             ' Let the user know if the folder doesn't exist.
-            MessageBox.Show("The requested directory """ & path & """ does not exist; there's nothing to delete.", "Delete cache files in Roaming")
+            MessageBox.Show(CallingForm, "The requested directory """ & path & """ does not exist; there's nothing to delete.", "Delete cache files in Roaming")
         End If
     End Sub
 #End Region
