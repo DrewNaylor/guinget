@@ -64,6 +64,8 @@ Public Class OptionsWindow
         ' Search when typing.
         checkboxSearchWhenTyping.Checked = My.Settings.SearchWhenTyping
         ' Search when typing wait amount.
+        ' Block or unblock it.
+        numericupdownSearchWhenTypingWaitTime.Enabled = My.Settings.SearchWhenTyping
         ' Make sure it's within the range.
         If My.Settings.SearchWhenTypingTimerInterval < 1 Then
             ' If it's below 1, set it to 1.
@@ -236,5 +238,11 @@ Public Class OptionsWindow
     Private Sub buttonDeleteCacheFilesInRoaming_Click(sender As Object, e As EventArgs) Handles buttonDeleteCacheFilesInRoaming.Click
         ' Run the delete cache files in roaming code in the library.
         libguinget.PackageListTools.DeleteCacheFilesInRoaming(Me)
+    End Sub
+
+    Private Sub checkboxSearchWhenTyping_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxSearchWhenTyping.CheckedChanged
+        ' Block the wait time number thing when the search when typing
+        ' checkbox is unchecked.
+        numericupdownSearchWhenTypingWaitTime.Enabled = checkboxSearchWhenTyping.Checked
     End Sub
 End Class

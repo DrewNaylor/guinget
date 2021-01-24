@@ -27,6 +27,8 @@ Partial Class OptionsWindow
         Me.buttonDefaults = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
         Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
+        Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
+        Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
         Me.labelDeleteTempFilesAfterRefresh = New System.Windows.Forms.Label()
         Me.checkboxDeleteTempFilesAfterRefresh = New System.Windows.Forms.CheckBox()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
@@ -47,9 +49,6 @@ Partial Class OptionsWindow
         Me.labelDefaultSourceName = New System.Windows.Forms.Label()
         Me.labelHiDPIMode = New System.Windows.Forms.Label()
         Me.checkboxHiDPIMode = New System.Windows.Forms.CheckBox()
-        Me.labelWaitTime = New System.Windows.Forms.Label()
-        Me.numericupdownSearchWhenTypingWaitTime = New System.Windows.Forms.NumericUpDown()
-        Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
         Me.labelCopyrightForRobocopy = New System.Windows.Forms.Label()
         Me.labelCopyrightForSevenZip = New System.Windows.Forms.Label()
         Me.checkboxUseRobocopy = New System.Windows.Forms.CheckBox()
@@ -67,8 +66,9 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
-        Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
+        Me.labelWaitTime = New System.Windows.Forms.Label()
+        Me.numericupdownSearchWhenTypingWaitTime = New System.Windows.Forms.NumericUpDown()
+        Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -144,6 +144,24 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.Text = "Refresh cache"
         Me.tabpageRefreshCache.UseVisualStyleBackColor = True
         '
+        'labelDeleteCacheFilesInRoaming
+        '
+        Me.labelDeleteCacheFilesInRoaming.AutoSize = True
+        Me.labelDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(23, 108)
+        Me.labelDeleteCacheFilesInRoaming.Name = "labelDeleteCacheFilesInRoaming"
+        Me.labelDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(247, 65)
+        Me.labelDeleteCacheFilesInRoaming.TabIndex = 3
+        Me.labelDeleteCacheFilesInRoaming.Text = resources.GetString("labelDeleteCacheFilesInRoaming.Text")
+        '
+        'buttonDeleteCacheFilesInRoaming
+        '
+        Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(6, 67)
+        Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
+        Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(264, 38)
+        Me.buttonDeleteCacheFilesInRoaming.TabIndex = 2
+        Me.buttonDeleteCacheFilesInRoaming.Text = "Delete cache files in Roaming"
+        Me.buttonDeleteCacheFilesInRoaming.UseVisualStyleBackColor = True
+        '
         'labelDeleteTempFilesAfterRefresh
         '
         Me.labelDeleteTempFilesAfterRefresh.AutoSize = True
@@ -165,6 +183,9 @@ Partial Class OptionsWindow
         '
         'tabpageSearch
         '
+        Me.tabpageSearch.Controls.Add(Me.labelWaitTime)
+        Me.tabpageSearch.Controls.Add(Me.numericupdownSearchWhenTypingWaitTime)
+        Me.tabpageSearch.Controls.Add(Me.checkboxSearchWhenTyping)
         Me.tabpageSearch.Controls.Add(Me.checkboxUseExactMatchForLastSelectedPackageIDSearch)
         Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
         Me.tabpageSearch.Location = New System.Drawing.Point(4, 22)
@@ -308,9 +329,6 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.Controls.Add(Me.labelDefaultSourceName)
         Me.panelExperimentalSettings.Controls.Add(Me.labelHiDPIMode)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxHiDPIMode)
-        Me.panelExperimentalSettings.Controls.Add(Me.labelWaitTime)
-        Me.panelExperimentalSettings.Controls.Add(Me.numericupdownSearchWhenTypingWaitTime)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxSearchWhenTyping)
         Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForRobocopy)
         Me.panelExperimentalSettings.Controls.Add(Me.labelCopyrightForSevenZip)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxUseRobocopy)
@@ -330,7 +348,7 @@ Partial Class OptionsWindow
         'labelDefaultSourceNameDescription
         '
         Me.labelDefaultSourceNameDescription.AutoSize = True
-        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 427)
+        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 387)
         Me.labelDefaultSourceNameDescription.Name = "labelDefaultSourceNameDescription"
         Me.labelDefaultSourceNameDescription.Size = New System.Drawing.Size(261, 91)
         Me.labelDefaultSourceNameDescription.TabIndex = 20
@@ -338,7 +356,7 @@ Partial Class OptionsWindow
         '
         'textboxDefaultSourceName
         '
-        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(117, 404)
+        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(117, 364)
         Me.textboxDefaultSourceName.Name = "textboxDefaultSourceName"
         Me.textboxDefaultSourceName.Size = New System.Drawing.Size(201, 20)
         Me.textboxDefaultSourceName.TabIndex = 19
@@ -346,7 +364,7 @@ Partial Class OptionsWindow
         'labelDefaultSourceName
         '
         Me.labelDefaultSourceName.AutoSize = True
-        Me.labelDefaultSourceName.Location = New System.Drawing.Point(3, 407)
+        Me.labelDefaultSourceName.Location = New System.Drawing.Point(3, 367)
         Me.labelDefaultSourceName.Name = "labelDefaultSourceName"
         Me.labelDefaultSourceName.Size = New System.Drawing.Size(108, 13)
         Me.labelDefaultSourceName.TabIndex = 18
@@ -355,7 +373,7 @@ Partial Class OptionsWindow
         'labelHiDPIMode
         '
         Me.labelHiDPIMode.AutoSize = True
-        Me.labelHiDPIMode.Location = New System.Drawing.Point(21, 359)
+        Me.labelHiDPIMode.Location = New System.Drawing.Point(21, 319)
         Me.labelHiDPIMode.Name = "labelHiDPIMode"
         Me.labelHiDPIMode.Size = New System.Drawing.Size(293, 39)
         Me.labelHiDPIMode.TabIndex = 17
@@ -366,42 +384,13 @@ Partial Class OptionsWindow
         'checkboxHiDPIMode
         '
         Me.checkboxHiDPIMode.AutoSize = True
-        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(3, 342)
+        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(3, 302)
         Me.checkboxHiDPIMode.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxHiDPIMode.Name = "checkboxHiDPIMode"
         Me.checkboxHiDPIMode.Size = New System.Drawing.Size(84, 17)
         Me.checkboxHiDPIMode.TabIndex = 16
         Me.checkboxHiDPIMode.Text = "HiDPI Mode"
         Me.checkboxHiDPIMode.UseVisualStyleBackColor = True
-        '
-        'labelWaitTime
-        '
-        Me.labelWaitTime.AutoSize = True
-        Me.labelWaitTime.Location = New System.Drawing.Point(21, 320)
-        Me.labelWaitTime.Name = "labelWaitTime"
-        Me.labelWaitTime.Size = New System.Drawing.Size(76, 13)
-        Me.labelWaitTime.TabIndex = 15
-        Me.labelWaitTime.Text = "Wait time (ms):"
-        '
-        'numericupdownSearchWhenTypingWaitTime
-        '
-        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(103, 318)
-        Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
-        Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
-        Me.numericupdownSearchWhenTypingWaitTime.Size = New System.Drawing.Size(89, 20)
-        Me.numericupdownSearchWhenTypingWaitTime.TabIndex = 14
-        Me.numericupdownSearchWhenTypingWaitTime.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'checkboxSearchWhenTyping
-        '
-        Me.checkboxSearchWhenTyping.AutoSize = True
-        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(3, 302)
-        Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
-        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(120, 17)
-        Me.checkboxSearchWhenTyping.TabIndex = 13
-        Me.checkboxSearchWhenTyping.Text = "Search when typing"
-        Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
         '
         'labelCopyrightForRobocopy
         '
@@ -575,23 +564,34 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'buttonDeleteCacheFilesInRoaming
+        'labelWaitTime
         '
-        Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(6, 67)
-        Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
-        Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(264, 38)
-        Me.buttonDeleteCacheFilesInRoaming.TabIndex = 2
-        Me.buttonDeleteCacheFilesInRoaming.Text = "Delete cache files in Roaming"
-        Me.buttonDeleteCacheFilesInRoaming.UseVisualStyleBackColor = True
+        Me.labelWaitTime.AutoSize = True
+        Me.labelWaitTime.Location = New System.Drawing.Point(24, 69)
+        Me.labelWaitTime.Name = "labelWaitTime"
+        Me.labelWaitTime.Size = New System.Drawing.Size(76, 13)
+        Me.labelWaitTime.TabIndex = 18
+        Me.labelWaitTime.Text = "Wait time (ms):"
         '
-        'labelDeleteCacheFilesInRoaming
+        'numericupdownSearchWhenTypingWaitTime
         '
-        Me.labelDeleteCacheFilesInRoaming.AutoSize = True
-        Me.labelDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(23, 108)
-        Me.labelDeleteCacheFilesInRoaming.Name = "labelDeleteCacheFilesInRoaming"
-        Me.labelDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(247, 65)
-        Me.labelDeleteCacheFilesInRoaming.TabIndex = 3
-        Me.labelDeleteCacheFilesInRoaming.Text = resources.GetString("labelDeleteCacheFilesInRoaming.Text")
+        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(106, 67)
+        Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
+        Me.numericupdownSearchWhenTypingWaitTime.Size = New System.Drawing.Size(89, 20)
+        Me.numericupdownSearchWhenTypingWaitTime.TabIndex = 17
+        Me.numericupdownSearchWhenTypingWaitTime.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'checkboxSearchWhenTyping
+        '
+        Me.checkboxSearchWhenTyping.AutoSize = True
+        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(6, 51)
+        Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
+        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(120, 17)
+        Me.checkboxSearchWhenTyping.TabIndex = 16
+        Me.checkboxSearchWhenTyping.Text = "Search when typing"
+        Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -663,9 +663,6 @@ Partial Class OptionsWindow
     Friend WithEvents SevenZExeOpenFileDialog As OpenFileDialog
     Friend WithEvents labelRequiresApplicationRestart As Label
     Friend WithEvents labelWhyElevate As Label
-    Friend WithEvents labelWaitTime As Label
-    Friend WithEvents numericupdownSearchWhenTypingWaitTime As NumericUpDown
-    Friend WithEvents checkboxSearchWhenTyping As CheckBox
     Friend WithEvents checkboxHiDPIMode As CheckBox
     Friend WithEvents labelHiDPIMode As Label
     Friend WithEvents textboxDefaultSourceName As TextBox
@@ -676,4 +673,7 @@ Partial Class OptionsWindow
     Friend WithEvents labelDeleteTempFilesAfterRefresh As Label
     Friend WithEvents buttonDeleteCacheFilesInRoaming As Button
     Friend WithEvents labelDeleteCacheFilesInRoaming As Label
+    Friend WithEvents labelWaitTime As Label
+    Friend WithEvents numericupdownSearchWhenTypingWaitTime As NumericUpDown
+    Friend WithEvents checkboxSearchWhenTyping As CheckBox
 End Class
