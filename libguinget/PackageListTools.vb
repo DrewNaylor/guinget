@@ -216,7 +216,7 @@ Public Class PackageListTools
             End If
         Else
             ' Otherwise, re-create it.
-            If Await DeleteTempDir("winget-pkgs", True) = False Then
+            If Await DeleteTempDirAsync("winget-pkgs", True) = False Then
                 ' Make sure it was successful before moving on.
                 Exit Function
             End If
@@ -233,7 +233,7 @@ Public Class PackageListTools
                 ' if necessary.
                 If IO.Directory.Exists(DatabaseTempDir) Then
                     ' Exists; re-create it.
-                    If Await DeleteTempDir("winget-db", True) = False Then
+                    If Await DeleteTempDirAsync("winget-db", True) = False Then
                         ' If there's an issue and a file is open, stop updating.
                         Exit Function
                     End If
@@ -483,14 +483,14 @@ Public Class PackageListTools
                 ' around at the last minute.
                 If DeleteTempDirsAfterCacheUpdate = True AndAlso CancelUpdateFlag = False Then
                     ' winget-pkgs
-                    If Await DeleteTempDir("winget-pkgs") = False Then
+                    If Await DeleteTempDirAsync("winget-pkgs") = False Then
                         ' If there's an issue deleting it here, exit the function.
                         Exit Function
                     End If
                     ' winget-db
                     ' Make sure people want to delete it first.
                     If UpdateDatabase = True Then
-                        If Await DeleteTempDir("winget-db") = False Then
+                        If Await DeleteTempDirAsync("winget-db") = False Then
                             ' If there's an issue deleting it here, exit the function.
                             Exit Function
                         End If
@@ -507,7 +507,7 @@ Public Class PackageListTools
 #End Region
 
 #Region "Deleting temp directories."
-    Public Shared Async Function DeleteTempDir(SourceRootDir As String, Optional RecreateTempDir As Boolean = False) As Task(Of Boolean)
+    Public Shared Async Function DeleteTempDirAsync(SourceRootDir As String, Optional RecreateTempDir As Boolean = False) As Task(Of Boolean)
         ' Delete the temp dir of the source specified in SourceRootDir.
         ' Define a variable to store the path.
         Dim tempPath As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
