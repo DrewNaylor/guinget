@@ -467,21 +467,27 @@ Public Class PackageListTools
                 End Using
 
                 ' Delete temp files if the user wants to do so once updating is complete.
-                If DeleteTempDirsAfterCacheUpdate = True Then
+                ' Make sure the cancel update flag is off before doing this, as
+                ' there may be a reason why people want to keep the temp files
+                ' around at the last minute.
+                If DeleteTempDirsAfterCacheUpdate = True AndAlso CancelUpdateFlag = False Then
                     ' winget-pkgs
                     If Await DeleteTempDir("winget-pkgs") = False Then
                         ' If there's an issue deleting it here, exit the function.
                         Exit Function
                     End If
                     ' winget-db
-                    If Await DeleteTempDir("winget-db") = False Then
-                        ' If there's an issue deleting it here, exit the function.
-                        Exit Function
+                    ' Make sure people want to delete it first.
+                    If UpdateDatabase = True Then
+                        If Await DeleteTempDir("winget-db") = False Then
+                            ' If there's an issue deleting it here, exit the function.
+                            Exit Function
+                        End If
                     End If
                 End If
 
-                ' End checking if user clicked Cancel in the extracting phase.
-            End If
+                    ' End checking if user clicked Cancel in the extracting phase.
+                End If
 
             ' End checking if user clicked Cancel in the downloading phase.
         End If
