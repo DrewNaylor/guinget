@@ -72,6 +72,7 @@ Partial Class OptionsWindow
         Me.tabpageDefaults = New System.Windows.Forms.TabPage()
         Me.labelAppsListUI = New System.Windows.Forms.Label()
         Me.comboboxAppsListUI = New System.Windows.Forms.ComboBox()
+        Me.labelAutomaticControlPanelFallback = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -600,6 +601,7 @@ Partial Class OptionsWindow
         '
         'tabpageDefaults
         '
+        Me.tabpageDefaults.Controls.Add(Me.labelAutomaticControlPanelFallback)
         Me.tabpageDefaults.Controls.Add(Me.comboboxAppsListUI)
         Me.tabpageDefaults.Controls.Add(Me.labelAppsListUI)
         Me.tabpageDefaults.Location = New System.Drawing.Point(4, 22)
@@ -624,10 +626,20 @@ Partial Class OptionsWindow
         Me.comboboxAppsListUI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comboboxAppsListUI.FormattingEnabled = True
         Me.comboboxAppsListUI.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list", "Control Panel: Programs and Features"})
-        Me.comboboxAppsListUI.Location = New System.Drawing.Point(10, 26)
+        Me.comboboxAppsListUI.Location = New System.Drawing.Point(26, 26)
         Me.comboboxAppsListUI.Name = "comboboxAppsListUI"
-        Me.comboboxAppsListUI.Size = New System.Drawing.Size(344, 21)
+        Me.comboboxAppsListUI.Size = New System.Drawing.Size(292, 21)
         Me.comboboxAppsListUI.TabIndex = 1
+        '
+        'labelAutomaticControlPanelFallback
+        '
+        Me.labelAutomaticControlPanelFallback.AutoSize = True
+        Me.labelAutomaticControlPanelFallback.Location = New System.Drawing.Point(23, 54)
+        Me.labelAutomaticControlPanelFallback.Name = "labelAutomaticControlPanelFallback"
+        Me.labelAutomaticControlPanelFallback.Size = New System.Drawing.Size(295, 39)
+        Me.labelAutomaticControlPanelFallback.TabIndex = 2
+        Me.labelAutomaticControlPanelFallback.Text = "If we can't start the Settings app's ""Apps && features"" page," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "we'll fall back to" &
+    " the Control Panel's ""Programs and Features""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "page automatically."
         '
         'OptionsWindow
         '
@@ -717,4 +729,5 @@ Partial Class OptionsWindow
     Friend WithEvents tabpageDefaults As TabPage
     Friend WithEvents labelAppsListUI As Label
     Friend WithEvents comboboxAppsListUI As ComboBox
+    Friend WithEvents labelAutomaticControlPanelFallback As Label
 End Class
