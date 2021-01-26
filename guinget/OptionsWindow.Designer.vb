@@ -623,7 +623,7 @@ Partial Class OptionsWindow
         '
         Me.comboboxAppsListUI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comboboxAppsListUI.FormattingEnabled = True
-        Me.comboboxAppsListUI.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list"})
+        Me.comboboxAppsListUI.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list", "Control Panel: Programs and Features"})
         Me.comboboxAppsListUI.Location = New System.Drawing.Point(10, 26)
         Me.comboboxAppsListUI.Name = "comboboxAppsListUI"
         Me.comboboxAppsListUI.Size = New System.Drawing.Size(344, 21)

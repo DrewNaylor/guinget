@@ -43,11 +43,14 @@ Public Class OptionsWindow
 
         ' Apps list UI.
         If My.Settings.AppsListUI = "appsfeatures" Then
+            ' Select the Settings app "Apps & features" item.
             comboboxAppsListUI.SelectedItem = comboboxAppsListUI.Items.Item(0)
         ElseIf My.Settings.AppsListUI = "wingetlist" Then
+            ' Select the CMD "winget list" item.
             comboboxAppsListUI.SelectedItem = comboboxAppsListUI.Items.Item(1)
-            'Else
-            '    comboboxAppsListUI.SelectedItem = comboboxAppsListUI.Items.Item(0)
+        ElseIf My.Settings.AppsListUI = "appwizdotcpl" Then
+            ' Select the Control Panel "Programs and Features" item.
+            comboboxAppsListUI.SelectedItem = comboboxAppsListUI.Items.Item(2)
         End If
 
         ' Install interactively.
@@ -121,9 +124,14 @@ Public Class OptionsWindow
 
         ' Apps list UI.
         If comboboxAppsListUI.SelectedItem Is comboboxAppsListUI.Items.Item(0) Then
+            ' Set the option to use "Apps & features" in the Settings app.
             My.Settings.AppsListUI = "appsfeatures"
         ElseIf comboboxAppsListUI.SelectedItem Is comboboxAppsListUI.Items.Item(1) Then
+            ' Set the option to use "winget list" in CMD.
             My.Settings.AppsListUI = "wingetlist"
+        ElseIf comboboxAppsListUI.SelectedItem Is comboboxAppsListUI.Items.Item(2) Then
+            ' Set the option to use Programs and Features in Control Panel.
+            My.Settings.AppsListUI = "appwizdotcpl"
         Else
             My.Settings.AppsListUI = "appsfeatures"
         End If
