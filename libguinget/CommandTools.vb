@@ -75,8 +75,8 @@ Public Class CommandTools
                 proc.Start()
             Catch ex As Exception
                 Windows.Forms.MessageBox.Show("Unfortunately, it appears that the Control Panel is unavailable. " &
-                                                     "Please use one of the other choices for ""View>Installed packages... UI"" " &
-                                                     "in the Options window under ""Tools>Options...>Defaults""." & vbCrLf &
+                                                     "Please use one of the other choices for ""Installed packages"" " &
+                                                     "in the Options window under ""Tools>Options...>Apps and UIs""." & vbCrLf &
                                                      vbCrLf &
                                                      "Exception message: " & ex.Message & vbCrLf &
                                                      "Full exception: " & ex.ToString, "Installed Packages", Windows.Forms.MessageBoxButtons.OK,

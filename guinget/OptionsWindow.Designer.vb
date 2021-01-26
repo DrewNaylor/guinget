@@ -147,7 +147,7 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
         Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 370)
         Me.tabpageRefreshCache.TabIndex = 5
-        Me.tabpageRefreshCache.Text = "Refresh cache"
+        Me.tabpageRefreshCache.Text = "Refresh Cache"
         Me.tabpageRefreshCache.UseVisualStyleBackColor = True
         '
         'labelDeleteCacheFilesInRoaming
@@ -609,7 +609,7 @@ Partial Class OptionsWindow
         Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(3)
         Me.tabpageAppsUIs.Size = New System.Drawing.Size(360, 370)
         Me.tabpageAppsUIs.TabIndex = 6
-        Me.tabpageAppsUIs.Text = "Apps/UIs"
+        Me.tabpageAppsUIs.Text = "Apps and UIs"
         Me.tabpageAppsUIs.UseVisualStyleBackColor = True
         '
         'labelAppsListUI
