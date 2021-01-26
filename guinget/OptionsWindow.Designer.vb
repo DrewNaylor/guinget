@@ -69,7 +69,7 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.tabpageDefaults = New System.Windows.Forms.TabPage()
+        Me.tabpageAppsUIs = New System.Windows.Forms.TabPage()
         Me.labelAppsListUI = New System.Windows.Forms.Label()
         Me.comboboxAppsListUI = New System.Windows.Forms.ComboBox()
         Me.labelAutomaticControlPanelFallback = New System.Windows.Forms.Label()
@@ -83,7 +83,7 @@ Partial Class OptionsWindow
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageExperimental.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
-        Me.tabpageDefaults.SuspendLayout()
+        Me.tabpageAppsUIs.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -123,7 +123,7 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
-        Me.tabcontrolOptions.Controls.Add(Me.tabpageDefaults)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageAppsUIs)
         Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
@@ -599,27 +599,27 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'tabpageDefaults
+        'tabpageAppsUIs
         '
-        Me.tabpageDefaults.Controls.Add(Me.labelAutomaticControlPanelFallback)
-        Me.tabpageDefaults.Controls.Add(Me.comboboxAppsListUI)
-        Me.tabpageDefaults.Controls.Add(Me.labelAppsListUI)
-        Me.tabpageDefaults.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageDefaults.Name = "tabpageDefaults"
-        Me.tabpageDefaults.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageDefaults.Size = New System.Drawing.Size(360, 370)
-        Me.tabpageDefaults.TabIndex = 6
-        Me.tabpageDefaults.Text = "Defaults"
-        Me.tabpageDefaults.UseVisualStyleBackColor = True
+        Me.tabpageAppsUIs.Controls.Add(Me.labelAutomaticControlPanelFallback)
+        Me.tabpageAppsUIs.Controls.Add(Me.comboboxAppsListUI)
+        Me.tabpageAppsUIs.Controls.Add(Me.labelAppsListUI)
+        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageAppsUIs.Name = "tabpageAppsUIs"
+        Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageAppsUIs.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageAppsUIs.TabIndex = 6
+        Me.tabpageAppsUIs.Text = "Apps/UIs"
+        Me.tabpageAppsUIs.UseVisualStyleBackColor = True
         '
         'labelAppsListUI
         '
         Me.labelAppsListUI.AutoSize = True
         Me.labelAppsListUI.Location = New System.Drawing.Point(7, 10)
         Me.labelAppsListUI.Name = "labelAppsListUI"
-        Me.labelAppsListUI.Size = New System.Drawing.Size(151, 13)
+        Me.labelAppsListUI.Size = New System.Drawing.Size(99, 13)
         Me.labelAppsListUI.TabIndex = 0
-        Me.labelAppsListUI.Text = "View>Installed packages... UI:"
+        Me.labelAppsListUI.Text = "Installed packages:"
         '
         'comboboxAppsListUI
         '
@@ -674,8 +674,8 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
-        Me.tabpageDefaults.ResumeLayout(False)
-        Me.tabpageDefaults.PerformLayout()
+        Me.tabpageAppsUIs.ResumeLayout(False)
+        Me.tabpageAppsUIs.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -726,7 +726,7 @@ Partial Class OptionsWindow
     Friend WithEvents labelWaitTime As Label
     Friend WithEvents numericupdownSearchWhenTypingWaitTime As NumericUpDown
     Friend WithEvents checkboxSearchWhenTyping As CheckBox
-    Friend WithEvents tabpageDefaults As TabPage
+    Friend WithEvents tabpageAppsUIs As TabPage
     Friend WithEvents labelAppsListUI As Label
     Friend WithEvents comboboxAppsListUI As ComboBox
     Friend WithEvents labelAutomaticControlPanelFallback As Label
