@@ -74,12 +74,13 @@ Public Class CommandTools
             Try
                 proc.Start()
             Catch ex As Exception
-                System.Windows.Forms.MessageBox.Show("Unfortunately, it appears that either the Control Panel or the Programs and Features page is unavailable. " &
+                Windows.Forms.MessageBox.Show("Unfortunately, it appears that either the Control Panel or the Programs and Features page is unavailable. " &
                                                      "Please use one of the other choices for ""View>Installed packages... UI"" " &
                                                      "in the Options window under ""Tools>Options...>Defaults""." & vbCrLf &
                                                      vbCrLf &
                                                      "Exception message: " & ex.Message & vbCrLf &
-                                                     "Full exception: " & ex.ToString)
+                                                     "Full exception: " & ex.ToString, "Installed Packages", Windows.Forms.MessageBoxButtons.OK,
+                                                                                       Windows.Forms.MessageBoxIcon.Error)
             End Try
         End Using
     End Sub
