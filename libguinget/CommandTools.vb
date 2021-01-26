@@ -70,7 +70,17 @@ Public Class CommandTools
         Using proc As New Process
             proc.StartInfo.FileName = "control"
             proc.StartInfo.Arguments = "appwiz.cpl"
-            proc.Start()
+            ' Make sure it's successful, in case we can't find the control panel anymore.
+            Try
+                proc.Start()
+            Catch ex As Exception
+                System.Windows.Forms.MessageBox.Show("Unfortunately, it appears that either the Control Panel or the Programs and Features page is unavailable. " &
+                                                     "Please use one of the other choices for ""View>Installed packages... UI"" " &
+                                                     "in the Options window under ""Tools>Options...>Defaults""." & vbCrLf &
+                                                     vbCrLf &
+                                                     "Exception message: " & ex.Message & vbCrLf &
+                                                     "Full exception: " & ex.ToString)
+            End Try
         End Using
     End Sub
 
