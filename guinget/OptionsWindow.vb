@@ -41,6 +41,15 @@ Public Class OptionsWindow
         ' Exact match for last-selected package ID.
         checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked = My.Settings.ExactMatchForLastSelectedIDSearch
 
+        ' Apps list UI.
+        If My.Settings.AppsListUI = "appsfeatures" Then
+            comboboxAppsListUI.SelectedItem = comboboxAppsListUI.Items.Item(0)
+        ElseIf My.Settings.AppsListUI = "wingetlist" Then
+            comboboxAppsListUI.SelectedItem = comboboxAppsListUI.Items.Item(1)
+            'Else
+            '    comboboxAppsListUI.SelectedItem = comboboxAppsListUI.Items.Item(0)
+        End If
+
         ' Install interactively.
         checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
         ' Elevate winget.
@@ -109,6 +118,15 @@ Public Class OptionsWindow
         My.Settings.ShowSidebar = checkboxShowSidebar.Checked
         ' Exact match for last-selected package ID checkbox.
         My.Settings.ExactMatchForLastSelectedIDSearch = checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked
+
+        ' Apps list UI.
+        If comboboxAppsListUI.SelectedItem Is comboboxAppsListUI.Items.Item(0) Then
+            My.Settings.AppsListUI = "appsfeatures"
+        ElseIf comboboxAppsListUI.SelectedItem Is comboboxAppsListUI.Items.Item(1) Then
+            My.Settings.AppsListUI = "wingetlist"
+        Else
+            My.Settings.AppsListUI = "appsfeatures"
+        End If
 
         ' Interactive installation.
         My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
@@ -182,6 +200,9 @@ Public Class OptionsWindow
         checkboxShowSidebar.Checked = True
         ' Exact match for last-selected package ID checkbox.
         checkboxUseExactMatchForLastSelectedPackageIDSearch.Checked = True
+
+        ' Apps list UI.
+        comboboxAppsListUI.SelectedItem = comboboxAppsListUI.Items.Item(0)
 
         ' Install interactively.
         checkboxInstallInteractively.Checked = False

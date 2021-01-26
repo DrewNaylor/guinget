@@ -71,7 +71,7 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.tabpageDefaults = New System.Windows.Forms.TabPage()
         Me.labelAppsListUI = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.comboboxAppsListUI = New System.Windows.Forms.ComboBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -600,7 +600,7 @@ Partial Class OptionsWindow
         '
         'tabpageDefaults
         '
-        Me.tabpageDefaults.Controls.Add(Me.ComboBox1)
+        Me.tabpageDefaults.Controls.Add(Me.comboboxAppsListUI)
         Me.tabpageDefaults.Controls.Add(Me.labelAppsListUI)
         Me.tabpageDefaults.Location = New System.Drawing.Point(4, 22)
         Me.tabpageDefaults.Name = "tabpageDefaults"
@@ -619,15 +619,15 @@ Partial Class OptionsWindow
         Me.labelAppsListUI.TabIndex = 0
         Me.labelAppsListUI.Text = "Apps list UI:"
         '
-        'ComboBox1
+        'comboboxAppsListUI
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list"})
-        Me.ComboBox1.Location = New System.Drawing.Point(76, 7)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(192, 21)
-        Me.ComboBox1.TabIndex = 1
+        Me.comboboxAppsListUI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.comboboxAppsListUI.FormattingEnabled = True
+        Me.comboboxAppsListUI.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list"})
+        Me.comboboxAppsListUI.Location = New System.Drawing.Point(76, 7)
+        Me.comboboxAppsListUI.Name = "comboboxAppsListUI"
+        Me.comboboxAppsListUI.Size = New System.Drawing.Size(278, 21)
+        Me.comboboxAppsListUI.TabIndex = 1
         '
         'OptionsWindow
         '
@@ -716,5 +716,5 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxSearchWhenTyping As CheckBox
     Friend WithEvents tabpageDefaults As TabPage
     Friend WithEvents labelAppsListUI As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents comboboxAppsListUI As ComboBox
 End Class
