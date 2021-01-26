@@ -293,6 +293,18 @@ Namespace My
                 Me("DeleteTempFilesAfterRefresh") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("appsfeatures")>  _
+        Public Property AppsListUI() As String
+            Get
+                Return CType(Me("AppsListUI"),String)
+            End Get
+            Set
+                Me("AppsListUI") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

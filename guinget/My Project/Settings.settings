@@ -62,5 +62,8 @@
     <Setting Name="DeleteTempFilesAfterRefresh" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="AppsListUI" Type="System.String" Scope="User">
+      <Value Profile="(Default)">appsfeatures</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
