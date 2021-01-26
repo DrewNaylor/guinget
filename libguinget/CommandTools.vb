@@ -74,7 +74,7 @@ Public Class CommandTools
             Try
                 proc.Start()
             Catch ex As Exception
-                Windows.Forms.MessageBox.Show("Unfortunately, it appears that either the Control Panel or the Programs and Features page is unavailable. " &
+                Windows.Forms.MessageBox.Show("Unfortunately, it appears that the Control Panel is unavailable. " &
                                                      "Please use one of the other choices for ""View>Installed packages... UI"" " &
                                                      "in the Options window under ""Tools>Options...>Defaults""." & vbCrLf &
                                                      vbCrLf &
