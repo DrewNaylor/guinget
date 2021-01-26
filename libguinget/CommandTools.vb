@@ -46,9 +46,14 @@ Public Class CommandTools
         WingetStarter("upgrade")
     End Sub
 
-    Public Shared Sub ListInstalled()
+    Public Shared Sub ListInstalled(AppsListUI As String)
         ' Lists installed packages if the feature is available.
-        WingetStarter("list")
+        If AppsListUI = "appsfeatures" Then
+            ' If the calling app wants to open apps and features, do so.
+            Process.Start("ms-settings:appsfeatures")
+        Else
+            WingetStarter("list")
+        End If
     End Sub
 
     Private Shared Sub WingetStarter(Command As String, Optional RunAsAdmin As Boolean = False, Optional ShowWindow As Boolean = True)

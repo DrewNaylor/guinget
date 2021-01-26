@@ -1198,7 +1198,7 @@ Public Class aaformMainWindow
 
     Private Sub ListInstalledPackagesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListInstalledPackagesToolStripMenuItem.Click
         ' List installed apps in winget.
-        CommandTools.ListInstalled()
+        CommandTools.ListInstalled("appsfeatures")
     End Sub
 
 
