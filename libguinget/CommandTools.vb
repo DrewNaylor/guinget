@@ -51,7 +51,8 @@ Public Class CommandTools
         If AppsListUI = "appsfeatures" Then
             ' If the calling app wants to open apps and features, do so.
             Process.Start("ms-settings:appsfeatures")
-        Else
+        ElseIf AppsListUI = "wingetlist" Then
+            ' If the calling app is requesting "winget list" use that.
             WingetStarter("list")
         End If
     End Sub
