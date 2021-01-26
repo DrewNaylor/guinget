@@ -615,18 +615,18 @@ Partial Class OptionsWindow
         Me.labelAppsListUI.AutoSize = True
         Me.labelAppsListUI.Location = New System.Drawing.Point(7, 10)
         Me.labelAppsListUI.Name = "labelAppsListUI"
-        Me.labelAppsListUI.Size = New System.Drawing.Size(63, 13)
+        Me.labelAppsListUI.Size = New System.Drawing.Size(151, 13)
         Me.labelAppsListUI.TabIndex = 0
-        Me.labelAppsListUI.Text = "Apps list UI:"
+        Me.labelAppsListUI.Text = "View>Installed packages... UI:"
         '
         'comboboxAppsListUI
         '
         Me.comboboxAppsListUI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comboboxAppsListUI.FormattingEnabled = True
         Me.comboboxAppsListUI.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list"})
-        Me.comboboxAppsListUI.Location = New System.Drawing.Point(76, 7)
+        Me.comboboxAppsListUI.Location = New System.Drawing.Point(10, 26)
         Me.comboboxAppsListUI.Name = "comboboxAppsListUI"
-        Me.comboboxAppsListUI.Size = New System.Drawing.Size(278, 21)
+        Me.comboboxAppsListUI.Size = New System.Drawing.Size(344, 21)
         Me.comboboxAppsListUI.TabIndex = 1
         '
         'OptionsWindow
