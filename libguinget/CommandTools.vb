@@ -50,11 +50,28 @@ Public Class CommandTools
         ' Lists installed packages if the feature is available.
         If AppsListUI = "appsfeatures" Then
             ' If the calling app wants to open apps and features, do so.
-            Process.Start("ms-settings:appsfeatures")
+            Try
+                Process.Start("ms-settings:appsfeatures")
+            Catch ex As System.ComponentModel.Win32Exception
+                ' Make sure it doesn't crash on a version of Windows that's not Windows 10.
+                RunControlPanelAppsFeatures()
+            End Try
         ElseIf AppsListUI = "wingetlist" Then
             ' If the calling app is requesting "winget list" use that.
             WingetStarter("list")
+        ElseIf AppsListUI = "appwizdotcpl" Then
+            ' If the calling app wants the Control Panel Add and Remove Programs, use that instead.
+            RunControlPanelAppsFeatures()
         End If
+    End Sub
+
+    Private Shared Sub RunControlPanelAppsFeatures()
+        ' Run the control panel's apps and features thing.
+        Using proc As New Process
+            proc.StartInfo.FileName = "control"
+            proc.StartInfo.Arguments = "appwiz.cpl"
+            proc.Start()
+        End Using
     End Sub
 
     Private Shared Sub WingetStarter(Command As String, Optional RunAsAdmin As Boolean = False, Optional ShowWindow As Boolean = True)
