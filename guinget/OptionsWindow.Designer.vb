@@ -32,6 +32,9 @@ Partial Class OptionsWindow
         Me.labelDeleteTempFilesAfterRefresh = New System.Windows.Forms.Label()
         Me.checkboxDeleteTempFilesAfterRefresh = New System.Windows.Forms.CheckBox()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
+        Me.labelWaitTime = New System.Windows.Forms.Label()
+        Me.numericupdownSearchWhenTypingWaitTime = New System.Windows.Forms.NumericUpDown()
+        Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch = New System.Windows.Forms.CheckBox()
         Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
         Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
@@ -66,19 +69,20 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.labelWaitTime = New System.Windows.Forms.Label()
-        Me.numericupdownSearchWhenTypingWaitTime = New System.Windows.Forms.NumericUpDown()
-        Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
+        Me.tabpageDefaults = New System.Windows.Forms.TabPage()
+        Me.labelAppsListUI = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
+        CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabpagePackageDetails.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageExperimental.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
-        CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabpageDefaults.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -118,6 +122,7 @@ Partial Class OptionsWindow
         Me.tablelayoutpanelOptions.SetColumnSpan(Me.tabcontrolOptions, 4)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageRefreshCache)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageSearch)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageDefaults)
         Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
@@ -196,6 +201,35 @@ Partial Class OptionsWindow
         Me.tabpageSearch.TabIndex = 0
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
+        '
+        'labelWaitTime
+        '
+        Me.labelWaitTime.AutoSize = True
+        Me.labelWaitTime.Location = New System.Drawing.Point(24, 69)
+        Me.labelWaitTime.Name = "labelWaitTime"
+        Me.labelWaitTime.Size = New System.Drawing.Size(76, 13)
+        Me.labelWaitTime.TabIndex = 18
+        Me.labelWaitTime.Text = "Wait time (ms):"
+        '
+        'numericupdownSearchWhenTypingWaitTime
+        '
+        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(106, 67)
+        Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
+        Me.numericupdownSearchWhenTypingWaitTime.Size = New System.Drawing.Size(89, 20)
+        Me.numericupdownSearchWhenTypingWaitTime.TabIndex = 17
+        Me.numericupdownSearchWhenTypingWaitTime.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'checkboxSearchWhenTyping
+        '
+        Me.checkboxSearchWhenTyping.AutoSize = True
+        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(6, 51)
+        Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
+        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(120, 17)
+        Me.checkboxSearchWhenTyping.TabIndex = 16
+        Me.checkboxSearchWhenTyping.Text = "Search when typing"
+        Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
         '
         'checkboxUseExactMatchForLastSelectedPackageIDSearch
         '
@@ -564,34 +598,36 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'labelWaitTime
+        'tabpageDefaults
         '
-        Me.labelWaitTime.AutoSize = True
-        Me.labelWaitTime.Location = New System.Drawing.Point(24, 69)
-        Me.labelWaitTime.Name = "labelWaitTime"
-        Me.labelWaitTime.Size = New System.Drawing.Size(76, 13)
-        Me.labelWaitTime.TabIndex = 18
-        Me.labelWaitTime.Text = "Wait time (ms):"
+        Me.tabpageDefaults.Controls.Add(Me.ComboBox1)
+        Me.tabpageDefaults.Controls.Add(Me.labelAppsListUI)
+        Me.tabpageDefaults.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageDefaults.Name = "tabpageDefaults"
+        Me.tabpageDefaults.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageDefaults.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageDefaults.TabIndex = 6
+        Me.tabpageDefaults.Text = "Defaults"
+        Me.tabpageDefaults.UseVisualStyleBackColor = True
         '
-        'numericupdownSearchWhenTypingWaitTime
+        'labelAppsListUI
         '
-        Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(106, 67)
-        Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
-        Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
-        Me.numericupdownSearchWhenTypingWaitTime.Size = New System.Drawing.Size(89, 20)
-        Me.numericupdownSearchWhenTypingWaitTime.TabIndex = 17
-        Me.numericupdownSearchWhenTypingWaitTime.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.labelAppsListUI.AutoSize = True
+        Me.labelAppsListUI.Location = New System.Drawing.Point(7, 10)
+        Me.labelAppsListUI.Name = "labelAppsListUI"
+        Me.labelAppsListUI.Size = New System.Drawing.Size(63, 13)
+        Me.labelAppsListUI.TabIndex = 0
+        Me.labelAppsListUI.Text = "Apps list UI:"
         '
-        'checkboxSearchWhenTyping
+        'ComboBox1
         '
-        Me.checkboxSearchWhenTyping.AutoSize = True
-        Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(6, 51)
-        Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
-        Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(120, 17)
-        Me.checkboxSearchWhenTyping.TabIndex = 16
-        Me.checkboxSearchWhenTyping.Text = "Search when typing"
-        Me.checkboxSearchWhenTyping.UseVisualStyleBackColor = True
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list"})
+        Me.ComboBox1.Location = New System.Drawing.Point(76, 7)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(192, 21)
+        Me.ComboBox1.TabIndex = 1
         '
         'OptionsWindow
         '
@@ -615,6 +651,7 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.PerformLayout()
         Me.tabpageSearch.ResumeLayout(False)
         Me.tabpageSearch.PerformLayout()
+        CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabpagePackageDetails.ResumeLayout(False)
         Me.tabpagePackageDetails.PerformLayout()
         Me.tabpageApplyChanges.ResumeLayout(False)
@@ -625,7 +662,8 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
-        CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabpageDefaults.ResumeLayout(False)
+        Me.tabpageDefaults.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -676,4 +714,7 @@ Partial Class OptionsWindow
     Friend WithEvents labelWaitTime As Label
     Friend WithEvents numericupdownSearchWhenTypingWaitTime As NumericUpDown
     Friend WithEvents checkboxSearchWhenTyping As CheckBox
+    Friend WithEvents tabpageDefaults As TabPage
+    Friend WithEvents labelAppsListUI As Label
+    Friend WithEvents ComboBox1 As ComboBox
 End Class
