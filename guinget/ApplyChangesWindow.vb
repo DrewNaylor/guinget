@@ -84,7 +84,9 @@ Public Class ApplyChangesWindow
                 ' If we're not installing, change the current status cell value to "Installing..." and
                 ' show a messagebox for testing.
 
-                datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..."
+                ' Make sure the new thing would be grammatically correct.
+                datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value =
+                    datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..."
 
                 ' Show messagebox with current status.
                 'MessageBox.Show(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString)
