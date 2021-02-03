@@ -65,7 +65,7 @@ Public Class ApplyChangesWindow
                 If Package.Cells.Item(3).Value.ToString = "Ready" Then
                     PackageIDs.Add(Package.Cells(0).Value.ToString)
                     PackageVersions.Add(Package.Cells(1).Value.ToString)
-                    Package.Cells.Item(3).Value = Package.Cells.Item(2).Value.ToString & "ing..."
+                    Package.Cells.Item(3).Value = Package.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..."
                 End If
             Next
 
