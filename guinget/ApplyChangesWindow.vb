@@ -39,7 +39,7 @@ Public Class ApplyChangesWindow
         ' Now we install the selected package after making sure we didn't
         ' double-click on the header.
         If e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
-            InstallSinglePackage()
+            ProcessSinglePackage()
         End If
 
     End Sub
@@ -75,7 +75,7 @@ Public Class ApplyChangesWindow
         End If
     End Sub
 
-    Private Sub InstallSinglePackage()
+    Private Sub ProcessSinglePackage()
         ' Before doing anything, make sure there are packages in the list.
         If datagridviewAppsBeingInstalled.CurrentRow IsNot Nothing Then
             ' First make sure that we're not already installing the package.
@@ -124,7 +124,7 @@ Public Class ApplyChangesWindow
         If e.KeyCode = Keys.Enter Then
 
             ' Now we install whatever package the user has selected.
-            InstallSinglePackage()
+            ProcessSinglePackage()
 
         End If
     End Sub
