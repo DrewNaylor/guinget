@@ -81,6 +81,10 @@
 		  <!-- ForeColor: Text color for menubar dropdown items. -->
 		  
 		  <ImageMarginGradient>
+		  <!-- MenuItem ImageMarginGradient colors are being loaded from
+	      XML InnerText like TE1.x as using attributes
+		  for them might make things messy. -->  
+		  
 		  <!-- The "ImageMarginGradient" is the small box on the
           left side of many Windows dropdown menu items. 
           Make sure to include the "0x" at the beginning
