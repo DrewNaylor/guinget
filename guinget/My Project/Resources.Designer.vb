@@ -71,12 +71,16 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to &lt;UXL_Launcher_Theme&gt;
-        '''	  &lt;Title&gt;Pro Dark&lt;/Title&gt;
-        '''	  &lt;Description&gt;Dark theme meant to resemble Office 2019&apos;s &quot;Black&quot; theme. The colors may not match exactly as they were eyeballed from the colors used in Word 2019. This theme is not associated with Microsoft, and Microsoft Office is a copyright and trademark/registered trademark of Microsoft Corporation in the United States and other countries.&lt;/Description&gt;
+        '''	  &lt;Title&gt;DarkTheme&lt;/Title&gt;
+        '''	  &lt;Description&gt;Dark theme for guinget based on the &quot;ProDark&quot; theme in UXL Launcher.&lt;/Description&gt;
         '''	  &lt;Version&gt;v1.0&lt;/Version&gt;
         '''	  &lt;Author&gt;Drew Naylor&lt;/Author&gt;
         '''
-        '''	  &lt;!-- &quot;UseThemeEngineVersion&quot; is u [rest of string was truncated]&quot;;.
+        '''	  &lt;!-- &quot;UseThemeEngineVersion&quot; is used to specify the version of the
+        '''    UXL Launcher Theme Engine to use in case there are changes in newer
+        '''    versions of the theme engine that designers or developers don&apos;t want
+        '''    to use. Version 1.01 is the oldest version number available and anything
+        '''   [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property DarkTheme() As String
             Get
