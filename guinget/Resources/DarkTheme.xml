@@ -100,15 +100,16 @@
 		</ImageMarginGradient>
 		</MenuItem>
 
-		<MenuBar>
-			<!-- Background color for the menubar itself. -->
-			<BackColor>Black</BackColor>
-		</MenuBar>
+		<MenuBar BackColor="#202020" /> <!-- Background color for the menubar itself. -->
 
-		<StatusLabel>
-			<BackColor>Transparent</BackColor>
-			<ForeColor>White</ForeColor>
 
+		<StatusLabel BackColor="Transparent" ForeColor="White">
+
+			<!-- StatusLabel BorderSides and BorderStyle
+             properties are still in XML InnerText
+			 like TE1.x themes as they could be messy
+			 in attributes. -->
+			
 			<!--Accepted BorderSides values are None, Top, Bottom, Left, Right, and All. Other values will be set to None.-->
 			<BorderSides>None</BorderSides>
 
