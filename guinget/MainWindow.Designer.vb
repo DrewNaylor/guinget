@@ -76,14 +76,6 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
         Me.panelPackageListHolder = New System.Windows.Forms.Panel()
         Me.datagridviewPackageList = New System.Windows.Forms.DataGridView()
-        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LatestVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
         Me.textboxPackageDetails = New System.Windows.Forms.TextBox()
         Me.panelMainPkgArea = New System.Windows.Forms.Panel()
@@ -129,6 +121,14 @@ Partial Class aaformMainWindow
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LatestVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -527,71 +527,6 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.Size = New System.Drawing.Size(664, 337)
         Me.datagridviewPackageList.StandardTab = True
         Me.datagridviewPackageList.TabIndex = 0
-        '
-        'PkgAction
-        '
-        Me.PkgAction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.PkgAction.HeaderText = "Action"
-        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install"})
-        Me.PkgAction.MinimumWidth = 6
-        Me.PkgAction.Name = "PkgAction"
-        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.PkgAction.Width = 62
-        '
-        'PkgStatus
-        '
-        Me.PkgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.PkgStatus.HeaderText = "Status"
-        Me.PkgStatus.MinimumWidth = 6
-        Me.PkgStatus.Name = "PkgStatus"
-        Me.PkgStatus.ReadOnly = True
-        Me.PkgStatus.Width = 62
-        '
-        'PkgName
-        '
-        Me.PkgName.HeaderText = "Package"
-        Me.PkgName.MinimumWidth = 6
-        Me.PkgName.Name = "PkgName"
-        Me.PkgName.ReadOnly = True
-        '
-        'FriendlyName
-        '
-        Me.FriendlyName.HeaderText = "Name"
-        Me.FriendlyName.MinimumWidth = 6
-        Me.FriendlyName.Name = "FriendlyName"
-        Me.FriendlyName.ReadOnly = True
-        '
-        'AvailableVersion
-        '
-        Me.AvailableVersion.HeaderText = "Version"
-        Me.AvailableVersion.MinimumWidth = 6
-        Me.AvailableVersion.Name = "AvailableVersion"
-        Me.AvailableVersion.ReadOnly = True
-        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
-    "dow like Synaptic)"
-        '
-        'LatestVersion
-        '
-        Me.LatestVersion.HeaderText = "Latest version"
-        Me.LatestVersion.MinimumWidth = 6
-        Me.LatestVersion.Name = "LatestVersion"
-        Me.LatestVersion.ReadOnly = True
-        Me.LatestVersion.Visible = False
-        '
-        'PkgDescription
-        '
-        Me.PkgDescription.HeaderText = "Description"
-        Me.PkgDescription.MinimumWidth = 6
-        Me.PkgDescription.Name = "PkgDescription"
-        Me.PkgDescription.ReadOnly = True
-        '
-        'Manifest
-        '
-        Me.Manifest.HeaderText = "Manifest"
-        Me.Manifest.MinimumWidth = 6
-        Me.Manifest.Name = "Manifest"
-        Me.Manifest.ReadOnly = True
-        Me.Manifest.Visible = False
         '
         'labelUpdatingPackageList
         '
@@ -1034,6 +969,71 @@ Partial Class aaformMainWindow
         '
         Me.TypeTimer.Interval = 325
         '
+        'PkgAction
+        '
+        Me.PkgAction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PkgAction.HeaderText = "Action"
+        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install", "Uninstall", "Upgrade"})
+        Me.PkgAction.MinimumWidth = 6
+        Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.PkgAction.Width = 62
+        '
+        'PkgStatus
+        '
+        Me.PkgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PkgStatus.HeaderText = "Status"
+        Me.PkgStatus.MinimumWidth = 6
+        Me.PkgStatus.Name = "PkgStatus"
+        Me.PkgStatus.ReadOnly = True
+        Me.PkgStatus.Width = 62
+        '
+        'PkgName
+        '
+        Me.PkgName.HeaderText = "Package"
+        Me.PkgName.MinimumWidth = 6
+        Me.PkgName.Name = "PkgName"
+        Me.PkgName.ReadOnly = True
+        '
+        'FriendlyName
+        '
+        Me.FriendlyName.HeaderText = "Name"
+        Me.FriendlyName.MinimumWidth = 6
+        Me.FriendlyName.Name = "FriendlyName"
+        Me.FriendlyName.ReadOnly = True
+        '
+        'AvailableVersion
+        '
+        Me.AvailableVersion.HeaderText = "Version"
+        Me.AvailableVersion.MinimumWidth = 6
+        Me.AvailableVersion.Name = "AvailableVersion"
+        Me.AvailableVersion.ReadOnly = True
+        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
+    "dow like Synaptic)"
+        '
+        'LatestVersion
+        '
+        Me.LatestVersion.HeaderText = "Latest version"
+        Me.LatestVersion.MinimumWidth = 6
+        Me.LatestVersion.Name = "LatestVersion"
+        Me.LatestVersion.ReadOnly = True
+        Me.LatestVersion.Visible = False
+        '
+        'PkgDescription
+        '
+        Me.PkgDescription.HeaderText = "Description"
+        Me.PkgDescription.MinimumWidth = 6
+        Me.PkgDescription.Name = "PkgDescription"
+        Me.PkgDescription.ReadOnly = True
+        '
+        'Manifest
+        '
+        Me.Manifest.HeaderText = "Manifest"
+        Me.Manifest.MinimumWidth = 6
+        Me.Manifest.Name = "Manifest"
+        Me.Manifest.ReadOnly = True
+        Me.Manifest.Visible = False
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1152,14 +1152,6 @@ Partial Class aaformMainWindow
     Friend WithEvents zSeparatorSelectedPackagesMenu As ToolStripSeparator
     Friend WithEvents SelectedPackagesSearchForLastSelectedID As ToolStripMenuItem
     Friend WithEvents SelectedPackagesProperties As ToolStripMenuItem
-    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
-    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
-    Friend WithEvents PkgName As DataGridViewTextBoxColumn
-    Friend WithEvents FriendlyName As DataGridViewTextBoxColumn
-    Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
-    Friend WithEvents LatestVersion As DataGridViewTextBoxColumn
-    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
-    Friend WithEvents Manifest As DataGridViewTextBoxColumn
     Friend WithEvents SelectedPackagesActionDoNothingMenuItem As ToolStripMenuItem
     Friend WithEvents SelectedPackagesActionInstallMenuItem As ToolStripMenuItem
     Friend WithEvents zSeparatorAfterActionsInSelectedPackagesMenu As ToolStripSeparator
@@ -1186,4 +1178,12 @@ Partial Class aaformMainWindow
     Friend WithEvents tabpageAction As TabPage
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents listboxStatusTab As ListBox
+    Friend WithEvents PkgAction As DataGridViewComboBoxColumn
+    Friend WithEvents PkgStatus As DataGridViewTextBoxColumn
+    Friend WithEvents PkgName As DataGridViewTextBoxColumn
+    Friend WithEvents FriendlyName As DataGridViewTextBoxColumn
+    Friend WithEvents AvailableVersion As DataGridViewTextBoxColumn
+    Friend WithEvents LatestVersion As DataGridViewTextBoxColumn
+    Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
+    Friend WithEvents Manifest As DataGridViewTextBoxColumn
 End Class
