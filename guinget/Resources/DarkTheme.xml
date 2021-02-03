@@ -55,32 +55,25 @@
 
 		<StatusBar BackColor="#303030" />
 
-	  <Label>
-		  <BackColor>Transparent</BackColor>
-		  <ForeColor>White</ForeColor>
-	  </Label>
+		<Label BackColor="Transparent" ForeColor="White" />
 
 	  <LinkLabel>
+		  <!-- LinkLabel colors are being loaded from
+	       XML InnerText like TE1.x as using attributes
+		   for them might make things messy. -->
 		  <BackColor>Transparent</BackColor>
 		  <ForeColor>White</ForeColor>
 		  <ActiveLinkColor>Red</ActiveLinkColor>
 		  <LinkColor>#3CB2FA</LinkColor>
 	  </LinkLabel>
 
-	  <Panel>
-		  <BackColor>#232323</BackColor>
-		  <ForeColor>White</ForeColor>
-	  </Panel>
+		<Panel BackColor="#232323" ForeColor="White" />
 
-	  <RadioButton>
-		  <BackColor>Transparent</BackColor>
-		  <ForeColor>White</ForeColor>
-	  </RadioButton>
+		<RadioButton BackColor="Transparent" ForeColor="White" />
 
-	  <TextBox>
-		  <BackColor>#353535</BackColor>
-		  <ForeColor>White</ForeColor>
-	  </TextBox>
+		<SplitContainer BackColor="#232323" ForeColor="White" />
+
+		<TextBox BackColor="#353535" ForeColor="White" />
 
 	  <MenuItem>
 		  <!-- Background color for menubar dropdown items. -->
