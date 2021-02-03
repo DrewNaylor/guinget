@@ -31,19 +31,26 @@ Imports YamlDotNet.RepresentationModel
 Public Class PackageTools
 
 #Region "Install package with winget."
-    Public Shared Sub InstallPkg(PackageId As String, PackageVersion As String, Optional InstallInteractively As Boolean = False,
+    Public Shared Sub SinglePackageProcessor(Task As String, PackageId As String, PackageVersion As String, Optional Interactive As Boolean = False,
                                  Optional ElevateWinget As Boolean = False, Optional DefaultSourceName As String = "winget")
 
         ' Define variables for storing the winget process. We'll run CMD
         ' so that we can keep it open with /k.
 
+        ' This sub used to be the single-package installation sub, but
+        ' it's been changed to allow uninstallation with a different
+        ' value for "Task".
+        ' Combining these two will make things like always installing
+        ' or uninstalling the latest version easier.
+        ' Uninstalling may in fact default to uninstalling the latest version.
+
         Using proc As New Process
 
             proc.StartInfo.FileName = "cmd"
 
-            ' Define interactive installation flag.
+            ' Define interactive flag.
             Dim InteractiveFlag As String = String.Empty
-            If InstallInteractively = True Then
+            If Interactive = True Then
                 InteractiveFlag = " -i"
             End If
 
@@ -53,7 +60,7 @@ Public Class PackageTools
             End If
 
             ' Define CMD args.
-            proc.StartInfo.Arguments = "/k winget install --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e -s " & DefaultSourceName
+            proc.StartInfo.Arguments = "/k winget " & Task & " --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e -s " & DefaultSourceName
 
             ' Start installing. Catch the exception in case the user cancels the UAC dialog.
             Try

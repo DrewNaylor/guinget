@@ -92,11 +92,21 @@ Public Class ApplyChangesWindow
                 ' Now call winget and install the package. Be sure to keep the window open
                 ' for now until configuration is possible and until we display winget output
                 ' in a textbox below the datagridview.
-                PackageTools.InstallPkg(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
+
+
+                If datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString = "Install" Then
+                    ' Check if the current row is set to install.
+                    PackageTools.SinglePackageProcessor("install", datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
                                         datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
                                         My.Settings.InstallInteractively, My.Settings.ElevateWinget,
                                         My.Settings.DefaultSourceName)
-
+                ElseIf datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString = "Uninstall" Then
+                    ' Do the uninstall for a single package.
+                    PackageTools.SinglePackageProcessor("uninstall", datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
+                                                        datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
+                                        My.Settings.InstallInteractively, My.Settings.ElevateWinget,
+                                        My.Settings.DefaultSourceName)
+                End If
             End If
         End If
     End Sub
