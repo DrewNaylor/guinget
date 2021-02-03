@@ -79,7 +79,7 @@ Public Class ApplyChangesWindow
         ' Before doing anything, make sure there are packages in the list.
         If datagridviewAppsBeingInstalled.CurrentRow IsNot Nothing Then
             ' First make sure that we're not already installing the package.
-            If Not datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString & "ing..." Then
+            If Not datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..." Then
 
                 ' If we're not installing, change the current status cell value to "Installing..." and
                 ' show a messagebox for testing.
