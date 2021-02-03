@@ -38,41 +38,22 @@
 		 </FlatAppearance>
 		</Button>
 
-		<CheckBox BackColor="Transparent" ForeColor="White">
+		<CheckBox BackColor="Transparent" ForeColor="White" />
 
-	  </CheckBox>
-
-	  <Dropdown>
+		<Dropdown BackColor="#363636" ForeColor="White">
 		  <!-- This is for the ComboBox controls, but "Dropdown" is probably
 		  a more common name for people to call them. -->
-		  <BackColor>#363636</BackColor>
-		  <ForeColor>White</ForeColor>
-	  </Dropdown>
+	    </Dropdown>
 
-	  <GroupBox>
-		  <BackColor>Transparent</BackColor>
-		  <ForeColor>White</ForeColor>
-	  </GroupBox>
+		<GroupBox BackColor="Transparent" ForeColor="White" />
 
-	  <FlowLayoutPanel>
-		  <BackColor>#232323</BackColor>
-		  <ForeColor>White</ForeColor>
-	  </FlowLayoutPanel>
+		<FlowLayoutPanel BackColor="#232323" ForeColor="White" />
 
-	  <TableLayoutPanel>
-		  <BackColor>#232323</BackColor>
-		  <ForeColor>White</ForeColor>
-		  <ApplyToAboutWindowAboutTabTLP>True</ApplyToAboutWindowAboutTabTLP>
-	  </TableLayoutPanel>
+		<TableLayoutPanel BackColor="#232323" ForeColor="White" />
 
-	  <TabPage>
-		  <BackColor>#353535</BackColor>
-		  <ForeColor>White</ForeColor>
-	  </TabPage>
+		<TabPage BackColor="#353535" ForeColor="White" />
 
-	  <StatusBar>
-		  <BackColor>#303030</BackColor>
-	  </StatusBar>
+		<StatusBar BackColor="#303030" />
 
 	  <Label>
 		  <BackColor>Transparent</BackColor>
