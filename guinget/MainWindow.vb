@@ -263,6 +263,7 @@ Public Class aaformMainWindow
 
 #Region "Marking packages."
 #Region "Menu items for do nothing, install, etc."
+#Region "Package context menu"
     Private Sub DoNothingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoNothingToolStripMenuItem.Click
         ' Set all selected packages to "do nothing", or whatever the text in the
         ' context menu item that was clicked is. This could allow for
@@ -277,12 +278,6 @@ Public Class aaformMainWindow
         ' Maybe add a messagebox that asks if the user is sure they want to
         ' mark more than 40 packages for installation/do nothing at once
         ' as that may take a long time to complete, with an option to not ask again.
-        MarkPackages("Do nothing")
-    End Sub
-
-
-    Private Sub SelectedPackagesActionDoNothingMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedPackagesActionDoNothingMenuItem.Click
-        ' Mark packages from the menubar.
         MarkPackages("Do nothing")
     End Sub
 
@@ -303,10 +298,38 @@ Public Class aaformMainWindow
         MarkPackages("Install")
     End Sub
 
+    Private Sub UninstallToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UninstallToolStripMenuItem.Click
+        ' Mark packages for uninstallation from the package context menu.
+        MarkPackages("Uninstall")
+    End Sub
+
+    Private Sub UpgradeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpgradeToolStripMenuItem.Click
+        ' Mark packages for upgrade from the package context menu.
+        MarkPackages("Upgrade")
+    End Sub
+#End Region
+
+#Region "Selected packages menu"
+    Private Sub SelectedPackagesActionDoNothingMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedPackagesActionDoNothingMenuItem.Click
+        ' Mark packages from the menubar.
+        MarkPackages("Do nothing")
+    End Sub
+
     Private Sub SelectedPackagesActionInstallMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedPackagesActionInstallMenuItem.Click
         ' Mark packages from the menubar.
         MarkPackages("Install")
     End Sub
+
+    Private Sub SelectedPackagesActionUninstallMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedPackagesActionUninstallMenuItem.Click
+        ' Mark packages for uninstallation from the menubar.
+        MarkPackages("Uninstall")
+    End Sub
+
+    Private Sub SelectedPackagesActionUpgradeMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedPackagesActionUpgradeMenuItem.Click
+        ' Mark packages for upgrade from the menubar.
+        MarkPackages("Upgrade")
+    End Sub
+#End Region
 #End Region
 
 #Region "Where the package-marking takes place."

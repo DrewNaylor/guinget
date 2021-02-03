@@ -129,6 +129,10 @@ Partial Class aaformMainWindow
         Me.LatestVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SelectedPackagesActionUninstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectedPackagesActionUpgradeMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UninstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpgradeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -284,7 +288,7 @@ Partial Class aaformMainWindow
         '
         'SelectedPackagesToolStripMenuItem
         '
-        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesActionDoNothingMenuItem, Me.SelectedPackagesActionInstallMenuItem, Me.zSeparatorAfterActionsInSelectedPackagesMenu, Me.SelectedPackagesSearchForLastSelectedID, Me.zSeparatorSelectedPackagesMenu, Me.ShowInWingetToolStripMenuItem, Me.SelectedPackagesProperties})
+        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesActionDoNothingMenuItem, Me.SelectedPackagesActionInstallMenuItem, Me.SelectedPackagesActionUninstallMenuItem, Me.SelectedPackagesActionUpgradeMenuItem, Me.zSeparatorAfterActionsInSelectedPackagesMenu, Me.SelectedPackagesSearchForLastSelectedID, Me.zSeparatorSelectedPackagesMenu, Me.ShowInWingetToolStripMenuItem, Me.SelectedPackagesProperties})
         Me.SelectedPackagesToolStripMenuItem.Name = "SelectedPackagesToolStripMenuItem"
         Me.SelectedPackagesToolStripMenuItem.Size = New System.Drawing.Size(115, 20)
         Me.SelectedPackagesToolStripMenuItem.Text = "&Selected packages"
@@ -404,9 +408,9 @@ Partial Class aaformMainWindow
         'contextmenustripPackageMenu
         '
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem, Me.zSeparatorAfterActionButtonsInPackageContextMenu, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.ShowInwingetToolStripMenuItem1, Me.PropertiesPackageContextMenuToolStripMenuItem})
+        Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem, Me.UninstallToolStripMenuItem, Me.UpgradeToolStripMenuItem, Me.zSeparatorAfterActionButtonsInPackageContextMenu, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.ShowInwingetToolStripMenuItem1, Me.PropertiesPackageContextMenuToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(189, 126)
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(189, 192)
         '
         'DoNothingToolStripMenuItem
         '
@@ -1034,6 +1038,32 @@ Partial Class aaformMainWindow
         Me.Manifest.ReadOnly = True
         Me.Manifest.Visible = False
         '
+        'SelectedPackagesActionUninstallMenuItem
+        '
+        Me.SelectedPackagesActionUninstallMenuItem.Name = "SelectedPackagesActionUninstallMenuItem"
+        Me.SelectedPackagesActionUninstallMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
+        Me.SelectedPackagesActionUninstallMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionUninstallMenuItem.Text = "Action: &Uninstall"
+        '
+        'SelectedPackagesActionUpgradeMenuItem
+        '
+        Me.SelectedPackagesActionUpgradeMenuItem.Name = "SelectedPackagesActionUpgradeMenuItem"
+        Me.SelectedPackagesActionUpgradeMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.SelectedPackagesActionUpgradeMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionUpgradeMenuItem.Text = "Action: U&pgrade"
+        '
+        'UninstallToolStripMenuItem
+        '
+        Me.UninstallToolStripMenuItem.Name = "UninstallToolStripMenuItem"
+        Me.UninstallToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
+        Me.UninstallToolStripMenuItem.Text = "Action: &Uninstall"
+        '
+        'UpgradeToolStripMenuItem
+        '
+        Me.UpgradeToolStripMenuItem.Name = "UpgradeToolStripMenuItem"
+        Me.UpgradeToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
+        Me.UpgradeToolStripMenuItem.Text = "Action: U&pgrade"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1186,4 +1216,8 @@ Partial Class aaformMainWindow
     Friend WithEvents LatestVersion As DataGridViewTextBoxColumn
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
     Friend WithEvents Manifest As DataGridViewTextBoxColumn
+    Friend WithEvents SelectedPackagesActionUninstallMenuItem As ToolStripMenuItem
+    Friend WithEvents SelectedPackagesActionUpgradeMenuItem As ToolStripMenuItem
+    Friend WithEvents UninstallToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UpgradeToolStripMenuItem As ToolStripMenuItem
 End Class
