@@ -78,6 +78,9 @@
     <Reference Include="libguinget">
       <HintPath>..\libguinget\bin\Debug\libguinget.dll</HintPath>
     </Reference>
+    <Reference Include="libportablethemeengine">
+      <HintPath>..\..\..\Visual Studio 2015\Projects\UXL-Launcher\PortableUXLLauncher_ThemeEngine\bin\Debug\libportablethemeengine.dll</HintPath>
+    </Reference>
     <Reference Include="libscrollswitchtabs">
       <HintPath>..\libs\libscrollswitchtabs.dll</HintPath>
     </Reference>

@@ -23,9 +23,9 @@ Partial Class aaformMainWindow
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aaformMainWindow))
         Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -49,6 +49,8 @@ Partial Class aaformMainWindow
         Me.SelectedPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesActionDoNothingMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesActionInstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectedPackagesActionUninstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectedPackagesActionUpgradeMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorAfterActionsInSelectedPackagesMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.SelectedPackagesSearchForLastSelectedID = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorSelectedPackagesMenu = New System.Windows.Forms.ToolStripSeparator()
@@ -68,6 +70,8 @@ Partial Class aaformMainWindow
         Me.contextmenustripPackageMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DoNothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UninstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpgradeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorAfterActionButtonsInPackageContextMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchForPackageIDFromContextMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorPackageContextMenu = New System.Windows.Forms.ToolStripSeparator()
@@ -76,6 +80,14 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow = New System.Windows.Forms.SplitContainer()
         Me.panelPackageListHolder = New System.Windows.Forms.Panel()
         Me.datagridviewPackageList = New System.Windows.Forms.DataGridView()
+        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LatestVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
         Me.textboxPackageDetails = New System.Windows.Forms.TextBox()
         Me.panelMainPkgArea = New System.Windows.Forms.Panel()
@@ -121,18 +133,7 @@ Partial Class aaformMainWindow
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.PkgAction = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.PkgStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FriendlyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AvailableVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LatestVersion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SelectedPackagesActionUninstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SelectedPackagesActionUpgradeMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UninstallToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UpgradeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ApplyDarkThemeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,7 +175,7 @@ Partial Class aaformMainWindow
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RunCMDToolStripMenuItem, Me.RunCMDElevatedToolStripMenuItem, Me.zFileMenuSeparator, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RunCMDToolStripMenuItem, Me.RunCMDElevatedToolStripMenuItem, Me.zFileMenuSeparator, Me.ExitToolStripMenuItem, Me.ApplyDarkThemeToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -307,6 +308,20 @@ Partial Class aaformMainWindow
         Me.SelectedPackagesActionInstallMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.SelectedPackagesActionInstallMenuItem.Text = "Action: &Install"
         '
+        'SelectedPackagesActionUninstallMenuItem
+        '
+        Me.SelectedPackagesActionUninstallMenuItem.Name = "SelectedPackagesActionUninstallMenuItem"
+        Me.SelectedPackagesActionUninstallMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
+        Me.SelectedPackagesActionUninstallMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionUninstallMenuItem.Text = "Action: &Uninstall"
+        '
+        'SelectedPackagesActionUpgradeMenuItem
+        '
+        Me.SelectedPackagesActionUpgradeMenuItem.Name = "SelectedPackagesActionUpgradeMenuItem"
+        Me.SelectedPackagesActionUpgradeMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.SelectedPackagesActionUpgradeMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionUpgradeMenuItem.Text = "Action: U&pgrade"
+        '
         'zSeparatorAfterActionsInSelectedPackagesMenu
         '
         Me.zSeparatorAfterActionsInSelectedPackagesMenu.Name = "zSeparatorAfterActionsInSelectedPackagesMenu"
@@ -410,7 +425,7 @@ Partial Class aaformMainWindow
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem, Me.UninstallToolStripMenuItem, Me.UpgradeToolStripMenuItem, Me.zSeparatorAfterActionButtonsInPackageContextMenu, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.ShowInwingetToolStripMenuItem1, Me.PropertiesPackageContextMenuToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(189, 192)
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(189, 170)
         '
         'DoNothingToolStripMenuItem
         '
@@ -423,6 +438,18 @@ Partial Class aaformMainWindow
         Me.InstallToolStripMenuItem.Name = "InstallToolStripMenuItem"
         Me.InstallToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
         Me.InstallToolStripMenuItem.Text = "Action: &Install"
+        '
+        'UninstallToolStripMenuItem
+        '
+        Me.UninstallToolStripMenuItem.Name = "UninstallToolStripMenuItem"
+        Me.UninstallToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
+        Me.UninstallToolStripMenuItem.Text = "Action: &Uninstall"
+        '
+        'UpgradeToolStripMenuItem
+        '
+        Me.UpgradeToolStripMenuItem.Name = "UpgradeToolStripMenuItem"
+        Me.UpgradeToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
+        Me.UpgradeToolStripMenuItem.Text = "Action: U&pgrade"
         '
         'zSeparatorAfterActionButtonsInPackageContextMenu
         '
@@ -491,37 +518,37 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.AllowUserToResizeRows = False
         Me.datagridviewPackageList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.datagridviewPackageList.BackgroundColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewPackageList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.datagridviewPackageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridviewPackageList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PkgAction, Me.PkgStatus, Me.PkgName, Me.FriendlyName, Me.AvailableVersion, Me.LatestVersion, Me.PkgDescription, Me.Manifest})
         Me.datagridviewPackageList.ContextMenuStrip = Me.contextmenustripPackageMenu
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle5
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Margin = New System.Windows.Forms.Padding(2)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewPackageList.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewPackageList.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.datagridviewPackageList.RowHeadersVisible = False
         Me.datagridviewPackageList.RowHeadersWidth = 51
         Me.datagridviewPackageList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
@@ -531,6 +558,71 @@ Partial Class aaformMainWindow
         Me.datagridviewPackageList.Size = New System.Drawing.Size(664, 337)
         Me.datagridviewPackageList.StandardTab = True
         Me.datagridviewPackageList.TabIndex = 0
+        '
+        'PkgAction
+        '
+        Me.PkgAction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PkgAction.HeaderText = "Action"
+        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install", "Uninstall", "Upgrade"})
+        Me.PkgAction.MinimumWidth = 6
+        Me.PkgAction.Name = "PkgAction"
+        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.PkgAction.Width = 62
+        '
+        'PkgStatus
+        '
+        Me.PkgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PkgStatus.HeaderText = "Status"
+        Me.PkgStatus.MinimumWidth = 6
+        Me.PkgStatus.Name = "PkgStatus"
+        Me.PkgStatus.ReadOnly = True
+        Me.PkgStatus.Width = 62
+        '
+        'PkgName
+        '
+        Me.PkgName.HeaderText = "Package"
+        Me.PkgName.MinimumWidth = 6
+        Me.PkgName.Name = "PkgName"
+        Me.PkgName.ReadOnly = True
+        '
+        'FriendlyName
+        '
+        Me.FriendlyName.HeaderText = "Name"
+        Me.FriendlyName.MinimumWidth = 6
+        Me.FriendlyName.Name = "FriendlyName"
+        Me.FriendlyName.ReadOnly = True
+        '
+        'AvailableVersion
+        '
+        Me.AvailableVersion.HeaderText = "Version"
+        Me.AvailableVersion.MinimumWidth = 6
+        Me.AvailableVersion.Name = "AvailableVersion"
+        Me.AvailableVersion.ReadOnly = True
+        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
+    "dow like Synaptic)"
+        '
+        'LatestVersion
+        '
+        Me.LatestVersion.HeaderText = "Latest version"
+        Me.LatestVersion.MinimumWidth = 6
+        Me.LatestVersion.Name = "LatestVersion"
+        Me.LatestVersion.ReadOnly = True
+        Me.LatestVersion.Visible = False
+        '
+        'PkgDescription
+        '
+        Me.PkgDescription.HeaderText = "Description"
+        Me.PkgDescription.MinimumWidth = 6
+        Me.PkgDescription.Name = "PkgDescription"
+        Me.PkgDescription.ReadOnly = True
+        '
+        'Manifest
+        '
+        Me.Manifest.HeaderText = "Manifest"
+        Me.Manifest.MinimumWidth = 6
+        Me.Manifest.Name = "Manifest"
+        Me.Manifest.ReadOnly = True
+        Me.Manifest.Visible = False
         '
         'labelUpdatingPackageList
         '
@@ -973,96 +1065,11 @@ Partial Class aaformMainWindow
         '
         Me.TypeTimer.Interval = 325
         '
-        'PkgAction
+        'ApplyDarkThemeToolStripMenuItem
         '
-        Me.PkgAction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.PkgAction.HeaderText = "Action"
-        Me.PkgAction.Items.AddRange(New Object() {"Do nothing", "Install", "Uninstall", "Upgrade"})
-        Me.PkgAction.MinimumWidth = 6
-        Me.PkgAction.Name = "PkgAction"
-        Me.PkgAction.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.PkgAction.Width = 62
-        '
-        'PkgStatus
-        '
-        Me.PkgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.PkgStatus.HeaderText = "Status"
-        Me.PkgStatus.MinimumWidth = 6
-        Me.PkgStatus.Name = "PkgStatus"
-        Me.PkgStatus.ReadOnly = True
-        Me.PkgStatus.Width = 62
-        '
-        'PkgName
-        '
-        Me.PkgName.HeaderText = "Package"
-        Me.PkgName.MinimumWidth = 6
-        Me.PkgName.Name = "PkgName"
-        Me.PkgName.ReadOnly = True
-        '
-        'FriendlyName
-        '
-        Me.FriendlyName.HeaderText = "Name"
-        Me.FriendlyName.MinimumWidth = 6
-        Me.FriendlyName.Name = "FriendlyName"
-        Me.FriendlyName.ReadOnly = True
-        '
-        'AvailableVersion
-        '
-        Me.AvailableVersion.HeaderText = "Version"
-        Me.AvailableVersion.MinimumWidth = 6
-        Me.AvailableVersion.Name = "AvailableVersion"
-        Me.AvailableVersion.ReadOnly = True
-        Me.AvailableVersion.ToolTipText = "(will eventually only display latest version and have all older versions in a win" &
-    "dow like Synaptic)"
-        '
-        'LatestVersion
-        '
-        Me.LatestVersion.HeaderText = "Latest version"
-        Me.LatestVersion.MinimumWidth = 6
-        Me.LatestVersion.Name = "LatestVersion"
-        Me.LatestVersion.ReadOnly = True
-        Me.LatestVersion.Visible = False
-        '
-        'PkgDescription
-        '
-        Me.PkgDescription.HeaderText = "Description"
-        Me.PkgDescription.MinimumWidth = 6
-        Me.PkgDescription.Name = "PkgDescription"
-        Me.PkgDescription.ReadOnly = True
-        '
-        'Manifest
-        '
-        Me.Manifest.HeaderText = "Manifest"
-        Me.Manifest.MinimumWidth = 6
-        Me.Manifest.Name = "Manifest"
-        Me.Manifest.ReadOnly = True
-        Me.Manifest.Visible = False
-        '
-        'SelectedPackagesActionUninstallMenuItem
-        '
-        Me.SelectedPackagesActionUninstallMenuItem.Name = "SelectedPackagesActionUninstallMenuItem"
-        Me.SelectedPackagesActionUninstallMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionUninstallMenuItem.Size = New System.Drawing.Size(217, 22)
-        Me.SelectedPackagesActionUninstallMenuItem.Text = "Action: &Uninstall"
-        '
-        'SelectedPackagesActionUpgradeMenuItem
-        '
-        Me.SelectedPackagesActionUpgradeMenuItem.Name = "SelectedPackagesActionUpgradeMenuItem"
-        Me.SelectedPackagesActionUpgradeMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionUpgradeMenuItem.Size = New System.Drawing.Size(217, 22)
-        Me.SelectedPackagesActionUpgradeMenuItem.Text = "Action: U&pgrade"
-        '
-        'UninstallToolStripMenuItem
-        '
-        Me.UninstallToolStripMenuItem.Name = "UninstallToolStripMenuItem"
-        Me.UninstallToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
-        Me.UninstallToolStripMenuItem.Text = "Action: &Uninstall"
-        '
-        'UpgradeToolStripMenuItem
-        '
-        Me.UpgradeToolStripMenuItem.Name = "UpgradeToolStripMenuItem"
-        Me.UpgradeToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
-        Me.UpgradeToolStripMenuItem.Text = "Action: U&pgrade"
+        Me.ApplyDarkThemeToolStripMenuItem.Name = "ApplyDarkThemeToolStripMenuItem"
+        Me.ApplyDarkThemeToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
+        Me.ApplyDarkThemeToolStripMenuItem.Text = "Apply dark theme"
         '
         'aaformMainWindow
         '
@@ -1220,4 +1227,5 @@ Partial Class aaformMainWindow
     Friend WithEvents SelectedPackagesActionUpgradeMenuItem As ToolStripMenuItem
     Friend WithEvents UninstallToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpgradeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ApplyDarkThemeToolStripMenuItem As ToolStripMenuItem
 End Class
