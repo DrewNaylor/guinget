@@ -30,8 +30,8 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageTools
 
-#Region "Install package with winget."
-    Public Shared Sub SinglePackageProcessor(Task As String, PackageId As String, PackageVersion As String, Optional Interactive As Boolean = False,
+#Region "Process package with winget."
+    Public Shared Sub SinglePackageProcessor(Action As String, PackageId As String, PackageVersion As String, Optional Interactive As Boolean = False,
                                  Optional ElevateWinget As Boolean = False, Optional DefaultSourceName As String = "winget")
 
         ' Define variables for storing the winget process. We'll run CMD
@@ -39,7 +39,7 @@ Public Class PackageTools
 
         ' This sub used to be the single-package installation sub, but
         ' it's been changed to allow uninstallation with a different
-        ' value for "Task".
+        ' value for "Action".
         ' Combining these two will make things like always installing
         ' or uninstalling the latest version easier.
         ' Uninstalling may in fact default to uninstalling the latest version.
@@ -60,7 +60,7 @@ Public Class PackageTools
             End If
 
             ' Define CMD args.
-            proc.StartInfo.Arguments = "/k winget " & Task & " --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e -s " & DefaultSourceName
+            proc.StartInfo.Arguments = "/k winget " & Action & " --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e -s " & DefaultSourceName
 
             ' Start installing. Catch the exception in case the user cancels the UAC dialog.
             Try
@@ -72,7 +72,7 @@ Public Class PackageTools
 
     End Sub
 
-    Public Shared Sub BulkPackageProcessor(Tasks As List(Of String), PackageIDs As List(Of String), PackageVersions As List(Of String), Optional Interactive As Boolean = False,
+    Public Shared Sub BulkPackageProcessor(Actions As List(Of String), PackageIDs As List(Of String), PackageVersions As List(Of String), Optional Interactive As Boolean = False,
                                      Optional ElevateWinget As Boolean = False, Optional DefaultSourceName As String = "winget")
         ' Define process variables to store winget's stuff.
         ' CMD will be kept open with /k.
@@ -97,7 +97,7 @@ Public Class PackageTools
             Dim BulkInstallCommandList As String = String.Empty
             For i As Integer = 0 To PackageIDs.Count - 1
                 ' Begin adding packages to the list.
-                BulkInstallCommandList = BulkInstallCommandList & "winget " & Tasks(i) & " --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e -s " & DefaultSourceName
+                BulkInstallCommandList = BulkInstallCommandList & "winget " & Actions(i) & " --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e -s " & DefaultSourceName
                 ' Now see if we should add " && ".
                 If i < PackageIDs.Count - 1 Then
                     BulkInstallCommandList = BulkInstallCommandList & " && "
@@ -107,7 +107,7 @@ Public Class PackageTools
             ' Define args for running winget and CMD.
             proc.StartInfo.Arguments = "/k " & BulkInstallCommandList
 
-            ' Start installing. Catch the exception in case the user cancels the UAC dialog.
+            ' Start processing. Catch the exception in case the user cancels the UAC dialog.
             Try
                 proc.Start()
             Catch ex As System.ComponentModel.Win32Exception
