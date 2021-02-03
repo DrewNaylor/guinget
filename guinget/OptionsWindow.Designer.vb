@@ -37,6 +37,10 @@ Partial Class OptionsWindow
         Me.checkboxSearchWhenTyping = New System.Windows.Forms.CheckBox()
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch = New System.Windows.Forms.CheckBox()
         Me.checkboxRerunSearch = New System.Windows.Forms.CheckBox()
+        Me.tabpageAppsUIs = New System.Windows.Forms.TabPage()
+        Me.labelAutomaticControlPanelFallback = New System.Windows.Forms.Label()
+        Me.comboboxAppsListUI = New System.Windows.Forms.ComboBox()
+        Me.labelAppsListUI = New System.Windows.Forms.Label()
         Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
         Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
         Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
@@ -69,21 +73,17 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.tabpageAppsUIs = New System.Windows.Forms.TabPage()
-        Me.labelAppsListUI = New System.Windows.Forms.Label()
-        Me.comboboxAppsListUI = New System.Windows.Forms.ComboBox()
-        Me.labelAutomaticControlPanelFallback = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
         Me.tabpageSearch.SuspendLayout()
         CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabpageAppsUIs.SuspendLayout()
         Me.tabpagePackageDetails.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageExperimental.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
-        Me.tabpageAppsUIs.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -131,9 +131,11 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolOptions.Location = New System.Drawing.Point(2, 2)
         Me.tabcontrolOptions.Margin = New System.Windows.Forms.Padding(2)
+        Me.tabcontrolOptions.Multiline = True
         Me.tabcontrolOptions.Name = "tabcontrolOptions"
         Me.tabcontrolOptions.SelectedIndex = 0
         Me.tabcontrolOptions.Size = New System.Drawing.Size(368, 396)
+        Me.tabcontrolOptions.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.tabcontrolOptions.TabIndex = 0
         '
         'tabpageRefreshCache
@@ -142,10 +144,10 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.Controls.Add(Me.buttonDeleteCacheFilesInRoaming)
         Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
-        Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 40)
         Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
         Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageRefreshCache.Size = New System.Drawing.Size(360, 352)
         Me.tabpageRefreshCache.TabIndex = 5
         Me.tabpageRefreshCache.Text = "Refresh Cache"
         Me.tabpageRefreshCache.UseVisualStyleBackColor = True
@@ -194,11 +196,11 @@ Partial Class OptionsWindow
         Me.tabpageSearch.Controls.Add(Me.checkboxSearchWhenTyping)
         Me.tabpageSearch.Controls.Add(Me.checkboxUseExactMatchForLastSelectedPackageIDSearch)
         Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
-        Me.tabpageSearch.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageSearch.Location = New System.Drawing.Point(4, 40)
         Me.tabpageSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearch.Name = "tabpageSearch"
         Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSearch.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageSearch.Size = New System.Drawing.Size(360, 352)
         Me.tabpageSearch.TabIndex = 0
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
@@ -253,13 +255,55 @@ Partial Class OptionsWindow
         Me.checkboxRerunSearch.Text = "Re-run search after cache update"
         Me.checkboxRerunSearch.UseVisualStyleBackColor = True
         '
+        'tabpageAppsUIs
+        '
+        Me.tabpageAppsUIs.Controls.Add(Me.labelAutomaticControlPanelFallback)
+        Me.tabpageAppsUIs.Controls.Add(Me.comboboxAppsListUI)
+        Me.tabpageAppsUIs.Controls.Add(Me.labelAppsListUI)
+        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 40)
+        Me.tabpageAppsUIs.Name = "tabpageAppsUIs"
+        Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageAppsUIs.Size = New System.Drawing.Size(360, 352)
+        Me.tabpageAppsUIs.TabIndex = 6
+        Me.tabpageAppsUIs.Text = "Apps and UIs"
+        Me.tabpageAppsUIs.UseVisualStyleBackColor = True
+        '
+        'labelAutomaticControlPanelFallback
+        '
+        Me.labelAutomaticControlPanelFallback.AutoSize = True
+        Me.labelAutomaticControlPanelFallback.Location = New System.Drawing.Point(23, 54)
+        Me.labelAutomaticControlPanelFallback.Name = "labelAutomaticControlPanelFallback"
+        Me.labelAutomaticControlPanelFallback.Size = New System.Drawing.Size(295, 39)
+        Me.labelAutomaticControlPanelFallback.TabIndex = 2
+        Me.labelAutomaticControlPanelFallback.Text = "If we can't start the Settings app's ""Apps && features"" page," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "we'll fall back to" &
+    " the Control Panel's ""Programs and Features""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "page automatically."
+        '
+        'comboboxAppsListUI
+        '
+        Me.comboboxAppsListUI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.comboboxAppsListUI.FormattingEnabled = True
+        Me.comboboxAppsListUI.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list", "Control Panel: Programs and Features"})
+        Me.comboboxAppsListUI.Location = New System.Drawing.Point(26, 26)
+        Me.comboboxAppsListUI.Name = "comboboxAppsListUI"
+        Me.comboboxAppsListUI.Size = New System.Drawing.Size(292, 21)
+        Me.comboboxAppsListUI.TabIndex = 1
+        '
+        'labelAppsListUI
+        '
+        Me.labelAppsListUI.AutoSize = True
+        Me.labelAppsListUI.Location = New System.Drawing.Point(7, 10)
+        Me.labelAppsListUI.Name = "labelAppsListUI"
+        Me.labelAppsListUI.Size = New System.Drawing.Size(99, 13)
+        Me.labelAppsListUI.TabIndex = 0
+        Me.labelAppsListUI.Text = "Installed packages:"
+        '
         'tabpagePackageDetails
         '
         Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
-        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 22)
+        Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 40)
         Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
         Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 370)
+        Me.tabpagePackageDetails.Size = New System.Drawing.Size(360, 352)
         Me.tabpagePackageDetails.TabIndex = 2
         Me.tabpagePackageDetails.Text = "Package Details"
         Me.tabpagePackageDetails.UseVisualStyleBackColor = True
@@ -280,10 +324,10 @@ Partial Class OptionsWindow
         Me.tabpageApplyChanges.Controls.Add(Me.labelWhyElevate)
         Me.tabpageApplyChanges.Controls.Add(Me.checkboxElevateWinget)
         Me.tabpageApplyChanges.Controls.Add(Me.checkboxInstallInteractively)
-        Me.tabpageApplyChanges.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageApplyChanges.Location = New System.Drawing.Point(4, 40)
         Me.tabpageApplyChanges.Name = "tabpageApplyChanges"
         Me.tabpageApplyChanges.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageApplyChanges.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageApplyChanges.Size = New System.Drawing.Size(360, 352)
         Me.tabpageApplyChanges.TabIndex = 1
         Me.tabpageApplyChanges.Text = "Apply Changes"
         Me.tabpageApplyChanges.UseVisualStyleBackColor = True
@@ -323,10 +367,10 @@ Partial Class OptionsWindow
         'tabpageLayout
         '
         Me.tabpageLayout.Controls.Add(Me.checkboxShowSidebar)
-        Me.tabpageLayout.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageLayout.Location = New System.Drawing.Point(4, 40)
         Me.tabpageLayout.Name = "tabpageLayout"
         Me.tabpageLayout.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageLayout.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageLayout.Size = New System.Drawing.Size(360, 352)
         Me.tabpageLayout.TabIndex = 3
         Me.tabpageLayout.Text = "Layout"
         Me.tabpageLayout.UseVisualStyleBackColor = True
@@ -348,10 +392,10 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.Controls.Add(Me.labelExperimentalSettingsHidden)
         Me.tabpageExperimental.Controls.Add(Me.checkboxHideUnfinishedControls)
         Me.tabpageExperimental.Controls.Add(Me.labelRequiresApplicationRestart)
-        Me.tabpageExperimental.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageExperimental.Location = New System.Drawing.Point(4, 40)
         Me.tabpageExperimental.Name = "tabpageExperimental"
         Me.tabpageExperimental.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageExperimental.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageExperimental.Size = New System.Drawing.Size(360, 352)
         Me.tabpageExperimental.TabIndex = 4
         Me.tabpageExperimental.Text = "Experimental"
         Me.tabpageExperimental.UseVisualStyleBackColor = True
@@ -377,7 +421,7 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxShowOnlyLatestVersions)
         Me.panelExperimentalSettings.Location = New System.Drawing.Point(3, 49)
         Me.panelExperimentalSettings.Name = "panelExperimentalSettings"
-        Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 318)
+        Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 300)
         Me.panelExperimentalSettings.TabIndex = 4
         '
         'labelDefaultSourceNameDescription
@@ -599,48 +643,6 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'tabpageAppsUIs
-        '
-        Me.tabpageAppsUIs.Controls.Add(Me.labelAutomaticControlPanelFallback)
-        Me.tabpageAppsUIs.Controls.Add(Me.comboboxAppsListUI)
-        Me.tabpageAppsUIs.Controls.Add(Me.labelAppsListUI)
-        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 22)
-        Me.tabpageAppsUIs.Name = "tabpageAppsUIs"
-        Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageAppsUIs.Size = New System.Drawing.Size(360, 370)
-        Me.tabpageAppsUIs.TabIndex = 6
-        Me.tabpageAppsUIs.Text = "Apps and UIs"
-        Me.tabpageAppsUIs.UseVisualStyleBackColor = True
-        '
-        'labelAppsListUI
-        '
-        Me.labelAppsListUI.AutoSize = True
-        Me.labelAppsListUI.Location = New System.Drawing.Point(7, 10)
-        Me.labelAppsListUI.Name = "labelAppsListUI"
-        Me.labelAppsListUI.Size = New System.Drawing.Size(99, 13)
-        Me.labelAppsListUI.TabIndex = 0
-        Me.labelAppsListUI.Text = "Installed packages:"
-        '
-        'comboboxAppsListUI
-        '
-        Me.comboboxAppsListUI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.comboboxAppsListUI.FormattingEnabled = True
-        Me.comboboxAppsListUI.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list", "Control Panel: Programs and Features"})
-        Me.comboboxAppsListUI.Location = New System.Drawing.Point(26, 26)
-        Me.comboboxAppsListUI.Name = "comboboxAppsListUI"
-        Me.comboboxAppsListUI.Size = New System.Drawing.Size(292, 21)
-        Me.comboboxAppsListUI.TabIndex = 1
-        '
-        'labelAutomaticControlPanelFallback
-        '
-        Me.labelAutomaticControlPanelFallback.AutoSize = True
-        Me.labelAutomaticControlPanelFallback.Location = New System.Drawing.Point(23, 54)
-        Me.labelAutomaticControlPanelFallback.Name = "labelAutomaticControlPanelFallback"
-        Me.labelAutomaticControlPanelFallback.Size = New System.Drawing.Size(295, 39)
-        Me.labelAutomaticControlPanelFallback.TabIndex = 2
-        Me.labelAutomaticControlPanelFallback.Text = "If we can't start the Settings app's ""Apps && features"" page," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "we'll fall back to" &
-    " the Control Panel's ""Programs and Features""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "page automatically."
-        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -664,6 +666,8 @@ Partial Class OptionsWindow
         Me.tabpageSearch.ResumeLayout(False)
         Me.tabpageSearch.PerformLayout()
         CType(Me.numericupdownSearchWhenTypingWaitTime, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabpageAppsUIs.ResumeLayout(False)
+        Me.tabpageAppsUIs.PerformLayout()
         Me.tabpagePackageDetails.ResumeLayout(False)
         Me.tabpagePackageDetails.PerformLayout()
         Me.tabpageApplyChanges.ResumeLayout(False)
@@ -674,8 +678,6 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
-        Me.tabpageAppsUIs.ResumeLayout(False)
-        Me.tabpageAppsUIs.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
