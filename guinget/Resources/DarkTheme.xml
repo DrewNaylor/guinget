@@ -57,7 +57,7 @@
 
 		<Label BackColor="Transparent" ForeColor="White" />
 
-	  <LinkLabel>
+	    <LinkLabel>
 		  <!-- LinkLabel colors are being loaded from
 	       XML InnerText like TE1.x as using attributes
 		   for them might make things messy. -->
@@ -65,7 +65,7 @@
 		  <ForeColor>White</ForeColor>
 		  <ActiveLinkColor>Red</ActiveLinkColor>
 		  <LinkColor>#3CB2FA</LinkColor>
-	  </LinkLabel>
+	    </LinkLabel>
 
 		<Panel BackColor="#232323" ForeColor="White" />
 
@@ -75,25 +75,25 @@
 
 		<TextBox BackColor="#353535" ForeColor="White" />
 
-	  <MenuItem>
-		  <!-- Background color for menubar dropdown items. -->
-		  <BackColor>#202020</BackColor>
-		  <!-- Text color for menubar dropdown items. -->
-		  <ForeColor>White</ForeColor>
+		<MenuItem BackColor="#202020" ForeColor="White">
+		  <!-- BackColor: Background color for menubar dropdown items. -->
+		  
+		  <!-- ForeColor: Text color for menubar dropdown items. -->
+		  
 		  <ImageMarginGradient>
-				<!-- The "ImageMarginGradient" is the small box on the
+		  <!-- The "ImageMarginGradient" is the small box on the
           left side of many Windows dropdown menu items. 
           Make sure to include the "0x" at the beginning
           of HTML color codes or they might not work, though
           you can also just use regular words like "Red" or "Blue".-->
 
-				<!-- "StartColor" is the color on the left side of
+		  <!-- "StartColor" is the color on the left side of
           the image margin's gradient. -->
-				<StartColor>#202020</StartColor>
-				<!-- "EndColor" is the color on the right side of
+		  <StartColor>#202020</StartColor>
+		  <!-- "EndColor" is the color on the right side of
           the image margin's gradient. -->
-				<EndColor>#202020</EndColor>
-			</ImageMarginGradient>
+		  <EndColor>#202020</EndColor>
+		</ImageMarginGradient>
 		</MenuItem>
 
 		<MenuBar>
