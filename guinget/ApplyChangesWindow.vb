@@ -106,6 +106,12 @@ Public Class ApplyChangesWindow
                                                         datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
                                         My.Settings.InstallInteractively, My.Settings.ElevateWinget,
                                         My.Settings.DefaultSourceName)
+                ElseIf datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString = "Upgrade" Then
+                    ' Do the uninstall for a single package.
+                    PackageTools.SinglePackageProcessor("upgrade", datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
+                                                        datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
+                                        My.Settings.InstallInteractively, My.Settings.ElevateWinget,
+                                        My.Settings.DefaultSourceName)
                 End If
             End If
         End If
