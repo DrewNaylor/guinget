@@ -72,7 +72,7 @@ Public Class PackageTools
 
     End Sub
 
-    Public Shared Sub BulkInstallPkg(PackageIDs As List(Of String), PackageVersions As List(Of String), Optional InstallInteractively As Boolean = False,
+    Public Shared Sub BulkPackageProcessor(Tasks As List(Of String), PackageIDs As List(Of String), PackageVersions As List(Of String), Optional Interactive As Boolean = False,
                                      Optional ElevateWinget As Boolean = False, Optional DefaultSourceName As String = "winget")
         ' Define process variables to store winget's stuff.
         ' CMD will be kept open with /k.
@@ -81,9 +81,9 @@ Public Class PackageTools
 
             proc.StartInfo.FileName = "cmd"
 
-            ' Define interactive install flag.
+            ' Define interactive flag.
             Dim InteractiveFlag As String = String.Empty
-            If InstallInteractively = True Then
+            If Interactive = True Then
                 InteractiveFlag = " -i"
             End If
 
@@ -97,7 +97,7 @@ Public Class PackageTools
             Dim BulkInstallCommandList As String = String.Empty
             For i As Integer = 0 To PackageIDs.Count - 1
                 ' Begin adding packages to the list.
-                BulkInstallCommandList = BulkInstallCommandList & "winget install --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e -s " & DefaultSourceName
+                BulkInstallCommandList = BulkInstallCommandList & "winget " & Tasks(i) & " --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e -s " & DefaultSourceName
                 ' Now see if we should add " && ".
                 If i < PackageIDs.Count - 1 Then
                     BulkInstallCommandList = BulkInstallCommandList & " && "

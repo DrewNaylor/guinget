@@ -60,17 +60,22 @@ Public Class ApplyChangesWindow
             ' Start the install process.
             Dim PackageIDs As New List(Of String)
             Dim PackageVersions As New List(Of String)
+            ' The "Tasks" list is used to store things for bulk uninstall,
+            ' upgrade, and install.
+            Dim Tasks As New List(Of String)
+
             ' Go through the datagridview and add the packages to the list.
             For Each Package As DataGridViewRow In datagridviewAppsBeingInstalled.Rows
                 If Package.Cells.Item(3).Value.ToString = "Ready" Then
                     PackageIDs.Add(Package.Cells(0).Value.ToString)
                     PackageVersions.Add(Package.Cells(1).Value.ToString)
+                    Tasks.Add(Package.Cells(2).Value.ToString.ToLowerInvariant)
                     Package.Cells.Item(3).Value = Package.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..."
                 End If
             Next
 
             ' Send the lists over to the bulk install code.
-            PackageTools.BulkInstallPkg(PackageIDs, PackageVersions, My.Settings.InstallInteractively, My.Settings.ElevateWinget,
+            PackageTools.BulkPackageProcessor(Tasks, PackageIDs, PackageVersions, My.Settings.InstallInteractively, My.Settings.ElevateWinget,
                                         My.Settings.DefaultSourceName)
         End If
     End Sub
