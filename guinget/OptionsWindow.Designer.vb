@@ -359,9 +359,9 @@ Partial Class OptionsWindow
         Me.checkboxInstallInteractively.AutoSize = True
         Me.checkboxInstallInteractively.Location = New System.Drawing.Point(6, 6)
         Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
-        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(197, 17)
+        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(153, 17)
         Me.checkboxInstallInteractively.TabIndex = 0
-        Me.checkboxInstallInteractively.Text = "Use interactive installation (winget -i)"
+        Me.checkboxInstallInteractively.Text = "Run interactively (winget -i)"
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
         'tabpageLayout

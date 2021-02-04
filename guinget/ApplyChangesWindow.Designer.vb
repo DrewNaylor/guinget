@@ -152,8 +152,8 @@ Partial Class ApplyChangesWindow
         Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
         Me.checkboxInstallInteractively.Size = New System.Drawing.Size(119, 28)
         Me.checkboxInstallInteractively.TabIndex = 4
-        Me.checkboxInstallInteractively.Text = "Interactive install (-i)"
-        Me.tooltipInstallOptions.SetToolTip(Me.checkboxInstallInteractively, "Packages will be installed interactively when checked.")
+        Me.checkboxInstallInteractively.Text = "Run interactively (-i)"
+        Me.tooltipInstallOptions.SetToolTip(Me.checkboxInstallInteractively, "winget will be run interactively when checked.")
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
         'checkboxElevateWinget
