@@ -48,12 +48,12 @@ Public Class PackageListTools
     Public Shared DeleteTempDirsAfterCacheUpdate As Boolean = True
 
 #Region "Delete cache in Roaming"
-    Public Shared Sub DeleteCacheFilesInRoaming(CallingForm As Form)
+    Public Shared Sub DeleteCacheFilesInRoaming(CallingForm As Form, CacheRootDir As String, TitleText As String)
         ' Ask the user if they're sure they want to delete the folder.
-        Dim path As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\winget-frontends\"
+        Dim path As String = CacheRootDir & "\winget-frontends\"
         Dim response As DialogResult = MessageBox.Show(CallingForm, "Are you sure you want to delete the files and folders located in " &
                                                   """" & path & """? This cannot be undone.",
-                                                  "Delete cache files in Roaming", MessageBoxButtons.YesNo)
+                                                  TitleText, MessageBoxButtons.YesNo)
         ' If the user clicks Yes, delete the folder then let them know if it was successful.
         ' Make sure it's not in use at the moment.
         If response = DialogResult.Yes AndAlso IO.Directory.Exists(path) Then
@@ -61,7 +61,7 @@ Public Class PackageListTools
                 System.IO.Directory.Delete(path, True)
             Catch ex As System.IO.IOException
                 MessageBox.Show(CallingForm, "A file in the requested directory """ & path & """ is in use by another process. Please close it and try again. It may also be possible that the directory " &
-                                "was deleted between when its existence was checked and when we tried to delete it.", "Delete cache files in Roaming")
+                                "was deleted between when its existence was checked and when we tried to delete it.", TitleText)
                 ' Don't keep going as there's an issue.
                 Exit Sub
             End Try
@@ -69,12 +69,17 @@ Public Class PackageListTools
             ' Check if the folder exists now for a feedback message.
             If Not IO.Directory.Exists(path) Then
                 ' Let the user know it was deleted.
-                MessageBox.Show(CallingForm, "Cache files deleted successfully.", "Delete cache files in Roaming")
+                MessageBox.Show(CallingForm, "Cache files deleted successfully.", TitleText)
+            Else
+                ' Tell the user it seems to exist, but might have been deleted.
+                MessageBox.Show(CallingForm, "It seems like the folder still exists, but the cache files should be deleted." &
+                                " This can happen if the folder is open in a program like Explorer.", TitleText)
+
             End If
 
         ElseIf response = DialogResult.Yes AndAlso Not IO.Directory.Exists(path) Then
-            ' Let the user know if the folder doesn't exist.
-            MessageBox.Show(CallingForm, "The requested directory """ & path & """ does not exist; there's nothing to delete.", "Delete cache files in Roaming")
+                ' Let the user know if the folder doesn't exist.
+                MessageBox.Show(CallingForm, "The requested directory """ & path & """ does not exist; there's nothing to delete.", TitleText)
         End If
     End Sub
 #End Region

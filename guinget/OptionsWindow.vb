@@ -266,12 +266,32 @@ Public Class OptionsWindow
 
     Private Sub buttonDeleteCacheFilesInRoaming_Click(sender As Object, e As EventArgs) Handles buttonDeleteCacheFilesInRoaming.Click
         ' Run the delete cache files in roaming code in the library.
-        libguinget.PackageListTools.DeleteCacheFilesInRoaming(Me)
+        libguinget.PackageListTools.DeleteCacheFilesInRoaming(Me, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                                                              "Delete cache files in Roaming")
     End Sub
 
     Private Sub checkboxSearchWhenTyping_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxSearchWhenTyping.CheckedChanged
         ' Block the wait time number thing when the search when typing
         ' checkbox is unchecked.
         numericupdownSearchWhenTypingWaitTime.Enabled = checkboxSearchWhenTyping.Checked
+    End Sub
+
+    Private Sub buttonDeleteCacheFiles_Click(sender As Object, e As EventArgs) Handles buttonDeleteCacheFiles.Click
+        ' Run the delete cache files in localappdata code in the library.
+
+        ' TODO: Probably should change this eventually so that there's a way
+        ' to delete either the entire winget-frontends folder for clean
+        ' uninstallation or just the cache in case of corruption.
+        ' Those two things will be separate buttons, with this one being
+        ' the "clean uninstall" button when the split is done.
+
+        ' Probably should keep this tab for when there's a button added that
+        ' deletes the guinget config folder in case people want a clean
+        ' uninstall, with a button to quickly open the sources manager for more
+        ' maintenance options. Might be a good idea to allow for command-line
+        ' args to specify the tab to open so that this hypothetical button opens
+        ' directly to the Maintenance tab.
+        libguinget.PackageListTools.DeleteCacheFilesInRoaming(Me, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                                                              "Delete cache files")
     End Sub
 End Class
