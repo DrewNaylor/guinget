@@ -47,6 +47,9 @@ Partial Class OptionsWindow
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.tabpageLayout = New System.Windows.Forms.TabPage()
         Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
+        Me.tabpageMaintenance = New System.Windows.Forms.TabPage()
+        Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
+        Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
         Me.tabpageExperimental = New System.Windows.Forms.TabPage()
         Me.panelExperimentalSettings = New System.Windows.Forms.Panel()
         Me.labelDefaultSourceNameDescription = New System.Windows.Forms.Label()
@@ -71,9 +74,9 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.tabpageMaintenance = New System.Windows.Forms.TabPage()
-        Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
-        Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
+        Me.labelDeleteCacheFiles = New System.Windows.Forms.Label()
+        Me.buttonDeleteCacheFiles = New System.Windows.Forms.Button()
+        Me.labelTabWillBeMoved = New System.Windows.Forms.Label()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -83,9 +86,9 @@ Partial Class OptionsWindow
         Me.tabpagePackageDetails.SuspendLayout()
         Me.tabpageApplyChanges.SuspendLayout()
         Me.tabpageLayout.SuspendLayout()
+        Me.tabpageMaintenance.SuspendLayout()
         Me.tabpageExperimental.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
-        Me.tabpageMaintenance.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -179,11 +182,11 @@ Partial Class OptionsWindow
         Me.tabpageSearch.Controls.Add(Me.checkboxSearchWhenTyping)
         Me.tabpageSearch.Controls.Add(Me.checkboxUseExactMatchForLastSelectedPackageIDSearch)
         Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
-        Me.tabpageSearch.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageSearch.Location = New System.Drawing.Point(4, 40)
         Me.tabpageSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearch.Name = "tabpageSearch"
         Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSearch.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageSearch.Size = New System.Drawing.Size(360, 352)
         Me.tabpageSearch.TabIndex = 0
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
@@ -243,10 +246,10 @@ Partial Class OptionsWindow
         Me.tabpageAppsUIs.Controls.Add(Me.labelAutomaticControlPanelFallback)
         Me.tabpageAppsUIs.Controls.Add(Me.comboboxAppsListUI)
         Me.tabpageAppsUIs.Controls.Add(Me.labelAppsListUI)
-        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 40)
         Me.tabpageAppsUIs.Name = "tabpageAppsUIs"
         Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageAppsUIs.Size = New System.Drawing.Size(360, 370)
+        Me.tabpageAppsUIs.Size = New System.Drawing.Size(360, 352)
         Me.tabpageAppsUIs.TabIndex = 6
         Me.tabpageAppsUIs.Text = "Apps and UIs"
         Me.tabpageAppsUIs.UseVisualStyleBackColor = True
@@ -368,6 +371,40 @@ Partial Class OptionsWindow
         Me.checkboxShowSidebar.TabIndex = 2
         Me.checkboxShowSidebar.Text = "Show sidebar"
         Me.checkboxShowSidebar.UseVisualStyleBackColor = True
+        '
+        'tabpageMaintenance
+        '
+        Me.tabpageMaintenance.Controls.Add(Me.labelTabWillBeMoved)
+        Me.tabpageMaintenance.Controls.Add(Me.labelDeleteCacheFiles)
+        Me.tabpageMaintenance.Controls.Add(Me.buttonDeleteCacheFiles)
+        Me.tabpageMaintenance.Controls.Add(Me.labelDeleteCacheFilesInRoaming)
+        Me.tabpageMaintenance.Controls.Add(Me.buttonDeleteCacheFilesInRoaming)
+        Me.tabpageMaintenance.Location = New System.Drawing.Point(4, 40)
+        Me.tabpageMaintenance.Name = "tabpageMaintenance"
+        Me.tabpageMaintenance.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageMaintenance.Size = New System.Drawing.Size(360, 352)
+        Me.tabpageMaintenance.TabIndex = 7
+        Me.tabpageMaintenance.Text = "Maintenance"
+        Me.tabpageMaintenance.UseVisualStyleBackColor = True
+        '
+        'labelDeleteCacheFilesInRoaming
+        '
+        Me.labelDeleteCacheFilesInRoaming.AutoSize = True
+        Me.labelDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(23, 47)
+        Me.labelDeleteCacheFilesInRoaming.Name = "labelDeleteCacheFilesInRoaming"
+        Me.labelDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(247, 39)
+        Me.labelDeleteCacheFilesInRoaming.TabIndex = 5
+        Me.labelDeleteCacheFilesInRoaming.Text = "Older versions of guinget stored their cache files in" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "%AppData% instead of %Loca" &
+    "lAppData%. You can" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "delete them with this button, if you wish."
+        '
+        'buttonDeleteCacheFilesInRoaming
+        '
+        Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(6, 6)
+        Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
+        Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(264, 38)
+        Me.buttonDeleteCacheFilesInRoaming.TabIndex = 4
+        Me.buttonDeleteCacheFilesInRoaming.Text = "Delete cache files in Roaming"
+        Me.buttonDeleteCacheFilesInRoaming.UseVisualStyleBackColor = True
         '
         'tabpageExperimental
         '
@@ -626,35 +663,33 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'tabpageMaintenance
+        'labelDeleteCacheFiles
         '
-        Me.tabpageMaintenance.Controls.Add(Me.labelDeleteCacheFilesInRoaming)
-        Me.tabpageMaintenance.Controls.Add(Me.buttonDeleteCacheFilesInRoaming)
-        Me.tabpageMaintenance.Location = New System.Drawing.Point(4, 40)
-        Me.tabpageMaintenance.Name = "tabpageMaintenance"
-        Me.tabpageMaintenance.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageMaintenance.Size = New System.Drawing.Size(360, 352)
-        Me.tabpageMaintenance.TabIndex = 7
-        Me.tabpageMaintenance.Text = "Maintenance"
-        Me.tabpageMaintenance.UseVisualStyleBackColor = True
+        Me.labelDeleteCacheFiles.AutoSize = True
+        Me.labelDeleteCacheFiles.Location = New System.Drawing.Point(23, 130)
+        Me.labelDeleteCacheFiles.Name = "labelDeleteCacheFiles"
+        Me.labelDeleteCacheFiles.Size = New System.Drawing.Size(236, 39)
+        Me.labelDeleteCacheFiles.TabIndex = 7
+        Me.labelDeleteCacheFiles.Text = "You can delete the cache files guinget uses with" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "this button if you want to have" &
+    " a clean uninstall" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "or if you're having issues."
         '
-        'labelDeleteCacheFilesInRoaming
+        'buttonDeleteCacheFiles
         '
-        Me.labelDeleteCacheFilesInRoaming.AutoSize = True
-        Me.labelDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(23, 47)
-        Me.labelDeleteCacheFilesInRoaming.Name = "labelDeleteCacheFilesInRoaming"
-        Me.labelDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(247, 65)
-        Me.labelDeleteCacheFilesInRoaming.TabIndex = 5
-        Me.labelDeleteCacheFilesInRoaming.Text = resources.GetString("labelDeleteCacheFilesInRoaming.Text")
+        Me.buttonDeleteCacheFiles.Location = New System.Drawing.Point(6, 89)
+        Me.buttonDeleteCacheFiles.Name = "buttonDeleteCacheFiles"
+        Me.buttonDeleteCacheFiles.Size = New System.Drawing.Size(264, 38)
+        Me.buttonDeleteCacheFiles.TabIndex = 6
+        Me.buttonDeleteCacheFiles.Text = "Delete cache files"
+        Me.buttonDeleteCacheFiles.UseVisualStyleBackColor = True
         '
-        'buttonDeleteCacheFilesInRoaming
+        'labelTabWillBeMoved
         '
-        Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(6, 6)
-        Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
-        Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(264, 38)
-        Me.buttonDeleteCacheFilesInRoaming.TabIndex = 4
-        Me.buttonDeleteCacheFilesInRoaming.Text = "Delete cache files in Roaming"
-        Me.buttonDeleteCacheFilesInRoaming.UseVisualStyleBackColor = True
+        Me.labelTabWillBeMoved.AutoSize = True
+        Me.labelTabWillBeMoved.Location = New System.Drawing.Point(3, 336)
+        Me.labelTabWillBeMoved.Name = "labelTabWillBeMoved"
+        Me.labelTabWillBeMoved.Size = New System.Drawing.Size(293, 13)
+        Me.labelTabWillBeMoved.TabIndex = 8
+        Me.labelTabWillBeMoved.Text = "A future version will move this tab to a sources manager app." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'OptionsWindow
         '
@@ -687,12 +722,12 @@ Partial Class OptionsWindow
         Me.tabpageApplyChanges.PerformLayout()
         Me.tabpageLayout.ResumeLayout(False)
         Me.tabpageLayout.PerformLayout()
+        Me.tabpageMaintenance.ResumeLayout(False)
+        Me.tabpageMaintenance.PerformLayout()
         Me.tabpageExperimental.ResumeLayout(False)
         Me.tabpageExperimental.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
-        Me.tabpageMaintenance.ResumeLayout(False)
-        Me.tabpageMaintenance.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -748,4 +783,7 @@ Partial Class OptionsWindow
     Friend WithEvents tabpageMaintenance As TabPage
     Friend WithEvents labelDeleteCacheFilesInRoaming As Label
     Friend WithEvents buttonDeleteCacheFilesInRoaming As Button
+    Friend WithEvents labelDeleteCacheFiles As Label
+    Friend WithEvents buttonDeleteCacheFiles As Button
+    Friend WithEvents labelTabWillBeMoved As Label
 End Class

@@ -117,13 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="labelDeleteCacheFilesInRoaming.Text" xml:space="preserve">
-    <value>Older versions of guinget stored their cache files in
-%AppData% instead of %LocalAppData%. You can
-delete them with this button, if you wish.
-A future version will move this button to a sources
-manager app.</value>
-  </data>
   <data name="labelDefaultSourceNameDescription.Text" xml:space="preserve">
     <value>In case the default source for winget is renamed,
 you can change it so guinget still works.
