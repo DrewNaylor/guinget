@@ -183,6 +183,7 @@ Public Class PackageListTools
         Dim DatabaseTempDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &
                                            "\winget-frontends\source\winget-db\temp"
 
+#Region "Update manifests."
         If Not System.IO.Directory.Exists(tempDir) Then
             ' If it doesn't exist, create it.
             Await Task.Run(Sub()
@@ -193,27 +194,6 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
-
-            ' Update the database if the user wants to.
-            If UpdateDatabase = True Then
-                ' Check if the directory exists for the database as well,
-                ' if necessary.
-
-                ' TODO: Move the database updating outside this code so
-                ' that it doesn't get confused when the manifest dir exists
-                ' but this one doesn't.
-                ' Will make it easier to update as well, if there are
-                ' ever multiple sources supported.
-                If Not IO.Directory.Exists(DatabaseTempDir) Then
-                    ' Doesn't exist; create it.
-                    Await Task.Run(Sub()
-                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
-                                   End Sub)
-                End If
-                ' Now download.
-                Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
-                                             "winget-db")
-            End If
         Else
             ' Otherwise, re-create it.
             If Await DeleteTempDirAsync("winget-pkgs", True) = False Then
@@ -226,28 +206,31 @@ Public Class PackageListTools
             ' when it can't find the temp folder.
             Await DownloadPkgListWithProgressAsync("https://github.com/Microsoft/winget-pkgs/archive/master.zip",
                                              "Microsoft/winget-pkgs")
-
-            ' Update the database if the user wants to.
-            If UpdateDatabase = True Then
-                ' Check if the directory exists for the database as well,
-                ' if necessary.
-                If IO.Directory.Exists(DatabaseTempDir) Then
-                    ' Exists; re-create it.
-                    If Await DeleteTempDirAsync("winget-db", True) = False Then
-                        ' If there's an issue and a file is open, stop updating.
-                        Exit Function
-                    End If
-                ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
-                    ' Doesn't exist; create it.
-                    Await Task.Run(Sub()
-                                       System.IO.Directory.CreateDirectory(DatabaseTempDir)
-                                   End Sub)
-                End If
-                ' Now download.
-                Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
-                                             "winget-db")
-            End If
         End If
+#End Region
+
+#Region "Update database."
+        ' Update the database if the user wants to.
+        If UpdateDatabase = True Then
+            ' Check if the directory exists for the database as well,
+            ' if necessary.
+            If IO.Directory.Exists(DatabaseTempDir) Then
+                ' Exists; re-create it.
+                If Await DeleteTempDirAsync("winget-db", True) = False Then
+                    ' If there's an issue and a file is open, stop updating.
+                    Exit Function
+                End If
+            ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
+                ' Doesn't exist; create it.
+                Await Task.Run(Sub()
+                                   System.IO.Directory.CreateDirectory(DatabaseTempDir)
+                               End Sub)
+            End If
+            ' Now download.
+            Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
+                                             "winget-db")
+        End If
+#End Region
 
         ' Trying to use this code to display progress as
         ' we update:
