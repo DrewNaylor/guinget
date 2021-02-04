@@ -1243,6 +1243,19 @@ Public Class aaformMainWindow
         libportablethemeengine.ThemeEngine.LoadThemeFromXML(My.Resources.DarkTheme, OptionsWindow,, "darktheme")
         libportablethemeengine.ThemeEngine.LoadThemeFromXML(My.Resources.DarkTheme, ApplyChangesWindow,, "darktheme")
         libportablethemeengine.ThemeEngine.LoadThemeFromXML(My.Resources.DarkTheme, AboutWindow,, "darktheme")
+
+        ' Testing out changing the color for the datagridview.
+        ' Doesn't look that good yet. It needs to change
+        ' the colors for the column headers, but that
+        ' can't be done with the default thing because
+        ' they're added at design time.
+        ' The comboboxes kinda look bad too, so it would be
+        ' nice if there were a way to change the main part's color.
+        datagridviewPackageList.BackgroundColor = libportablethemeengine.ThemeProperties.colorPanelBackColor
+        datagridviewPackageList.GridColor = Color.Black
+        datagridviewPackageList.ForeColor = libportablethemeengine.ThemeProperties.colorPanelForeColor
+        datagridviewPackageList.DefaultCellStyle.BackColor = libportablethemeengine.ThemeProperties.colorPanelBackColor
+        datagridviewPackageList.DefaultCellStyle.ForeColor = libportablethemeengine.ThemeProperties.colorPanelForeColor
     End Sub
 
 
