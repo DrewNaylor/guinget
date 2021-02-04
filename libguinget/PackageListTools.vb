@@ -69,7 +69,7 @@ Public Class PackageListTools
             ' Check if the folder exists now for a feedback message.
             If Not IO.Directory.Exists(path) Then
                 ' Let the user know it was deleted.
-                MessageBox.Show(CallingForm, "Cache files deleted successfully.", "Delete cache files In Roaming")
+                MessageBox.Show(CallingForm, "Cache files deleted successfully.", "Delete cache files in Roaming")
             End If
 
         ElseIf response = DialogResult.Yes AndAlso Not IO.Directory.Exists(path) Then

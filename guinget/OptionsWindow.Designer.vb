@@ -27,8 +27,6 @@ Partial Class OptionsWindow
         Me.buttonDefaults = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
         Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
-        Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
-        Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
         Me.labelDeleteTempFilesAfterRefresh = New System.Windows.Forms.Label()
         Me.checkboxDeleteTempFilesAfterRefresh = New System.Windows.Forms.CheckBox()
         Me.tabpageSearch = New System.Windows.Forms.TabPage()
@@ -73,6 +71,9 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.tabpageMaintenance = New System.Windows.Forms.TabPage()
+        Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
+        Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -84,6 +85,7 @@ Partial Class OptionsWindow
         Me.tabpageLayout.SuspendLayout()
         Me.tabpageExperimental.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
+        Me.tabpageMaintenance.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -127,6 +129,7 @@ Partial Class OptionsWindow
         Me.tabcontrolOptions.Controls.Add(Me.tabpagePackageDetails)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageApplyChanges)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageLayout)
+        Me.tabcontrolOptions.Controls.Add(Me.tabpageMaintenance)
         Me.tabcontrolOptions.Controls.Add(Me.tabpageExperimental)
         Me.tabcontrolOptions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabcontrolOptions.Location = New System.Drawing.Point(2, 2)
@@ -140,8 +143,6 @@ Partial Class OptionsWindow
         '
         'tabpageRefreshCache
         '
-        Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteCacheFilesInRoaming)
-        Me.tabpageRefreshCache.Controls.Add(Me.buttonDeleteCacheFilesInRoaming)
         Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 40)
@@ -151,24 +152,6 @@ Partial Class OptionsWindow
         Me.tabpageRefreshCache.TabIndex = 5
         Me.tabpageRefreshCache.Text = "Refresh Cache"
         Me.tabpageRefreshCache.UseVisualStyleBackColor = True
-        '
-        'labelDeleteCacheFilesInRoaming
-        '
-        Me.labelDeleteCacheFilesInRoaming.AutoSize = True
-        Me.labelDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(23, 108)
-        Me.labelDeleteCacheFilesInRoaming.Name = "labelDeleteCacheFilesInRoaming"
-        Me.labelDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(247, 65)
-        Me.labelDeleteCacheFilesInRoaming.TabIndex = 3
-        Me.labelDeleteCacheFilesInRoaming.Text = resources.GetString("labelDeleteCacheFilesInRoaming.Text")
-        '
-        'buttonDeleteCacheFilesInRoaming
-        '
-        Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(6, 67)
-        Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
-        Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(264, 38)
-        Me.buttonDeleteCacheFilesInRoaming.TabIndex = 2
-        Me.buttonDeleteCacheFilesInRoaming.Text = "Delete cache files in Roaming"
-        Me.buttonDeleteCacheFilesInRoaming.UseVisualStyleBackColor = True
         '
         'labelDeleteTempFilesAfterRefresh
         '
@@ -196,11 +179,11 @@ Partial Class OptionsWindow
         Me.tabpageSearch.Controls.Add(Me.checkboxSearchWhenTyping)
         Me.tabpageSearch.Controls.Add(Me.checkboxUseExactMatchForLastSelectedPackageIDSearch)
         Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
-        Me.tabpageSearch.Location = New System.Drawing.Point(4, 40)
+        Me.tabpageSearch.Location = New System.Drawing.Point(4, 22)
         Me.tabpageSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearch.Name = "tabpageSearch"
         Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSearch.Size = New System.Drawing.Size(360, 352)
+        Me.tabpageSearch.Size = New System.Drawing.Size(360, 370)
         Me.tabpageSearch.TabIndex = 0
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
@@ -260,10 +243,10 @@ Partial Class OptionsWindow
         Me.tabpageAppsUIs.Controls.Add(Me.labelAutomaticControlPanelFallback)
         Me.tabpageAppsUIs.Controls.Add(Me.comboboxAppsListUI)
         Me.tabpageAppsUIs.Controls.Add(Me.labelAppsListUI)
-        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 40)
+        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 22)
         Me.tabpageAppsUIs.Name = "tabpageAppsUIs"
         Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpageAppsUIs.Size = New System.Drawing.Size(360, 352)
+        Me.tabpageAppsUIs.Size = New System.Drawing.Size(360, 370)
         Me.tabpageAppsUIs.TabIndex = 6
         Me.tabpageAppsUIs.Text = "Apps and UIs"
         Me.tabpageAppsUIs.UseVisualStyleBackColor = True
@@ -643,6 +626,36 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
+        'tabpageMaintenance
+        '
+        Me.tabpageMaintenance.Controls.Add(Me.labelDeleteCacheFilesInRoaming)
+        Me.tabpageMaintenance.Controls.Add(Me.buttonDeleteCacheFilesInRoaming)
+        Me.tabpageMaintenance.Location = New System.Drawing.Point(4, 40)
+        Me.tabpageMaintenance.Name = "tabpageMaintenance"
+        Me.tabpageMaintenance.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageMaintenance.Size = New System.Drawing.Size(360, 352)
+        Me.tabpageMaintenance.TabIndex = 7
+        Me.tabpageMaintenance.Text = "Maintenance"
+        Me.tabpageMaintenance.UseVisualStyleBackColor = True
+        '
+        'labelDeleteCacheFilesInRoaming
+        '
+        Me.labelDeleteCacheFilesInRoaming.AutoSize = True
+        Me.labelDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(23, 47)
+        Me.labelDeleteCacheFilesInRoaming.Name = "labelDeleteCacheFilesInRoaming"
+        Me.labelDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(247, 65)
+        Me.labelDeleteCacheFilesInRoaming.TabIndex = 5
+        Me.labelDeleteCacheFilesInRoaming.Text = resources.GetString("labelDeleteCacheFilesInRoaming.Text")
+        '
+        'buttonDeleteCacheFilesInRoaming
+        '
+        Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(6, 6)
+        Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
+        Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(264, 38)
+        Me.buttonDeleteCacheFilesInRoaming.TabIndex = 4
+        Me.buttonDeleteCacheFilesInRoaming.Text = "Delete cache files in Roaming"
+        Me.buttonDeleteCacheFilesInRoaming.UseVisualStyleBackColor = True
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -678,6 +691,8 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
+        Me.tabpageMaintenance.ResumeLayout(False)
+        Me.tabpageMaintenance.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -723,8 +738,6 @@ Partial Class OptionsWindow
     Friend WithEvents tabpageRefreshCache As TabPage
     Friend WithEvents checkboxDeleteTempFilesAfterRefresh As CheckBox
     Friend WithEvents labelDeleteTempFilesAfterRefresh As Label
-    Friend WithEvents buttonDeleteCacheFilesInRoaming As Button
-    Friend WithEvents labelDeleteCacheFilesInRoaming As Label
     Friend WithEvents labelWaitTime As Label
     Friend WithEvents numericupdownSearchWhenTypingWaitTime As NumericUpDown
     Friend WithEvents checkboxSearchWhenTyping As CheckBox
@@ -732,4 +745,7 @@ Partial Class OptionsWindow
     Friend WithEvents labelAppsListUI As Label
     Friend WithEvents comboboxAppsListUI As ComboBox
     Friend WithEvents labelAutomaticControlPanelFallback As Label
+    Friend WithEvents tabpageMaintenance As TabPage
+    Friend WithEvents labelDeleteCacheFilesInRoaming As Label
+    Friend WithEvents buttonDeleteCacheFilesInRoaming As Button
 End Class
