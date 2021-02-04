@@ -1225,6 +1225,20 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub ApplyDarkThemeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ApplyDarkThemeToolStripMenuItem.Click
+
+        ' Testing removal of the rounded edges here.
+        ' This'll end up being a feature in the theme engine
+        ' when I get around to it since it's useful to make
+        ' toolstrip controls look better.
+        libportablethemeengine.ThemeProperties.toolstripProRenderer.RoundedEdges = False
+
+        ' The theme engine doesn't directly theme toolstrips yet,
+        ' so I have to get that here.
+        ' ToolStripButtons and stuff are themed at least, though.
+        toolstripMainWindow.Renderer = libportablethemeengine.ThemeProperties.toolstripProRenderer
+
+        ' Now load the theme.
+        ' I think the Apply Changes window will have to be applied at a different time.
         libportablethemeengine.ThemeEngine.LoadThemeFromXML(My.Resources.DarkTheme, Me, Me.components, "darktheme")
         libportablethemeengine.ThemeEngine.LoadThemeFromXML(My.Resources.DarkTheme, OptionsWindow,, "darktheme")
         libportablethemeengine.ThemeEngine.LoadThemeFromXML(My.Resources.DarkTheme, ApplyChangesWindow,, "darktheme")
