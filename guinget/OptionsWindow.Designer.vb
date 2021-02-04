@@ -666,10 +666,11 @@ Partial Class OptionsWindow
         Me.labelDeleteCacheFiles.AutoSize = True
         Me.labelDeleteCacheFiles.Location = New System.Drawing.Point(23, 130)
         Me.labelDeleteCacheFiles.Name = "labelDeleteCacheFiles"
-        Me.labelDeleteCacheFiles.Size = New System.Drawing.Size(236, 39)
+        Me.labelDeleteCacheFiles.Size = New System.Drawing.Size(240, 52)
         Me.labelDeleteCacheFiles.TabIndex = 7
         Me.labelDeleteCacheFiles.Text = "You can delete the cache files guinget uses with" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "this button if you want to have" &
-    " a clean uninstall" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "or if you're having issues."
+    " a clean uninstall" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "or if you're having issues. These files are stored in" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "%Loca" &
+    "lAppData%."
         '
         'buttonDeleteCacheFiles
         '
@@ -677,7 +678,7 @@ Partial Class OptionsWindow
         Me.buttonDeleteCacheFiles.Name = "buttonDeleteCacheFiles"
         Me.buttonDeleteCacheFiles.Size = New System.Drawing.Size(264, 38)
         Me.buttonDeleteCacheFiles.TabIndex = 6
-        Me.buttonDeleteCacheFiles.Text = "Delete cache files"
+        Me.buttonDeleteCacheFiles.Text = "Delete cache files in Local AppData"
         Me.buttonDeleteCacheFiles.UseVisualStyleBackColor = True
         '
         'labelTabWillBeMoved

@@ -292,6 +292,6 @@ Public Class OptionsWindow
         ' args to specify the tab to open so that this hypothetical button opens
         ' directly to the Maintenance tab.
         libguinget.PackageListTools.DeleteCacheFilesInRoaming(Me, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                                                              "Delete cache files")
+                                                              "Delete cache files in Local AppData")
     End Sub
 End Class
