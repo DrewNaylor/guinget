@@ -117,6 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelWhyElevate.Text" xml:space="preserve">
+    <value>Some packages require winget to be run elevated for them
+to install properly if your account is a limited one.
+This may not work on Windows 10 version 2004 as it
+might say it couldn't run winget. The issue seems to be that
+it has trouble running APPX/MSIX packages elevated now.</value>
+  </data>
   <data name="labelDefaultSourceNameDescription.Text" xml:space="preserve">
     <value>In case the default source for winget is renamed,
 you can change it so guinget still works.

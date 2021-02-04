@@ -323,11 +323,9 @@ Partial Class OptionsWindow
         Me.labelWhyElevate.AutoSize = True
         Me.labelWhyElevate.Location = New System.Drawing.Point(23, 46)
         Me.labelWhyElevate.Name = "labelWhyElevate"
-        Me.labelWhyElevate.Size = New System.Drawing.Size(283, 52)
+        Me.labelWhyElevate.Size = New System.Drawing.Size(287, 65)
         Me.labelWhyElevate.TabIndex = 2
-        Me.labelWhyElevate.Text = "Some packages require winget to be run elevated for them" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to install properly if " &
-    "your account is a limited one." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This may not work on Windows 10 version 2004 as " &
-    "it" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "might say it couldn't run winget."
+        Me.labelWhyElevate.Text = resources.GetString("labelWhyElevate.Text")
         '
         'checkboxElevateWinget
         '

@@ -23,6 +23,7 @@ Partial Class ApplyChangesWindow
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ApplyChangesWindow))
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
         Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
         Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -165,9 +166,7 @@ Partial Class ApplyChangesWindow
         Me.checkboxElevateWinget.Size = New System.Drawing.Size(127, 26)
         Me.checkboxElevateWinget.TabIndex = 3
         Me.checkboxElevateWinget.Text = "Elevate winget (UAC)"
-        Me.tooltipInstallOptions.SetToolTip(Me.checkboxElevateWinget, "Some packages require winget to be run elevated" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "for them to install properly if " &
-        "your account is a" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "limited one. This may not work on Windows 10" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "version 2004 as" &
-        " it might say it couldn't run winget.")
+        Me.tooltipInstallOptions.SetToolTip(Me.checkboxElevateWinget, resources.GetString("checkboxElevateWinget.ToolTip"))
         Me.checkboxElevateWinget.UseVisualStyleBackColor = True
         '
         'tooltipInstallOptions
