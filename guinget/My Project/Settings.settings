@@ -60,7 +60,7 @@
       <Value Profile="(Default)">"winget"</Value>
     </Setting>
     <Setting Name="DeleteTempFilesAfterRefresh" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AppsListUI" Type="System.String" Scope="User">
       <Value Profile="(Default)">appsfeatures</Value>

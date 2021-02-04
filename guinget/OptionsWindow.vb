@@ -200,7 +200,7 @@ Public Class OptionsWindow
 
     Private Sub ReloadDefaults()
         ' Delete temp files after update.
-        checkboxDeleteTempFilesAfterRefresh.Checked = False
+        checkboxDeleteTempFilesAfterRefresh.Checked = True
 
         ' Re-run search checkbox.
         checkboxRerunSearch.Checked = True

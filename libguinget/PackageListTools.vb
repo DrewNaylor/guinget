@@ -45,7 +45,7 @@ Public Class PackageListTools
     Public Shared RootForm As Form = Nothing
 
     ' Specify whether temp files should be deleted after an update.
-    Public Shared DeleteTempDirsAfterCacheUpdate As Boolean = False
+    Public Shared DeleteTempDirsAfterCacheUpdate As Boolean = True
 
 #Region "Delete cache in Roaming"
     Public Shared Sub DeleteCacheFilesInRoaming(CallingForm As Form)
