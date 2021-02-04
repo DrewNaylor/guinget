@@ -788,6 +788,11 @@ Public Class aaformMainWindow
             UnfinishedControlsVisible(True)
         End If
 
+        ' Remove rounded edge from toolbar.
+        ' This code was found on StackOverflow
+        ' in C# here: https://stackoverflow.com/questions/13418721/toolstrip-rounded-corners/48564597#48564597
+        CType(toolstripMainWindow.Renderer, ToolStripProfessionalRenderer).RoundedEdges = False
+
     End Sub
 
 #Region "HiDPI-related stuff."
