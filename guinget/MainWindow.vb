@@ -1247,6 +1247,12 @@ Public Class aaformMainWindow
     End Sub
 
     Private Shared Sub FilterFromActionsListbox()
+        ' IMPORTANT: This doesn't filter after a cache update even if
+        ' "Search after cache update" is on. It's possible to add this
+        ' functionality, but for now, a regular package ID search is
+        ' performed if there's something in the search box when a
+        ' cache update is run.
+
         ' Start searching if something is selected.
         If aaformMainWindow.listboxActions.SelectedItems.Count = 1 Then
             If aaformMainWindow.listboxActions.SelectedIndex = 0 Then
