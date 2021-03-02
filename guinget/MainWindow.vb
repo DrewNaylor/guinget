@@ -1228,21 +1228,31 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub listboxActions_DoubleClick(sender As Object, e As EventArgs) Handles listboxActions.DoubleClick
+        ' Filter in the Actions listbox.
+        FilterFromActionsListbox()
+    End Sub
+
+    Private Sub listboxActions_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxActions.KeyDown
+        ' Start searching if the "Enter" key is pressed and something is selected.
+        If e.KeyCode = Keys.Enter Then
+            ' Start searching.
+            FilterFromActionsListbox()
+        End If
+    End Sub
+
+    Private Shared Sub FilterFromActionsListbox()
         ' Start searching if something is selected.
-        If listboxActions.SelectedItems.Count = 1 Then
-            If listboxActions.SelectedIndex = 0 Then
+        If aaformMainWindow.listboxActions.SelectedItems.Count = 1 Then
+            If aaformMainWindow.listboxActions.SelectedIndex = 0 Then
                 ' Search for everything if "All" is double-clicked.
                 BeginPackageIdSearch(String.Empty, True, 0)
             Else
                 ' Search for the selected Action. This is between double-quotes
                 ' to ensure that something like "Uninstall" showing up when searching
                 ' for "Install" doesn't happen, for example.
-                BeginPackageIdSearch("""" & listboxActions.SelectedItem.ToString & """", True, 0)
+                BeginPackageIdSearch("""" & aaformMainWindow.listboxActions.SelectedItem.ToString & """", True, 0)
             End If
         End If
-
-
-
     End Sub
 
 
