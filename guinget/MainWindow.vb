@@ -129,6 +129,11 @@ Public Class aaformMainWindow
                     If PackageRow.Item(2).ToString = PackageRow.Item(3).ToString Then
                         ' Only add the package to the list if the package row we're looking
                         ' at is the latest version of the package.
+                        ' Not all packages display the "latest version"
+                        ' correctly, so this isn't on by default.
+                        ' One example is Adopt OpenJDK which displays
+                        ' version 8.x last I checked when it should
+                        ' display 15.x or something.
                         aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
                     End If
                 Else
