@@ -1273,6 +1273,8 @@ Public Class aaformMainWindow
         ' functionality, but for now, a regular package ID search is
         ' performed if there's something in the search box when a
         ' cache update is run.
+        ' This regular search overrides other filters such as
+        ' the "Action" column filter.
 
         ' Start searching if something is selected.
         If aaformMainWindow.listboxActions.SelectedItems.Count = 1 Then
