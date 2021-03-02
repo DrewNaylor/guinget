@@ -78,8 +78,7 @@ Public Class aaformMainWindow
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths As List(Of String) = PackageListTools.GetManifests
 
-        ' Set progress bar maximum and step count.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
+        ' Set progress bar step count.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
         ' Update loading statusbar label.
@@ -99,8 +98,11 @@ Public Class aaformMainWindow
         ' Go through everything in the manifest paths array until it's out if
         ' we don't want to load from a database.
         If My.Settings.LoadFromSqliteDb = False Then
-            For i As Integer = 0 To ManifestPaths.Count - 1
 
+            ' Set progress bar maximum value.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
+
+            For i As Integer = 0 To ManifestPaths.Count - 1
                 ' Read the file into the manifest column and make a new row with it.
                 aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Unknown", "Loading...", ManifestPaths(i))
 
@@ -111,7 +113,13 @@ Public Class aaformMainWindow
             Next
         Else
             ' We do want to load from the database, so do it.
+
+            ' Get a datatable ready.
             Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
+
+            ' Set progress bar maximum value.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = SqliteList.Rows.Count - 1
+
             'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
             'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
             For Each PackageRow As DataRow In SqliteList.Rows
@@ -173,19 +181,20 @@ Public Class aaformMainWindow
             For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Find the manifest and get its description.
                 PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
-
                 ' Ensure the manifest path cell isn't nothing.
                 ' The database was broken just after 1 AM EDT
                 ' on October 8, 2020, so this is to prevent
                 ' future crashes, even if the database is broken
                 ' again.
                 If PackageRow.Cells.Item(7).Value IsNot Nothing Then
+                    'MessageBox.Show(PackageRow.Index.ToString & " it's not nothing")
                     PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
                 Else
                     ' If the value in the manifest path cell is nothing, change the description.
                     PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
                 End If
                 ' Make the progress bar progress.
+                'MessageBox.Show(PackageRow.Index.ToString)
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
                 ' Update the statusbar to show the current info.
                 aaformMainWindow.statusbarMainWindow.Update()
