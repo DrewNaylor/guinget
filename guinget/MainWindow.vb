@@ -340,10 +340,10 @@ Public Class aaformMainWindow
 
         ' Turn off autosize to make it go way faster.
         ' We're only doing this if the number of selected
-        ' rows is excessive.
+        ' rows is 5 or more.
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
-        If aaformMainWindow.datagridviewPackageList.SelectedRows.Count >= 25 Then
+        If aaformMainWindow.datagridviewPackageList.SelectedRows.Count >= 5 Then
             For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
             Next
