@@ -70,7 +70,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Search terms.
+        '''  Looks up a localized string similar to Search terms,Action.
         '''</summary>
         Friend ReadOnly Property DefaultSidebarList() As String
             Get

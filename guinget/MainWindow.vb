@@ -697,6 +697,18 @@ Public Class aaformMainWindow
     End Sub
 
 #Region "Unfinished controls visibility"
+
+    Friend Shared Sub SidebarTabSelectionListItems(VisibleTabsList As String())
+        ' Clear the items from the dropdown.
+        aaformMainWindow.comboboxSidebarTabSelector.Items.Clear()
+        ' Go through the list and add them to the dropdown.
+        For Each VisibleTab As String In VisibleTabsList
+            aaformMainWindow.comboboxSidebarTabSelector.Items.Add(VisibleTab)
+        Next
+        ' Set the selected index for the dropdown back to 0.
+        aaformMainWindow.comboboxSidebarTabSelector.SelectedIndex = 0
+    End Sub
+
     Friend Shared Sub UnfinishedControlsVisible(Visible As Boolean)
 
         ' Hide controls that don't work yet.
@@ -707,16 +719,10 @@ Public Class aaformMainWindow
         ' Properties set in the designer.
         ' Switch the dropdown list that's displayed.
         If Visible = True Then
-            ' Clear the items from the dropdown.
-            aaformMainWindow.comboboxSidebarTabSelector.Items.Clear()
-            ' Take the list of pages that are currently hidden and split them.
-            Dim HiddenList As String() = My.Resources.HiddenSidebarList.Split(CChar(","))
-            ' Go through the list and add them to the dropdown.
-            For Each HiddenPage As String In HiddenList
-                aaformMainWindow.comboboxSidebarTabSelector.Items.Add(HiddenPage)
-            Next
-            ' Set the selected index for the dropdown back to 0.
-            aaformMainWindow.comboboxSidebarTabSelector.SelectedIndex = 0
+            SidebarTabSelectionListItems(My.Resources.HiddenSidebarList.Split(CChar(",")))
+        Else
+            ' Show only the ones that are expected.
+            SidebarTabSelectionListItems(My.Resources.DefaultSidebarList.Split(CChar(",")))
         End If
 
         ' Tools menu items.
