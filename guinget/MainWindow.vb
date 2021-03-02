@@ -1227,6 +1227,20 @@ Public Class aaformMainWindow
         CommandTools.ListInstalled(My.Settings.AppsListUI)
     End Sub
 
+    Private Sub listboxActions_DoubleClick(sender As Object, e As EventArgs) Handles listboxActions.DoubleClick
+        ' Start searching if something is selected.
+        If listboxActions.SelectedItems.Count = 1 Then
+            If listboxActions.SelectedIndex = 0 Then
+                BeginPackageIdSearch(String.Empty, True, 0)
+            Else
+                BeginPackageIdSearch("""" & listboxActions.SelectedItem.ToString & """", True, 0)
+            End If
+        End If
+
+
+
+    End Sub
+
 
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
