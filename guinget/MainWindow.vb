@@ -194,14 +194,12 @@ Public Class aaformMainWindow
                 ' future crashes, even if the database is broken
                 ' again.
                 If PackageRow.Cells.Item(7).Value IsNot Nothing Then
-                    'MessageBox.Show(PackageRow.Index.ToString & " it's not nothing")
                     PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
                 Else
                     ' If the value in the manifest path cell is nothing, change the description.
                     PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
                 End If
                 ' Make the progress bar progress.
-                'MessageBox.Show(PackageRow.Index.ToString)
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
                 ' Update the statusbar to show the current info.
                 aaformMainWindow.statusbarMainWindow.Update()
