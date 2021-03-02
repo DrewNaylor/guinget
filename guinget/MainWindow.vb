@@ -556,7 +556,7 @@ Public Class aaformMainWindow
 
         ' Re-run search if the user wants to.
         If My.Settings.RerunSearchAfterCacheUpdate = True AndAlso toolstriptextboxSearch.Text IsNot String.Empty Then
-            BeginPackageIdSearch()
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
         End If
 
         Return
@@ -826,10 +826,10 @@ Public Class aaformMainWindow
 #Region "Package ID search."
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
         ' Start searching.
-        BeginPackageIdSearch()
+        BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
     End Sub
 
-    Friend Shared Sub BeginPackageIdSearch(Optional SearchStartedFromSidebar As Boolean = False)
+    Friend Shared Sub BeginPackageIdSearch(SearchTerm As String, Optional SearchStartedFromSidebar As Boolean = False, Optional ColumnIndexToSearchIn As Integer = 2)
 
         ' Make sure there are packages to begin with.
         If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
@@ -871,21 +871,19 @@ Public Class aaformMainWindow
             ' Update main window.
             aaformMainWindow.Update()
 
-            Dim SearchTerm As String = aaformMainWindow.toolstriptextboxSearch.Text
-
             For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Look in each row in the datagridview, and see what text it has.
                 ' If it starts and ends with double-quotes, remove them and do an exact match.
                 If SearchTerm.ToLowerInvariant.StartsWith("""") AndAlso SearchTerm.ToLowerInvariant.EndsWith("""") Then
                     ' Set all rows visible to what's in the search box without the start and end.
-                    If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
+                    If searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
                         ' Set only exactly-matching rows to show.
                         searchRow.Visible = True
                     Else
                         ' Otherwise, hide it.
                         searchRow.Visible = False
                     End If
-                ElseIf searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
+                ElseIf searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
                     ' If the Package ID cell contains what's in the search box, show it.
                     searchRow.Visible = True
                 Else
@@ -920,7 +918,7 @@ Public Class aaformMainWindow
         ' Start searching on pressing Enter.
 
         If e.KeyCode = Keys.Enter Then
-            BeginPackageIdSearch()
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
             ' Stop search when typing timer.
             StopStartTypeTimer(False)
 
@@ -988,7 +986,7 @@ Public Class aaformMainWindow
         End If
 
         ' Begin search.
-        BeginPackageIdSearch(True)
+        BeginPackageIdSearch(aaformMainWindow.toolstriptextboxSearch.Text, True, 2)
     End Sub
 
     Private Sub listboxSearchTerms_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxSearchTerms.KeyDown
@@ -1124,7 +1122,7 @@ Public Class aaformMainWindow
                 TypeTimer.Stop()
             End If
 
-            BeginPackageIdSearch()
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
         End If
     End Sub
 
@@ -1184,7 +1182,7 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/671735
         If My.Settings.SearchWhenTyping = True Then
             TypeTimer.Stop()
-            BeginPackageIdSearch()
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
         End If
     End Sub
 
