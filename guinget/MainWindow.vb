@@ -79,7 +79,9 @@ Public Class aaformMainWindow
         Dim ManifestPaths As List(Of String) = PackageListTools.GetManifests
 
         ' Set progress bar maximum and step count.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
+        ' This used to be "ManifestPaths.Count - 1", but that
+        ' crashed when there was only one manifest available.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count
         aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
         ' Update loading statusbar label.
@@ -99,6 +101,10 @@ Public Class aaformMainWindow
         ' Go through everything in the manifest paths array until it's out if
         ' we don't want to load from a database.
         If My.Settings.LoadFromSqliteDb = False Then
+            ' Using "ManifestPaths.Count - 1" here doesn't make sense, but
+            ' it's required otherwise it crashes with an error saying something
+            ' about having to be non-negative and less than the size of the collection
+            ' if there's only one manifest available.
             For i As Integer = 0 To ManifestPaths.Count - 1
 
                 ' Read the file into the manifest column and make a new row with it.
@@ -234,8 +240,15 @@ Public Class aaformMainWindow
         ' but this is better than nothing for now.
         ' This SO answer might help:
         ' https://stackoverflow.com/a/44661255
-        aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-            " packages loaded."
+        If aaformMainWindow.datagridviewPackageList.RowCount = 1 Then
+            ' Make sure it doesn't display "packages" when there's only one.
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
+                        " package loaded."
+        Else
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
+                        " packages loaded."
+        End If
+
 
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
