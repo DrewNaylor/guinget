@@ -1231,8 +1231,12 @@ Public Class aaformMainWindow
         ' Start searching if something is selected.
         If listboxActions.SelectedItems.Count = 1 Then
             If listboxActions.SelectedIndex = 0 Then
+                ' Search for everything if "All" is double-clicked.
                 BeginPackageIdSearch(String.Empty, True, 0)
             Else
+                ' Search for the selected Action. This is between double-quotes
+                ' to ensure that something like "Uninstall" showing up when searching
+                ' for "Install" doesn't happen, for example.
                 BeginPackageIdSearch("""" & listboxActions.SelectedItem.ToString & """", True, 0)
             End If
         End If
