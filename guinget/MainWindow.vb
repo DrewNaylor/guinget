@@ -837,15 +837,15 @@ Public Class aaformMainWindow
             ' Place search term into the sidebar if it wasn't started from the sidebar.
             If SearchStartedFromSidebar = False Then
                 ' Make sure it's not already in the sidebar.
-                If Not aaformMainWindow.listboxSearchTerms.Items.Contains(aaformMainWindow.toolstriptextboxSearch.Text) Then
-                    aaformMainWindow.listboxSearchTerms.Items.Add(aaformMainWindow.toolstriptextboxSearch.Text)
+                If Not aaformMainWindow.listboxSearchTerms.Items.Contains(SearchTerm) Then
+                    aaformMainWindow.listboxSearchTerms.Items.Add(SearchTerm)
                 End If
             End If
 
             ' Change progress label text.
-            If Not aaformMainWindow.toolstriptextboxSearch.Text = String.Empty Then
+            If Not SearchTerm = String.Empty Then
                 ' If there's something in the search box, include it in the status bar text.
-                aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Searching for " & aaformMainWindow.toolstriptextboxSearch.Text & "..."
+                aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Searching for " & SearchTerm & "..."
             Else
                 ' Otherwise, if it's empty, just say "searching".
                 aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Searching..."
