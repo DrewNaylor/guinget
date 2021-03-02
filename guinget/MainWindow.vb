@@ -118,6 +118,8 @@ Public Class aaformMainWindow
             Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
 
             ' Set progress bar maximum value.
+            ' This has to be done here or there will be a crash
+            ' if we can't find all the manifests.
             aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = SqliteList.Rows.Count - 1
 
             'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
