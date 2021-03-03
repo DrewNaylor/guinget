@@ -48,6 +48,9 @@ Partial Class OptionsWindow
         Me.tabpageLayout = New System.Windows.Forms.TabPage()
         Me.checkboxShowSidebar = New System.Windows.Forms.CheckBox()
         Me.tabpageMaintenance = New System.Windows.Forms.TabPage()
+        Me.labelTabWillBeMoved = New System.Windows.Forms.Label()
+        Me.labelDeleteCacheFiles = New System.Windows.Forms.Label()
+        Me.buttonDeleteCacheFiles = New System.Windows.Forms.Button()
         Me.labelDeleteCacheFilesInRoaming = New System.Windows.Forms.Label()
         Me.buttonDeleteCacheFilesInRoaming = New System.Windows.Forms.Button()
         Me.tabpageExperimental = New System.Windows.Forms.TabPage()
@@ -74,9 +77,7 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.labelDeleteCacheFiles = New System.Windows.Forms.Label()
-        Me.buttonDeleteCacheFiles = New System.Windows.Forms.Button()
-        Me.labelTabWillBeMoved = New System.Windows.Forms.Label()
+        Me.checkboxOpenMiniOptions = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -307,6 +308,7 @@ Partial Class OptionsWindow
         '
         'tabpageApplyChanges
         '
+        Me.tabpageApplyChanges.Controls.Add(Me.checkboxOpenMiniOptions)
         Me.tabpageApplyChanges.Controls.Add(Me.labelWhyElevate)
         Me.tabpageApplyChanges.Controls.Add(Me.checkboxElevateWinget)
         Me.tabpageApplyChanges.Controls.Add(Me.checkboxInstallInteractively)
@@ -384,6 +386,35 @@ Partial Class OptionsWindow
         Me.tabpageMaintenance.TabIndex = 7
         Me.tabpageMaintenance.Text = "Maintenance"
         Me.tabpageMaintenance.UseVisualStyleBackColor = True
+        '
+        'labelTabWillBeMoved
+        '
+        Me.labelTabWillBeMoved.AutoSize = True
+        Me.labelTabWillBeMoved.Location = New System.Drawing.Point(3, 336)
+        Me.labelTabWillBeMoved.Name = "labelTabWillBeMoved"
+        Me.labelTabWillBeMoved.Size = New System.Drawing.Size(293, 13)
+        Me.labelTabWillBeMoved.TabIndex = 8
+        Me.labelTabWillBeMoved.Text = "A future version will move this tab to a sources manager app." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'labelDeleteCacheFiles
+        '
+        Me.labelDeleteCacheFiles.AutoSize = True
+        Me.labelDeleteCacheFiles.Location = New System.Drawing.Point(23, 130)
+        Me.labelDeleteCacheFiles.Name = "labelDeleteCacheFiles"
+        Me.labelDeleteCacheFiles.Size = New System.Drawing.Size(240, 52)
+        Me.labelDeleteCacheFiles.TabIndex = 7
+        Me.labelDeleteCacheFiles.Text = "You can delete the cache files guinget uses with" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "this button if you want to have" &
+    " a clean uninstall" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "or if you're having issues. These files are stored in" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "%Loca" &
+    "lAppData%."
+        '
+        'buttonDeleteCacheFiles
+        '
+        Me.buttonDeleteCacheFiles.Location = New System.Drawing.Point(6, 89)
+        Me.buttonDeleteCacheFiles.Name = "buttonDeleteCacheFiles"
+        Me.buttonDeleteCacheFiles.Size = New System.Drawing.Size(264, 38)
+        Me.buttonDeleteCacheFiles.TabIndex = 6
+        Me.buttonDeleteCacheFiles.Text = "Delete cache files in Local AppData"
+        Me.buttonDeleteCacheFiles.UseVisualStyleBackColor = True
         '
         'labelDeleteCacheFilesInRoaming
         '
@@ -661,34 +692,17 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
-        'labelDeleteCacheFiles
+        'checkboxOpenMiniOptions
         '
-        Me.labelDeleteCacheFiles.AutoSize = True
-        Me.labelDeleteCacheFiles.Location = New System.Drawing.Point(23, 130)
-        Me.labelDeleteCacheFiles.Name = "labelDeleteCacheFiles"
-        Me.labelDeleteCacheFiles.Size = New System.Drawing.Size(240, 52)
-        Me.labelDeleteCacheFiles.TabIndex = 7
-        Me.labelDeleteCacheFiles.Text = "You can delete the cache files guinget uses with" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "this button if you want to have" &
-    " a clean uninstall" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "or if you're having issues. These files are stored in" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "%Loca" &
-    "lAppData%."
-        '
-        'buttonDeleteCacheFiles
-        '
-        Me.buttonDeleteCacheFiles.Location = New System.Drawing.Point(6, 89)
-        Me.buttonDeleteCacheFiles.Name = "buttonDeleteCacheFiles"
-        Me.buttonDeleteCacheFiles.Size = New System.Drawing.Size(264, 38)
-        Me.buttonDeleteCacheFiles.TabIndex = 6
-        Me.buttonDeleteCacheFiles.Text = "Delete cache files in Local AppData"
-        Me.buttonDeleteCacheFiles.UseVisualStyleBackColor = True
-        '
-        'labelTabWillBeMoved
-        '
-        Me.labelTabWillBeMoved.AutoSize = True
-        Me.labelTabWillBeMoved.Location = New System.Drawing.Point(3, 336)
-        Me.labelTabWillBeMoved.Name = "labelTabWillBeMoved"
-        Me.labelTabWillBeMoved.Size = New System.Drawing.Size(293, 13)
-        Me.labelTabWillBeMoved.TabIndex = 8
-        Me.labelTabWillBeMoved.Text = "A future version will move this tab to a sources manager app." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.checkboxOpenMiniOptions.AutoSize = True
+        Me.checkboxOpenMiniOptions.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxOpenMiniOptions.Location = New System.Drawing.Point(6, 316)
+        Me.checkboxOpenMiniOptions.Name = "checkboxOpenMiniOptions"
+        Me.checkboxOpenMiniOptions.Size = New System.Drawing.Size(279, 30)
+        Me.checkboxOpenMiniOptions.TabIndex = 3
+        Me.checkboxOpenMiniOptions.Text = "Automatically open the mini Options window when the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Apply Changes window is open" &
+    "ed"
+        Me.checkboxOpenMiniOptions.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
@@ -785,4 +799,5 @@ Partial Class OptionsWindow
     Friend WithEvents labelDeleteCacheFiles As Label
     Friend WithEvents buttonDeleteCacheFiles As Button
     Friend WithEvents labelTabWillBeMoved As Label
+    Friend WithEvents checkboxOpenMiniOptions As CheckBox
 End Class

@@ -60,6 +60,8 @@ Public Class OptionsWindow
         checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
         ' Elevate winget.
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget
+        ' Mini-Options window.
+        checkboxOpenMiniOptions.Checked = My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow
 
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = My.Settings.ShowLastSelectedPackageDetails
@@ -143,6 +145,8 @@ Public Class OptionsWindow
         My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
         ' Elevate winget.
         My.Settings.ElevateWinget = checkboxElevateWinget.Checked
+        ' Mini-Options window.
+        My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow = checkboxOpenMiniOptions.Checked
 
         ' Show last-selected package details.
         My.Settings.ShowLastSelectedPackageDetails = checkboxLastSelectedPackageDetails.Checked
@@ -219,6 +223,8 @@ Public Class OptionsWindow
         checkboxInstallInteractively.Checked = False
         ' Elevate winget.
         checkboxElevateWinget.Checked = False
+        ' Mini-Options window.
+        checkboxOpenMiniOptions.Checked = False
 
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = True
