@@ -26,6 +26,7 @@
 
 
 Public Class MiniApplyChangesOptionsForm
+
     Private Sub MiniApplyChangesOptionsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Load settings.
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget

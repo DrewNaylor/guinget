@@ -168,11 +168,28 @@ Public Class ApplyChangesWindow
         OpenMiniApplyChangesOptionsForm()
     End Sub
 
+    Dim MiniOptionsForm As Form
+
     Private Sub OpenMiniApplyChangesOptionsForm()
         ' Open the mini-form and set its location.
-        MiniApplyChangesOptionsForm.Location = LinkLabel1.Location
-        MiniApplyChangesOptionsForm.Visible = False
-        MiniApplyChangesOptionsForm.Show(Me)
+        ' Code based on this StackOverflow answer:
+        ' https://stackoverflow.com/a/21790460
+        If MiniOptionsForm Is Nothing Then
+            MiniOptionsForm = New MiniApplyChangesOptionsForm
+            AddHandler MiniOptionsForm.Load, AddressOf MoveMiniForm
+            AddHandler Me.LocationChanged, AddressOf MoveMiniForm
+            AddHandler MiniOptionsForm.FormClosed, Sub() MiniOptionsForm = Nothing
+            MiniOptionsForm.Visible = False
+            MiniOptionsForm.Show(Me)
+        End If
+
+        'MiniApplyChangesOptionsForm.Location = Me.Location
+        'MiniApplyChangesOptionsForm.Visible = False
+        'MiniApplyChangesOptionsForm.Show(Me)
+    End Sub
+
+    Private Sub MoveMiniForm(sender As Object, e As EventArgs)
+        MiniOptionsForm.Bounds = New Rectangle(Me.Left - MiniOptionsForm.Width, Me.Top, MiniOptionsForm.Width, MiniOptionsForm.Height)
     End Sub
 
     Private Sub ApplyChangesWindow_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
