@@ -170,8 +170,9 @@ Public Class ApplyChangesWindow
 
     Private Sub OpenMiniApplyChangesOptionsForm()
         ' Open the mini-form and set its location.
-        MiniApplyChangesOptionsForm.SetDesktopLocation(Me.Height, Me.Width)
-        MiniApplyChangesOptionsForm.Show()
+        MiniApplyChangesOptionsForm.Location = LinkLabel1.Location
+        MiniApplyChangesOptionsForm.Visible = False
+        MiniApplyChangesOptionsForm.Show(Me)
     End Sub
 
     Private Sub ApplyChangesWindow_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
