@@ -34,6 +34,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.panelMiniFormPanel = New System.Windows.Forms.Panel()
         Me.labelSpecifyVersionNumberHeading = New System.Windows.Forms.Label()
         Me.labelAboutNotSpecifyingVersionNumbers = New System.Windows.Forms.Label()
+        Me.buttonRestoreDefaults = New System.Windows.Forms.Button()
         Me.panelMiniFormPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -122,6 +123,7 @@ Partial Class MiniApplyChangesOptionsForm
         'panelMiniFormPanel
         '
         Me.panelMiniFormPanel.AutoScroll = True
+        Me.panelMiniFormPanel.Controls.Add(Me.buttonRestoreDefaults)
         Me.panelMiniFormPanel.Controls.Add(Me.labelAboutNotSpecifyingVersionNumbers)
         Me.panelMiniFormPanel.Controls.Add(Me.labelSpecifyVersionNumberHeading)
         Me.panelMiniFormPanel.Controls.Add(Me.checkboxWhenInstalling)
@@ -156,6 +158,15 @@ Partial Class MiniApplyChangesOptionsForm
         Me.labelAboutNotSpecifyingVersionNumbers.TabIndex = 12
         Me.labelAboutNotSpecifyingVersionNumbers.Text = resources.GetString("labelAboutNotSpecifyingVersionNumbers.Text")
         '
+        'buttonRestoreDefaults
+        '
+        Me.buttonRestoreDefaults.Location = New System.Drawing.Point(3, 306)
+        Me.buttonRestoreDefaults.Name = "buttonRestoreDefaults"
+        Me.buttonRestoreDefaults.Size = New System.Drawing.Size(86, 28)
+        Me.buttonRestoreDefaults.TabIndex = 13
+        Me.buttonRestoreDefaults.Text = "Defaults"
+        Me.buttonRestoreDefaults.UseVisualStyleBackColor = True
+        '
         'MiniApplyChangesOptionsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -186,4 +197,5 @@ Partial Class MiniApplyChangesOptionsForm
     Friend WithEvents panelMiniFormPanel As Panel
     Friend WithEvents labelSpecifyVersionNumberHeading As Label
     Friend WithEvents labelAboutNotSpecifyingVersionNumbers As Label
+    Friend WithEvents buttonRestoreDefaults As Button
 End Class

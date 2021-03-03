@@ -85,4 +85,16 @@ Public Class MiniApplyChangesOptionsForm
         My.Settings.SpecifyVersionOnUninstall = checkboxWhenUninstalling.Checked
         SaveReloadSettings()
     End Sub
+
+    Private Sub buttonRestoreDefaults_Click(sender As Object, e As EventArgs) Handles buttonRestoreDefaults.Click
+        ' Restore defaults.
+        checkboxElevateWinget.Checked = False
+        checkboxInstallInteractively.Checked = False
+        checkboxOpenAutomatically.Checked = False
+
+        ' Version-specifying settings.
+        checkboxWhenInstalling.Checked = True
+        checkboxWhenUpgrading.Checked = False
+        checkboxWhenUninstalling.Checked = False
+    End Sub
 End Class
