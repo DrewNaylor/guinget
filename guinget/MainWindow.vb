@@ -364,9 +364,15 @@ Public Class aaformMainWindow
         ' rows is 5 or more.
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
-        If aaformMainWindow.datagridviewPackageList.SelectedRows.Count >= 5 Then
+        If aaformMainWindow.datagridviewPackageList.SelectedRows.Count >= 1 Then
             For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+                ' Store the column width for later so only the first time
+                ' marking multiple packages in a session looks funny.
+                ' This also allows the benefits of un-setting autosizing
+                ' to be available all the time.
+                Dim tempColWidth As Integer = column.Width
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+                column.Width = tempColWidth
             Next
         End If
 
