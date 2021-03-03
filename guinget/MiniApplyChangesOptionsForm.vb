@@ -31,6 +31,7 @@ Public Class MiniApplyChangesOptionsForm
         ' Load settings.
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget
         checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
+        checkboxOpenAutomatically.Checked = My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow
     End Sub
 
     Private Sub checkboxElevateWinget_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxElevateWinget.CheckedChanged
@@ -41,5 +42,10 @@ Public Class MiniApplyChangesOptionsForm
     Private Sub checkboxInstallInteractively_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxInstallInteractively.CheckedChanged
         ' Save the new setting.
         My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
+    End Sub
+
+    Private Sub checkboxOpenAutomatically_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxOpenAutomatically.CheckedChanged
+        ' Save this setting.
+        My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow = checkboxOpenAutomatically.Checked
     End Sub
 End Class
