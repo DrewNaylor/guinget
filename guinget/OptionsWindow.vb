@@ -29,13 +29,8 @@ Public Class OptionsWindow
         ' Update controls with their current value from My.Settings.
         LoadSettings()
 
-        ' Allow or block using the buttons that delete the cache folders.
-        ' This one is for the LocalAppData one.
-        buttonDeleteCacheFiles.Enabled =
-        libguinget.PackageListTools.DoesPathExist(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData))
-        ' This one is for the one in Roaming.
-        buttonDeleteCacheFilesInRoaming.Enabled =
-        libguinget.PackageListTools.DoesPathExist(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))
+        ' Allow or block the cache deletion buttons on loading the Options window.
+        AllowOrBlockCacheDeletionButtons()
     End Sub
 
     Private Sub LoadSettings()
@@ -276,6 +271,9 @@ Public Class OptionsWindow
         ' Run the delete cache files in roaming code in the library.
         libguinget.PackageListTools.DeleteCacheFilesInRoaming(Me, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                                                               "Delete cache files in Roaming")
+
+        ' Once that's done, allow or block the buttons so it looks resonsive.
+        AllowOrBlockCacheDeletionButtons()
     End Sub
 
     Private Sub checkboxSearchWhenTyping_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxSearchWhenTyping.CheckedChanged
@@ -301,5 +299,18 @@ Public Class OptionsWindow
         ' directly to the Maintenance tab.
         libguinget.PackageListTools.DeleteCacheFilesInRoaming(Me, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                                                               "Delete cache files in Local AppData")
+
+        ' Once that's done, allow or block the buttons so it looks resonsive.
+        AllowOrBlockCacheDeletionButtons()
+    End Sub
+
+    Private Sub AllowOrBlockCacheDeletionButtons()
+        ' Allow or block using the buttons that delete the cache folders.
+        ' This one is for the LocalAppData one.
+        buttonDeleteCacheFiles.Enabled =
+        libguinget.PackageListTools.DoesPathExist(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData))
+        ' This one is for the one in Roaming.
+        buttonDeleteCacheFilesInRoaming.Enabled =
+        libguinget.PackageListTools.DoesPathExist(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))
     End Sub
 End Class
