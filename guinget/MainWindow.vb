@@ -360,8 +360,6 @@ Public Class aaformMainWindow
         ' the user wants.
 
         ' Turn off autosize to make it go way faster.
-        ' We're only doing this if the number of selected
-        ' rows is 5 or more.
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
         If aaformMainWindow.datagridviewPackageList.SelectedRows.Count >= 1 Then
