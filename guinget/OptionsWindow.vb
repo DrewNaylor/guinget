@@ -28,6 +28,14 @@ Public Class OptionsWindow
     Private Sub OptionsWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Update controls with their current value from My.Settings.
         LoadSettings()
+
+        ' Allow or block using the buttons that delete the cache folders.
+        ' This one is for the LocalAppData one.
+        buttonDeleteCacheFiles.Enabled =
+        libguinget.PackageListTools.DoesPathExist(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData))
+        ' This one is for the one in Roaming.
+        buttonDeleteCacheFilesInRoaming.Enabled =
+        libguinget.PackageListTools.DoesPathExist(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))
     End Sub
 
     Private Sub LoadSettings()
