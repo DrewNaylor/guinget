@@ -103,8 +103,20 @@ Public Class PackageTools
             ' Be sure to only add && if there are packages left to add.
             Dim BulkInstallCommandList As String = String.Empty
             For i As Integer = 0 To PackageIDs.Count - 1
+
+                ' See if the versions should be used.
+                ' Store the current version as a variable that can be updated.
+                Dim Version As String = String.Empty
+                If Actions(i) = "Install" AndAlso SpecifyVersionOnInstall = True Then
+                    Version = " -v " & PackageVersions(i)
+                ElseIf Actions(i) = "Upgrade" AndAlso SpecifyVersionOnUpgrade = True Then
+                    Version = " -v " & PackageVersions(i)
+                ElseIf Actions(i) = "Uninstall" AndAlso SpecifyVersionOnUninstall = True Then
+                    Version = " -v " & PackageVersions(i)
+                End If
+
                 ' Begin adding packages to the list.
-                BulkInstallCommandList = BulkInstallCommandList & "winget " & Actions(i) & " --id " & PackageIDs(i) & " -v " & PackageVersions(i) & InteractiveFlag & " -e -s " & DefaultSourceName
+                BulkInstallCommandList = BulkInstallCommandList & "winget " & Actions(i) & " --id " & PackageIDs(i) & Version & InteractiveFlag & " -e -s " & DefaultSourceName
                 ' Now see if we should add " && ".
                 If i < PackageIDs.Count - 1 Then
                     BulkInstallCommandList = BulkInstallCommandList & " && "
