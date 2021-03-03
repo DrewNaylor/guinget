@@ -182,14 +182,10 @@ Public Class ApplyChangesWindow
             MiniOptionsForm.Visible = False
             MiniOptionsForm.Show(Me)
         End If
-
-        'MiniApplyChangesOptionsForm.Location = Me.Location
-        'MiniApplyChangesOptionsForm.Visible = False
-        'MiniApplyChangesOptionsForm.Show(Me)
     End Sub
 
     Private Sub MoveMiniForm(sender As Object, e As EventArgs)
-        MiniOptionsForm.Bounds = New Rectangle(Me.Left - MiniOptionsForm.Width, Me.Top, MiniOptionsForm.Width, MiniOptionsForm.Height)
+        MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom, MiniOptionsForm.Width, MiniOptionsForm.Height)
     End Sub
 
     Private Sub ApplyChangesWindow_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
