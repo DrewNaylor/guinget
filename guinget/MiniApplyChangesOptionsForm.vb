@@ -57,4 +57,9 @@ Public Class MiniApplyChangesOptionsForm
         My.Settings.Save()
         My.Settings.Reload()
     End Sub
+
+    Private Sub buttonClose_Click(sender As Object, e As EventArgs) Handles buttonClose.Click
+        ' Close the mini-form.
+        Me.Close()
+    End Sub
 End Class
