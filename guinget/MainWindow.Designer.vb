@@ -1071,12 +1071,13 @@ Partial Class aaformMainWindow
         Me.SaveFileDialogExportPackages.DefaultExt = "json"
         Me.SaveFileDialogExportPackages.Filter = "JSON files|*.json|All files|*.*"
         Me.SaveFileDialogExportPackages.RestoreDirectory = True
+        Me.SaveFileDialogExportPackages.Title = "Export packages via winget"
         '
         'OpenFileDialogImportPackages
         '
-        Me.OpenFileDialogImportPackages.FileName = "OpenFileDialog1"
         Me.OpenFileDialogImportPackages.Filter = "JSON files|*.json|All files|*.*"
         Me.OpenFileDialogImportPackages.RestoreDirectory = True
+        Me.OpenFileDialogImportPackages.Title = "Import packages via winget"
         '
         'aaformMainWindow
         '
