@@ -112,7 +112,7 @@ Partial Class aaformMainWindow
         Me.zSeparatorSearchSidebarContextMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.ClearAllSearchTermsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabpageAction = New System.Windows.Forms.TabPage()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.listboxActions = New System.Windows.Forms.ListBox()
         Me.tabpageStatus = New System.Windows.Forms.TabPage()
         Me.listboxStatusTab = New System.Windows.Forms.ListBox()
         Me.tabpageCustomFilters = New System.Windows.Forms.TabPage()
@@ -860,7 +860,7 @@ Partial Class aaformMainWindow
         '
         'tabpageAction
         '
-        Me.tabpageAction.Controls.Add(Me.ListBox1)
+        Me.tabpageAction.Controls.Add(Me.listboxActions)
         Me.tabpageAction.Location = New System.Drawing.Point(4, 5)
         Me.tabpageAction.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageAction.Name = "tabpageAction"
@@ -869,17 +869,17 @@ Partial Class aaformMainWindow
         Me.tabpageAction.Text = "Action"
         Me.tabpageAction.UseVisualStyleBackColor = True
         '
-        'ListBox1
+        'listboxActions
         '
-        Me.ListBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.IntegralHeight = False
-        Me.ListBox1.Items.AddRange(New Object() {"All", "Do nothing", "Install"})
-        Me.ListBox1.Location = New System.Drawing.Point(0, 0)
-        Me.ListBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(202, 470)
-        Me.ListBox1.TabIndex = 2
+        Me.listboxActions.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.listboxActions.FormattingEnabled = True
+        Me.listboxActions.IntegralHeight = False
+        Me.listboxActions.Items.AddRange(New Object() {"All", "Do nothing", "Install", "Uninstall", "Upgrade"})
+        Me.listboxActions.Location = New System.Drawing.Point(0, 0)
+        Me.listboxActions.Margin = New System.Windows.Forms.Padding(2)
+        Me.listboxActions.Name = "listboxActions"
+        Me.listboxActions.Size = New System.Drawing.Size(202, 470)
+        Me.listboxActions.TabIndex = 2
         '
         'tabpageStatus
         '
@@ -1206,7 +1206,7 @@ Partial Class aaformMainWindow
     Friend WithEvents ShowUpgradesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents zToolStripSeparatorViewMenu As ToolStripSeparator
     Friend WithEvents tabpageAction As TabPage
-    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents listboxActions As ListBox
     Friend WithEvents listboxStatusTab As ListBox
     Friend WithEvents PkgAction As DataGridViewComboBoxColumn
     Friend WithEvents PkgStatus As DataGridViewTextBoxColumn

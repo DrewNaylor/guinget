@@ -78,8 +78,7 @@ Public Class aaformMainWindow
         ' Now we populate the Manifest column with each manifest.
         Dim ManifestPaths As List(Of String) = PackageListTools.GetManifests
 
-        ' Set progress bar maximum and step count.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
+        ' Set progress bar step count.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
         ' Update loading statusbar label.
@@ -99,8 +98,11 @@ Public Class aaformMainWindow
         ' Go through everything in the manifest paths array until it's out if
         ' we don't want to load from a database.
         If My.Settings.LoadFromSqliteDb = False Then
-            For i As Integer = 0 To ManifestPaths.Count - 1
 
+            ' Set progress bar maximum value.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
+
+            For i As Integer = 0 To ManifestPaths.Count - 1
                 ' Read the file into the manifest column and make a new row with it.
                 aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Unknown", "Loading...", ManifestPaths(i))
 
@@ -111,7 +113,15 @@ Public Class aaformMainWindow
             Next
         Else
             ' We do want to load from the database, so do it.
+
+            ' Get a datatable ready.
             Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
+
+            ' Set progress bar maximum value.
+            ' This has to be done here or there will be a crash
+            ' if we can't find all the manifests.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = SqliteList.Rows.Count - 1
+
             'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
             'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
             For Each PackageRow As DataRow In SqliteList.Rows
@@ -121,6 +131,11 @@ Public Class aaformMainWindow
                     If PackageRow.Item(2).ToString = PackageRow.Item(3).ToString Then
                         ' Only add the package to the list if the package row we're looking
                         ' at is the latest version of the package.
+                        ' Not all packages display the "latest version"
+                        ' correctly, so this isn't on by default.
+                        ' One example is Adopt OpenJDK which displays
+                        ' version 8.x last I checked when it should
+                        ' display 15.x or something.
                         aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
                     End If
                 Else
@@ -173,7 +188,6 @@ Public Class aaformMainWindow
             For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Find the manifest and get its description.
                 PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
-
                 ' Ensure the manifest path cell isn't nothing.
                 ' The database was broken just after 1 AM EDT
                 ' on October 8, 2020, so this is to prevent
@@ -234,8 +248,15 @@ Public Class aaformMainWindow
         ' but this is better than nothing for now.
         ' This SO answer might help:
         ' https://stackoverflow.com/a/44661255
-        aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-            " packages loaded."
+        If aaformMainWindow.datagridviewPackageList.RowCount = 1 Then
+            ' Make sure it doesn't display "packages" when there's only one.
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
+                        " package loaded."
+        Else
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
+                        " packages loaded."
+        End If
+
 
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
@@ -339,13 +360,17 @@ Public Class aaformMainWindow
         ' the user wants.
 
         ' Turn off autosize to make it go way faster.
-        ' We're only doing this if the number of selected
-        ' rows is excessive.
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
-        If aaformMainWindow.datagridviewPackageList.SelectedRows.Count >= 25 Then
+        If aaformMainWindow.datagridviewPackageList.SelectedRows.Count >= 1 Then
             For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+                ' Store the column width for later so only the first time
+                ' marking multiple packages in a session looks funny.
+                ' This also allows the benefits of un-setting autosizing
+                ' to be available all the time.
+                Dim tempColWidth As Integer = column.Width
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+                column.Width = tempColWidth
             Next
         End If
 
@@ -556,7 +581,7 @@ Public Class aaformMainWindow
 
         ' Re-run search if the user wants to.
         If My.Settings.RerunSearchAfterCacheUpdate = True AndAlso toolstriptextboxSearch.Text IsNot String.Empty Then
-            BeginPackageIdSearch()
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
         End If
 
         Return
@@ -697,6 +722,18 @@ Public Class aaformMainWindow
     End Sub
 
 #Region "Unfinished controls visibility"
+
+    Friend Shared Sub SidebarTabSelectionListItems(VisibleTabsList As String())
+        ' Clear the items from the dropdown.
+        aaformMainWindow.comboboxSidebarTabSelector.Items.Clear()
+        ' Go through the list and add them to the dropdown.
+        For Each VisibleTab As String In VisibleTabsList
+            aaformMainWindow.comboboxSidebarTabSelector.Items.Add(VisibleTab)
+        Next
+        ' Set the selected index for the dropdown back to 0.
+        aaformMainWindow.comboboxSidebarTabSelector.SelectedIndex = 0
+    End Sub
+
     Friend Shared Sub UnfinishedControlsVisible(Visible As Boolean)
 
         ' Hide controls that don't work yet.
@@ -707,16 +744,10 @@ Public Class aaformMainWindow
         ' Properties set in the designer.
         ' Switch the dropdown list that's displayed.
         If Visible = True Then
-            ' Clear the items from the dropdown.
-            aaformMainWindow.comboboxSidebarTabSelector.Items.Clear()
-            ' Take the list of pages that are currently hidden and split them.
-            Dim HiddenList As String() = My.Resources.HiddenSidebarList.Split(CChar(","))
-            ' Go through the list and add them to the dropdown.
-            For Each HiddenPage As String In HiddenList
-                aaformMainWindow.comboboxSidebarTabSelector.Items.Add(HiddenPage)
-            Next
-            ' Set the selected index for the dropdown back to 0.
-            aaformMainWindow.comboboxSidebarTabSelector.SelectedIndex = 0
+            SidebarTabSelectionListItems(My.Resources.HiddenSidebarList.Split(CChar(",")))
+        Else
+            ' Show only the ones that are expected.
+            SidebarTabSelectionListItems(My.Resources.DefaultSidebarList.Split(CChar(",")))
         End If
 
         ' Tools menu items.
@@ -826,10 +857,10 @@ Public Class aaformMainWindow
 #Region "Package ID search."
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
         ' Start searching.
-        BeginPackageIdSearch()
+        BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
     End Sub
 
-    Friend Shared Sub BeginPackageIdSearch(Optional SearchStartedFromSidebar As Boolean = False)
+    Friend Shared Sub BeginPackageIdSearch(SearchTerm As String, Optional SearchStartedFromSidebar As Boolean = False, Optional ColumnIndexToSearchIn As Integer = 2)
 
         ' Make sure there are packages to begin with.
         If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
@@ -837,15 +868,15 @@ Public Class aaformMainWindow
             ' Place search term into the sidebar if it wasn't started from the sidebar.
             If SearchStartedFromSidebar = False Then
                 ' Make sure it's not already in the sidebar.
-                If Not aaformMainWindow.listboxSearchTerms.Items.Contains(aaformMainWindow.toolstriptextboxSearch.Text) Then
-                    aaformMainWindow.listboxSearchTerms.Items.Add(aaformMainWindow.toolstriptextboxSearch.Text)
+                If Not aaformMainWindow.listboxSearchTerms.Items.Contains(SearchTerm) Then
+                    aaformMainWindow.listboxSearchTerms.Items.Add(SearchTerm)
                 End If
             End If
 
             ' Change progress label text.
-            If Not aaformMainWindow.toolstriptextboxSearch.Text = String.Empty Then
+            If Not SearchTerm = String.Empty Then
                 ' If there's something in the search box, include it in the status bar text.
-                aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Searching for " & aaformMainWindow.toolstriptextboxSearch.Text & "..."
+                aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Searching for " & SearchTerm & "..."
             Else
                 ' Otherwise, if it's empty, just say "searching".
                 aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Searching..."
@@ -871,21 +902,19 @@ Public Class aaformMainWindow
             ' Update main window.
             aaformMainWindow.Update()
 
-            Dim SearchTerm As String = aaformMainWindow.toolstriptextboxSearch.Text
-
             For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Look in each row in the datagridview, and see what text it has.
                 ' If it starts and ends with double-quotes, remove them and do an exact match.
                 If SearchTerm.ToLowerInvariant.StartsWith("""") AndAlso SearchTerm.ToLowerInvariant.EndsWith("""") Then
                     ' Set all rows visible to what's in the search box without the start and end.
-                    If searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
+                    If searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
                         ' Set only exactly-matching rows to show.
                         searchRow.Visible = True
                     Else
                         ' Otherwise, hide it.
                         searchRow.Visible = False
                     End If
-                ElseIf searchRow.Cells.Item(2).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
+                ElseIf searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
                     ' If the Package ID cell contains what's in the search box, show it.
                     searchRow.Visible = True
                 Else
@@ -920,7 +949,7 @@ Public Class aaformMainWindow
         ' Start searching on pressing Enter.
 
         If e.KeyCode = Keys.Enter Then
-            BeginPackageIdSearch()
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
             ' Stop search when typing timer.
             StopStartTypeTimer(False)
 
@@ -988,7 +1017,7 @@ Public Class aaformMainWindow
         End If
 
         ' Begin search.
-        BeginPackageIdSearch(True)
+        BeginPackageIdSearch(aaformMainWindow.toolstriptextboxSearch.Text, True, 2)
     End Sub
 
     Private Sub listboxSearchTerms_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxSearchTerms.KeyDown
@@ -1124,7 +1153,7 @@ Public Class aaformMainWindow
                 TypeTimer.Stop()
             End If
 
-            BeginPackageIdSearch()
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
         End If
     End Sub
 
@@ -1184,7 +1213,7 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/671735
         If My.Settings.SearchWhenTyping = True Then
             TypeTimer.Stop()
-            BeginPackageIdSearch()
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
         End If
     End Sub
 
@@ -1227,6 +1256,42 @@ Public Class aaformMainWindow
     Private Sub ListInstalledPackagesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListInstalledPackagesToolStripMenuItem.Click
         ' List installed apps in winget.
         CommandTools.ListInstalled(My.Settings.AppsListUI)
+    End Sub
+
+    Private Sub listboxActions_DoubleClick(sender As Object, e As EventArgs) Handles listboxActions.DoubleClick
+        ' Filter in the Actions listbox.
+        FilterFromActionsListbox()
+    End Sub
+
+    Private Sub listboxActions_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxActions.KeyDown
+        ' Start searching if the "Enter" key is pressed and something is selected.
+        If e.KeyCode = Keys.Enter Then
+            ' Start searching.
+            FilterFromActionsListbox()
+        End If
+    End Sub
+
+    Private Shared Sub FilterFromActionsListbox()
+        ' IMPORTANT: This doesn't filter after a cache update even if
+        ' "Search after cache update" is on. It's possible to add this
+        ' functionality, but for now, a regular package ID search is
+        ' performed if there's something in the search box when a
+        ' cache update is run.
+        ' This regular search overrides other filters such as
+        ' the "Action" column filter.
+
+        ' Start searching if something is selected.
+        If aaformMainWindow.listboxActions.SelectedItems.Count = 1 Then
+            If aaformMainWindow.listboxActions.SelectedIndex = 0 Then
+                ' Search for everything if "All" is double-clicked.
+                BeginPackageIdSearch(String.Empty, True, 0)
+            Else
+                ' Search for the selected Action. This is between double-quotes
+                ' to ensure that something like "Uninstall" showing up when searching
+                ' for "Install" doesn't happen, for example.
+                BeginPackageIdSearch("""" & aaformMainWindow.listboxActions.SelectedItem.ToString & """", True, 0)
+            End If
+        End If
     End Sub
 
 

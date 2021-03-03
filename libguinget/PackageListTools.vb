@@ -607,6 +607,11 @@ Public Class PackageListTools
             " and manifest.name = names._rowid_ order by ids.id;"
 
         ' SQL query for latest package version.
+        ' This puts what it thinks is the latest version
+        ' in a column just for it for later comparison,
+        ' but not all packages have the latest version
+        ' specified properly. Not sure how winget does
+        ' it, but it would be better to do it that way.
         ' Based on the code at the bottom of this page:
         ' https://www.sqlitetutorial.net/sqlite-window-functions/sqlite-last_value/#:~:text=The%20LAST_VALUE%20%28%29%20is%20a%20window%20function%20that,LAST_VALUE%20%28expression%29%20OVER%20%28%20PARTITION%20BY%20expression1%2C%20expression2%2C
         Dim SqlQueryWithLatestVersion As String = "SELECT DISTINCT
