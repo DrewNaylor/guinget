@@ -153,7 +153,6 @@ Partial Class MiniApplyChangesOptionsForm
         Me.ClientSize = New System.Drawing.Size(348, 337)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
-        Me.MinimumSize = New System.Drawing.Size(351, 346)
         Me.Name = "MiniApplyChangesOptionsForm"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
