@@ -32,9 +32,9 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxWhenUninstalling = New System.Windows.Forms.CheckBox()
         Me.checkboxWhenInstalling = New System.Windows.Forms.CheckBox()
         Me.panelMiniFormPanel = New System.Windows.Forms.Panel()
-        Me.labelSpecifyVersionNumberHeading = New System.Windows.Forms.Label()
-        Me.labelAboutNotSpecifyingVersionNumbers = New System.Windows.Forms.Label()
         Me.buttonRestoreDefaults = New System.Windows.Forms.Button()
+        Me.labelAboutNotSpecifyingVersionNumbers = New System.Windows.Forms.Label()
+        Me.labelSpecifyVersionNumberHeading = New System.Windows.Forms.Label()
         Me.panelMiniFormPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -140,14 +140,15 @@ Partial Class MiniApplyChangesOptionsForm
         Me.panelMiniFormPanel.Size = New System.Drawing.Size(348, 337)
         Me.panelMiniFormPanel.TabIndex = 12
         '
-        'labelSpecifyVersionNumberHeading
+        'buttonRestoreDefaults
         '
-        Me.labelSpecifyVersionNumberHeading.AutoSize = True
-        Me.labelSpecifyVersionNumberHeading.Location = New System.Drawing.Point(3, 119)
-        Me.labelSpecifyVersionNumberHeading.Name = "labelSpecifyVersionNumberHeading"
-        Me.labelSpecifyVersionNumberHeading.Size = New System.Drawing.Size(126, 13)
-        Me.labelSpecifyVersionNumberHeading.TabIndex = 11
-        Me.labelSpecifyVersionNumberHeading.Text = "Specify version number..."
+        Me.buttonRestoreDefaults.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.buttonRestoreDefaults.Location = New System.Drawing.Point(3, 306)
+        Me.buttonRestoreDefaults.Name = "buttonRestoreDefaults"
+        Me.buttonRestoreDefaults.Size = New System.Drawing.Size(86, 28)
+        Me.buttonRestoreDefaults.TabIndex = 13
+        Me.buttonRestoreDefaults.Text = "Defaults"
+        Me.buttonRestoreDefaults.UseVisualStyleBackColor = True
         '
         'labelAboutNotSpecifyingVersionNumbers
         '
@@ -158,14 +159,14 @@ Partial Class MiniApplyChangesOptionsForm
         Me.labelAboutNotSpecifyingVersionNumbers.TabIndex = 12
         Me.labelAboutNotSpecifyingVersionNumbers.Text = resources.GetString("labelAboutNotSpecifyingVersionNumbers.Text")
         '
-        'buttonRestoreDefaults
+        'labelSpecifyVersionNumberHeading
         '
-        Me.buttonRestoreDefaults.Location = New System.Drawing.Point(3, 306)
-        Me.buttonRestoreDefaults.Name = "buttonRestoreDefaults"
-        Me.buttonRestoreDefaults.Size = New System.Drawing.Size(86, 28)
-        Me.buttonRestoreDefaults.TabIndex = 13
-        Me.buttonRestoreDefaults.Text = "Defaults"
-        Me.buttonRestoreDefaults.UseVisualStyleBackColor = True
+        Me.labelSpecifyVersionNumberHeading.AutoSize = True
+        Me.labelSpecifyVersionNumberHeading.Location = New System.Drawing.Point(3, 119)
+        Me.labelSpecifyVersionNumberHeading.Name = "labelSpecifyVersionNumberHeading"
+        Me.labelSpecifyVersionNumberHeading.Size = New System.Drawing.Size(126, 13)
+        Me.labelSpecifyVersionNumberHeading.TabIndex = 11
+        Me.labelSpecifyVersionNumberHeading.Text = "Specify version number..."
         '
         'MiniApplyChangesOptionsForm
         '
@@ -175,6 +176,8 @@ Partial Class MiniApplyChangesOptionsForm
         Me.ClientSize = New System.Drawing.Size(348, 337)
         Me.Controls.Add(Me.panelMiniFormPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "MiniApplyChangesOptionsForm"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False

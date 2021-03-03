@@ -22,7 +22,6 @@ Partial Class ApplyChangesWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
         Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
         Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -32,7 +31,6 @@ Partial Class ApplyChangesWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.LinkLabelMiniOptionsForm = New System.Windows.Forms.LinkLabel()
-        Me.tooltipInstallOptions = New System.Windows.Forms.ToolTip(Me.components)
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -153,12 +151,6 @@ Partial Class ApplyChangesWindow
         Me.LinkLabelMiniOptionsForm.Text = "Options..."
         Me.LinkLabelMiniOptionsForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'tooltipInstallOptions
-        '
-        Me.tooltipInstallOptions.AutoPopDelay = 10000
-        Me.tooltipInstallOptions.InitialDelay = 500
-        Me.tooltipInstallOptions.ReshowDelay = 100
-        '
         'ApplyChangesWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -187,6 +179,5 @@ Partial Class ApplyChangesWindow
     Friend WithEvents PackageVersion As DataGridViewTextBoxColumn
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
-    Friend WithEvents tooltipInstallOptions As ToolTip
     Friend WithEvents LinkLabelMiniOptionsForm As LinkLabel
 End Class
