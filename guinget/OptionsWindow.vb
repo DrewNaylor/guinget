@@ -60,6 +60,12 @@ Public Class OptionsWindow
         checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
         ' Elevate winget.
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget
+        ' Specify version on install.
+        checkboxWhenInstalling.Checked = My.Settings.SpecifyVersionOnInstall
+        ' Specify version on uninstall.
+        checkboxWhenUninstalling.Checked = My.Settings.SpecifyVersionOnUninstall
+        ' Specify version on upgrade.
+        checkboxWhenUpgrading.Checked = My.Settings.SpecifyVersionOnUpgrade
         ' Mini-Options window.
         checkboxOpenMiniOptions.Checked = My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow
 
@@ -145,6 +151,12 @@ Public Class OptionsWindow
         My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
         ' Elevate winget.
         My.Settings.ElevateWinget = checkboxElevateWinget.Checked
+        ' Specify version on install.
+        My.Settings.SpecifyVersionOnInstall = checkboxWhenInstalling.Checked
+        ' Specify version on uninstall.
+        My.Settings.SpecifyVersionOnUninstall = checkboxWhenUninstalling.Checked
+        ' Specify version on upgrade.
+        My.Settings.SpecifyVersionOnUpgrade = checkboxWhenUpgrading.Checked
         ' Mini-Options window.
         My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow = checkboxOpenMiniOptions.Checked
 
@@ -223,6 +235,12 @@ Public Class OptionsWindow
         checkboxInstallInteractively.Checked = False
         ' Elevate winget.
         checkboxElevateWinget.Checked = False
+        ' Specify version on install.
+        checkboxWhenInstalling.Checked = True
+        ' Specify version on uninstall.
+        checkboxWhenUninstalling.Checked = False
+        ' Specify version on upgrade.
+        checkboxWhenUpgrading.Checked = False
         ' Mini-Options window.
         checkboxOpenMiniOptions.Checked = False
 
