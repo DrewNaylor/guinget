@@ -37,15 +37,24 @@ Public Class MiniApplyChangesOptionsForm
     Private Sub checkboxElevateWinget_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxElevateWinget.CheckedChanged
         ' Save the new setting for checking or unchecking the box.
         My.Settings.ElevateWinget = checkboxElevateWinget.Checked
+        SaveReloadSettings()
     End Sub
 
     Private Sub checkboxInstallInteractively_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxInstallInteractively.CheckedChanged
         ' Save the new setting.
         My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
+        SaveReloadSettings()
     End Sub
 
     Private Sub checkboxOpenAutomatically_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxOpenAutomatically.CheckedChanged
         ' Save this setting.
         My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow = checkboxOpenAutomatically.Checked
+        SaveReloadSettings()
+    End Sub
+
+    Private Sub SaveReloadSettings()
+        ' Save and reload settings.
+        My.Settings.Save()
+        My.Settings.Reload()
     End Sub
 End Class

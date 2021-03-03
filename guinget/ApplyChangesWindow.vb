@@ -134,19 +134,7 @@ Public Class ApplyChangesWindow
         End If
     End Sub
 
-    Private Sub checkboxInstallInteractively_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxInstallInteractively.CheckedChanged
-        ' Update the setting for interactive installation so the value persists.
-        My.Settings.InstallInteractively = checkboxInstallInteractively.Checked
-        My.Settings.Save()
-        My.Settings.Reload()
-    End Sub
-
     Private Sub ApplyChangesWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Match the install interactively checkbox check state to the setting.
-        checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
-
-        ' Load the elevate winget setting from the config file.
-        checkboxElevateWinget.Checked = My.Settings.ElevateWinget
 
         ' Open the mini-form if the user wants to.
         If My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow = True Then
@@ -157,14 +145,8 @@ Public Class ApplyChangesWindow
         buttonConfirmChanges.Select()
     End Sub
 
-    Private Sub checkboxElevatedInstall_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxElevateWinget.CheckedChanged
-        ' Update the setting for elevating winget so the value persists.
-        My.Settings.ElevateWinget = checkboxElevateWinget.Checked
-        My.Settings.Save()
-        My.Settings.Reload()
-    End Sub
-
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub LinkLabelMiniOptionsForm_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelMiniOptionsForm.LinkClicked
+        ' Open the mini-form.
         OpenMiniApplyChangesOptionsForm()
     End Sub
 
@@ -187,7 +169,10 @@ Public Class ApplyChangesWindow
 
     Private Sub MoveMiniForm(sender As Object, e As EventArgs)
         ' This keeps the mini-form "glued" below the main window.
-        MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom, MiniOptionsForm.Width, MiniOptionsForm.Height)
+        If MiniOptionsForm IsNot Nothing Then
+            ' Make sure the form exists before trying to move it around.
+            MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom, MiniOptionsForm.Width, MiniOptionsForm.Height)
+        End If
     End Sub
 
     Private Sub ApplyChangesWindow_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

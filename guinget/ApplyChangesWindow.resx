@@ -129,20 +129,6 @@
   <metadata name="PackageCurrentStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="tooltipInstallOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="tooltipInstallOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="checkboxElevateWinget.ToolTip" xml:space="preserve">
-    <value>Some packages require winget to be run elevated for them
-to install properly if your account is a limited one.
-This may not work on Windows 10 version 2004 as it
-might say it couldn't run winget. The issue seems to be that
-it has trouble running APPX/MSIX packages elevated now.
-</value>
-  </data>
   <metadata name="PackageName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -154,5 +140,8 @@ it has trouble running APPX/MSIX packages elevated now.
   </metadata>
   <metadata name="PackageCurrentStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="tooltipInstallOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

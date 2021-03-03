@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ApplyChangesWindow
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,9 @@ Partial Class ApplyChangesWindow
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ApplyChangesWindow))
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
         Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
         Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -32,9 +31,7 @@ Partial Class ApplyChangesWindow
         Me.PackageCurrentStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
-        Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
-        Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabelMiniOptionsForm = New System.Windows.Forms.LinkLabel()
         Me.tooltipInstallOptions = New System.Windows.Forms.ToolTip(Me.components)
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,9 +48,7 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.datagridviewAppsBeingInstalled, 0, 0)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonCancel, 4, 1)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonConfirmChanges, 3, 1)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxInstallInteractively, 0, 1)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxElevateWinget, 1, 1)
-        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.LinkLabel1, 2, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.LinkLabelMiniOptionsForm, 0, 1)
         Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelApplyChanges.Margin = New System.Windows.Forms.Padding(2)
@@ -146,41 +141,17 @@ Partial Class ApplyChangesWindow
         Me.buttonConfirmChanges.Text = "Confirm changes"
         Me.buttonConfirmChanges.UseVisualStyleBackColor = True
         '
-        'checkboxInstallInteractively
+        'LinkLabelMiniOptionsForm
         '
-        Me.checkboxInstallInteractively.AutoSize = True
-        Me.checkboxInstallInteractively.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.checkboxInstallInteractively.Location = New System.Drawing.Point(2, 343)
-        Me.checkboxInstallInteractively.Margin = New System.Windows.Forms.Padding(2)
-        Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
-        Me.checkboxInstallInteractively.Size = New System.Drawing.Size(119, 28)
-        Me.checkboxInstallInteractively.TabIndex = 4
-        Me.checkboxInstallInteractively.Text = "Run interactively (-i)"
-        Me.tooltipInstallOptions.SetToolTip(Me.checkboxInstallInteractively, "winget will be run interactively when checked.")
-        Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
-        '
-        'checkboxElevateWinget
-        '
-        Me.checkboxElevateWinget.AutoSize = True
-        Me.checkboxElevateWinget.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.checkboxElevateWinget.Location = New System.Drawing.Point(126, 344)
-        Me.checkboxElevateWinget.Name = "checkboxElevateWinget"
-        Me.checkboxElevateWinget.Size = New System.Drawing.Size(127, 26)
-        Me.checkboxElevateWinget.TabIndex = 3
-        Me.checkboxElevateWinget.Text = "Elevate winget (UAC)"
-        Me.tooltipInstallOptions.SetToolTip(Me.checkboxElevateWinget, resources.GetString("checkboxElevateWinget.ToolTip"))
-        Me.checkboxElevateWinget.UseVisualStyleBackColor = True
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(259, 341)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(59, 13)
-        Me.LinkLabel1.TabIndex = 5
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "LinkLabel1"
-        Me.LinkLabel1.Visible = False
+        Me.LinkLabelMiniOptionsForm.AutoSize = True
+        Me.LinkLabelMiniOptionsForm.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LinkLabelMiniOptionsForm.Location = New System.Drawing.Point(3, 341)
+        Me.LinkLabelMiniOptionsForm.Name = "LinkLabelMiniOptionsForm"
+        Me.LinkLabelMiniOptionsForm.Size = New System.Drawing.Size(52, 32)
+        Me.LinkLabelMiniOptionsForm.TabIndex = 5
+        Me.LinkLabelMiniOptionsForm.TabStop = True
+        Me.LinkLabelMiniOptionsForm.Text = "Options..."
+        Me.LinkLabelMiniOptionsForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'tooltipInstallOptions
         '
@@ -216,8 +187,6 @@ Partial Class ApplyChangesWindow
     Friend WithEvents PackageVersion As DataGridViewTextBoxColumn
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
-    Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents tooltipInstallOptions As ToolTip
-    Friend WithEvents checkboxElevateWinget As CheckBox
-    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents LinkLabelMiniOptionsForm As LinkLabel
 End Class
