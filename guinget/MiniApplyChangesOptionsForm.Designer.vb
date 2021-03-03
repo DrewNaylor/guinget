@@ -86,6 +86,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
+        Me.CancelButton = Me.buttonClose
         Me.ClientSize = New System.Drawing.Size(358, 224)
         Me.Controls.Add(Me.buttonClose)
         Me.Controls.Add(Me.checkboxOpenAutomatically)
