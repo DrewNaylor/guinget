@@ -27,6 +27,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.checkboxOpenAutomatically = New System.Windows.Forms.CheckBox()
+        Me.buttonClose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'labelWhyElevate
@@ -63,12 +64,22 @@ Partial Class MiniApplyChangesOptionsForm
         '
         Me.checkboxOpenAutomatically.AutoSize = True
         Me.checkboxOpenAutomatically.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxOpenAutomatically.Location = New System.Drawing.Point(12, 182)
+        Me.checkboxOpenAutomatically.Location = New System.Drawing.Point(12, 139)
         Me.checkboxOpenAutomatically.Name = "checkboxOpenAutomatically"
         Me.checkboxOpenAutomatically.Size = New System.Drawing.Size(294, 30)
         Me.checkboxOpenAutomatically.TabIndex = 6
         Me.checkboxOpenAutomatically.Text = "Automatically open this window when the Apply Changes" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "window is opened"
         Me.checkboxOpenAutomatically.UseVisualStyleBackColor = True
+        '
+        'buttonClose
+        '
+        Me.buttonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.buttonClose.Location = New System.Drawing.Point(267, 191)
+        Me.buttonClose.Name = "buttonClose"
+        Me.buttonClose.Size = New System.Drawing.Size(86, 28)
+        Me.buttonClose.TabIndex = 7
+        Me.buttonClose.Text = "Close"
+        Me.buttonClose.UseVisualStyleBackColor = True
         '
         'MiniApplyChangesOptionsForm
         '
@@ -76,11 +87,13 @@ Partial Class MiniApplyChangesOptionsForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(358, 224)
+        Me.Controls.Add(Me.buttonClose)
         Me.Controls.Add(Me.checkboxOpenAutomatically)
         Me.Controls.Add(Me.labelWhyElevate)
         Me.Controls.Add(Me.checkboxElevateWinget)
         Me.Controls.Add(Me.checkboxInstallInteractively)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.MinimumSize = New System.Drawing.Size(374, 263)
         Me.Name = "MiniApplyChangesOptionsForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Options: Apply Changes"
@@ -93,4 +106,5 @@ Partial Class MiniApplyChangesOptionsForm
     Friend WithEvents checkboxElevateWinget As CheckBox
     Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents checkboxOpenAutomatically As CheckBox
+    Friend WithEvents buttonClose As Button
 End Class
