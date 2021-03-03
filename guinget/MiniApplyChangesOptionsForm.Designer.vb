@@ -28,12 +28,13 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.checkboxOpenAutomatically = New System.Windows.Forms.CheckBox()
         Me.buttonClose = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1.SuspendLayout()
+        Me.checkboxWhenUpgrading = New System.Windows.Forms.CheckBox()
+        Me.checkboxWhenUninstalling = New System.Windows.Forms.CheckBox()
+        Me.checkboxWhenInstalling = New System.Windows.Forms.CheckBox()
+        Me.panelMiniFormPanel = New System.Windows.Forms.Panel()
+        Me.labelSpecifyVersionNumberHeading = New System.Windows.Forms.Label()
+        Me.labelAboutNotSpecifyingVersionNumbers = New System.Windows.Forms.Label()
+        Me.panelMiniFormPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'labelWhyElevate
@@ -88,62 +89,72 @@ Partial Class MiniApplyChangesOptionsForm
         Me.buttonClose.Text = "Close"
         Me.buttonClose.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'checkboxWhenUpgrading
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(23, 158)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(105, 17)
-        Me.CheckBox1.TabIndex = 8
-        Me.CheckBox1.Text = "When upgrading"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxWhenUpgrading.AutoSize = True
+        Me.checkboxWhenUpgrading.Location = New System.Drawing.Point(23, 158)
+        Me.checkboxWhenUpgrading.Name = "checkboxWhenUpgrading"
+        Me.checkboxWhenUpgrading.Size = New System.Drawing.Size(105, 17)
+        Me.checkboxWhenUpgrading.TabIndex = 8
+        Me.checkboxWhenUpgrading.Text = "When upgrading"
+        Me.checkboxWhenUpgrading.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'checkboxWhenUninstalling
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(23, 182)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(110, 17)
-        Me.CheckBox2.TabIndex = 9
-        Me.CheckBox2.Text = "When uninstalling"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.checkboxWhenUninstalling.AutoSize = True
+        Me.checkboxWhenUninstalling.Location = New System.Drawing.Point(23, 182)
+        Me.checkboxWhenUninstalling.Name = "checkboxWhenUninstalling"
+        Me.checkboxWhenUninstalling.Size = New System.Drawing.Size(110, 17)
+        Me.checkboxWhenUninstalling.TabIndex = 9
+        Me.checkboxWhenUninstalling.Text = "When uninstalling"
+        Me.checkboxWhenUninstalling.UseVisualStyleBackColor = True
         '
-        'CheckBox3
+        'checkboxWhenInstalling
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(23, 135)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(98, 17)
-        Me.CheckBox3.TabIndex = 10
-        Me.CheckBox3.Text = "When installing"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.checkboxWhenInstalling.AutoSize = True
+        Me.checkboxWhenInstalling.Location = New System.Drawing.Point(23, 135)
+        Me.checkboxWhenInstalling.Name = "checkboxWhenInstalling"
+        Me.checkboxWhenInstalling.Size = New System.Drawing.Size(98, 17)
+        Me.checkboxWhenInstalling.TabIndex = 10
+        Me.checkboxWhenInstalling.Text = "When installing"
+        Me.checkboxWhenInstalling.UseVisualStyleBackColor = True
         '
-        'Panel1
+        'panelMiniFormPanel
         '
-        Me.Panel1.AutoScroll = True
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.CheckBox3)
-        Me.Panel1.Controls.Add(Me.CheckBox1)
-        Me.Panel1.Controls.Add(Me.checkboxInstallInteractively)
-        Me.Panel1.Controls.Add(Me.CheckBox2)
-        Me.Panel1.Controls.Add(Me.checkboxElevateWinget)
-        Me.Panel1.Controls.Add(Me.labelWhyElevate)
-        Me.Panel1.Controls.Add(Me.buttonClose)
-        Me.Panel1.Controls.Add(Me.checkboxOpenAutomatically)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(348, 337)
-        Me.Panel1.TabIndex = 12
+        Me.panelMiniFormPanel.AutoScroll = True
+        Me.panelMiniFormPanel.Controls.Add(Me.labelAboutNotSpecifyingVersionNumbers)
+        Me.panelMiniFormPanel.Controls.Add(Me.labelSpecifyVersionNumberHeading)
+        Me.panelMiniFormPanel.Controls.Add(Me.checkboxWhenInstalling)
+        Me.panelMiniFormPanel.Controls.Add(Me.checkboxWhenUpgrading)
+        Me.panelMiniFormPanel.Controls.Add(Me.checkboxInstallInteractively)
+        Me.panelMiniFormPanel.Controls.Add(Me.checkboxWhenUninstalling)
+        Me.panelMiniFormPanel.Controls.Add(Me.checkboxElevateWinget)
+        Me.panelMiniFormPanel.Controls.Add(Me.labelWhyElevate)
+        Me.panelMiniFormPanel.Controls.Add(Me.buttonClose)
+        Me.panelMiniFormPanel.Controls.Add(Me.checkboxOpenAutomatically)
+        Me.panelMiniFormPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelMiniFormPanel.Location = New System.Drawing.Point(0, 0)
+        Me.panelMiniFormPanel.Name = "panelMiniFormPanel"
+        Me.panelMiniFormPanel.Size = New System.Drawing.Size(348, 337)
+        Me.panelMiniFormPanel.TabIndex = 12
         '
-        'Label1
+        'labelSpecifyVersionNumberHeading
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 119)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(126, 13)
-        Me.Label1.TabIndex = 11
-        Me.Label1.Text = "Specify version number..."
+        Me.labelSpecifyVersionNumberHeading.AutoSize = True
+        Me.labelSpecifyVersionNumberHeading.Location = New System.Drawing.Point(3, 119)
+        Me.labelSpecifyVersionNumberHeading.Name = "labelSpecifyVersionNumberHeading"
+        Me.labelSpecifyVersionNumberHeading.Size = New System.Drawing.Size(126, 13)
+        Me.labelSpecifyVersionNumberHeading.TabIndex = 11
+        Me.labelSpecifyVersionNumberHeading.Text = "Specify version number..."
+        '
+        'labelAboutNotSpecifyingVersionNumbers
+        '
+        Me.labelAboutNotSpecifyingVersionNumbers.AutoSize = True
+        Me.labelAboutNotSpecifyingVersionNumbers.Location = New System.Drawing.Point(20, 202)
+        Me.labelAboutNotSpecifyingVersionNumbers.Name = "labelAboutNotSpecifyingVersionNumbers"
+        Me.labelAboutNotSpecifyingVersionNumbers.Size = New System.Drawing.Size(260, 52)
+        Me.labelAboutNotSpecifyingVersionNumbers.TabIndex = 12
+        Me.labelAboutNotSpecifyingVersionNumbers.Text = resources.GetString("labelAboutNotSpecifyingVersionNumbers.Text")
         '
         'MiniApplyChangesOptionsForm
         '
@@ -151,15 +162,15 @@ Partial Class MiniApplyChangesOptionsForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.buttonClose
         Me.ClientSize = New System.Drawing.Size(348, 337)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.panelMiniFormPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Name = "MiniApplyChangesOptionsForm"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Options: Apply Changes"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.panelMiniFormPanel.ResumeLayout(False)
+        Me.panelMiniFormPanel.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -169,9 +180,10 @@ Partial Class MiniApplyChangesOptionsForm
     Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents checkboxOpenAutomatically As CheckBox
     Friend WithEvents buttonClose As Button
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label1 As Label
+    Friend WithEvents checkboxWhenUpgrading As CheckBox
+    Friend WithEvents checkboxWhenUninstalling As CheckBox
+    Friend WithEvents checkboxWhenInstalling As CheckBox
+    Friend WithEvents panelMiniFormPanel As Panel
+    Friend WithEvents labelSpecifyVersionNumberHeading As Label
+    Friend WithEvents labelAboutNotSpecifyingVersionNumbers As Label
 End Class
