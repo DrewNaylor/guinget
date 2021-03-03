@@ -171,7 +171,12 @@ Public Class ApplyChangesWindow
         ' This keeps the mini-form "glued" below the main window.
         If MiniOptionsForm IsNot Nothing Then
             ' Make sure the form exists before trying to move it around.
-            MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom, MiniOptionsForm.Width, MiniOptionsForm.Height)
+            If Me.WindowState = FormWindowState.Normal Then
+                MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom, MiniOptionsForm.Width, MiniOptionsForm.Height)
+            ElseIf Me.WindowState = FormWindowState.Maximized Then
+                ' We need to make sure the form stays on the screen.
+                MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom - MiniOptionsForm.Height, MiniOptionsForm.Width, MiniOptionsForm.Height)
+            End If
         End If
     End Sub
 
