@@ -78,10 +78,20 @@ Public Class PackageListTools
             End If
 
         ElseIf response = DialogResult.Yes AndAlso Not IO.Directory.Exists(path) Then
-                ' Let the user know if the folder doesn't exist.
-                MessageBox.Show(CallingForm, "The requested directory """ & path & """ does not exist; there's nothing to delete.", TitleText)
+            ' Let the user know if the folder doesn't exist.
+            MessageBox.Show(CallingForm, "The requested directory """ & path & """ does not exist; there's nothing to delete.", TitleText)
         End If
     End Sub
+
+    Public Shared Function DoesPathExist(CacheRootDir As String) As Boolean
+        ' We can use this to determine if the cache paths exist
+        ' so the Options window buttons can be blocked.
+        If Not IO.Directory.Exists(CacheRootDir & "\winget-frontends\") Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 #End Region
 
 #Region "Download package list with progress async"
