@@ -107,11 +107,11 @@ Public Class PackageTools
                 ' See if the versions should be used.
                 ' Store the current version as a variable that can be updated.
                 Dim Version As String = String.Empty
-                If Actions(i) = "Install" AndAlso SpecifyVersionOnInstall = True Then
+                If Actions(i) = "install" AndAlso SpecifyVersionOnInstall = True Then
                     Version = " -v " & PackageVersions(i)
-                ElseIf Actions(i) = "Upgrade" AndAlso SpecifyVersionOnUpgrade = True Then
+                ElseIf Actions(i) = "upgrade" AndAlso SpecifyVersionOnUpgrade = True Then
                     Version = " -v " & PackageVersions(i)
-                ElseIf Actions(i) = "Uninstall" AndAlso SpecifyVersionOnUninstall = True Then
+                ElseIf Actions(i) = "uninstall" AndAlso SpecifyVersionOnUninstall = True Then
                     Version = " -v " & PackageVersions(i)
                 End If
 
