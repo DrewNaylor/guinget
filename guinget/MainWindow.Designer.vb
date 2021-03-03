@@ -133,6 +133,7 @@ Partial Class aaformMainWindow
         Me.zCantFindThisPackagePropertiesMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zSeparatorNoIdeaWhereThisIs = New System.Windows.Forms.ToolStripSeparator()
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.SaveFileDialogExportPackages = New System.Windows.Forms.SaveFileDialog()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1064,6 +1065,11 @@ Partial Class aaformMainWindow
         '
         Me.TypeTimer.Interval = 325
         '
+        'SaveFileDialogExportPackages
+        '
+        Me.SaveFileDialogExportPackages.DefaultExt = "json"
+        Me.SaveFileDialogExportPackages.Filter = "JSON files|*.json|All files|*.*"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1220,4 +1226,5 @@ Partial Class aaformMainWindow
     Friend WithEvents SelectedPackagesActionUpgradeMenuItem As ToolStripMenuItem
     Friend WithEvents UninstallToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpgradeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFileDialogExportPackages As SaveFileDialog
 End Class
