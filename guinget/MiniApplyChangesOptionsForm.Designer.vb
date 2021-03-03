@@ -68,6 +68,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.Controls.Add(Me.checkboxInstallInteractively)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Name = "MiniApplyChangesOptionsForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Options: Apply Changes"
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -34,8 +34,8 @@ Partial Class ApplyChangesWindow
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
-        Me.tooltipInstallOptions = New System.Windows.Forms.ToolTip(Me.components)
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.tooltipInstallOptions = New System.Windows.Forms.ToolTip(Me.components)
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -171,12 +171,6 @@ Partial Class ApplyChangesWindow
         Me.tooltipInstallOptions.SetToolTip(Me.checkboxElevateWinget, resources.GetString("checkboxElevateWinget.ToolTip"))
         Me.checkboxElevateWinget.UseVisualStyleBackColor = True
         '
-        'tooltipInstallOptions
-        '
-        Me.tooltipInstallOptions.AutoPopDelay = 10000
-        Me.tooltipInstallOptions.InitialDelay = 500
-        Me.tooltipInstallOptions.ReshowDelay = 100
-        '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
@@ -187,6 +181,12 @@ Partial Class ApplyChangesWindow
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "LinkLabel1"
         Me.LinkLabel1.Visible = False
+        '
+        'tooltipInstallOptions
+        '
+        Me.tooltipInstallOptions.AutoPopDelay = 10000
+        Me.tooltipInstallOptions.InitialDelay = 500
+        Me.tooltipInstallOptions.ReshowDelay = 100
         '
         'ApplyChangesWindow
         '

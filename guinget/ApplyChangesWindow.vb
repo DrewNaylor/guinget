@@ -148,6 +148,11 @@ Public Class ApplyChangesWindow
         ' Load the elevate winget setting from the config file.
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget
 
+        ' Open the mini-form if the user wants to.
+        If My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow = True Then
+            OpenMiniApplyChangesOptionsForm()
+        End If
+
         ' Focus the "Confirm changes" button.
         buttonConfirmChanges.Select()
     End Sub
@@ -160,6 +165,12 @@ Public Class ApplyChangesWindow
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        OpenMiniApplyChangesOptionsForm()
+    End Sub
+
+    Private Sub OpenMiniApplyChangesOptionsForm()
+        ' Open the mini-form and set its location.
+        MiniApplyChangesOptionsForm.SetDesktopLocation(Me.Height, Me.Width)
         MiniApplyChangesOptionsForm.Show()
     End Sub
 
