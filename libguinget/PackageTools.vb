@@ -66,8 +66,19 @@ Public Class PackageTools
                 proc.StartInfo.Verb = "runas"
             End If
 
+            ' See if the versions should be used.
+            ' Store the current version as a variable that can be updated.
+            Dim Version As String = String.Empty
+            If Action = "install" AndAlso SpecifyVersionOnInstall = True Then
+                Version = " -v " & PackageVersion
+            ElseIf Action = "upgrade" AndAlso SpecifyVersionOnUpgrade = True Then
+                Version = " -v " & PackageVersion
+            ElseIf Action = "uninstall" AndAlso SpecifyVersionOnUninstall = True Then
+                Version = " -v " & PackageVersion
+            End If
+
             ' Define CMD args.
-            proc.StartInfo.Arguments = "/k winget " & Action & " --id " & PackageId & " -v " & PackageVersion & InteractiveFlag & " -e -s " & DefaultSourceName
+            proc.StartInfo.Arguments = "/k winget " & Action & " --id " & PackageId & Version & InteractiveFlag & " -e -s " & DefaultSourceName
 
             ' Start installing. Catch the exception in case the user cancels the UAC dialog.
             Try
