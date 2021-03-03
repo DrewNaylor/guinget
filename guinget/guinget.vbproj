@@ -156,6 +156,12 @@
       <DependentUpon>MainWindow.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MiniApplyChangesOptionsForm.Designer.vb">
+      <DependentUpon>MiniApplyChangesOptionsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MiniApplyChangesOptionsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiniApplyChangesOptionsForm.resx">
+      <DependentUpon>MiniApplyChangesOptionsForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
