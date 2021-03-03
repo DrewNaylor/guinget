@@ -162,4 +162,9 @@ Public Class ApplyChangesWindow
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         MiniApplyChangesOptionsForm.Show()
     End Sub
+
+    Private Sub ApplyChangesWindow_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ' Close the mini-form.
+        MiniApplyChangesOptionsForm.Close()
+    End Sub
 End Class
