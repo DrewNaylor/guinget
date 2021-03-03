@@ -158,4 +158,8 @@ Public Class ApplyChangesWindow
         My.Settings.Save()
         My.Settings.Reload()
     End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        MiniApplyChangesOptionsForm.Show()
+    End Sub
 End Class

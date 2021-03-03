@@ -35,6 +35,7 @@ Partial Class ApplyChangesWindow
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.tooltipInstallOptions = New System.Windows.Forms.ToolTip(Me.components)
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -52,6 +53,7 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.buttonConfirmChanges, 3, 1)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxInstallInteractively, 0, 1)
         Me.tablelayoutpanelApplyChanges.Controls.Add(Me.checkboxElevateWinget, 1, 1)
+        Me.tablelayoutpanelApplyChanges.Controls.Add(Me.LinkLabel1, 2, 1)
         Me.tablelayoutpanelApplyChanges.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablelayoutpanelApplyChanges.Location = New System.Drawing.Point(0, 0)
         Me.tablelayoutpanelApplyChanges.Margin = New System.Windows.Forms.Padding(2)
@@ -175,6 +177,17 @@ Partial Class ApplyChangesWindow
         Me.tooltipInstallOptions.InitialDelay = 500
         Me.tooltipInstallOptions.ReshowDelay = 100
         '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(259, 341)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(59, 13)
+        Me.LinkLabel1.TabIndex = 5
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "LinkLabel1"
+        Me.LinkLabel1.Visible = False
+        '
         'ApplyChangesWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -206,4 +219,5 @@ Partial Class ApplyChangesWindow
     Friend WithEvents checkboxInstallInteractively As CheckBox
     Friend WithEvents tooltipInstallOptions As ToolTip
     Friend WithEvents checkboxElevateWinget As CheckBox
+    Friend WithEvents LinkLabel1 As LinkLabel
 End Class
