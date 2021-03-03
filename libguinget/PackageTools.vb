@@ -30,6 +30,13 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageTools
 
+#Region "Variables"
+    ' Specifying version numbers.
+    Public Shared SpecifyVersionOnInstall As Boolean = True
+    Public Shared SpecifyVersionOnUpgrade As Boolean = False
+    Public Shared SpecifyVersionOnUninstall As Boolean = False
+#End Region
+
 #Region "Process package with winget."
     Public Shared Sub SinglePackageProcessor(Action As String, PackageId As String, PackageVersion As String, Optional Interactive As Boolean = False,
                                  Optional ElevateWinget As Boolean = False, Optional DefaultSourceName As String = "winget")

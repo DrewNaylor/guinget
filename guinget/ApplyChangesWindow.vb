@@ -74,6 +74,12 @@ Public Class ApplyChangesWindow
                 End If
             Next
 
+            ' Set the variables for whether the versions are used or not.
+            PackageTools.SpecifyVersionOnInstall = My.Settings.SpecifyVersionOnInstall
+            PackageTools.SpecifyVersionOnUpgrade = My.Settings.SpecifyVersionOnUpgrade
+            PackageTools.SpecifyVersionOnUninstall = My.Settings.SpecifyVersionOnUninstall
+
+
             ' Send the lists over to the bulk install code.
             PackageTools.BulkPackageProcessor(Actions, PackageIDs, PackageVersions, My.Settings.InstallInteractively, My.Settings.ElevateWinget,
                                         My.Settings.DefaultSourceName)
@@ -100,6 +106,10 @@ Public Class ApplyChangesWindow
                 ' for now until configuration is possible and until we display winget output
                 ' in a textbox below the datagridview.
 
+                ' Set the variables for whether the versions are used or not.
+                PackageTools.SpecifyVersionOnInstall = My.Settings.SpecifyVersionOnInstall
+                PackageTools.SpecifyVersionOnUpgrade = My.Settings.SpecifyVersionOnUpgrade
+                PackageTools.SpecifyVersionOnUninstall = My.Settings.SpecifyVersionOnUninstall
 
                 If datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString = "Install" Then
                     ' Check if the current row is set to install.
