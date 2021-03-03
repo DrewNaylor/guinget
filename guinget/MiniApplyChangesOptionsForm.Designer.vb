@@ -96,6 +96,8 @@ Partial Class MiniApplyChangesOptionsForm
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.MinimumSize = New System.Drawing.Size(374, 263)
         Me.Name = "MiniApplyChangesOptionsForm"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Options: Apply Changes"
         Me.ResumeLayout(False)
