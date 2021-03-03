@@ -32,6 +32,11 @@ Public Class MiniApplyChangesOptionsForm
         checkboxElevateWinget.Checked = My.Settings.ElevateWinget
         checkboxInstallInteractively.Checked = My.Settings.InstallInteractively
         checkboxOpenAutomatically.Checked = My.Settings.ReopenMiniOptionsWindowOnOpeningApplyChangesWindow
+
+        ' Version-specifying settings.
+        checkboxWhenInstalling.Checked = My.Settings.SpecifyVersionOnInstall
+        checkboxWhenUpgrading.Checked = My.Settings.SpecifyVersionOnUpgrade
+        checkboxWhenUninstalling.Checked = My.Settings.SpecifyVersionOnUninstall
     End Sub
 
     Private Sub checkboxElevateWinget_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxElevateWinget.CheckedChanged
@@ -61,5 +66,23 @@ Public Class MiniApplyChangesOptionsForm
     Private Sub buttonClose_Click(sender As Object, e As EventArgs) Handles buttonClose.Click
         ' Close the mini-form.
         Me.Close()
+    End Sub
+
+    Private Sub checkboxWhenInstalling_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxWhenInstalling.CheckedChanged
+        ' Saving this other setting.
+        My.Settings.SpecifyVersionOnInstall = checkboxWhenInstalling.Checked
+        SaveReloadSettings()
+    End Sub
+
+    Private Sub checkboxWhenUpgrading_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxWhenUpgrading.CheckedChanged
+        ' Saving this other setting.
+        My.Settings.SpecifyVersionOnUpgrade = checkboxWhenUpgrading.Checked
+        SaveReloadSettings()
+    End Sub
+
+    Private Sub checkboxWhenUninstalling_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxWhenUninstalling.CheckedChanged
+        ' Saving this other setting.
+        My.Settings.SpecifyVersionOnUninstall = checkboxWhenUninstalling.Checked
+        SaveReloadSettings()
     End Sub
 End Class
