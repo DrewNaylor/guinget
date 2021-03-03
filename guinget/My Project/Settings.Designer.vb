@@ -317,6 +317,42 @@ Namespace My
                 Me("ReopenMiniOptionsWindowOnOpeningApplyChangesWindow") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property SpecifyVersionOnInstall() As Boolean
+            Get
+                Return CType(Me("SpecifyVersionOnInstall"),Boolean)
+            End Get
+            Set
+                Me("SpecifyVersionOnInstall") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SpecifyVersionOnUpgrade() As Boolean
+            Get
+                Return CType(Me("SpecifyVersionOnUpgrade"),Boolean)
+            End Get
+            Set
+                Me("SpecifyVersionOnUpgrade") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SpecifyVersionOnUninstall() As Boolean
+            Get
+                Return CType(Me("SpecifyVersionOnUninstall"),Boolean)
+            End Get
+            Set
+                Me("SpecifyVersionOnUninstall") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
