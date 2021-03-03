@@ -26,6 +26,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.labelWhyElevate = New System.Windows.Forms.Label()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
+        Me.checkboxOpenAutomatically = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'labelWhyElevate
@@ -58,11 +59,24 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxInstallInteractively.Text = "Run interactively (winget -i)"
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
+        'checkboxOpenAutomatically
+        '
+        Me.checkboxOpenAutomatically.AutoSize = True
+        Me.checkboxOpenAutomatically.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxOpenAutomatically.Location = New System.Drawing.Point(12, 182)
+        Me.checkboxOpenAutomatically.Name = "checkboxOpenAutomatically"
+        Me.checkboxOpenAutomatically.Size = New System.Drawing.Size(294, 30)
+        Me.checkboxOpenAutomatically.TabIndex = 6
+        Me.checkboxOpenAutomatically.Text = "Automatically open this window when the Apply Changes" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "window is opened"
+        Me.checkboxOpenAutomatically.UseVisualStyleBackColor = True
+        '
         'MiniApplyChangesOptionsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(358, 224)
+        Me.Controls.Add(Me.checkboxOpenAutomatically)
         Me.Controls.Add(Me.labelWhyElevate)
         Me.Controls.Add(Me.checkboxElevateWinget)
         Me.Controls.Add(Me.checkboxInstallInteractively)
@@ -78,4 +92,5 @@ Partial Class MiniApplyChangesOptionsForm
     Friend WithEvents labelWhyElevate As Label
     Friend WithEvents checkboxElevateWinget As CheckBox
     Friend WithEvents checkboxInstallInteractively As CheckBox
+    Friend WithEvents checkboxOpenAutomatically As CheckBox
 End Class
