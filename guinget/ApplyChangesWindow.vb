@@ -168,6 +168,7 @@ Public Class ApplyChangesWindow
         OpenMiniApplyChangesOptionsForm()
     End Sub
 
+    ' Define a mini Options form used in the "glue" part.
     Dim MiniOptionsForm As Form
 
     Private Sub OpenMiniApplyChangesOptionsForm()
@@ -185,6 +186,7 @@ Public Class ApplyChangesWindow
     End Sub
 
     Private Sub MoveMiniForm(sender As Object, e As EventArgs)
+        ' This keeps the mini-form "glued" below the main window.
         MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom, MiniOptionsForm.Width, MiniOptionsForm.Height)
     End Sub
 
