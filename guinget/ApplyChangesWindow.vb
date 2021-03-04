@@ -174,6 +174,9 @@ Public Class ApplyChangesWindow
             AddHandler MiniOptionsForm.FormClosed, Sub() MiniOptionsForm = Nothing
             MiniOptionsForm.Visible = False
             MiniOptionsForm.Show(Me)
+        Else
+            ' Focus the form.
+            MiniOptionsForm.Focus()
         End If
     End Sub
 

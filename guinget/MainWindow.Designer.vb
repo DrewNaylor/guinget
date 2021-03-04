@@ -29,6 +29,9 @@ Partial Class aaformMainWindow
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aaformMainWindow))
         Me.menustripMainWindow = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemImportPackages = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemExportPackages = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zFileMenuSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.RunCMDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunCMDElevatedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zFileMenuSeparator = New System.Windows.Forms.ToolStripSeparator()
@@ -135,9 +138,6 @@ Partial Class aaformMainWindow
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialogExportPackages = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialogImportPackages = New System.Windows.Forms.OpenFileDialog()
-        Me.zFileMenuSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItemExportPackages = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItemImportPackages = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,6 +184,23 @@ Partial Class aaformMainWindow
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
+        'ToolStripMenuItemImportPackages
+        '
+        Me.ToolStripMenuItemImportPackages.Name = "ToolStripMenuItemImportPackages"
+        Me.ToolStripMenuItemImportPackages.Size = New System.Drawing.Size(207, 22)
+        Me.ToolStripMenuItemImportPackages.Text = "Import packages..."
+        '
+        'ToolStripMenuItemExportPackages
+        '
+        Me.ToolStripMenuItemExportPackages.Name = "ToolStripMenuItemExportPackages"
+        Me.ToolStripMenuItemExportPackages.Size = New System.Drawing.Size(207, 22)
+        Me.ToolStripMenuItemExportPackages.Text = "Export packages..."
+        '
+        'zFileMenuSeparator2
+        '
+        Me.zFileMenuSeparator2.Name = "zFileMenuSeparator2"
+        Me.zFileMenuSeparator2.Size = New System.Drawing.Size(204, 6)
+        '
         'RunCMDToolStripMenuItem
         '
         Me.RunCMDToolStripMenuItem.Name = "RunCMDToolStripMenuItem"
@@ -199,13 +216,13 @@ Partial Class aaformMainWindow
         'zFileMenuSeparator
         '
         Me.zFileMenuSeparator.Name = "zFileMenuSeparator"
-        Me.zFileMenuSeparator.Size = New System.Drawing.Size(277, 6)
+        Me.zFileMenuSeparator.Size = New System.Drawing.Size(204, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ViewToolStripMenuItem
@@ -1081,23 +1098,6 @@ Partial Class aaformMainWindow
         Me.OpenFileDialogImportPackages.Filter = "JSON files|*.json|All files|*.*"
         Me.OpenFileDialogImportPackages.RestoreDirectory = True
         Me.OpenFileDialogImportPackages.Title = "Import Packages"
-        '
-        'zFileMenuSeparator2
-        '
-        Me.zFileMenuSeparator2.Name = "zFileMenuSeparator2"
-        Me.zFileMenuSeparator2.Size = New System.Drawing.Size(277, 6)
-        '
-        'ToolStripMenuItemExportPackages
-        '
-        Me.ToolStripMenuItemExportPackages.Name = "ToolStripMenuItemExportPackages"
-        Me.ToolStripMenuItemExportPackages.Size = New System.Drawing.Size(280, 22)
-        Me.ToolStripMenuItemExportPackages.Text = "Export packages..."
-        '
-        'ToolStripMenuItemImportPackages
-        '
-        Me.ToolStripMenuItemImportPackages.Name = "ToolStripMenuItemImportPackages"
-        Me.ToolStripMenuItemImportPackages.Size = New System.Drawing.Size(280, 22)
-        Me.ToolStripMenuItemImportPackages.Text = "Import packages..."
         '
         'aaformMainWindow
         '
