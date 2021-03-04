@@ -73,16 +73,16 @@ Partial Class OptionsWindow
         Me.textbox7zExePath = New System.Windows.Forms.TextBox()
         Me.label7zExePath = New System.Windows.Forms.Label()
         Me.checkboxUse7zip = New System.Windows.Forms.CheckBox()
-        Me.checkboxLoadFromDatabase = New System.Windows.Forms.CheckBox()
-        Me.labelLoadLatestVersion = New System.Windows.Forms.Label()
-        Me.labelLoadFromManifests = New System.Windows.Forms.Label()
-        Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
         Me.labelExperimentalSettingsHidden = New System.Windows.Forms.Label()
         Me.checkboxHideUnfinishedControls = New System.Windows.Forms.CheckBox()
         Me.labelRequiresApplicationRestart = New System.Windows.Forms.Label()
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.checkboxLoadFromDatabase = New System.Windows.Forms.CheckBox()
+        Me.labelLoadLatestVersion = New System.Windows.Forms.Label()
+        Me.labelLoadFromManifests = New System.Windows.Forms.Label()
+        Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -152,6 +152,10 @@ Partial Class OptionsWindow
         '
         'tabpageRefreshCache
         '
+        Me.tabpageRefreshCache.Controls.Add(Me.checkboxLoadFromDatabase)
+        Me.tabpageRefreshCache.Controls.Add(Me.labelLoadLatestVersion)
+        Me.tabpageRefreshCache.Controls.Add(Me.labelLoadFromManifests)
+        Me.tabpageRefreshCache.Controls.Add(Me.checkboxShowOnlyLatestVersions)
         Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 40)
@@ -537,10 +541,6 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.Controls.Add(Me.textbox7zExePath)
         Me.panelExperimentalSettings.Controls.Add(Me.label7zExePath)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxUse7zip)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxLoadFromDatabase)
-        Me.panelExperimentalSettings.Controls.Add(Me.labelLoadLatestVersion)
-        Me.panelExperimentalSettings.Controls.Add(Me.labelLoadFromManifests)
-        Me.panelExperimentalSettings.Controls.Add(Me.checkboxShowOnlyLatestVersions)
         Me.panelExperimentalSettings.Location = New System.Drawing.Point(3, 49)
         Me.panelExperimentalSettings.Name = "panelExperimentalSettings"
         Me.panelExperimentalSettings.Size = New System.Drawing.Size(354, 300)
@@ -661,51 +661,6 @@ Partial Class OptionsWindow
         Me.checkboxUse7zip.Text = "Use 7-Zip to extract manifests and database"
         Me.checkboxUse7zip.UseVisualStyleBackColor = True
         '
-        'checkboxLoadFromDatabase
-        '
-        Me.checkboxLoadFromDatabase.AutoSize = True
-        Me.checkboxLoadFromDatabase.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(3, 3)
-        Me.checkboxLoadFromDatabase.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.checkboxLoadFromDatabase.Name = "checkboxLoadFromDatabase"
-        Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(229, 30)
-        Me.checkboxLoadFromDatabase.TabIndex = 1
-        Me.checkboxLoadFromDatabase.Text = "Update and load package list from winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default community database"
-        Me.checkboxLoadFromDatabase.UseVisualStyleBackColor = True
-        '
-        'labelLoadLatestVersion
-        '
-        Me.labelLoadLatestVersion.AutoSize = True
-        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(18, 92)
-        Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
-        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(271, 52)
-        Me.labelLoadLatestVersion.TabIndex = 3
-        Me.labelLoadLatestVersion.Text = "Some packages may display a version number that's not" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "really the latest version." &
-    " Not sure how to fix this at the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "moment. Requires loading from the community" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "d" &
-    "atabase checkbox to be checked."
-        '
-        'labelLoadFromManifests
-        '
-        Me.labelLoadFromManifests.AutoSize = True
-        Me.labelLoadFromManifests.Location = New System.Drawing.Point(18, 33)
-        Me.labelLoadFromManifests.Name = "labelLoadFromManifests"
-        Me.labelLoadFromManifests.Size = New System.Drawing.Size(270, 39)
-        Me.labelLoadFromManifests.TabIndex = 1
-        Me.labelLoadFromManifests.Text = "This will ensure guinget only displays packages winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default source knows ab" &
-    "out and may be faster" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "in some cases. Details will still be loaded from manifest" &
-    "s."
-        '
-        'checkboxShowOnlyLatestVersions
-        '
-        Me.checkboxShowOnlyLatestVersions.AutoSize = True
-        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(3, 75)
-        Me.checkboxShowOnlyLatestVersions.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.checkboxShowOnlyLatestVersions.Name = "checkboxShowOnlyLatestVersions"
-        Me.checkboxShowOnlyLatestVersions.Size = New System.Drawing.Size(239, 17)
-        Me.checkboxShowOnlyLatestVersions.TabIndex = 2
-        Me.checkboxShowOnlyLatestVersions.Text = "Load only the latest version of each package"
-        Me.checkboxShowOnlyLatestVersions.UseVisualStyleBackColor = True
-        '
         'labelExperimentalSettingsHidden
         '
         Me.labelExperimentalSettingsHidden.AutoSize = True
@@ -765,6 +720,51 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
+        'checkboxLoadFromDatabase
+        '
+        Me.checkboxLoadFromDatabase.AutoSize = True
+        Me.checkboxLoadFromDatabase.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(6, 55)
+        Me.checkboxLoadFromDatabase.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxLoadFromDatabase.Name = "checkboxLoadFromDatabase"
+        Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(229, 30)
+        Me.checkboxLoadFromDatabase.TabIndex = 4
+        Me.checkboxLoadFromDatabase.Text = "Update and load package list from winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default community database"
+        Me.checkboxLoadFromDatabase.UseVisualStyleBackColor = True
+        '
+        'labelLoadLatestVersion
+        '
+        Me.labelLoadLatestVersion.AutoSize = True
+        Me.labelLoadLatestVersion.Location = New System.Drawing.Point(41, 144)
+        Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
+        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(271, 52)
+        Me.labelLoadLatestVersion.TabIndex = 7
+        Me.labelLoadLatestVersion.Text = "Some packages may display a version number that's not" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "really the latest version." &
+    " Not sure how to fix this at the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "moment. Requires loading from the community" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "d" &
+    "atabase checkbox to be checked."
+        '
+        'labelLoadFromManifests
+        '
+        Me.labelLoadFromManifests.AutoSize = True
+        Me.labelLoadFromManifests.Location = New System.Drawing.Point(21, 85)
+        Me.labelLoadFromManifests.Name = "labelLoadFromManifests"
+        Me.labelLoadFromManifests.Size = New System.Drawing.Size(270, 39)
+        Me.labelLoadFromManifests.TabIndex = 5
+        Me.labelLoadFromManifests.Text = "This will ensure guinget only displays packages winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default source knows ab" &
+    "out and may be faster" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "in some cases. Details will still be loaded from manifest" &
+    "s."
+        '
+        'checkboxShowOnlyLatestVersions
+        '
+        Me.checkboxShowOnlyLatestVersions.AutoSize = True
+        Me.checkboxShowOnlyLatestVersions.Location = New System.Drawing.Point(24, 127)
+        Me.checkboxShowOnlyLatestVersions.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.checkboxShowOnlyLatestVersions.Name = "checkboxShowOnlyLatestVersions"
+        Me.checkboxShowOnlyLatestVersions.Size = New System.Drawing.Size(239, 17)
+        Me.checkboxShowOnlyLatestVersions.TabIndex = 6
+        Me.checkboxShowOnlyLatestVersions.Text = "Load only the latest version of each package"
+        Me.checkboxShowOnlyLatestVersions.UseVisualStyleBackColor = True
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -822,10 +822,6 @@ Partial Class OptionsWindow
     Friend WithEvents tabpageLayout As TabPage
     Friend WithEvents checkboxShowSidebar As CheckBox
     Friend WithEvents tabpageExperimental As TabPage
-    Friend WithEvents checkboxLoadFromDatabase As CheckBox
-    Friend WithEvents labelLoadFromManifests As Label
-    Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
-    Friend WithEvents labelLoadLatestVersion As Label
     Friend WithEvents panelExperimentalSettings As Panel
     Friend WithEvents labelExperimentalSettingsHidden As Label
     Friend WithEvents checkboxUse7zip As CheckBox
@@ -866,4 +862,8 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxWhenInstalling As CheckBox
     Friend WithEvents checkboxWhenUpgrading As CheckBox
     Friend WithEvents checkboxWhenUninstalling As CheckBox
+    Friend WithEvents checkboxLoadFromDatabase As CheckBox
+    Friend WithEvents labelLoadLatestVersion As Label
+    Friend WithEvents labelLoadFromManifests As Label
+    Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
 End Class
