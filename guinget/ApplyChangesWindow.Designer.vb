@@ -22,6 +22,7 @@ Partial Class ApplyChangesWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.tablelayoutpanelApplyChanges = New System.Windows.Forms.TableLayoutPanel()
         Me.datagridviewAppsBeingInstalled = New System.Windows.Forms.DataGridView()
         Me.PackageName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -31,8 +32,13 @@ Partial Class ApplyChangesWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonConfirmChanges = New System.Windows.Forms.Button()
         Me.LinkLabelMiniOptionsForm = New System.Windows.Forms.LinkLabel()
+        Me.ContextMenuStripResetStatus = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ResetStatusForAllPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResetStatusForSelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zToolStripSeparatorResetStatus = New System.Windows.Forms.ToolStripSeparator()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStripResetStatus.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelApplyChanges
@@ -151,6 +157,29 @@ Partial Class ApplyChangesWindow
         Me.LinkLabelMiniOptionsForm.Text = "Options..."
         Me.LinkLabelMiniOptionsForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'ContextMenuStripResetStatus
+        '
+        Me.ContextMenuStripResetStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResetStatusForSelectedPackageToolStripMenuItem, Me.zToolStripSeparatorResetStatus, Me.ResetStatusForAllPackagesToolStripMenuItem})
+        Me.ContextMenuStripResetStatus.Name = "ContextMenuStripResetStatus"
+        Me.ContextMenuStripResetStatus.Size = New System.Drawing.Size(248, 76)
+        '
+        'ResetStatusForAllPackagesToolStripMenuItem
+        '
+        Me.ResetStatusForAllPackagesToolStripMenuItem.Name = "ResetStatusForAllPackagesToolStripMenuItem"
+        Me.ResetStatusForAllPackagesToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.ResetStatusForAllPackagesToolStripMenuItem.Text = "Reset status for all packages"
+        '
+        'ResetStatusForSelectedPackageToolStripMenuItem
+        '
+        Me.ResetStatusForSelectedPackageToolStripMenuItem.Name = "ResetStatusForSelectedPackageToolStripMenuItem"
+        Me.ResetStatusForSelectedPackageToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.ResetStatusForSelectedPackageToolStripMenuItem.Text = "Reset status for selected package"
+        '
+        'zToolStripSeparatorResetStatus
+        '
+        Me.zToolStripSeparatorResetStatus.Name = "zToolStripSeparatorResetStatus"
+        Me.zToolStripSeparatorResetStatus.Size = New System.Drawing.Size(244, 6)
+        '
         'ApplyChangesWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -167,6 +196,7 @@ Partial Class ApplyChangesWindow
         Me.tablelayoutpanelApplyChanges.ResumeLayout(False)
         Me.tablelayoutpanelApplyChanges.PerformLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStripResetStatus.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -180,4 +210,8 @@ Partial Class ApplyChangesWindow
     Friend WithEvents PackageAction As DataGridViewTextBoxColumn
     Friend WithEvents PackageCurrentStatus As DataGridViewTextBoxColumn
     Friend WithEvents LinkLabelMiniOptionsForm As LinkLabel
+    Friend WithEvents ContextMenuStripResetStatus As ContextMenuStrip
+    Friend WithEvents ResetStatusForAllPackagesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ResetStatusForSelectedPackageToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents zToolStripSeparatorResetStatus As ToolStripSeparator
 End Class
