@@ -42,6 +42,12 @@ Partial Class OptionsWindow
         Me.tabpagePackageDetails = New System.Windows.Forms.TabPage()
         Me.checkboxLastSelectedPackageDetails = New System.Windows.Forms.CheckBox()
         Me.tabpageApplyChanges = New System.Windows.Forms.TabPage()
+        Me.labelAboutNotSpecifyingVersionNumbers = New System.Windows.Forms.Label()
+        Me.labelSpecifyVersionNumberHeading = New System.Windows.Forms.Label()
+        Me.checkboxWhenInstalling = New System.Windows.Forms.CheckBox()
+        Me.checkboxWhenUpgrading = New System.Windows.Forms.CheckBox()
+        Me.checkboxWhenUninstalling = New System.Windows.Forms.CheckBox()
+        Me.checkboxOpenMiniOptions = New System.Windows.Forms.CheckBox()
         Me.labelWhyElevate = New System.Windows.Forms.Label()
         Me.checkboxElevateWinget = New System.Windows.Forms.CheckBox()
         Me.checkboxInstallInteractively = New System.Windows.Forms.CheckBox()
@@ -77,12 +83,6 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.checkboxOpenMiniOptions = New System.Windows.Forms.CheckBox()
-        Me.labelAboutNotSpecifyingVersionNumbers = New System.Windows.Forms.Label()
-        Me.labelSpecifyVersionNumberHeading = New System.Windows.Forms.Label()
-        Me.checkboxWhenInstalling = New System.Windows.Forms.CheckBox()
-        Me.checkboxWhenUpgrading = New System.Windows.Forms.CheckBox()
-        Me.checkboxWhenUninstalling = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -329,6 +329,69 @@ Partial Class OptionsWindow
         Me.tabpageApplyChanges.TabIndex = 1
         Me.tabpageApplyChanges.Text = "Apply Changes"
         Me.tabpageApplyChanges.UseVisualStyleBackColor = True
+        '
+        'labelAboutNotSpecifyingVersionNumbers
+        '
+        Me.labelAboutNotSpecifyingVersionNumbers.AutoSize = True
+        Me.labelAboutNotSpecifyingVersionNumbers.Location = New System.Drawing.Point(20, 206)
+        Me.labelAboutNotSpecifyingVersionNumbers.Name = "labelAboutNotSpecifyingVersionNumbers"
+        Me.labelAboutNotSpecifyingVersionNumbers.Size = New System.Drawing.Size(260, 52)
+        Me.labelAboutNotSpecifyingVersionNumbers.TabIndex = 17
+        Me.labelAboutNotSpecifyingVersionNumbers.Text = resources.GetString("labelAboutNotSpecifyingVersionNumbers.Text")
+        '
+        'labelSpecifyVersionNumberHeading
+        '
+        Me.labelSpecifyVersionNumberHeading.AutoSize = True
+        Me.labelSpecifyVersionNumberHeading.Location = New System.Drawing.Point(3, 123)
+        Me.labelSpecifyVersionNumberHeading.Name = "labelSpecifyVersionNumberHeading"
+        Me.labelSpecifyVersionNumberHeading.Size = New System.Drawing.Size(126, 13)
+        Me.labelSpecifyVersionNumberHeading.TabIndex = 16
+        Me.labelSpecifyVersionNumberHeading.Text = "Specify version number..."
+        '
+        'checkboxWhenInstalling
+        '
+        Me.checkboxWhenInstalling.AccessibleDescription = "Specify version number when installing a package."
+        Me.checkboxWhenInstalling.AutoSize = True
+        Me.checkboxWhenInstalling.Location = New System.Drawing.Point(23, 139)
+        Me.checkboxWhenInstalling.Name = "checkboxWhenInstalling"
+        Me.checkboxWhenInstalling.Size = New System.Drawing.Size(98, 17)
+        Me.checkboxWhenInstalling.TabIndex = 15
+        Me.checkboxWhenInstalling.Text = "When installing"
+        Me.checkboxWhenInstalling.UseVisualStyleBackColor = True
+        '
+        'checkboxWhenUpgrading
+        '
+        Me.checkboxWhenUpgrading.AccessibleDescription = "Specify version number when upgrading a package."
+        Me.checkboxWhenUpgrading.AutoSize = True
+        Me.checkboxWhenUpgrading.Location = New System.Drawing.Point(23, 162)
+        Me.checkboxWhenUpgrading.Name = "checkboxWhenUpgrading"
+        Me.checkboxWhenUpgrading.Size = New System.Drawing.Size(105, 17)
+        Me.checkboxWhenUpgrading.TabIndex = 13
+        Me.checkboxWhenUpgrading.Text = "When upgrading"
+        Me.checkboxWhenUpgrading.UseVisualStyleBackColor = True
+        '
+        'checkboxWhenUninstalling
+        '
+        Me.checkboxWhenUninstalling.AccessibleDescription = "Specify version number when uninstalling a package."
+        Me.checkboxWhenUninstalling.AutoSize = True
+        Me.checkboxWhenUninstalling.Location = New System.Drawing.Point(23, 186)
+        Me.checkboxWhenUninstalling.Name = "checkboxWhenUninstalling"
+        Me.checkboxWhenUninstalling.Size = New System.Drawing.Size(110, 17)
+        Me.checkboxWhenUninstalling.TabIndex = 14
+        Me.checkboxWhenUninstalling.Text = "When uninstalling"
+        Me.checkboxWhenUninstalling.UseVisualStyleBackColor = True
+        '
+        'checkboxOpenMiniOptions
+        '
+        Me.checkboxOpenMiniOptions.AutoSize = True
+        Me.checkboxOpenMiniOptions.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxOpenMiniOptions.Location = New System.Drawing.Point(6, 316)
+        Me.checkboxOpenMiniOptions.Name = "checkboxOpenMiniOptions"
+        Me.checkboxOpenMiniOptions.Size = New System.Drawing.Size(279, 30)
+        Me.checkboxOpenMiniOptions.TabIndex = 3
+        Me.checkboxOpenMiniOptions.Text = "Automatically open the mini Options window when the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Apply Changes window is open" &
+    "ed"
+        Me.checkboxOpenMiniOptions.UseVisualStyleBackColor = True
         '
         'labelWhyElevate
         '
@@ -701,66 +764,6 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.FileName = "7z.exe"
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
-        '
-        'checkboxOpenMiniOptions
-        '
-        Me.checkboxOpenMiniOptions.AutoSize = True
-        Me.checkboxOpenMiniOptions.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxOpenMiniOptions.Location = New System.Drawing.Point(6, 316)
-        Me.checkboxOpenMiniOptions.Name = "checkboxOpenMiniOptions"
-        Me.checkboxOpenMiniOptions.Size = New System.Drawing.Size(279, 30)
-        Me.checkboxOpenMiniOptions.TabIndex = 3
-        Me.checkboxOpenMiniOptions.Text = "Automatically open the mini Options window when the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Apply Changes window is open" &
-    "ed"
-        Me.checkboxOpenMiniOptions.UseVisualStyleBackColor = True
-        '
-        'labelAboutNotSpecifyingVersionNumbers
-        '
-        Me.labelAboutNotSpecifyingVersionNumbers.AutoSize = True
-        Me.labelAboutNotSpecifyingVersionNumbers.Location = New System.Drawing.Point(20, 206)
-        Me.labelAboutNotSpecifyingVersionNumbers.Name = "labelAboutNotSpecifyingVersionNumbers"
-        Me.labelAboutNotSpecifyingVersionNumbers.Size = New System.Drawing.Size(260, 52)
-        Me.labelAboutNotSpecifyingVersionNumbers.TabIndex = 17
-        Me.labelAboutNotSpecifyingVersionNumbers.Text = resources.GetString("labelAboutNotSpecifyingVersionNumbers.Text")
-        '
-        'labelSpecifyVersionNumberHeading
-        '
-        Me.labelSpecifyVersionNumberHeading.AutoSize = True
-        Me.labelSpecifyVersionNumberHeading.Location = New System.Drawing.Point(3, 123)
-        Me.labelSpecifyVersionNumberHeading.Name = "labelSpecifyVersionNumberHeading"
-        Me.labelSpecifyVersionNumberHeading.Size = New System.Drawing.Size(126, 13)
-        Me.labelSpecifyVersionNumberHeading.TabIndex = 16
-        Me.labelSpecifyVersionNumberHeading.Text = "Specify version number..."
-        '
-        'checkboxWhenInstalling
-        '
-        Me.checkboxWhenInstalling.AutoSize = True
-        Me.checkboxWhenInstalling.Location = New System.Drawing.Point(23, 139)
-        Me.checkboxWhenInstalling.Name = "checkboxWhenInstalling"
-        Me.checkboxWhenInstalling.Size = New System.Drawing.Size(98, 17)
-        Me.checkboxWhenInstalling.TabIndex = 15
-        Me.checkboxWhenInstalling.Text = "When installing"
-        Me.checkboxWhenInstalling.UseVisualStyleBackColor = True
-        '
-        'checkboxWhenUpgrading
-        '
-        Me.checkboxWhenUpgrading.AutoSize = True
-        Me.checkboxWhenUpgrading.Location = New System.Drawing.Point(23, 162)
-        Me.checkboxWhenUpgrading.Name = "checkboxWhenUpgrading"
-        Me.checkboxWhenUpgrading.Size = New System.Drawing.Size(105, 17)
-        Me.checkboxWhenUpgrading.TabIndex = 13
-        Me.checkboxWhenUpgrading.Text = "When upgrading"
-        Me.checkboxWhenUpgrading.UseVisualStyleBackColor = True
-        '
-        'checkboxWhenUninstalling
-        '
-        Me.checkboxWhenUninstalling.AutoSize = True
-        Me.checkboxWhenUninstalling.Location = New System.Drawing.Point(23, 186)
-        Me.checkboxWhenUninstalling.Name = "checkboxWhenUninstalling"
-        Me.checkboxWhenUninstalling.Size = New System.Drawing.Size(110, 17)
-        Me.checkboxWhenUninstalling.TabIndex = 14
-        Me.checkboxWhenUninstalling.Text = "When uninstalling"
-        Me.checkboxWhenUninstalling.UseVisualStyleBackColor = True
         '
         'OptionsWindow
         '
