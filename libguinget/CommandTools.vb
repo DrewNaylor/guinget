@@ -101,6 +101,8 @@ Public Class CommandTools
             End If
             ' Now pass the args into the startinfo.
             proc.StartInfo.Arguments = Args & Command
+            ' Messagebox that may be useful for debugging commands sent to winget.
+            'Windows.Forms.MessageBox.Show(proc.StartInfo.Arguments)
             ' Specify whether this should be run as admin or not.
             If RunAsAdmin = True Then
                 proc.StartInfo.Verb = "runas"
