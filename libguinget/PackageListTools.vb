@@ -686,12 +686,14 @@ WHERE
         Return packageArray
     End Function
 
-    Public Shared Sub ImportPackages(fileName As String)
-        Throw New NotImplementedException()
+    Public Shared Sub ImportPackages(FileName As String)
+        ' Pass the filename to winget.
+        CommandTools.ImportExport("Import", FileName)
     End Sub
 
-    Public Shared Sub ExportPackages(fileName As String)
-        Throw New NotImplementedException()
+    Public Shared Sub ExportPackages(FileName As String)
+        ' Pass the filename to winget.
+        CommandTools.ImportExport("Export", FileName)
     End Sub
 #End Region
 

@@ -121,4 +121,8 @@ Public Class CommandTools
         End Using
     End Sub
 
+    Friend Shared Sub ImportExport(Task As String, FileName As String)
+        ' Run winget and import or export the packages.
+        WingetStarter(Task.ToLowerInvariant & " " & FileName)
+    End Sub
 End Class
