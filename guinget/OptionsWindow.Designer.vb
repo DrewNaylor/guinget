@@ -355,7 +355,7 @@ Partial Class OptionsWindow
         Me.checkboxWhenInstalling.Location = New System.Drawing.Point(23, 139)
         Me.checkboxWhenInstalling.Name = "checkboxWhenInstalling"
         Me.checkboxWhenInstalling.Size = New System.Drawing.Size(98, 17)
-        Me.checkboxWhenInstalling.TabIndex = 15
+        Me.checkboxWhenInstalling.TabIndex = 2
         Me.checkboxWhenInstalling.Text = "When installing"
         Me.checkboxWhenInstalling.UseVisualStyleBackColor = True
         '
@@ -366,7 +366,7 @@ Partial Class OptionsWindow
         Me.checkboxWhenUpgrading.Location = New System.Drawing.Point(23, 162)
         Me.checkboxWhenUpgrading.Name = "checkboxWhenUpgrading"
         Me.checkboxWhenUpgrading.Size = New System.Drawing.Size(105, 17)
-        Me.checkboxWhenUpgrading.TabIndex = 13
+        Me.checkboxWhenUpgrading.TabIndex = 3
         Me.checkboxWhenUpgrading.Text = "When upgrading"
         Me.checkboxWhenUpgrading.UseVisualStyleBackColor = True
         '
@@ -377,7 +377,7 @@ Partial Class OptionsWindow
         Me.checkboxWhenUninstalling.Location = New System.Drawing.Point(23, 186)
         Me.checkboxWhenUninstalling.Name = "checkboxWhenUninstalling"
         Me.checkboxWhenUninstalling.Size = New System.Drawing.Size(110, 17)
-        Me.checkboxWhenUninstalling.TabIndex = 14
+        Me.checkboxWhenUninstalling.TabIndex = 4
         Me.checkboxWhenUninstalling.Text = "When uninstalling"
         Me.checkboxWhenUninstalling.UseVisualStyleBackColor = True
         '
@@ -388,7 +388,7 @@ Partial Class OptionsWindow
         Me.checkboxOpenMiniOptions.Location = New System.Drawing.Point(6, 316)
         Me.checkboxOpenMiniOptions.Name = "checkboxOpenMiniOptions"
         Me.checkboxOpenMiniOptions.Size = New System.Drawing.Size(279, 30)
-        Me.checkboxOpenMiniOptions.TabIndex = 3
+        Me.checkboxOpenMiniOptions.TabIndex = 5
         Me.checkboxOpenMiniOptions.Text = "Automatically open the mini Options window when the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Apply Changes window is open" &
     "ed"
         Me.checkboxOpenMiniOptions.UseVisualStyleBackColor = True
