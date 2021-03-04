@@ -39,6 +39,10 @@ Public Class OptionsWindow
     Private Sub LoadSettings()
         ' Delete temp files after cache refresh.
         checkboxDeleteTempFilesAfterRefresh.Checked = My.Settings.DeleteTempFilesAfterRefresh
+        ' Load from database.
+        checkboxLoadFromDatabase.Checked = My.Settings.LoadFromSqliteDb
+        ' Load only latest versions.
+        checkboxShowOnlyLatestVersions.Checked = My.Settings.OnlyDisplayLatestPackageVersion
 
         ' Re-run search.
         checkboxRerunSearch.Checked = My.Settings.RerunSearchAfterCacheUpdate
@@ -75,10 +79,6 @@ Public Class OptionsWindow
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = My.Settings.ShowLastSelectedPackageDetails
 
-        ' Load from database.
-        checkboxLoadFromDatabase.Checked = My.Settings.LoadFromSqliteDb
-        ' Load only latest versions.
-        checkboxShowOnlyLatestVersions.Checked = My.Settings.OnlyDisplayLatestPackageVersion
         ' Use 7-Zip.
         checkboxUse7zip.Checked = My.Settings.Use7zipForExtraction
         ' Use Robocopy.
@@ -128,6 +128,10 @@ Public Class OptionsWindow
     Private Sub SaveSettings()
         ' Delete temp files after cache update.
         My.Settings.DeleteTempFilesAfterRefresh = checkboxDeleteTempFilesAfterRefresh.Checked
+        ' Load from database.
+        My.Settings.LoadFromSqliteDb = checkboxLoadFromDatabase.Checked
+        ' Load only latest versions.
+        My.Settings.OnlyDisplayLatestPackageVersion = checkboxShowOnlyLatestVersions.Checked
 
         ' Re-run search checkbox.
         My.Settings.RerunSearchAfterCacheUpdate = checkboxRerunSearch.Checked
@@ -166,10 +170,7 @@ Public Class OptionsWindow
         ' Show last-selected package details.
         My.Settings.ShowLastSelectedPackageDetails = checkboxLastSelectedPackageDetails.Checked
 
-        ' Load from database.
-        My.Settings.LoadFromSqliteDb = checkboxLoadFromDatabase.Checked
-        ' Load only latest versions.
-        My.Settings.OnlyDisplayLatestPackageVersion = checkboxShowOnlyLatestVersions.Checked
+
         ' Use 7-Zip.
         My.Settings.Use7zipForExtraction = checkboxUse7zip.Checked
         ' Use Robocopy.
@@ -223,6 +224,10 @@ Public Class OptionsWindow
     Private Sub ReloadDefaults()
         ' Delete temp files after update.
         checkboxDeleteTempFilesAfterRefresh.Checked = True
+        ' Load from database.
+        checkboxLoadFromDatabase.Checked = True
+        ' Load only latest versions.
+        checkboxShowOnlyLatestVersions.Checked = False
 
         ' Re-run search checkbox.
         checkboxRerunSearch.Checked = True
@@ -250,10 +255,6 @@ Public Class OptionsWindow
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = True
 
-        ' Load from database.
-        checkboxLoadFromDatabase.Checked = False
-        ' Load only latest versions.
-        checkboxShowOnlyLatestVersions.Checked = False
         ' Use 7-Zip.
         checkboxUse7zip.Checked = False
         ' Use Robocopy.
