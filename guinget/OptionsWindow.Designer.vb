@@ -565,7 +565,7 @@ Partial Class OptionsWindow
         'labelDefaultSourceName
         '
         Me.labelDefaultSourceName.AutoSize = True
-        Me.labelDefaultSourceName.Location = New System.Drawing.Point(11, 223)
+        Me.labelDefaultSourceName.Location = New System.Drawing.Point(11, 224)
         Me.labelDefaultSourceName.Name = "labelDefaultSourceName"
         Me.labelDefaultSourceName.Size = New System.Drawing.Size(108, 13)
         Me.labelDefaultSourceName.TabIndex = 18
@@ -627,7 +627,7 @@ Partial Class OptionsWindow
         '
         'buttonBrowse7zExePath
         '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(251, 61)
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(251, 64)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
         Me.buttonBrowse7zExePath.TabIndex = 5
@@ -636,7 +636,7 @@ Partial Class OptionsWindow
         '
         'textbox7zExePath
         '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(97, 62)
+        Me.textbox7zExePath.Location = New System.Drawing.Point(97, 65)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
         Me.textbox7zExePath.TabIndex = 4
@@ -644,7 +644,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(26, 62)
+        Me.label7zExePath.Location = New System.Drawing.Point(26, 69)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
