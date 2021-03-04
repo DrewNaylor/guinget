@@ -216,4 +216,11 @@ Public Class ApplyChangesWindow
             buttonConfirmChanges.Enabled = True
         End If
     End Sub
+
+    Private Sub SkipSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SkipSelectedToolStripMenuItem.Click
+        ' Mark the currently-selected package to be skipped.
+        If datagridviewAppsBeingInstalled.SelectedRows.Count = 1 Then
+            datagridviewAppsBeingInstalled.SelectedRows.Item(0).Cells.Item(3).Value = "Skip"
+        End If
+    End Sub
 End Class
