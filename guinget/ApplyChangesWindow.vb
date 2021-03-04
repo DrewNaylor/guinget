@@ -92,17 +92,7 @@ Public Class ApplyChangesWindow
             ' First make sure that we're not already installing the package.
             If Not datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..." Then
 
-                ' If we're not installing, change the current status cell value to "Installing..." and
-                ' show a messagebox for testing.
-
-                ' Make sure the new thing would be grammatically correct.
-                datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value =
-                    datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..."
-
-                ' Show messagebox with current status.
-                'MessageBox.Show(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString)
-
-                ' Now call winget and install the package. Be sure to keep the window open
+                ' Call winget and process the package. Be sure to keep the window open
                 ' for now until configuration is possible and until we display winget output
                 ' in a textbox below the datagridview.
 
@@ -111,25 +101,19 @@ Public Class ApplyChangesWindow
                 PackageTools.SpecifyVersionOnUpgrade = My.Settings.SpecifyVersionOnUpgrade
                 PackageTools.SpecifyVersionOnUninstall = My.Settings.SpecifyVersionOnUninstall
 
-                If datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString = "Install" Then
-                    ' Check if the current row is set to install.
-                    PackageTools.SinglePackageProcessor("install", datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
-                                        datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
-                                        My.Settings.InstallInteractively, My.Settings.ElevateWinget,
-                                        My.Settings.DefaultSourceName)
-                ElseIf datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString = "Uninstall" Then
-                    ' Do the uninstall for a single package.
-                    PackageTools.SinglePackageProcessor("uninstall", datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
+                If datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value.ToString = "Ready" Then
+                    ' Pass the package on to the single-package processor.
+                    PackageTools.SinglePackageProcessor(datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString.ToLowerInvariant,
+                                                        datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
                                                         datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
-                                        My.Settings.InstallInteractively, My.Settings.ElevateWinget,
-                                        My.Settings.DefaultSourceName)
-                ElseIf datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString = "Upgrade" Then
-                    ' Do the uninstall for a single package.
-                    PackageTools.SinglePackageProcessor("upgrade", datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(0).Value.ToString,
-                                                        datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
-                                        My.Settings.InstallInteractively, My.Settings.ElevateWinget,
-                                        My.Settings.DefaultSourceName)
+                                                        My.Settings.InstallInteractively, My.Settings.ElevateWinget,
+                                                        My.Settings.DefaultSourceName)
                 End If
+
+                ' Change the Current status column and make sure it's grammatically correct.
+                datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value =
+                    datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..."
+
             End If
         End If
     End Sub
