@@ -151,6 +151,9 @@ Public Class ApplyChangesWindow
             OpenMiniApplyChangesOptionsForm()
         End If
 
+        ' Unselect the package list.
+        datagridviewAppsBeingInstalled.ClearSelection()
+
         ' Focus the "Confirm changes" button.
         buttonConfirmChanges.Select()
     End Sub
