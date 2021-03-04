@@ -188,14 +188,14 @@ Partial Class aaformMainWindow
         '
         Me.ToolStripMenuItemImportPackages.Name = "ToolStripMenuItemImportPackages"
         Me.ToolStripMenuItemImportPackages.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.ToolStripMenuItemImportPackages.Size = New System.Drawing.Size(214, 22)
+        Me.ToolStripMenuItemImportPackages.Size = New System.Drawing.Size(302, 22)
         Me.ToolStripMenuItemImportPackages.Text = "I&mport packages..."
         '
         'ToolStripMenuItemExportPackages
         '
         Me.ToolStripMenuItemExportPackages.Name = "ToolStripMenuItemExportPackages"
         Me.ToolStripMenuItemExportPackages.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.ToolStripMenuItemExportPackages.Size = New System.Drawing.Size(214, 22)
+        Me.ToolStripMenuItemExportPackages.Size = New System.Drawing.Size(302, 22)
         Me.ToolStripMenuItemExportPackages.Text = "Exp&ort packages..."
         '
         'zFileMenuSeparator2

@@ -685,6 +685,14 @@ WHERE
         ' Return the list of packages.
         Return packageArray
     End Function
+
+    Public Shared Sub ImportPackages(fileName As String)
+        Throw New NotImplementedException()
+    End Sub
+
+    Public Shared Sub ExportPackages(fileName As String)
+        Throw New NotImplementedException()
+    End Sub
 #End Region
 
 End Class

@@ -1302,6 +1302,22 @@ Public Class aaformMainWindow
         End If
     End Sub
 
+    Private Sub ToolStripMenuItemImportPackages_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItemImportPackages.Click
+        ' Check if the user clicked OK in the file open dialog.
+        If OpenFileDialogImportPackages.ShowDialog = DialogResult.OK Then
+            ' The user clicked OK, so pass the file to winget.
+            PackageListTools.ImportPackages(OpenFileDialogImportPackages.FileName)
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItemExportPackages_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItemExportPackages.Click
+        ' Check if the user clicked OK in the file save dialog.
+        If SaveFileDialogExportPackages.ShowDialog = DialogResult.OK Then
+            ' The user clicked OK, so pass the file to winget.
+            PackageListTools.ExportPackages(SaveFileDialogExportPackages.FileName)
+        End If
+    End Sub
+
 
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
