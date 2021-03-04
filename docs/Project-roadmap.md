@@ -60,21 +60,23 @@ GitHub milestone: [Version 0.1.3](https://github.com/DrewNaylor/guinget/mileston
 
 - [X] Allow batch installing of packages ([issue #30](https://github.com/DrewNaylor/guinget/issues/30))
 
-## Version 0.1.4 Alpha
+## Version 0.2 Alpha
 
-GitHub milestone: [Version 0.1.4](https://github.com/DrewNaylor/guinget/milestone/6)
+GitHub milestone: [Version 0.2](https://github.com/DrewNaylor/guinget/milestone/6)
 
-- [ ] Allow users to show only packages that are listed in the SQLite database file, so that entries aren't duplicated with multiple versions (showing only the latest version may take longer to figure out as all the versions are in the database file) ([issue #35](https://github.com/DrewNaylor/guinget/issues/35))
+- [x] Filters for the `Action` column.
+- [x] Allow users to show only packages that are listed in the SQLite database file, so that entries aren't duplicated with multiple versions (showing only the latest version may take longer to figure out as all the versions are in the database file) ([issue #35](https://github.com/DrewNaylor/guinget/issues/35))
+  - Even though this is checked off, loading only the latest version of each package isn't on by default yet as it's not fully reliable.
+
+## Version 0.2.1 Alpha
+
 - [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
 - [ ] Allow packages to be re-installed (also issue #23)
-
-## Version 0.1.5 Alpha
-
 - [ ] Allow searching through things like friendly name, description, and tags
-- [ ] Filters for things that aren't the search feature, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (things like marked changes)
+- [ ] Filters for things that aren't the search feature or `Action`, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (aside from marked changes, because that's `Action`)
 - [ ] Show number of packages marked for changes, like Synaptic
 
-## Version 0.2 Beta
+## Version 0.3 Beta
 
 - [ ] Load the package list and package details async so that the UI doesn't lock up
 <br>Seems like this page has some good ideas on how to do this:
