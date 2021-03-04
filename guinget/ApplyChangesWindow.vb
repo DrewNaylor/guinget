@@ -223,4 +223,22 @@ Public Class ApplyChangesWindow
             datagridviewAppsBeingInstalled.SelectedRows.Item(0).Cells.Item(3).Value = "Skip"
         End If
     End Sub
+
+    Private Sub datagridviewAppsBeingInstalled_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridviewAppsBeingInstalled.CellMouseDown
+        ' Code based on this SO answer:
+        ' https://stackoverflow.com/a/939275
+        ' Also borrows from this answer:
+        ' https://stackoverflow.com/a/173315
+        ' Copied from the main window's code.
+
+        If e.Button = MouseButtons.Right AndAlso e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
+            ' Make sure no modifier keys like Control are held down.
+            ' Also make sure what we're right-clicking isn't in the selected
+            ' items collection of the datagridview.
+            If ModifierKeys = Nothing AndAlso Not datagridviewAppsBeingInstalled.Item(e.ColumnIndex, e.RowIndex).Selected Then
+                ' If it's not one of the selected items, select only whatever was right-clicked.
+                datagridviewAppsBeingInstalled.CurrentCell = datagridviewAppsBeingInstalled(e.ColumnIndex, e.RowIndex)
+            End If
+        End If
+    End Sub
 End Class
