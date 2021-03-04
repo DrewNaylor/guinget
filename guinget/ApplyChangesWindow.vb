@@ -211,4 +211,25 @@ Public Class ApplyChangesWindow
             buttonConfirmChanges.Enabled = True
         End If
     End Sub
+
+    Private Sub ResetStatusForAllPackagesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetStatusForAllPackagesToolStripMenuItem.Click
+        ' Reset status for all packages.
+        If datagridviewAppsBeingInstalled.SelectedRows.Count >= 1 Then
+            ' Unset autosize.
+            PackageAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            PackageCurrentStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            ' Change the values in the Action column.
+            For Each Row As DataGridViewRow In datagridviewAppsBeingInstalled.Rows
+                ' See what the cell's contents is.
+                If Not Row.Cells.Item(3).Value.ToString = "Ready" Then
+                    Row.Cells.Item(3).Value = "Ready"
+                End If
+            Next
+            ' Reset the column autosize.
+            PackageAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            PackageCurrentStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            ' Reset the "Confirm changes" button.
+            buttonConfirmChanges.Enabled = True
+        End If
+    End Sub
 End Class
