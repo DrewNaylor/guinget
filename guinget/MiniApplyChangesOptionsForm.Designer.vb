@@ -92,6 +92,7 @@ Partial Class MiniApplyChangesOptionsForm
         '
         'checkboxWhenUpgrading
         '
+        Me.checkboxWhenUpgrading.AccessibleDescription = "Specify version number when upgrading a package."
         Me.checkboxWhenUpgrading.AutoSize = True
         Me.checkboxWhenUpgrading.Location = New System.Drawing.Point(23, 158)
         Me.checkboxWhenUpgrading.Name = "checkboxWhenUpgrading"
@@ -102,6 +103,7 @@ Partial Class MiniApplyChangesOptionsForm
         '
         'checkboxWhenUninstalling
         '
+        Me.checkboxWhenUninstalling.AccessibleDescription = "Specify version number when uninstalling a package."
         Me.checkboxWhenUninstalling.AutoSize = True
         Me.checkboxWhenUninstalling.Location = New System.Drawing.Point(23, 182)
         Me.checkboxWhenUninstalling.Name = "checkboxWhenUninstalling"
@@ -112,6 +114,7 @@ Partial Class MiniApplyChangesOptionsForm
         '
         'checkboxWhenInstalling
         '
+        Me.checkboxWhenInstalling.AccessibleDescription = "Specify version number when installing a package."
         Me.checkboxWhenInstalling.AutoSize = True
         Me.checkboxWhenInstalling.Location = New System.Drawing.Point(23, 135)
         Me.checkboxWhenInstalling.Name = "checkboxWhenInstalling"
@@ -142,6 +145,8 @@ Partial Class MiniApplyChangesOptionsForm
         '
         'buttonRestoreDefaults
         '
+        Me.buttonRestoreDefaults.AccessibleDescription = "Restore Apply Changes-related options to default. They will be saved immediately," &
+    " unlike in the full Options window."
         Me.buttonRestoreDefaults.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.buttonRestoreDefaults.Location = New System.Drawing.Point(3, 306)
         Me.buttonRestoreDefaults.Name = "buttonRestoreDefaults"
