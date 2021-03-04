@@ -188,7 +188,9 @@ Public Class ApplyChangesWindow
                 MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom, MiniOptionsForm.Width, MiniOptionsForm.Height)
             ElseIf Me.WindowState = FormWindowState.Maximized Then
                 ' We need to make sure the form stays on the screen.
-                MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom - MiniOptionsForm.Height, MiniOptionsForm.Width, MiniOptionsForm.Height)
+                ' Subtracting the height of the linklabel from both the bottom of the window
+                ' and the mini-form ensures that the linklabel should still be visible even when maximized.
+                MiniOptionsForm.Bounds = New Rectangle(Me.Left, Me.Bottom - MiniOptionsForm.Height - LinkLabelMiniOptionsForm.Height, MiniOptionsForm.Width, MiniOptionsForm.Height)
             End If
         End If
     End Sub
