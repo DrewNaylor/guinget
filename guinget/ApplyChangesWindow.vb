@@ -48,10 +48,10 @@ Public Class ApplyChangesWindow
         ' Begin bulk-install process.
         ' Needs to be updated to check for packages the user wants to
         ' have uninstalled in the future when that's supported.
-        BulkInstallPackages()
+        BulkProcessPackages()
     End Sub
 
-    Private Sub BulkInstallPackages()
+    Private Sub BulkProcessPackages()
         ' First make sure there are packages in the list.
         If datagridviewAppsBeingInstalled.Rows.Count > 0 Then
             ' Make sure we're not already installing by blocking out the "Confirm changes" button.
