@@ -108,12 +108,12 @@ Public Class ApplyChangesWindow
                                                         datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(1).Value.ToString,
                                                         My.Settings.InstallInteractively, My.Settings.ElevateWinget,
                                                         My.Settings.DefaultSourceName)
+
+                    ' Change the Current status column and make sure it's grammatically correct.
+                    ' Doing this here since it's kinda weird for it to change from "Skip" to "Installing...".
+                    datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value =
+                        datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..."
                 End If
-
-                ' Change the Current status column and make sure it's grammatically correct.
-                datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(3).Value =
-                    datagridviewAppsBeingInstalled.CurrentRow.Cells.Item(2).Value.ToString.TrimEnd(CChar("e")) & "ing..."
-
             End If
         End If
     End Sub
