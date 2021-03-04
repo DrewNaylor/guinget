@@ -207,6 +207,8 @@ Public Class ApplyChangesWindow
         ' Reset status for the currently-selected package.
         If datagridviewAppsBeingInstalled.SelectedRows.Count = 1 Then
             datagridviewAppsBeingInstalled.SelectedRows.Item(0).Cells.Item(3).Value = "Ready"
+            ' Reset the "Confirm changes" button.
+            buttonConfirmChanges.Enabled = True
         End If
     End Sub
 End Class
