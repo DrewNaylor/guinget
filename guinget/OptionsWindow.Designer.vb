@@ -549,7 +549,7 @@ Partial Class OptionsWindow
         'labelDefaultSourceNameDescription
         '
         Me.labelDefaultSourceNameDescription.AutoSize = True
-        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(21, 387)
+        Me.labelDefaultSourceNameDescription.Location = New System.Drawing.Point(29, 243)
         Me.labelDefaultSourceNameDescription.Name = "labelDefaultSourceNameDescription"
         Me.labelDefaultSourceNameDescription.Size = New System.Drawing.Size(261, 91)
         Me.labelDefaultSourceNameDescription.TabIndex = 20
@@ -557,7 +557,7 @@ Partial Class OptionsWindow
         '
         'textboxDefaultSourceName
         '
-        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(117, 364)
+        Me.textboxDefaultSourceName.Location = New System.Drawing.Point(125, 220)
         Me.textboxDefaultSourceName.Name = "textboxDefaultSourceName"
         Me.textboxDefaultSourceName.Size = New System.Drawing.Size(201, 20)
         Me.textboxDefaultSourceName.TabIndex = 19
@@ -565,7 +565,7 @@ Partial Class OptionsWindow
         'labelDefaultSourceName
         '
         Me.labelDefaultSourceName.AutoSize = True
-        Me.labelDefaultSourceName.Location = New System.Drawing.Point(3, 367)
+        Me.labelDefaultSourceName.Location = New System.Drawing.Point(11, 223)
         Me.labelDefaultSourceName.Name = "labelDefaultSourceName"
         Me.labelDefaultSourceName.Size = New System.Drawing.Size(108, 13)
         Me.labelDefaultSourceName.TabIndex = 18
@@ -574,7 +574,7 @@ Partial Class OptionsWindow
         'labelHiDPIMode
         '
         Me.labelHiDPIMode.AutoSize = True
-        Me.labelHiDPIMode.Location = New System.Drawing.Point(21, 319)
+        Me.labelHiDPIMode.Location = New System.Drawing.Point(29, 175)
         Me.labelHiDPIMode.Name = "labelHiDPIMode"
         Me.labelHiDPIMode.Size = New System.Drawing.Size(293, 39)
         Me.labelHiDPIMode.TabIndex = 17
@@ -585,7 +585,7 @@ Partial Class OptionsWindow
         'checkboxHiDPIMode
         '
         Me.checkboxHiDPIMode.AutoSize = True
-        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(3, 302)
+        Me.checkboxHiDPIMode.Location = New System.Drawing.Point(11, 158)
         Me.checkboxHiDPIMode.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxHiDPIMode.Name = "checkboxHiDPIMode"
         Me.checkboxHiDPIMode.Size = New System.Drawing.Size(84, 17)
@@ -596,7 +596,7 @@ Partial Class OptionsWindow
         'labelCopyrightForRobocopy
         '
         Me.labelCopyrightForRobocopy.AutoSize = True
-        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(21, 247)
+        Me.labelCopyrightForRobocopy.Location = New System.Drawing.Point(29, 103)
         Me.labelCopyrightForRobocopy.Name = "labelCopyrightForRobocopy"
         Me.labelCopyrightForRobocopy.Size = New System.Drawing.Size(238, 52)
         Me.labelCopyrightForRobocopy.TabIndex = 11
@@ -607,7 +607,7 @@ Partial Class OptionsWindow
         'labelCopyrightForSevenZip
         '
         Me.labelCopyrightForSevenZip.AutoSize = True
-        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(18, 164)
+        Me.labelCopyrightForSevenZip.Location = New System.Drawing.Point(26, 20)
         Me.labelCopyrightForSevenZip.Name = "labelCopyrightForSevenZip"
         Me.labelCopyrightForSevenZip.Size = New System.Drawing.Size(234, 39)
         Me.labelCopyrightForSevenZip.TabIndex = 10
@@ -617,7 +617,7 @@ Partial Class OptionsWindow
         'checkboxUseRobocopy
         '
         Me.checkboxUseRobocopy.AutoSize = True
-        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(3, 230)
+        Me.checkboxUseRobocopy.Location = New System.Drawing.Point(11, 86)
         Me.checkboxUseRobocopy.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUseRobocopy.Name = "checkboxUseRobocopy"
         Me.checkboxUseRobocopy.Size = New System.Drawing.Size(250, 17)
@@ -627,7 +627,7 @@ Partial Class OptionsWindow
         '
         'buttonBrowse7zExePath
         '
-        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(243, 205)
+        Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(251, 61)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(75, 23)
         Me.buttonBrowse7zExePath.TabIndex = 5
@@ -636,7 +636,7 @@ Partial Class OptionsWindow
         '
         'textbox7zExePath
         '
-        Me.textbox7zExePath.Location = New System.Drawing.Point(89, 206)
+        Me.textbox7zExePath.Location = New System.Drawing.Point(97, 62)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(148, 20)
         Me.textbox7zExePath.TabIndex = 4
@@ -644,7 +644,7 @@ Partial Class OptionsWindow
         'label7zExePath
         '
         Me.label7zExePath.AutoSize = True
-        Me.label7zExePath.Location = New System.Drawing.Point(18, 206)
+        Me.label7zExePath.Location = New System.Drawing.Point(26, 62)
         Me.label7zExePath.Name = "label7zExePath"
         Me.label7zExePath.Size = New System.Drawing.Size(65, 13)
         Me.label7zExePath.TabIndex = 5
@@ -653,7 +653,7 @@ Partial Class OptionsWindow
         'checkboxUse7zip
         '
         Me.checkboxUse7zip.AutoSize = True
-        Me.checkboxUse7zip.Location = New System.Drawing.Point(3, 147)
+        Me.checkboxUse7zip.Location = New System.Drawing.Point(11, 3)
         Me.checkboxUse7zip.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxUse7zip.Name = "checkboxUse7zip"
         Me.checkboxUse7zip.Size = New System.Drawing.Size(234, 17)
