@@ -162,7 +162,7 @@ Partial Class ApplyChangesWindow
         '
         Me.ContextMenuStripResetStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResetStatusForSelectedPackageToolStripMenuItem, Me.zToolStripSeparatorResetStatus, Me.ResetStatusForAllPackagesToolStripMenuItem})
         Me.ContextMenuStripResetStatus.Name = "ContextMenuStripResetStatus"
-        Me.ContextMenuStripResetStatus.Size = New System.Drawing.Size(248, 54)
+        Me.ContextMenuStripResetStatus.Size = New System.Drawing.Size(248, 76)
         '
         'ResetStatusForAllPackagesToolStripMenuItem
         '

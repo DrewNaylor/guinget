@@ -202,4 +202,11 @@ Public Class ApplyChangesWindow
         ' Close the mini-form.
         MiniApplyChangesOptionsForm.Close()
     End Sub
+
+    Private Sub ResetStatusForSelectedPackageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetStatusForSelectedPackageToolStripMenuItem.Click
+        ' Reset status for the currently-selected package.
+        If datagridviewAppsBeingInstalled.SelectedRows.Count = 1 Then
+            datagridviewAppsBeingInstalled.SelectedRows.Item(0).Cells.Item(3).Value = "Ready"
+        End If
+    End Sub
 End Class
