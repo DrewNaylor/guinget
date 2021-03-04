@@ -31,6 +31,9 @@ Public Class OptionsWindow
 
         ' Allow or block the cache deletion buttons on loading the Options window.
         AllowOrBlockCacheDeletionButtons()
+
+        ' Allow or block the latest versions checkbox.
+        AllowOrBlockLatestVersionsCheckbox()
     End Sub
 
     Private Sub LoadSettings()
@@ -339,6 +342,12 @@ Public Class OptionsWindow
     End Sub
 
     Private Sub checkboxLoadFromDatabase_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxLoadFromDatabase.CheckedChanged
+        ' Make sure the latest version checkbox can only
+        ' be used if the one above it is checked.
+        AllowOrBlockLatestVersionsCheckbox()
+    End Sub
+
+    Private Sub AllowOrBlockLatestVersionsCheckbox()
         ' Allow or block the "load only latest versions" checkbox
         ' if this one is checked or unchecked.
         checkboxShowOnlyLatestVersions.Enabled = checkboxLoadFromDatabase.Checked
