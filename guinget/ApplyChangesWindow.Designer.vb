@@ -75,6 +75,7 @@ Partial Class ApplyChangesWindow
         Me.datagridviewAppsBeingInstalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.datagridviewAppsBeingInstalled.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PackageName, Me.PackageVersion, Me.PackageAction, Me.PackageCurrentStatus})
         Me.tablelayoutpanelApplyChanges.SetColumnSpan(Me.datagridviewAppsBeingInstalled, 5)
+        Me.datagridviewAppsBeingInstalled.ContextMenuStrip = Me.ContextMenuStripResetStatus
         Me.datagridviewAppsBeingInstalled.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridviewAppsBeingInstalled.Location = New System.Drawing.Point(2, 2)
         Me.datagridviewAppsBeingInstalled.Margin = New System.Windows.Forms.Padding(2)
@@ -161,7 +162,7 @@ Partial Class ApplyChangesWindow
         '
         Me.ContextMenuStripResetStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResetStatusForSelectedPackageToolStripMenuItem, Me.zToolStripSeparatorResetStatus, Me.ResetStatusForAllPackagesToolStripMenuItem})
         Me.ContextMenuStripResetStatus.Name = "ContextMenuStripResetStatus"
-        Me.ContextMenuStripResetStatus.Size = New System.Drawing.Size(248, 76)
+        Me.ContextMenuStripResetStatus.Size = New System.Drawing.Size(248, 54)
         '
         'ResetStatusForAllPackagesToolStripMenuItem
         '
