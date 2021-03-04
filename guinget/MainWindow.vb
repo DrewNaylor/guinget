@@ -515,6 +515,14 @@ Public Class aaformMainWindow
         ' isn't required to get what's marked for installation or whatever.
         datagridviewPackageList.EndEdit()
 
+        ' Set HiDPI settings for that datagridview, if desired.
+        If My.Settings.HiDPIMode = True Then
+            LocalApplyChangesWindow.datagridviewAppsBeingInstalled.RowTemplate.Height = 48
+        Else
+            ' HiDPI mode is off, so use the default height.
+            LocalApplyChangesWindow.datagridviewAppsBeingInstalled.RowTemplate.Height = 24
+        End If
+
         ' Put the user's selections into this window.
         For Each Row As DataGridViewRow In datagridviewPackageList.Rows
             ' Check if the package is meant to be installed.
