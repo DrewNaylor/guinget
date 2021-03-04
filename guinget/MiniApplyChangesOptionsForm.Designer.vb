@@ -54,7 +54,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxElevateWinget.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
         Me.checkboxElevateWinget.Name = "checkboxElevateWinget"
         Me.checkboxElevateWinget.Size = New System.Drawing.Size(143, 17)
-        Me.checkboxElevateWinget.TabIndex = 4
+        Me.checkboxElevateWinget.TabIndex = 2
         Me.checkboxElevateWinget.Text = "Elevate winget with UAC"
         Me.checkboxElevateWinget.UseVisualStyleBackColor = True
         '
@@ -64,7 +64,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxInstallInteractively.Location = New System.Drawing.Point(3, 3)
         Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
         Me.checkboxInstallInteractively.Size = New System.Drawing.Size(153, 17)
-        Me.checkboxInstallInteractively.TabIndex = 3
+        Me.checkboxInstallInteractively.TabIndex = 1
         Me.checkboxInstallInteractively.Text = "Run interactively (winget -i)"
         Me.checkboxInstallInteractively.UseVisualStyleBackColor = True
         '
@@ -96,7 +96,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxWhenUpgrading.Location = New System.Drawing.Point(23, 158)
         Me.checkboxWhenUpgrading.Name = "checkboxWhenUpgrading"
         Me.checkboxWhenUpgrading.Size = New System.Drawing.Size(105, 17)
-        Me.checkboxWhenUpgrading.TabIndex = 8
+        Me.checkboxWhenUpgrading.TabIndex = 4
         Me.checkboxWhenUpgrading.Text = "When upgrading"
         Me.checkboxWhenUpgrading.UseVisualStyleBackColor = True
         '
@@ -106,7 +106,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxWhenUninstalling.Location = New System.Drawing.Point(23, 182)
         Me.checkboxWhenUninstalling.Name = "checkboxWhenUninstalling"
         Me.checkboxWhenUninstalling.Size = New System.Drawing.Size(110, 17)
-        Me.checkboxWhenUninstalling.TabIndex = 9
+        Me.checkboxWhenUninstalling.TabIndex = 5
         Me.checkboxWhenUninstalling.Text = "When uninstalling"
         Me.checkboxWhenUninstalling.UseVisualStyleBackColor = True
         '
@@ -116,7 +116,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.checkboxWhenInstalling.Location = New System.Drawing.Point(23, 135)
         Me.checkboxWhenInstalling.Name = "checkboxWhenInstalling"
         Me.checkboxWhenInstalling.Size = New System.Drawing.Size(98, 17)
-        Me.checkboxWhenInstalling.TabIndex = 10
+        Me.checkboxWhenInstalling.TabIndex = 3
         Me.checkboxWhenInstalling.Text = "When installing"
         Me.checkboxWhenInstalling.UseVisualStyleBackColor = True
         '
@@ -146,7 +146,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.buttonRestoreDefaults.Location = New System.Drawing.Point(3, 306)
         Me.buttonRestoreDefaults.Name = "buttonRestoreDefaults"
         Me.buttonRestoreDefaults.Size = New System.Drawing.Size(86, 28)
-        Me.buttonRestoreDefaults.TabIndex = 13
+        Me.buttonRestoreDefaults.TabIndex = 8
         Me.buttonRestoreDefaults.Text = "Defaults"
         Me.buttonRestoreDefaults.UseVisualStyleBackColor = True
         '
