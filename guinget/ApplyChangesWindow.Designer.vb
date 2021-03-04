@@ -36,6 +36,7 @@ Partial Class ApplyChangesWindow
         Me.ResetStatusForAllPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetStatusForSelectedPackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.zToolStripSeparatorResetStatus = New System.Windows.Forms.ToolStripSeparator()
+        Me.SkipSelectedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tablelayoutpanelApplyChanges.SuspendLayout()
         CType(Me.datagridviewAppsBeingInstalled, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStripResetStatus.SuspendLayout()
@@ -160,9 +161,9 @@ Partial Class ApplyChangesWindow
         '
         'ContextMenuStripResetStatus
         '
-        Me.ContextMenuStripResetStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResetStatusForSelectedPackageToolStripMenuItem, Me.zToolStripSeparatorResetStatus, Me.ResetStatusForAllPackagesToolStripMenuItem})
+        Me.ContextMenuStripResetStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SkipSelectedToolStripMenuItem, Me.ResetStatusForSelectedPackageToolStripMenuItem, Me.zToolStripSeparatorResetStatus, Me.ResetStatusForAllPackagesToolStripMenuItem})
         Me.ContextMenuStripResetStatus.Name = "ContextMenuStripResetStatus"
-        Me.ContextMenuStripResetStatus.Size = New System.Drawing.Size(248, 76)
+        Me.ContextMenuStripResetStatus.Size = New System.Drawing.Size(248, 98)
         '
         'ResetStatusForAllPackagesToolStripMenuItem
         '
@@ -180,6 +181,12 @@ Partial Class ApplyChangesWindow
         '
         Me.zToolStripSeparatorResetStatus.Name = "zToolStripSeparatorResetStatus"
         Me.zToolStripSeparatorResetStatus.Size = New System.Drawing.Size(244, 6)
+        '
+        'SkipSelectedToolStripMenuItem
+        '
+        Me.SkipSelectedToolStripMenuItem.Name = "SkipSelectedToolStripMenuItem"
+        Me.SkipSelectedToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.SkipSelectedToolStripMenuItem.Text = "Skip selected package"
         '
         'ApplyChangesWindow
         '
@@ -215,4 +222,5 @@ Partial Class ApplyChangesWindow
     Friend WithEvents ResetStatusForAllPackagesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ResetStatusForSelectedPackageToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents zToolStripSeparatorResetStatus As ToolStripSeparator
+    Friend WithEvents SkipSelectedToolStripMenuItem As ToolStripMenuItem
 End Class
