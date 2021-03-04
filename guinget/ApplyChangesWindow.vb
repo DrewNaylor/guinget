@@ -214,7 +214,7 @@ Public Class ApplyChangesWindow
 
     Private Sub ResetStatusForAllPackagesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetStatusForAllPackagesToolStripMenuItem.Click
         ' Reset status for all packages.
-        If datagridviewAppsBeingInstalled.SelectedRows.Count >= 1 Then
+        If datagridviewAppsBeingInstalled.Rows.Count >= 1 Then
             ' Unset autosize.
             PackageAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             PackageCurrentStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
