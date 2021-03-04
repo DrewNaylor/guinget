@@ -337,4 +337,10 @@ Public Class OptionsWindow
         buttonDeleteCacheFilesInRoaming.Enabled =
         libguinget.PackageListTools.DoesPathExist(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))
     End Sub
+
+    Private Sub checkboxLoadFromDatabase_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxLoadFromDatabase.CheckedChanged
+        ' Allow or block the "load only latest versions" checkbox
+        ' if this one is checked or unchecked.
+        checkboxShowOnlyLatestVersions.Enabled = checkboxLoadFromDatabase.Checked
+    End Sub
 End Class
