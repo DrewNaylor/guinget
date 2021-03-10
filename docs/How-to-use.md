@@ -116,7 +116,7 @@ There are also two buttons at the bottom of the mini-form: `Defaults` and `Close
 
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
 
-## Searching for packages
+## Searching and filtering for packages
 
 You can search for packages using the search bar in the toolbar at the top of the window. This only filters the `Package` column for now, but other columns are planned to be supported. To start a search, do one of the following:
 - Click in the search textbox
@@ -130,14 +130,22 @@ You can use `Esc`/`Escape` and press `Enter` or, as described below, double-clic
 `Search for package ID` in either the package context menu or in the `Selected packages` menu will, as the name implies, search for the package ID as long as only one package is selected. This won't be available if more than one package is selected at a time in version 0.1.3 and above.
 
 ### Sidebar
-By default, there's a sidebar that shows your search terms from the current session, but you can hide it in a few ways:
+By default, there's a sidebar that shows your search terms from the current session and other filters, but you can hide it in a few ways:
 - With the `X` button in its top-right corner
 - Using `View>Sidebar`
 - By unchecking the `Show sidebar` checkbox from `Tools>Options...>Layout`
 
-Double-clicking/pressing `Enter` on the `All` entry at the top of the sidebar search terms list returns you to an unfiltered list.
+You can double-click or press `Enter` on any of the items in the various sidebar lists to filter/search based on which list is being shown in the dropdown at the top.
+
+Double-clicking/pressing `Enter` on the `All` entry at the top of the sidebar search terms list/filters lists returns you to an unfiltered list.
+
+###Sidebar: `Search terms` list
 
 You can clear all search terms or only selected search terms from the search terms list using the context menu. Please note that the `All` entry at the top will always be there and trying to remove it by clearing all search terms will put it back.
+
+### Sidebar: `Action` filters
+
+This list has filters that correspond to the `Action` column to make it easier to change how packages are marked or to simply view them, kinda like Synaptic.
 
 ### Search options
 
