@@ -1,7 +1,7 @@
 If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word wrap.
 
 
-guinget -- Version 0.2 Alpha -- 3/11/2021 (MM/DD/YYYY).
+guinget -- Version 0.2 Alpha -- 3/10/2021 (MM/DD/YYYY).
 
 If you have any trouble, you might be able to find an answer in the documentation. It's linked at the end of this readme file. If not, you can submit a bug report at the "Report a problem" link at the end of this readme file. Your report will be labeled by the developers accordingly in a reasonable amount of time.
 
@@ -16,19 +16,19 @@ https://www.howtogeek.com/67241/htg-explains-what-are-md5-sha-1-hashes-and-how-d
 The PowerShell method can be used for all files listed below, though you'll have to switch out the filenames.
 
 SHA-256 sum for "guinget.exe" in the archive:
-51C15C3CDC76FB34804CE5BBE24DA471530EA4655A968922ADE42DA1E26CA860
+24398F2E496AAD578881C1362D35F9BDC19FE58794FE348E5BD832A7DC58B8CE
 
 SHA-256 sum for "lib\libguinget.dll" in the archive:
-E30396C6CE3D84F1746F9C54E72CAD3DAE5B03C63842E7922922680AD6208210
+46A29795596A87FB6799E427149EC770A29B9C227796B3747DCEA717F69738EF
 
 SHA-256 sum for "lib\libscrollswitchtabs.dll" in the archive:
 3F2741B885A3BDD03422E0346542BF4D13384A5287FD3BAF94D05C964ABECB92
 
 SHA-256 sum for "update-manifests.bat" in the archive:
-633D1BCDB8663C26EE122A3FFB3E3DDC7356775D2F96EF3AF993AA87ED55E2F7
+522392D92BC5E6AEE85DADCBB2D4A3F6A84BD3163A42DC72B7ABDCC7CA37CDE6
 
 SHA-256 sum for "lib\YamlDotNet.dll" in the archive:
-D71FD1DBB96AD0BB78EB40F79228B2A4D1DF045C33FA7A5F9FDE93D433FD700A
+23710F6413E488866B37E82C61943B1381126FBE52340B827B53D68C2B33112C
 
 The rest of the libraries in the "lib" folder are from Microsoft.Data.Sqlite and I don't want to list them all:
 https://www.nuget.org/packages/Microsoft.Data.Sqlite/
