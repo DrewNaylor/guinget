@@ -139,7 +139,7 @@ If `list` and `upgrade` are available in winget and they're set to on, you can u
 
 By default, `View>Installed packages...` opens the `Apps & features` Settings app page if possible, or the Control Panel's `Programs and Features` page if it's not. You can change this to a few different things using `Tools>Options...>Apps and UIs`. The available choices in the `Installed packages` dropdown are as follows:
 
-- `Settings app: Apps & features (default)
+- `Settings app: Apps & features (default)`
 - `CMD: winget list`
 - `Control Panel: Programs and Features`
 
