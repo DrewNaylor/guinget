@@ -51,11 +51,7 @@ Please note this isn't available if more than one package is selected at once.
 ## Marking a package
 
 Marking a package involves doing one of the following actions:
-- Double-click or right-click on a selected package and click one of these items:
-  - `Action: Install`
-  - `Action: Uninstall`
-  - `Action: Upgrade`
-- Open the `Selected packages` menu and click one of these:
+- Open the `Selected packages` menu or Double-click or right-click on a selected package and click one of these:
   - `Action: Install`
   - `Action: Uninstall`
   - `Action: Upgrade` (unfortunately there's no better character to have the accelerator on for "upgrade" than the letter "p" as far as I know)
@@ -63,7 +59,10 @@ Marking a package involves doing one of the following actions:
   - `Ctrl+I` for install (capital "i", in case it looks similar to a lowercase "L")
   - `Ctrl+U` for uninstall
   - `Ctrl+P` for upgrade
-- Open the combobox dropdown menu for the selected package in the `Action` column and use one of the items in the list (may take a few clicks to open the dropdown)
+- Open the combobox dropdown menu for the selected package in the `Action` column (may take a few clicks to open the dropdown) and use one of these items in the list:
+  - `Install`
+  - `Uninstall`
+  - `Upgrade`
 - Move the cell selection over to the `Action` column with the arrow keys then press `spacebar`, then use the arrow keys to select `Install`, `Uninstall`, or `Upgrade`. Pressing `Enter` will move to the next package row.
 
 This also applies to marking a package for uninstallation (once that's available), or for marking a package as one you want to ignore (ignoring is `Do nothing`).
