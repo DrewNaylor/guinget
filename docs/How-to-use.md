@@ -214,6 +214,10 @@ Some maintenance-related buttons are available under `Tools>Options...>Maintenan
   
 Eventually this tab will be moved to a sources manager app. If a particular folder doesn't exist, the button to delete it won't be available.
 
+## Running CMD
+
+In case there's something you need to drop into a terminal for, you can do it with `File>Run CMD`. There's also a way to run it elevated using `File>Run CMD elevated (UAC)`. There are keyboard shortcuts for both, the non-elevated one being `Ctrl+Alt+T` and the elevated one being `Ctrl+Alt+Shift+T`.
+
 ## Switch tabs with mouse scroll wheel
 
 You can switch tab control tabs like the ones in the `Options` window using the mouse scroll wheel, just like in many Linux applications. This is provided by [libscrollswitchtabs](https://drew-naylor.com/drews-libs/libscrollswitchtabs-how-to-use.html).
