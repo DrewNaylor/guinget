@@ -159,6 +159,8 @@ Please note that the `winget list` option requires the `list` experimental featu
 
 You can import and export the list of packages from the respective menu items under `File` if `import` and/or `export` are available in winget and set to on if they're not default features. `Ctrl+O` and `Ctrl+S` are also available as keyboard shortcuts for import and export, respectively.
 
+Support for configuring which (if any) import and export flags are passed to winget will be added in the next version of guinget.
+
 ## Searching and filtering for packages
 
 You can search for packages using the search bar in the toolbar at the top of the window. This only filters the `Package` column for now, but other columns are planned to be supported. To start a search, do one of the following:
