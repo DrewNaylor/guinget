@@ -82,6 +82,8 @@ This also applies to marking a package as one you want to ignore (ignoring is `D
 
 Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
 
+Please be aware that using `Uninstall` and `Upgrade` may require the corresponding experimental features to be on in winget if they're not already available by default.
+
 ### Marking multiple packages
 
 To mark multiple packages, use these instructions:
@@ -128,6 +130,20 @@ The following `Apply changes` options are available:
 There are also two buttons at the bottom of the mini-form: `Defaults` and `Close`. `Close` just closes the window and `Defaults` sets all the checkboxes back to default. Please be aware that the settings are automatically saved after resetting the checkboxes, as this window is intended to have the option to leave it open when applying changes and stuff, unlike the regular `Options` window.
 
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
+
+## Showing available upgrades
+
+If `list` and `upgrade` are available in winget and they're set to on, you can use `View>Available upgrades...` to run `winget upgrade` and display packages that can be updated. For the moment, Store apps aren't supported in guinget, so you'll have to upgrade those manually through a command line or the Store itself.
+
+## Showing installed packages
+
+By default, `View>Installed packages...` opens the `Apps & features` Settings app page if possible, or the Control Panel's `Programs and Features` page if it's not. You can change this to a few different things using `Tools>Options...>Apps and UIs`. The available choices in the `Installed packages` dropdown are as follows:
+
+- `Settings app: Apps & features (default)
+- `CMD: winget list`
+- `Control Panel: Programs and Features`
+
+Please note that the `winget list` option requires the `list` experimental feature to be set to on in winget's config file if it's not already a default feature.
 
 ## Searching and filtering for packages
 
