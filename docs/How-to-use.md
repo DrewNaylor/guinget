@@ -74,7 +74,7 @@ Please note this isn't available if more than one package is selected at once.
 ## Marking a package
 
 Marking a package involves doing one of the following actions:
-- Open the `Selected packages` menu or Double-click or right-click on a selected package and click one of these:
+- Open the `Selected packages` menu or double-click or right-click on a selected package and click one of these:
   - `Action: Install`
   - `Action: Uninstall`
   - `Action: Upgrade` (unfortunately there's no better character to have the accelerator on for "upgrade" than the letter "p" as far as I know)
