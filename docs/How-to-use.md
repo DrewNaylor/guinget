@@ -145,6 +145,10 @@ By default, `View>Installed packages...` opens the `Apps & features` Settings ap
 
 Please note that the `winget list` option requires the `list` experimental feature to be set to on in winget's config file if it's not already a default feature.
 
+## Importing and exporting packages
+
+You can import and export the list of packages from the respective menu items under `File` if `import` and/or `export` are available in winget and set to on if they're not default features.
+
 ## Searching and filtering for packages
 
 You can search for packages using the search bar in the toolbar at the top of the window. This only filters the `Package` column for now, but other columns are planned to be supported. To start a search, do one of the following:
