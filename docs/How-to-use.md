@@ -139,7 +139,7 @@ You can double-click or press `Enter` on any of the items in the various sidebar
 
 Double-clicking/pressing `Enter` on the `All` entry at the top of the sidebar search terms list/filters lists returns you to an unfiltered list.
 
-###Sidebar: `Search terms` list
+### Sidebar: `Search terms` list
 
 You can clear all search terms or only selected search terms from the search terms list using the context menu. Please note that the `All` entry at the top will always be there and trying to remove it by clearing all search terms will put it back.
 
