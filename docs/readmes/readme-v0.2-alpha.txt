@@ -111,7 +111,7 @@ To run guinget, your computer requires the following:
   
 - Note that you might have problems with running this on corporate computers. The ClickOnce security settings are disabled in guinget due to Visual Studio building problems, but VS2019 doesn't seem to have the setting that tends to cause issues anyway. There may also be a warning message on first start about Windows Defender SmartScreen saying it "prevented an unrecognized app from starting. Running this app might put your PC at risk." You can click the "More info" link, then the "Run anyway" button if you want to use it, though this may not be allowed on corporate networks.
 
-- Disk space, RAM, and CPU frequency minimum requirements are based on the .NET Framework 4.8 requirements. guinget itself is quite small, although some packages may take up more space.
+- Disk space, RAM, and CPU frequency minimum requirements are based on the .NET Framework 4.8 requirements. guinget itself is quite small, although some packages and the cache may take up more space.
 
 ------------
 HOW TO USE
