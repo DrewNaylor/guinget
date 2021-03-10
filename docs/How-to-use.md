@@ -172,14 +172,14 @@ If something breaks, you can use the `Defaults` button in the bottom-left corner
 
 ## Switch tabs with mouse scroll wheel
 
-You can switch tab control tabs like the ones in the `Options` window using the mouse scroll wheel, just like many Linux applications. This is provided by [libscrollswitchtabs](https://drew-naylor.com/drews-libs/libscrollswitchtabs-how-to-use.html).
+You can switch tab control tabs like the ones in the `Options` window using the mouse scroll wheel, just like in many Linux applications. This is provided by [libscrollswitchtabs](https://drew-naylor.com/drews-libs/libscrollswitchtabs-how-to-use.html).
 
 ## Showing unfinished controls
 
 Controls that don't yet have their features implemented are hidden by default, but you can show them if you wish. Here's how to do this:
 1. Uncheck `Hide unfinished controls and experimental stuff` from `Tools>Options...>Experimental`.
-2. Reopen the tab.
+2. Click `OK`.
 
-You may need to restart guinget for this change to take full effect, though unchecking it should show everything without requiring a restart.
+You may need to restart guinget for this change to take full effect.
 
-Version 0.1.3 also hides [experimental options](experimental-options) behind this feature, so you'll have to show experimental controls if you want to change experimental options. Please note that experimental options will stay active even if the controls are hidden again.
+Version 0.1.3 and newer also hides [experimental options](experimental-options) behind this feature, so you'll have to show experimental controls if you want to change experimental options. Please note that experimental options will stay active even if the controls are hidden again.
