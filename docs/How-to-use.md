@@ -93,19 +93,28 @@ If you have issues with winget while applying changes, you can reset the status 
 
 In case there's a package you forgot was marked or had its status reset and you don't want to apply changes to that package again without unmarking it or installing packages individually, you can right-click on it and choose `Skip selected package`. Any package with the `Current status` of `Skip` will be ignored until the `Apply changes` window is re-opened or the status for that package is reset.
 
-### Installation options
+### Apply changes options
 
-The following installation options are available:
+Options for `Apply changes` are accessible from both `Tools>Options...>Apply changes` and `Package list>Apply changes>Options... (linklabel)>Options: Apply Changes`. All the checkboxes that were in the `Apply changes` window are now in the `Options: Apply Changes` mini-form, and it now duplicates the `Apply changes` tab in the `Options` window for the most part.
+
+The following `Apply changes` options are available:
 - Running interactively: Check the `Run interactively (winget -i)` checkbox to have winget give you an interactive installer instead of an automated one. Even though this is usually used for installers, it should also work for uninstallers. Upgrades should work ok, too.
 - Elevated winget: check the `Elevate winget with UAC` checkbox to run winget as an administrator. This may help for some packages that complain about not having permissions when installing them. 
   - Typically it's used in case you usually run Windows from a standard/limited user account and have an administrator account for system modification and application installation. 
   - Please note that some installations of Windows might not be compatible with this option as it sometimes says it can't run winget if it's started from an elevated CMD. The issue seems to be that it can have trouble running APPX/MSIX packages elevated.
   - Since this is one of the only reasons winget would need to be run elevated, **it's not recommended to run guinget as administrator as of version 0.1.3**.
+- Specify version number...
+  - `When installing`
+  - `When uninstalling`
+  - `When upgrading`
+  - Note: Not specifying a version number will just use the latest version according to winget. You may want to use this when installing, but maybe not when upgrading or uninstalling as that may cause issues.
+- Automatically open the mini-form
+  - Mini-form text: `Automatically open this window when the Apply Changes window is opened`
+  - Options window text: `Automatically open the mini Options window when the Apply Changes window is opened`
+  
+There are also two buttons at the bottom of the mini-form: `Defaults` and `Close`. `Close` just closes the window and `Defaults` sets all the checkboxes back to default. Please be aware that the settings are automatically saved after resetting the checkboxes, as this window is intended to have the option to leave it open when applying changes and stuff, unlike the regular `Options` window.
 
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
-Additionally, some options may also apply to actions like uninstallation.
-
-Installation options can also be changed from `Tools>Options...>Apply Changes`. This tab will have slightly more detailed names for the options, but they're similar to the equivalent ones in the `Apply changes` window. In some cases, this will be the only place to change certain options, but a link will be added to the `Apply changes` window to open this tab if that's ever the case.
 
 ## Searching for packages
 
