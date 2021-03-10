@@ -27,6 +27,19 @@ Once you've started the update, just wait for it to complete, and try again if t
 
 Loading the package list and details will take a bit and may lock up slightly on slower systems, such as virtual machines. Additionally, please be aware that the main window cannot be moved while loading the package list and details, though this is something I want to allow.
 
+### Refresh cache options
+
+Some options are available to modify the behavior when refreshing the cache. They're listed below and accessible from `Tools>Options...>Refresh Cache`.
+
+- `Delete temporary files after cache update` checkbox
+  - Temporary files are always deleted before refreshing the cache.
+- `Update and load package list from winget's default community database` checkbox
+  - This will ensure guinget only displays packages winget's default source knows about and may be faster in some cases.
+  - Details will still be loaded from manifests.
+  - `Load only the latest version of each package` checkbox
+    - Some packages may display a version number that's not really the latest version. Not sure how to fix this at the moment.
+	- Requires loading from the community database checkbox to be checked.
+
 ### Updating winget sources
 
 Sometimes winget's sources will be out of date when you try to install something (even though it should automatically update before installation). If that's the case, you can update winget's sources without dropping into CMD using `Package list>Update winget sources`. This will run `winget source update`.
