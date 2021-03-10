@@ -8,7 +8,9 @@ This guide is up-to-date as of version 0.2. You can get here at any time from `H
 
 ## Running guinget as administrator
 
-Please don't run guinget as administrator in version 0.1.3 or higher, as winget seems to have an issue updating its sources when running elevated (which is what guinget does if guinget itself is elevated). If you need to install a package with winget elevated, please use the `Elevate winget (UAC)` checkbox in the `Apply changes` window as described in the `Installation options` section below. Be sure to use the `Update winget sources` menu item described in the `Updating winget sources` section below if winget complains that it can't find that package/package version, then try installing that package again.
+Please don't run guinget as administrator in version 0.1.3 or higher, as winget seems to have an issue updating its sources when running elevated from an account that's not marked as `Administrator` in the `Settings` app (which is what guinget does if guinget itself is elevated). If you need to install a package with winget elevated (this sometimes seems to be necessary even if your account is an `Administrator`), please use the `Elevate winget with UAC` checkbox in the `Options: Apply Changes` window accessible from the `Options...` link label in the bottom-left corner of the `Apply changes` window as described in the `Installation options` section below. Be sure to use the `Update winget sources` menu item described in the `Updating winget sources` section below if winget complains that it can't find that package/package version, then try installing that package again.
+
+Sometimes winget won't let you run it elevated from a non-`Administrator` account, so you'll just have to either give yourself temporary permissions to install certain packages that require elevation, or log into your `Administrator` account for those packages. Most people don't run Windows like this, but it's safer.
 
 Hopefully someday this won't be a problem, but it will be until then.
 
