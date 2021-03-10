@@ -8,6 +8,7 @@ Not associated with the Synaptic project, either.
 If you installed winget in a regular user account, you may need to re-install it in an account with Admin permissions before installing guinget or any other packages that use Inno Setup installers. Be sure to update winget's sources before logging off the Admin account and back into your regular account, or winget's sources cache may claim it's corrupted when trying to use it in an Admin command prompt in your regular account.~~<br>
 This may no longer be necessary, at least on the latest update for Windows 10 2004. The purpose for this text was to say that winget doesn't properly elevate Inno Setup installers so you'd have to install them from an elevated CMD, but it seems to do just fine now. In fact, winget doesn't like to run elevated on 2004 from a limited account anymore, but at least it usually elevates installers. Whether this affects other versions of Windows 10 or if it's a bug are uncertain, but 1909 doesn't seem to have this issue.<br>
 Update 1-18-2021: It appears this bug affects applications installed via APPX/MSIX packages in general rather than just winget. This is confirmed by trying to run Windows Terminal from an elevated CMD prompt inside a "limited" account. The thing about it working with Inno Setup installers just fine may also be incorrect based on newer testing.
+Update 3-10-2021: Versions of Windows 10 other than 2004 appear to be affected sometimes. Not sure what causes it.
 
 ## Project Info
 
@@ -25,7 +26,7 @@ There's a [project roadmap](https://drew-naylor.com/guinget/Project-roadmap) ava
 
 ## Installation and Usage
 
-You can install guinget by running `winget install guinget` in an elevated CMD/PowerShell window (just use a regular CMD window on 2004 if elevating it doesn't work), or by using an installer attached to the [latest release](https://github.com/DrewNaylor/guinget/releases/latest). Please note that it may take a few days for new versions to be published to winget, so the Releases page is the fastest way to get new versions.
+You can install guinget by running `winget install guinget` in an elevated CMD/PowerShell window (just use a regular CMD window if elevating it doesn't work), or by using an installer attached to the [latest release](https://github.com/DrewNaylor/guinget/releases/latest). Please note that it may take a few days for new versions to be published to winget, so the Releases page is the fastest way to get new versions.
 
 There's [a video showing how to install and use guinget](https://youtu.be/t2OhzNE4yj0), if you wish to watch it.
 
