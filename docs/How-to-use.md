@@ -147,7 +147,7 @@ Please note that the `winget list` option requires the `list` experimental featu
 
 ## Importing and exporting packages
 
-You can import and export the list of packages from the respective menu items under `File` if `import` and/or `export` are available in winget and set to on if they're not default features.
+You can import and export the list of packages from the respective menu items under `File` if `import` and/or `export` are available in winget and set to on if they're not default features. `Ctrl+O` and `Ctrl+S` are also available as keyboard shortcuts for import and export, respectively.
 
 ## Searching and filtering for packages
 
