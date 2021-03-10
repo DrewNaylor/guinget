@@ -136,7 +136,7 @@ The following `Apply changes` options are available:
     3. Log back into your regular account.
     4. Download and install winget in your regular account (if you don't, it won't be able to run for some reason).
     5. Make sure winget still runs in both an elevated and non-elevated CMD window (just `winget` should be enough).
-    6. Update winget's sources, perhaps using `Package list>Update winget sources`, or manually type it in CMD. For some reason, winget doesn't update its sources if it's running elevated from a non-administrator account.
+    6. Update winget's sources, perhaps using `Package list>Update winget sources`, or manually type `winget source update` in CMD. For some reason, winget doesn't update its sources if it's running elevated from a non-administrator account.
     7. Now you can use the `Elevate winget (UAC)` checkbox.
   - Since this is one of the only reasons winget would need to be run elevated, **it's not recommended to run guinget as administrator as of version 0.1.3**.
 - Specify version number...
