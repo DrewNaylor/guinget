@@ -201,14 +201,14 @@ Partial Class aaformMainWindow
         'zFileMenuSeparator2
         '
         Me.zFileMenuSeparator2.Name = "zFileMenuSeparator2"
-        Me.zFileMenuSeparator2.Size = New System.Drawing.Size(204, 6)
+        Me.zFileMenuSeparator2.Size = New System.Drawing.Size(299, 6)
         '
         'RunCMDToolStripMenuItem
         '
         Me.RunCMDToolStripMenuItem.Name = "RunCMDToolStripMenuItem"
         Me.RunCMDToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
             Or System.Windows.Forms.Keys.T), System.Windows.Forms.Keys)
-        Me.RunCMDToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.RunCMDToolStripMenuItem.Size = New System.Drawing.Size(302, 22)
         Me.RunCMDToolStripMenuItem.Text = "Run &CMD"
         '
         'RunCMDElevatedToolStripMenuItem
@@ -223,13 +223,13 @@ Partial Class aaformMainWindow
         'zFileMenuSeparator
         '
         Me.zFileMenuSeparator.Name = "zFileMenuSeparator"
-        Me.zFileMenuSeparator.Size = New System.Drawing.Size(204, 6)
+        Me.zFileMenuSeparator.Size = New System.Drawing.Size(299, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(302, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ViewToolStripMenuItem
@@ -742,6 +742,7 @@ Partial Class aaformMainWindow
         'toolstriptextboxSearch
         '
         Me.toolstriptextboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.toolstriptextboxSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.toolstriptextboxSearch.Name = "toolstriptextboxSearch"
         Me.toolstriptextboxSearch.Size = New System.Drawing.Size(200, 25)
         '

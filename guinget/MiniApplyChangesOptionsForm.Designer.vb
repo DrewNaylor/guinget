@@ -43,7 +43,7 @@ Partial Class MiniApplyChangesOptionsForm
         Me.labelWhyElevate.AutoSize = True
         Me.labelWhyElevate.Location = New System.Drawing.Point(20, 43)
         Me.labelWhyElevate.Name = "labelWhyElevate"
-        Me.labelWhyElevate.Size = New System.Drawing.Size(287, 65)
+        Me.labelWhyElevate.Size = New System.Drawing.Size(292, 65)
         Me.labelWhyElevate.TabIndex = 5
         Me.labelWhyElevate.Text = resources.GetString("labelWhyElevate.Text")
         '
