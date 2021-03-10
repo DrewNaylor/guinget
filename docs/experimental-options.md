@@ -18,36 +18,6 @@ If unchecked, these options and other unfinished controls will remain visible ev
 
 Defaults to `True`/checked.
 
-## Update and load package list from winget's default community database
-
-Config file setting name:
-`LoadFromSqliteDb`
-
-Description:
-This will ensure guinget only displays packages winget's default source knows about and may be faster in some cases. Details will still be loaded from manifests.
-
-Notes:
-- The package list will be loaded using the same SQLite database as winget uses by default, located at https://winget.azureedge.net/cache/source.msix. This still relies on the manifests to get the package descriptions as those aren't directly available in the database, though.
-- Each package version is listed as a separate entry even when loading from the database, though using the database will make sure only packages winget can display right now are shown.
-- Some packages may be in a different order compared to loading all the manifests at once, but this shouldn't be much of an issue, and clicking the Package column header should sort them as expected.
-- Loading the descriptions may still take a bit as we have to take the package ID and version number and figure out where its manifest is, instead of just grabbing all the manifests and loading from them. In case we can't find a package's manifest, we'll just look through all the manifests until we find the right one. Figuring out where each package's manifest is stored is done in three ways:
-  - If replacing all instances of "." in the package ID and appending the package version to the end of the path along with ".yaml" finds a file that exists, then that's great and we'll use that file. This is the fastest method.
-  - If that doesn't work, then we only replace the first instance of the "." in the ID and try again with the version thing. This should be fast, too.
-  - If neither of those work, then we fall back to looking for manifests with the package's version number in their filename, opening each file match we find, checking the package ID in the file, and if it's a match, we use it. Otherwise we keep going until finding the manifest. At the moment, this doesn't check to make sure that a file exists, so it may crash if it can't find a matching manifest. The Visual Studio profiler says there's a lot of garbage collection going on as well, so this will probably need to be changed to something like Using to keep automatic garbage collection to a minimum.
-- You may need to manually delete the package list cache located in `%AppData%\winget-frontends\source` before using the database as it may get confused if the manifest directory (`winget-pkgs`) exists but the database one (`winget-db`) doesn't. This'll be changed when loading from the database is officially supported.
-
-Defaults to `False`/unchecked.
-
-## Load only the latest version of each package
-
-Config file setting name:
-`OnlyDisplayLatestPackageVersion`
-
-Description:
-Some packages may display a version number that's not really the latest version. Not sure how to fix this at the moment. Requires loading from the community database checkbox to be checked.
-
-Defaults to `False`/unchecked.
-
 ## Use 7-Zip to extract manifests and database
 
 Config file setting name:
@@ -93,31 +63,12 @@ During testing on my laptop, using 7-Zip and Robocopy reduced the cache updating
 
 Closing guinget before the cache update is completed if using Robocopy and/or 7-Zip will leave those programs open and you'll have to close them manually. This should be changed in a future version to automatically close them when closing guinget.
 
-## Search when typing
-
-Config file setting name:
-`SearchWhenTyping`
-
-Instead of requiring you to press `Enter` or click `Search` on the toolbar, you can just wait a bit (325 milliseconds by default) for search to run automatically. This feature would probably have been a regular, non-experimental one had it been implemented sooner and not within a week of the expected release phase.
-
-Defaults to `False`/unchecked.
-
-### Wait time (ms)
-
-Config file setting name:
-`SearchWhenTypingTimerInterval`
-
-This is how long it'll wait after you finish typing before running a search (in milliseconds).<br>
-Minimum value is `1`, and maximum value is `9999`.
-
-Defaults to `325`.
-
 ## HiDPI Mode
 
 Config file setting name:
 `HiDPIMode`
 
-For now, only doubles the height of items in the package list.<br>
+For now, only doubles the height of items in the package list and the `Apply changes` window.<br>
 May eventually be expanded to cover the rest of the controls that are difficult to use on HiDPI devices.
 
 Defaults to `False`/unchecked.
