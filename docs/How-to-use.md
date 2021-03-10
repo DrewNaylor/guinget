@@ -72,11 +72,11 @@ Using the arrow keys to move the cell selection may not work sometimes, as I had
 ### Marking multiple packages
 
 To mark multiple packages, use these instructions:
-1. First, select them with the mouse (using `Shift` and `Ctrl` like you would for a list of files) or select them using `Shift` and the arrow keys.
+1. First, select them with the mouse (using `Shift` and `Ctrl` like you would for a list of files) or select them using `Shift` and the arrow keys. You might be able to use `Ctrl` and `spacebar` with the arrow keys, but that's untested.
 2. After selecting the packages you want to mark, do one of the following to mark them as you wish:
   - Right-click on one of the selected packages and use `Action: (action)` menu items
-  - Use the `Selected package>Action: (action)` menu items
-  - Press `Ctrl+I` to mark them all for install or `Ctrl+D` to unmark/ignore them
+  - Use the `Selected packages>Action: (action)` menu items
+  - Press keyboard shortcuts to mark them as desired
   
 Please refer to the `Marking a package` section for more details.
 
@@ -87,7 +87,7 @@ Marked changes are applied using the `Apply changes` dialog, accessible through 
 - `Package list>Apply changes...`
 - Pressing `Ctrl+H` 
 
-Using the `Confirm changes` button will bulk-apply all listed changes. Alternatively, you can apply one change at a time by double-clicking or pressing `Enter` on each package in the list to install (or uninstall, when that's available) it when ready.
+Using the `Confirm changes` button will bulk-apply all listed changes. Alternatively, you can apply one change at a time by double-clicking or pressing `Enter` on each package in the list to install, uninstall, or upgrade it when ready.
 
 If you have issues with winget while applying changes, you can close and reopen the `Apply changes` window to reset the controls and packages to the `Ready` state to try again, perhaps with different options as described below.
 
