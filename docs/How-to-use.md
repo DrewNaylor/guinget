@@ -56,6 +56,8 @@ Sometimes winget's sources will be out of date when you try to install something
 
 After it's finished, the window will stay open and you can close it. Currently it stays open just in case there's a problem that has to be fixed manually.
 
+An elevated winget session does pick up the source updates done from a non-elevated user account if you have a standard/limited account you usually use and a separate one for administrative activity, so it should work fine if you use that menu item then install a package with winget elevated by guinget.
+
 ## Viewing package details
 
 In addition to a few details in the package list, full package details are displayed in the textbox below the package list. By default, the last package selected will have its details shown, but you can change it so only the first package selected (when using multi-select) has its details shown by unchecking `Show last-selected package details when selecting multiple packages` in `Tools>Options...>Package Details`.
@@ -210,6 +212,8 @@ The available options are as follows:
 ## Edit winget settings
 
 You can edit winget's settings using `Tools>Edit winget settings`. If you wish to edit winget's settings for an administrator account, use `Tools>Edit winget settings as admin (UAC)` instead. Both will run `winget settings`, with the second one running it elevated.
+
+If the default JSON file type editor differs between your limited account and the administrator account, the settings file will open in different programs when editing winget settings as admin. Changing the default when logged into the other account will change it in this situation as well.
 
 ## Resetting guinget's options to default
 
