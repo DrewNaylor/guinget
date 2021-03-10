@@ -89,7 +89,9 @@ Marked changes are applied using the `Apply changes` dialog, accessible through 
 
 Using the `Confirm changes` button will bulk-apply all listed changes. Alternatively, you can apply one change at a time by double-clicking or pressing `Enter` on each package in the list to install, uninstall, or upgrade it when ready.
 
-If you have issues with winget while applying changes, you can close and reopen the `Apply changes` window to reset the controls and packages to the `Ready` state to try again, perhaps with different options as described below.
+If you have issues with winget while applying changes, you can reset the status of some or all the packages by right-clicking on the list and selecting either `Reset status for selected package` or `Reset status for all packages` to reset the controls and packages to the `Ready` state to try again, perhaps with different options as described below.
+
+In case there's a package you forgot was marked or had its status reset and you don't want to apply changes to that package again without unmarking it or installing packages individually, you can right-click on it and choose `Skip selected package`. Any package with the `Current status` of `Skip` will be ignored until the `Apply changes` window is re-opened or the status for that package is reset.
 
 ### Installation options
 
