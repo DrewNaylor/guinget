@@ -1,7 +1,7 @@
 If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word wrap.
 
 
-guinget -- Version 0.1.3 Alpha -- 12/1/2020 (MM/DD/YYYY).
+guinget -- Version 0.2 Alpha -- 3/11/2021 (MM/DD/YYYY).
 
 If you have any trouble, you might be able to find an answer in the documentation. It's linked at the end of this readme file. If not, you can submit a bug report at the "Report a problem" link at the end of this readme file. Your report will be labeled by the developers accordingly in a reasonable amount of time.
 
@@ -38,11 +38,11 @@ https://www.nuget.org/packages/Microsoft.Data.Sqlite/
 GENERAL NOTES
 ~~~~~~~~~~~~~~~~
 
---> Some packages like CrystalDiskMark and LibreOffice may require administrative permissions to install, so you'll have to check the "Elevate winget (UAC)" checkbox in the "Apply changes" window before confirming changes. Please don't run guinget itself as an administrator for versions 0.1.3 and above.
+--> Some packages like CrystalDiskMark and LibreOffice may require administrative permissions to install, so you'll have to check the "Elevate winget with UAC" checkbox in the "Apply changes" window's mini-form version of Options accessible from the "Options..." linklabel before confirming changes. Please don't run guinget itself as an administrator for versions 0.1.3 and above.
 
 Sometimes you'll have to update winget's sources as well since winget doesn't like updating its sources while elevated from a non-administrator account, so you can use "Package list>Update winget sources", or run "winget source update".
 
-Windows 10 version 2004 might have issues with elevating winget, so in that case you'll have to hope it automatically elevates package installers, but I've had a problem with that in the past, and I'm not entirely sure how to fix it.
+Some installations of Windows 10 might have issues with elevating winget, so in that case you'll have to hope it automatically elevates package installers, but I've had a problem with that in the past, and I'm not entirely sure how to fix it without just making yourself an Administrator.
 
 --> Before running guinget, please extract the entire archive to an easy-to-access location. It won't work correctly if it's temporarily extracted without its config file ("guinget.exe.config") and helper libraries (everything in the "lib" folder). You don't have to do this if you used the installer.
 
@@ -73,6 +73,10 @@ KNOWN ISSUES
 - Selecting all packages with Ctrl+A while searching will select every package, even the ones that aren't visible. (issue #13 https://github.com/DrewNaylor/guinget/issues/13)
 - Applying changes with too many packages at once makes guinget lock up. (issue #57 https://github.com/DrewNaylor/guinget/issues/57)
 - When displaying only the latest version of a package, some of them aren't really the latest version as shown in winget. (issue #63 https://github.com/DrewNaylor/guinget/issues/63)
+- The "Action" column shrinks for a second the first time you mark a package in a session. (issue #94 https://github.com/DrewNaylor/guinget/issues/94)
+- Running CMD from guinget on 64-bit Windows causes filesystem redirection to occur, resulting in anything that has to be launched from the "real" System32 not working correctly. (issue #98 https://github.com/DrewNaylor/guinget/issues/98)
+- Shift+clicking makes it show the first-clicked item if the selection goes above the first-selected item. (issue #99 https://github.com/DrewNaylor/guinget/issues/99)
+- If the Apply changes window is too low when you open the mini-form, the mini-form will be offscreen. (issue #101 https://github.com/DrewNaylor/guinget/issues/101)
 
 See all known issues: https://github.com/DrewNaylor/guinget/labels/known%20issue
 
