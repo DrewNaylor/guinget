@@ -199,6 +199,17 @@ You can edit winget's settings using `Tools>Edit winget settings`. If you wish t
 
 If something breaks, you can use the `Defaults` button in the bottom-left corner of the `Options` window to reset everything, then click `OK` to save the default values. Some options like the one to hide unfinished controls and experimental stuff may require guinget to be restarted to take full effect. Please be aware that if the guinget cache is what's broken, you can use the `Delete cache files in Local AppData` button under `Tools>Options...>Maintenance`. However, if winget's cache is broken, that may require resetting its sources from a command-line since there's no option for that in guinget yet.
 
+## Maintenance
+
+Some maintenance-related buttons are available under `Tools>Options...>Maintenance`:
+
+- `Delete cache files in Roaming`
+  - Older versions of guinget stored their cache files in %AppData% instead of %LocalAppData%. You can delete them with this button, if you wish.
+- `Delete cache files in Local AppData`
+  - You can delete the cache files guinget uses with this button if you want to have a clean uninstall or if you're having issues. These files are stored in %LocalAppData%.
+  
+Eventually this tab will be moved to a sources manager app. If a particular folder doesn't exist, the button to delete it won't be available.
+
 ## Switch tabs with mouse scroll wheel
 
 You can switch tab control tabs like the ones in the `Options` window using the mouse scroll wheel, just like in many Linux applications. This is provided by [libscrollswitchtabs](https://drew-naylor.com/drews-libs/libscrollswitchtabs-how-to-use.html).
