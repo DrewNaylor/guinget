@@ -127,7 +127,7 @@ A more-detailed usage guide is available in "docs/How to use guinget.html".
 
 4. Wait until the package list cache has been updated and the package details have been loaded. This may take a bit.
 
-5. Mark the packages as you wish by right-clicking or double-clicking on them and selecting what you want them to be marked as using the "Action: (action)" items (either install or "do nothing"/ignore for now). For example, to mark a package to install, double-click on it and select "Action: Install".
+5. Mark the packages as you wish by right-clicking or double-clicking on them and selecting what you want them to be marked as using the "Action: (action)" items ("do nothing"/ignore, install, uninstall, or upgrade). For example, to mark a package to install, double-click on it and select "Action: Install".
 
 You can also mark packages from the "Selected packages" menu, or by opening the package's combobox/dropdown in the "Action" column (may require a few clicks). This combobox/dropdown can also be activated by moving over to it with the arrow keys and pressing "space", though sometimes I have a bit of issue with this.
 
@@ -144,7 +144,7 @@ By default, searches are re-done after updating the package list, although you c
 
 6. Once you've marked your packages, you can apply them by opening the "Apply changes" dialog, either from the toolbar or from the "Package list" menu.
 
-7. guinget supports batch installs, so you can just click the "Confirm changes" button when ready. If you want to install packages one at a time, either press "Enter" or double-click on each package entry in the list when you want to start installing it.
+7. guinget supports batch processing, so you can just click the "Confirm changes" button when ready. If you want to process packages one at a time, either press "Enter" or double-click on each package entry in the list when you want to start processing it.
 
 ----------------------------------
 CONTACT AND COPYRIGHT/LICENSING
@@ -165,18 +165,19 @@ Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 guinget
-Version 0.1.3.0 Alpha
-Copyright (C) 2020 Drew Naylor. Licensed under Apache License 2.0.
+Version 0.2.0.0 Alpha
+Copyright (C) 2020-2021 Drew Naylor. Licensed under Apache License 2.0.
 
 Unofficial GUI for Microsoft's Windows Package Manager (winget).
 Kinda like Synaptic, but for Windows. Not associated with either
 Microsoft or the Synaptic project. Microsoft does not endorse guinget.
+winget is Copyright (c) Microsoft Corporation. All rights reserved.
 
 You can get the source code for guinget from
 https://github.com/DrewNaylor/guinget
 
 libguinget is used for things like loading the package list and uses the Apache License 2.0.
-libguinget Copyright (C) 2020 Drew Naylor.
+libguinget Copyright (C) 2020-2021 Drew Naylor.
 
 libscrollswitchtabs is part of the drews-libs project and is used for switching tab control tabs using the mouse scroll wheel, just like in many Linux applications.
 libscrollswitchtabs uses the Apace License 2.0 and you can get its source code here:
