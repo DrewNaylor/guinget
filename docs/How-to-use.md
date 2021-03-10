@@ -218,6 +218,8 @@ Eventually this tab will be moved to a sources manager app. If a particular fold
 
 In case there's something you need to drop into a terminal for, you can do it with `File>Run CMD`. There's also a way to run it elevated using `File>Run CMD elevated (UAC)`. There are keyboard shortcuts for both, the non-elevated one being `Ctrl+Alt+T` and the elevated one being `Ctrl+Alt+Shift+T`.
 
+Please be aware that [running CMD from guinget on 64-bit Windows causes filesystem redirection to occur, resulting in anything that has to be launched from the "real" System32 not working correctly](https://github.com/DrewNaylor/guinget/issues/98). This shouldn't impact most people, but it will if you need to run something like SystemPropertiesProtection.exe. The only workaround I can offer is to just run CMD from the Start menu or something else instead. I could tell Windows to run CMD from SysNative, but that doesn't work when running it elevated since it just crashes. A real solution would be to compile a 64-bit version of guinget, but winget doesn't offer separate architectures yet and I don't want people to have to manually install a different version.
+
 ## Switch tabs with mouse scroll wheel
 
 You can switch tab control tabs like the ones in the `Options` window using the mouse scroll wheel, just like in many Linux applications. This is provided by [libscrollswitchtabs](https://drew-naylor.com/drews-libs/libscrollswitchtabs-how-to-use.html).
