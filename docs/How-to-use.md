@@ -129,6 +129,15 @@ The following `Apply changes` options are available:
 - Elevated winget: check the `Elevate winget with UAC` checkbox to run winget as an administrator. This may help for some packages that complain about not having permissions when installing them. 
   - Typically it's used in case you usually run Windows from a standard/limited user account and have an administrator account for system modification and application installation. 
   - Please note that some installations of Windows might not be compatible with this option as it sometimes says it can't run winget if it's started from an elevated CMD. The issue seems to be that it can have trouble running APPX/MSIX packages elevated.
+  - MSIX packages like Windows Terminal might not install properly if your account used for administrative actions is logged out at the moment.
+  - The account used for administrative actions must have winget installed, so what you'll probably have to do is this if it's not already installed:
+    1. Log into your administrator account.
+    2. Download and install winget in your administrator account.
+    3. Log back into your regular account.
+    4. Download and install winget in your regular account (if you don't, it won't be able to run for some reason).
+    5. Make sure winget still runs in both an elevated and non-elevated CMD window (just `winget` should be enough).
+    6. Update winget's sources, perhaps using `Package list>Update winget sources`, or manually type it in CMD. For some reason, winget doesn't update its sources if it's running elevated from a non-administrator account.
+    7. Now you can use the `Elevate winget (UAC)` checkbox.
   - Since this is one of the only reasons winget would need to be run elevated, **it's not recommended to run guinget as administrator as of version 0.1.3**.
 - Specify version number...
   - `When installing`
