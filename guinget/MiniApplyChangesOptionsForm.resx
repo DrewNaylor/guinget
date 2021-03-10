@@ -119,10 +119,10 @@
   </resheader>
   <data name="labelWhyElevate.Text" xml:space="preserve">
     <value>Some packages require winget to be run elevated for them
-to install properly if your account is a limited one.
-This may not work on Windows 10 version 2004 as it
+to install properly, particularly if your account is a limited one.
+This may not work on some Windows installations as it
 might say it couldn't run winget. The issue seems to be that
-it has trouble running APPX/MSIX packages elevated now.</value>
+it can have trouble running APPX/MSIX packages elevated.</value>
   </data>
   <data name="labelAboutNotSpecifyingVersionNumbers.Text" xml:space="preserve">
     <value>Not specifying a version number will just use the latest

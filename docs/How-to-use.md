@@ -99,7 +99,7 @@ The following installation options are available:
 - Running interactively: Check the `Run interactively (winget -i)` checkbox to have winget give you an interactive installer instead of an automated one. Even though this is usually used for installers, it should also work for uninstallers. Upgrades should work ok, too.
 - Elevated winget: check the `Elevate winget with UAC` checkbox to run winget as an administrator. This may help for some packages that complain about not having permissions when installing them. 
   - Typically it's used in case you usually run Windows from a standard/limited user account and have an administrator account for system modification and application installation. 
-  - Please note that some installations of Windows might not be compatible with this option as it sometimes elevates package installers when necessary and says it can't run winget if it's started from an elevated CMD.
+  - Please note that some installations of Windows might not be compatible with this option as it sometimes says it can't run winget if it's started from an elevated CMD. The issue seems to be that it can have trouble running APPX/MSIX packages elevated.
   - Since this is one of the only reasons winget would need to be run elevated, **it's not recommended to run guinget as administrator as of version 0.1.3**.
 
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
