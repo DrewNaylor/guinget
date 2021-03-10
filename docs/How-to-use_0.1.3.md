@@ -1,6 +1,6 @@
 # How to use guinget
 
-[Homepage](https://drew-naylor.com/guinget)
+[Homepage](https://drew-naylor.com/guinget) &bull; [Back to usage guide](https://drew-naylor.com/guinget/How-to-use)
 
 This guide is up-to-date as of version 0.1.3. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
 
