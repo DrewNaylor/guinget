@@ -568,9 +568,14 @@ Public Class PackageListTools
 
         ' If we can't do a simple replacement on each "." in the ID,
         ' we'll have to fall back to the slower method.
-        Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
+        Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Substring(0, 1).ToLowerInvariant & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
         Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\").IndexOf(".") & "\" & ManifestVersion & ".yaml"
-        'MessageBox.Show(QuickPathReplace)
+
+        ' Show the new path.
+        'If ManifestId.StartsWith("Microsoft") Then
+        '    MessageBox.Show(QuickPathReplaceReplaceAllPeriods)
+        'End If
+
         If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
             Return QuickPathReplaceReplaceAllPeriods
 
