@@ -571,12 +571,11 @@ Public Class PackageListTools
         Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
         ' Replacing only the first period uses code based on this:
         ' https://stackoverflow.com/a/5015804
-        Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Insert(ManifestId.IndexOf("."), "\").Remove(ManifestId.IndexOf("."), 1) & "\" & ManifestVersion & ".yaml"
+        Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Remove(ManifestId.IndexOf("."), 1).Insert(ManifestId.IndexOf("."), "\") & "\" & ManifestVersion & ".yaml"
 
         ' Show the new path.
         If ManifestId.ToLowerInvariant.Contains("gitter") Then
             MessageBox.Show(QuickPathReplaceReplaceOnlyFirstPeriod)
-            MessageBox.Show(QuickPathReplaceReplaceAllPeriods)
         End If
 
         If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
