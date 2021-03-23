@@ -574,9 +574,9 @@ Public Class PackageListTools
         Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Remove(ManifestId.IndexOf("."), 1).Insert(ManifestId.IndexOf("."), "\") & "\" & ManifestVersion & ".yaml"
 
         ' Show the new path.
-        If ManifestId.ToLowerInvariant.Contains("gitter") Then
-            MessageBox.Show(QuickPathReplaceReplaceOnlyFirstPeriod)
-        End If
+        'If ManifestId.ToLowerInvariant.Contains("gitter") Then
+        '    MessageBox.Show(QuickPathReplaceReplaceOnlyFirstPeriod)
+        'End If
 
         If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
             Return QuickPathReplaceReplaceAllPeriods
