@@ -581,7 +581,7 @@ Public Class PackageListTools
         If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
             Return QuickPathReplaceReplaceAllPeriods
 
-        ElseIf Not IO.File.Exists(QuickPathReplaceReplaceAllPeriods) And IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
+        ElseIf Not IO.File.Exists(QuickPathReplaceReplaceAllPeriods) AndAlso IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
             ' If we can't do the fastest one, try only replacing the first period.
             Return QuickPathReplaceReplaceOnlyFirstPeriod
 
