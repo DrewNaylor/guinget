@@ -569,12 +569,14 @@ Public Class PackageListTools
         ' If we can't do a simple replacement on each "." in the ID,
         ' we'll have to fall back to the slower method.
         Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Substring(0, 1).ToLowerInvariant & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
-        Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\").IndexOf(".") & "\" & ManifestVersion & ".yaml"
+        ' Replacing only the first period uses code based on this:
+        ' https://stackoverflow.com/a/5015804
+        Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Insert(ManifestId.IndexOf("."), "\").Remove(ManifestId.IndexOf(".")) & "\" & ManifestVersion & ".yaml"
 
         ' Show the new path.
-        'If ManifestId.StartsWith("Microsoft") Then
-        '    MessageBox.Show(QuickPathReplaceReplaceAllPeriods)
-        'End If
+        If ManifestId.ToLowerInvariant.Contains("gitter") Then
+            MessageBox.Show(QuickPathReplaceReplaceOnlyFirstPeriod)
+        End If
 
         If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
             Return QuickPathReplaceReplaceAllPeriods
@@ -583,28 +585,28 @@ Public Class PackageListTools
             ' If we can't do the fastest one, try only replacing the first period.
             Return QuickPathReplaceReplaceOnlyFirstPeriod
 
-        Else
-            ' We can't use either of these two methods, so use the fallback one.
+            'Else
+            '    ' We can't use either of these two methods, so use the fallback one.
 
-            ' Take the Id string for each package file and append it to the
-            ' package list array variable.
-            For Each PackageManifest As String In FallbackPathList
-                'Debug.WriteLine("ManifestAppDataFolder: " & ManifestAppDataFolder & vbCrLf &
-                '"PackageManifest: " & PackageManifest & vbCrLf &
-                '"ManifestVersion: " & ManifestVersion & vbCrLf &
-                '"ManifestId: " & ManifestId)
+            '    ' Take the Id string for each package file and append it to the
+            '    ' package list array variable.
+            '    For Each PackageManifest As String In FallbackPathList
+            '        'Debug.WriteLine("ManifestAppDataFolder: " & ManifestAppDataFolder & vbCrLf &
+            '        '"PackageManifest: " & PackageManifest & vbCrLf &
+            '        '"ManifestVersion: " & ManifestVersion & vbCrLf &
+            '        '"ManifestId: " & ManifestId)
 
-                ' Check if the manifest has the version number we're looking for.
-                If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
-                    'Debug.WriteLine("Hit")
-                    ' Open and read the manifest ID.
-                    Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
-                    'MessageBox.Show(LocalId)
-                    If LocalId = ManifestId Then
-                        Return PackageManifest
-                    End If
-                End If
-            Next
+            '        ' Check if the manifest has the version number we're looking for.
+            '        If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
+            '            'Debug.WriteLine("Hit")
+            '            ' Open and read the manifest ID.
+            '            Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
+            '            'MessageBox.Show(LocalId)
+            '            If LocalId = ManifestId Then
+            '                Return PackageManifest
+            '            End If
+            '        End If
+            '    Next
         End If
     End Function
 #End Region
