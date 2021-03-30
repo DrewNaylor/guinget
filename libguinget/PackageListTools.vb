@@ -585,28 +585,28 @@ Public Class PackageListTools
             ' If we can't do the fastest one, try only replacing the first period.
             Return QuickPathReplaceReplaceOnlyFirstPeriod
 
-            'Else
-            '    ' We can't use either of these two methods, so use the fallback one.
+        Else
+            ' We can't use either of these two methods, so use the fallback one.
 
-            '    ' Take the Id string for each package file and append it to the
-            '    ' package list array variable.
-            '    For Each PackageManifest As String In FallbackPathList
-            '        'Debug.WriteLine("ManifestAppDataFolder: " & ManifestAppDataFolder & vbCrLf &
-            '        '"PackageManifest: " & PackageManifest & vbCrLf &
-            '        '"ManifestVersion: " & ManifestVersion & vbCrLf &
-            '        '"ManifestId: " & ManifestId)
+            ' Take the Id string for each package file and append it to the
+            ' package list array variable.
+            For Each PackageManifest As String In FallbackPathList
+                'Debug.WriteLine("ManifestAppDataFolder: " & ManifestAppDataFolder & vbCrLf &
+                '"PackageManifest: " & PackageManifest & vbCrLf &
+                '"ManifestVersion: " & ManifestVersion & vbCrLf &
+                '"ManifestId: " & ManifestId)
 
-            '        ' Check if the manifest has the version number we're looking for.
-            '        If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
-            '            'Debug.WriteLine("Hit")
-            '            ' Open and read the manifest ID.
-            '            Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
-            '            'MessageBox.Show(LocalId)
-            '            If LocalId = ManifestId Then
-            '                Return PackageManifest
-            '            End If
-            '        End If
-            '    Next
+                ' Check if the manifest has the ID we're looking for.
+                If PackageManifest.ToLowerInvariant.EndsWith(ManifestId.ToLowerInvariant & ".yaml") Then
+                    'Debug.WriteLine("Hit")
+                    ' Open and read the manifest version.
+                    Dim LocalVersion As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "PackageVersion")
+                    'MessageBox.Show(LocalId)
+                    If LocalVersion = ManifestVersion Then
+                        Return PackageManifest
+                    End If
+                End If
+            Next
         End If
     End Function
 #End Region
