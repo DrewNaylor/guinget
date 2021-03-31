@@ -147,6 +147,9 @@
   <metadata name="Manifest.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="ManifestType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textboxPackageDetails.Text" xml:space="preserve">
     <value>No package is selected or the package list hasn't been loaded yet. You can load the package list by using the Refresh cache toolbar button, by going to Package list&gt;Refresh cache, or by pressing Ctrl+R.</value>
   </data>

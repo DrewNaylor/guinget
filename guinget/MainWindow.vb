@@ -165,13 +165,23 @@ Public Class aaformMainWindow
         If My.Settings.LoadFromSqliteDb = False Then
             For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Load package ID column.
-                Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Id")
+                Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageIdentifier")
                 ' Load package name column.
-                Row.Cells.Item(3).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Name")
+                Row.Cells.Item(3).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageName")
                 ' Load package version column.
-                Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Version")
+                Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageVersion")
                 ' Load package description column.
-                Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Description")
+                ' Make sure the short description doesn't match the package ID, and use the
+                ' long description if it does.
+                If Row.Cells.Item(2).Value.ToString = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription") Then
+                    Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Description")
+                Else
+                    Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription")
+                End If
+
+                ' ManifestType for debugging. This'll be commented out until it's needed.
+                'Row.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType")
+
                 ' Update the progressbar so it doesn't look frozen.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
                 aaformMainWindow.statusbarMainWindow.Update()
@@ -194,7 +204,13 @@ Public Class aaformMainWindow
                 ' future crashes, even if the database is broken
                 ' again.
                 If PackageRow.Cells.Item(7).Value IsNot Nothing Then
-                    PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
+                    ' Make sure the short description doesn't match the package ID, and use the
+                    ' long description if it does.
+                    If PackageRow.Cells.Item(2).Value.ToString = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ShortDescription") Then
+                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
+                    Else
+                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ShortDescription")
+                    End If
                 Else
                     ' If the value in the manifest path cell is nothing, change the description.
                     PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"

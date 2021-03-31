@@ -568,13 +568,20 @@ Public Class PackageListTools
 
         ' If we can't do a simple replacement on each "." in the ID,
         ' we'll have to fall back to the slower method.
-        Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & ".yaml"
-        Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Replace(".", "\").IndexOf(".") & "\" & ManifestVersion & ".yaml"
-        'MessageBox.Show(QuickPathReplace)
+        Dim QuickPathReplaceReplaceAllPeriods As String = ManifestAppDataFolder & "\" & ManifestId.Substring(0, 1).ToLowerInvariant & "\" & ManifestId.Replace(".", "\") & "\" & ManifestVersion & "\" & ManifestId & ".yaml"
+        ' Replacing only the first period uses code based on this:
+        ' https://stackoverflow.com/a/5015804
+        Dim QuickPathReplaceReplaceOnlyFirstPeriod As String = ManifestAppDataFolder & "\" & ManifestId.Substring(0, 1).ToLowerInvariant & "\" & ManifestId.Remove(ManifestId.IndexOf("."), 1).Insert(ManifestId.IndexOf("."), "\") & "\" & ManifestVersion & "\" & ManifestId & ".yaml"
+
+        ' Show the new path.
+        'If ManifestId.ToLowerInvariant.Contains("gitter") Then
+        '    MessageBox.Show(QuickPathReplaceReplaceOnlyFirstPeriod)
+        'End If
+
         If IO.File.Exists(QuickPathReplaceReplaceAllPeriods) Then
             Return QuickPathReplaceReplaceAllPeriods
 
-        ElseIf IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
+        ElseIf Not IO.File.Exists(QuickPathReplaceReplaceAllPeriods) AndAlso IO.File.Exists(QuickPathReplaceReplaceOnlyFirstPeriod) Then
             ' If we can't do the fastest one, try only replacing the first period.
             Return QuickPathReplaceReplaceOnlyFirstPeriod
 
@@ -589,13 +596,13 @@ Public Class PackageListTools
                 '"ManifestVersion: " & ManifestVersion & vbCrLf &
                 '"ManifestId: " & ManifestId)
 
-                ' Check if the manifest has the version number we're looking for.
-                If PackageManifest.EndsWith(ManifestVersion & ".yaml") Then
+                ' Check if the manifest has the ID we're looking for.
+                If PackageManifest.ToLowerInvariant.EndsWith(ManifestId.ToLowerInvariant & ".yaml") Then
                     'Debug.WriteLine("Hit")
-                    ' Open and read the manifest ID.
-                    Dim LocalId As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "Id")
+                    ' Open and read the manifest version.
+                    Dim LocalVersion As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageManifest, "PackageVersion")
                     'MessageBox.Show(LocalId)
-                    If LocalId = ManifestId Then
+                    If LocalVersion = ManifestVersion Then
                         Return PackageManifest
                     End If
                 End If
