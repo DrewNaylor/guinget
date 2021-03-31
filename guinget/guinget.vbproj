@@ -29,7 +29,7 @@
     <MapFileExtensions>false</MapFileExtensions>
     <ProductName>guinget</ProductName>
     <PublisherName>DrewNaylor</PublisherName>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>0.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
