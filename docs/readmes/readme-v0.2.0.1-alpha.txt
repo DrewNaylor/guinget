@@ -16,10 +16,10 @@ https://www.howtogeek.com/67241/htg-explains-what-are-md5-sha-1-hashes-and-how-d
 The PowerShell method can be used for all files listed below, though you'll have to switch out the filenames.
 
 SHA-256 sum for "guinget.exe" in the archive:
-24398F2E496AAD578881C1362D35F9BDC19FE58794FE348E5BD832A7DC58B8CE
+569289A5D1331F26FC25E1144BAEE08BBD4AAA16A4EDCF0B522A74BB8CEA6E2A
 
 SHA-256 sum for "lib\libguinget.dll" in the archive:
-46A29795596A87FB6799E427149EC770A29B9C227796B3747DCEA717F69738EF
+7B1AEB599F2432C06CD6DB0D863782C3729FED5E552D7DF0B2DC0E95C4897AB4
 
 SHA-256 sum for "lib\libscrollswitchtabs.dll" in the archive:
 3F2741B885A3BDD03422E0346542BF4D13384A5287FD3BAF94D05C964ABECB92
@@ -28,7 +28,7 @@ SHA-256 sum for "update-manifests.bat" in the archive:
 522392D92BC5E6AEE85DADCBB2D4A3F6A84BD3163A42DC72B7ABDCC7CA37CDE6
 
 SHA-256 sum for "lib\YamlDotNet.dll" in the archive:
-23710F6413E488866B37E82C61943B1381126FBE52340B827B53D68C2B33112C
+0EF4F8AB2EE8C446B68FD97ACBBC70B1A1407944B5B1BD0D2FC145AE2C90F946
 
 The rest of the libraries in the "lib" folder are from Microsoft.Data.Sqlite and I don't want to list them all:
 https://www.nuget.org/packages/Microsoft.Data.Sqlite/
