@@ -222,7 +222,7 @@ Public Class aaformMainWindow
                         ' Remove file extension.
                         FileWithDescription = FileWithDescription.Remove(FileWithDescription.Length - 5)
                         ' Add default locale and re-add file extension.
-                        FileWithDescription = FileWithDescription & "." &
+                        FileWithDescription = FileWithDescription & ".locale." &
                             Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "DefaultLocale") &
                             ".yaml"
                     End If
