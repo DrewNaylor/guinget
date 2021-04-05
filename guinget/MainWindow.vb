@@ -163,6 +163,7 @@ Public Class aaformMainWindow
 
         ' Now we load the details for each row.
         If My.Settings.LoadFromSqliteDb = False Then
+#Region "Deprecated direct manifest loading."
             For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Load package ID column.
                 Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageIdentifier")
@@ -189,12 +190,13 @@ Public Class aaformMainWindow
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
                 aaformMainWindow.statusbarMainWindow.Update()
             Next
+#End Region
 
+        ElseIf My.Settings.LoadFromSqliteDb = True Then
             ' In case there are manifests we can't find easily,
             ' we need to get them now.
             ' These have to be grabbed now or else updating the manifests
             ' will crash when the path doesn't exist.
-        ElseIf My.Settings.LoadFromSqliteDb = True Then
             PackageListTools.FallbackPathList = PackageListTools.GetManifests
 
             ' Now we need to load the manifests and the descriptions.
@@ -209,15 +211,29 @@ Public Class aaformMainWindow
                 If PackageRow.Cells.Item(7).Value IsNot Nothing Then
                     ' Make sure the short description doesn't match the package ID, and use the
                     ' long description if it does.
-                    If PackageRow.Cells.Item(2).Value.ToString = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ShortDescription") Then
-                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
-                    Else
-                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ShortDescription")
+                    ' Store the short description in a string so we don't have to read
+                    ' the manifest multiple times just for the description comparison.
+                    ' First check if it's a single-file manifest or not.
+                    Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
+                    If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
+                        ' Get the default locale path.
+                        FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
                     End If
-                Else
-                    ' If the value in the manifest path cell is nothing, change the description.
-                    PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
+                    ' Now do the description stuff.
+                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
+                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
+                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
+                    Else
+                            PackageRow.Cells.Item(6).Value = ShortDescription
+                        End If
+                    Else
+                        ' If the value in the manifest path cell is nothing, change the description.
+                        PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
                 End If
+
+                ' ManifestType for debugging. This'll be commented out until it's needed.
+                'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
                 ' Update the statusbar to show the current info.
@@ -484,7 +500,7 @@ Public Class aaformMainWindow
         SelectedPackagesSearchForLastSelectedID.Enabled = AllowFunctions
     End Sub
 
-    Private Sub ShowSelectedPackageDetails()
+    Private Async Sub ShowSelectedPackageDetails()
 
         ' We can now display the package details while making sure the manifest isn't
         ' nothing.
@@ -496,8 +512,47 @@ Public Class aaformMainWindow
             ' Take text from the Manifest cell and use that
             ' file path to display text in the details textbox.
             Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
-            ' Display full manifest in details textbox.
-            textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
+            ' See if it's a multi-file manifest. If it is, we'll have to do some stuff.
+            If Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath, "ManifestType") = "version" Then
+                ' Clear textbox.
+                textboxPackageDetails.Clear()
+
+                ' Add header for the default locale manifest.
+                textboxPackageDetails.Text = "Default locale manifest" & vbCrLf &
+                                             "==========================" & vbCrLf
+                ' Find the default locale manifest.
+                Dim DefaultLocaleManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "defaultLocale")
+                ' Put the default locale manifest into the details textbox.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             My.Computer.FileSystem.ReadAllText(DefaultLocaleManifestPath).Replace(vbLf, vbCrLf) &
+                                             vbCrLf
+
+                ' Add header text for the version file section.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             "Version manifest" & vbCrLf &
+                                             "==========================" & vbCrLf
+                ' Put the version manifest in there.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf) &
+                                             vbCrLf
+
+                ' Add header for the default locale manifest.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             "Installers manifest" & vbCrLf &
+                                             "==========================" & vbCrLf
+                ' Find the installers manifest.
+                Dim InstallersManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "installer")
+                ' Put the installers manifest into the details textbox.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             My.Computer.FileSystem.ReadAllText(InstallersManifestPath).Replace(vbLf, vbCrLf)
+            Else
+                ' It appears to be a single-file one.
+                ' Display full manifest in details textbox.
+                textboxPackageDetails.Text = "Manifest" & vbCrLf &
+                                             "==========================" & vbCrLf &
+                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
+            End If
+
         ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
             ' If no rows are selected, say so in the same way Synaptic does,
             ' because it says it in a way that's simple and nice.

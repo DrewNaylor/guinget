@@ -30,7 +30,7 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageTools
 
-#Region "Variables"
+#Region "Variables that act as settings."
     ' Specifying version numbers.
     Public Shared SpecifyVersionOnInstall As Boolean = True
     Public Shared SpecifyVersionOnUpgrade As Boolean = False
@@ -155,6 +155,32 @@ Public Class PackageTools
             proc.Start()
         End Using
     End Sub
+#End Region
+
+#Region "Get default locale file for multi-file manifest."
+    Public Shared Async Function GetMultiFileManifestPieceFilePath(ManifestPath As String, ManifestType As String) As Task(Of String)
+        ' Define piece file path string and remove
+        ' file extension from the original path.
+        Dim PieceFilePath = ManifestPath.Remove(ManifestPath.Length - 5)
+
+        ' Check if we want the installer or default locale file.
+        If ManifestType = "defaultLocale" Then
+
+            ' Add default locale stuff and re-add file extension.
+            PieceFilePath = PieceFilePath & ".locale." &
+            Await GetPackageInfoFromYamlAsync(ManifestPath, "DefaultLocale") &
+            ".yaml"
+
+        ElseIf ManifestType = "installer" Then
+
+            ' Add "installer" to the file path and re-add file extension.
+            PieceFilePath = PieceFilePath & ".installer.yaml"
+
+        End If
+
+        ' Now we're done and can return the path.
+        Return PieceFilePath
+    End Function
 #End Region
 
 #Region "Get package details from YAML"
