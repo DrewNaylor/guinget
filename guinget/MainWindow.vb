@@ -918,6 +918,10 @@ Public Class aaformMainWindow
         If My.Settings.UpgradeSettingsFromPreviousVersion = True Then
             My.Settings.Upgrade()
             My.Settings.UpgradeSettingsFromPreviousVersion = False
+
+            ' Force database-loading on.
+            My.Settings.LoadFromSqliteDb = True
+
             My.Settings.Save()
             My.Settings.Reload()
         End If
