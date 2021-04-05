@@ -608,6 +608,14 @@ Public Class aaformMainWindow
             textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
                 "You can load the package list by using the Refresh cache toolbar button, by going to Package list" &
                 ">Refresh cache, or by pressing Ctrl+R."
+
+        ElseIf datagridviewPackageList.SelectedRows.Count > 0 AndAlso
+        datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value Is Nothing Then
+
+            ' If there are more than 0 rows selected and the manifest path
+            ' is Nothing, say that we couldn't find the manifest.
+            ' Previously it would just display the previously-selected manifest.
+            textboxPackageDetails.Text = "(Couldn't find manifest)"
         End If
     End Sub
 
