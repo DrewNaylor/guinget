@@ -505,7 +505,7 @@ Public Class aaformMainWindow
         SelectedPackagesSearchForLastSelectedID.Enabled = AllowFunctions
     End Sub
 
-    Private Sub ShowSelectedPackageDetails()
+    Private Async Sub ShowSelectedPackageDetails()
 
         ' We can now display the package details while making sure the manifest isn't
         ' nothing.
@@ -517,20 +517,27 @@ Public Class aaformMainWindow
             ' Take text from the Manifest cell and use that
             ' file path to display text in the details textbox.
             Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
-            ' Display full manifest in details textbox.
-            textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
-        ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
-            ' If no rows are selected, say so in the same way Synaptic does,
-            ' because it says it in a way that's simple and nice.
-            ' This might not show up since rows are automatically selected when
-            ' they're loaded.
+            ' See if it's a multi-file manifest. If it is, we'll have to do some stuff.
+            If Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath, "ManifestType") = "version" Then
+                textboxPackageDetails.Text = "yo"
+            Else
+                ' It appears to be a single-file one.
+                ' Display full manifest in details textbox.
+                textboxPackageDetails.Text = My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
+            End If
 
-            ' TODO: Allow the user to choose whether to update the cache before
-            ' loading the package list, or just load the package list. This
-            ' should be a setting to allow for people to choose whether it
-            ' always updates the cache automatically, or have it ask to update every time.
-            ' This should be based on a time thing, so only update after 5 minutes for example.
-            textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
+        ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
+        ' If no rows are selected, say so in the same way Synaptic does,
+        ' because it says it in a way that's simple and nice.
+        ' This might not show up since rows are automatically selected when
+        ' they're loaded.
+
+        ' TODO: Allow the user to choose whether to update the cache before
+        ' loading the package list, or just load the package list. This
+        ' should be a setting to allow for people to choose whether it
+        ' always updates the cache automatically, or have it ask to update every time.
+        ' This should be based on a time thing, so only update after 5 minutes for example.
+        textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
                 "You can load the package list by using the Refresh cache toolbar button, by going to Package list" &
                 ">Refresh cache, or by pressing Ctrl+R."
         End If
