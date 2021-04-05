@@ -175,6 +175,11 @@ Public Class aaformMainWindow
                 ' long description if it does.
                 ' Store the short description in a string so we don't have to read
                 ' the manifest multiple times just for the description comparison.
+                ' First check if the manifest is a single-file one or not.
+                'If Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
+
+                'End If
+                ' Now do description stuff.
                 Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription")
                 If Row.Cells.Item(2).Value.ToString = ShortDescription Then
                     Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Description")
@@ -183,7 +188,7 @@ Public Class aaformMainWindow
                 End If
 
                 ' ManifestType for debugging. This'll be commented out until it's needed.
-                'Row.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType")
+                Row.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType")
 
                 ' Update the progressbar so it doesn't look frozen.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
@@ -209,15 +214,22 @@ Public Class aaformMainWindow
                 If PackageRow.Cells.Item(7).Value IsNot Nothing Then
                     ' Make sure the short description doesn't match the package ID, and use the
                     ' long description if it does.
-                    If PackageRow.Cells.Item(2).Value.ToString = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ShortDescription") Then
+                    ' Store the short description in a string so we don't have to read
+                    ' the manifest multiple times just for the description comparison.
+                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ShortDescription")
+                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
                         PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
                     Else
-                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ShortDescription")
+                        PackageRow.Cells.Item(6).Value = ShortDescription
                     End If
                 Else
                     ' If the value in the manifest path cell is nothing, change the description.
                     PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
                 End If
+
+                ' ManifestType for debugging. This'll be commented out until it's needed.
+                PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
                 ' Update the statusbar to show the current info.
