@@ -222,7 +222,7 @@ Public Class aaformMainWindow
                     Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
                     If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
                         ' Get the default locale path.
-                        FileWithDescription = Await PackageTools.GetDefaultLocaleFilePathForMultiFileManifest(FileWithDescription)
+                        FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
                     End If
                     ' Now do the description stuff.
                     Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
