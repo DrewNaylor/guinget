@@ -184,7 +184,7 @@ Public Class aaformMainWindow
                 End If
 
                 ' ManifestType for debugging. This'll be commented out until it's needed.
-                Row.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType")
+                'Row.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType")
 
                 ' Update the progressbar so it doesn't look frozen.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
@@ -232,7 +232,7 @@ Public Class aaformMainWindow
                 End If
 
                 ' ManifestType for debugging. This'll be commented out until it's needed.
-                PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+                'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
 
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
