@@ -521,6 +521,7 @@ Public Class aaformMainWindow
             If Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath, "ManifestType") = "version" Then
                 ' Clear textbox.
                 textboxPackageDetails.Clear()
+
                 ' Add header text for the version file section.
                 textboxPackageDetails.Text = "Version manifest" & vbCrLf &
                                              "====================" & vbCrLf & vbCrLf
@@ -532,12 +533,16 @@ Public Class aaformMainWindow
                 textboxPackageDetails.Text = textboxPackageDetails.Text &
                                              "Default locale manifest" & vbCrLf &
                                              "=========================" & vbCrLf & vbCrLf
+
                 ' Find the default locale manifest.
-                Dim DefaultLocaleManifestPath As String = Await PackageTools.GetDefaultLocaleFilePathForMultiFileManifest(ManifestPath)
+                Dim DefaultLocaleManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "defaultLocale")
                 ' Put default locale manifest into the details textbox.
                 textboxPackageDetails.Text = textboxPackageDetails.Text &
                                              My.Computer.FileSystem.ReadAllText(DefaultLocaleManifestPath).Replace(vbLf, vbCrLf) &
                                              vbCrLf
+
+                ' Find the installers manifest.
+                Dim InstallersManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "installer")
             Else
                 ' It appears to be a single-file one.
                 ' Display full manifest in details textbox.

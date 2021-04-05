@@ -158,13 +158,13 @@ Public Class PackageTools
 #End Region
 
 #Region "Get default locale file for multi-file manifest."
-    Public Shared Async Function GetDefaultLocaleFilePathForMultiFileManifest(ManifestPath As String) As Task(Of String)
+    Public Shared Async Function GetMultiFileManifestPieceFilePath(ManifestPath As String, ManifestType As String, Optional DefaultLocale As String = Nothing) As Task(Of String)
         ' Define default locale file path string and remove
         ' file extension from the original path.
         Dim DefaultLocaleFilePath = ManifestPath.Remove(ManifestPath.Length - 5)
 
         ' Add default locale and re-add file extension.
-        DefaultLocaleFilePath = DefaultLocaleFilePath & ".locale." &
+        DefaultLocaleFilePath = DefaultLocaleFilePath & "." & ManifestType & "." &
             Await GetPackageInfoFromYamlAsync(ManifestPath, "DefaultLocale") &
             ".yaml"
 
