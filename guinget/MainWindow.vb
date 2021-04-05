@@ -219,16 +219,29 @@ Public Class aaformMainWindow
                         ' Get the default locale path.
                         FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
                     End If
-                    ' Now do the description stuff.
-                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
-                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
-                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
-                    Else
+                    ' Check if the file path isn't Nothing.
+                    If FileWithDescription IsNot Nothing Then
+                        ' Now do the description stuff.
+                        Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
+                        If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
+                            ' Use the full description if the short description
+                            ' is just the package ID.
+                            PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
+                        Else
+                            ' Package ID and short description aren't the same
+                            ' thing, so use the short description.
                             PackageRow.Cells.Item(6).Value = ShortDescription
                         End If
                     Else
-                        ' If the value in the manifest path cell is nothing, change the description.
+                        ' If the file path is Nothing, meaning the file
+                        ' doesn't exist or we couldn't find it, just say that
+                        ' we couldn't find the manifest.
                         PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
+                    End If
+
+                Else
+                    ' If the value in the manifest path cell is nothing, change the description.
+                    PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
                 End If
 
                 ' ManifestType for debugging. This'll be commented out until it's needed.
