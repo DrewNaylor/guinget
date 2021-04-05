@@ -178,8 +178,16 @@ Public Class PackageTools
 
         End If
 
-        ' Now we're done and can return the path.
-        Return PieceFilePath
+        ' Check to make sure the manifest file path we created exists.
+        If IO.File.Exists(PieceFilePath) Then
+            ' Now we're done and can return the path.
+            Return PieceFilePath
+        Else
+            ' Otherwise, if it doesn't exist, return Nothing.
+            Return Nothing
+        End If
+
+
     End Function
 #End Region
 
