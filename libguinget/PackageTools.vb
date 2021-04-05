@@ -157,6 +157,12 @@ Public Class PackageTools
     End Sub
 #End Region
 
+#Region "Get default locale file for multi-file manifest."
+    Public Shared Async Function GetDefaultLocaleFilePathForMultiFileManifest(ManifestPath As String) As Task(Of String)
+
+    End Function
+#End Region
+
 #Region "Get package details from YAML"
     Public Shared Async Function GetPackageInfoFromYamlAsync(ManifestPath As String, RequestedKey As String) As Task(Of String)
 
