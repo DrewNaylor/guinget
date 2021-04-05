@@ -552,9 +552,22 @@ Public Class aaformMainWindow
                                              "Version manifest" & vbCrLf &
                                              "==========================" & vbCrLf
                 ' Put the version manifest in there.
-                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                ' Make sure the file exists. I'm using the IO.File.Exists
+                ' thing since ManifestPath doesn't use the code that
+                ' looks for the other files for the multi-file manifest
+                ' and as such can't be checked to see if it's Nothing
+                ' like those can.
+                ' I'm still checking to make sure it's not Nothing
+                ' just to be safe.
+                If ManifestPath IsNot Nothing AndAlso IO.File.Exists(ManifestPath) Then
+                    textboxPackageDetails.Text = textboxPackageDetails.Text &
                                              My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf) &
                                              vbCrLf
+                Else
+                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             "(Couldn't find manifest)" &
+                                             vbCrLf & vbCrLf
+                End If
 
                 ' Add header for the default locale manifest.
                 textboxPackageDetails.Text = textboxPackageDetails.Text &
