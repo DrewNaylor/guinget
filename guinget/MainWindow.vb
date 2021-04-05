@@ -163,6 +163,7 @@ Public Class aaformMainWindow
 
         ' Now we load the details for each row.
         If My.Settings.LoadFromSqliteDb = False Then
+#Region "Deprecated direct manifest loading."
             For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Load package ID column.
                 Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageIdentifier")
@@ -194,12 +195,13 @@ Public Class aaformMainWindow
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
                 aaformMainWindow.statusbarMainWindow.Update()
             Next
+#End Region
 
+        ElseIf My.Settings.LoadFromSqliteDb = True Then
             ' In case there are manifests we can't find easily,
             ' we need to get them now.
             ' These have to be grabbed now or else updating the manifests
             ' will crash when the path doesn't exist.
-        ElseIf My.Settings.LoadFromSqliteDb = True Then
             PackageListTools.FallbackPathList = PackageListTools.GetManifests
 
             ' Now we need to load the manifests and the descriptions.
