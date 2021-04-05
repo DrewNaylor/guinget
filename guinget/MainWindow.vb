@@ -587,9 +587,9 @@ Public Class aaformMainWindow
                 End If
 
             Else
-                    ' It appears to be a single-file one.
-                    ' Display full manifest in details textbox.
-                    textboxPackageDetails.Text = "Manifest" & vbCrLf &
+                ' It appears to be a single-file one.
+                ' Display full manifest in details textbox.
+                textboxPackageDetails.Text = "Manifest" & vbCrLf &
                                              "==========================" & vbCrLf &
                                              My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
             End If
