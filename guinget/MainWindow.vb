@@ -176,11 +176,6 @@ Public Class aaformMainWindow
                 ' long description if it does.
                 ' Store the short description in a string so we don't have to read
                 ' the manifest multiple times just for the description comparison.
-                ' First check if the manifest is a single-file one or not.
-                'If Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
-
-                'End If
-                ' Now do description stuff.
                 Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription")
                 If Row.Cells.Item(2).Value.ToString = ShortDescription Then
                     Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Description")
