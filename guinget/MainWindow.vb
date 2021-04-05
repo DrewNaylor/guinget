@@ -533,7 +533,11 @@ Public Class aaformMainWindow
                                              "Default locale manifest" & vbCrLf &
                                              "=========================" & vbCrLf & vbCrLf
                 ' Find the default locale manifest.
-
+                Dim DefaultLocaleManifestPath As String = Await PackageTools.GetDefaultLocaleFilePathForMultiFileManifest(ManifestPath)
+                ' Put default locale manifest into the details textbox.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             My.Computer.FileSystem.ReadAllText(DefaultLocaleManifestPath).Replace(vbLf, vbCrLf) &
+                                             vbCrLf
             Else
                 ' It appears to be a single-file one.
                 ' Display full manifest in details textbox.
