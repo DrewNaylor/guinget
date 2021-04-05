@@ -522,23 +522,23 @@ Public Class aaformMainWindow
                 ' Clear textbox.
                 textboxPackageDetails.Clear()
 
-                ' Add header text for the version file section.
-                textboxPackageDetails.Text = "Version manifest" & vbCrLf &
-                                             "==========================" & vbCrLf
-                ' Put the version manifest in there.
-                textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf) &
-                                             vbCrLf
-
                 ' Add header for the default locale manifest.
-                textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             "Default locale manifest" & vbCrLf &
+                textboxPackageDetails.Text = "Default locale manifest" & vbCrLf &
                                              "==========================" & vbCrLf
                 ' Find the default locale manifest.
                 Dim DefaultLocaleManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "defaultLocale")
                 ' Put the default locale manifest into the details textbox.
                 textboxPackageDetails.Text = textboxPackageDetails.Text &
                                              My.Computer.FileSystem.ReadAllText(DefaultLocaleManifestPath).Replace(vbLf, vbCrLf) &
+                                             vbCrLf
+
+                ' Add header text for the version file section.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             "Version manifest" & vbCrLf &
+                                             "==========================" & vbCrLf
+                ' Put the version manifest in there.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf) &
                                              vbCrLf
 
                 ' Add header for the default locale manifest.
