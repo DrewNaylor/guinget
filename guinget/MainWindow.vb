@@ -549,8 +549,7 @@ Public Class aaformMainWindow
                 Dim InstallersManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "installer")
                 ' Put the installers manifest into the details textbox.
                 textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             My.Computer.FileSystem.ReadAllText(InstallersManifestPath).Replace(vbLf, vbCrLf) &
-                                             vbCrLf
+                                             My.Computer.FileSystem.ReadAllText(InstallersManifestPath).Replace(vbLf, vbCrLf)
             Else
                 ' It appears to be a single-file one.
                 ' Display full manifest in details textbox.
@@ -560,17 +559,17 @@ Public Class aaformMainWindow
             End If
 
         ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
-        ' If no rows are selected, say so in the same way Synaptic does,
-        ' because it says it in a way that's simple and nice.
-        ' This might not show up since rows are automatically selected when
-        ' they're loaded.
+            ' If no rows are selected, say so in the same way Synaptic does,
+            ' because it says it in a way that's simple and nice.
+            ' This might not show up since rows are automatically selected when
+            ' they're loaded.
 
-        ' TODO: Allow the user to choose whether to update the cache before
-        ' loading the package list, or just load the package list. This
-        ' should be a setting to allow for people to choose whether it
-        ' always updates the cache automatically, or have it ask to update every time.
-        ' This should be based on a time thing, so only update after 5 minutes for example.
-        textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
+            ' TODO: Allow the user to choose whether to update the cache before
+            ' loading the package list, or just load the package list. This
+            ' should be a setting to allow for people to choose whether it
+            ' always updates the cache automatically, or have it ask to update every time.
+            ' This should be based on a time thing, so only update after 5 minutes for example.
+            textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
                 "You can load the package list by using the Refresh cache toolbar button, by going to Package list" &
                 ">Refresh cache, or by pressing Ctrl+R."
         End If
