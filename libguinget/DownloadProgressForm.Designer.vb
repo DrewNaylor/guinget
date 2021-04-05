@@ -35,40 +35,40 @@ Partial Class DownloadProgressForm
         '
         Me.progressbarDownloadProgress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.progressbarDownloadProgress.Location = New System.Drawing.Point(10, 23)
-        Me.progressbarDownloadProgress.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.progressbarDownloadProgress.Location = New System.Drawing.Point(12, 29)
+        Me.progressbarDownloadProgress.Margin = New System.Windows.Forms.Padding(2)
         Me.progressbarDownloadProgress.MarqueeAnimationSpeed = 63
         Me.progressbarDownloadProgress.Name = "progressbarDownloadProgress"
-        Me.progressbarDownloadProgress.Size = New System.Drawing.Size(338, 18)
+        Me.progressbarDownloadProgress.Size = New System.Drawing.Size(422, 22)
         Me.progressbarDownloadProgress.TabIndex = 0
         '
         'labelDownloadingPackageList
         '
         Me.labelDownloadingPackageList.AutoSize = True
-        Me.labelDownloadingPackageList.Location = New System.Drawing.Point(7, 7)
+        Me.labelDownloadingPackageList.Location = New System.Drawing.Point(9, 9)
         Me.labelDownloadingPackageList.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelDownloadingPackageList.Name = "labelDownloadingPackageList"
-        Me.labelDownloadingPackageList.Size = New System.Drawing.Size(138, 13)
+        Me.labelDownloadingPackageList.Size = New System.Drawing.Size(180, 17)
         Me.labelDownloadingPackageList.TabIndex = 1
         Me.labelDownloadingPackageList.Text = "Downloading package list..."
         '
         'labelSourceName
         '
         Me.labelSourceName.AutoSize = True
-        Me.labelSourceName.Location = New System.Drawing.Point(-2, -2)
+        Me.labelSourceName.Location = New System.Drawing.Point(2, 0)
         Me.labelSourceName.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelSourceName.Name = "labelSourceName"
-        Me.labelSourceName.Size = New System.Drawing.Size(76, 13)
+        Me.labelSourceName.Size = New System.Drawing.Size(100, 17)
         Me.labelSourceName.TabIndex = 2
         Me.labelSourceName.Text = "Source name: "
         '
         'labelSourceLocation
         '
         Me.labelSourceLocation.AutoSize = True
-        Me.labelSourceLocation.Location = New System.Drawing.Point(-2, 11)
-        Me.labelSourceLocation.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.labelSourceLocation.Location = New System.Drawing.Point(2, 18)
+        Me.labelSourceLocation.Margin = New System.Windows.Forms.Padding(2, 1, 2, 0)
         Me.labelSourceLocation.Name = "labelSourceLocation"
-        Me.labelSourceLocation.Size = New System.Drawing.Size(87, 13)
+        Me.labelSourceLocation.Size = New System.Drawing.Size(114, 17)
         Me.labelSourceLocation.TabIndex = 3
         Me.labelSourceLocation.Text = "Source location: "
         '
@@ -79,36 +79,36 @@ Partial Class DownloadProgressForm
         Me.panelSourceInfo.AutoScroll = True
         Me.panelSourceInfo.Controls.Add(Me.labelSourceLocation)
         Me.panelSourceInfo.Controls.Add(Me.labelSourceName)
-        Me.panelSourceInfo.Location = New System.Drawing.Point(10, 46)
-        Me.panelSourceInfo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelSourceInfo.Location = New System.Drawing.Point(12, 58)
+        Me.panelSourceInfo.Margin = New System.Windows.Forms.Padding(2, 1, 2, 1)
         Me.panelSourceInfo.Name = "panelSourceInfo"
-        Me.panelSourceInfo.Size = New System.Drawing.Size(338, 54)
+        Me.panelSourceInfo.Size = New System.Drawing.Size(422, 68)
         Me.panelSourceInfo.TabIndex = 4
         '
         'buttonCancel
         '
         Me.buttonCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.buttonCancel.Location = New System.Drawing.Point(271, 106)
-        Me.buttonCancel.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.buttonCancel.Location = New System.Drawing.Point(339, 132)
+        Me.buttonCancel.Margin = New System.Windows.Forms.Padding(2)
         Me.buttonCancel.Name = "buttonCancel"
-        Me.buttonCancel.Size = New System.Drawing.Size(76, 24)
+        Me.buttonCancel.Size = New System.Drawing.Size(95, 30)
         Me.buttonCancel.TabIndex = 5
         Me.buttonCancel.Text = "Cancel"
         Me.buttonCancel.UseVisualStyleBackColor = True
         '
         'DownloadProgressForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.buttonCancel
-        Me.ClientSize = New System.Drawing.Size(358, 139)
+        Me.ClientSize = New System.Drawing.Size(448, 174)
         Me.Controls.Add(Me.buttonCancel)
         Me.Controls.Add(Me.panelSourceInfo)
         Me.Controls.Add(Me.labelDownloadingPackageList)
         Me.Controls.Add(Me.progressbarDownloadProgress)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "DownloadProgressForm"
