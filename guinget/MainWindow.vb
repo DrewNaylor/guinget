@@ -519,7 +519,21 @@ Public Class aaformMainWindow
             Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
             ' See if it's a multi-file manifest. If it is, we'll have to do some stuff.
             If Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath, "ManifestType") = "version" Then
-                textboxPackageDetails.Text = "yo"
+                ' Clear textbox.
+                textboxPackageDetails.Clear()
+                ' Add header text for the version file section.
+                textboxPackageDetails.Text = "Version manifest" & vbCrLf &
+                                             "====================" & vbCrLf & vbCrLf
+                ' Put the version manifest in there.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf) &
+                                             vbCrLf
+                ' Add header for the default locale manifest.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             "Default locale manifest" & vbCrLf &
+                                             "=========================" & vbCrLf & vbCrLf
+                ' Find the default locale manifest.
+
             Else
                 ' It appears to be a single-file one.
                 ' Display full manifest in details textbox.
