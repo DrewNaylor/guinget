@@ -216,15 +216,26 @@ Public Class aaformMainWindow
                     ' long description if it does.
                     ' Store the short description in a string so we don't have to read
                     ' the manifest multiple times just for the description comparison.
-                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ShortDescription")
-                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
-                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "Description")
-                    Else
-                        PackageRow.Cells.Item(6).Value = ShortDescription
+                    ' First check if it's a single-file manifest or not.
+                    Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
+                    If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
+                        ' Remove file extension.
+                        FileWithDescription = FileWithDescription.Remove(FileWithDescription.Length - 5)
+                        ' Add default locale and re-add file extension.
+                        FileWithDescription = FileWithDescription & "." &
+                            Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "DefaultLocale") &
+                            ".yaml"
                     End If
-                Else
-                    ' If the value in the manifest path cell is nothing, change the description.
-                    PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
+                    ' Now do the description stuff.
+                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
+                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
+                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
+                    Else
+                            PackageRow.Cells.Item(6).Value = ShortDescription
+                        End If
+                    Else
+                        ' If the value in the manifest path cell is nothing, change the description.
+                        PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
                 End If
 
                 ' ManifestType for debugging. This'll be commented out until it's needed.
