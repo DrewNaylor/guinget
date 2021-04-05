@@ -536,9 +536,16 @@ Public Class aaformMainWindow
                 ' Find the default locale manifest.
                 Dim DefaultLocaleManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "defaultLocale")
                 ' Put the default locale manifest into the details textbox.
-                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                ' Make sure the file exists.
+                If DefaultLocaleManifestPath IsNot Nothing Then
+                    textboxPackageDetails.Text = textboxPackageDetails.Text &
                                              My.Computer.FileSystem.ReadAllText(DefaultLocaleManifestPath).Replace(vbLf, vbCrLf) &
                                              vbCrLf
+                Else
+                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                                 "(Couldn't find manifest)" &
+                                                 vbCrLf & vbCrLf
+                End If
 
                 ' Add header text for the version file section.
                 textboxPackageDetails.Text = textboxPackageDetails.Text &
