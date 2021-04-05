@@ -173,10 +173,13 @@ Public Class aaformMainWindow
                 ' Load package description column.
                 ' Make sure the short description doesn't match the package ID, and use the
                 ' long description if it does.
-                If Row.Cells.Item(2).Value.ToString = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription") Then
+                ' Store the short description in a string so we don't have to read
+                ' the manifest multiple times just for the description comparison.
+                Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription")
+                If Row.Cells.Item(2).Value.ToString = ShortDescription Then
                     Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Description")
                 Else
-                    Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription")
+                    Row.Cells.Item(6).Value = ShortDescription
                 End If
 
                 ' ManifestType for debugging. This'll be commented out until it's needed.
