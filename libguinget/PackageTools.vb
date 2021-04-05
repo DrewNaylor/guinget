@@ -30,7 +30,7 @@ Imports YamlDotNet.RepresentationModel
 
 Public Class PackageTools
 
-#Region "Variables"
+#Region "Variables that act as settings."
     ' Specifying version numbers.
     Public Shared SpecifyVersionOnInstall As Boolean = True
     Public Shared SpecifyVersionOnUpgrade As Boolean = False
