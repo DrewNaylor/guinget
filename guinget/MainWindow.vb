@@ -571,17 +571,25 @@ Public Class aaformMainWindow
 
                 ' Add header for the default locale manifest.
                 textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             "Installers manifest" & vbCrLf &
+                                             "Installer manifest" & vbCrLf &
                                              "==========================" & vbCrLf
                 ' Find the installers manifest.
                 Dim InstallersManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "installer")
                 ' Put the installers manifest into the details textbox.
-                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                ' Make sure the file exists.
+                If InstallersManifestPath IsNot Nothing Then
+                    textboxPackageDetails.Text = textboxPackageDetails.Text &
                                              My.Computer.FileSystem.ReadAllText(InstallersManifestPath).Replace(vbLf, vbCrLf)
+                Else
+                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                                 "(Couldn't find manifest)" &
+                                                 vbCrLf & vbCrLf
+                End If
+
             Else
-                ' It appears to be a single-file one.
-                ' Display full manifest in details textbox.
-                textboxPackageDetails.Text = "Manifest" & vbCrLf &
+                    ' It appears to be a single-file one.
+                    ' Display full manifest in details textbox.
+                    textboxPackageDetails.Text = "Manifest" & vbCrLf &
                                              "==========================" & vbCrLf &
                                              My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
             End If
