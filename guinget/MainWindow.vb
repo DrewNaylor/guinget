@@ -221,12 +221,8 @@ Public Class aaformMainWindow
                     ' First check if it's a single-file manifest or not.
                     Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
                     If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
-                        ' Remove file extension.
-                        FileWithDescription = FileWithDescription.Remove(FileWithDescription.Length - 5)
-                        ' Add default locale and re-add file extension.
-                        FileWithDescription = FileWithDescription & ".locale." &
-                            Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "DefaultLocale") &
-                            ".yaml"
+                        ' Get the default locale path.
+                        FileWithDescription = Await PackageTools.GetDefaultLocaleFilePathForMultiFileManifest(FileWithDescription)
                     End If
                     ' Now do the description stuff.
                     Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
