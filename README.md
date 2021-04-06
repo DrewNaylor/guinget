@@ -40,7 +40,7 @@ Faster computers will perform better with few (if any) lock-ups when it comes to
 
 ## Screenshots
 
-These screenshots are outdated. It would be a good idea to provide new screenshots, so I might once v0.2 is out if I feel like it.
+These screenshots are outdated. It would be a good idea to provide new screenshots, so I might at some point.
 
 ### Version 0.1.1 screenshot
 This is what it looks like as of version 0.1.1:
