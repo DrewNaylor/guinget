@@ -46,9 +46,9 @@ Some options are available to modify the behavior when refreshing the cache. The
 - Each package version is listed as a separate entry even when loading from the database, though using the database will make sure only packages winget can display right now are shown.
 - Some packages may be in a different order compared to loading all the manifests at once, but this shouldn't be much of an issue, and clicking the Package column header should sort them as expected.
 - Loading the details may still take a bit as we have to take the package ID and version number and figure out where its manifest is, instead of just grabbing all the manifests and loading from them. In case we can't find a package's manifest, we'll just look through all the manifests until we find the right one. Figuring out where each package's manifest is stored is done in three ways:
-  - If replacing all instances of "." in the package ID and appending the package version to the end of the path along with ".yaml" finds a file that exists, then that's great and we'll use that file. This is the fastest method.
-  - If that doesn't work, then we only replace the first instance of the "." in the ID and try again with the version thing. This should be fast, too.
-  - If neither of those work, then we fall back to looking for manifests with the package's version number in their filename, opening each file match we find, checking the package ID in the file, and if it's a match, we use it. Otherwise we keep going until we find the manifest. The Visual Studio profiler says there's a lot of garbage collection going on, so this will probably need to be changed to something like Using to keep automatic garbage collection to a minimum.
+  - If forming a path using the package ID and version according to the manifest format v1 finds a file that exists, then that's great and we'll use that file. This is the fastest method.
+  - If that doesn't work, then we only replace the first instance of the "." in the ID and try again with the rest. This should be fast, too.
+  - If neither of those work, then we fall back to looking for manifests with the package's ID in their filename immediately followed by ".yaml", opening each file match we find, checking the package version in the file, and if it's a match, we use it. Otherwise we keep going until we find the manifest. The Visual Studio profiler says there's a lot of garbage collection going on, so this will probably need to be changed to something like Using to keep automatic garbage collection to a minimum.
 
 ### Updating winget sources
 
