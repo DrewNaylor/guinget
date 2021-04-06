@@ -50,6 +50,8 @@ Packages displayed here are loaded from a package list cache stored in `%LocalAp
 
 Loading these YAML files takes a bit at the moment, as it's not async. I'd like to make it async, but for now this is good enough. Besides, there's a progress bar and progress label at the bottom and a label that says "please wait", so it's not like the window shows nothing while it loads. One issue is the window can't be moved around while it loads, which is something async loading would fix.
 
+Newer versions of guinget mainly load package info from the same community database winget itself uses to ensure package info is up to date with what's available to winget. Descriptions and details not available in the database are then loaded from the manifests.
+
 ### Loading the package list
 Here's what it looks like when loading the package list:
 ![](/docs/images/screenshot-loading-progress-0.1.1.png?raw=true)
