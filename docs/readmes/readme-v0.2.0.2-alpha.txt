@@ -1,7 +1,7 @@
 If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word wrap.
 
 
-guinget -- Version 0.2.0.1 Alpha -- 3/30/2021 (MM/DD/YYYY).
+guinget -- Version 0.2.0.2 Alpha -- 4/06/2021 (MM/DD/YYYY).
 
 If you have any trouble, you might be able to find an answer in the documentation. It's linked at the end of this readme file. If not, you can submit a bug report at the "Report a problem" link at the end of this readme file. Your report will be labeled by the developers accordingly in a reasonable amount of time.
 
@@ -16,10 +16,10 @@ https://www.howtogeek.com/67241/htg-explains-what-are-md5-sha-1-hashes-and-how-d
 The PowerShell method can be used for all files listed below, though you'll have to switch out the filenames.
 
 SHA-256 sum for "guinget.exe" in the archive:
-569289A5D1331F26FC25E1144BAEE08BBD4AAA16A4EDCF0B522A74BB8CEA6E2A
+8740D634FE31B026F592D4AFE8170A48BFF87F30D5AE9DFDCC312606EACE078F
 
 SHA-256 sum for "lib\libguinget.dll" in the archive:
-7B1AEB599F2432C06CD6DB0D863782C3729FED5E552D7DF0B2DC0E95C4897AB4
+EBD9CFC10B81185E47100FD53BCE9724C08543E038BDDB8B936E871A84ED99B4
 
 SHA-256 sum for "lib\libscrollswitchtabs.dll" in the archive:
 3F2741B885A3BDD03422E0346542BF4D13384A5287FD3BAF94D05C964ABECB92
@@ -28,7 +28,7 @@ SHA-256 sum for "update-manifests.bat" in the archive:
 522392D92BC5E6AEE85DADCBB2D4A3F6A84BD3163A42DC72B7ABDCC7CA37CDE6
 
 SHA-256 sum for "lib\YamlDotNet.dll" in the archive:
-0EF4F8AB2EE8C446B68FD97ACBBC70B1A1407944B5B1BD0D2FC145AE2C90F946
+8AC0C1165E3857DD2685A2A1146F24597218AE2DF90BA5F15EA3BA76D0605A4B
 
 The rest of the libraries in the "lib" folder are from Microsoft.Data.Sqlite and I don't want to list them all:
 https://www.nuget.org/packages/Microsoft.Data.Sqlite/
@@ -56,7 +56,7 @@ Some installations of Windows 10 might have issues with elevating winget, so in 
 
 --> guinget uses YamlDotNet to read package manifests, and its license is available in "LICENSE-YamlDotNet.txt"
 
---> Reading SQLite databases (if turned on) is done using Microsoft.Data.Sqlite, which falls under the Apache License 2.0.
+--> Reading SQLite databases is done using Microsoft.Data.Sqlite, which falls under the Apache License 2.0.
 
 --> Switching tab control tabs with the mouse scroll wheel is provided by libscrollswitchtabs.
 
@@ -124,7 +124,7 @@ A more-detailed usage guide is available in "docs/How to use guinget.html".
 
 2. Open the file titled "guinget.exe". I recommend making a shortcut to the app on your desktop or taskbar for easy access.
 
-3. Refresh the package cache using the "Refresh cache" button on the toolbar, choosing "Refresh cache" from the "Package list" menu, or by pressing "Ctrl+R".
+3. Refresh the package list cache using the "Refresh cache" button on the toolbar, choosing "Refresh cache" from the "Package list" menu, or by pressing "Ctrl+R".
 
 4. Wait until the package list cache has been updated and the package details have been loaded. This may take a bit.
 
@@ -147,6 +147,8 @@ By default, searches are re-done after updating the package list, although you c
 
 7. guinget supports batch processing, so you can just click the "Confirm changes" button when ready. If you want to process packages one at a time, either press "Enter" or double-click on each package entry in the list when you want to start processing it.
 
+If a package didn't (for example) install the first time, you can reset its status by right-clicking on it, clicking `Reset status for selected package`, change the `Apply changes` options via the linklabel in the bottom-left corner that says, `Options...`, and check the `Elevate winget with UAC` checkbox, then try again.
+
 ----------------------------------
 CONTACT AND COPYRIGHT/LICENSING
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,7 +168,7 @@ Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 guinget
-Version 0.2.0.1 Alpha
+Version 0.2.0.2 Alpha
 Copyright (C) 2020-2021 Drew Naylor. Licensed under Apache License 2.0.
 
 Unofficial GUI for Microsoft's Windows Package Manager (winget).
