@@ -547,6 +547,24 @@ Public Class aaformMainWindow
                                                  vbCrLf & vbCrLf
                 End If
 
+                ' Add header for the installer manifest.
+                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             "Installer manifest" & vbCrLf &
+                                             "==========================" & vbCrLf
+                ' Find the installers manifest.
+                Dim InstallersManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "installer")
+                ' Put the installers manifest into the details textbox.
+                ' Make sure the file exists.
+                If InstallersManifestPath IsNot Nothing Then
+                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                             My.Computer.FileSystem.ReadAllText(InstallersManifestPath).Replace(vbLf, vbCrLf) &
+                                             vbCrLf
+                Else
+                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                                                 "(Couldn't find manifest)" &
+                                                 vbCrLf & vbCrLf
+                End If
+
                 ' Add header text for the version file section.
                 textboxPackageDetails.Text = textboxPackageDetails.Text &
                                              "Version manifest" & vbCrLf &
@@ -561,29 +579,10 @@ Public Class aaformMainWindow
                 ' just to be safe.
                 If ManifestPath IsNot Nothing AndAlso IO.File.Exists(ManifestPath) Then
                     textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf) &
-                                             vbCrLf
+                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
                 Else
                     textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             "(Couldn't find manifest)" &
-                                             vbCrLf & vbCrLf
-                End If
-
-                ' Add header for the default locale manifest.
-                textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             "Installer manifest" & vbCrLf &
-                                             "==========================" & vbCrLf
-                ' Find the installers manifest.
-                Dim InstallersManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "installer")
-                ' Put the installers manifest into the details textbox.
-                ' Make sure the file exists.
-                If InstallersManifestPath IsNot Nothing Then
-                    textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             My.Computer.FileSystem.ReadAllText(InstallersManifestPath).Replace(vbLf, vbCrLf)
-                Else
-                    textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                                 "(Couldn't find manifest)" &
-                                                 vbCrLf & vbCrLf
+                                             "(Couldn't find manifest)"
                 End If
 
             Else
