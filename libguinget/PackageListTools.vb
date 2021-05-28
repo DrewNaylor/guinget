@@ -327,10 +327,11 @@ Public Class PackageListTools
                                             ' Make sure to create the directory for the manifest.
                                             Await Task.Run(Sub()
                                                                IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
-                                                           End Sub)
 
-                                            ' Now extract.
-                                            ZipArchiveEntry.ExtractToFile(DestinationPath)
+
+                                                               ' Now extract.
+                                                               ZipArchiveEntry.ExtractToFile(DestinationPath)
+                                                           End Sub)
                                         End If
                                     End If
                                 Next
