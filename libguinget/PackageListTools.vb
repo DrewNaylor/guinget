@@ -300,6 +300,10 @@ Public Class PackageListTools
                     ' still get about 1 minute 4 seconds.
                     ' Testing with v0.2.0.2 gets about 1 minute 45 seconds, so this is an improvement
                     ' of roughly 20 seconds.
+                    ' Showing the filename as we extract it makes it take about 1 minute 45 seconds
+                    ' with the debugger attached, or about 1 minute 35 seconds when detached.
+                    ' That's still a 10-second improvement even when showing what file is being
+                    ' extracted.
 
                     ' Check if the zip file exists before extracting it.
 
@@ -327,6 +331,13 @@ Public Class PackageListTools
                                         If DestinationPath.StartsWith(tempDir & "\winget-pkgs-master", StringComparison.OrdinalIgnoreCase) Then
                                             ' Debugging to see where it gets stuck.
                                             'Debug.WriteLine(DestinationPath)
+
+                                            ' Update the current filename.
+                                            ' Even with showing the current filename, it's
+                                            ' still faster than the old way of extracting
+                                            ' every file.
+                                            progressform.labelSourceName.Visible = True
+                                            progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
 
                                             ' Make sure to create the directory for the manifest.
                                             Await Task.Run(Sub()
