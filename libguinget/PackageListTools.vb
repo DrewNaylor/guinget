@@ -318,7 +318,11 @@ Public Class PackageListTools
                                                            ' example had it so we're doing it here.
                                                            If DestinationPath.StartsWith(tempDir, StringComparison.OrdinalIgnoreCase) Then
                                                                ' Debugging to see where it gets stuck.
-                                                               'Debug.WriteLine(DestinationPath)
+                                                               Debug.WriteLine(DestinationPath)
+
+                                                               ' TODO: This doesn't go to the correct root folder, so it'll have to be added
+                                                               ' as a subdirectory when extracting. In this case,
+                                                               ' we need to create a second "winget-pkgs-master".
 
                                                                ' Make sure to create the directory for the manifest.
                                                                IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
