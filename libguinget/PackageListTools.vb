@@ -288,108 +288,112 @@ Public Class PackageListTools
 
                 ' Temporary, basic error handler in case we can't find
                 ' the zip file we want to extract.
-                Await Task.Run(Sub()
-                                   If Use7zip = False Then
-                                       ' If the calling app doesn't want to use 7zip, use the built-in .Net extraction.
-                                       ' During testing on my laptop, using 7zip and robocopy reduced the cache updating time from
-                                       ' 1 minute 40 seconds to about 1 minute 4 seconds.
+                If Use7zip = False Then
+                    ' If the calling app doesn't want to use 7zip, use the built-in .Net extraction.
+                    ' During testing on my laptop, using 7zip and robocopy reduced the cache updating time from
+                    ' 1 minute 40 seconds to about 1 minute 4 seconds.
 
-                                       ' Check if the zip file exists before extracting it.
+                    ' Check if the zip file exists before extracting it.
 
-                                       ' This ZipArchiveEntry thing is based on MSDN code for extraction from here:
-                                       ' https://docs.microsoft.com/en-us/dotnet/api/system.io.compression.ziparchiveentry?view=netframework-4.8
+                    ' This ZipArchiveEntry thing is based on MSDN code for extraction from here:
+                    ' https://docs.microsoft.com/en-us/dotnet/api/system.io.compression.ziparchiveentry?view=netframework-4.8
 
-                                       Try
-                                           If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+                    Try
+                        If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
 
-                                               ' Now extract.
-                                               Using ManifestsZipFile As ZipArchive = ZipFile.OpenRead(tempDir & "\winget-pkgs-master.zip")
-                                                   For Each ZipArchiveEntry In ManifestsZipFile.Entries
+                            ' Now extract.
+                            Using ManifestsZipFile As ZipArchive = ZipFile.OpenRead(tempDir & "\winget-pkgs-master.zip")
+                                For Each ZipArchiveEntry In ManifestsZipFile.Entries
 
 
-                                                       ' Make sure we're only looking at the yaml files.
-                                                       ' Should make it faster.
-                                                       If ZipArchiveEntry.FullName.EndsWith(".yaml", StringComparison.OrdinalIgnoreCase) Then
+                                    ' Make sure we're only looking at the yaml files.
+                                    ' Should make it faster.
+                                    If ZipArchiveEntry.FullName.EndsWith(".yaml", StringComparison.OrdinalIgnoreCase) Then
 
-                                                           ' The final place where extracted files will be.
-                                                           Dim DestinationPath As String = Path.GetFullPath(Path.Combine(tempDir & "\winget-pkgs-master", ZipArchiveEntry.FullName))
+                                        ' The final place where extracted files will be.
+                                        Dim DestinationPath As String = Path.GetFullPath(Path.Combine(tempDir & "\winget-pkgs-master", ZipArchiveEntry.FullName))
 
-                                                           ' Not sure why we're checking if the destination path
-                                                           ' starts with the extraction directory, but the
-                                                           ' example had it so we're doing it here.
-                                                           If DestinationPath.StartsWith(tempDir & "\winget-pkgs-master", StringComparison.OrdinalIgnoreCase) Then
-                                                               ' Debugging to see where it gets stuck.
-                                                               'Debug.WriteLine(DestinationPath)
+                                        ' Not sure why we're checking if the destination path
+                                        ' starts with the extraction directory, but the
+                                        ' example had it so we're doing it here.
+                                        If DestinationPath.StartsWith(tempDir & "\winget-pkgs-master", StringComparison.OrdinalIgnoreCase) Then
+                                            ' Debugging to see where it gets stuck.
+                                            Debug.WriteLine(DestinationPath)
 
-                                                               ' Make sure to create the directory for the manifest.
+                                            ' Make sure to create the directory for the manifest.
+                                            Await Task.Run(Sub()
                                                                IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
+                                                           End Sub)
 
-                                                               ' Now extract.
-                                                               ZipArchiveEntry.ExtractToFile(DestinationPath)
-                                                           End If
-                                                       End If
-                                                   Next
-                                               End Using
-                                               'ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
-                                           End If
-                                       Catch ex As System.IO.FileNotFoundException
-                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
+                                            ' Now extract.
+                                            ZipArchiveEntry.ExtractToFile(DestinationPath)
+                                        End If
+                                    End If
+                                Next
+                            End Using
+                            'ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
+                        End If
+                    Catch ex As System.IO.FileNotFoundException
+                        MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
                                            "Extracting manifests")
-                                       Catch ex As System.IO.DirectoryNotFoundException
-                                           MessageBox.Show(ex.Message,
+                    Catch ex As System.IO.DirectoryNotFoundException
+                        MessageBox.Show(ex.Message,
                                            "Extracting manifests")
-                                       Catch ex As System.IO.InvalidDataException
-                                           MessageBox.Show("We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                    Catch ex As System.IO.InvalidDataException
+                        MessageBox.Show("We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
                                            vbCrLf & "Details:" & vbCrLf &
                                            ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
-                                       End Try
+                    End Try
 
-                                       If UpdateDatabase = True Then
-                                           Try
-                                               If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
-                                                   ' Now extract.
+                    If UpdateDatabase = True Then
+                        Try
+                            If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
+                                ' Now extract.
+
+                                Await Task.Run(Sub()
                                                    ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source\")
-                                               End If
-                                           Catch ex As System.IO.FileNotFoundException
-                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
+                                               End Sub)
+
+                            End If
+                        Catch ex As System.IO.FileNotFoundException
+                            MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
                                            "Extracting manifests")
-                                           Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
+                        Catch ex As System.IO.DirectoryNotFoundException
+                            MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
                                            "Extracting manifests")
-                                           Catch ex As System.IO.InvalidDataException
-                                               MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                        Catch ex As System.IO.InvalidDataException
+                            MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
                                            vbCrLf & "Details:" & vbCrLf &
                                            ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
-                                           End Try
-                                       End If
-                                   Else
-                                       ' The calling app wants to use 7zip, so use it.
-                                       ' Make sure it doesn't have "://" in the path.
-                                       If PathTo7zip.Contains("://") Then
-                                           PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
-                                       End If
+                        End Try
+                    End If
+                Else
+                    ' The calling app wants to use 7zip, so use it.
+                    ' Make sure it doesn't have "://" in the path.
+                    If PathTo7zip.Contains("://") Then
+                        PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
+                    End If
 
-                                       Dim extraction7z As New Process
-                                       extraction7z.StartInfo.FileName = PathTo7zip
-                                       extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
-                                       extraction7z.Start()
-                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                       extraction7z.WaitForExit()
+                    Dim extraction7z As New Process
+                    extraction7z.StartInfo.FileName = PathTo7zip
+                    extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
+                    extraction7z.Start()
+                    ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                    extraction7z.WaitForExit()
 
-                                       If UpdateDatabase = True Then
-                                           ' The calling app wants to use 7zip, so use it.
-                                           ' This is for the database.
-                                           Dim extraction7zDatabase As New Process
-                                           extraction7zDatabase.StartInfo.FileName = PathTo7zip
-                                           extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source\"
-                                           extraction7zDatabase.Start()
-                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                           extraction7zDatabase.WaitForExit()
-                                       End If
-                                   End If
-                               End Sub)
+                    If UpdateDatabase = True Then
+                        ' The calling app wants to use 7zip, so use it.
+                        ' This is for the database.
+                        Dim extraction7zDatabase As New Process
+                        extraction7zDatabase.StartInfo.FileName = PathTo7zip
+                        extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source\"
+                        extraction7zDatabase.Start()
+                        ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                        extraction7zDatabase.WaitForExit()
+                    End If
+                End If
 
                 'MessageBox.Show("7zip finished")
 
