@@ -318,7 +318,11 @@ Public Class PackageListTools
                                                            ' example had it so we're doing it here.
                                                            If DestinationPath.StartsWith(tempDir, StringComparison.OrdinalIgnoreCase) Then
                                                                ' Debugging to see where it gets stuck.
-                                                               Debug.WriteLine(DestinationPath)
+                                                               'Debug.WriteLine(DestinationPath)
+
+                                                               ' Make sure to create the directory for the manifest.
+                                                               IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
+
                                                                ' Now extract.
                                                                ZipArchiveEntry.ExtractToFile(DestinationPath)
                                                            End If
@@ -331,7 +335,7 @@ Public Class PackageListTools
                                            MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
                                            "Extracting manifests")
                                        Catch ex As System.IO.DirectoryNotFoundException
-                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master",
+                                           MessageBox.Show(ex.Message,
                                            "Extracting manifests")
                                        Catch ex As System.IO.InvalidDataException
                                            MessageBox.Show("We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
