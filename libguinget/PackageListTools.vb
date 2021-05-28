@@ -418,7 +418,7 @@ Public Class PackageListTools
                                            Catch ex As System.IO.DirectoryNotFoundException
                                                MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
-                                               "Copying manifests")
+                                               "Moving manifests")
                                            Catch ex As System.IO.IOException
                                                MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
@@ -428,11 +428,6 @@ Public Class PackageListTools
 
                                            If UpdateDatabase = True Then
                                                Try
-
-                                                   ' Change text in progress window to say
-                                                   ' that we're moving the database.
-                                                   progressform.CurrentAction = "Moving database"
-
                                                    ' Make sure the database temp folder exists before deleting
                                                    ' the database dir.
                                                    ' It might not exist if the user is running guinget offline,
@@ -449,7 +444,7 @@ Public Class PackageListTools
                                                Catch ex As System.IO.DirectoryNotFoundException
                                                    MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
-                                               "Copying manifests")
+                                               "Moving manifests")
                                                Catch ex As System.IO.IOException
                                                    MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
@@ -473,11 +468,6 @@ Public Class PackageListTools
                                            ' Partially copying code from update-manifests.bat.
                                            ' Update the database.
                                            If UpdateDatabase = True Then
-
-                                               ' Change text in progress window to say
-                                               ' that we're moving the database.
-                                               progressform.CurrentAction = "Moving database"
-
                                                Dim RobocopyFileCopyingDatabaseUpdate As New Process
                                                RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
                                                RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
