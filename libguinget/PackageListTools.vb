@@ -293,7 +293,7 @@ Public Class PackageListTools
                     ' During testing on my laptop, using 7zip and robocopy reduced the cache updating time from
                     ' 1 minute 40 seconds to about 1 minute 4 seconds.
                     ' New testing shows that the improved zip file extraction code
-                    ' now takes about 1 minute 35 seconds and the 7-zip and RoboCopy combination
+                    ' now takes about 1 minute 36 seconds and the 7-zip and RoboCopy combination
                     ' takes about 1 minute 11 seconds. This is also with the debugger attached and
                     ' Firefox open with a bunch of tabs.
 
