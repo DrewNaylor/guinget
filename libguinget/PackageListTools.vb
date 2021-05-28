@@ -26,6 +26,7 @@
 Imports System.Windows.Forms
 Imports System.IO.Compression
 Imports Microsoft.Data.Sqlite
+Imports System.IO
 
 Public Class PackageListTools
 
@@ -295,10 +296,36 @@ Public Class PackageListTools
 
                                        ' Check if the zip file exists before extracting it.
 
+                                       ' This ZipArchiveEntry thing is based on MSDN code for extraction from here:
+                                       ' https://docs.microsoft.com/en-us/dotnet/api/system.io.compression.ziparchiveentry?view=netframework-4.8
+
                                        Try
                                            If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
                                                ' Now extract.
-                                               ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
+                                               Using ManifestsZipFile As ZipArchive = ZipFile.OpenRead(tempDir & "\winget-pkgs-master.zip")
+                                                   For Each ZipArchiveEntry In ManifestsZipFile.Entries
+
+
+                                                       ' Make sure we're only looking at the yaml files.
+                                                       ' Should make it faster.
+                                                       If ZipArchiveEntry.FullName.EndsWith(".yaml", StringComparison.OrdinalIgnoreCase) Then
+
+                                                           ' The final place where extracted files will be.
+                                                           Dim DestinationPath As String = Path.GetFullPath(Path.Combine(tempDir, ZipArchiveEntry.FullName))
+
+                                                           ' Not sure why we're checking if the destination path
+                                                           ' starts with the extraction directory, but the
+                                                           ' example had it so we're doing it here.
+                                                           If DestinationPath.StartsWith(tempDir, StringComparison.OrdinalIgnoreCase) Then
+                                                               ' Debugging to see where it gets stuck.
+                                                               Debug.WriteLine(DestinationPath)
+                                                               ' Now extract.
+                                                               ZipArchiveEntry.ExtractToFile(DestinationPath)
+                                                           End If
+                                                       End If
+                                                   Next
+                                               End Using
+                                               'ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
                                            End If
                                        Catch ex As System.IO.FileNotFoundException
                                            MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
@@ -500,8 +527,8 @@ Public Class PackageListTools
                     End If
                 End If
 
-                    ' End checking if user clicked Cancel in the extracting phase.
-                End If
+                ' End checking if user clicked Cancel in the extracting phase.
+            End If
 
             ' End checking if user clicked Cancel in the downloading phase.
         End If
