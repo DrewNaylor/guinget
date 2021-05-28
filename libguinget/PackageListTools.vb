@@ -296,7 +296,8 @@ Public Class PackageListTools
                     ' now takes about 1 minute 36 seconds and the 7-zip and RoboCopy combination
                     ' takes about 1 minute 11 seconds. This is also with the debugger attached and
                     ' Firefox open with a bunch of tabs.
-                    ' Without the debugger attached, I got about 1 minute 25 seconds.
+                    ' Without the debugger attached, I got about 1 minute 25 seconds. Robocopy + 7-Zip
+                    ' still get about 1 minute 4 seconds.
 
                     ' Check if the zip file exists before extracting it.
 
