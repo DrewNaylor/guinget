@@ -292,6 +292,10 @@ Public Class PackageListTools
                     ' If the calling app doesn't want to use 7zip, use the built-in .Net extraction.
                     ' During testing on my laptop, using 7zip and robocopy reduced the cache updating time from
                     ' 1 minute 40 seconds to about 1 minute 4 seconds.
+                    ' New testing shows that the improved zip file extraction code
+                    ' now takes about 1 minute 35 seconds and the 7-zip and RoboCopy combination
+                    ' takes about 1 minute 11 seconds. This is also with the debugger attached and
+                    ' Firefox open with a bunch of tabs.
 
                     ' Check if the zip file exists before extracting it.
 
@@ -318,7 +322,7 @@ Public Class PackageListTools
                                         ' example had it so we're doing it here.
                                         If DestinationPath.StartsWith(tempDir & "\winget-pkgs-master", StringComparison.OrdinalIgnoreCase) Then
                                             ' Debugging to see where it gets stuck.
-                                            Debug.WriteLine(DestinationPath)
+                                            'Debug.WriteLine(DestinationPath)
 
                                             ' Make sure to create the directory for the manifest.
                                             Await Task.Run(Sub()
