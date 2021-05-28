@@ -411,7 +411,10 @@ Public Class PackageListTools
                                                    System.IO.Directory.Delete(ManifestDir, True)
                                                End If
 
-                                               My.Computer.FileSystem.CopyDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                                               ' Move the manifests to their proper
+                                               ' folder rather than copy so it's
+                                               ' faster.
+                                               My.Computer.FileSystem.MoveDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
                                            Catch ex As System.IO.DirectoryNotFoundException
                                                MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
@@ -435,7 +438,10 @@ Public Class PackageListTools
                                                        System.IO.Directory.Delete(DatabaseDir, True)
                                                    End If
 
-                                                   My.Computer.FileSystem.CopyDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
+                                                   ' Move the database to its proper
+                                                   ' folder rather than copy so it's
+                                                   ' faster.
+                                                   My.Computer.FileSystem.MoveDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
                                                Catch ex As System.IO.DirectoryNotFoundException
                                                    MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
