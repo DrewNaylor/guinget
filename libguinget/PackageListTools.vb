@@ -298,6 +298,8 @@ Public Class PackageListTools
                     ' Firefox open with a bunch of tabs.
                     ' Without the debugger attached, I got about 1 minute 25 seconds. Robocopy + 7-Zip
                     ' still get about 1 minute 4 seconds.
+                    ' Testing with v0.2.0.2 gets about 1 minute 45 seconds, so this is an improvement
+                    ' of roughly 20 seconds.
 
                     ' Check if the zip file exists before extracting it.
 
