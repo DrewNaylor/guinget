@@ -301,6 +301,7 @@ Public Class PackageListTools
 
                                        Try
                                            If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+
                                                ' Now extract.
                                                Using ManifestsZipFile As ZipArchive = ZipFile.OpenRead(tempDir & "\winget-pkgs-master.zip")
                                                    For Each ZipArchiveEntry In ManifestsZipFile.Entries
@@ -311,18 +312,14 @@ Public Class PackageListTools
                                                        If ZipArchiveEntry.FullName.EndsWith(".yaml", StringComparison.OrdinalIgnoreCase) Then
 
                                                            ' The final place where extracted files will be.
-                                                           Dim DestinationPath As String = Path.GetFullPath(Path.Combine(tempDir, ZipArchiveEntry.FullName))
+                                                           Dim DestinationPath As String = Path.GetFullPath(Path.Combine(tempDir & "\winget-pkgs-master", ZipArchiveEntry.FullName))
 
                                                            ' Not sure why we're checking if the destination path
                                                            ' starts with the extraction directory, but the
                                                            ' example had it so we're doing it here.
-                                                           If DestinationPath.StartsWith(tempDir, StringComparison.OrdinalIgnoreCase) Then
+                                                           If DestinationPath.StartsWith(tempDir & "\winget-pkgs-master", StringComparison.OrdinalIgnoreCase) Then
                                                                ' Debugging to see where it gets stuck.
-                                                               Debug.WriteLine(DestinationPath)
-
-                                                               ' TODO: This doesn't go to the correct root folder, so it'll have to be added
-                                                               ' as a subdirectory when extracting. In this case,
-                                                               ' we need to create a second "winget-pkgs-master".
+                                                               'Debug.WriteLine(DestinationPath)
 
                                                                ' Make sure to create the directory for the manifest.
                                                                IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
