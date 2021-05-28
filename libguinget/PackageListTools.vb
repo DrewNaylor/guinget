@@ -376,7 +376,7 @@ Public Class PackageListTools
                 Using progressform As New DownloadProgressForm
                     progressform.labelSourceLocation.Hide()
                     progressform.labelSourceName.Hide()
-                    progressform.CurrentAction = "Copying manifests"
+                    progressform.CurrentAction = "Moving manifests"
 
                     ' Specify whether or not the form should stay on top
                     ' of everything.
@@ -423,11 +423,15 @@ Public Class PackageListTools
                                                MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
-                                                               ex.Message, "Copying manifests")
+                                                               ex.Message, "Moving manifests")
                                            End Try
 
                                            If UpdateDatabase = True Then
                                                Try
+
+                                                   ' Change text in progress window to say
+                                                   ' that we're moving the database.
+                                                   progressform.CurrentAction = "Moving database"
 
                                                    ' Make sure the database temp folder exists before deleting
                                                    ' the database dir.
@@ -450,7 +454,7 @@ Public Class PackageListTools
                                                    MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
-                                                               ex.Message, "Copying manifests")
+                                                               ex.Message, "Moving database")
                                                End Try
                                            End If
 
@@ -469,6 +473,11 @@ Public Class PackageListTools
                                            ' Partially copying code from update-manifests.bat.
                                            ' Update the database.
                                            If UpdateDatabase = True Then
+
+                                               ' Change text in progress window to say
+                                               ' that we're moving the database.
+                                               progressform.CurrentAction = "Moving database"
+
                                                Dim RobocopyFileCopyingDatabaseUpdate As New Process
                                                RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
                                                RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
