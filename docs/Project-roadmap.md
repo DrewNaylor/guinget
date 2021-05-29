@@ -70,6 +70,8 @@ GitHub milestone: [Version 0.2](https://github.com/DrewNaylor/guinget/milestone/
 
 ## Version 0.2.1 Alpha
 
+Milestone: [Version 0.2.1](https://github.com/DrewNaylor/guinget/milestone/9)
+
 - [ ] Optimize manifest updating and package list loading so it's faster [(pr #110)](https://github.com/DrewNaylor/guinget/pull/110)
   - This involves using more Async stuff, only extracting .yaml files from the manifest zip file, moving the manifests folder instead of copying it, and not force-updating the progress bar every time a row is changed in the main window (it'll update on its own without forcing the statusbar to be redrawn).
   - One benefit from the timesaves in the manifest extraction code is that the current file can now be displayed as it's extracting to give some idea of the progress, and it's still faster than the old code.
@@ -78,11 +80,15 @@ GitHub milestone: [Version 0.2](https://github.com/DrewNaylor/guinget/milestone/
 
 ## Version 0.2.2 Alpha
 
+Milestone: [Version 0.2.2](https://github.com/DrewNaylor/guinget/milestone/10)
+
 - [ ] Load the package list and package details async so that the UI doesn't lock up
 <br>Seems like this page has some good ideas on how to do this:
 https://stackoverflow.com/questions/570537/update-label-while-processing-in-windows-forms
 
 ## Version 0.3 Beta
+
+Milestone: [Version 0.3](https://github.com/DrewNaylor/guinget/milestone/8)
 
 - [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
 - [ ] Allow packages to be re-installed (also issue #23)
