@@ -304,6 +304,10 @@ Public Class PackageListTools
                     ' with the debugger attached, or about 1 minute 35 seconds when detached.
                     ' That's still a 10-second improvement even when showing what file is being
                     ' extracted.
+                    ' Another test showed it takes about 2 minutes 12 seconds detached from
+                    ' the debugger, then one a few minutes later took about 2 minutes 8 seconds.
+                    ' Another test with the current ectraction and copy code took about 3 minutes 2 seconds,
+                    ' so it's still faster.
 
                     ' Check if the zip file exists before extracting it.
 
@@ -426,7 +430,7 @@ Public Class PackageListTools
             ' Check if the user wants to cancel before the copying phase.
             If CancelUpdateFlag = False Then
 
-                ' Now we just need to copy the right files over.
+                ' Now we just need to move the right files over.
                 ' Probably should add a dialog to not make it
                 ' look like nothing is happening.
                 Using progressform As New DownloadProgressForm
@@ -447,92 +451,101 @@ Public Class PackageListTools
                     ' Update the progress form.
                     progressform.Update()
 
-                    ' Copy manifests.
-                    Await Task.Run(Sub()
+                    ' Move manifests.
 
-                                       If UseRobocopy = False Then
 
-                                           ' The calling app doesn't want to use Robocopy.
+                    If UseRobocopy = False Then
 
-                                           ' Temporary, basic error handler in case
-                                           ' we can't find the manifests folder.
-                                           Try
+                        ' The calling app doesn't want to use Robocopy.
 
-                                               ' Make sure the manifest temp folder exists before deleting
-                                               ' the manifest dir.
-                                               ' It might not exist if the user is running guinget offline,
-                                               ' in which case the package list cache will just be loaded from
-                                               ' disk and won't be updated.
+                        ' Temporary, basic error handler in case
+                        ' we can't find the manifests folder.
+                        Try
+
+                            ' Make sure the manifest temp folder exists before deleting
+                            ' the manifest dir.
+                            ' It might not exist if the user is running guinget offline,
+                            ' in which case the package list cache will just be loaded from
+                            ' disk and won't be updated.
+                            Await Task.Run(Sub()
                                                If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
                                                    System.IO.Directory.Delete(ManifestDir, True)
                                                End If
+                                           End Sub)
 
-                                               ' Move the manifests to their proper
-                                               ' folder rather than copy so it's
-                                               ' faster.
+                            ' Move the manifests to their proper
+                            ' folder rather than copy so it's
+                            ' faster.
+                            Await Task.Run(Sub()
                                                My.Computer.FileSystem.MoveDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
-                                           Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
-                                                               "Please close any Explorer windows that may be open in this directory, and try again.",
-                                               "Moving manifests")
-                                           Catch ex As System.IO.IOException
-                                               MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                           End Sub)
+
+                        Catch ex As System.IO.DirectoryNotFoundException
+                            MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
+                                            "Please close any Explorer windows that may be open in this directory, and try again.",
+                                            "Moving manifests")
+                        Catch ex As System.IO.IOException
+                            MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
                                                                ex.Message, "Moving manifests")
-                                           End Try
+                        End Try
 
-                                           If UpdateDatabase = True Then
-                                               Try
-                                                   ' Make sure the database temp folder exists before deleting
-                                                   ' the database dir.
-                                                   ' It might not exist if the user is running guinget offline,
-                                                   ' in which case the database cache will just be loaded from
-                                                   ' disk and won't be updated.
+                        If UpdateDatabase = True Then
+                            Try
+                                ' Make sure the database temp folder exists before deleting
+                                ' the database dir.
+                                ' It might not exist if the user is running guinget offline,
+                                ' in which case the database cache will just be loaded from
+                                ' disk and won't be updated.
+                                Await Task.Run(Sub()
                                                    If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
                                                        System.IO.Directory.Delete(DatabaseDir, True)
                                                    End If
+                                               End Sub)
 
-                                                   ' Move the database to its proper
-                                                   ' folder rather than copy so it's
-                                                   ' faster.
+                                ' Move the database to its proper
+                                ' folder rather than copy so it's
+                                ' faster.
+                                Await Task.Run(Sub()
                                                    My.Computer.FileSystem.MoveDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
-                                               Catch ex As System.IO.DirectoryNotFoundException
-                                                   MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
+                                               End Sub)
+
+                            Catch ex As System.IO.DirectoryNotFoundException
+                                MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
                                                "Moving manifests")
-                                               Catch ex As System.IO.IOException
-                                                   MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                            Catch ex As System.IO.IOException
+                                MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
                                                                ex.Message, "Moving database")
-                                               End Try
-                                           End If
+                            End Try
+                        End If
 
-                                       Else
+                    Else
 
-                                           ' The calling app wants to use Robocopy.
-                                           ' Partially copying code from update-manifests.bat.
-                                           Dim RobocopyFileCopying As New Process
-                                           RobocopyFileCopying.StartInfo.FileName = "robocopy"
-                                           RobocopyFileCopying.StartInfo.Arguments = "/NFL /NDL /S " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests " & ManifestDir
-                                           RobocopyFileCopying.Start()
-                                           ' Wait for robocopy to exit, or else it'll move on too soon.
-                                           RobocopyFileCopying.WaitForExit()
+                        ' The calling app wants to use Robocopy.
+                        ' Partially copying code from update-manifests.bat.
+                        Dim RobocopyFileCopying As New Process
+                        RobocopyFileCopying.StartInfo.FileName = "robocopy"
+                        RobocopyFileCopying.StartInfo.Arguments = "/NFL /NDL /S " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests " & ManifestDir
+                        RobocopyFileCopying.Start()
+                        ' Wait for robocopy to exit, or else it'll move on too soon.
+                        RobocopyFileCopying.WaitForExit()
 
-                                           ' The calling app wants to use Robocopy.
-                                           ' Partially copying code from update-manifests.bat.
-                                           ' Update the database.
-                                           If UpdateDatabase = True Then
-                                               Dim RobocopyFileCopyingDatabaseUpdate As New Process
-                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
-                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
-                                               RobocopyFileCopyingDatabaseUpdate.Start()
-                                               ' Wait for robocopy to exit, or else it'll move on too soon.
-                                               RobocopyFileCopyingDatabaseUpdate.WaitForExit()
-                                           End If
-                                       End If
-                                   End Sub)
+                        ' The calling app wants to use Robocopy.
+                        ' Partially copying code from update-manifests.bat.
+                        ' Update the database.
+                        If UpdateDatabase = True Then
+                            Dim RobocopyFileCopyingDatabaseUpdate As New Process
+                            RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
+                            RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
+                            RobocopyFileCopyingDatabaseUpdate.Start()
+                            ' Wait for robocopy to exit, or else it'll move on too soon.
+                            RobocopyFileCopyingDatabaseUpdate.WaitForExit()
+                        End If
+                    End If
 
                 End Using
 
