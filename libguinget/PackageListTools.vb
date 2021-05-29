@@ -306,7 +306,7 @@ Public Class PackageListTools
                     ' extracted.
                     ' Another test showed it takes about 2 minutes 12 seconds detached from
                     ' the debugger, then one a few minutes later took about 2 minutes 8 seconds.
-                    ' Another test with the current ectraction and copy code took about 3 minutes 2 seconds,
+                    ' Another test with the current extraction and copy code took about 3 minutes 2 seconds,
                     ' so it's still faster.
 
                     ' Check if the zip file exists before extracting it.
