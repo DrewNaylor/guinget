@@ -345,10 +345,9 @@ Public Class PackageListTools
                                             progressform.labelSourceName.Visible = True
                                             progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
 
-                                            ' Make sure to create the directory for the manifest.
                                             Await Task.Run(Sub()
+                                                               ' Make sure to create the directory for the manifest.
                                                                IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
-
 
                                                                ' Now extract.
                                                                ZipArchiveEntry.ExtractToFile(DestinationPath)
