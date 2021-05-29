@@ -347,6 +347,8 @@ Public Class PackageListTools
 
                                             Await Task.Run(Sub()
                                                                ' Make sure to create the directory for the manifest.
+                                                               ' TODO: Make sure there's a "\" at the end of the path
+                                                               ' to prevent path traversal.
                                                                IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
 
                                                                ' Now extract.
