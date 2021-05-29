@@ -166,6 +166,9 @@ Public Class aaformMainWindow
         ' Update loading label.
         aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package details..."
 
+        ' Set the progress bar back to 0.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+
         ' Update the main window again after making the list visible and changing the loading label.
         aaformMainWindow.Update()
 
