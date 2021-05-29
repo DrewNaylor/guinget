@@ -72,7 +72,9 @@ GitHub milestone: [Version 0.2](https://github.com/DrewNaylor/guinget/milestone/
 
 - [ ] Optimize manifest updating and package list loading so it's faster [(pr #110)](https://github.com/DrewNaylor/guinget/pull/110)
   - This involves using more Async stuff, only extracting .yaml files from the manifest zip file, moving the manifests folder instead of copying it, and not force-updating the progress bar every time a row is changed in the main window (it'll update on its own without forcing the statusbar to be redrawn).
-  - One benefit from the timesaves in the manifest extraction code is that the current file can now be displayed as it's extracting, and it's still faster than the old code.
+  - One benefit from the timesaves in the manifest extraction code is that the current file can now be displayed as it's extracting to give some idea of the progress, and it's still faster than the old code.
+  - If it's not too much slower, the extraction progress bar will properly progress when extracting manifests. Database extraction will still be indeterminate, just like it will be in 0.2.1 because it still uses the old manifest extraction code to keep things simple.
+  - The 7-Zip and RoboCopy manifest updating code is still the same since it's still faster, but a future version may replace RoboCopy with a simple `move` command.
 
 ## Version 0.2.2 Alpha
 
