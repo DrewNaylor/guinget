@@ -302,10 +302,12 @@ Public Class PackageListTools
                     ' with the debugger attached, or about 1 minute 35 seconds when detached.
                     ' That's still a 10-second improvement even when showing what file is being
                     ' extracted.
-                    ' Another test showed it takes about 2 minutes 12 seconds detached from
+                    ' Another test with the laptop unplugged showed it takes about 2 minutes 12 seconds detached from
                     ' the debugger, then one a few minutes later took about 2 minutes 8 seconds.
                     ' Another test with the current extraction and copy code took about 3 minutes 2 seconds,
                     ' so it's still faster.
+                    ' It appears that using "Better performance" makes the extraction go faster,
+                    ' which is to be expected.
 
                     ' Check if the zip file exists before extracting it.
 
@@ -355,6 +357,7 @@ Public Class PackageListTools
                                     End If
                                 Next
                             End Using
+                            ' Old extraction code.
                             'ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
                         End If
                     Catch ex As System.IO.FileNotFoundException
@@ -519,7 +522,7 @@ Public Class PackageListTools
                                 MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
-                                                               ex.Message, "Moving database")
+                                                               ex.Message, "Moving manifests")
                             End Try
                         End If
 
