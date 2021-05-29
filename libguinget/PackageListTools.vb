@@ -26,6 +26,7 @@
 Imports System.Windows.Forms
 Imports System.IO.Compression
 Imports Microsoft.Data.Sqlite
+Imports System.IO
 
 Public Class PackageListTools
 
@@ -285,79 +286,142 @@ Public Class PackageListTools
                 ' StackOverflow answer would work:
                 ' https://stackoverflow.com/a/39668142
 
-                ' Temporary, basic error handler in case we can't find
-                ' the zip file we want to extract.
-                Await Task.Run(Sub()
-                                   If Use7zip = False Then
-                                       ' If the calling app doesn't want to use 7zip, use the built-in .Net extraction.
-                                       ' During testing on my laptop, using 7zip and robocopy reduced the cache updating time from
-                                       ' 1 minute 40 seconds to about 1 minute 4 seconds.
+                If Use7zip = False Then
+                    ' If the calling app doesn't want to use 7zip, use the built-in .Net extraction.
+                    ' During testing on my laptop, using 7zip and robocopy reduced the cache updating time from
+                    ' 1 minute 40 seconds to about 1 minute 4 seconds.
+                    ' New testing as of 5/28/2021 shows that the improved zip file extraction code
+                    ' now takes about 1 minute 36 seconds and the 7-zip and RoboCopy combination
+                    ' takes about 1 minute 11 seconds. This is also with the debugger attached and
+                    ' Firefox open with a bunch of tabs.
+                    ' Without the debugger attached, I got about 1 minute 25 seconds. Robocopy + 7-Zip
+                    ' still get about 1 minute 4 seconds.
+                    ' Testing with v0.2.0.2 gets about 1 minute 45 seconds, so this is an improvement
+                    ' of roughly 20 seconds.
+                    ' Showing the filename as we extract it makes it take about 1 minute 45 seconds
+                    ' with the debugger attached, or about 1 minute 35 seconds when detached.
+                    ' That's still a 10-second improvement even when showing what file is being
+                    ' extracted.
+                    ' Another test with the laptop unplugged showed it takes about 2 minutes 12 seconds detached from
+                    ' the debugger, then one a few minutes later took about 2 minutes 8 seconds.
+                    ' Another test with the current extraction and copy code took about 3 minutes 2 seconds,
+                    ' so it's still faster.
+                    ' It appears that using "Better performance" makes the extraction go faster,
+                    ' which is to be expected.
 
-                                       ' Check if the zip file exists before extracting it.
+                    ' Check if the zip file exists before extracting it.
 
-                                       Try
-                                           If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
-                                               ' Now extract.
-                                               ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
-                                           End If
-                                       Catch ex As System.IO.FileNotFoundException
-                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
+                    ' This ZipArchiveEntry thing is based on MSDN code for extraction from here:
+                    ' https://docs.microsoft.com/en-us/dotnet/api/system.io.compression.ziparchiveentry?view=netframework-4.8
+
+                    ' Temporary, basic error handler in case we can't find
+                    ' the zip file we want to extract.
+                    Try
+                        If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
+
+                            ' Now extract.
+                            Using ManifestsZipFile As ZipArchive = ZipFile.OpenRead(tempDir & "\winget-pkgs-master.zip")
+                                For Each ZipArchiveEntry In ManifestsZipFile.Entries
+
+
+                                    ' Make sure we're only looking at the yaml files.
+                                    ' Should make it faster.
+                                    If ZipArchiveEntry.FullName.EndsWith(".yaml", StringComparison.OrdinalIgnoreCase) Then
+
+                                        ' The final place where extracted files will be.
+                                        Dim DestinationPath As String = Path.GetFullPath(Path.Combine(tempDir & "\winget-pkgs-master", ZipArchiveEntry.FullName))
+
+                                        ' Not sure why we're checking if the destination path
+                                        ' starts with the extraction directory, but the
+                                        ' example had it so we're doing it here.
+                                        If DestinationPath.StartsWith(tempDir & "\winget-pkgs-master", StringComparison.OrdinalIgnoreCase) Then
+                                            ' Debugging to see where it gets stuck.
+                                            'Debug.WriteLine(DestinationPath)
+
+                                            ' Update the current filename.
+                                            ' Even with showing the current filename, it's
+                                            ' still faster than the old way of extracting
+                                            ' every file.
+                                            progressform.labelSourceName.Visible = True
+                                            progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
+
+                                            Await Task.Run(Sub()
+                                                               ' Make sure to create the directory for the manifest.
+                                                               ' TODO: Make sure there's a "\" at the end of the path
+                                                               ' to prevent path traversal.
+                                                               IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
+
+                                                               ' Now extract.
+                                                               ZipArchiveEntry.ExtractToFile(DestinationPath)
+                                                           End Sub)
+                                        End If
+                                    End If
+                                Next
+                            End Using
+                            ' Old extraction code.
+                            'ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
+                        End If
+                    Catch ex As System.IO.FileNotFoundException
+                        MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master.zip",
                                            "Extracting manifests")
-                                       Catch ex As System.IO.DirectoryNotFoundException
-                                           MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master",
+                    Catch ex As System.IO.DirectoryNotFoundException
+                        MessageBox.Show(ex.Message,
                                            "Extracting manifests")
-                                       Catch ex As System.IO.InvalidDataException
-                                           MessageBox.Show("We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                    Catch ex As System.IO.InvalidDataException
+                        MessageBox.Show("We couldn't extract the manifest package. Please verify that the source URL is correct, and try again." & vbCrLf &
                                            vbCrLf & "Details:" & vbCrLf &
                                            ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
-                                       End Try
+                    End Try
 
-                                       If UpdateDatabase = True Then
-                                           Try
-                                               If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
-                                                   ' Now extract.
+                    If UpdateDatabase = True Then
+                        Try
+                            If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
+                                ' Now extract.
+
+                                Await Task.Run(Sub()
                                                    ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source\")
-                                               End If
-                                           Catch ex As System.IO.FileNotFoundException
-                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
+                                               End Sub)
+
+                            End If
+                        Catch ex As System.IO.FileNotFoundException
+                            MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
                                            "Extracting manifests")
-                                           Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
+                        Catch ex As System.IO.DirectoryNotFoundException
+                            MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
                                            "Extracting manifests")
-                                           Catch ex As System.IO.InvalidDataException
-                                               MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                        Catch ex As System.IO.InvalidDataException
+                            MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
                                            vbCrLf & "Details:" & vbCrLf &
                                            ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
-                                           End Try
-                                       End If
-                                   Else
-                                       ' The calling app wants to use 7zip, so use it.
-                                       ' Make sure it doesn't have "://" in the path.
-                                       If PathTo7zip.Contains("://") Then
-                                           PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
-                                       End If
+                        End Try
+                    End If
+                Else
+                    ' The calling app wants to use 7zip, so use it.
+                    ' Make sure it doesn't have "://" in the path.
+                    If PathTo7zip.Contains("://") Then
+                        PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
+                    End If
 
-                                       Dim extraction7z As New Process
-                                       extraction7z.StartInfo.FileName = PathTo7zip
-                                       extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
-                                       extraction7z.Start()
-                                       ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                       extraction7z.WaitForExit()
+                    Dim extraction7z As New Process
+                    extraction7z.StartInfo.FileName = PathTo7zip
+                    extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
+                    extraction7z.Start()
+                    ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                    extraction7z.WaitForExit()
 
-                                       If UpdateDatabase = True Then
-                                           ' The calling app wants to use 7zip, so use it.
-                                           ' This is for the database.
-                                           Dim extraction7zDatabase As New Process
-                                           extraction7zDatabase.StartInfo.FileName = PathTo7zip
-                                           extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source\"
-                                           extraction7zDatabase.Start()
-                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                                           extraction7zDatabase.WaitForExit()
-                                       End If
-                                   End If
-                               End Sub)
+                    If UpdateDatabase = True Then
+                        ' The calling app wants to use 7zip, so use it.
+                        ' This is for the database.
+                        Dim extraction7zDatabase As New Process
+                        extraction7zDatabase.StartInfo.FileName = PathTo7zip
+                        extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source\"
+                        extraction7zDatabase.Start()
+                        ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                        extraction7zDatabase.WaitForExit()
+                    End If
+                End If
 
                 'MessageBox.Show("7zip finished")
 
@@ -370,7 +434,7 @@ Public Class PackageListTools
             ' Check if the user wants to cancel before the copying phase.
             If CancelUpdateFlag = False Then
 
-                ' Now we just need to copy the right files over.
+                ' Now we just need to move the right files over.
                 ' Probably should add a dialog to not make it
                 ' look like nothing is happening.
                 Using progressform As New DownloadProgressForm
@@ -391,92 +455,101 @@ Public Class PackageListTools
                     ' Update the progress form.
                     progressform.Update()
 
-                    ' Copy manifests.
-                    Await Task.Run(Sub()
+                    ' Move manifests.
 
-                                       If UseRobocopy = False Then
 
-                                           ' The calling app doesn't want to use Robocopy.
+                    If UseRobocopy = False Then
 
-                                           ' Temporary, basic error handler in case
-                                           ' we can't find the manifests folder.
-                                           Try
+                        ' The calling app doesn't want to use Robocopy.
 
-                                               ' Make sure the manifest temp folder exists before deleting
-                                               ' the manifest dir.
-                                               ' It might not exist if the user is running guinget offline,
-                                               ' in which case the package list cache will just be loaded from
-                                               ' disk and won't be updated.
+                        ' Temporary, basic error handler in case
+                        ' we can't find the manifests folder.
+                        Try
+
+                            ' Make sure the manifest temp folder exists before deleting
+                            ' the manifest dir.
+                            ' It might not exist if the user is running guinget offline,
+                            ' in which case the package list cache will just be loaded from
+                            ' disk and won't be updated.
+                            Await Task.Run(Sub()
                                                If System.IO.Directory.Exists(ManifestDir) AndAlso IO.Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
                                                    System.IO.Directory.Delete(ManifestDir, True)
                                                End If
+                                           End Sub)
 
-                                               ' Move the manifests to their proper
-                                               ' folder rather than copy so it's
-                                               ' faster.
+                            ' Move the manifests to their proper
+                            ' folder rather than copy so it's
+                            ' faster.
+                            Await Task.Run(Sub()
                                                My.Computer.FileSystem.MoveDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
-                                           Catch ex As System.IO.DirectoryNotFoundException
-                                               MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
-                                                               "Please close any Explorer windows that may be open in this directory, and try again.",
-                                               "Moving manifests")
-                                           Catch ex As System.IO.IOException
-                                               MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                           End Sub)
+
+                        Catch ex As System.IO.DirectoryNotFoundException
+                            MessageBox.Show("Couldn't find " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests" & vbCrLf &
+                                            "Please close any Explorer windows that may be open in this directory, and try again.",
+                                            "Moving manifests")
+                        Catch ex As System.IO.IOException
+                            MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
                                                                ex.Message, "Moving manifests")
-                                           End Try
+                        End Try
 
-                                           If UpdateDatabase = True Then
-                                               Try
-                                                   ' Make sure the database temp folder exists before deleting
-                                                   ' the database dir.
-                                                   ' It might not exist if the user is running guinget offline,
-                                                   ' in which case the database cache will just be loaded from
-                                                   ' disk and won't be updated.
+                        If UpdateDatabase = True Then
+                            Try
+                                ' Make sure the database temp folder exists before deleting
+                                ' the database dir.
+                                ' It might not exist if the user is running guinget offline,
+                                ' in which case the database cache will just be loaded from
+                                ' disk and won't be updated.
+                                Await Task.Run(Sub()
                                                    If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
                                                        System.IO.Directory.Delete(DatabaseDir, True)
                                                    End If
+                                               End Sub)
 
-                                                   ' Move the database to its proper
-                                                   ' folder rather than copy so it's
-                                                   ' faster.
+                                ' Move the database to its proper
+                                ' folder rather than copy so it's
+                                ' faster.
+                                Await Task.Run(Sub()
                                                    My.Computer.FileSystem.MoveDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
-                                               Catch ex As System.IO.DirectoryNotFoundException
-                                                   MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
+                                               End Sub)
+
+                            Catch ex As System.IO.DirectoryNotFoundException
+                                MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                                "Please close any Explorer windows that may be open in this directory, and try again.",
                                                "Moving manifests")
-                                               Catch ex As System.IO.IOException
-                                                   MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                            Catch ex As System.IO.IOException
+                                MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                                vbCrLf &
                                                                "Details:" & vbCrLf &
-                                                               ex.Message, "Moving database")
-                                               End Try
-                                           End If
+                                                               ex.Message, "Moving manifests")
+                            End Try
+                        End If
 
-                                       Else
+                    Else
 
-                                           ' The calling app wants to use Robocopy.
-                                           ' Partially copying code from update-manifests.bat.
-                                           Dim RobocopyFileCopying As New Process
-                                           RobocopyFileCopying.StartInfo.FileName = "robocopy"
-                                           RobocopyFileCopying.StartInfo.Arguments = "/NFL /NDL /S " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests " & ManifestDir
-                                           RobocopyFileCopying.Start()
-                                           ' Wait for robocopy to exit, or else it'll move on too soon.
-                                           RobocopyFileCopying.WaitForExit()
+                        ' The calling app wants to use Robocopy.
+                        ' Partially copying code from update-manifests.bat.
+                        Dim RobocopyFileCopying As New Process
+                        RobocopyFileCopying.StartInfo.FileName = "robocopy"
+                        RobocopyFileCopying.StartInfo.Arguments = "/NFL /NDL /S " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests " & ManifestDir
+                        RobocopyFileCopying.Start()
+                        ' Wait for robocopy to exit, or else it'll move on too soon.
+                        RobocopyFileCopying.WaitForExit()
 
-                                           ' The calling app wants to use Robocopy.
-                                           ' Partially copying code from update-manifests.bat.
-                                           ' Update the database.
-                                           If UpdateDatabase = True Then
-                                               Dim RobocopyFileCopyingDatabaseUpdate As New Process
-                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
-                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
-                                               RobocopyFileCopyingDatabaseUpdate.Start()
-                                               ' Wait for robocopy to exit, or else it'll move on too soon.
-                                               RobocopyFileCopyingDatabaseUpdate.WaitForExit()
-                                           End If
-                                       End If
-                                   End Sub)
+                        ' The calling app wants to use Robocopy.
+                        ' Partially copying code from update-manifests.bat.
+                        ' Update the database.
+                        If UpdateDatabase = True Then
+                            Dim RobocopyFileCopyingDatabaseUpdate As New Process
+                            RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
+                            RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
+                            RobocopyFileCopyingDatabaseUpdate.Start()
+                            ' Wait for robocopy to exit, or else it'll move on too soon.
+                            RobocopyFileCopyingDatabaseUpdate.WaitForExit()
+                        End If
+                    End If
 
                 End Using
 
@@ -500,8 +573,8 @@ Public Class PackageListTools
                     End If
                 End If
 
-                    ' End checking if user clicked Cancel in the extracting phase.
-                End If
+                ' End checking if user clicked Cancel in the extracting phase.
+            End If
 
             ' End checking if user clicked Cancel in the downloading phase.
         End If
