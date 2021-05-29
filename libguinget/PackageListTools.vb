@@ -286,8 +286,6 @@ Public Class PackageListTools
                 ' StackOverflow answer would work:
                 ' https://stackoverflow.com/a/39668142
 
-                ' Temporary, basic error handler in case we can't find
-                ' the zip file we want to extract.
                 If Use7zip = False Then
                     ' If the calling app doesn't want to use 7zip, use the built-in .Net extraction.
                     ' During testing on my laptop, using 7zip and robocopy reduced the cache updating time from
@@ -314,6 +312,8 @@ Public Class PackageListTools
                     ' This ZipArchiveEntry thing is based on MSDN code for extraction from here:
                     ' https://docs.microsoft.com/en-us/dotnet/api/system.io.compression.ziparchiveentry?view=netframework-4.8
 
+                    ' Temporary, basic error handler in case we can't find
+                    ' the zip file we want to extract.
                     Try
                         If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
 
