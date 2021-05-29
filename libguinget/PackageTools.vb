@@ -237,11 +237,19 @@ Public Class PackageTools
             ' This check doesn't work; maybe something
             ' like an ordered list would be better:
             ' https://stackoverflow.com/a/30097560
-            ' Check each entry in the YAML root node.
+            ' Check each entry in the YAML root node
+
+            ' Using Await Task.Run(Sub() here allows the main window
+            ' to be moved around while the package list is being
+            ' updated with details, but it's really slow.
+            ' There needs to be a way to move the window around
+            ' and have the updating be fast.
+            'Await Task.Run(Sub()
             If CType(Entry.Key, YamlScalarNode).Value = RequestedKey Then
                 ' If we're looking at what's requested, return it.
                 EntryValue = Entry.Value.ToString
             End If
+            'End Sub)
         Next
 
         Return EntryValue
