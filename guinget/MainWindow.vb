@@ -47,13 +47,13 @@ Public Class aaformMainWindow
         ' Instead it'll just keep the default cursor.
         aaformMainWindow.Cursor = Cursors.WaitCursor
 
-        '' Turn off autosize to make it go way faster.Might not help
+        '' Turn off autosize to make it go way faster. Might not help
         '' performance, so it's commented out for now.
         '' Credits to this SO answer:
         '' https://stackoverflow.com/a/19518340
-        'For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
-        '    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
-        'Next
+        For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+        Next
 
         ' Hide the datagridview while we're updating to make
         ' this slightly faster.
@@ -282,8 +282,8 @@ Public Class aaformMainWindow
 
         '' Turn autosize back on for certain columns. Might not help
         '' performance, so it's commented out for now.
-        'aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        'aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
