@@ -591,7 +591,10 @@ Public Class PackageListTools
         ' Now begin deletion process.
         ' Make sure it's not in use at the moment.
         Try
-            System.IO.Directory.Delete(tempPath, True)
+            ' Using Await so it's properly async.
+            Await Task.Run(Sub()
+                               System.IO.Directory.Delete(tempPath, True)
+                           End Sub)
             ' Re-create the dir if necessary.
             If RecreateTempDir = True Then
                 System.IO.Directory.CreateDirectory(tempPath)
