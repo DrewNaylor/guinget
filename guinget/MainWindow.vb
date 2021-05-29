@@ -95,6 +95,7 @@ Public Class aaformMainWindow
             Exit Function
         End If
 
+#Region "Deprecated manifest-only loading."
         ' Go through everything in the manifest paths array until it's out if
         ' we don't want to load from a database.
         If My.Settings.LoadFromSqliteDb = False Then
@@ -111,6 +112,7 @@ Public Class aaformMainWindow
                 ' Update the statusbar to show the current info.
                 aaformMainWindow.statusbarMainWindow.Update()
             Next
+#End Region
         Else
             ' We do want to load from the database, so do it.
 
@@ -121,6 +123,9 @@ Public Class aaformMainWindow
             ' This has to be done here or there will be a crash
             ' if we can't find all the manifests.
             aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = SqliteList.Rows.Count - 1
+
+            ' Update the statusbar before doing the progressbar.
+            aaformMainWindow.statusbarMainWindow.Update()
 
             'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
             'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
@@ -145,7 +150,10 @@ Public Class aaformMainWindow
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
                 ' Update the statusbar to show the current info.
-                aaformMainWindow.statusbarMainWindow.Update()
+                ' Currently commented out because it's faster to not
+                ' update the statusbar every time, but to instead
+                ' rely on it just updating automatically.
+                'aaformMainWindow.statusbarMainWindow.Update()
             Next
         End If
 
@@ -199,6 +207,9 @@ Public Class aaformMainWindow
             ' will crash when the path doesn't exist.
             PackageListTools.FallbackPathList = PackageListTools.GetManifests
 
+            ' Update the statusbar before doing the progressbar.
+            aaformMainWindow.statusbarMainWindow.Update()
+
             ' Now we need to load the manifests and the descriptions.
             For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
                 ' Find the manifest and get its description.
@@ -250,7 +261,10 @@ Public Class aaformMainWindow
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
                 ' Update the statusbar to show the current info.
-                aaformMainWindow.statusbarMainWindow.Update()
+                ' Currently commented out because it's faster to not
+                ' update the statusbar every time, but to instead
+                ' rely on it just updating automatically.
+                'aaformMainWindow.statusbarMainWindow.Update()
             Next
         End If
 
