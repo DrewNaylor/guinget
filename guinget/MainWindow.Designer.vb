@@ -93,7 +93,6 @@ Partial Class aaformMainWindow
         Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ManifestType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
-        Me.textboxPackageDetails = New System.Windows.Forms.TextBox()
         Me.panelMainPkgArea = New System.Windows.Forms.Panel()
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
         Me.toolstripbuttonRefreshCache = New System.Windows.Forms.ToolStripButton()
@@ -139,6 +138,7 @@ Partial Class aaformMainWindow
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialogExportPackages = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialogImportPackages = New System.Windows.Forms.OpenFileDialog()
+        Me.textboxPackageDetails = New System.Windows.Forms.RichTextBox()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -673,19 +673,6 @@ Partial Class aaformMainWindow
         Me.labelUpdatingPackageList.TabIndex = 1
         Me.labelUpdatingPackageList.Text = "Loading package list, please wait..."
         '
-        'textboxPackageDetails
-        '
-        Me.textboxPackageDetails.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.textboxPackageDetails.Location = New System.Drawing.Point(0, 0)
-        Me.textboxPackageDetails.Margin = New System.Windows.Forms.Padding(2)
-        Me.textboxPackageDetails.Multiline = True
-        Me.textboxPackageDetails.Name = "textboxPackageDetails"
-        Me.textboxPackageDetails.ReadOnly = True
-        Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textboxPackageDetails.Size = New System.Drawing.Size(664, 167)
-        Me.textboxPackageDetails.TabIndex = 1
-        Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
-        '
         'panelMainPkgArea
         '
         Me.panelMainPkgArea.Controls.Add(Me.splitcontainerMainWindow)
@@ -1114,6 +1101,17 @@ Partial Class aaformMainWindow
         Me.OpenFileDialogImportPackages.RestoreDirectory = True
         Me.OpenFileDialogImportPackages.Title = "Import Packages"
         '
+        'textboxPackageDetails
+        '
+        Me.textboxPackageDetails.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.textboxPackageDetails.Location = New System.Drawing.Point(0, 0)
+        Me.textboxPackageDetails.Name = "textboxPackageDetails"
+        Me.textboxPackageDetails.ReadOnly = True
+        Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.textboxPackageDetails.Size = New System.Drawing.Size(664, 167)
+        Me.textboxPackageDetails.TabIndex = 0
+        Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1132,7 +1130,6 @@ Partial Class aaformMainWindow
         Me.contextmenustripPackageMenu.ResumeLayout(False)
         Me.splitcontainerMainWindow.Panel1.ResumeLayout(False)
         Me.splitcontainerMainWindow.Panel2.ResumeLayout(False)
-        Me.splitcontainerMainWindow.Panel2.PerformLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.splitcontainerMainWindow.ResumeLayout(False)
         Me.panelPackageListHolder.ResumeLayout(False)
@@ -1172,7 +1169,6 @@ Partial Class aaformMainWindow
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents splitcontainerMainWindow As SplitContainer
-    Friend WithEvents textboxPackageDetails As TextBox
     Friend WithEvents panelMainPkgArea As Panel
     Friend WithEvents toolstripMainWindow As ToolStrip
     Friend WithEvents toolstriptextboxSearch As ToolStripTextBox
@@ -1276,4 +1272,5 @@ Partial Class aaformMainWindow
     Friend WithEvents PkgDescription As DataGridViewTextBoxColumn
     Friend WithEvents Manifest As DataGridViewTextBoxColumn
     Friend WithEvents ManifestType As DataGridViewTextBoxColumn
+    Friend WithEvents textboxPackageDetails As RichTextBox
 End Class

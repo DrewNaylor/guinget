@@ -554,7 +554,7 @@ Public Class aaformMainWindow
                 ' Make sure the file exists.
                 If DefaultLocaleManifestPath IsNot Nothing Then
                     textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             My.Computer.FileSystem.ReadAllText(DefaultLocaleManifestPath).Replace(vbLf, vbCrLf) &
+                                             My.Computer.FileSystem.ReadAllText(DefaultLocaleManifestPath) &
                                              vbCrLf
                 Else
                     textboxPackageDetails.Text = textboxPackageDetails.Text &
@@ -572,7 +572,7 @@ Public Class aaformMainWindow
                 ' Make sure the file exists.
                 If InstallersManifestPath IsNot Nothing Then
                     textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             My.Computer.FileSystem.ReadAllText(InstallersManifestPath).Replace(vbLf, vbCrLf) &
+                                             My.Computer.FileSystem.ReadAllText(InstallersManifestPath) &
                                              vbCrLf
                 Else
                     textboxPackageDetails.Text = textboxPackageDetails.Text &
@@ -594,7 +594,7 @@ Public Class aaformMainWindow
                 ' just to be safe.
                 If ManifestPath IsNot Nothing AndAlso IO.File.Exists(ManifestPath) Then
                     textboxPackageDetails.Text = textboxPackageDetails.Text &
-                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
+                                             My.Computer.FileSystem.ReadAllText(ManifestPath)
                 Else
                     textboxPackageDetails.Text = textboxPackageDetails.Text &
                                              "(Couldn't find manifest)"
@@ -605,7 +605,7 @@ Public Class aaformMainWindow
                 ' Display full manifest in details textbox.
                 textboxPackageDetails.Text = "Manifest" & vbCrLf &
                                              "==========================" & vbCrLf &
-                                             My.Computer.FileSystem.ReadAllText(ManifestPath).Replace(vbLf, vbCrLf)
+                                             My.Computer.FileSystem.ReadAllText(ManifestPath)
             End If
 
         ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
