@@ -27,6 +27,24 @@ Imports libguinget
 
 Public Class aaformMainWindow
 
+#Region "Clicking links in the package details textbox."
+    Private Sub textboxPackageDetails_LinkClicked(sender As Object, e As LinkClickedEventArgs) Handles textboxPackageDetails.LinkClicked
+        ' When the user clicks a link in the package details RichTextBox, go to that
+        ' page in the default browser if the user chooses to visit the
+        ' page in the messagebox.
+        ' Code mainly copied from UXL Launcher since it's a known way to do it.
+        Dim msgResult As Integer = MessageBox.Show("Are you sure you want open this link?" & vbCrLf &
+                "" & vbCrLf &
+                e.LinkText, "guinget",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+        ' If the user chooses to open the link, navigate the default browser there.
+        If msgResult = DialogResult.Yes Then
+            Process.Start(e.LinkText)
+        End If
+    End Sub
+#End Region
+
 #Region "Add package entry to list."
     Friend Shared Async Function AddPackageEntryToListAsync() As Task
 
