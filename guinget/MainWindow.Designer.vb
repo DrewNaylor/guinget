@@ -93,6 +93,7 @@ Partial Class aaformMainWindow
         Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ManifestType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
+        Me.textboxPackageDetails = New System.Windows.Forms.RichTextBox()
         Me.panelMainPkgArea = New System.Windows.Forms.Panel()
         Me.toolstripMainWindow = New System.Windows.Forms.ToolStrip()
         Me.toolstripbuttonRefreshCache = New System.Windows.Forms.ToolStripButton()
@@ -138,7 +139,6 @@ Partial Class aaformMainWindow
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialogExportPackages = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialogImportPackages = New System.Windows.Forms.OpenFileDialog()
-        Me.textboxPackageDetails = New System.Windows.Forms.RichTextBox()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -673,6 +673,17 @@ Partial Class aaformMainWindow
         Me.labelUpdatingPackageList.TabIndex = 1
         Me.labelUpdatingPackageList.Text = "Loading package list, please wait..."
         '
+        'textboxPackageDetails
+        '
+        Me.textboxPackageDetails.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.textboxPackageDetails.Location = New System.Drawing.Point(0, 0)
+        Me.textboxPackageDetails.Name = "textboxPackageDetails"
+        Me.textboxPackageDetails.ReadOnly = True
+        Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.textboxPackageDetails.Size = New System.Drawing.Size(664, 167)
+        Me.textboxPackageDetails.TabIndex = 0
+        Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
+        '
         'panelMainPkgArea
         '
         Me.panelMainPkgArea.Controls.Add(Me.splitcontainerMainWindow)
@@ -1100,17 +1111,6 @@ Partial Class aaformMainWindow
         Me.OpenFileDialogImportPackages.Filter = "JSON files|*.json|All files|*.*"
         Me.OpenFileDialogImportPackages.RestoreDirectory = True
         Me.OpenFileDialogImportPackages.Title = "Import Packages"
-        '
-        'textboxPackageDetails
-        '
-        Me.textboxPackageDetails.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.textboxPackageDetails.Location = New System.Drawing.Point(0, 0)
-        Me.textboxPackageDetails.Name = "textboxPackageDetails"
-        Me.textboxPackageDetails.ReadOnly = True
-        Me.textboxPackageDetails.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.textboxPackageDetails.Size = New System.Drawing.Size(664, 167)
-        Me.textboxPackageDetails.TabIndex = 0
-        Me.textboxPackageDetails.Text = resources.GetString("textboxPackageDetails.Text")
         '
         'aaformMainWindow
         '
