@@ -72,26 +72,32 @@ GitHub milestone: [Version 0.2](https://github.com/DrewNaylor/guinget/milestone/
 
 Milestone: [Version 0.2.1](https://github.com/DrewNaylor/guinget/milestone/9)
 
-- [ ] Optimize manifest updating and package list loading so it's faster [(pr #110)](https://github.com/DrewNaylor/guinget/pull/110)
-  - This involves using more Async stuff, only extracting .yaml files from the manifest zip file, moving the manifests folder instead of copying it, and not force-updating the progress bar every time a row is changed in the main window (it'll update on its own without forcing the statusbar to be redrawn).
-  - One benefit from the timesaves in the manifest extraction code is that the current file can now be displayed as it's extracting to give some idea of the progress, and it's still faster than the old code.
-  - If it's not too much slower, the extraction progress bar will properly progress when extracting manifests. Database extraction will still be indeterminate, just like it will be in 0.2.1 because it still uses the old manifest extraction code to keep things simple.
-  - The 7-Zip and RoboCopy manifest updating code is still the same since it's still faster, but a future version may replace RoboCopy with a simple `move` command.
-
-## Version 0.2.2 Alpha
-
-Milestone: [Version 0.2.2](https://github.com/DrewNaylor/guinget/milestone/10)
-
-- [ ] Load the package list and package details async so that the UI doesn't lock up
-<br>Seems like this page has some good ideas on how to do this:
-https://stackoverflow.com/questions/570537/update-label-while-processing-in-windows-forms
+**Moved to v0.3 Beta**
 
 ## Version 0.3 Beta
 
 Milestone: [Version 0.3](https://github.com/DrewNaylor/guinget/milestone/8)
 
+- [X] Optimize manifest updating and package list loading so it's faster [(pr #110)](https://github.com/DrewNaylor/guinget/pull/110)
+  - This involves using more Async stuff, only extracting .yaml files from the manifest zip file, moving the manifests folder instead of copying it, and not force-updating the progress bar every time a row is changed in the main window (it'll update on its own without forcing the statusbar to be redrawn).
+  - One benefit from the timesaves in the manifest extraction code is that the current file can now be displayed as it's extracting to give some idea of the progress, and it's still faster than the old code.
+  - If it's not too much slower, the extraction progress bar will properly progress when extracting manifests. Database extraction will still be indeterminate, just like it will be in 0.2.1 because it still uses the old manifest extraction code to keep things simple.
+  - The 7-Zip and RoboCopy manifest updating code is still the same since it's still faster, but a future version may replace RoboCopy with a simple `move` command.
 - [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
 - [ ] Allow packages to be re-installed (also issue #23)
+
+## Version 0.3.1 Beta
+
+Milestone: [Version 0.3.1](https://github.com/DrewNaylor/guinget/milestone/10)
+
+- [ ] Load the package list and package details async so that the UI doesn't lock up
+<br>Seems like this page has some good ideas on how to do this:
+https://stackoverflow.com/questions/570537/update-label-while-processing-in-windows-forms
+- [ ] Load package sources from YAML files instead of having them be hard-coded
+- [ ] Show packages from sources without easily-accessible manifests like the Store
+
+## Version 0.3.2 Beta
+
 - [ ] Allow searching through things like friendly name, description, and tags
 - [ ] Filters for things that aren't the search feature or `Action`, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (aside from marked changes, because that's `Action`)
 - [ ] Show number of packages marked for changes, like Synaptic
