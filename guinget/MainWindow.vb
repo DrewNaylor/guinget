@@ -1475,6 +1475,36 @@ Public Class aaformMainWindow
         End If
     End Sub
 
+#Region "Package details textbox context menu."
+    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+        ' Focus the textbox.
+        textboxPackageDetails.Focus()
+        ' Select all the text.
+        textboxPackageDetails.SelectAll()
+    End Sub
+
+    Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
+        ' Copy text if some is selected.
+        If textboxPackageDetails.SelectedText.Length > 0 Then
+            textboxPackageDetails.Copy()
+        End If
+    End Sub
+
+    Private Sub RightToLeftMenuItem_Click(sender As Object, e As EventArgs) Handles RightToLeftMenuItem.Click
+        ' Toggle the right to left reading order.
+        If textboxPackageDetails.RightToLeft = RightToLeft.No Then
+            textboxPackageDetails.RightToLeft = RightToLeft.Yes
+            ' Change the toggle's checkbox.
+            RightToLeftMenuItem.Checked = True
+        Else
+            ' It's on, so turn it back off.
+            textboxPackageDetails.RightToLeft = RightToLeft.No
+            ' Change the toggle's checkbox.
+            RightToLeftMenuItem.Checked = False
+        End If
+    End Sub
+#End Region
+
 
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
