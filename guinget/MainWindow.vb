@@ -191,103 +191,72 @@ Public Class aaformMainWindow
         aaformMainWindow.Update()
 
         ' Now we load the details for each row.
-        If My.Settings.LoadFromSqliteDb = False Then
-#Region "Deprecated direct manifest loading."
-            For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                ' Load package ID column.
-                Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageIdentifier")
-                ' Load package name column.
-                Row.Cells.Item(3).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageName")
-                ' Load package version column.
-                Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageVersion")
-                ' Load package description column.
-                ' Make sure the short description doesn't match the package ID, and use the
-                ' long description if it does.
-                ' Store the short description in a string so we don't have to read
-                ' the manifest multiple times just for the description comparison.
-                Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription")
-                If Row.Cells.Item(2).Value.ToString = ShortDescription Then
-                    Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Description")
-                Else
-                    Row.Cells.Item(6).Value = ShortDescription
-                End If
 
-                ' ManifestType for debugging. This'll be commented out until it's needed.
-                'Row.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType")
-
-                ' Update the progressbar so it doesn't look frozen.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
-                aaformMainWindow.statusbarMainWindow.Update()
-            Next
-#End Region
-
-        ElseIf My.Settings.LoadFromSqliteDb = True Then
-            ' In case there are manifests we can't find easily,
-            ' we need to get them now.
-            ' These have to be grabbed now or else updating the manifests
-            ' will crash when the path doesn't exist.
-            PackageListTools.FallbackPathList = PackageListTools.GetManifests
+        ' In case there are manifests we can't find easily,
+        ' we need to get them now.
+        ' These have to be grabbed now or else updating the manifests
+        ' will crash when the path doesn't exist.
+        PackageListTools.FallbackPathList = PackageListTools.GetManifests
 
             ' Update the statusbar before doing the progressbar.
             aaformMainWindow.statusbarMainWindow.Update()
 
-            ' Now we need to load the manifests and the descriptions.
-            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                ' Find the manifest and get its description.
-                PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
-                ' Ensure the manifest path cell isn't nothing.
-                ' The database was broken just after 1 AM EDT
-                ' on October 8, 2020, so this is to prevent
-                ' future crashes, even if the database is broken
-                ' again.
-                If PackageRow.Cells.Item(7).Value IsNot Nothing Then
-                    ' Make sure the short description doesn't match the package ID, and use the
-                    ' long description if it does.
-                    ' Store the short description in a string so we don't have to read
-                    ' the manifest multiple times just for the description comparison.
-                    ' First check if it's a single-file manifest or not.
-                    Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
-                    If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
-                        ' Get the default locale path.
-                        FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
-                    End If
-                    ' Check if the file path isn't Nothing.
-                    If FileWithDescription IsNot Nothing Then
-                        ' Now do the description stuff.
-                        Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
-                        If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
-                            ' Use the full description if the short description
-                            ' is just the package ID.
-                            PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
-                        Else
-                            ' Package ID and short description aren't the same
-                            ' thing, so use the short description.
-                            PackageRow.Cells.Item(6).Value = ShortDescription
-                        End If
+        ' Now we need to load the manifests and the descriptions.
+        For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+            ' Find the manifest and get its description.
+            PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
+            ' Ensure the manifest path cell isn't nothing.
+            ' The database was broken just after 1 AM EDT
+            ' on October 8, 2020, so this is to prevent
+            ' future crashes, even if the database is broken
+            ' again.
+            If PackageRow.Cells.Item(7).Value IsNot Nothing Then
+                ' Make sure the short description doesn't match the package ID, and use the
+                ' long description if it does.
+                ' Store the short description in a string so we don't have to read
+                ' the manifest multiple times just for the description comparison.
+                ' First check if it's a single-file manifest or not.
+                Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
+                If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
+                    ' Get the default locale path.
+                    FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
+                End If
+                ' Check if the file path isn't Nothing.
+                If FileWithDescription IsNot Nothing Then
+                    ' Now do the description stuff.
+                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
+                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
+                        ' Use the full description if the short description
+                        ' is just the package ID.
+                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
                     Else
-                        ' If the file path is Nothing, meaning the file
-                        ' doesn't exist or we couldn't find it, just say that
-                        ' we couldn't find the manifest.
-                        PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
+                        ' Package ID and short description aren't the same
+                        ' thing, so use the short description.
+                        PackageRow.Cells.Item(6).Value = ShortDescription
                     End If
-
                 Else
-                    ' If the value in the manifest path cell is nothing, change the description.
+                    ' If the file path is Nothing, meaning the file
+                    ' doesn't exist or we couldn't find it, just say that
+                    ' we couldn't find the manifest.
                     PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
                 End If
 
-                ' ManifestType for debugging. This'll be commented out until it's needed.
-                'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+            Else
+                ' If the value in the manifest path cell is nothing, change the description.
+                PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
+            End If
 
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
-                ' Update the statusbar to show the current info.
-                ' Currently commented out because it's faster to not
-                ' update the statusbar every time, but to instead
-                ' rely on it just updating automatically.
-                'aaformMainWindow.statusbarMainWindow.Update()
-            Next
-        End If
+            ' ManifestType for debugging. This'll be commented out until it's needed.
+            'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+
+            ' Make the progress bar progress.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
+            ' Update the statusbar to show the current info.
+            ' Currently commented out because it's faster to not
+            ' update the statusbar every time, but to instead
+            ' rely on it just updating automatically.
+            'aaformMainWindow.statusbarMainWindow.Update()
+        Next
 
         ' We're done updating the package list, so call the post-update sub.
         PackageListPostUpdate()
