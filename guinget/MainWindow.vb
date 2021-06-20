@@ -243,7 +243,8 @@ Public Class aaformMainWindow
 
     Friend Shared Async Sub PackageListPostUpdate()
 
-        ' Show the package list again.
+        ' Sort the package list if it's not already sorted.
+        AutoSortPackageIDColumn()
 
         '' Turn autosize back on for certain columns. Might not help
         '' performance, so it's commented out for now.
@@ -290,6 +291,12 @@ Public Class aaformMainWindow
 
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
+
+        ' Reset the datagridview's layout.
+        ' This makes sure that the packages at the bottom
+        ' of the list will show up without needing to
+        ' move stuff around or click on a package.
+        aaformMainWindow.datagridviewPackageList.PerformLayout()
     End Sub
 #End Region
 
@@ -901,6 +908,17 @@ Public Class aaformMainWindow
         ' in C# here: https://stackoverflow.com/questions/13418721/toolstrip-rounded-corners/48564597#48564597
         CType(toolstripMainWindow.Renderer, ToolStripProfessionalRenderer).RoundedEdges = False
 
+        ' Sort by package ID column.
+        ' This ensures lowercase package IDs are where they
+        ' should be and not at the end of the list.
+        AutoSortPackageIDColumn()
+
+    End Sub
+
+    Private Shared Sub AutoSortPackageIDColumn()
+        ' Sorts the package ID column after refreshing so it's in the right order.
+        ' It would be nice to have it re-sort the way it is now, though.
+        aaformMainWindow.datagridviewPackageList.Sort(aaformMainWindow.PkgName, System.ComponentModel.ListSortDirection.Ascending)
     End Sub
 
 #Region "HiDPI-related stuff."
