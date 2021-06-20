@@ -308,6 +308,12 @@ Public Class aaformMainWindow
 
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
+
+        ' Reset the datagridview's layout.
+        ' This makes sure that the packages at the bottom
+        ' of the list will show up without needing to
+        ' move stuff around or click on a package.
+        aaformMainWindow.datagridviewPackageList.PerformLayout()
     End Sub
 #End Region
 
