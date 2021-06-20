@@ -773,6 +773,7 @@ WHERE
         ' Return the list of packages.
         Return packageArray
     End Function
+#End Region
 
     Public Shared Sub ImportPackages(FileName As String)
         ' Pass the filename to winget.
@@ -783,6 +784,5 @@ WHERE
         ' Pass the filename to winget.
         CommandTools.ImportExport("Export", FileName)
     End Sub
-#End Region
 
 End Class
