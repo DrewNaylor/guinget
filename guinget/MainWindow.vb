@@ -313,6 +313,7 @@ Public Class aaformMainWindow
         ' This makes sure that the packages at the bottom
         ' of the list will show up without needing to
         ' move stuff around or click on a package.
+        ' Fix backported from v0.3.
         aaformMainWindow.datagridviewPackageList.PerformLayout()
     End Sub
 #End Region
