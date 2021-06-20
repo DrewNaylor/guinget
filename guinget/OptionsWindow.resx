@@ -117,18 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="labelLoadLatestVersion.Text" xml:space="preserve">
-    <value>Some packages may display a version number that's not
-really the latest version. Not sure how to fix this at the
-moment.
-Note: Requires loading from the community
-database checkbox to be on, which can only be turned
-off by changing the config file now. Turning it off
-is a deprecated feature and will be removed in a future version.
-If you need to turn it back on because it was turned off by
-accident, clicking the Defaults button will re-check the checkbox
-so things work correctly.</value>
-  </data>
   <data name="labelAboutNotSpecifyingVersionNumbers.Text" xml:space="preserve">
     <value>Not specifying a version number will just use the latest
 version according to winget. You may want to use

@@ -27,7 +27,6 @@ Partial Class OptionsWindow
         Me.buttonDefaults = New System.Windows.Forms.Button()
         Me.tabcontrolOptions = New System.Windows.Forms.TabControl()
         Me.tabpageRefreshCache = New System.Windows.Forms.TabPage()
-        Me.checkboxLoadFromDatabase = New System.Windows.Forms.CheckBox()
         Me.labelLoadLatestVersion = New System.Windows.Forms.Label()
         Me.checkboxShowOnlyLatestVersions = New System.Windows.Forms.CheckBox()
         Me.labelDeleteTempFilesAfterRefresh = New System.Windows.Forms.Label()
@@ -151,32 +150,18 @@ Partial Class OptionsWindow
         '
         'tabpageRefreshCache
         '
-        Me.tabpageRefreshCache.Controls.Add(Me.checkboxLoadFromDatabase)
         Me.tabpageRefreshCache.Controls.Add(Me.labelLoadLatestVersion)
         Me.tabpageRefreshCache.Controls.Add(Me.checkboxShowOnlyLatestVersions)
         Me.tabpageRefreshCache.Controls.Add(Me.labelDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Controls.Add(Me.checkboxDeleteTempFilesAfterRefresh)
         Me.tabpageRefreshCache.Location = New System.Drawing.Point(4, 46)
-        Me.tabpageRefreshCache.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabpageRefreshCache.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpageRefreshCache.Name = "tabpageRefreshCache"
-        Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabpageRefreshCache.Padding = New System.Windows.Forms.Padding(4)
         Me.tabpageRefreshCache.Size = New System.Drawing.Size(453, 446)
         Me.tabpageRefreshCache.TabIndex = 5
         Me.tabpageRefreshCache.Text = "Refresh Cache"
         Me.tabpageRefreshCache.UseVisualStyleBackColor = True
-        '
-        'checkboxLoadFromDatabase
-        '
-        Me.checkboxLoadFromDatabase.AutoSize = True
-        Me.checkboxLoadFromDatabase.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxLoadFromDatabase.Location = New System.Drawing.Point(8, 348)
-        Me.checkboxLoadFromDatabase.Margin = New System.Windows.Forms.Padding(4, 4, 4, 0)
-        Me.checkboxLoadFromDatabase.Name = "checkboxLoadFromDatabase"
-        Me.checkboxLoadFromDatabase.Size = New System.Drawing.Size(300, 38)
-        Me.checkboxLoadFromDatabase.TabIndex = 4
-        Me.checkboxLoadFromDatabase.Text = "Update and load package list from winget's" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "default community database"
-        Me.checkboxLoadFromDatabase.UseVisualStyleBackColor = True
-        Me.checkboxLoadFromDatabase.Visible = False
         '
         'labelLoadLatestVersion
         '
@@ -184,9 +169,10 @@ Partial Class OptionsWindow
         Me.labelLoadLatestVersion.Location = New System.Drawing.Point(29, 91)
         Me.labelLoadLatestVersion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.labelLoadLatestVersion.Name = "labelLoadLatestVersion"
-        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(407, 170)
+        Me.labelLoadLatestVersion.Size = New System.Drawing.Size(363, 51)
         Me.labelLoadLatestVersion.TabIndex = 7
-        Me.labelLoadLatestVersion.Text = resources.GetString("labelLoadLatestVersion.Text")
+        Me.labelLoadLatestVersion.Text = "Some packages may display a version number that's not" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "really the latest version." &
+    " Not sure how to fix this at the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "moment."
         '
         'checkboxShowOnlyLatestVersions
         '
@@ -213,7 +199,7 @@ Partial Class OptionsWindow
         '
         Me.checkboxDeleteTempFilesAfterRefresh.AutoSize = True
         Me.checkboxDeleteTempFilesAfterRefresh.Location = New System.Drawing.Point(8, 8)
-        Me.checkboxDeleteTempFilesAfterRefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxDeleteTempFilesAfterRefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxDeleteTempFilesAfterRefresh.Name = "checkboxDeleteTempFilesAfterRefresh"
         Me.checkboxDeleteTempFilesAfterRefresh.Size = New System.Drawing.Size(291, 21)
         Me.checkboxDeleteTempFilesAfterRefresh.TabIndex = 0
@@ -231,7 +217,7 @@ Partial Class OptionsWindow
         Me.tabpageSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearch.Name = "tabpageSearch"
         Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSearch.Size = New System.Drawing.Size(452, 445)
+        Me.tabpageSearch.Size = New System.Drawing.Size(453, 446)
         Me.tabpageSearch.TabIndex = 0
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
@@ -249,7 +235,7 @@ Partial Class OptionsWindow
         'numericupdownSearchWhenTypingWaitTime
         '
         Me.numericupdownSearchWhenTypingWaitTime.Location = New System.Drawing.Point(132, 84)
-        Me.numericupdownSearchWhenTypingWaitTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numericupdownSearchWhenTypingWaitTime.Margin = New System.Windows.Forms.Padding(4)
         Me.numericupdownSearchWhenTypingWaitTime.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.numericupdownSearchWhenTypingWaitTime.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numericupdownSearchWhenTypingWaitTime.Name = "numericupdownSearchWhenTypingWaitTime"
@@ -261,7 +247,7 @@ Partial Class OptionsWindow
         '
         Me.checkboxSearchWhenTyping.AutoSize = True
         Me.checkboxSearchWhenTyping.Location = New System.Drawing.Point(8, 64)
-        Me.checkboxSearchWhenTyping.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxSearchWhenTyping.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxSearchWhenTyping.Name = "checkboxSearchWhenTyping"
         Me.checkboxSearchWhenTyping.Size = New System.Drawing.Size(154, 21)
         Me.checkboxSearchWhenTyping.TabIndex = 16
@@ -272,7 +258,7 @@ Partial Class OptionsWindow
         '
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.AutoSize = True
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Location = New System.Drawing.Point(8, 35)
-        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Name = "checkboxUseExactMatchForLastSelectedPackageIDSearch"
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.Size = New System.Drawing.Size(334, 21)
         Me.checkboxUseExactMatchForLastSelectedPackageIDSearch.TabIndex = 3
@@ -296,10 +282,10 @@ Partial Class OptionsWindow
         Me.tabpageAppsUIs.Controls.Add(Me.comboboxAppsListUI)
         Me.tabpageAppsUIs.Controls.Add(Me.labelAppsListUI)
         Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 46)
-        Me.tabpageAppsUIs.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabpageAppsUIs.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpageAppsUIs.Name = "tabpageAppsUIs"
-        Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.tabpageAppsUIs.Size = New System.Drawing.Size(452, 445)
+        Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(4)
+        Me.tabpageAppsUIs.Size = New System.Drawing.Size(453, 446)
         Me.tabpageAppsUIs.TabIndex = 6
         Me.tabpageAppsUIs.Text = "Apps and UIs"
         Me.tabpageAppsUIs.UseVisualStyleBackColor = True
@@ -321,7 +307,7 @@ Partial Class OptionsWindow
         Me.comboboxAppsListUI.FormattingEnabled = True
         Me.comboboxAppsListUI.Items.AddRange(New Object() {"Settings app: Apps & features (default)", "CMD: winget list", "Control Panel: Programs and Features"})
         Me.comboboxAppsListUI.Location = New System.Drawing.Point(32, 32)
-        Me.comboboxAppsListUI.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.comboboxAppsListUI.Margin = New System.Windows.Forms.Padding(4)
         Me.comboboxAppsListUI.Name = "comboboxAppsListUI"
         Me.comboboxAppsListUI.Size = New System.Drawing.Size(364, 24)
         Me.comboboxAppsListUI.TabIndex = 1
@@ -340,10 +326,10 @@ Partial Class OptionsWindow
         '
         Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
         Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 46)
-        Me.tabpagePackageDetails.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabpagePackageDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
-        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.tabpagePackageDetails.Size = New System.Drawing.Size(452, 445)
+        Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(4)
+        Me.tabpagePackageDetails.Size = New System.Drawing.Size(453, 446)
         Me.tabpagePackageDetails.TabIndex = 2
         Me.tabpagePackageDetails.Text = "Package Details"
         Me.tabpagePackageDetails.UseVisualStyleBackColor = True
@@ -353,7 +339,7 @@ Partial Class OptionsWindow
         Me.checkboxLastSelectedPackageDetails.AutoSize = True
         Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
         Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(8, 8)
-        Me.checkboxLastSelectedPackageDetails.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxLastSelectedPackageDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
         Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(348, 38)
         Me.checkboxLastSelectedPackageDetails.TabIndex = 0
@@ -372,10 +358,10 @@ Partial Class OptionsWindow
         Me.tabpageApplyChanges.Controls.Add(Me.checkboxElevateWinget)
         Me.tabpageApplyChanges.Controls.Add(Me.checkboxInstallInteractively)
         Me.tabpageApplyChanges.Location = New System.Drawing.Point(4, 46)
-        Me.tabpageApplyChanges.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabpageApplyChanges.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpageApplyChanges.Name = "tabpageApplyChanges"
-        Me.tabpageApplyChanges.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.tabpageApplyChanges.Size = New System.Drawing.Size(452, 445)
+        Me.tabpageApplyChanges.Padding = New System.Windows.Forms.Padding(4)
+        Me.tabpageApplyChanges.Size = New System.Drawing.Size(453, 446)
         Me.tabpageApplyChanges.TabIndex = 1
         Me.tabpageApplyChanges.Text = "Apply Changes"
         Me.tabpageApplyChanges.UseVisualStyleBackColor = True
@@ -405,7 +391,7 @@ Partial Class OptionsWindow
         Me.checkboxWhenInstalling.AccessibleDescription = "Specify version number when installing a package."
         Me.checkboxWhenInstalling.AutoSize = True
         Me.checkboxWhenInstalling.Location = New System.Drawing.Point(29, 174)
-        Me.checkboxWhenInstalling.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxWhenInstalling.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxWhenInstalling.Name = "checkboxWhenInstalling"
         Me.checkboxWhenInstalling.Size = New System.Drawing.Size(126, 21)
         Me.checkboxWhenInstalling.TabIndex = 2
@@ -417,7 +403,7 @@ Partial Class OptionsWindow
         Me.checkboxWhenUpgrading.AccessibleDescription = "Specify version number when upgrading a package."
         Me.checkboxWhenUpgrading.AutoSize = True
         Me.checkboxWhenUpgrading.Location = New System.Drawing.Point(29, 202)
-        Me.checkboxWhenUpgrading.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxWhenUpgrading.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxWhenUpgrading.Name = "checkboxWhenUpgrading"
         Me.checkboxWhenUpgrading.Size = New System.Drawing.Size(135, 21)
         Me.checkboxWhenUpgrading.TabIndex = 3
@@ -429,7 +415,7 @@ Partial Class OptionsWindow
         Me.checkboxWhenUninstalling.AccessibleDescription = "Specify version number when uninstalling a package."
         Me.checkboxWhenUninstalling.AutoSize = True
         Me.checkboxWhenUninstalling.Location = New System.Drawing.Point(29, 232)
-        Me.checkboxWhenUninstalling.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxWhenUninstalling.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxWhenUninstalling.Name = "checkboxWhenUninstalling"
         Me.checkboxWhenUninstalling.Size = New System.Drawing.Size(142, 21)
         Me.checkboxWhenUninstalling.TabIndex = 4
@@ -441,7 +427,7 @@ Partial Class OptionsWindow
         Me.checkboxOpenMiniOptions.AutoSize = True
         Me.checkboxOpenMiniOptions.CheckAlign = System.Drawing.ContentAlignment.TopLeft
         Me.checkboxOpenMiniOptions.Location = New System.Drawing.Point(8, 395)
-        Me.checkboxOpenMiniOptions.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxOpenMiniOptions.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxOpenMiniOptions.Name = "checkboxOpenMiniOptions"
         Me.checkboxOpenMiniOptions.Size = New System.Drawing.Size(365, 38)
         Me.checkboxOpenMiniOptions.TabIndex = 5
@@ -474,7 +460,7 @@ Partial Class OptionsWindow
         '
         Me.checkboxInstallInteractively.AutoSize = True
         Me.checkboxInstallInteractively.Location = New System.Drawing.Point(8, 8)
-        Me.checkboxInstallInteractively.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.checkboxInstallInteractively.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxInstallInteractively.Name = "checkboxInstallInteractively"
         Me.checkboxInstallInteractively.Size = New System.Drawing.Size(201, 21)
         Me.checkboxInstallInteractively.TabIndex = 0
@@ -485,10 +471,10 @@ Partial Class OptionsWindow
         '
         Me.tabpageLayout.Controls.Add(Me.checkboxShowSidebar)
         Me.tabpageLayout.Location = New System.Drawing.Point(4, 46)
-        Me.tabpageLayout.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabpageLayout.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpageLayout.Name = "tabpageLayout"
-        Me.tabpageLayout.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.tabpageLayout.Size = New System.Drawing.Size(452, 445)
+        Me.tabpageLayout.Padding = New System.Windows.Forms.Padding(4)
+        Me.tabpageLayout.Size = New System.Drawing.Size(453, 446)
         Me.tabpageLayout.TabIndex = 3
         Me.tabpageLayout.Text = "Layout"
         Me.tabpageLayout.UseVisualStyleBackColor = True
@@ -512,10 +498,10 @@ Partial Class OptionsWindow
         Me.tabpageMaintenance.Controls.Add(Me.labelDeleteCacheFilesInRoaming)
         Me.tabpageMaintenance.Controls.Add(Me.buttonDeleteCacheFilesInRoaming)
         Me.tabpageMaintenance.Location = New System.Drawing.Point(4, 46)
-        Me.tabpageMaintenance.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabpageMaintenance.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpageMaintenance.Name = "tabpageMaintenance"
-        Me.tabpageMaintenance.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.tabpageMaintenance.Size = New System.Drawing.Size(452, 445)
+        Me.tabpageMaintenance.Padding = New System.Windows.Forms.Padding(4)
+        Me.tabpageMaintenance.Size = New System.Drawing.Size(453, 446)
         Me.tabpageMaintenance.TabIndex = 7
         Me.tabpageMaintenance.Text = "Maintenance"
         Me.tabpageMaintenance.UseVisualStyleBackColor = True
@@ -545,7 +531,7 @@ Partial Class OptionsWindow
         'buttonDeleteCacheFiles
         '
         Me.buttonDeleteCacheFiles.Location = New System.Drawing.Point(8, 111)
-        Me.buttonDeleteCacheFiles.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.buttonDeleteCacheFiles.Margin = New System.Windows.Forms.Padding(4)
         Me.buttonDeleteCacheFiles.Name = "buttonDeleteCacheFiles"
         Me.buttonDeleteCacheFiles.Size = New System.Drawing.Size(330, 48)
         Me.buttonDeleteCacheFiles.TabIndex = 6
@@ -566,7 +552,7 @@ Partial Class OptionsWindow
         'buttonDeleteCacheFilesInRoaming
         '
         Me.buttonDeleteCacheFilesInRoaming.Location = New System.Drawing.Point(8, 8)
-        Me.buttonDeleteCacheFilesInRoaming.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.buttonDeleteCacheFilesInRoaming.Margin = New System.Windows.Forms.Padding(4)
         Me.buttonDeleteCacheFilesInRoaming.Name = "buttonDeleteCacheFilesInRoaming"
         Me.buttonDeleteCacheFilesInRoaming.Size = New System.Drawing.Size(330, 48)
         Me.buttonDeleteCacheFilesInRoaming.TabIndex = 4
@@ -580,10 +566,10 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.Controls.Add(Me.checkboxHideUnfinishedControls)
         Me.tabpageExperimental.Controls.Add(Me.labelRequiresApplicationRestart)
         Me.tabpageExperimental.Location = New System.Drawing.Point(4, 46)
-        Me.tabpageExperimental.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabpageExperimental.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpageExperimental.Name = "tabpageExperimental"
-        Me.tabpageExperimental.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.tabpageExperimental.Size = New System.Drawing.Size(452, 445)
+        Me.tabpageExperimental.Padding = New System.Windows.Forms.Padding(4)
+        Me.tabpageExperimental.Size = New System.Drawing.Size(453, 446)
         Me.tabpageExperimental.TabIndex = 4
         Me.tabpageExperimental.Text = "Experimental"
         Me.tabpageExperimental.UseVisualStyleBackColor = True
@@ -604,7 +590,7 @@ Partial Class OptionsWindow
         Me.panelExperimentalSettings.Controls.Add(Me.label7zExePath)
         Me.panelExperimentalSettings.Controls.Add(Me.checkboxUse7zip)
         Me.panelExperimentalSettings.Location = New System.Drawing.Point(4, 61)
-        Me.panelExperimentalSettings.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.panelExperimentalSettings.Margin = New System.Windows.Forms.Padding(4)
         Me.panelExperimentalSettings.Name = "panelExperimentalSettings"
         Me.panelExperimentalSettings.Size = New System.Drawing.Size(442, 375)
         Me.panelExperimentalSettings.TabIndex = 4
@@ -622,7 +608,7 @@ Partial Class OptionsWindow
         'textboxDefaultSourceName
         '
         Me.textboxDefaultSourceName.Location = New System.Drawing.Point(156, 275)
-        Me.textboxDefaultSourceName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.textboxDefaultSourceName.Margin = New System.Windows.Forms.Padding(4)
         Me.textboxDefaultSourceName.Name = "textboxDefaultSourceName"
         Me.textboxDefaultSourceName.Size = New System.Drawing.Size(250, 22)
         Me.textboxDefaultSourceName.TabIndex = 19
@@ -697,7 +683,7 @@ Partial Class OptionsWindow
         'buttonBrowse7zExePath
         '
         Me.buttonBrowse7zExePath.Location = New System.Drawing.Point(314, 76)
-        Me.buttonBrowse7zExePath.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.buttonBrowse7zExePath.Margin = New System.Windows.Forms.Padding(4)
         Me.buttonBrowse7zExePath.Name = "buttonBrowse7zExePath"
         Me.buttonBrowse7zExePath.Size = New System.Drawing.Size(94, 29)
         Me.buttonBrowse7zExePath.TabIndex = 5
@@ -707,7 +693,7 @@ Partial Class OptionsWindow
         'textbox7zExePath
         '
         Me.textbox7zExePath.Location = New System.Drawing.Point(121, 78)
-        Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.textbox7zExePath.Margin = New System.Windows.Forms.Padding(4)
         Me.textbox7zExePath.Name = "textbox7zExePath"
         Me.textbox7zExePath.Size = New System.Drawing.Size(184, 22)
         Me.textbox7zExePath.TabIndex = 4
@@ -891,7 +877,6 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxWhenInstalling As CheckBox
     Friend WithEvents checkboxWhenUpgrading As CheckBox
     Friend WithEvents checkboxWhenUninstalling As CheckBox
-    Friend WithEvents checkboxLoadFromDatabase As CheckBox
     Friend WithEvents labelLoadLatestVersion As Label
     Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
 End Class
