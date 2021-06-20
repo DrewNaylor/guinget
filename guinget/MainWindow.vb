@@ -198,8 +198,8 @@ Public Class aaformMainWindow
         ' will crash when the path doesn't exist.
         PackageListTools.FallbackPathList = PackageListTools.GetManifests
 
-            ' Update the statusbar before doing the progressbar.
-            aaformMainWindow.statusbarMainWindow.Update()
+        ' Update the statusbar before doing the progressbar.
+        aaformMainWindow.statusbarMainWindow.Update()
 
         ' Now we need to load the manifests and the descriptions.
         For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
