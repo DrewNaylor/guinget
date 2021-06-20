@@ -400,22 +400,28 @@ Public Class PackageListTools
                     PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
                 End If
 
-                Dim extraction7z As New Process
-                extraction7z.StartInfo.FileName = PathTo7zip
-                extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
-                extraction7z.Start()
-                ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                extraction7z.WaitForExit()
+                    Using extraction7z As New Process
+                        Await Task.Run(Sub()
+                                           extraction7z.StartInfo.FileName = PathTo7zip
+                                           extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
+                                           extraction7z.Start()
+                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                           extraction7z.WaitForExit()
+                                       End Sub)
+                    End Using
 
-                ' The calling app wants to use 7zip, so use it.
-                ' This is for the database.
-                Dim extraction7zDatabase As New Process
-                extraction7zDatabase.StartInfo.FileName = PathTo7zip
-                extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source\"
-                extraction7zDatabase.Start()
-                ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                extraction7zDatabase.WaitForExit()
-               End If
+                    ' The calling app wants to use 7zip, so use it.
+                    ' This is for the database.
+                    Using extraction7zDatabase As New Process
+                        Await Task.Run(Sub()
+                                           extraction7zDatabase.StartInfo.FileName = PathTo7zip
+                                           extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source\"
+                                           extraction7zDatabase.Start()
+                                           ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                                           extraction7zDatabase.WaitForExit()
+                                       End Sub)
+                    End Using
+                End If
 
         'MessageBox.Show("7zip finished")
 
@@ -523,23 +529,29 @@ Public Class PackageListTools
 
                         ' The calling app wants to use Robocopy.
                         ' Partially copying code from update-manifests.bat.
-                        Dim RobocopyFileCopying As New Process
-                        RobocopyFileCopying.StartInfo.FileName = "robocopy"
-                        RobocopyFileCopying.StartInfo.Arguments = "/NFL /NDL /S " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests " & ManifestDir
-                        RobocopyFileCopying.Start()
-                        ' Wait for robocopy to exit, or else it'll move on too soon.
-                        RobocopyFileCopying.WaitForExit()
+                        Using RobocopyFileCopying As New Process
+                            Await Task.Run(Sub()
+                                               RobocopyFileCopying.StartInfo.FileName = "robocopy"
+                                               RobocopyFileCopying.StartInfo.Arguments = "/NFL /NDL /S " & tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests " & ManifestDir
+                                               RobocopyFileCopying.Start()
+                                               ' Wait for robocopy to exit, or else it'll move on too soon.
+                                               RobocopyFileCopying.WaitForExit()
+                                           End Sub)
+                        End Using
 
-                    ' The calling app wants to use Robocopy.
-                    ' Partially copying code from update-manifests.bat.
-                    ' Update the database.
-                    Dim RobocopyFileCopyingDatabaseUpdate As New Process
-                            RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
-                            RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
-                            RobocopyFileCopyingDatabaseUpdate.Start()
-                    ' Wait for robocopy to exit, or else it'll move on too soon.
-                    RobocopyFileCopyingDatabaseUpdate.WaitForExit()
-                End If
+                        ' The calling app wants to use Robocopy.
+                        ' Partially copying code from update-manifests.bat.
+                        ' Update the database.
+                        Using RobocopyFileCopyingDatabaseUpdate As New Process
+                            Await Task.Run(Sub()
+                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
+                                               RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
+                                               RobocopyFileCopyingDatabaseUpdate.Start()
+                                               ' Wait for robocopy to exit, or else it'll move on too soon.
+                                               RobocopyFileCopyingDatabaseUpdate.WaitForExit()
+                                           End Sub)
+                        End Using
+                    End If
 
                 End Using
 
