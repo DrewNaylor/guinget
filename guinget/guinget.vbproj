@@ -211,7 +211,6 @@
   <ItemGroup>
     <None Include="..\update-manifests.bat">
       <Link>update-manifests.bat</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
