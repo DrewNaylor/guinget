@@ -31,16 +31,11 @@ Public Class OptionsWindow
 
         ' Allow or block the cache deletion buttons on loading the Options window.
         AllowOrBlockCacheDeletionButtons()
-
-        ' Allow or block the latest versions checkbox.
-        AllowOrBlockLatestVersionsCheckbox()
     End Sub
 
     Private Sub LoadSettings()
         ' Delete temp files after cache refresh.
         checkboxDeleteTempFilesAfterRefresh.Checked = My.Settings.DeleteTempFilesAfterRefresh
-        ' Load from database.
-        checkboxLoadFromDatabase.Checked = My.Settings.LoadFromSqliteDb
         ' Load only latest versions.
         checkboxShowOnlyLatestVersions.Checked = My.Settings.OnlyDisplayLatestPackageVersion
 
@@ -128,8 +123,6 @@ Public Class OptionsWindow
     Private Sub SaveSettings()
         ' Delete temp files after cache update.
         My.Settings.DeleteTempFilesAfterRefresh = checkboxDeleteTempFilesAfterRefresh.Checked
-        ' Load from database.
-        My.Settings.LoadFromSqliteDb = checkboxLoadFromDatabase.Checked
         ' Load only latest versions.
         My.Settings.OnlyDisplayLatestPackageVersion = checkboxShowOnlyLatestVersions.Checked
 
@@ -224,8 +217,6 @@ Public Class OptionsWindow
     Private Sub ReloadDefaults()
         ' Delete temp files after update.
         checkboxDeleteTempFilesAfterRefresh.Checked = True
-        ' Load from database.
-        checkboxLoadFromDatabase.Checked = True
         ' Load only latest versions.
         checkboxShowOnlyLatestVersions.Checked = False
 
@@ -340,17 +331,5 @@ Public Class OptionsWindow
         ' This one is for the one in Roaming.
         buttonDeleteCacheFilesInRoaming.Enabled =
         libguinget.PackageListTools.DoesPathExist(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))
-    End Sub
-
-    Private Sub checkboxLoadFromDatabase_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxLoadFromDatabase.CheckedChanged
-        ' Make sure the latest version checkbox can only
-        ' be used if the one above it is checked.
-        AllowOrBlockLatestVersionsCheckbox()
-    End Sub
-
-    Private Sub AllowOrBlockLatestVersionsCheckbox()
-        ' Allow or block the "load only latest versions" checkbox
-        ' if this one is checked or unchecked.
-        checkboxShowOnlyLatestVersions.Enabled = checkboxLoadFromDatabase.Checked
     End Sub
 End Class

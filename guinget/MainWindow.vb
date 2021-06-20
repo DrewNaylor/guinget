@@ -113,29 +113,8 @@ Public Class aaformMainWindow
             Exit Function
         End If
 
-#Region "Deprecated manifest-only loading."
-        ' Go through everything in the manifest paths array until it's out if
-        ' we don't want to load from a database.
-        If My.Settings.LoadFromSqliteDb = False Then
-
-            ' Set progress bar maximum value.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
-
-            For i As Integer = 0 To ManifestPaths.Count - 1
-                ' Read the file into the manifest column and make a new row with it.
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Unknown", "Loading...", ManifestPaths(i))
-
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
-                ' Update the statusbar to show the current info.
-                aaformMainWindow.statusbarMainWindow.Update()
-            Next
-#End Region
-        Else
-            ' We do want to load from the database, so do it.
-
-            ' Get a datatable ready.
-            Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
+        ' Get a datatable ready.
+        Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
 
             ' Set progress bar maximum value.
             ' This has to be done here or there will be a crash
@@ -145,35 +124,34 @@ Public Class aaformMainWindow
             ' Update the statusbar before doing the progressbar.
             aaformMainWindow.statusbarMainWindow.Update()
 
-            'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
-            'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
-            For Each PackageRow As DataRow In SqliteList.Rows
-                If My.Settings.OnlyDisplayLatestPackageVersion = True Then
-                    ' If the user wants to only display the latest package version,
-                    ' we'll have to compare it.
-                    If PackageRow.Item(2).ToString = PackageRow.Item(3).ToString Then
-                        ' Only add the package to the list if the package row we're looking
-                        ' at is the latest version of the package.
-                        ' Not all packages display the "latest version"
-                        ' correctly, so this isn't on by default.
-                        ' One example is Adopt OpenJDK which displays
-                        ' version 8.x last I checked when it should
-                        ' display 15.x or something.
-                        aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
-                    End If
-                Else
-                    ' Just add all the package versions.
+        'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
+        'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
+        For Each PackageRow As DataRow In SqliteList.Rows
+            If My.Settings.OnlyDisplayLatestPackageVersion = True Then
+                ' If the user wants to only display the latest package version,
+                ' we'll have to compare it.
+                If PackageRow.Item(2).ToString = PackageRow.Item(3).ToString Then
+                    ' Only add the package to the list if the package row we're looking
+                    ' at is the latest version of the package.
+                    ' Not all packages display the "latest version"
+                    ' correctly, so this isn't on by default.
+                    ' One example is Adopt OpenJDK which displays
+                    ' version 8.x last I checked when it should
+                    ' display 15.x or something.
                     aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
                 End If
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-                ' Update the statusbar to show the current info.
-                ' Currently commented out because it's faster to not
-                ' update the statusbar every time, but to instead
-                ' rely on it just updating automatically.
-                'aaformMainWindow.statusbarMainWindow.Update()
-            Next
-        End If
+            Else
+                ' Just add all the package versions.
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
+            End If
+            ' Make the progress bar progress.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ' Update the statusbar to show the current info.
+            ' Currently commented out because it's faster to not
+            ' update the statusbar every time, but to instead
+            ' rely on it just updating automatically.
+            'aaformMainWindow.statusbarMainWindow.Update()
+        Next
 
         ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
@@ -191,103 +169,72 @@ Public Class aaformMainWindow
         aaformMainWindow.Update()
 
         ' Now we load the details for each row.
-        If My.Settings.LoadFromSqliteDb = False Then
-#Region "Deprecated direct manifest loading."
-            For Each Row As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                ' Load package ID column.
-                Row.Cells.Item(2).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageIdentifier")
-                ' Load package name column.
-                Row.Cells.Item(3).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageName")
-                ' Load package version column.
-                Row.Cells.Item(4).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "PackageVersion")
-                ' Load package description column.
+
+        ' In case there are manifests we can't find easily,
+        ' we need to get them now.
+        ' These have to be grabbed now or else updating the manifests
+        ' will crash when the path doesn't exist.
+        PackageListTools.FallbackPathList = PackageListTools.GetManifests
+
+        ' Update the statusbar before doing the progressbar.
+        aaformMainWindow.statusbarMainWindow.Update()
+
+        ' Now we need to load the manifests and the descriptions.
+        For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+            ' Find the manifest and get its description.
+            PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
+            ' Ensure the manifest path cell isn't nothing.
+            ' The database was broken just after 1 AM EDT
+            ' on October 8, 2020, so this is to prevent
+            ' future crashes, even if the database is broken
+            ' again.
+            If PackageRow.Cells.Item(7).Value IsNot Nothing Then
                 ' Make sure the short description doesn't match the package ID, and use the
                 ' long description if it does.
                 ' Store the short description in a string so we don't have to read
                 ' the manifest multiple times just for the description comparison.
-                Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ShortDescription")
-                If Row.Cells.Item(2).Value.ToString = ShortDescription Then
-                    Row.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "Description")
-                Else
-                    Row.Cells.Item(6).Value = ShortDescription
+                ' First check if it's a single-file manifest or not.
+                Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
+                If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
+                    ' Get the default locale path.
+                    FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
                 End If
-
-                ' ManifestType for debugging. This'll be commented out until it's needed.
-                'Row.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(Row.Cells.Item(7).Value.ToString, "ManifestType")
-
-                ' Update the progressbar so it doesn't look frozen.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = Row.Index
-                aaformMainWindow.statusbarMainWindow.Update()
-            Next
-#End Region
-
-        ElseIf My.Settings.LoadFromSqliteDb = True Then
-            ' In case there are manifests we can't find easily,
-            ' we need to get them now.
-            ' These have to be grabbed now or else updating the manifests
-            ' will crash when the path doesn't exist.
-            PackageListTools.FallbackPathList = PackageListTools.GetManifests
-
-            ' Update the statusbar before doing the progressbar.
-            aaformMainWindow.statusbarMainWindow.Update()
-
-            ' Now we need to load the manifests and the descriptions.
-            For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                ' Find the manifest and get its description.
-                PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
-                ' Ensure the manifest path cell isn't nothing.
-                ' The database was broken just after 1 AM EDT
-                ' on October 8, 2020, so this is to prevent
-                ' future crashes, even if the database is broken
-                ' again.
-                If PackageRow.Cells.Item(7).Value IsNot Nothing Then
-                    ' Make sure the short description doesn't match the package ID, and use the
-                    ' long description if it does.
-                    ' Store the short description in a string so we don't have to read
-                    ' the manifest multiple times just for the description comparison.
-                    ' First check if it's a single-file manifest or not.
-                    Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
-                    If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
-                        ' Get the default locale path.
-                        FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
-                    End If
-                    ' Check if the file path isn't Nothing.
-                    If FileWithDescription IsNot Nothing Then
-                        ' Now do the description stuff.
-                        Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
-                        If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
-                            ' Use the full description if the short description
-                            ' is just the package ID.
-                            PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
-                        Else
-                            ' Package ID and short description aren't the same
-                            ' thing, so use the short description.
-                            PackageRow.Cells.Item(6).Value = ShortDescription
-                        End If
+                ' Check if the file path isn't Nothing.
+                If FileWithDescription IsNot Nothing Then
+                    ' Now do the description stuff.
+                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
+                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
+                        ' Use the full description if the short description
+                        ' is just the package ID.
+                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
                     Else
-                        ' If the file path is Nothing, meaning the file
-                        ' doesn't exist or we couldn't find it, just say that
-                        ' we couldn't find the manifest.
-                        PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
+                        ' Package ID and short description aren't the same
+                        ' thing, so use the short description.
+                        PackageRow.Cells.Item(6).Value = ShortDescription
                     End If
-
                 Else
-                    ' If the value in the manifest path cell is nothing, change the description.
+                    ' If the file path is Nothing, meaning the file
+                    ' doesn't exist or we couldn't find it, just say that
+                    ' we couldn't find the manifest.
                     PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
                 End If
 
-                ' ManifestType for debugging. This'll be commented out until it's needed.
-                'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+            Else
+                ' If the value in the manifest path cell is nothing, change the description.
+                PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
+            End If
 
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
-                ' Update the statusbar to show the current info.
-                ' Currently commented out because it's faster to not
-                ' update the statusbar every time, but to instead
-                ' rely on it just updating automatically.
-                'aaformMainWindow.statusbarMainWindow.Update()
-            Next
-        End If
+            ' ManifestType for debugging. This'll be commented out until it's needed.
+            'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+
+            ' Make the progress bar progress.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
+            ' Update the statusbar to show the current info.
+            ' Currently commented out because it's faster to not
+            ' update the statusbar every time, but to instead
+            ' rely on it just updating automatically.
+            'aaformMainWindow.statusbarMainWindow.Update()
+        Next
 
         ' We're done updating the package list, so call the post-update sub.
         PackageListPostUpdate()
@@ -706,7 +653,7 @@ Public Class aaformMainWindow
             ' after updating is complete.
             PackageListTools.DeleteTempDirsAfterCacheUpdate = My.Settings.DeleteTempFilesAfterRefresh
             ' Now run the update.
-            Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying, My.Settings.LoadFromSqliteDb)
+            Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying)
         End If
 
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
@@ -728,16 +675,8 @@ Public Class aaformMainWindow
         ' by accident while we're updating.
         ControlStateDuringCacheUpdate(False)
 
-        If My.Settings.UseBuiltinCacheUpdater = False Then
-            ' If the user doesn't want to use the new updater,
-            ' then use update-manifests.bat.
-            ' Be sure to tell the user it's deprecated.
-            RefreshCache()
-        Else
-            ' Otherwise, we default to using the new, built-in updater
-            ' provided by libguinget.
-            Await aaformMainWindow.UpdatePackageListBuiltinAsync
-        End If
+        ' Use the built-in updater provided by libguinget.
+        Await aaformMainWindow.UpdatePackageListBuiltinAsync
 
         ' Re-enable those controls now that we're done updating.
         ControlStateDuringCacheUpdate(True)
@@ -827,37 +766,6 @@ Public Class aaformMainWindow
         Me.Update()
 
     End Sub
-
-#Region "update-manifests.bat cache updater."
-    Friend Shared Sub RefreshCache()
-        ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
-        MessageBox.Show(aaformMainWindow, "We'll update the manifests with update-manifests.bat instead of the much faster built-in updater." &
-                        " Please be aware that update-manifests.bat was deprecated in guinget version 0.1 alpha and may be removed in a future version without prior notice." & vbCrLf &
-                        vbCrLf & "When ready, please click OK and follow the prompts in update-manifests.bat.", "Refresh cache")
-        Using updatemanifestsscript As New Process
-            ' Run update-manifests.bat.
-            updatemanifestsscript.StartInfo.FileName = Application.StartupPath & "\update-manifests.bat"
-            ' Need to make sure the update script is in the folder.
-            Try
-                updatemanifestsscript.Start()
-            Catch ex As ComponentModel.Win32Exception
-                MessageBox.Show(aaformMainWindow, "We couldn't find update-manifests.bat in the same folder as guinget.exe. " &
-                                "Please download a new copy of guinget from https://github.com/DrewNaylor/guinget/releases")
-            End Try
-        End Using
-        ' Show messagebox that says to click OK when finished with update-manifests.bat.
-        MessageBox.Show(aaformMainWindow, "When finished with update-manifests.bat, please click OK.", "Refresh cache")
-        ' Reload the package list with the new manifests.
-        ' Trying to do this without blocking with this example:
-        ' https://www.codeproject.com/Tips/729674/Simple-Net-progress-bar-using-async-await
-        ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
-        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
-
-        If My.Computer.FileSystem.DirectoryExists(ManifestDir) Then
-            AddPackageEntryToListAsync()
-        End If
-    End Sub
-#End Region
 #End Region
 
     Private Sub datagridviewPackageList_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellDoubleClick
@@ -951,9 +859,7 @@ Public Class aaformMainWindow
             My.Settings.Upgrade()
             My.Settings.UpgradeSettingsFromPreviousVersion = False
 
-            ' Force database-loading on.
-            My.Settings.LoadFromSqliteDb = True
-
+            ' Save new settings.
             My.Settings.Save()
             My.Settings.Reload()
         End If

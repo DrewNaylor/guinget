@@ -68,18 +68,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property UseBuiltinCacheUpdater() As Boolean
-            Get
-                Return CType(Me("UseBuiltinCacheUpdater"),Boolean)
-            End Get
-            Set
-                Me("UseBuiltinCacheUpdater") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
         Public Property InstallInteractively() As Boolean
             Get
@@ -147,18 +135,6 @@ Namespace My
             End Get
             Set
                 Me("ShowSidebar") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property LoadFromSqliteDb() As Boolean
-            Get
-                Return CType(Me("LoadFromSqliteDb"),Boolean)
-            End Get
-            Set
-                Me("LoadFromSqliteDb") = value
             End Set
         End Property
         

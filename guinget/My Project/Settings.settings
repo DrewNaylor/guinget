@@ -5,9 +5,6 @@
     <Setting Name="HideUnfinishedControls" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="UseBuiltinCacheUpdater" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="InstallInteractively" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -24,9 +21,6 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ShowSidebar" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="LoadFromSqliteDb" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="UpgradeSettingsFromPreviousVersion" Type="System.Boolean" Scope="User">
