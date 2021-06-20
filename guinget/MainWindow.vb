@@ -753,6 +753,10 @@ Public Class aaformMainWindow
         ' Tools menu.
         ToolsToolStripMenuItem.Enabled = ControlsEnabled
 
+        ' File menu.
+        ToolStripMenuItemImportPackages.Enabled = ControlsEnabled
+        ToolStripMenuItemExportPackages.Enabled = ControlsEnabled
+
 
         ' Sidebar.
         ' Might change it to a dropdown that switches tabs to what's
