@@ -113,29 +113,8 @@ Public Class aaformMainWindow
             Exit Function
         End If
 
-#Region "Deprecated manifest-only loading."
-        ' Go through everything in the manifest paths array until it's out if
-        ' we don't want to load from a database.
-        If My.Settings.LoadFromSqliteDb = False Then
-
-            ' Set progress bar maximum value.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = ManifestPaths.Count - 1
-
-            For i As Integer = 0 To ManifestPaths.Count - 1
-                ' Read the file into the manifest column and make a new row with it.
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", "Loading...", "Loading...", "Loading...", "Unknown", "Loading...", ManifestPaths(i))
-
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
-                ' Update the statusbar to show the current info.
-                aaformMainWindow.statusbarMainWindow.Update()
-            Next
-#End Region
-        Else
-            ' We do want to load from the database, so do it.
-
-            ' Get a datatable ready.
-            Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
+        ' Get a datatable ready.
+        Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
 
             ' Set progress bar maximum value.
             ' This has to be done here or there will be a crash
@@ -145,35 +124,34 @@ Public Class aaformMainWindow
             ' Update the statusbar before doing the progressbar.
             aaformMainWindow.statusbarMainWindow.Update()
 
-            'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
-            'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
-            For Each PackageRow As DataRow In SqliteList.Rows
-                If My.Settings.OnlyDisplayLatestPackageVersion = True Then
-                    ' If the user wants to only display the latest package version,
-                    ' we'll have to compare it.
-                    If PackageRow.Item(2).ToString = PackageRow.Item(3).ToString Then
-                        ' Only add the package to the list if the package row we're looking
-                        ' at is the latest version of the package.
-                        ' Not all packages display the "latest version"
-                        ' correctly, so this isn't on by default.
-                        ' One example is Adopt OpenJDK which displays
-                        ' version 8.x last I checked when it should
-                        ' display 15.x or something.
-                        aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
-                    End If
-                Else
-                    ' Just add all the package versions.
+        'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
+        'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
+        For Each PackageRow As DataRow In SqliteList.Rows
+            If My.Settings.OnlyDisplayLatestPackageVersion = True Then
+                ' If the user wants to only display the latest package version,
+                ' we'll have to compare it.
+                If PackageRow.Item(2).ToString = PackageRow.Item(3).ToString Then
+                    ' Only add the package to the list if the package row we're looking
+                    ' at is the latest version of the package.
+                    ' Not all packages display the "latest version"
+                    ' correctly, so this isn't on by default.
+                    ' One example is Adopt OpenJDK which displays
+                    ' version 8.x last I checked when it should
+                    ' display 15.x or something.
                     aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
                 End If
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-                ' Update the statusbar to show the current info.
-                ' Currently commented out because it's faster to not
-                ' update the statusbar every time, but to instead
-                ' rely on it just updating automatically.
-                'aaformMainWindow.statusbarMainWindow.Update()
-            Next
-        End If
+            Else
+                ' Just add all the package versions.
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
+            End If
+            ' Make the progress bar progress.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ' Update the statusbar to show the current info.
+            ' Currently commented out because it's faster to not
+            ' update the statusbar every time, but to instead
+            ' rely on it just updating automatically.
+            'aaformMainWindow.statusbarMainWindow.Update()
+        Next
 
         ' Update the main window now that the list is loaded.
         aaformMainWindow.Update()
