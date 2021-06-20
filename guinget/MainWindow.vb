@@ -728,16 +728,8 @@ Public Class aaformMainWindow
         ' by accident while we're updating.
         ControlStateDuringCacheUpdate(False)
 
-        If My.Settings.UseBuiltinCacheUpdater = False Then
-            ' If the user doesn't want to use the new updater,
-            ' then use update-manifests.bat.
-            ' Be sure to tell the user it's deprecated.
-            RefreshCache()
-        Else
-            ' Otherwise, we default to using the new, built-in updater
-            ' provided by libguinget.
-            Await aaformMainWindow.UpdatePackageListBuiltinAsync
-        End If
+        ' Use the built-in updater provided by libguinget.
+        Await aaformMainWindow.UpdatePackageListBuiltinAsync
 
         ' Re-enable those controls now that we're done updating.
         ControlStateDuringCacheUpdate(True)
@@ -827,37 +819,6 @@ Public Class aaformMainWindow
         Me.Update()
 
     End Sub
-
-#Region "update-manifests.bat cache updater."
-    Friend Shared Sub RefreshCache()
-        ' Display temporary message saying that we'll use update-manifests.bat, then to click Ok when ready.
-        MessageBox.Show(aaformMainWindow, "We'll update the manifests with update-manifests.bat instead of the much faster built-in updater." &
-                        " Please be aware that update-manifests.bat was deprecated in guinget version 0.1 alpha and may be removed in a future version without prior notice." & vbCrLf &
-                        vbCrLf & "When ready, please click OK and follow the prompts in update-manifests.bat.", "Refresh cache")
-        Using updatemanifestsscript As New Process
-            ' Run update-manifests.bat.
-            updatemanifestsscript.StartInfo.FileName = Application.StartupPath & "\update-manifests.bat"
-            ' Need to make sure the update script is in the folder.
-            Try
-                updatemanifestsscript.Start()
-            Catch ex As ComponentModel.Win32Exception
-                MessageBox.Show(aaformMainWindow, "We couldn't find update-manifests.bat in the same folder as guinget.exe. " &
-                                "Please download a new copy of guinget from https://github.com/DrewNaylor/guinget/releases")
-            End Try
-        End Using
-        ' Show messagebox that says to click OK when finished with update-manifests.bat.
-        MessageBox.Show(aaformMainWindow, "When finished with update-manifests.bat, please click OK.", "Refresh cache")
-        ' Reload the package list with the new manifests.
-        ' Trying to do this without blocking with this example:
-        ' https://www.codeproject.com/Tips/729674/Simple-Net-progress-bar-using-async-await
-        ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
-        Dim ManifestDir As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\winget-frontends\source\winget-pkgs\pkglist\manifests"
-
-        If My.Computer.FileSystem.DirectoryExists(ManifestDir) Then
-            AddPackageEntryToListAsync()
-        End If
-    End Sub
-#End Region
 #End Region
 
     Private Sub datagridviewPackageList_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellDoubleClick
