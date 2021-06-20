@@ -179,8 +179,7 @@ Public Class PackageListTools
 #Region "Update manifests async"
     Public Shared Async Function UpdateManifestsAsync(Optional Use7zip As Boolean = False,
                                                       Optional PathTo7zip As String = "C:\Program Files\7-Zip\7z.exe",
-                                                      Optional UseRobocopy As Boolean = False,
-                                                      Optional UpdateDatabase As Boolean = False) As Task
+                                                      Optional UseRobocopy As Boolean = False) As Task
         ' Start downloading the package list from
         ' https://github.com/Microsoft/winget-pkgs/archive/master.zip
 
@@ -226,11 +225,10 @@ Public Class PackageListTools
 #End Region
 
 #Region "Update database."
-        ' Update the database if the user wants to.
-        If UpdateDatabase = True Then
-            ' Check if the directory exists for the database as well,
-            ' if necessary.
-            If IO.Directory.Exists(DatabaseTempDir) Then
+        ' Update the database.
+        ' Check if the directory exists for the database as well,
+        ' if necessary.
+        If IO.Directory.Exists(DatabaseTempDir) Then
                 ' Exists; re-create it.
                 If Await DeleteTempDirAsync("winget-db", True) = False Then
                     ' If there's an issue and a file is open, stop updating.
@@ -242,10 +240,9 @@ Public Class PackageListTools
                                    System.IO.Directory.CreateDirectory(DatabaseTempDir)
                                End Sub)
             End If
-            ' Now download.
-            Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
+        ' Now download.
+        Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
                                              "winget-db")
-        End If
 #End Region
 
         ' Trying to use this code to display progress as
@@ -374,60 +371,57 @@ Public Class PackageListTools
                                            "Extracting manifests")
                     End Try
 
-                    If UpdateDatabase = True Then
-                        Try
-                            If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
-                                ' Now extract.
+                    ' Now extract the database.
+                    Try
+                        If System.IO.File.Exists(DatabaseTempDir & "\source.msix") Then
+                            ' Now extract.
 
-                                Await Task.Run(Sub()
-                                                   ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source\")
-                                               End Sub)
+                            Await Task.Run(Sub()
+                                               ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source\")
+                                           End Sub)
 
-                            End If
-                        Catch ex As System.IO.FileNotFoundException
-                            MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
+                        End If
+                    Catch ex As System.IO.FileNotFoundException
+                        MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source.msix",
                                            "Extracting manifests")
-                        Catch ex As System.IO.DirectoryNotFoundException
-                            MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
+                    Catch ex As System.IO.DirectoryNotFoundException
+                        MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source",
                                            "Extracting manifests")
-                        Catch ex As System.IO.InvalidDataException
-                            MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
+                    Catch ex As System.IO.InvalidDataException
+                        MessageBox.Show("We couldn't extract the database package. Please verify that the source URL is correct, and try again." & vbCrLf &
                                            vbCrLf & "Details:" & vbCrLf &
                                            ex.GetType.ToString & ": " & ex.Message,
                                            "Extracting manifests")
-                        End Try
-                    End If
+                    End Try
                 Else
-                    ' The calling app wants to use 7zip, so use it.
-                    ' Make sure it doesn't have "://" in the path.
-                    If PathTo7zip.Contains("://") Then
-                        PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
-                    End If
-
-                    Dim extraction7z As New Process
-                    extraction7z.StartInfo.FileName = PathTo7zip
-                    extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
-                    extraction7z.Start()
-                    ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                    extraction7z.WaitForExit()
-
-                    If UpdateDatabase = True Then
-                        ' The calling app wants to use 7zip, so use it.
-                        ' This is for the database.
-                        Dim extraction7zDatabase As New Process
-                        extraction7zDatabase.StartInfo.FileName = PathTo7zip
-                        extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source\"
-                        extraction7zDatabase.Start()
-                        ' Wait for 7zip to exit, otherwise it'll move on too soon.
-                        extraction7zDatabase.WaitForExit()
-                    End If
+                ' The calling app wants to use 7zip, so use it.
+                ' Make sure it doesn't have "://" in the path.
+                If PathTo7zip.Contains("://") Then
+                    PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
                 End If
 
-                'MessageBox.Show("7zip finished")
+                Dim extraction7z As New Process
+                extraction7z.StartInfo.FileName = PathTo7zip
+                extraction7z.StartInfo.Arguments = "x -bd " & tempDir & "\winget-pkgs-master.zip -o" & tempDir & "\winget-pkgs-master\"
+                extraction7z.Start()
+                ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                extraction7z.WaitForExit()
+
+                ' The calling app wants to use 7zip, so use it.
+                ' This is for the database.
+                Dim extraction7zDatabase As New Process
+                extraction7zDatabase.StartInfo.FileName = PathTo7zip
+                extraction7zDatabase.StartInfo.Arguments = "x -bd " & DatabaseTempDir & "\source.msix -o" & DatabaseTempDir & "\source\"
+                extraction7zDatabase.Start()
+                ' Wait for 7zip to exit, otherwise it'll move on too soon.
+                extraction7zDatabase.WaitForExit()
+               End If
+
+        'MessageBox.Show("7zip finished")
 
 
 
-            End Using
+        End Using
 
             'MessageBox.Show("Done extracting.")
 
@@ -495,39 +489,37 @@ Public Class PackageListTools
                                                                ex.Message, "Moving manifests")
                         End Try
 
-                        If UpdateDatabase = True Then
-                            Try
-                                ' Make sure the database temp folder exists before deleting
-                                ' the database dir.
-                                ' It might not exist if the user is running guinget offline,
-                                ' in which case the database cache will just be loaded from
-                                ' disk and won't be updated.
-                                Await Task.Run(Sub()
-                                                   If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
-                                                       System.IO.Directory.Delete(DatabaseDir, True)
-                                                   End If
-                                               End Sub)
+                    Try
+                        ' Make sure the database temp folder exists before deleting
+                        ' the database dir.
+                        ' It might not exist if the user is running guinget offline,
+                        ' in which case the database cache will just be loaded from
+                        ' disk and won't be updated.
+                        Await Task.Run(Sub()
+                                           If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
+                                               System.IO.Directory.Delete(DatabaseDir, True)
+                                           End If
+                                       End Sub)
 
-                                ' Move the database to its proper
-                                ' folder rather than copy so it's
-                                ' faster.
-                                Await Task.Run(Sub()
-                                                   My.Computer.FileSystem.MoveDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
-                                               End Sub)
+                        ' Move the database to its proper
+                        ' folder rather than copy so it's
+                        ' faster.
+                        Await Task.Run(Sub()
+                                           My.Computer.FileSystem.MoveDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
+                                       End Sub)
 
-                            Catch ex As System.IO.DirectoryNotFoundException
-                                MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
-                                                               "Please close any Explorer windows that may be open in this directory, and try again.",
-                                               "Moving manifests")
-                            Catch ex As System.IO.IOException
-                                MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
-                                                               vbCrLf &
-                                                               "Details:" & vbCrLf &
-                                                               ex.Message, "Moving manifests")
-                            End Try
-                        End If
+                    Catch ex As System.IO.DirectoryNotFoundException
+                        MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
+                                                       "Please close any Explorer windows that may be open in this directory, and try again.",
+                                       "Moving manifests")
+                    Catch ex As System.IO.IOException
+                        MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                                                       vbCrLf &
+                                                       "Details:" & vbCrLf &
+                                                       ex.Message, "Moving manifests")
+                    End Try
 
-                    Else
+                Else
 
                         ' The calling app wants to use Robocopy.
                         ' Partially copying code from update-manifests.bat.
@@ -538,18 +530,16 @@ Public Class PackageListTools
                         ' Wait for robocopy to exit, or else it'll move on too soon.
                         RobocopyFileCopying.WaitForExit()
 
-                        ' The calling app wants to use Robocopy.
-                        ' Partially copying code from update-manifests.bat.
-                        ' Update the database.
-                        If UpdateDatabase = True Then
-                            Dim RobocopyFileCopyingDatabaseUpdate As New Process
+                    ' The calling app wants to use Robocopy.
+                    ' Partially copying code from update-manifests.bat.
+                    ' Update the database.
+                    Dim RobocopyFileCopyingDatabaseUpdate As New Process
                             RobocopyFileCopyingDatabaseUpdate.StartInfo.FileName = "robocopy"
                             RobocopyFileCopyingDatabaseUpdate.StartInfo.Arguments = "/NFL /NDL /S " & DatabaseTempDir & "\source\Public " & DatabaseDir
                             RobocopyFileCopyingDatabaseUpdate.Start()
-                            ' Wait for robocopy to exit, or else it'll move on too soon.
-                            RobocopyFileCopyingDatabaseUpdate.WaitForExit()
-                        End If
-                    End If
+                    ' Wait for robocopy to exit, or else it'll move on too soon.
+                    RobocopyFileCopyingDatabaseUpdate.WaitForExit()
+                End If
 
                 End Using
 
@@ -563,15 +553,12 @@ Public Class PackageListTools
                         ' If there's an issue deleting it here, exit the function.
                         Exit Function
                     End If
-                    ' winget-db
-                    ' Make sure people want to delete it first.
-                    If UpdateDatabase = True Then
-                        If Await DeleteTempDirAsync("winget-db") = False Then
-                            ' If there's an issue deleting it here, exit the function.
-                            Exit Function
-                        End If
-                    End If
+                ' winget-db
+                If Await DeleteTempDirAsync("winget-db") = False Then
+                    ' If there's an issue deleting it here, exit the function.
+                    Exit Function
                 End If
+            End If
 
                 ' End checking if user clicked Cancel in the extracting phase.
             End If

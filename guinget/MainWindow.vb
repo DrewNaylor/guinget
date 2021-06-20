@@ -653,7 +653,7 @@ Public Class aaformMainWindow
             ' after updating is complete.
             PackageListTools.DeleteTempDirsAfterCacheUpdate = My.Settings.DeleteTempFilesAfterRefresh
             ' Now run the update.
-            Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying, My.Settings.LoadFromSqliteDb)
+            Await PackageListTools.UpdateManifestsAsync(My.Settings.Use7zipForExtraction, My.Settings.PathTo7zip, My.Settings.UseRobocopyForCopying)
         End If
 
         ' We need to make sure the manifests are installed, otherwise this will look like it hangs.
@@ -859,9 +859,7 @@ Public Class aaformMainWindow
             My.Settings.Upgrade()
             My.Settings.UpgradeSettingsFromPreviousVersion = False
 
-            ' Force database-loading on.
-            My.Settings.LoadFromSqliteDb = True
-
+            ' Save new settings.
             My.Settings.Save()
             My.Settings.Reload()
         End If

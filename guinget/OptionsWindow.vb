@@ -39,8 +39,6 @@ Public Class OptionsWindow
     Private Sub LoadSettings()
         ' Delete temp files after cache refresh.
         checkboxDeleteTempFilesAfterRefresh.Checked = My.Settings.DeleteTempFilesAfterRefresh
-        ' Load from database.
-        checkboxLoadFromDatabase.Checked = My.Settings.LoadFromSqliteDb
         ' Load only latest versions.
         checkboxShowOnlyLatestVersions.Checked = My.Settings.OnlyDisplayLatestPackageVersion
 
@@ -128,8 +126,6 @@ Public Class OptionsWindow
     Private Sub SaveSettings()
         ' Delete temp files after cache update.
         My.Settings.DeleteTempFilesAfterRefresh = checkboxDeleteTempFilesAfterRefresh.Checked
-        ' Load from database.
-        My.Settings.LoadFromSqliteDb = checkboxLoadFromDatabase.Checked
         ' Load only latest versions.
         My.Settings.OnlyDisplayLatestPackageVersion = checkboxShowOnlyLatestVersions.Checked
 
