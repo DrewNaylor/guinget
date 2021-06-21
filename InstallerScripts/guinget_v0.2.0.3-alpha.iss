@@ -25,7 +25,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName=Drew Naylor
 LicenseFile=C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\LICENSE.txt
 InfoBeforeFile=C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\README for guinget.txt
-InfoAfterFile=C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\v0.2.0.3-alpha_changelog_from-v0.2.0.1-alpha.txt
+InfoAfterFile=C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\v0.2.0.3-alpha_changelog_from-v0.2.0.2-alpha.txt
 OutputDir=C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\
 OutputBaseFilename=guinget_v0.2.0.3-alpha
 Compression=lzma
@@ -37,7 +37,7 @@ MinVersion=0,6.1
 CreateUninstallRegKey=yes
 EnableDirDoesntExistWarning=True
 DirExistsWarning=no
-VersionInfoVersion=0.2.0.2
+VersionInfoVersion=0.2.0.3
 AlwaysShowGroupOnReadyPage=True
 AlwaysShowDirOnReadyPage=True
 DisableStartupPrompt=True
@@ -58,7 +58,7 @@ Source: "C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\guinget.exe"; Des
 Source: "C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\README for guinget.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\source-code.zip"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\v0.2.0.3-alpha_changelog_from-v0.2.0.1-alpha.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\v0.2.0.3-alpha_changelog_from-v0.2.0.2-alpha.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\DrewN Desktop Apps\Binaries\guinget\v0.2.0.3-alpha\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
