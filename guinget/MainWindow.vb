@@ -108,8 +108,6 @@ Public Class aaformMainWindow
 
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = i
-                ' Update the statusbar to show the current info.
-                aaformMainWindow.statusbarMainWindow.Update()
             Next
         Else
             ' We do want to load from the database, so do it.
@@ -144,8 +142,6 @@ Public Class aaformMainWindow
                 End If
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-                ' Update the statusbar to show the current info.
-                aaformMainWindow.statusbarMainWindow.Update()
             Next
         End If
 
@@ -249,8 +245,6 @@ Public Class aaformMainWindow
 
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
-                ' Update the statusbar to show the current info.
-                aaformMainWindow.statusbarMainWindow.Update()
             Next
         End If
 
@@ -456,8 +450,6 @@ Public Class aaformMainWindow
             End If
             ' Move the progress bar.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            ' Update the status bar to show the current progress.
-            aaformMainWindow.statusbarMainWindow.Update()
         Next
 
         ' Turn autosize back on for certain columns.
@@ -1078,8 +1070,6 @@ Public Class aaformMainWindow
                 End If
                 ' Make the progress bar progress.
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-                ' Update the status bar.
-                aaformMainWindow.statusbarMainWindow.Update()
             Next
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
