@@ -104,7 +104,7 @@ To run guinget, your computer requires the following:
 - Hardware requirements: 
   - Minimum: At least a 1.2 GHz CPU; 1 GB of RAM or more.
   - Recommended: At least a 2.5 GHz dual-core CPU; 2 GB of RAM or more.
-  - The recommended may not be enough in some cases to prevent lockups when loading the package list and details, but it should be ok. Performance improvements in guinget v0.2.0.3/v0.3 should prevent most lockups related to loading the package list.
+  - The recommended may not be enough in some cases to prevent lockups when loading the package list and details, but it should be ok. Performance improvements in guinget v0.2.0.3/v0.3 should prevent most lockups related to loading the package list, though the changes in v0.2.0.3 may not be enough and the optimizations in v0.3 may be necessary to get rid of most lockups.
   
 - Disk space:
   - 32-bit: 5 GB space free
