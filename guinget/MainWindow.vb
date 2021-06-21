@@ -261,7 +261,8 @@ Public Class aaformMainWindow
 
     Friend Shared Async Sub PackageListPostUpdate()
 
-        ' Show the package list again.
+        ' Sort the package list if it's not already sorted.
+        AutoSortPackageIDColumn()
 
         '' Turn autosize back on for certain columns. Might not help
         '' performance, so it's commented out for now.
@@ -965,6 +966,19 @@ Public Class aaformMainWindow
         ' in C# here: https://stackoverflow.com/questions/13418721/toolstrip-rounded-corners/48564597#48564597
         CType(toolstripMainWindow.Renderer, ToolStripProfessionalRenderer).RoundedEdges = False
 
+        ' Sort by package ID column.
+        ' This ensures lowercase package IDs are where they
+        ' should be and not at the end of the list.
+        ' Backported from v0.3.
+        AutoSortPackageIDColumn()
+
+    End Sub
+
+    Private Shared Sub AutoSortPackageIDColumn()
+        ' Sorts the package ID column after refreshing so it's in the right order.
+        ' It would be nice to have it re-sort the way it currently is if the user changed it, though.
+        ' Backported from v0.3.
+        aaformMainWindow.datagridviewPackageList.Sort(aaformMainWindow.PkgName, System.ComponentModel.ListSortDirection.Ascending)
     End Sub
 
 #Region "HiDPI-related stuff."
