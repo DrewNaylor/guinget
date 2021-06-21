@@ -33,6 +33,7 @@ SolidCompression=yes
 AppCopyright=Copyright 2020-2021 Drew Naylor. Licensed under Apache License 2.0.
 ShowLanguageDialog=no
 UninstallDisplayIcon={uninstallexe}
+UninstallDisplayName={#MyAppName}
 MinVersion=0,6.1
 CreateUninstallRegKey=yes
 EnableDirDoesntExistWarning=True
