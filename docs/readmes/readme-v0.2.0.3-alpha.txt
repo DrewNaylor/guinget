@@ -168,7 +168,7 @@ Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 guinget
-Version 0.2.0.2 Alpha
+Version 0.2.0.3 Alpha
 Copyright (C) 2020-2021 Drew Naylor. Licensed under Apache License 2.0.
 
 Unofficial GUI for Microsoft's Windows Package Manager (winget).
