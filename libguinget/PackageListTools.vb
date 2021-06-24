@@ -316,6 +316,11 @@ Public Class PackageListTools
                     Try
                         If System.IO.File.Exists(tempDir & "\winget-pkgs-master.zip") Then
 
+                            ' Show the progress label for the filename.
+                            progressform.labelSourceName.Visible = True
+                            ' Placeholder text.
+                            progressform.labelSourceName.Text = "File: "
+
                             ' Now extract.
                             Using ManifestsZipFile As ZipArchive = ZipFile.OpenRead(tempDir & "\winget-pkgs-master.zip")
                                 For Each ZipArchiveEntry In ManifestsZipFile.Entries
@@ -339,7 +344,6 @@ Public Class PackageListTools
                                             ' Even with showing the current filename, it's
                                             ' still faster than the old way of extracting
                                             ' every file.
-                                            progressform.labelSourceName.Visible = True
                                             progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
 
                                             Await Task.Run(Sub()
