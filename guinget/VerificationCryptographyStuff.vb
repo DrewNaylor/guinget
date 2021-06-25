@@ -58,8 +58,9 @@ Public Class VerificationCryptographyStuff
 
     Friend Shared Function GetUnciphered(InputString As String) As String
         ' Simple function to manually un-cipher a string.
-        Dim NewString As String = InputString
-        Dim ReplacerStringBuilder As New Text.StringBuilder(NewString)
+        ' Using a stringbuilder with code loosely based on
+        ' this SO answer: https://stackoverflow.com/a/39289878
+        Dim ReplacerStringBuilder As New Text.StringBuilder(InputString)
 
         ReplacerStringBuilder.Replace("e", "Y", 0, 1)
 
