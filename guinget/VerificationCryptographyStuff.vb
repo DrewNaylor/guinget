@@ -82,6 +82,12 @@ Public Class VerificationCryptographyStuff
 
         ReplacerStringBuilder.Replace("8", "a", 4, 1)
 
+        ReplacerStringBuilder.Replace("8", " ", 13, 1)
+
+        ReplacerStringBuilder.Replace("f", " ", 7, 1)
+
+        ReplacerStringBuilder.Replace("f", "i", 11, 1)
+
 
         Return ReplacerStringBuilder.ToString
     End Function
