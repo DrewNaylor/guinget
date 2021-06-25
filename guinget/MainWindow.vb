@@ -1431,7 +1431,9 @@ Public Class aaformMainWindow
             RightToLeftMenuItem.Checked = False
         End If
     End Sub
+#End Region
 
+#Region "KDE-style fast resize."
     Private Sub aaformMainWindow_ResizeBegin(sender As Object, e As EventArgs) Handles Me.ResizeBegin
         ' The window started to resize, so we need to
         ' take a screenshot of the package list
