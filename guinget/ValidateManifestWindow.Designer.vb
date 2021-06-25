@@ -49,9 +49,8 @@ Partial Class ValidateManifestWindow
         '
         'buttonValidateManifest
         '
-        Me.buttonValidateManifest.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.buttonValidateManifest.Location = New System.Drawing.Point(353, 124)
+        Me.buttonValidateManifest.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.buttonValidateManifest.Location = New System.Drawing.Point(353, 194)
         Me.buttonValidateManifest.Name = "buttonValidateManifest"
         Me.buttonValidateManifest.Size = New System.Drawing.Size(138, 34)
         Me.buttonValidateManifest.TabIndex = 2
@@ -60,10 +59,9 @@ Partial Class ValidateManifestWindow
         '
         'buttonClose
         '
-        Me.buttonClose.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.buttonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.buttonClose.Location = New System.Drawing.Point(497, 124)
+        Me.buttonClose.Location = New System.Drawing.Point(497, 194)
         Me.buttonClose.Name = "buttonClose"
         Me.buttonClose.Size = New System.Drawing.Size(100, 34)
         Me.buttonClose.TabIndex = 3
@@ -90,7 +88,7 @@ Partial Class ValidateManifestWindow
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.buttonClose
-        Me.ClientSize = New System.Drawing.Size(609, 170)
+        Me.ClientSize = New System.Drawing.Size(609, 240)
         Me.Controls.Add(Me.labelValidateManifestLabel)
         Me.Controls.Add(Me.buttonClose)
         Me.Controls.Add(Me.buttonValidateManifest)
