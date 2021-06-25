@@ -63,31 +63,24 @@ Public Class VerificationCryptographyStuff
 
         ReplacerStringBuilder.Replace("e", "Y", 0, 1)
 
-        NewString = NewString.Remove(NewString.IndexOf("e"), 1)
-        NewString = NewString.Insert(5, "r")
+        ReplacerStringBuilder.Replace("e", "r", 5, 1)
 
-        NewString = NewString.Remove(NewString.IndexOf("e"), 2)
-        NewString = NewString.Insert(12, "d")
+        ReplacerStringBuilder.Replace("e", "d", 12, 1)
 
-        NewString = NewString.Remove(NewString.LastIndexOf("e"))
-        NewString = NewString.Insert(15, ")")
+        ReplacerStringBuilder.Replace("e", ")", 15, 1)
 
-        NewString = NewString.Remove(NewString.IndexOf("3"), 0)
-        NewString = NewString.Insert(1, "o")
+        ReplacerStringBuilder.Replace("3", "o", 1, 1)
 
-        NewString = NewString.Remove(NewString.IndexOf("3"), 1)
-        NewString = NewString.Insert(6, "e")
+        ReplacerStringBuilder.Replace("3", "e", 6, 1)
 
-        NewString = NewString.Remove(NewString.LastIndexOf("6"))
-        NewString = NewString.Insert(2, "u")
+        ReplacerStringBuilder.Replace("6", "u", 2, 1)
 
-        NewString = NewString.Remove(NewString.IndexOf("b"), 1)
-        NewString = NewString.Insert(14, ":")
+        ReplacerStringBuilder.Replace("b", ":", 14, 1)
 
-        NewString = NewString.Replace("b", " ")
+        ReplacerStringBuilder.Replace("b", " ", 3, 1)
 
-        NewString = NewString.Remove(NewString.IndexOf("8"), 0)
-        NewString = NewString.Insert(4, "a")
+        ReplacerStringBuilder.Replace("8", "a", 4, 1)
+
 
         Return ReplacerStringBuilder.ToString
     End Function
