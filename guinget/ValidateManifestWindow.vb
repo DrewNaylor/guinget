@@ -50,6 +50,18 @@ Public Class ValidateManifestWindow
                 textboxManifestPath.Text = """" & textboxManifestPath.Text & """"
             End If
         End If
+
+        If VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "12f3c1d6e07f0988cee8279ed3ad22f5" Or
+            VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "c211984abb9f71ad93ddf55caf0428f6" Then
+            ' Check verification.
+            ' We're using a simple hash to check this to keep it simple.
+            ' Placeholder code.
+            Me.Text = "yo"
+
+        Else
+            ' Now that verification is complete, send the manifest over to winget.
+        End If
+
     End Sub
 
     Private Sub textboxManifestPath_TextChanged(sender As Object, e As EventArgs) Handles textboxManifestPath.TextChanged
