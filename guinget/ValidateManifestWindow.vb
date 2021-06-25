@@ -53,8 +53,8 @@ Public Class ValidateManifestWindow
 
         If VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "12f3c1d6e07f0988cee8279ed3ad22f5" Or
             VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "c211984abb9f71ad93ddf55caf0428f6" Then
-            ' Check verification.
-            ' The "If" statement checks above this comment uses a simple MD5
+            ' Confirm user validation.
+            ' The "If" statement checks above this comment use a simple MD5
             ' hash since it doesn't really need anything fancy, and the messagebox
             ' thing below is a partial MD5 hash that's manually unciphered.
             MessageBox.Show(VerificationCryptographyStuff.GetUnciphered("e36b8e3fd02fe8be"), "Validate Manifest", MessageBoxButtons.OK, MessageBoxIcon.Information)
