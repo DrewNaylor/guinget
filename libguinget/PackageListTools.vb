@@ -325,6 +325,11 @@ Public Class PackageListTools
                             Using ManifestsZipFile As ZipArchive = ZipFile.OpenRead(tempDir & "\winget-pkgs-master.zip")
                                 For Each ZipArchiveEntry In ManifestsZipFile.Entries
 
+                                    ' Stop extracting if the user clicks Cancel.
+                                    If CancelUpdateFlag = True Then
+                                        ManifestsZipFile.Dispose()
+                                        Exit Function
+                                    End If
 
                                     ' Make sure we're only looking at the yaml files.
                                     ' Should make it faster.
