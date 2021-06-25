@@ -30,4 +30,14 @@ Public Class ValidateManifestWindow
         ' Close the window.
         Me.Close()
     End Sub
+
+    Private Sub buttonBrowseForManifest_Click(sender As Object, e As EventArgs) Handles buttonBrowseForManifest.Click
+        ' Get manifest path from browse dialog.
+        ' Some code copied from UXL Launcher.
+        If openfiledialogBrowseForManifest.ShowDialog = DialogResult.OK Then
+            ' If the user clicks the "OK" button, put the path
+            ' in the textbox.
+            textboxManifestPath.Text = openfiledialogBrowseForManifest.FileName
+        End If
+    End Sub
 End Class
