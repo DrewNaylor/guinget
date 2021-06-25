@@ -67,13 +67,19 @@ Public Class VerificationCryptographyStuff
         InputString = InputString.Remove(InputString.IndexOf("e"), 2)
         InputString = InputString.Insert(12, "d")
 
-        InputString = InputString.Remove(InputString.LastIndexOf("e")).Insert(InputString.LastIndexOf("e"), ")")
-        InputString = InputString.Remove(InputString.IndexOf("3"), 1).Insert(InputString.IndexOf("3", 1), "o")
-        InputString = InputString.Remove(InputString.LastIndexOf("3")).Insert(InputString.LastIndexOf("3"), "e")
-        InputString = InputString.Remove(InputString.LastIndexOf("6")).Insert(InputString.IndexOf("6"), "u")
-        InputString = InputString.Remove(InputString.IndexOf("b"), 1).Insert(InputString.IndexOf("b", 4), " ")
-        InputString = InputString.Remove(InputString.LastIndexOf("b")).Insert(InputString.LastIndexOf("b"), ":")
-        InputString = InputString.Remove(InputString.IndexOf("8"), 0).Insert(InputString.IndexOf("8", 0), "a")
+        InputString = InputString.Remove(InputString.LastIndexOf("e"))
+        InputString = InputString.Insert(15, ")")
+
+        InputString = InputString.Remove(InputString.IndexOf("3"), 0)
+        InputString = InputString.Insert(1, "o")
+
+        InputString = InputString.Remove(InputString.IndexOf("3"), 1)
+        InputString = InputString.Insert(6, "e")
+
+        'InputString = InputString.Remove(InputString.LastIndexOf("6")).Insert(InputString.IndexOf("6"), "u")
+        'InputString = InputString.Remove(InputString.IndexOf("b"), 1).Insert(InputString.IndexOf("b", 4), " ")
+        'InputString = InputString.Remove(InputString.LastIndexOf("b")).Insert(InputString.LastIndexOf("b"), ":")
+        'InputString = InputString.Remove(InputString.IndexOf("8"), 0).Insert(InputString.IndexOf("8", 0), "a")
 
         Return InputString.ToString
     End Function
