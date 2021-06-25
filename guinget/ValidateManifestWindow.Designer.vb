@@ -44,17 +44,17 @@ Partial Class ValidateManifestWindow
         Me.buttonBrowseForManifest.Location = New System.Drawing.Point(497, 89)
         Me.buttonBrowseForManifest.Name = "buttonBrowseForManifest"
         Me.buttonBrowseForManifest.Size = New System.Drawing.Size(100, 49)
-        Me.buttonBrowseForManifest.TabIndex = 1
+        Me.buttonBrowseForManifest.TabIndex = 2
         Me.buttonBrowseForManifest.Text = "Browse..."
         Me.buttonBrowseForManifest.UseVisualStyleBackColor = True
         '
         'buttonValidateManifest
         '
         Me.buttonValidateManifest.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.buttonValidateManifest.Location = New System.Drawing.Point(353, 194)
+        Me.buttonValidateManifest.Location = New System.Drawing.Point(459, 194)
         Me.buttonValidateManifest.Name = "buttonValidateManifest"
         Me.buttonValidateManifest.Size = New System.Drawing.Size(138, 34)
-        Me.buttonValidateManifest.TabIndex = 2
+        Me.buttonValidateManifest.TabIndex = 3
         Me.buttonValidateManifest.Text = "Validate manifest"
         Me.buttonValidateManifest.UseVisualStyleBackColor = True
         '
@@ -62,10 +62,10 @@ Partial Class ValidateManifestWindow
         '
         Me.buttonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.buttonClose.Location = New System.Drawing.Point(497, 194)
+        Me.buttonClose.Location = New System.Drawing.Point(353, 194)
         Me.buttonClose.Name = "buttonClose"
         Me.buttonClose.Size = New System.Drawing.Size(100, 34)
-        Me.buttonClose.TabIndex = 3
+        Me.buttonClose.TabIndex = 4
         Me.buttonClose.Text = "Close"
         Me.buttonClose.UseVisualStyleBackColor = True
         '
@@ -90,7 +90,7 @@ Partial Class ValidateManifestWindow
         Me.checkboxBrowseForSingleton.Location = New System.Drawing.Point(15, 117)
         Me.checkboxBrowseForSingleton.Name = "checkboxBrowseForSingleton"
         Me.checkboxBrowseForSingleton.Size = New System.Drawing.Size(215, 21)
-        Me.checkboxBrowseForSingleton.TabIndex = 5
+        Me.checkboxBrowseForSingleton.TabIndex = 1
         Me.checkboxBrowseForSingleton.Text = "Browse for singleton manifest"
         Me.checkboxBrowseForSingleton.UseVisualStyleBackColor = True
         '
