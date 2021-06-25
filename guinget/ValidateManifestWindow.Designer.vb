@@ -22,66 +22,67 @@ Partial Class ValidateManifestWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.textboxManifestPath = New System.Windows.Forms.TextBox()
+        Me.buttonBrowseForManifest = New System.Windows.Forms.Button()
+        Me.buttonValidateManifest = New System.Windows.Forms.Button()
+        Me.buttonClose = New System.Windows.Forms.Button()
+        Me.labelValidateManifestLabel = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'textboxManifestPath
         '
-        Me.TextBox1.Location = New System.Drawing.Point(15, 37)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(476, 22)
-        Me.TextBox1.TabIndex = 0
+        Me.textboxManifestPath.Location = New System.Drawing.Point(15, 46)
+        Me.textboxManifestPath.Name = "textboxManifestPath"
+        Me.textboxManifestPath.Size = New System.Drawing.Size(476, 22)
+        Me.textboxManifestPath.TabIndex = 0
         '
-        'Button1
+        'buttonBrowseForManifest
         '
-        Me.Button1.Location = New System.Drawing.Point(497, 37)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(100, 34)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Browse..."
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.buttonBrowseForManifest.Location = New System.Drawing.Point(497, 46)
+        Me.buttonBrowseForManifest.Name = "buttonBrowseForManifest"
+        Me.buttonBrowseForManifest.Size = New System.Drawing.Size(100, 34)
+        Me.buttonBrowseForManifest.TabIndex = 1
+        Me.buttonBrowseForManifest.Text = "Browse..."
+        Me.buttonBrowseForManifest.UseVisualStyleBackColor = True
         '
-        'Button2
+        'buttonValidateManifest
         '
-        Me.Button2.Location = New System.Drawing.Point(353, 124)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(138, 34)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Validate manifest"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.buttonValidateManifest.Location = New System.Drawing.Point(353, 124)
+        Me.buttonValidateManifest.Name = "buttonValidateManifest"
+        Me.buttonValidateManifest.Size = New System.Drawing.Size(138, 34)
+        Me.buttonValidateManifest.TabIndex = 2
+        Me.buttonValidateManifest.Text = "Validate manifest"
+        Me.buttonValidateManifest.UseVisualStyleBackColor = True
         '
-        'Button3
+        'buttonClose
         '
-        Me.Button3.Location = New System.Drawing.Point(497, 124)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(100, 34)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Close"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.buttonClose.Location = New System.Drawing.Point(497, 124)
+        Me.buttonClose.Name = "buttonClose"
+        Me.buttonClose.Size = New System.Drawing.Size(100, 34)
+        Me.buttonClose.TabIndex = 3
+        Me.buttonClose.Text = "Close"
+        Me.buttonClose.UseVisualStyleBackColor = True
         '
-        'Label1
+        'labelValidateManifestLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(387, 17)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Enter or browse for a manifest then click ""Validate manifest""."
+        Me.labelValidateManifestLabel.AutoSize = True
+        Me.labelValidateManifestLabel.Location = New System.Drawing.Point(12, 9)
+        Me.labelValidateManifestLabel.Name = "labelValidateManifestLabel"
+        Me.labelValidateManifestLabel.Size = New System.Drawing.Size(537, 34)
+        Me.labelValidateManifestLabel.TabIndex = 4
+        Me.labelValidateManifestLabel.Text = "Enter or browse for a manifest path then click ""Validate manifest"". The manifest " &
+    "path" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "must be in the format ""Publisher.App.yaml""."
         '
         'ValidateManifestWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(609, 170)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.labelValidateManifestLabel)
+        Me.Controls.Add(Me.buttonClose)
+        Me.Controls.Add(Me.buttonValidateManifest)
+        Me.Controls.Add(Me.buttonBrowseForManifest)
+        Me.Controls.Add(Me.textboxManifestPath)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "ValidateManifestWindow"
         Me.Text = "Validate Manifest"
@@ -90,9 +91,9 @@ Partial Class ValidateManifestWindow
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Label1 As Label
+    Friend WithEvents textboxManifestPath As TextBox
+    Friend WithEvents buttonBrowseForManifest As Button
+    Friend WithEvents buttonValidateManifest As Button
+    Friend WithEvents buttonClose As Button
+    Friend WithEvents labelValidateManifestLabel As Label
 End Class
