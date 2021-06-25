@@ -184,6 +184,12 @@
     <Compile Include="OptionsWindow.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ValidateManifestWindow.Designer.vb">
+      <DependentUpon>ValidateManifestWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ValidateManifestWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutWindow.resx">
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsWindow.resx">
       <DependentUpon>OptionsWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValidateManifestWindow.resx">
+      <DependentUpon>ValidateManifestWindow.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
