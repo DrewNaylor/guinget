@@ -56,4 +56,8 @@ Public Class VerificationCryptographyStuff
         Return ResultString.ToString
     End Function
 
+    Friend Shared Function GetUnciphered(InputString As String) As String
+        ' Simple function to manually un-cipher a string.
+    End Function
+
 End Class
