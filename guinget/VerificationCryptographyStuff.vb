@@ -33,6 +33,9 @@ Public Class VerificationCryptographyStuff
     ' https://stackoverflow.com/a/40865372
 
     Friend Shared Function GetMd5(InputString As String) As String
+        ' Define things.
+        Dim md5ObjectProvider As New System.Security.Cryptography.MD5CryptoServiceProvider
+        Dim BytesWeWantToHash() As Byte = System.Text.Encoding.UTF8.GetBytes(InputString)
 
     End Function
 
