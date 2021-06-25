@@ -24,19 +24,26 @@
 
 
 
+Imports System.Text
+
 Public Class VerificationCryptographyStuff
 
     ' Using a simple MD5 hash for verifying that stuff is working.
     ' We don't need anything too complicated as it's a basic string
     ' that's not related to security.
-    ' Example:
+    ' Based on this code:
     ' https://stackoverflow.com/a/40865372
 
     Friend Shared Function GetMd5(InputString As String) As String
         ' Define things.
-        Dim md5ObjectProvider As New System.Security.Cryptography.MD5CryptoServiceProvider
-        Dim BytesWeWantToHash() As Byte = System.Text.Encoding.UTF8.GetBytes(InputString)
+        Dim md5ObjectProvider As New Security.Cryptography.MD5CryptoServiceProvider
+        Dim BytesWeWantToHash() As Byte = Encoding.UTF8.GetBytes(InputString)
 
+        ' Do the hashing.
+        BytesWeWantToHash = md5ObjectProvider.ComputeHash(BytesWeWantToHash)
+
+        ' Set up a stringbuilder.
+        Dim ResultString As New StringBuilder
     End Function
 
 End Class
