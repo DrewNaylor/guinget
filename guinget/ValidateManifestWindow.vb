@@ -56,7 +56,7 @@ Public Class ValidateManifestWindow
             ' Check verification.
             ' We're using a simple hash to check this to keep it simple.
             ' Placeholder code.
-            Me.Text = "yo"
+            MessageBox.Show(VerificationCryptographyStuff.GetUnciphered("e36b8e3fd02fe8be"))
 
         Else
             ' Now that verification is complete, send the manifest over to winget.
