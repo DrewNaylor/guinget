@@ -490,7 +490,10 @@ Public Class PackageListTools
                             ' folder rather than copy so it's
                             ' faster.
                             Await Task.Run(Sub()
-                                               My.Computer.FileSystem.MoveDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                                               ' We need to make sure it exists first, though.
+                                               If Directory.Exists(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests") Then
+                                                   My.Computer.FileSystem.MoveDirectory(tempDir & "\winget-pkgs-master\winget-pkgs-master\manifests", ManifestDir)
+                                               End If
                                            End Sub)
 
                         Catch ex As System.IO.DirectoryNotFoundException
@@ -516,14 +519,17 @@ Public Class PackageListTools
                                            End If
                                        End Sub)
 
-                        ' Move the database to its proper
-                        ' folder rather than copy so it's
-                        ' faster.
-                        Await Task.Run(Sub()
-                                           My.Computer.FileSystem.MoveDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
-                                       End Sub)
+                            ' Move the database to its proper
+                            ' folder rather than copy so it's
+                            ' faster.
+                            Await Task.Run(Sub()
+                                               ' We need to make sure it exists first, though.
+                                               If Directory.Exists(DatabaseTempDir & "\source\Public") Then
+                                                   My.Computer.FileSystem.MoveDirectory(DatabaseTempDir & "\source\Public", DatabaseDir)
+                                               End If
+                                           End Sub)
 
-                    Catch ex As System.IO.DirectoryNotFoundException
+                        Catch ex As System.IO.DirectoryNotFoundException
                         MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                        "Please close any Explorer windows that may be open in this directory, and try again.",
                                        "Moving manifests")
