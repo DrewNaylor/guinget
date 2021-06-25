@@ -26,18 +26,19 @@ Partial Class ValidateManifestWindow
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 41)
+        Me.TextBox1.Location = New System.Drawing.Point(15, 37)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(477, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(476, 22)
         Me.TextBox1.TabIndex = 0
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(496, 39)
+        Me.Button1.Location = New System.Drawing.Point(497, 37)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(100, 34)
         Me.Button1.TabIndex = 1
@@ -46,7 +47,7 @@ Partial Class ValidateManifestWindow
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(458, 124)
+        Me.Button2.Location = New System.Drawing.Point(353, 124)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(138, 34)
         Me.Button2.TabIndex = 2
@@ -55,22 +56,33 @@ Partial Class ValidateManifestWindow
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(352, 124)
+        Me.Button3.Location = New System.Drawing.Point(497, 124)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(100, 34)
         Me.Button3.TabIndex = 3
         Me.Button3.Text = "Close"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(387, 17)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Enter or browse for a manifest then click ""Validate manifest""."
+        '
         'ValidateManifestWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(609, 170)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "ValidateManifestWindow"
         Me.Text = "Validate Manifest"
         Me.ResumeLayout(False)
@@ -82,4 +94,5 @@ Partial Class ValidateManifestWindow
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
+    Friend WithEvents Label1 As Label
 End Class
