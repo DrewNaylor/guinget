@@ -81,6 +81,9 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.checkboxUseKDEStyleFastResize = New System.Windows.Forms.CheckBox()
+        Me.groupboxPackageList = New System.Windows.Forms.GroupBox()
+        Me.groupboxPackageDetails = New System.Windows.Forms.GroupBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -93,6 +96,8 @@ Partial Class OptionsWindow
         Me.tabpageMaintenance.SuspendLayout()
         Me.tabpageExperimental.SuspendLayout()
         Me.panelExperimentalSettings.SuspendLayout()
+        Me.groupboxPackageList.SuspendLayout()
+        Me.groupboxPackageDetails.SuspendLayout()
         Me.SuspendLayout()
         '
         'tablelayoutpanelOptions
@@ -213,11 +218,11 @@ Partial Class OptionsWindow
         Me.tabpageSearch.Controls.Add(Me.checkboxSearchWhenTyping)
         Me.tabpageSearch.Controls.Add(Me.checkboxUseExactMatchForLastSelectedPackageIDSearch)
         Me.tabpageSearch.Controls.Add(Me.checkboxRerunSearch)
-        Me.tabpageSearch.Location = New System.Drawing.Point(4, 46)
+        Me.tabpageSearch.Location = New System.Drawing.Point(4, 25)
         Me.tabpageSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSearch.Name = "tabpageSearch"
         Me.tabpageSearch.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabpageSearch.Size = New System.Drawing.Size(453, 446)
+        Me.tabpageSearch.Size = New System.Drawing.Size(453, 467)
         Me.tabpageSearch.TabIndex = 0
         Me.tabpageSearch.Text = "Search"
         Me.tabpageSearch.UseVisualStyleBackColor = True
@@ -281,11 +286,11 @@ Partial Class OptionsWindow
         Me.tabpageAppsUIs.Controls.Add(Me.labelAutomaticControlPanelFallback)
         Me.tabpageAppsUIs.Controls.Add(Me.comboboxAppsListUI)
         Me.tabpageAppsUIs.Controls.Add(Me.labelAppsListUI)
-        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 46)
+        Me.tabpageAppsUIs.Location = New System.Drawing.Point(4, 25)
         Me.tabpageAppsUIs.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpageAppsUIs.Name = "tabpageAppsUIs"
         Me.tabpageAppsUIs.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabpageAppsUIs.Size = New System.Drawing.Size(453, 446)
+        Me.tabpageAppsUIs.Size = New System.Drawing.Size(453, 467)
         Me.tabpageAppsUIs.TabIndex = 6
         Me.tabpageAppsUIs.Text = "Apps and UIs"
         Me.tabpageAppsUIs.UseVisualStyleBackColor = True
@@ -324,21 +329,22 @@ Partial Class OptionsWindow
         '
         'tabpagePackageDetails
         '
-        Me.tabpagePackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
+        Me.tabpagePackageDetails.Controls.Add(Me.groupboxPackageDetails)
+        Me.tabpagePackageDetails.Controls.Add(Me.groupboxPackageList)
         Me.tabpagePackageDetails.Location = New System.Drawing.Point(4, 46)
         Me.tabpagePackageDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.tabpagePackageDetails.Name = "tabpagePackageDetails"
         Me.tabpagePackageDetails.Padding = New System.Windows.Forms.Padding(4)
         Me.tabpagePackageDetails.Size = New System.Drawing.Size(453, 446)
         Me.tabpagePackageDetails.TabIndex = 2
-        Me.tabpagePackageDetails.Text = "Package Details"
+        Me.tabpagePackageDetails.Text = "Package List + Details"
         Me.tabpagePackageDetails.UseVisualStyleBackColor = True
         '
         'checkboxLastSelectedPackageDetails
         '
         Me.checkboxLastSelectedPackageDetails.AutoSize = True
         Me.checkboxLastSelectedPackageDetails.CheckAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(8, 8)
+        Me.checkboxLastSelectedPackageDetails.Location = New System.Drawing.Point(7, 22)
         Me.checkboxLastSelectedPackageDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.checkboxLastSelectedPackageDetails.Name = "checkboxLastSelectedPackageDetails"
         Me.checkboxLastSelectedPackageDetails.Size = New System.Drawing.Size(348, 38)
@@ -780,6 +786,38 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
+        'checkboxUseKDEStyleFastResize
+        '
+        Me.checkboxUseKDEStyleFastResize.AutoSize = True
+        Me.checkboxUseKDEStyleFastResize.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxUseKDEStyleFastResize.Location = New System.Drawing.Point(6, 21)
+        Me.checkboxUseKDEStyleFastResize.Name = "checkboxUseKDEStyleFastResize"
+        Me.checkboxUseKDEStyleFastResize.Size = New System.Drawing.Size(361, 55)
+        Me.checkboxUseKDEStyleFastResize.TabIndex = 1
+        Me.checkboxUseKDEStyleFastResize.Text = "Use KDE-style fast resize for the package list so that" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "resizing the window is sm" &
+    "ooth when there are a lot" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "of packages listed"
+        Me.checkboxUseKDEStyleFastResize.UseVisualStyleBackColor = True
+        '
+        'groupboxPackageList
+        '
+        Me.groupboxPackageList.Controls.Add(Me.checkboxUseKDEStyleFastResize)
+        Me.groupboxPackageList.Location = New System.Drawing.Point(7, 103)
+        Me.groupboxPackageList.Name = "groupboxPackageList"
+        Me.groupboxPackageList.Size = New System.Drawing.Size(439, 90)
+        Me.groupboxPackageList.TabIndex = 2
+        Me.groupboxPackageList.TabStop = False
+        Me.groupboxPackageList.Text = "Package list"
+        '
+        'groupboxPackageDetails
+        '
+        Me.groupboxPackageDetails.Controls.Add(Me.checkboxLastSelectedPackageDetails)
+        Me.groupboxPackageDetails.Location = New System.Drawing.Point(7, 7)
+        Me.groupboxPackageDetails.Name = "groupboxPackageDetails"
+        Me.groupboxPackageDetails.Size = New System.Drawing.Size(439, 90)
+        Me.groupboxPackageDetails.TabIndex = 3
+        Me.groupboxPackageDetails.TabStop = False
+        Me.groupboxPackageDetails.Text = "Package details"
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -806,7 +844,6 @@ Partial Class OptionsWindow
         Me.tabpageAppsUIs.ResumeLayout(False)
         Me.tabpageAppsUIs.PerformLayout()
         Me.tabpagePackageDetails.ResumeLayout(False)
-        Me.tabpagePackageDetails.PerformLayout()
         Me.tabpageApplyChanges.ResumeLayout(False)
         Me.tabpageApplyChanges.PerformLayout()
         Me.tabpageLayout.ResumeLayout(False)
@@ -817,6 +854,10 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.PerformLayout()
         Me.panelExperimentalSettings.ResumeLayout(False)
         Me.panelExperimentalSettings.PerformLayout()
+        Me.groupboxPackageList.ResumeLayout(False)
+        Me.groupboxPackageList.PerformLayout()
+        Me.groupboxPackageDetails.ResumeLayout(False)
+        Me.groupboxPackageDetails.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -879,4 +920,7 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxWhenUninstalling As CheckBox
     Friend WithEvents labelLoadLatestVersion As Label
     Friend WithEvents checkboxShowOnlyLatestVersions As CheckBox
+    Friend WithEvents checkboxUseKDEStyleFastResize As CheckBox
+    Friend WithEvents groupboxPackageDetails As GroupBox
+    Friend WithEvents groupboxPackageList As GroupBox
 End Class
