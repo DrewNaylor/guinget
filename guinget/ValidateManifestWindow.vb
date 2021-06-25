@@ -40,4 +40,12 @@ Public Class ValidateManifestWindow
             textboxManifestPath.Text = openfiledialogBrowseForManifest.FileName
         End If
     End Sub
+
+    Private Sub buttonValidateManifest_Click(sender As Object, e As EventArgs) Handles buttonValidateManifest.Click
+        ' Send manifest over to winget for validation.
+        If Not textboxManifestPath.Text.StartsWith("""") AndAlso Not textboxManifestPath.Text.EndsWith("""") Then
+            ' Wrap the path in quotes if necessary.
+            textboxManifestPath.Text = """" & textboxManifestPath.Text & """"
+        End If
+    End Sub
 End Class
