@@ -69,7 +69,7 @@ Public Class ValidateManifestWindow
     Private Sub textboxManifestPath_TextChanged(sender As Object, e As EventArgs) Handles textboxManifestPath.TextChanged
         ' Allow or block the "Validate manifest" button if
         ' there's text in the textbox.
-        BlockOrAllowValidateManifestButton
+        BlockOrAllowValidateManifestButton()
     End Sub
 
     Private Sub ValidateManifestWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
