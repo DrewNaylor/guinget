@@ -228,6 +228,11 @@ Public Class PackageListTools
         ' Update the database.
         ' Check if the directory exists for the database as well,
         ' if necessary.
+        ' Cancel out if the CancelUpdatesFlag is set.
+        If CancelUpdateFlag = True Then
+            Exit Function
+        End If
+        ' Now download the database.
         If IO.Directory.Exists(DatabaseTempDir) Then
                 ' Exists; re-create it.
                 If Await DeleteTempDirAsync("winget-db", True) = False Then
