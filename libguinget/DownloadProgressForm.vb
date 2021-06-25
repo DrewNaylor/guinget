@@ -23,6 +23,8 @@
 
 
 
+Imports System.ComponentModel
+
 Public Class DownloadProgressForm
 
     ' Some of this code may help to figure out how to download stuff async
@@ -43,7 +45,7 @@ Public Class DownloadProgressForm
 
     Private Sub buttonCancel_Click(sender As Object, e As EventArgs) Handles buttonCancel.Click
         ' Set the cancel flag if the user clicks Cancel.
-        ' This can't be done if we're copying the package list files.
+        ' This can't be done if we're moving the package list files.
         PackageListTools.CancelUpdateFlag = True
 
         ' Change text to let the user know we're canceling.
@@ -52,6 +54,12 @@ Public Class DownloadProgressForm
 
         ' Disable cancel button.
         buttonCancel.Enabled = False
+    End Sub
+
+    Private Sub DownloadProgressForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        ' Set the CancelUpdateFlag.
+        ' During the moving phase it doesn't change anything.
+        PackageListTools.CancelUpdateFlag = True
     End Sub
 
 #Region "Package list properties"
