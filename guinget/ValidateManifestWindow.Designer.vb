@@ -29,7 +29,7 @@ Partial Class ValidateManifestWindow
         Me.buttonClose = New System.Windows.Forms.Button()
         Me.labelValidateManifestLabel = New System.Windows.Forms.Label()
         Me.openfiledialogBrowseForManifest = New System.Windows.Forms.OpenFileDialog()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.checkboxBrowseForSingleton = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'textboxManifestPath
@@ -84,15 +84,15 @@ Partial Class ValidateManifestWindow
         Me.openfiledialogBrowseForManifest.RestoreDirectory = True
         Me.openfiledialogBrowseForManifest.Title = "Browse"
         '
-        'CheckBox1
+        'checkboxBrowseForSingleton
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(15, 117)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(215, 21)
-        Me.CheckBox1.TabIndex = 5
-        Me.CheckBox1.Text = "Browse for singleton manifest"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.checkboxBrowseForSingleton.AutoSize = True
+        Me.checkboxBrowseForSingleton.Location = New System.Drawing.Point(15, 117)
+        Me.checkboxBrowseForSingleton.Name = "checkboxBrowseForSingleton"
+        Me.checkboxBrowseForSingleton.Size = New System.Drawing.Size(215, 21)
+        Me.checkboxBrowseForSingleton.TabIndex = 5
+        Me.checkboxBrowseForSingleton.Text = "Browse for singleton manifest"
+        Me.checkboxBrowseForSingleton.UseVisualStyleBackColor = True
         '
         'ValidateManifestWindow
         '
@@ -100,7 +100,7 @@ Partial Class ValidateManifestWindow
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.buttonClose
         Me.ClientSize = New System.Drawing.Size(609, 240)
-        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.checkboxBrowseForSingleton)
         Me.Controls.Add(Me.labelValidateManifestLabel)
         Me.Controls.Add(Me.buttonClose)
         Me.Controls.Add(Me.buttonValidateManifest)
@@ -125,5 +125,5 @@ Partial Class ValidateManifestWindow
     Friend WithEvents buttonClose As Button
     Friend WithEvents labelValidateManifestLabel As Label
     Friend WithEvents openfiledialogBrowseForManifest As OpenFileDialog
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents checkboxBrowseForSingleton As CheckBox
 End Class
