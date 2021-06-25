@@ -58,36 +58,38 @@ Public Class VerificationCryptographyStuff
 
     Friend Shared Function GetUnciphered(InputString As String) As String
         ' Simple function to manually un-cipher a string.
-        InputString = InputString.Remove(InputString.IndexOf("e"), 0)
-        InputString = InputString.Insert(0, "Y")
+        Dim NewString As String = InputString
+        Dim ReplacerStringBuilder As New Text.StringBuilder(NewString)
 
-        InputString = InputString.Remove(InputString.IndexOf("e"), 1)
-        InputString = InputString.Insert(5, "r")
+        ReplacerStringBuilder.Replace("e", "Y", 0, 1)
 
-        InputString = InputString.Remove(InputString.IndexOf("e"), 2)
-        InputString = InputString.Insert(12, "d")
+        NewString = NewString.Remove(NewString.IndexOf("e"), 1)
+        NewString = NewString.Insert(5, "r")
 
-        InputString = InputString.Remove(InputString.LastIndexOf("e"))
-        InputString = InputString.Insert(15, ")")
+        NewString = NewString.Remove(NewString.IndexOf("e"), 2)
+        NewString = NewString.Insert(12, "d")
 
-        InputString = InputString.Remove(InputString.IndexOf("3"), 0)
-        InputString = InputString.Insert(1, "o")
+        NewString = NewString.Remove(NewString.LastIndexOf("e"))
+        NewString = NewString.Insert(15, ")")
 
-        InputString = InputString.Remove(InputString.IndexOf("3"), 1)
-        InputString = InputString.Insert(6, "e")
+        NewString = NewString.Remove(NewString.IndexOf("3"), 0)
+        NewString = NewString.Insert(1, "o")
 
-        InputString = InputString.Remove(InputString.LastIndexOf("6"))
-        InputString = InputString.Insert(2, "u")
+        NewString = NewString.Remove(NewString.IndexOf("3"), 1)
+        NewString = NewString.Insert(6, "e")
 
-        InputString = InputString.Remove(InputString.IndexOf("b"))
-        InputString = InputString.Insert(4, " ")
+        NewString = NewString.Remove(NewString.LastIndexOf("6"))
+        NewString = NewString.Insert(2, "u")
 
-        InputString = InputString.Remove(InputString.LastIndexOf("b"))
-        InputString = InputString.Insert(14, ":")
+        NewString = NewString.Remove(NewString.IndexOf("b"), 1)
+        NewString = NewString.Insert(14, ":")
 
-        'InputString = InputString.Remove(InputString.IndexOf("8"), 0).Insert(InputString.IndexOf("8", 0), "a")
+        NewString = NewString.Replace("b", " ")
 
-        Return InputString.ToString
+        NewString = NewString.Remove(NewString.IndexOf("8"), 0)
+        NewString = NewString.Insert(4, "a")
+
+        Return ReplacerStringBuilder.ToString
     End Function
 
 End Class
