@@ -834,15 +834,12 @@ Public Class aaformMainWindow
 
         ' Tools menu items.
         aaformMainWindow.FindManifestToolStripMenuItem.Visible = Visible
-        aaformMainWindow.VerifyManifestToolStripMenuItem.Visible = Visible
         If Visible = False Then
             ' Empty menu items so they don't make the Options menu item
             ' too long.
             aaformMainWindow.FindManifestToolStripMenuItem.Text = String.Empty
-            aaformMainWindow.VerifyManifestToolStripMenuItem.Text = String.Empty
         Else
             aaformMainWindow.FindManifestToolStripMenuItem.Text = "Find manifest using version and ID..."
-            aaformMainWindow.VerifyManifestToolStripMenuItem.Text = "&Validate manifest..."
         End If
 
         ' Properties button on toolbar.
@@ -855,8 +852,6 @@ Public Class aaformMainWindow
         ' Toolstrip separators.
         ' Main toolbar.
         aaformMainWindow.zSeparatorPropertiesAndSearchBox.Visible = Visible
-        ' Tools menu.
-        aaformMainWindow.zSeparatorAboveEditWingetSettings.Visible = Visible
 
         ' Experimental settings panel in Options window.
         OptionsWindow.panelExperimentalSettings.Visible = Visible
