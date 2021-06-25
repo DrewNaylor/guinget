@@ -190,6 +190,7 @@
     <Compile Include="ValidateManifestWindow.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="VerificationCryptographyStuff.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutWindow.resx">
