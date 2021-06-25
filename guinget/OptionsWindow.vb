@@ -248,6 +248,8 @@ Public Class OptionsWindow
 
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = True
+        ' Use KDE-style fast resize.
+        checkboxUseKDEStyleFastResize.Checked = True
 
         ' Use 7-Zip.
         checkboxUse7zip.Checked = False
