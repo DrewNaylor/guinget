@@ -27,6 +27,7 @@ Partial Class ValidateManifestWindow
         Me.buttonValidateManifest = New System.Windows.Forms.Button()
         Me.buttonClose = New System.Windows.Forms.Button()
         Me.labelValidateManifestLabel = New System.Windows.Forms.Label()
+        Me.openfiledialogBrowseForManifest = New System.Windows.Forms.OpenFileDialog()
         Me.SuspendLayout()
         '
         'textboxManifestPath
@@ -74,6 +75,10 @@ Partial Class ValidateManifestWindow
         Me.labelValidateManifestLabel.Text = "Enter or browse for a manifest path then click ""Validate manifest"". The manifest " &
     "path" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "must be in the format ""Publisher.App.yaml""."
         '
+        'openfiledialogBrowseForManifest
+        '
+        Me.openfiledialogBrowseForManifest.Title = "Browse"
+        '
         'ValidateManifestWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -103,4 +108,5 @@ Partial Class ValidateManifestWindow
     Friend WithEvents buttonValidateManifest As Button
     Friend WithEvents buttonClose As Button
     Friend WithEvents labelValidateManifestLabel As Label
+    Friend WithEvents openfiledialogBrowseForManifest As OpenFileDialog
 End Class
