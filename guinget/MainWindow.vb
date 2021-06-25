@@ -842,7 +842,7 @@ Public Class aaformMainWindow
             aaformMainWindow.VerifyManifestToolStripMenuItem.Text = String.Empty
         Else
             aaformMainWindow.FindManifestToolStripMenuItem.Text = "Find manifest using version and ID..."
-            aaformMainWindow.VerifyManifestToolStripMenuItem.Text = "&Validate manifest"
+            aaformMainWindow.VerifyManifestToolStripMenuItem.Text = "&Validate manifest..."
         End If
 
         ' Properties button on toolbar.
