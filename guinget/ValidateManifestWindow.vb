@@ -34,10 +34,20 @@ Public Class ValidateManifestWindow
     Private Sub buttonBrowseForManifest_Click(sender As Object, e As EventArgs) Handles buttonBrowseForManifest.Click
         ' Get manifest path from browse dialog.
         ' Some code copied from UXL Launcher.
-        If openfiledialogBrowseForManifest.ShowDialog = DialogResult.OK Then
-            ' If the user clicks the "OK" button, put the path
-            ' in the textbox.
-            textboxManifestPath.Text = openfiledialogBrowseForManifest.FileName
+        ' Check if the single-file manifest checkbox is checked.
+        If checkboxBrowseForSingleton.Checked = True Then
+            If openfiledialogBrowseForManifest.ShowDialog = DialogResult.OK Then
+                ' If the user clicks the "OK" button, put the path
+                ' in the textbox.
+                textboxManifestPath.Text = openfiledialogBrowseForManifest.FileName
+            End If
+        Else
+            ' It's not checked, so show the folder browse dialog.
+            If folderbrowserdialogMultiFileManifestBrowse.ShowDialog = DialogResult.OK Then
+                ' If the user clicks the "OK" button, put the path
+                ' in the textbox.
+                textboxManifestPath.Text = folderbrowserdialogMultiFileManifestBrowse.SelectedPath
+            End If
         End If
     End Sub
 

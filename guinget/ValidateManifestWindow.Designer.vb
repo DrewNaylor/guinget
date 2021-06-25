@@ -30,6 +30,7 @@ Partial Class ValidateManifestWindow
         Me.labelValidateManifestLabel = New System.Windows.Forms.Label()
         Me.openfiledialogBrowseForManifest = New System.Windows.Forms.OpenFileDialog()
         Me.checkboxBrowseForSingleton = New System.Windows.Forms.CheckBox()
+        Me.folderbrowserdialogMultiFileManifestBrowse = New System.Windows.Forms.FolderBrowserDialog()
         Me.SuspendLayout()
         '
         'textboxManifestPath
@@ -126,4 +127,5 @@ Partial Class ValidateManifestWindow
     Friend WithEvents labelValidateManifestLabel As Label
     Friend WithEvents openfiledialogBrowseForManifest As OpenFileDialog
     Friend WithEvents checkboxBrowseForSingleton As CheckBox
+    Friend WithEvents folderbrowserdialogMultiFileManifestBrowse As FolderBrowserDialog
 End Class
