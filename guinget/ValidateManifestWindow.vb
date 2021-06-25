@@ -43,9 +43,12 @@ Public Class ValidateManifestWindow
 
     Private Sub buttonValidateManifest_Click(sender As Object, e As EventArgs) Handles buttonValidateManifest.Click
         ' Send manifest over to winget for validation.
-        If Not textboxManifestPath.Text.StartsWith("""") AndAlso Not textboxManifestPath.Text.EndsWith("""") Then
-            ' Wrap the path in quotes if necessary.
-            textboxManifestPath.Text = """" & textboxManifestPath.Text & """"
+        ' First make sure there's text in the textbox.
+        If textboxManifestPath.Text.Length > 0 Then
+            If Not textboxManifestPath.Text.StartsWith("""") AndAlso Not textboxManifestPath.Text.EndsWith("""") Then
+                ' Wrap the path in quotes if necessary.
+                textboxManifestPath.Text = """" & textboxManifestPath.Text & """"
+            End If
         End If
     End Sub
 End Class
