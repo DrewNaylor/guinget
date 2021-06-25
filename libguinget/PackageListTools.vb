@@ -635,7 +635,7 @@ Public Class PackageListTools
 #End Region
 
 #Region "Get manifest paths list"
-    Public Shared Function GetManifests() As List(Of String)
+    Public Shared Async Function GetManifestsAsync() As Task(Of List(Of String))
         ' Get and return each manifest in the manifests folder.
         ' This should only be used after ensuring that there's
         ' stuff in this folder, or it'll crash.
@@ -649,8 +649,9 @@ Public Class PackageListTools
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
 
             ' Append the current package manifest's path to the ManifestPath string.
-            ' Using a question mark since it's not allowed in path names.
-            ManifestPath.Add(PackageManifest)
+            Await Task.Run(Sub()
+                               ManifestPath.Add(PackageManifest)
+                           End Sub)
         Next
 
         Return ManifestPath

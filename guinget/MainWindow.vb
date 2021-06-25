@@ -94,7 +94,7 @@ Public Class aaformMainWindow
         aaformMainWindow.Update()
 
         ' Now we populate the Manifest column with each manifest.
-        Dim ManifestPaths As List(Of String) = PackageListTools.GetManifests
+        Dim ManifestPaths As List(Of String) = Await PackageListTools.GetManifestsAsync
 
         ' Set progress bar step count.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
@@ -174,7 +174,7 @@ Public Class aaformMainWindow
         ' we need to get them now.
         ' These have to be grabbed now or else updating the manifests
         ' will crash when the path doesn't exist.
-        PackageListTools.FallbackPathList = PackageListTools.GetManifests
+        PackageListTools.FallbackPathList = Await PackageListTools.GetManifestsAsync
 
         ' Update the statusbar before doing the progressbar.
         aaformMainWindow.statusbarMainWindow.Update()
