@@ -1487,6 +1487,16 @@ Public Class aaformMainWindow
         ' Show Validate Manifest window.
         ValidateManifestWindow.ShowDialog(Me)
     End Sub
+
+    Private Sub textboxPackageDetails_SelectionChanged(sender As Object, e As EventArgs) Handles textboxPackageDetails.SelectionChanged
+        ' Allow or block the "Copy" button based on
+        ' whether something is selected or not.
+        If textboxPackageDetails.SelectedText.Length > 0 Then
+            CopyToolStripMenuItem.Enabled = True
+        Else
+            CopyToolStripMenuItem.Enabled = False
+        End If
+    End Sub
 #End Region
 
 

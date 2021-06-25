@@ -711,10 +711,11 @@ Partial Class aaformMainWindow
         Me.contextmenuPackageDetailsTextbox.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.contextmenuPackageDetailsTextbox.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CopyToolStripMenuItem, Me.ToolStripSeparator2, Me.SelectAllToolStripMenuItem, Me.ToolStripSeparator1, Me.RightToLeftMenuItem})
         Me.contextmenuPackageDetailsTextbox.Name = "contextmenuPackageDetailsTextbox"
-        Me.contextmenuPackageDetailsTextbox.Size = New System.Drawing.Size(257, 88)
+        Me.contextmenuPackageDetailsTextbox.Size = New System.Drawing.Size(257, 116)
         '
         'CopyToolStripMenuItem
         '
+        Me.CopyToolStripMenuItem.Enabled = False
         Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
         Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(256, 24)
         Me.CopyToolStripMenuItem.Text = "Copy"
