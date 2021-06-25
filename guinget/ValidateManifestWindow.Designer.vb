@@ -84,7 +84,12 @@ Partial Class ValidateManifestWindow
         Me.Controls.Add(Me.buttonBrowseForManifest)
         Me.Controls.Add(Me.textboxManifestPath)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "ValidateManifestWindow"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Validate Manifest"
         Me.ResumeLayout(False)
         Me.PerformLayout()
