@@ -22,6 +22,7 @@ Partial Class ValidateManifestWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ValidateManifestWindow))
         Me.textboxManifestPath = New System.Windows.Forms.TextBox()
         Me.buttonBrowseForManifest = New System.Windows.Forms.Button()
         Me.buttonValidateManifest = New System.Windows.Forms.Button()
@@ -32,14 +33,14 @@ Partial Class ValidateManifestWindow
         '
         'textboxManifestPath
         '
-        Me.textboxManifestPath.Location = New System.Drawing.Point(15, 46)
+        Me.textboxManifestPath.Location = New System.Drawing.Point(15, 63)
         Me.textboxManifestPath.Name = "textboxManifestPath"
         Me.textboxManifestPath.Size = New System.Drawing.Size(476, 22)
         Me.textboxManifestPath.TabIndex = 0
         '
         'buttonBrowseForManifest
         '
-        Me.buttonBrowseForManifest.Location = New System.Drawing.Point(497, 46)
+        Me.buttonBrowseForManifest.Location = New System.Drawing.Point(497, 63)
         Me.buttonBrowseForManifest.Name = "buttonBrowseForManifest"
         Me.buttonBrowseForManifest.Size = New System.Drawing.Size(100, 34)
         Me.buttonBrowseForManifest.TabIndex = 1
@@ -48,6 +49,8 @@ Partial Class ValidateManifestWindow
         '
         'buttonValidateManifest
         '
+        Me.buttonValidateManifest.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonValidateManifest.Location = New System.Drawing.Point(353, 124)
         Me.buttonValidateManifest.Name = "buttonValidateManifest"
         Me.buttonValidateManifest.Size = New System.Drawing.Size(138, 34)
@@ -57,6 +60,8 @@ Partial Class ValidateManifestWindow
         '
         'buttonClose
         '
+        Me.buttonClose.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.buttonClose.Location = New System.Drawing.Point(497, 124)
         Me.buttonClose.Name = "buttonClose"
@@ -70,10 +75,9 @@ Partial Class ValidateManifestWindow
         Me.labelValidateManifestLabel.AutoSize = True
         Me.labelValidateManifestLabel.Location = New System.Drawing.Point(12, 9)
         Me.labelValidateManifestLabel.Name = "labelValidateManifestLabel"
-        Me.labelValidateManifestLabel.Size = New System.Drawing.Size(537, 34)
+        Me.labelValidateManifestLabel.Size = New System.Drawing.Size(537, 51)
         Me.labelValidateManifestLabel.TabIndex = 4
-        Me.labelValidateManifestLabel.Text = "Enter or browse for a manifest path then click ""Validate manifest"". The manifest " &
-    "path" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "must be in the format ""Publisher.App.yaml""."
+        Me.labelValidateManifestLabel.Text = resources.GetString("labelValidateManifestLabel.Text")
         '
         'openfiledialogBrowseForManifest
         '
