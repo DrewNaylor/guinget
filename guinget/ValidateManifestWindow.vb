@@ -69,6 +69,22 @@ Public Class ValidateManifestWindow
     Private Sub textboxManifestPath_TextChanged(sender As Object, e As EventArgs) Handles textboxManifestPath.TextChanged
         ' Allow or block the "Validate manifest" button if
         ' there's text in the textbox.
+        BlockOrAllowValidateManifestButton
+    End Sub
+
+    Private Sub ValidateManifestWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Make sure the textbox is cleared.
+        textboxManifestPath.Text = String.Empty
+
+        ' Prevent the Validate manifest button from being used
+        ' without anything in it.
+        BlockOrAllowValidateManifestButton()
+    End Sub
+
+    Private Sub BlockOrAllowValidateManifestButton()
+        ' Make sure it doesn't look like the Validate manifest
+        ' button can be clicked when there's nothing in the
+        ' textbox.
         If textboxManifestPath.Text.Length > 0 Then
             buttonValidateManifest.Enabled = True
         Else
