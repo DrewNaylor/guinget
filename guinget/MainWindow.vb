@@ -1482,6 +1482,11 @@ Public Class aaformMainWindow
             datagridviewPackageList.BringToFront()
         End If
     End Sub
+
+    Private Sub VerifyManifestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerifyManifestToolStripMenuItem.Click
+        ' Show Validate Manifest window.
+        ValidateManifestWindow.ShowDialog(Me)
+    End Sub
 #End Region
 
 
