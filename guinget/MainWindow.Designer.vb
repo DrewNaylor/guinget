@@ -92,6 +92,7 @@ Partial Class aaformMainWindow
         Me.PkgDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Manifest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ManifestType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pictureboxFastResizePackageList = New System.Windows.Forms.PictureBox()
         Me.labelUpdatingPackageList = New System.Windows.Forms.Label()
         Me.textboxPackageDetails = New System.Windows.Forms.RichTextBox()
         Me.contextmenuPackageDetailsTextbox = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -145,7 +146,6 @@ Partial Class aaformMainWindow
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialogExportPackages = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialogImportPackages = New System.Windows.Forms.OpenFileDialog()
-        Me.pictureboxFastResizePackageList = New System.Windows.Forms.PictureBox()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,6 +154,7 @@ Partial Class aaformMainWindow
         Me.splitcontainerMainWindow.SuspendLayout()
         Me.panelPackageListHolder.SuspendLayout()
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureboxFastResizePackageList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.contextmenuPackageDetailsTextbox.SuspendLayout()
         Me.panelMainPkgArea.SuspendLayout()
         Me.toolstripMainWindow.SuspendLayout()
@@ -173,7 +174,6 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.SuspendLayout()
         Me.panelMainForm.SuspendLayout()
         Me.statusbarMainWindow.SuspendLayout()
-        CType(Me.pictureboxFastResizePackageList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'menustripMainWindow
@@ -669,6 +669,17 @@ Partial Class aaformMainWindow
         Me.ManifestType.ReadOnly = True
         Me.ManifestType.Visible = False
         '
+        'pictureboxFastResizePackageList
+        '
+        Me.pictureboxFastResizePackageList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pictureboxFastResizePackageList.Location = New System.Drawing.Point(0, 0)
+        Me.pictureboxFastResizePackageList.Name = "pictureboxFastResizePackageList"
+        Me.pictureboxFastResizePackageList.Size = New System.Drawing.Size(830, 425)
+        Me.pictureboxFastResizePackageList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pictureboxFastResizePackageList.TabIndex = 2
+        Me.pictureboxFastResizePackageList.TabStop = False
+        Me.pictureboxFastResizePackageList.Visible = False
+        '
         'labelUpdatingPackageList
         '
         Me.labelUpdatingPackageList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -947,7 +958,7 @@ Partial Class aaformMainWindow
         Me.tabpageAction.Location = New System.Drawing.Point(4, 5)
         Me.tabpageAction.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageAction.Name = "tabpageAction"
-        Me.tabpageAction.Size = New System.Drawing.Size(254, 591)
+        Me.tabpageAction.Size = New System.Drawing.Size(254, 597)
         Me.tabpageAction.TabIndex = 6
         Me.tabpageAction.Text = "Action"
         Me.tabpageAction.UseVisualStyleBackColor = True
@@ -962,7 +973,7 @@ Partial Class aaformMainWindow
         Me.listboxActions.Location = New System.Drawing.Point(0, 0)
         Me.listboxActions.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxActions.Name = "listboxActions"
-        Me.listboxActions.Size = New System.Drawing.Size(254, 591)
+        Me.listboxActions.Size = New System.Drawing.Size(254, 597)
         Me.listboxActions.TabIndex = 2
         '
         'tabpageStatus
@@ -971,7 +982,7 @@ Partial Class aaformMainWindow
         Me.tabpageStatus.Location = New System.Drawing.Point(4, 5)
         Me.tabpageStatus.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageStatus.Name = "tabpageStatus"
-        Me.tabpageStatus.Size = New System.Drawing.Size(254, 591)
+        Me.tabpageStatus.Size = New System.Drawing.Size(254, 597)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -986,7 +997,7 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(254, 591)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(254, 597)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
@@ -995,7 +1006,7 @@ Partial Class aaformMainWindow
         Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 5)
         Me.tabpageCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(254, 591)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(254, 597)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -1010,7 +1021,7 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(254, 591)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(254, 597)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'tabpageSections
@@ -1019,7 +1030,7 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSections.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSections.Name = "tabpageSections"
-        Me.tabpageSections.Size = New System.Drawing.Size(254, 591)
+        Me.tabpageSections.Size = New System.Drawing.Size(254, 597)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
@@ -1034,7 +1045,7 @@ Partial Class aaformMainWindow
         Me.listboxSections.Location = New System.Drawing.Point(0, 0)
         Me.listboxSections.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(254, 591)
+        Me.listboxSections.Size = New System.Drawing.Size(254, 597)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
@@ -1043,7 +1054,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSource.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(254, 591)
+        Me.tabpageSource.Size = New System.Drawing.Size(254, 597)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -1058,7 +1069,7 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(254, 591)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(254, 597)
         Me.listboxSourceTab.TabIndex = 1
         '
         'tabpageArchitecture
@@ -1067,7 +1078,7 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 5)
         Me.tabpageArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(254, 591)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(254, 597)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -1082,7 +1093,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(254, 591)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(254, 597)
         Me.listboxArchitecture.TabIndex = 1
         '
         'panelMainForm
@@ -1165,16 +1176,6 @@ Partial Class aaformMainWindow
         Me.OpenFileDialogImportPackages.RestoreDirectory = True
         Me.OpenFileDialogImportPackages.Title = "Import Packages"
         '
-        'pictureboxFastResizePackageList
-        '
-        Me.pictureboxFastResizePackageList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pictureboxFastResizePackageList.Location = New System.Drawing.Point(0, 0)
-        Me.pictureboxFastResizePackageList.Name = "pictureboxFastResizePackageList"
-        Me.pictureboxFastResizePackageList.Size = New System.Drawing.Size(830, 425)
-        Me.pictureboxFastResizePackageList.TabIndex = 2
-        Me.pictureboxFastResizePackageList.TabStop = False
-        Me.pictureboxFastResizePackageList.Visible = False
-        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -1198,6 +1199,7 @@ Partial Class aaformMainWindow
         Me.panelPackageListHolder.ResumeLayout(False)
         Me.panelPackageListHolder.PerformLayout()
         CType(Me.datagridviewPackageList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureboxFastResizePackageList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.contextmenuPackageDetailsTextbox.ResumeLayout(False)
         Me.panelMainPkgArea.ResumeLayout(False)
         Me.toolstripMainWindow.ResumeLayout(False)
@@ -1220,7 +1222,6 @@ Partial Class aaformMainWindow
         Me.panelMainForm.ResumeLayout(False)
         Me.statusbarMainWindow.ResumeLayout(False)
         Me.statusbarMainWindow.PerformLayout()
-        CType(Me.pictureboxFastResizePackageList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
