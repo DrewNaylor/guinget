@@ -24,8 +24,16 @@
 
 
 
-Imports System.Security.Cryptography
 Public Class VerificationCryptographyStuff
 
+    ' Using a simple MD5 hash for verifying that stuff is working.
+    ' We don't need anything too complicated as it's a basic string
+    ' that's not related to security.
+    ' Example:
+    ' https://stackoverflow.com/a/40865372
+
+    Friend Shared Function GetMd5(InputString As String) As String
+
+    End Function
 
 End Class
