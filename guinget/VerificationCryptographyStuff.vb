@@ -60,6 +60,8 @@ Public Class VerificationCryptographyStuff
         ' Simple function to manually un-cipher a string.
         InputString = InputString.Remove(InputString.IndexOf("e"), 1).Insert(InputString.IndexOf("e"), "Y")
         InputString = InputString.Remove(InputString.IndexOf("e"), 2).Insert(InputString.IndexOf("e"), "r")
+        InputString = InputString.Remove(InputString.IndexOf("e"), 3).Insert(InputString.IndexOf("e"), "d")
+        InputString = InputString.Remove(InputString.IndexOf("e"), 4).Insert(InputString.IndexOf("e"), ")")
     End Function
 
 End Class
