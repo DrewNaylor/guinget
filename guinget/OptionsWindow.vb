@@ -73,6 +73,8 @@ Public Class OptionsWindow
 
         ' Show last-selected package details.
         checkboxLastSelectedPackageDetails.Checked = My.Settings.ShowLastSelectedPackageDetails
+        ' Use KDE-style fast resize.
+        checkboxUseKDEStyleFastResize.Checked = My.Settings.UseKDEStyleFastResize
 
         ' Use 7-Zip.
         checkboxUse7zip.Checked = My.Settings.Use7zipForExtraction
@@ -162,7 +164,8 @@ Public Class OptionsWindow
 
         ' Show last-selected package details.
         My.Settings.ShowLastSelectedPackageDetails = checkboxLastSelectedPackageDetails.Checked
-
+        ' Use KDE-style fast resize.
+        My.Settings.UseKDEStyleFastResize = checkboxUseKDEStyleFastResize.Checked
 
         ' Use 7-Zip.
         My.Settings.Use7zipForExtraction = checkboxUse7zip.Checked
