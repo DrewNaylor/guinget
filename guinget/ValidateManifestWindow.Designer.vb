@@ -56,6 +56,7 @@ Partial Class ValidateManifestWindow
         '
         'buttonClose
         '
+        Me.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.buttonClose.Location = New System.Drawing.Point(497, 124)
         Me.buttonClose.Name = "buttonClose"
         Me.buttonClose.Size = New System.Drawing.Size(100, 34)
@@ -77,6 +78,7 @@ Partial Class ValidateManifestWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.CancelButton = Me.buttonClose
         Me.ClientSize = New System.Drawing.Size(609, 170)
         Me.Controls.Add(Me.labelValidateManifestLabel)
         Me.Controls.Add(Me.buttonClose)
