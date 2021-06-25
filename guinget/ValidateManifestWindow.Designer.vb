@@ -29,20 +29,21 @@ Partial Class ValidateManifestWindow
         Me.buttonClose = New System.Windows.Forms.Button()
         Me.labelValidateManifestLabel = New System.Windows.Forms.Label()
         Me.openfiledialogBrowseForManifest = New System.Windows.Forms.OpenFileDialog()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'textboxManifestPath
         '
-        Me.textboxManifestPath.Location = New System.Drawing.Point(15, 63)
+        Me.textboxManifestPath.Location = New System.Drawing.Point(15, 89)
         Me.textboxManifestPath.Name = "textboxManifestPath"
         Me.textboxManifestPath.Size = New System.Drawing.Size(476, 22)
         Me.textboxManifestPath.TabIndex = 0
         '
         'buttonBrowseForManifest
         '
-        Me.buttonBrowseForManifest.Location = New System.Drawing.Point(497, 63)
+        Me.buttonBrowseForManifest.Location = New System.Drawing.Point(497, 89)
         Me.buttonBrowseForManifest.Name = "buttonBrowseForManifest"
-        Me.buttonBrowseForManifest.Size = New System.Drawing.Size(100, 34)
+        Me.buttonBrowseForManifest.Size = New System.Drawing.Size(100, 49)
         Me.buttonBrowseForManifest.TabIndex = 1
         Me.buttonBrowseForManifest.Text = "Browse..."
         Me.buttonBrowseForManifest.UseVisualStyleBackColor = True
@@ -73,7 +74,7 @@ Partial Class ValidateManifestWindow
         Me.labelValidateManifestLabel.AutoSize = True
         Me.labelValidateManifestLabel.Location = New System.Drawing.Point(12, 9)
         Me.labelValidateManifestLabel.Name = "labelValidateManifestLabel"
-        Me.labelValidateManifestLabel.Size = New System.Drawing.Size(537, 51)
+        Me.labelValidateManifestLabel.Size = New System.Drawing.Size(537, 68)
         Me.labelValidateManifestLabel.TabIndex = 4
         Me.labelValidateManifestLabel.Text = resources.GetString("labelValidateManifestLabel.Text")
         '
@@ -83,12 +84,23 @@ Partial Class ValidateManifestWindow
         Me.openfiledialogBrowseForManifest.RestoreDirectory = True
         Me.openfiledialogBrowseForManifest.Title = "Browse"
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(15, 117)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(215, 21)
+        Me.CheckBox1.TabIndex = 5
+        Me.CheckBox1.Text = "Browse for singleton manifest"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'ValidateManifestWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.buttonClose
         Me.ClientSize = New System.Drawing.Size(609, 240)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.labelValidateManifestLabel)
         Me.Controls.Add(Me.buttonClose)
         Me.Controls.Add(Me.buttonValidateManifest)
@@ -113,4 +125,5 @@ Partial Class ValidateManifestWindow
     Friend WithEvents buttonClose As Button
     Friend WithEvents labelValidateManifestLabel As Label
     Friend WithEvents openfiledialogBrowseForManifest As OpenFileDialog
+    Friend WithEvents CheckBox1 As CheckBox
 End Class
