@@ -357,13 +357,19 @@ Public Class PackageListTools
                                             progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
 
                                             Await Task.Run(Sub()
-                                                               ' Make sure to create the directory for the manifest.
-                                                               ' TODO: Make sure there's a "\" at the end of the path
-                                                               ' to prevent path traversal.
-                                                               IO.Directory.CreateDirectory(DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty))
+                                                               ' Make sure there's a "\" at the end of the path to prevent path traversal.
+                                                               If Not DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty).EndsWith("\") Then
+                                                                   DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty) & "\"
+                                                               Else
+                                                                   ' Destination path has a "\", so just replace the filename.
+                                                                   DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty)
+                                                               End If
+
+                                                               ' Create the directory for the manifest if it doesn't exist.
+                                                               IO.Directory.CreateDirectory(DestinationPath)
 
                                                                ' Now extract.
-                                                               ZipArchiveEntry.ExtractToFile(DestinationPath)
+                                                               ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
                                                            End Sub)
                                         End If
                                     End If
