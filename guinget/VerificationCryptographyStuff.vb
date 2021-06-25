@@ -51,6 +51,9 @@ Public Class VerificationCryptographyStuff
             ' Not sure what the "x2" thing is.
             ResultString.Append(HashedByte.ToString("x2"))
         Next
+
+        ' Return the new hash.
+        Return ResultString.ToString
     End Function
 
 End Class
