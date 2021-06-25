@@ -44,6 +44,13 @@ Public Class VerificationCryptographyStuff
 
         ' Set up a stringbuilder.
         Dim ResultString As New StringBuilder
+
+        ' Put bytes in the stringbuilder.
+        For Each HashedByte As Byte In BytesWeWantToHash
+            ' Append bytes.
+            ' Not sure what the "x2" thing is.
+            ResultString.Append(HashedByte.ToString("x2"))
+        Next
     End Function
 
 End Class
