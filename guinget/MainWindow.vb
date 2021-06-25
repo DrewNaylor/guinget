@@ -1433,41 +1433,52 @@ Public Class aaformMainWindow
     End Sub
 
     Private Sub aaformMainWindow_ResizeBegin(sender As Object, e As EventArgs) Handles Me.ResizeBegin
-        ' Create an image that we'll copy into.
-        ' Code based on these SO answers:
-        ' https://stackoverflow.com/a/33454625
-        ' https://stackoverflow.com/a/23805004
-        ' At first the code was mainly from the
-        ' second one, but it ended up mainly being
-        ' from the second one mostly I think.
-        Dim packagelistScreenshot As New Bitmap(datagridviewPackageList.Width, datagridviewPackageList.Height)
+        ' The window started to resize, so we need to
+        ' take a screenshot of the package list
+        ' and show it so resizing is fast.
+        ' Only do this if UseKDEStyleFastResize is on.
+        If My.Settings.UseKDEStyleFastResize = True Then
+            ' Create an image that we'll copy into.
+            ' Code based on these SO answers:
+            ' https://stackoverflow.com/a/33454625
+            ' https://stackoverflow.com/a/23805004
+            ' At first the code was mainly from the
+            ' second one, but it ended up mainly being
+            ' from the second one mostly I think.
+            Dim packagelistScreenshot As New Bitmap(datagridviewPackageList.Width, datagridviewPackageList.Height)
 
-        ' This thing copies the screenshot of the package list
-        ' into the screenshot we'll show later.
-        Using graphicsCopier As Graphics = Graphics.FromImage(packagelistScreenshot)
-            graphicsCopier.CopyFromScreen(datagridviewPackageList.PointToScreen(New Point(0, 0)), New Point(0, 0), New Drawing.Size(datagridviewPackageList.Width, datagridviewPackageList.Height))
-        End Using
+            ' This thing copies the screenshot of the package list
+            ' into the screenshot we'll show later.
+            Using graphicsCopier As Graphics = Graphics.FromImage(packagelistScreenshot)
+                graphicsCopier.CopyFromScreen(datagridviewPackageList.PointToScreen(New Point(0, 0)), New Point(0, 0), New Drawing.Size(datagridviewPackageList.Width, datagridviewPackageList.Height))
+            End Using
 
-        ' Assign the screenshot to the imagebox.
-        pictureboxFastResizePackageList.Image = packagelistScreenshot
+            ' Assign the screenshot to the imagebox.
+            pictureboxFastResizePackageList.Image = packagelistScreenshot
 
-        ' Change visibility for the package list and
-        ' the screenshot picturebox.
-        pictureboxFastResizePackageList.Visible = True
-        datagridviewPackageList.Visible = False
+            ' Change visibility for the package list and
+            ' the screenshot picturebox.
+            pictureboxFastResizePackageList.Visible = True
+            datagridviewPackageList.Visible = False
 
-        ' Bring the picturebox to the front.
-        pictureboxFastResizePackageList.BringToFront()
+            ' Bring the picturebox to the front.
+            pictureboxFastResizePackageList.BringToFront()
+        End If
     End Sub
 
     Private Sub aaformMainWindow_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
-        ' Change visibility so the package list is
-        ' again visible and the picturebox isn't.
-        pictureboxFastResizePackageList.Visible = False
-        datagridviewPackageList.Visible = True
+        ' We're done resizing, so set things back to
+        ' how they should be.
+        ' Only do this if UseKDEStyleFastResize is on.
+        If My.Settings.UseKDEStyleFastResize = True Then
+            ' Change visibility so the package list is
+            ' again visible and the picturebox isn't.
+            pictureboxFastResizePackageList.Visible = False
+            datagridviewPackageList.Visible = True
 
-        ' Bring the package list to the front.
-        datagridviewPackageList.BringToFront()
+            ' Bring the package list to the front.
+            datagridviewPackageList.BringToFront()
+        End If
     End Sub
 #End Region
 
