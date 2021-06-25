@@ -52,18 +52,18 @@ Partial Class ValidateManifestWindow
         'buttonValidateManifest
         '
         Me.buttonValidateManifest.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.buttonValidateManifest.Location = New System.Drawing.Point(459, 194)
+        Me.buttonValidateManifest.Location = New System.Drawing.Point(497, 194)
         Me.buttonValidateManifest.Name = "buttonValidateManifest"
-        Me.buttonValidateManifest.Size = New System.Drawing.Size(138, 34)
+        Me.buttonValidateManifest.Size = New System.Drawing.Size(100, 34)
         Me.buttonValidateManifest.TabIndex = 3
-        Me.buttonValidateManifest.Text = "Validate manifest"
+        Me.buttonValidateManifest.Text = "Validate"
         Me.buttonValidateManifest.UseVisualStyleBackColor = True
         '
         'buttonClose
         '
         Me.buttonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.buttonClose.Location = New System.Drawing.Point(353, 194)
+        Me.buttonClose.Location = New System.Drawing.Point(391, 194)
         Me.buttonClose.Name = "buttonClose"
         Me.buttonClose.Size = New System.Drawing.Size(100, 34)
         Me.buttonClose.TabIndex = 4
@@ -75,7 +75,7 @@ Partial Class ValidateManifestWindow
         Me.labelValidateManifestLabel.AutoSize = True
         Me.labelValidateManifestLabel.Location = New System.Drawing.Point(12, 9)
         Me.labelValidateManifestLabel.Name = "labelValidateManifestLabel"
-        Me.labelValidateManifestLabel.Size = New System.Drawing.Size(537, 68)
+        Me.labelValidateManifestLabel.Size = New System.Drawing.Size(533, 68)
         Me.labelValidateManifestLabel.TabIndex = 4
         Me.labelValidateManifestLabel.Text = resources.GetString("labelValidateManifestLabel.Text")
         '

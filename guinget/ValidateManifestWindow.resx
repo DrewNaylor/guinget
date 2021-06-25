@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="labelValidateManifestLabel.Text" xml:space="preserve">
-    <value>Enter or browse for a manifest path then click "Validate manifest". The manifest path
+    <value>Enter or browse for a manifest path then click "Validate". The manifest path
 must be in the format "Publisher.App.yaml" for singleton manifests, or a folder with
 every file used in a manifest for multi-file manifests. Check the "Browse for singleton
 manifest" checkbox to browse for a singleton manifest instead of a multi-file one.</value>
