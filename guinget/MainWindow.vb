@@ -1431,6 +1431,44 @@ Public Class aaformMainWindow
             RightToLeftMenuItem.Checked = False
         End If
     End Sub
+
+    Private Sub aaformMainWindow_ResizeBegin(sender As Object, e As EventArgs) Handles Me.ResizeBegin
+        ' Create an image that we'll copy into.
+        ' Code based on these SO answers:
+        ' https://stackoverflow.com/a/33454625
+        ' https://stackoverflow.com/a/23805004
+        ' At first the code was mainly from the
+        ' second one, but it ended up mainly being
+        ' from the second one mostly I think.
+        Dim packagelistScreenshot As New Bitmap(datagridviewPackageList.Width, datagridviewPackageList.Height)
+
+        ' This thing copies the screenshot of the package list
+        ' into the screenshot we'll show later.
+        Using graphicsCopier As Graphics = Graphics.FromImage(packagelistScreenshot)
+            graphicsCopier.CopyFromScreen(datagridviewPackageList.PointToScreen(New Point(0, 0)), New Point(0, 0), New Drawing.Size(datagridviewPackageList.Width, datagridviewPackageList.Height))
+        End Using
+
+        ' Assign the screenshot to the imagebox.
+        pictureboxFastResizePackageList.Image = packagelistScreenshot
+
+        ' Change visibility for the package list and
+        ' the screenshot picturebox.
+        pictureboxFastResizePackageList.Visible = True
+        datagridviewPackageList.Visible = False
+
+        ' Bring the picturebox to the front.
+        pictureboxFastResizePackageList.BringToFront()
+    End Sub
+
+    Private Sub aaformMainWindow_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+        ' Change visibility so the package list is
+        ' again visible and the picturebox isn't.
+        pictureboxFastResizePackageList.Visible = False
+        datagridviewPackageList.Visible = True
+
+        ' Bring the package list to the front.
+        datagridviewPackageList.BringToFront()
+    End Sub
 #End Region
 
 
