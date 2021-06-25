@@ -77,6 +77,8 @@ Partial Class ValidateManifestWindow
         '
         'openfiledialogBrowseForManifest
         '
+        Me.openfiledialogBrowseForManifest.Filter = "Manifest (*.yaml)|*.yaml|All File Formats (*.*)|*.*"
+        Me.openfiledialogBrowseForManifest.RestoreDirectory = True
         Me.openfiledialogBrowseForManifest.Title = "Browse"
         '
         'ValidateManifestWindow
