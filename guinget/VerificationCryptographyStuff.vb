@@ -58,6 +58,8 @@ Public Class VerificationCryptographyStuff
 
     Friend Shared Function GetUnciphered(InputString As String) As String
         ' Simple function to manually un-cipher a string.
+        InputString = InputString.Remove(InputString.IndexOf("e"), 1).Insert(InputString.IndexOf("e"), "Y")
+        InputString = InputString.Remove(InputString.IndexOf("e"), 2).Insert(InputString.IndexOf("e"), "r")
     End Function
 
 End Class
