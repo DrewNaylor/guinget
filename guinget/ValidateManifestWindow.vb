@@ -61,6 +61,7 @@ Public Class ValidateManifestWindow
 
         Else
             ' Now that verification is complete, send the manifest over to winget.
+            libguinget.CommandTools.ValidateManifest(textboxManifestPath.Text)
         End If
 
     End Sub

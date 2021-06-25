@@ -46,6 +46,11 @@ Public Class CommandTools
         WingetStarter("upgrade")
     End Sub
 
+    Public Shared Sub ValidateManifest(ManifestPath As String)
+        ' Have winget validate the manifest.
+        WingetStarter("validate " & ManifestPath)
+    End Sub
+
     Public Shared Sub ListInstalled(AppsListUI As String)
         ' Lists installed packages if the feature is available.
         If AppsListUI = "appsfeatures" Then
