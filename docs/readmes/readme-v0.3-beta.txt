@@ -1,13 +1,10 @@
 If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word wrap.
 
 
-guinget -- Version 0.2.0.3 Alpha -- 6/21/2021 (MM/DD/YYYY).
+guinget -- Version 0.3 Beta -- 6/26/2021 (MM/DD/YYYY).
 
 If you have any trouble, you might be able to find an answer in the documentation. It's linked at the end of this readme file. If not, you can submit a bug report at the "Report a problem" link at the end of this readme file. Your report will be labeled by the developers accordingly in a reasonable amount of time.
 
-
-MD5 checksums are not used for guinget as they are weaker than SHA-256. More details, though they're not as relevant to guinget:
-https://github.com/DrewNaylor/UXL-Launcher/issues/124
 
 You can use Windows PowerShell to confirm the hash of the main guinget EXE file by running
 Get-FileHash .\guinget.exe -Algorithm SHA256 in the folder you extracted the archive to and comparing the output to my sum listed below. HowToGeek has a nice article on this:
@@ -16,16 +13,13 @@ https://www.howtogeek.com/67241/htg-explains-what-are-md5-sha-1-hashes-and-how-d
 The PowerShell method can be used for all files listed below, though you'll have to switch out the filenames.
 
 SHA-256 sum for "guinget.exe" in the archive:
-5FED21F6C4BCC7A3E5BAE7B10A7C58666882F19FB5361BD4A852FEEB39074000
+FB549A86AE201AB03FE78641FCF0DD469D8286C424BAC7F1B2D3B397F45BDB2E
 
 SHA-256 sum for "lib\libguinget.dll" in the archive:
-74B0DFE8D24CE5700D367B7D278DA747E821C7BB6DF029BC4696435DD34AAAC4
+63C8959892E2A0EC4AD0E99D9EAF082DE8AE1886E28A83E638E43DCAE30EB860
 
 SHA-256 sum for "lib\libscrollswitchtabs.dll" in the archive:
 3F2741B885A3BDD03422E0346542BF4D13384A5287FD3BAF94D05C964ABECB92
-
-SHA-256 sum for "update-manifests.bat" in the archive:
-522392D92BC5E6AEE85DADCBB2D4A3F6A84BD3163A42DC72B7ABDCC7CA37CDE6
 
 SHA-256 sum for "lib\YamlDotNet.dll" in the archive:
 A52924C5065FC796B0B6E16A1FE09B34A2AAF7BAB5308BE26EE6D27AE2B127E6
@@ -104,7 +98,7 @@ To run guinget, your computer requires the following:
 - Hardware requirements: 
   - Minimum: At least a 1.2 GHz CPU; 1 GB of RAM or more.
   - Recommended: At least a 2.5 GHz dual-core CPU; 2 GB of RAM or more.
-  - The recommended may not be enough in some cases to prevent lockups when loading the package list and details, but it should be ok. Performance improvements in guinget v0.2.0.3/v0.3 should prevent most lockups related to loading the package list, though the changes in v0.2.0.3 may not be enough and the optimizations in v0.3 may be necessary to get rid of most lockups.
+  - The recommended may not be enough in some cases to prevent lockups when loading the package list and details, but it should be ok. Performance improvements in guinget v0.3 should prevent most lockups related to loading the package list, though things may still be slow sometimes. Restarting guinget a few times may improve performance as that'll cause .NET Framework to compile it to machine code.
   
 - Disk space:
   - 32-bit: 5 GB space free
@@ -168,7 +162,7 @@ Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 guinget
-Version 0.2.0.3 Alpha
+Version 0.3 Beta
 Copyright (C) 2020-2021 Drew Naylor. Licensed under Apache License 2.0.
 
 Unofficial GUI for Microsoft's Windows Package Manager (winget).
