@@ -62,7 +62,6 @@ Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\source-code.zip"; Dest
 Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\v0.3-beta_changelog_from-v0.2.0.3-alpha.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
 Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
 Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion createallsubdirs recursesubdirs
@@ -80,3 +79,4 @@ UninstalledAll=%1 was successfully removed from your computer. Configuration fil
 [InstallDelete]
 Type: files; Name: "{app}\libguinget.dll"
 Type: files; Name: "{app}\YamlDotNet.dll"
+Type: files; Name: "{app}\update-manifests.bat"
