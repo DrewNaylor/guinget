@@ -46,6 +46,9 @@ Public Class aaformMainWindow
 #End Region
 
 #Region "Add package entry to list."
+    ' Flag to see whether it's currently updating or not.
+    Friend Shared IsPackageListTaskRunning As Boolean = False
+
     Friend Shared Async Function AddPackageEntryToListAsync() As Task
 
         ' Adds a package to the package list based on what's in the manifests folder.
@@ -64,6 +67,9 @@ Public Class aaformMainWindow
         ' the window when starting to load the list.
         ' Instead it'll just keep the default cursor.
         aaformMainWindow.Cursor = Cursors.WaitCursor
+
+        ' Set update running flag.
+        IsPackageListTaskRunning = True
 
         '' Turn off autosize to make it go way faster. Might not help
         '' performance, so it's commented out for now.
@@ -297,6 +303,9 @@ Public Class aaformMainWindow
         ' of the list will show up without needing to
         ' move stuff around or click on a package.
         aaformMainWindow.datagridviewPackageList.PerformLayout()
+
+        ' Reset update task flag.
+        IsPackageListTaskRunning = False
     End Sub
 #End Region
 
@@ -396,6 +405,9 @@ Public Class aaformMainWindow
         ' Mark each package with an action based on what
         ' the user wants.
 
+        ' Set package list task flag.
+        IsPackageListTaskRunning = True
+
         ' Turn off autosize to make it go way faster.
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
@@ -451,6 +463,9 @@ Public Class aaformMainWindow
 
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
+
+        ' Reset package list flag.
+        IsPackageListTaskRunning = False
     End Sub
 #End Region
 #End Region
@@ -955,6 +970,9 @@ Public Class aaformMainWindow
         ' Make sure there are packages to begin with.
         If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
 
+            ' Set package list task flag.
+            IsPackageListTaskRunning = True
+
             ' Place search term into the sidebar if it wasn't started from the sidebar.
             If SearchStartedFromSidebar = False Then
                 ' Make sure it's not already in the sidebar.
@@ -1029,6 +1047,8 @@ Public Class aaformMainWindow
 
             ' Update the main window.
             aaformMainWindow.Update()
+
+            IsPackageListTaskRunning = False
 
         End If
     End Sub
@@ -1434,7 +1454,9 @@ Public Class aaformMainWindow
         ' take a screenshot of the package list
         ' and show it so resizing is fast.
         ' Only do this if UseKDEStyleFastResize is on.
-        If My.Settings.UseKDEStyleFastResize = True Then
+        ' We also have to make sure the update task isn't
+        ' currently running.
+        If My.Settings.UseKDEStyleFastResize = True AndAlso IsPackageListTaskRunning = False Then
             ' Create an image that we'll copy into.
             ' Code based on these SO answers:
             ' https://stackoverflow.com/a/33454625
@@ -1467,7 +1489,9 @@ Public Class aaformMainWindow
         ' We're done resizing, so set things back to
         ' how they should be.
         ' Only do this if UseKDEStyleFastResize is on.
-        If My.Settings.UseKDEStyleFastResize = True Then
+        ' We also have to make sure the update task isn't
+        ' currently running.
+        If My.Settings.UseKDEStyleFastResize = True AndAlso IsPackageListTaskRunning = False Then
             ' Change visibility so the package list is
             ' again visible and the picturebox isn't.
             pictureboxFastResizePackageList.Visible = False
