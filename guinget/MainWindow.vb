@@ -1503,6 +1503,7 @@ Public Class aaformMainWindow
             datagridviewPackageList.BringToFront()
         End If
     End Sub
+#End Region
 
     Private Sub VerifyManifestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerifyManifestToolStripMenuItem.Click
         ' Show Validate Manifest window.
@@ -1518,7 +1519,6 @@ Public Class aaformMainWindow
             CopyToolStripMenuItem.Enabled = False
         End If
     End Sub
-#End Region
 
 
     ' If we wanted to, we could allow the package list to be loaded on application
