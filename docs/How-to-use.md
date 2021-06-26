@@ -216,6 +216,16 @@ The available options are as follows:
   - By default, using the selected package ID search feature will do an exact match, but you can turn that off if you want.
 - `Search when typing` checkbox
   - Searches are performed after a configurable wait time with no typing that defaults to 325 milliseconds. You can change the wait time with the number box below the `Search when typing` checkbox. Minimum value for wait time is `1`, and maximum value is `9999`.
+  
+## Validating manifests
+
+`Tools>Validate manifest...` displays a window that allows you to enter or browse for a manifest to validate so that you don't have to use as many commands if you don't want to. 
+
+By default, it uses a folder browse window for use with multi-file manifests, but you can check the `Browse for singleton manifest` checkbox below the textbox to use a file open dialog, which will let you select a single-file manifest.
+
+When you're ready for validation, simply click the `Validate` button at the bottom-right and the manifest will be passed to winget with output displayed in CMD.
+
+"In Soviet Russia, manifest validates you."
 
 ## Edit winget settings
 
@@ -244,7 +254,7 @@ In case there's something you need to drop into a terminal for, you can do it wi
 
 Please be aware that [running CMD from guinget on 64-bit Windows causes filesystem redirection to occur, resulting in anything that has to be launched from the "real" System32 not working correctly](https://github.com/DrewNaylor/guinget/issues/98). This shouldn't impact most people, but it will if you need to run something like `SystemPropertiesProtection.exe`. The only workaround I can offer is to just run CMD from the Start menu or something else instead. I could tell Windows to run CMD from `SysNative`, but that doesn't work when running it elevated since it just crashes. A real solution would be to compile a 64-bit version of guinget, but that's a little too much to manage.
 
-## KDE-style Fast Resize
+## KDE-style fast resize
 
 By default, guinget uses KDE-style fast resize to keep things responsive. This works by temporarily replacing the package list with a screenshot of itself, which is then stretched until you're done resizing the window. 
 
