@@ -35,7 +35,6 @@ Some options are available to modify the behavior when refreshing the cache. The
   - Temporary files are always deleted before refreshing the cache.
 - `Load only the latest version of each package` checkbox
   - Some packages may display a version number that's not really the latest version. Not sure how to fix this at the moment.
-  - Requires loading from the community database checkbox to be checked, which it will be unless it was turned off in a previous version and the zip file version of guinget is used, or it's turned off manually from the config file. If it's off, you can use the `Defaults` button in the bottom-left of the `Options` window to turn it back on.
 	
 #### Notes on loading from the database
 
@@ -91,8 +90,6 @@ Marking a package involves doing one of the following actions:
 This also applies to marking a package as one you want to ignore (ignoring is `Do nothing`). If you wish to unmark or ignore a package, press `Ctrl+D` or use `Action: Do nothing` in either the package context menu or the `Selected packages` menu. You can also use the combobox dropdown menu as described above.
 
 Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
-
-Please be aware that using `Uninstall` and `Upgrade` may require the corresponding experimental features to be on in winget if they're not already available by default.
 
 ### Marking multiple packages
 
@@ -161,8 +158,6 @@ By default, `View>Installed packages...` opens the `Apps & features` Settings ap
 - `Settings app: Apps & features (default)`
 - `CMD: winget list`
 - `Control Panel: Programs and Features`
-
-Please note that the `winget list` option requires the `list` experimental feature to be set to on in winget's config file if it's not already a default feature.
 
 ## Importing and exporting packages
 
