@@ -1199,9 +1199,6 @@ Public Class aaformMainWindow
         OptionsWindow.tabcontrolOptions.SelectTab(SelectedTab)
         OptionsWindow.ShowDialog(Me)
 
-        ' Change sidebar visibility if necessary.
-        SidebarVisibility(My.Settings.ShowSidebar)
-
         ' Show or hide unfinished controls.
         UnfinishedControlsVisible(Not My.Settings.HideUnfinishedControls)
 
@@ -1210,6 +1207,9 @@ Public Class aaformMainWindow
 
         ' Update HiDPI Mode status.
         HiDPIModeToggle(My.Settings.HiDPIMode)
+
+        ' Change sidebar visibility if necessary.
+        SidebarVisibility(My.Settings.ShowSidebar)
     End Sub
 
     Private Sub SearchForPackageIDFromContextMenu_Click(sender As Object, e As EventArgs) Handles SearchForPackageIDFromContextMenu.Click
