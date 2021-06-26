@@ -325,9 +325,15 @@ Public Class PackageListTools
                             progressform.labelSourceName.Visible = True
                             ' Placeholder text.
                             progressform.labelSourceName.Text = "File: "
+                            ' Change the progress bar to be the regular kind.
+                            progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Continuous
 
                             ' Now extract.
                             Using ManifestsZipFile As ZipArchive = ZipFile.OpenRead(tempDir & "\winget-pkgs-master.zip")
+
+                                ' Set progress bar maximum.
+                                progressform.progressbarDownloadProgress.Maximum = ManifestsZipFile.Entries.Count
+
                                 For Each ZipArchiveEntry In ManifestsZipFile.Entries
 
                                     ' Stop extracting if the user clicks Cancel.
@@ -373,7 +379,13 @@ Public Class PackageListTools
                                                            End Sub)
                                         End If
                                     End If
+                                    ' Update progress bar.
+                                    progressform.progressbarDownloadProgress.Value = progressform.progressbarDownloadProgress.Value + 1
                                 Next
+
+                                ' Set the progress bar back to the way it was.
+                                progressform.progressbarDownloadProgress.Style = ProgressBarStyle.Marquee
+
                             End Using
                             ' Old extraction code.
                             'ZipFile.ExtractToDirectory(tempDir & "\winget-pkgs-master.zip", tempDir & "\winget-pkgs-master\")
