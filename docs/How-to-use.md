@@ -2,9 +2,9 @@
 
 [Homepage](https://drew-naylor.com/guinget)
 
-This guide is up-to-date as of version 0.2.0.2. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
+This guide is up-to-date as of version 0.3. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
 
-[Version 0.2's usage guide](https://drew-naylor.com/guinget/How-to-use_0.2) is available if you need one for that version. I thought there wasn't anything major that would have required one for v0.2.0.1, but after updating it for this version I realized it did need one.
+[Version 0.2.0.2's usage guide](https://drew-naylor.com/guinget/How-to-use_0.2.0.2) is available if you need one for that version. Version 0.2.0.3 only backported fixes, so a new usage guide wasn't required.
 
 ## Running guinget as administrator
 
@@ -41,7 +41,6 @@ Some options are available to modify the behavior when refreshing the cache. The
 
 - The package list will be loaded using the same SQLite database as winget uses by default, located at https://winget.azureedge.net/cache/source.msix. As briefly mentioned above, this still relies on the manifests to get the package details as those aren't directly available in the database.
 - Each package version is listed as a separate entry even when loading from the database, though using the database will make sure only packages winget can display right now are shown.
-- Some packages may be in a different order compared to loading all the manifests at once, but this shouldn't be much of an issue, and clicking the Package column header should sort them as expected.
 - Loading the details may still take a bit as we have to take the package ID and version number and figure out where its manifest is, instead of just grabbing all the manifests and loading from them. In case we can't find a package's manifest, we'll just look through all the manifests until we find the right one. Figuring out where each package's manifest is stored is done in three ways:
   - If forming a path using the package ID and version according to the manifest format v1 finds a file that exists, then that's great and we'll use that file. This is the fastest method.
   - If that doesn't work, then we only replace the first instance of the "." in the ID and try again with the rest. This should be fast, too.
@@ -58,6 +57,8 @@ An elevated winget session does pick up the source updates done from a non-eleva
 ## Viewing package details
 
 In addition to a few details in the package list, full package details are displayed in the textbox below the package list. By default, the last package selected will have its details shown, but you can change it so only the first package selected (when using multi-select) has its details shown by unchecking `Show last-selected package details when selecting multiple packages` in `Tools>Options...>Package Details`.
+
+Links in the package details textbox can be clicked, which will open a confirmation dialog asking you if you want to visit the page.
 
 Please be aware that showing the last-selected package details might not work properly if you [use `Shift+Click` and the selection switches to go above the first-selected package as that makes it show the first-clicked package's details.](https://github.com/DrewNaylor/guinget/issues/99)
 
@@ -165,9 +166,9 @@ Please note that the `winget list` option requires the `list` experimental featu
 
 ## Importing and exporting packages
 
-You can import and export the list of packages from the respective menu items under `File` if `import` and/or `export` are available in winget and set to on if they're not default features. `Ctrl+O` and `Ctrl+S` are also available as keyboard shortcuts for import and export, respectively.
+You can import and export the list of packages from the respective menu items under `File`. `Ctrl+O` and `Ctrl+S` are also available as keyboard shortcuts for import and export, respectively.
 
-Support for configuring which (if any) import and export flags are passed to winget will be added in the next version of guinget.
+Support for configuring which (if any) import and export flags are passed to winget will be added in a future version of guinget.
 
 ## Searching and filtering for packages
 
@@ -183,6 +184,7 @@ You can use `Esc`/`Escape` and press `Enter` or, as described below, double-clic
 `Search for package ID` in either the package context menu or in the `Selected packages` menu will, as the name implies, search for the package ID as long as only one package is selected. This won't be available if more than one package is selected at a time in version 0.1.3 and above.
 
 ### Sidebar
+
 By default, there's a sidebar that shows your search terms from the current session and other filters, but you can hide it in a few ways:
 - With the `X` button in its top-right corner
 - Using `View>Sidebar`
@@ -240,7 +242,15 @@ Eventually this tab will be moved to a sources manager app. If a particular fold
 
 In case there's something you need to drop into a terminal for, you can do it with `File>Run CMD`. There's also a way to run it elevated using `File>Run CMD elevated (UAC)`. There are keyboard shortcuts for both, the non-elevated one being `Ctrl+Alt+T` and the elevated one being `Ctrl+Alt+Shift+T`.
 
-Please be aware that [running CMD from guinget on 64-bit Windows causes filesystem redirection to occur, resulting in anything that has to be launched from the "real" System32 not working correctly](https://github.com/DrewNaylor/guinget/issues/98). This shouldn't impact most people, but it will if you need to run something like SystemPropertiesProtection.exe. The only workaround I can offer is to just run CMD from the Start menu or something else instead. I could tell Windows to run CMD from SysNative, but that doesn't work when running it elevated since it just crashes. A real solution would be to compile a 64-bit version of guinget, but winget doesn't offer separate architectures yet and I don't want people to have to manually install a different version.
+Please be aware that [running CMD from guinget on 64-bit Windows causes filesystem redirection to occur, resulting in anything that has to be launched from the "real" System32 not working correctly](https://github.com/DrewNaylor/guinget/issues/98). This shouldn't impact most people, but it will if you need to run something like `SystemPropertiesProtection.exe`. The only workaround I can offer is to just run CMD from the Start menu or something else instead. I could tell Windows to run CMD from `SysNative`, but that doesn't work when running it elevated since it just crashes. A real solution would be to compile a 64-bit version of guinget, but that's a little too much to manage.
+
+## KDE-style Fast Resize
+
+By default, guinget uses KDE-style fast resize to keep things responsive. This works by temporarily replacing the package list with a screenshot of itself, which is then stretched until you're done resizing the window. 
+
+One side-effect of this is that the package list will flicker after moving the window because moving a window counts as resizing it. Not sure how to make it only use the fast resizing during an actual resize and not a move. Additionally, any windows above the package list will show up in the screenshot while resizing it. Not sure how to prevent that from happening, but it's not really that big of an issue.
+
+This is on by default, and can be turned off by unchecking the `Use KDE-style fast resize for the package list so that resizing the window is smooth when there are a lot of packages listed` checkbox under `Tools>Options...>Package List + Details`. Doing so will return to standard Windows-style resizing behavior.
 
 ## Switch tabs with mouse scroll wheel
 
