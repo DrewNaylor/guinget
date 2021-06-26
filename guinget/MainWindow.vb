@@ -298,6 +298,9 @@ Public Class aaformMainWindow
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
 
+        ' Show the package details for the first-selected manifest.
+        ShowSelectedPackageDetails()
+
         ' Reset the datagridview's layout.
         ' This makes sure that the packages at the bottom
         ' of the list will show up without needing to
@@ -515,42 +518,42 @@ Public Class aaformMainWindow
         SelectedPackagesSearchForLastSelectedID.Enabled = AllowFunctions
     End Sub
 
-    Private Async Sub ShowSelectedPackageDetails()
+    Private Shared Async Sub ShowSelectedPackageDetails()
 
         ' We can now display the package details while making sure the manifest isn't
         ' nothing.
-        If datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
-                    IO.File.Exists(datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
+        If aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
+                    IO.File.Exists(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
-            textboxPackageDetails.Text = "Loading, please wait..."
+            aaformMainWindow.textboxPackageDetails.Text = "Loading, please wait..."
             ' Take text from the Manifest cell and use that
             ' file path to display text in the details textbox.
-            Dim ManifestPath As String = datagridviewPackageList.Item(7, datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
+            Dim ManifestPath As String = aaformMainWindow.datagridviewPackageList.Item(7, aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Index).Value.ToString
             ' See if it's a multi-file manifest. If it is, we'll have to do some stuff.
             If Await PackageTools.GetPackageInfoFromYamlAsync(ManifestPath, "ManifestType") = "version" Then
                 ' Clear textbox.
-                textboxPackageDetails.Clear()
+                aaformMainWindow.textboxPackageDetails.Clear()
 
                 ' Add header for the default locale manifest.
-                textboxPackageDetails.Text = "Default locale manifest" & vbCrLf &
+                aaformMainWindow.textboxPackageDetails.Text = "Default locale manifest" & vbCrLf &
                                              "==========================" & vbCrLf
                 ' Find the default locale manifest.
                 Dim DefaultLocaleManifestPath As String = Await PackageTools.GetMultiFileManifestPieceFilePath(ManifestPath, "defaultLocale")
                 ' Put the default locale manifest into the details textbox.
                 ' Make sure the file exists.
                 If DefaultLocaleManifestPath IsNot Nothing Then
-                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                    aaformMainWindow.textboxPackageDetails.Text = aaformMainWindow.textboxPackageDetails.Text &
                                              My.Computer.FileSystem.ReadAllText(DefaultLocaleManifestPath) &
                                              vbCrLf
                 Else
-                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                    aaformMainWindow.textboxPackageDetails.Text = aaformMainWindow.textboxPackageDetails.Text &
                                                  "(Couldn't find manifest)" &
                                                  vbCrLf & vbCrLf
                 End If
 
                 ' Add header for the installer manifest.
-                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                aaformMainWindow.textboxPackageDetails.Text = aaformMainWindow.textboxPackageDetails.Text &
                                              "Installer manifest" & vbCrLf &
                                              "==========================" & vbCrLf
                 ' Find the installers manifest.
@@ -558,17 +561,17 @@ Public Class aaformMainWindow
                 ' Put the installers manifest into the details textbox.
                 ' Make sure the file exists.
                 If InstallersManifestPath IsNot Nothing Then
-                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                    aaformMainWindow.textboxPackageDetails.Text = aaformMainWindow.textboxPackageDetails.Text &
                                              My.Computer.FileSystem.ReadAllText(InstallersManifestPath) &
                                              vbCrLf
                 Else
-                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                    aaformMainWindow.textboxPackageDetails.Text = aaformMainWindow.textboxPackageDetails.Text &
                                                  "(Couldn't find manifest)" &
                                                  vbCrLf & vbCrLf
                 End If
 
                 ' Add header text for the version file section.
-                textboxPackageDetails.Text = textboxPackageDetails.Text &
+                aaformMainWindow.textboxPackageDetails.Text = aaformMainWindow.textboxPackageDetails.Text &
                                              "Version manifest" & vbCrLf &
                                              "==========================" & vbCrLf
                 ' Put the version manifest in there.
@@ -580,22 +583,22 @@ Public Class aaformMainWindow
                 ' I'm still checking to make sure it's not Nothing
                 ' just to be safe.
                 If ManifestPath IsNot Nothing AndAlso IO.File.Exists(ManifestPath) Then
-                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                    aaformMainWindow.textboxPackageDetails.Text = aaformMainWindow.textboxPackageDetails.Text &
                                              My.Computer.FileSystem.ReadAllText(ManifestPath)
                 Else
-                    textboxPackageDetails.Text = textboxPackageDetails.Text &
+                    aaformMainWindow.textboxPackageDetails.Text = aaformMainWindow.textboxPackageDetails.Text &
                                              "(Couldn't find manifest)"
                 End If
 
             Else
                 ' It appears to be a single-file one.
                 ' Display full manifest in details textbox.
-                textboxPackageDetails.Text = "Manifest" & vbCrLf &
+                aaformMainWindow.textboxPackageDetails.Text = "Manifest" & vbCrLf &
                                              "==========================" & vbCrLf &
                                              My.Computer.FileSystem.ReadAllText(ManifestPath)
             End If
 
-        ElseIf datagridviewPackageList.SelectedRows.Count = 0 Then
+        ElseIf aaformMainWindow.datagridviewPackageList.SelectedRows.Count = 0 Then
             ' If no rows are selected, say so in the same way Synaptic does,
             ' because it says it in a way that's simple and nice.
             ' This might not show up since rows are automatically selected when
@@ -606,17 +609,17 @@ Public Class aaformMainWindow
             ' should be a setting to allow for people to choose whether it
             ' always updates the cache automatically, or have it ask to update every time.
             ' This should be based on a time thing, so only update after 5 minutes for example.
-            textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
+            aaformMainWindow.textboxPackageDetails.Text = "No package is selected or the package list hasn't been loaded yet. " &
                 "You can load the package list by using the Refresh cache toolbar button, by going to Package list" &
                 ">Refresh cache, or by pressing Ctrl+R."
 
-        ElseIf datagridviewPackageList.SelectedRows.Count > 0 AndAlso
-        datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value Is Nothing Then
+        ElseIf aaformMainWindow.datagridviewPackageList.SelectedRows.Count > 0 AndAlso
+        aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value Is Nothing Then
 
             ' If there are more than 0 rows selected and the manifest path
             ' is Nothing, say that we couldn't find the manifest.
             ' Previously it would just display the previously-selected manifest.
-            textboxPackageDetails.Text = "(Couldn't find manifest)"
+            aaformMainWindow.textboxPackageDetails.Text = "(Couldn't find manifest)"
         End If
     End Sub
 
