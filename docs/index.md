@@ -4,5 +4,4 @@ For now, this website won't have much, so it may be a good idea to [look at the 
 - [System requirements](https://drew-naylor.com/guinget/system-requirements)<br>
 - [Experimental options](https://drew-naylor.com/guinget/experimental-options)<br>
 - [Project roadmap](https://drew-naylor.com/guinget/Project-roadmap)<br>
-- [Devlog](https://drew-naylor.com/guinget/devlog)<br>
-- [update-manifests.bat changelog](https://drew-naylor.com/guinget/update-manifests-changelog)
+- [Devlog](https://drew-naylor.com/guinget/devlog)
