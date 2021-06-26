@@ -21,7 +21,7 @@ To run guinget, your computer requires the following:
   - guinget 64-bit requires an x86-64 (64-bit) CPU to run.
   - guinget 32-bit can run on either an x86 (32-bit) CPU or an x86-64 (64-bit) CPU.
   - guinget 32-bit also work on Windows 10 on ARM as a 32-bit application, though that's untested.
-  - **If unsure, use guinget 32-bit.**
+  - **If unsure, use guinget 32-bit or install through winget, as that should get the correct build for your system.**
 - Hardware requirements: 
   - Minimum: At least a 1.2 GHz CPU; 1 GB of RAM or more.
   - Recommended: At least a 2.5 GHz dual-core CPU; 2 GB of RAM or more.
