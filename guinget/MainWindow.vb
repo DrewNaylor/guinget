@@ -1543,12 +1543,15 @@ Public Class aaformMainWindow
 End Class
 
 
-Public Class PackageInfo
+'Public Class PackageInfo
 
-    ' This class contains info on the packages.
-    Public Property Status As String
-    Public Property Package As String
-    Public Property InstalledVersion As String
-    Public Property AvailableVersion As String
-    Public Property Description As String
-End Class
+'    ' This class contains info on the packages.
+'    ' Commented out because it's not currently used
+'    ' and I don't want to waste memory.
+'    ' Not sure if it'll ever be used.
+'    Public Property Status As String
+'    Public Property Package As String
+'    Public Property InstalledVersion As String
+'    Public Property AvailableVersion As String
+'    Public Property Description As String
+'End Class
