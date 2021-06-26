@@ -56,7 +56,7 @@ An elevated winget session does pick up the source updates done from a non-eleva
 
 ## Viewing package details
 
-In addition to a few details in the package list, full package details are displayed in the textbox below the package list. By default, the last package selected will have its details shown, but you can change it so only the first package selected (when using multi-select) has its details shown by unchecking `Show last-selected package details when selecting multiple packages` in `Tools>Options...>Package Details`.
+In addition to a few details in the package list, full package details are displayed in the textbox below the package list. By default, the last package selected will have its details shown, but you can change it so only the first package selected (when using multi-select) has its details shown by unchecking `Show last-selected package details when selecting multiple packages` in `Tools>Options...>Package List + Details`.
 
 Links in the package details textbox can be clicked, which will open a confirmation dialog asking you if you want to visit the page.
 
