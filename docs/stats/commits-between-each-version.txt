@@ -1,0 +1,13 @@
+commits to the main branch as of June 26, 2021
+----------------------------------------------
+since v0.3: 11 (difference since last version: 214)
+since v0.2.0.2: 225 (difference since last version: 57)
+since v0.2.0.1: 282 (difference since last version: 31)
+since v0.2: 313 (difference since last version: 281)
+since v0.1.3: 594 (difference since last version: 299)
+since v0.1.2: 893 (difference since last version: 309)
+since v0.1.1: 1202 (difference since last version: 54)
+since v0.1.0.1: 1256 (difference since last version: 26)
+since v0.1: 1282 (difference since last version: 181)
+since v0.1-prealpha2: 1463 (difference since last version: 51)
+since v0.1-prealpha1: 1514
