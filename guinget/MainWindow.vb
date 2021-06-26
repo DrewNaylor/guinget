@@ -71,10 +71,9 @@ Public Class aaformMainWindow
         ' Set update running flag.
         IsPackageListTaskRunning = True
 
-        '' Turn off autosize to make it go way faster. Might not help
-        '' performance, so it's commented out for now.
-        '' Credits to this SO answer:
-        '' https://stackoverflow.com/a/19518340
+        ' Turn off autosize to make it go way faster.
+        ' Credits to this SO answer:
+        ' https://stackoverflow.com/a/19518340
         For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
         Next
