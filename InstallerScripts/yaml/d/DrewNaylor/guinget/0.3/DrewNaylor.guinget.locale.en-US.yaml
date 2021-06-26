@@ -16,8 +16,9 @@ Tags:
 - tool
 - synaptic
 - package manager
+- package-manager
 ShortDescription: DrewNaylor.guinget
-Description: Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Synaptic, but for Windows. Not associated with either Microsoft or the Synaptic project, and Microsoft does not endorse this software. You may need to run winget as an administrator to install this package due to issues where Inno Setup doesn't properly ask for UAC when installing with winget. Not associated with Inno Setup.
+Description: Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Synaptic, but for Windows. Not associated with either Microsoft or the Synaptic project, and Microsoft does not endorse this software. If installing system-wide, you may need to run winget as an administrator to install this package due to issues where Inno Setup doesn't properly ask for UAC when installing with winget. Not associated with Inno Setup.
 PackageUrl: https://github.com/DrewNaylor/guinget/
 ManifestType: defaultLocale
 ManifestVersion: 1.0.0
