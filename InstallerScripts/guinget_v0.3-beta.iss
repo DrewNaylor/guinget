@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "guinget"
-#define MyAppVersion "0.2.0.3"
+#define MyAppVersion "0.3"
 #define MyAppPublisher "Drew Naylor"
 #define MyAppURL "https://github.com/DrewNaylor/guinget"
 #define MyAppUpdatesURL "https://github.com/DrewNaylor/guinget/releases/latest"
@@ -23,11 +23,11 @@ AppSupportURL={#MyAppHelpURL}
 AppUpdatesURL={#MyAppUpdatesURL}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName=Drew Naylor
-LicenseFile=C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\LICENSE.txt
-InfoBeforeFile=C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\README for guinget.txt
-InfoAfterFile=C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\v0.2.0.3-alpha_changelog_from-v0.2.0.2-alpha.txt
-OutputDir=C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\
-OutputBaseFilename=guinget_v0.2.0.3-alpha
+LicenseFile=C:\Users\drewn\My Applications\guinget\v0.3-beta\LICENSE.txt
+InfoBeforeFile=C:\Users\drewn\My Applications\guinget\v0.3-beta\README for guinget.txt
+InfoAfterFile=C:\Users\drewn\My Applications\guinget\v0.3-beta\v0.3-beta_changelog_from-v0.2.0.2-alpha.txt
+OutputDir=C:\Users\drewn\My Applications\guinget\v0.3-beta\
+OutputBaseFilename=guinget_v0.3-beta
 Compression=lzma
 SolidCompression=yes
 AppCopyright=Copyright 2020-2021 Drew Naylor. Licensed under Apache License 2.0.
@@ -38,7 +38,7 @@ MinVersion=0,6.1
 CreateUninstallRegKey=yes
 EnableDirDoesntExistWarning=True
 DirExistsWarning=no
-VersionInfoVersion=0.2.0.3
+VersionInfoVersion=0.3
 AlwaysShowGroupOnReadyPage=True
 AlwaysShowDirOnReadyPage=True
 DisableStartupPrompt=True
@@ -55,17 +55,17 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\guinget.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\README for guinget.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\source-code.zip"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\v0.2.0.3-alpha_changelog_from-v0.2.0.2-alpha.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\guinget.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\README for guinget.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\source-code.zip"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\v0.3-beta_changelog_from-v0.2.0.3-alpha.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\v0.2.0.3-alpha\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion createallsubdirs recursesubdirs
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\update-manifests.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
+Source: "C:\Users\drewn\My Applications\guinget\v0.3-beta\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion createallsubdirs recursesubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
