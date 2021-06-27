@@ -88,19 +88,24 @@ Milestone: [Version 0.3](https://github.com/DrewNaylor/guinget/milestone/8)
 
 Milestone: [Version 0.3.1](https://github.com/DrewNaylor/guinget/milestone/10)
 
-- [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
-- [ ] Allow packages to be re-installed (also issue #23)
-- [ ] Load the package list and package details async so that the UI doesn't lock up
-<br>Seems like this page has some good ideas on how to do this:
-https://stackoverflow.com/questions/570537/update-label-while-processing-in-windows-forms
 - [ ] Load package sources from YAML files instead of having them be hard-coded
 - [ ] Show packages from sources without easily-accessible manifests like the Store
+- [ ] Store source support
+- [ ] Initial multiple sources support (involves loading from YAML files instead of being hard-coded; not sure how I'd add REST source support yet)
 
 ## Version 0.3.2 Beta
 
+- [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
+- [ ] Allow packages to be re-installed (also issue #23)
 - [ ] Allow searching through things like friendly name, description, and tags
 - [ ] Filters for things that aren't the search feature or `Action`, like `Status`, `Source` (package source; this'll be `Microsoft/winget-pkgs` on GitHub by default and for now), `Custom filters` (aside from marked changes, because that's `Action`)
 - [ ] Show number of packages marked for changes, like Synaptic
+
+## Version for Virtual Mode or whatever I called the placeholder milestone
+
+- [ ] Load the package list and package details async so that the UI doesn't lock up
+<br>Seems like this page has some good ideas on how to do this:
+https://stackoverflow.com/questions/570537/update-label-while-processing-in-windows-forms
 
 ## Some later version
 
