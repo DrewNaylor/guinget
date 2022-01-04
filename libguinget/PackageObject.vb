@@ -40,6 +40,8 @@ Public Class PackageObject
 
     ' Required due to "Your custom class must be public and support a default (parameterless) public constructor."
     ' https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-and-custom-classes-for-wpf?view=netframeworkdesktop-4.8
+    ' This is unnecessary in Windows Forms I think, but required in WPF, so I'm keeping it in case anyone wants
+    ' to use this in WPF or another XAML framework like Avalonia.
     Public Sub New()
 
     End Sub
