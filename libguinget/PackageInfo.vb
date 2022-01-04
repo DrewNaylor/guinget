@@ -61,7 +61,8 @@ Public Class PackageObject
         Me.PackageAvailableVersion = packageAvailableVersion
         Me.PackageManifestPath = packageManifestPath
         ' Set the PackageAction property to the default of "Do nothing".
-        Me.PackageAction = "Do nothing"
+        ' Specifying "Me" isn't required here since there's no conflict.
+        PackageAction = "Do nothing"
 
     End Sub
 End Class
