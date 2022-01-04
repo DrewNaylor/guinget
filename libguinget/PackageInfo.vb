@@ -24,15 +24,43 @@
 
 
 
-Public Class PackageInfo
+Public Class PackageObject
 
     ' This class contains info on the packages.
-    Public Property Action As String
-    Public Property Status As String
     Public Property PackageId As String
     Public Property PackageName As String
-    Public Property InstalledVersion As String
-    Public Property AvailableVersion As String
-    Public Property Description As String
-    Public Property ManifestPath As String
+    Public Property PackageDescription As String
+    Public Property PackageStatus As String
+
+    Public Property PackageInstalledVersion As String
+    Public Property PackageAvailableVersion As String
+
+    Public Property PackageManifestPath As String
+    Public Property PackageAction As String
+
+    ' Required due to "Your custom class must be public and support a default (parameterless) public constructor."
+    ' https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-and-custom-classes-for-wpf?view=netframeworkdesktop-4.8
+    Public Sub New()
+
+    End Sub
+
+    Public Sub New(packageId As String,
+                   packageName As String,
+                   packageDescription As String,
+                   packageStatus As String,
+                   packageInstalledVersion As String,
+                   packageAvailableVersion As String,
+                   packageManifestPath As String)
+
+        ' Set the properties to be the parameters.
+        ' Not using the filename for now. If using it
+        ' later, it'll have to be added back in as
+        ' "fileName As String,"
+        DotDesktopFilePath = tileDotDesktopFileValue
+        TileWidth = tileWidthValue
+        TileHeight = tileHeightValue
+        TileColor = tileColorValue
+        TileAppNameAreaText = tileAppNameAreaTextValue
+
+    End Sub
 End Class
