@@ -53,14 +53,15 @@ Public Class PackageObject
                    packageManifestPath As String)
 
         ' Set the properties to be the parameters.
-        ' Not using the filename for now. If using it
-        ' later, it'll have to be added back in as
-        ' "fileName As String,"
-        DotDesktopFilePath = tileDotDesktopFileValue
-        TileWidth = tileWidthValue
-        TileHeight = tileHeightValue
-        TileColor = tileColorValue
-        TileAppNameAreaText = tileAppNameAreaTextValue
+        Me.PackageId = packageId
+        Me.PackageName = packageName
+        Me.PackageDescription = packageDescription
+        Me.PackageStatus = packageStatus
+        Me.PackageInstalledVersion = packageInstalledVersion
+        Me.PackageAvailableVersion = packageAvailableVersion
+        Me.PackageManifestPath = packageManifestPath
+        ' Set the PackageAction property to the default of "Do nothing".
+        Me.PackageAction = "Do nothing"
 
     End Sub
 End Class
