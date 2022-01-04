@@ -27,9 +27,6 @@
 Public Class PackageInfo
 
     ' This class contains info on the packages.
-    ' Commented out because it's not currently used
-    ' and I don't want to waste memory.
-    ' Not sure if it'll ever be used.
     Public Property Action As String
     Public Property Status As String
     Public Property PackageId As String
@@ -37,4 +34,5 @@ Public Class PackageInfo
     Public Property InstalledVersion As String
     Public Property AvailableVersion As String
     Public Property Description As String
+    Public Property ManifestPath As String
 End Class
