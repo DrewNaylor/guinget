@@ -66,8 +66,12 @@ Public Class ValidateManifestWindow
             ' Confirm user validation.
             ' The "If" statement checks above this comment use a simple MD5
             ' hash since it doesn't really need anything fancy, and the messagebox
-            ' thing below is a partial MD5 hash that's manually unciphered.
-            MessageBox.Show(VerificationCryptographyStuff.GetUnciphered("e36b8e3fd02fe8be"), "Validate Manifest", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ' thing below is a partial MD5 hash that's manually deciphered.
+            ' We need to allow the user to type a name in if they want to specify
+            ' the user to validate.
+            Dim userName As String = InputBox("Please type a username to validate, if you want to specify one:", "Validate Manifest")
+            ' Now pass in the username into the decyphering code.
+            MessageBox.Show(VerificationCryptographyStuff.GetDeciphered("e36b8e3fd02fe8be", userName), "Validate Manifest", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Else
             ' Now that verification is complete, send the manifest over to winget.
