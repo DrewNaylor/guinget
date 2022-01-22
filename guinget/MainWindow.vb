@@ -247,7 +247,7 @@ Public Class aaformMainWindow
     ' PackageListTable is the DataTable that we'll use to assign things to.
     Friend Shared PackageListTable As New DataTable
     ' PackageListDataView is the DataView that we'll sort and filter with.
-    Friend Shared PackageListDataView As New DataView
+    Friend Shared PackageListDataView As New DataView(PackageListTable)
 
     Friend Shared Async Sub PackageListPostUpdate()
 
