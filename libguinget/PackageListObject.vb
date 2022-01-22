@@ -27,6 +27,6 @@ Public Class PackageListObject
 
     ' This is mainly just a publicly-available datatable used for the package list.
     ' It'll probably have to also have its columns specified as well.
-    Public Shared PackageListTable As DataTable
+    Public Shared PackageListTable As New DataTable
 
 End Class
