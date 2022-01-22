@@ -87,6 +87,7 @@ Public Class aaformMainWindow
 
         ' Set the datasource to Nothing so it's empty.
         aaformMainWindow.datagridviewPackageList.DataSource = Nothing
+        aaformMainWindow.datagridviewPackageList.Columns.Clear()
 
         ' Clear the package list datatable.
         PackageListTable.Clear()
@@ -156,6 +157,9 @@ Public Class aaformMainWindow
                 LocalColumn.ReadOnly = True
             Else
                 LocalColumn.ReadOnly = False
+            End If
+            If LocalColumn.ColumnName = "Id" Then
+                LocalColumn.Caption = "Package"
             End If
         Next
 
