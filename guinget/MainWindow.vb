@@ -241,6 +241,9 @@ Public Class aaformMainWindow
         ' Accept the changes to the datatable.
         PackageListTable.AcceptChanges()
 
+        ' Close the database.
+        SqliteList.Dispose()
+
         ' Create a dataview so that it can be sorted automatically.
         ' https://docs.microsoft.com/en-us/dotnet/api/system.data.dataview.sort?redirectedfrom=MSDN&view=netframework-4.8#System_Data_DataView_Sort
 
