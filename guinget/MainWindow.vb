@@ -86,7 +86,10 @@ Public Class aaformMainWindow
         'aaformMainWindow.datagridviewPackageList.AutoGenerateColumns = False
 
         ' Set the datasource to Nothing so it's empty.
-        'aaformMainWindow.datagridviewPackageList.DataSource = Nothing
+        aaformMainWindow.datagridviewPackageList.DataSource = Nothing
+
+        ' Clear the package list datatable.
+        PackageListObject.PackageListTable.Clear()
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
