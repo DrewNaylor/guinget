@@ -158,6 +158,7 @@ Public Class aaformMainWindow
             Else
                 LocalColumn.ReadOnly = False
             End If
+
             If LocalColumn.ColumnName = "Id" Then
                 LocalColumn.Caption = "Package"
             End If
@@ -1528,6 +1529,16 @@ Public Class aaformMainWindow
         Else
             CopyToolStripMenuItem.Enabled = False
         End If
+    End Sub
+
+    Private Sub datagridviewPackageList_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles datagridviewPackageList.DataBindingComplete
+        ' Hide certain columns once databinding is complete.
+        ' Based on this SO post, solution 2:
+        ' https://stackoverflow.com/a/16744811
+        With datagridviewPackageList
+            .Columns("LatestVersion").Visible = False
+            .Columns("ManifestPath").Visible = My.Settings.DebuggingShowManifestPathColumn
+        End With
     End Sub
 
 
