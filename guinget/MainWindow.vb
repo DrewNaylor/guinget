@@ -980,7 +980,9 @@ Public Class aaformMainWindow
     Friend Shared Sub BeginPackageIdSearch(SearchTerm As String, Optional SearchStartedFromSidebar As Boolean = False, Optional ColumnToSearch As String = "Id")
 
         ' Make sure there are packages to begin with.
-        If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
+        ' We have to look at the package list table's row count rather than
+        ' the datagridview, as the packages aren't being stored in the datagridview anymore.
+        If PackageListTable.Rows.Count >= 1 Then
 
             ' Set package list task flag.
             IsPackageListTaskRunning = True
@@ -1016,7 +1018,7 @@ Public Class aaformMainWindow
             Next
 
             ' Set progress bar maximum to number of rows.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = aaformMainWindow.datagridviewPackageList.Rows.Count - 1
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = PackageListTable.Rows.Count - 1
             ' Set progress bar value to 0.
             aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
             ' Update main window.
@@ -1036,7 +1038,7 @@ Public Class aaformMainWindow
                     PackageListDataView.RowFilter = "[Action] = '" & SearchTerm & "'"
                 End If
             Else
-                PackageListDataView.RowFilter = "[Id] LIKE '%'"
+                PackageListDataView.RowFilter = String.Empty
             End If
 
             'For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
