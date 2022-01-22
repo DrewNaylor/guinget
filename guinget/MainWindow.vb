@@ -1024,6 +1024,14 @@ Public Class aaformMainWindow
             ' Update main window.
             aaformMainWindow.Update()
 
+            ' Create a variable to store the search method.
+            Dim SearchMethod As String = "LIKE '%" & SearchTerm & "%'"
+
+            ' Check to see if we should do an exact match.
+            If SearchTerm.StartsWith("""") AndAlso SearchTerm.EndsWith("""") Then
+                SearchMethod = "= '" & SearchTerm.Trim(CChar("""")) & "'"
+            End If
+
             ' Set DataView filter based on this SO example:
             ' https://stackoverflow.com/a/10009794
             ' A bunch of expression examples from here:
@@ -1032,37 +1040,11 @@ Public Class aaformMainWindow
             ' Got the idea to just not use the rowstatefilter from this SO answer:
             ' https://stackoverflow.com/a/52055612
             If SearchTerm.Length > 0 Then
-                If ColumnToSearch = "Id" Then
-                    PackageListDataView.RowFilter = "[Id] LIKE '%" & SearchTerm & "%'"
-                ElseIf ColumnToSearch = "Action" Then
-                    PackageListDataView.RowFilter = "[Action] = '" & SearchTerm & "'"
-                End If
+                PackageListDataView.RowFilter = "[" & ColumnToSearch & "]" & SearchMethod
             Else
                 PackageListDataView.RowFilter = String.Empty
             End If
 
-            'For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            '    ' Look in each row in the datagridview, and see what text it has.
-            '    ' If it starts and ends with double-quotes, remove them and do an exact match.
-            '    If SearchTerm.ToLowerInvariant.StartsWith("""") AndAlso SearchTerm.ToLowerInvariant.EndsWith("""") Then
-            '        ' Set all rows visible to what's in the search box without the start and end.
-            '        If searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
-            '            ' Set only exactly-matching rows to show.
-            '            searchRow.Visible = True
-            '        Else
-            '            ' Otherwise, hide it.
-            '            searchRow.Visible = False
-            '        End If
-            '    ElseIf searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
-            '        ' If the Package ID cell contains what's in the search box, show it.
-            '        searchRow.Visible = True
-            '    Else
-            '        ' Otherwise, hide it.
-            '        searchRow.Visible = False
-            '    End If
-            '    ' Make the progress bar progress.
-            '    aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            'Next
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
 
@@ -1428,7 +1410,7 @@ Public Class aaformMainWindow
                 ' Search for the selected Action. This is between double-quotes
                 ' to ensure that something like "Uninstall" showing up when searching
                 ' for "Install" doesn't happen, for example.
-                BeginPackageIdSearch(aaformMainWindow.listboxActions.SelectedItem.ToString, True, "Action")
+                BeginPackageIdSearch("""" & aaformMainWindow.listboxActions.SelectedItem.ToString & """", True, "Action")
             End If
         End If
     End Sub
