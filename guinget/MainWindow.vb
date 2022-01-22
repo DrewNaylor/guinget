@@ -130,6 +130,12 @@ Public Class aaformMainWindow
             ' Update the statusbar before doing the progressbar.
             aaformMainWindow.statusbarMainWindow.Update()
 
+        ' In case there are manifests we can't find easily,
+        ' we need to get them now.
+        ' These have to be grabbed now or else updating the manifests
+        ' will crash when the path doesn't exist.
+        PackageListTools.FallbackPathList = Await PackageListTools.GetManifestsAsync
+
         'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
         'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
         For Each PackageRow As DataRow In SqliteList.Rows
@@ -208,49 +214,15 @@ Public Class aaformMainWindow
             'aaformMainWindow.statusbarMainWindow.Update()
         Next
 
-        ' Update the main window now that the list is loaded.
-        aaformMainWindow.Update()
+        ' Set the datasource for the datagridview to the SqliteList.
+        ' May need to change where this is done.
+        'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
 
         ' Set the progressbar to the maximum to make it look finished.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
 
-        ' Update loading label.
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package details..."
-
-        ' Set the progress bar back to 0.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
-
         ' Update the main window again after making the list visible and changing the loading label.
         aaformMainWindow.Update()
-
-        ' Now we load the details for each row.
-
-        ' In case there are manifests we can't find easily,
-        ' we need to get them now.
-        ' These have to be grabbed now or else updating the manifests
-        ' will crash when the path doesn't exist.
-        PackageListTools.FallbackPathList = Await PackageListTools.GetManifestsAsync
-
-        ' Update the statusbar before doing the progressbar.
-        aaformMainWindow.statusbarMainWindow.Update()
-
-        ' Now we need to load the manifests and the descriptions.
-        For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            ' Find the manifest and get its description.
-            PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
-
-
-            ' ManifestType for debugging. This'll be commented out until it's needed.
-            'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
-
-            ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
-            ' Update the statusbar to show the current info.
-            ' Currently commented out because it's faster to not
-            ' update the statusbar every time, but to instead
-            ' rely on it just updating automatically.
-            'aaformMainWindow.statusbarMainWindow.Update()
-        Next
 
         ' We're done updating the package list, so call the post-update sub.
         PackageListPostUpdate()
