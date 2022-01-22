@@ -158,10 +158,6 @@ Public Class aaformMainWindow
             Else
                 LocalColumn.ReadOnly = False
             End If
-
-            If LocalColumn.ColumnName = "Id" Then
-                LocalColumn.Caption = "Package"
-            End If
         Next
 
         'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
@@ -1538,6 +1534,7 @@ Public Class aaformMainWindow
         With datagridviewPackageList
             .Columns("LatestVersion").Visible = False
             .Columns("ManifestPath").Visible = My.Settings.DebuggingShowManifestPathColumn
+            .Columns("Id").HeaderText = "Package"
         End With
     End Sub
 
