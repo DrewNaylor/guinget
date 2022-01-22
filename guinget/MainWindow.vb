@@ -133,6 +133,55 @@ Public Class aaformMainWindow
         'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
         'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
         For Each PackageRow As DataRow In SqliteList.Rows
+            ' Get the manifest path and description for the current row.
+            Dim manifestPath As String = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Item(2).ToString, PackageRow.Item(4).ToString)
+            ' Get description from manifest.
+            ' Ensure the manifest path cell isn't nothing.
+            ' The database was broken just after 1 AM EDT
+            ' on October 8, 2020, so this is to prevent
+            ' future crashes, even if the database is broken
+            ' again.
+            ' Defaulting this to "(Couldn't find manifest)" so that it's simpler
+            ' and uses fewer lines.
+            ' TODO: Move this to a separate function so it doesn't have to get called as often,
+            ' as a lot of packages won't need to call it if only the latest version is supposed to be shown.
+            Dim packageDescription As String = "(Couldn't find manifest)"
+            If manifestPath IsNot Nothing Then
+                ' Make sure the short description doesn't match the package ID, and use the
+                ' long description if it does.
+                ' Store the short description in a string so we don't have to read
+                ' the manifest multiple times just for the description comparison.
+                ' First check if it's a single-file manifest or not.
+                Dim FileWithDescription As String = manifestPath
+                If Await PackageTools.GetPackageInfoFromYamlAsync(manifestPath, "ManifestType") = "version" Then
+                    ' Get the default locale path.
+                    FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
+                End If
+                ' Check if the file path isn't Nothing.
+                If FileWithDescription IsNot Nothing Then
+                    ' Now do the description stuff.
+                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
+                    If PackageRow.Item(2).ToString = ShortDescription Then
+                        ' Use the full description if the short description
+                        ' is just the package ID.
+                        PackageRow.Item(6) = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
+                    Else
+                        ' Package ID and short description aren't the same
+                        ' thing, so use the short description.
+                        PackageRow.Item(6) = ShortDescription
+                    End If
+                Else
+                    ' If the file path is Nothing, meaning the file
+                    ' doesn't exist or we couldn't find it, just say that
+                    ' we couldn't find the manifest.
+                    PackageRow.Item(6) = "(Couldn't find manifest)"
+                End If
+
+            Else
+                ' If the value in the manifest path cell is nothing, change the description.
+                PackageRow.Item(6) = "(Couldn't find manifest)"
+            End If
+
             If My.Settings.OnlyDisplayLatestPackageVersion = True Then
                 ' If the user wants to only display the latest package version,
                 ' we'll have to compare it.
@@ -189,46 +238,7 @@ Public Class aaformMainWindow
         For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
             ' Find the manifest and get its description.
             PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
-            ' Ensure the manifest path cell isn't nothing.
-            ' The database was broken just after 1 AM EDT
-            ' on October 8, 2020, so this is to prevent
-            ' future crashes, even if the database is broken
-            ' again.
-            If PackageRow.Cells.Item(7).Value IsNot Nothing Then
-                ' Make sure the short description doesn't match the package ID, and use the
-                ' long description if it does.
-                ' Store the short description in a string so we don't have to read
-                ' the manifest multiple times just for the description comparison.
-                ' First check if it's a single-file manifest or not.
-                Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
-                If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
-                    ' Get the default locale path.
-                    FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
-                End If
-                ' Check if the file path isn't Nothing.
-                If FileWithDescription IsNot Nothing Then
-                    ' Now do the description stuff.
-                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
-                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
-                        ' Use the full description if the short description
-                        ' is just the package ID.
-                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
-                    Else
-                        ' Package ID and short description aren't the same
-                        ' thing, so use the short description.
-                        PackageRow.Cells.Item(6).Value = ShortDescription
-                    End If
-                Else
-                    ' If the file path is Nothing, meaning the file
-                    ' doesn't exist or we couldn't find it, just say that
-                    ' we couldn't find the manifest.
-                    PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
-                End If
 
-            Else
-                ' If the value in the manifest path cell is nothing, change the description.
-                PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
-            End If
 
             ' ManifestType for debugging. This'll be commented out until it's needed.
             'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
