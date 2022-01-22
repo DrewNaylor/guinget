@@ -91,6 +91,7 @@ Public Class aaformMainWindow
 
         ' Clear the package list datatable.
         PackageListTable.Clear()
+        PackageListTable.AcceptChanges()
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
@@ -140,16 +141,6 @@ Public Class aaformMainWindow
         ' These have to be grabbed now or else updating the manifests
         ' will crash when the path doesn't exist.
         PackageListTools.FallbackPathList = Await PackageListTools.GetManifestsAsync
-
-        ' Add table columns.
-        PackageListTable.Columns.Add("Action", GetType(String))
-        PackageListTable.Columns.Add("Status", GetType(String))
-        PackageListTable.Columns.Add("Id", GetType(String))
-        PackageListTable.Columns.Add("Name", GetType(String))
-        PackageListTable.Columns.Add("Version", GetType(String))
-        PackageListTable.Columns.Add("LatestVersion", GetType(String))
-        PackageListTable.Columns.Add("Description", GetType(String))
-        PackageListTable.Columns.Add("ManifestPath", GetType(String))
 
         ' Set properties for each column.
         For Each LocalColumn As DataColumn In PackageListTable.Columns
@@ -936,6 +927,18 @@ Public Class aaformMainWindow
         ' This code was found on StackOverflow
         ' in C# here: https://stackoverflow.com/questions/13418721/toolstrip-rounded-corners/48564597#48564597
         CType(toolstripMainWindow.Renderer, ToolStripProfessionalRenderer).RoundedEdges = False
+
+        ' Add table columns.
+        ' We're doing this on startup so we don't have to figure out
+        ' how to clear them when refreshing the cache.
+        PackageListTable.Columns.Add("Action", GetType(String))
+        PackageListTable.Columns.Add("Status", GetType(String))
+        PackageListTable.Columns.Add("Id", GetType(String))
+        PackageListTable.Columns.Add("Name", GetType(String))
+        PackageListTable.Columns.Add("Version", GetType(String))
+        PackageListTable.Columns.Add("LatestVersion", GetType(String))
+        PackageListTable.Columns.Add("Description", GetType(String))
+        PackageListTable.Columns.Add("ManifestPath", GetType(String))
 
 
     End Sub
