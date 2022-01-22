@@ -140,6 +140,7 @@ Public Class aaformMainWindow
         ' will crash when the path doesn't exist.
         PackageListTools.FallbackPathList = Await PackageListTools.GetManifestsAsync
 
+        ' Add table columns.
         PackageListTable.Columns.Add("Action", GetType(String))
         PackageListTable.Columns.Add("Status", GetType(String))
         PackageListTable.Columns.Add("Id", GetType(String))
@@ -148,6 +149,15 @@ Public Class aaformMainWindow
         PackageListTable.Columns.Add("LatestVersion", GetType(String))
         PackageListTable.Columns.Add("Description", GetType(String))
         PackageListTable.Columns.Add("ManifestPath", GetType(String))
+
+        ' Set properties for each column.
+        For Each LocalColumn As DataColumn In PackageListTable.Columns
+            If Not LocalColumn.ColumnName = "Action" Then
+                LocalColumn.ReadOnly = True
+            Else
+                LocalColumn.ReadOnly = False
+            End If
+        Next
 
         'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
         'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
