@@ -1562,7 +1562,9 @@ Public Class aaformMainWindow
         ' Based on this SO post, solution 2:
         ' https://stackoverflow.com/a/16744811
         With datagridviewPackageList
-            .Columns("LatestVersion").Visible = False
+            ' Hide the LatestVersion column if My.Settings.HideUnfinishedControls is True,
+            ' and show it if it's False.
+            .Columns("LatestVersion").Visible = Not My.Settings.HideUnfinishedControls
             ' Setting the AutoSizeMode for Action and Status.
             ' Not sure if this needs to be turned off to improve performance, but
             ' it seems really fast anyway.
