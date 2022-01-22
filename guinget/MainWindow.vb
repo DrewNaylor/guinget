@@ -1031,14 +1031,12 @@ Public Class aaformMainWindow
             ' https://stackoverflow.com/a/52055612
             If SearchTerm.Length > 0 Then
                 If ColumnToSearch = "Id" Then
-                    PackageListDataView.RowFilter = String.Empty
                     PackageListDataView.RowFilter = "[Id] LIKE '%" & SearchTerm & "%'"
                 ElseIf ColumnToSearch = "Action" Then
-                    PackageListDataView.RowFilter = String.Empty
                     PackageListDataView.RowFilter = "[Action] = '" & SearchTerm & "'"
                 End If
             Else
-                    PackageListDataView.RowFilter = String.Empty
+                PackageListDataView.RowFilter = "[Id] LIKE '%'"
             End If
 
             'For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
