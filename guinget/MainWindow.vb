@@ -193,11 +193,11 @@ Public Class aaformMainWindow
                     ' One example is Adopt OpenJDK which displays
                     ' version 8.x last I checked when it should
                     ' display 15.x or something.
-                    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, "Loading...")
+                    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
                 End If
             Else
                 ' Just add all the package versions.
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, "Loading...")
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
             End If
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
