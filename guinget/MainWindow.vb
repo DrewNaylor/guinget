@@ -167,7 +167,7 @@ Public Class aaformMainWindow
                 If FileWithDescription IsNot Nothing Then
                     ' Now do the description stuff.
                     Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
-                    If Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description") = ShortDescription Then
+                    If ShortDescription = PackageRow.Item(0).ToString Then
                         ' Use the full description if the short description
                         ' is just the package ID.
                         packageDescription = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
