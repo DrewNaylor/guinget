@@ -933,7 +933,7 @@ Public Class aaformMainWindow
     Private Shared Sub AutoSortPackageIDColumn()
         ' Sorts the package ID column after refreshing so it's in the right order.
         ' It would be nice to have it re-sort the way it is now, though.
-        aaformMainWindow.datagridviewPackageList.Sort(aaformMainWindow.PkgName, System.ComponentModel.ListSortDirection.Ascending)
+        PackageListDataView.Sort = "Id ASC"
     End Sub
 
 #Region "HiDPI-related stuff."
