@@ -307,14 +307,11 @@ Public Class aaformMainWindow
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
 
-        ' Display number of packages loaded. This really should be
-        ' changed to calculate the number of currently-visible rows
-        ' in case the user is filtering the list,
-        ' but this is better than nothing for now.
+        ' Display number of packages loaded and currently listed.
+        ' Moved to its own sub, so see that for more details.
         ' This SO answer might help:
         ' https://stackoverflow.com/a/44661255
         UpdatePackageListCount()
-
 
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
