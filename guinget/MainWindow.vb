@@ -227,11 +227,14 @@ Public Class aaformMainWindow
             'aaformMainWindow.statusbarMainWindow.Update()
         Next
 
+        ' Accept the changes to the datatable.
+        PackageListTable.AcceptChanges()
+
         ' Create a dataview so that it can be sorted automatically.
         ' https://docs.microsoft.com/en-us/dotnet/api/system.data.dataview.sort?redirectedfrom=MSDN&view=netframework-4.8#System_Data_DataView_Sort
 
         ' Set the datasource for the datagridview to the public package list table.
-        aaformMainWindow.datagridviewPackageList.DataSource = PackageListTable
+        aaformMainWindow.datagridviewPackageList.DataSource = PackageListDataView
 
         ' Set the progressbar to the maximum to make it look finished.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
@@ -252,7 +255,7 @@ Public Class aaformMainWindow
     Friend Shared Async Sub PackageListPostUpdate()
 
         ' Sort the package list if it's not already sorted.
-        AutoSortPackageIDColumn()
+        PackageListDataView.Sort = "Id ASC"
 
         '' Turn autosize back on for certain columns. Might not help
         '' performance, so it's commented out for now.
@@ -923,17 +926,7 @@ Public Class aaformMainWindow
         ' in C# here: https://stackoverflow.com/questions/13418721/toolstrip-rounded-corners/48564597#48564597
         CType(toolstripMainWindow.Renderer, ToolStripProfessionalRenderer).RoundedEdges = False
 
-        ' Sort by package ID column.
-        ' This ensures lowercase package IDs are where they
-        ' should be and not at the end of the list.
-        AutoSortPackageIDColumn()
 
-    End Sub
-
-    Private Shared Sub AutoSortPackageIDColumn()
-        ' Sorts the package ID column after refreshing so it's in the right order.
-        ' It would be nice to have it re-sort the way it is now, though.
-        PackageListDataView.Sort = "Id ASC"
     End Sub
 
 #Region "HiDPI-related stuff."
