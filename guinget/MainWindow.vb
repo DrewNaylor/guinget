@@ -120,15 +120,16 @@ Public Class aaformMainWindow
         End If
 
         ' Get a datatable ready.
-        Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
+        ' Not sure how much this helps to be async, but I hope it does help at least some.
+        Dim SqliteList As DataTable = Await PackageListTools.GetPackageDetailsTableFromSqliteDB()
 
-            ' Set progress bar maximum value.
-            ' This has to be done here or there will be a crash
-            ' if we can't find all the manifests.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = SqliteList.Rows.Count - 1
+        ' Set progress bar maximum value.
+        ' This has to be done here or there will be a crash
+        ' if we can't find all the manifests.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = SqliteList.Rows.Count - 1
 
-            ' Update the statusbar before doing the progressbar.
-            aaformMainWindow.statusbarMainWindow.Update()
+        ' Update the statusbar before doing the progressbar.
+        aaformMainWindow.statusbarMainWindow.Update()
 
         ' In case there are manifests we can't find easily,
         ' we need to get them now.

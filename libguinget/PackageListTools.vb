@@ -731,7 +731,7 @@ Public Class PackageListTools
 #End Region
 
 #Region "Get package details table from SQLite database"
-    Public Shared Function GetPackageDetailsTableFromSqliteDB() As DataTable
+    Public Shared Async Function GetPackageDetailsTableFromSqliteDB() As Task(Of DataTable)
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
         ' https://stackoverflow.com/q/19553165
@@ -799,7 +799,10 @@ WHERE
                 ' for separation.
 
                 ' Column 0 is ID, 4 is Name, 2 is Version, and 6 is latest version.
-                packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2), SqlDataReader.GetValue(6))
+                ' Running this as async.
+                Await Task.Run(Sub()
+                                   packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2), SqlDataReader.GetValue(6))
+                               End Sub)
             Loop
         End If
 
