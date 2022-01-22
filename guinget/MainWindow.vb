@@ -715,7 +715,7 @@ Public Class aaformMainWindow
 
         ' Re-run search if the user wants to.
         If My.Settings.RerunSearchAfterCacheUpdate = True AndAlso toolstriptextboxSearch.Text IsNot String.Empty Then
-            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
         End If
 
         Return
@@ -974,10 +974,10 @@ Public Class aaformMainWindow
 #Region "Package ID search."
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
         ' Start searching.
-        BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+        BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
     End Sub
 
-    Friend Shared Sub BeginPackageIdSearch(SearchTerm As String, Optional SearchStartedFromSidebar As Boolean = False, Optional ColumnIndexToSearchIn As Integer = 2)
+    Friend Shared Sub BeginPackageIdSearch(SearchTerm As String, Optional SearchStartedFromSidebar As Boolean = False, Optional ColumnToSearch As String = "Id")
 
         ' Make sure there are packages to begin with.
         If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
@@ -1030,9 +1030,15 @@ Public Class aaformMainWindow
             ' Got the idea to just not use the rowstatefilter from this SO answer:
             ' https://stackoverflow.com/a/52055612
             If SearchTerm.Length > 0 Then
-                PackageListDataView.RowFilter = "[Id] LIKE '%" & SearchTerm & "%'"
+                If ColumnToSearch = "Id" Then
+                    PackageListDataView.RowFilter = String.Empty
+                    PackageListDataView.RowFilter = "[Id] LIKE '%" & SearchTerm & "%'"
+                ElseIf ColumnToSearch = "Action" Then
+                    PackageListDataView.RowFilter = String.Empty
+                    PackageListDataView.RowFilter = "[Action] = '" & SearchTerm & "'"
+                End If
             Else
-                PackageListDataView.RowFilter = String.Empty
+                    PackageListDataView.RowFilter = String.Empty
             End If
 
             'For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
@@ -1060,29 +1066,29 @@ Public Class aaformMainWindow
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
 
-        ' Reset progress label text.
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
+            ' Reset progress label text.
+            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
 
-                ' Turn autosize back on for certain columns.
-                aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            ' Turn autosize back on for certain columns.
+            aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
-                ' Show the package list again.
-                aaformMainWindow.datagridviewPackageList.Visible = True
+            ' Show the package list again.
+            aaformMainWindow.datagridviewPackageList.Visible = True
 
-                ' Update the main window.
-                aaformMainWindow.Update()
+            ' Update the main window.
+            aaformMainWindow.Update()
 
-                IsPackageListTaskRunning = False
+            IsPackageListTaskRunning = False
 
-            End If
+        End If
     End Sub
 
     Private Sub toolstriptextboxSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles toolstriptextboxSearch.KeyDown
         ' Start searching on pressing Enter.
 
         If e.KeyCode = Keys.Enter Then
-            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
             ' Stop search when typing timer.
             StopStartTypeTimer(False)
 
@@ -1150,7 +1156,7 @@ Public Class aaformMainWindow
         End If
 
         ' Begin search.
-        BeginPackageIdSearch(aaformMainWindow.toolstriptextboxSearch.Text, True, 2)
+        BeginPackageIdSearch(aaformMainWindow.toolstriptextboxSearch.Text, True, "Id")
     End Sub
 
     Private Sub listboxSearchTerms_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxSearchTerms.KeyDown
@@ -1286,7 +1292,7 @@ Public Class aaformMainWindow
                 TypeTimer.Stop()
             End If
 
-            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
         End If
     End Sub
 
@@ -1346,7 +1352,7 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/671735
         If My.Settings.SearchWhenTyping = True Then
             TypeTimer.Stop()
-            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
         End If
     End Sub
 
@@ -1417,12 +1423,12 @@ Public Class aaformMainWindow
         If aaformMainWindow.listboxActions.SelectedItems.Count = 1 Then
             If aaformMainWindow.listboxActions.SelectedIndex = 0 Then
                 ' Search for everything if "All" is double-clicked.
-                BeginPackageIdSearch(String.Empty, True, 0)
+                BeginPackageIdSearch(String.Empty, True, "Action")
             Else
                 ' Search for the selected Action. This is between double-quotes
                 ' to ensure that something like "Uninstall" showing up when searching
                 ' for "Install" doesn't happen, for example.
-                BeginPackageIdSearch("""" & aaformMainWindow.listboxActions.SelectedItem.ToString & """", True, 0)
+                BeginPackageIdSearch(aaformMainWindow.listboxActions.SelectedItem.ToString, True, "Action")
             End If
         End If
     End Sub
