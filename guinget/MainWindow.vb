@@ -82,7 +82,8 @@ Public Class aaformMainWindow
         ' this slightly faster.
         aaformMainWindow.datagridviewPackageList.Visible = False
 
-
+        ' Don't auto-create columns.
+        aaformMainWindow.datagridviewPackageList.AutoGenerateColumns = False
 
         ' Set the datasource to Nothing so it's empty.
         aaformMainWindow.datagridviewPackageList.DataSource = Nothing
