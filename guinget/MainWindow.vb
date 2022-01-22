@@ -164,22 +164,22 @@ Public Class aaformMainWindow
                     If PackageRow.Item(2).ToString = ShortDescription Then
                         ' Use the full description if the short description
                         ' is just the package ID.
-                        PackageRow.Item(6) = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
+                        packageDescription = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
                     Else
                         ' Package ID and short description aren't the same
                         ' thing, so use the short description.
-                        PackageRow.Item(6) = ShortDescription
+                        packageDescription = ShortDescription
                     End If
                 Else
                     ' If the file path is Nothing, meaning the file
                     ' doesn't exist or we couldn't find it, just say that
                     ' we couldn't find the manifest.
-                    PackageRow.Item(6) = "(Couldn't find manifest)"
+                    packageDescription = "(Couldn't find manifest)"
                 End If
 
             Else
                 ' If the value in the manifest path cell is nothing, change the description.
-                PackageRow.Item(6) = "(Couldn't find manifest)"
+                packageDescription = "(Couldn't find manifest)"
             End If
 
             If My.Settings.OnlyDisplayLatestPackageVersion = True Then
@@ -193,11 +193,11 @@ Public Class aaformMainWindow
                     ' One example is Adopt OpenJDK which displays
                     ' version 8.x last I checked when it should
                     ' display 15.x or something.
-                    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
+                    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, "Loading...")
                 End If
             Else
                 ' Just add all the package versions.
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
+                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, "Loading...")
             End If
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
