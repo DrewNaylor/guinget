@@ -268,10 +268,10 @@ Public Class aaformMainWindow
         If aaformMainWindow.datagridviewPackageList.RowCount = 1 Then
             ' Make sure it doesn't display "packages" when there's only one.
             aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-                        " package listed," & PackageListTable.Rows.Count.ToString & " loaded."
+                        " package listed, " & PackageListTable.Rows.Count.ToString & " loaded."
         Else
             aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-                        " packages listed," & PackageListTable.Rows.Count.ToString & " loaded."
+                        " packages listed, " & PackageListTable.Rows.Count.ToString & " loaded."
         End If
     End Sub
 
