@@ -227,6 +227,9 @@ Public Class aaformMainWindow
             'aaformMainWindow.statusbarMainWindow.Update()
         Next
 
+        ' Create a dataview so that it can be sorted automatically.
+        ' https://docs.microsoft.com/en-us/dotnet/api/system.data.dataview.sort?redirectedfrom=MSDN&view=netframework-4.8#System_Data_DataView_Sort
+
         ' Set the datasource for the datagridview to the public package list table.
         aaformMainWindow.datagridviewPackageList.DataSource = PackageListTable
 
@@ -241,7 +244,10 @@ Public Class aaformMainWindow
 
     End Function
 
+    ' PackageListTable is the DataTable that we'll use to assign things to.
     Friend Shared PackageListTable As New DataTable
+    ' PackageListDataView is the DataView that we'll sort and filter with.
+    Friend Shared PackageListDataView As New DataView
 
     Friend Shared Async Sub PackageListPostUpdate()
 
