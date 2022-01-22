@@ -1563,6 +1563,11 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/16744811
         With datagridviewPackageList
             .Columns("LatestVersion").Visible = False
+            ' Setting the AutoSizeMode for Action and Status.
+            ' Not sure if this needs to be turned off to improve performance, but
+            ' it seems really fast anyway.
+            .Columns("Action").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            .Columns("Status").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             .Columns("ManifestPath").Visible = My.Settings.DebuggingShowManifestPathColumn
             .Columns("Id").HeaderText = "Package"
         End With
