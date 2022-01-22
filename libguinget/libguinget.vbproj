@@ -132,6 +132,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CommandTools.vb" />
+    <Compile Include="PackageListObject.vb" />
     <Compile Include="PackageObject.vb" />
     <Compile Include="RootFormTools.vb" />
     <Compile Include="PackageListTools.vb" />
