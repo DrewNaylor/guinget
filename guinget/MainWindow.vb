@@ -83,10 +83,10 @@ Public Class aaformMainWindow
         aaformMainWindow.datagridviewPackageList.Visible = False
 
         ' Don't auto-create columns.
-        aaformMainWindow.datagridviewPackageList.AutoGenerateColumns = False
+        'aaformMainWindow.datagridviewPackageList.AutoGenerateColumns = False
 
         ' Set the datasource to Nothing so it's empty.
-        aaformMainWindow.datagridviewPackageList.DataSource = Nothing
+        'aaformMainWindow.datagridviewPackageList.DataSource = Nothing
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
@@ -140,7 +140,7 @@ Public Class aaformMainWindow
         'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
         For Each PackageRow As DataRow In SqliteList.Rows
             ' Get the manifest path and description for the current row.
-            Dim manifestPath As String = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Item(2).ToString, PackageRow.Item(4).ToString)
+            Dim manifestPath As String = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Item(0).ToString, PackageRow.Item(2).ToString)
             ' Get description from manifest.
             ' Ensure the manifest path cell isn't nothing.
             ' The database was broken just after 1 AM EDT
@@ -167,7 +167,7 @@ Public Class aaformMainWindow
                 If FileWithDescription IsNot Nothing Then
                     ' Now do the description stuff.
                     Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
-                    If PackageRow.Item(2).ToString = ShortDescription Then
+                    If Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description") = ShortDescription Then
                         ' Use the full description if the short description
                         ' is just the package ID.
                         packageDescription = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
