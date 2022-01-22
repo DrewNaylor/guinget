@@ -1022,47 +1022,60 @@ Public Class aaformMainWindow
             ' Update main window.
             aaformMainWindow.Update()
 
-            For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                ' Look in each row in the datagridview, and see what text it has.
-                ' If it starts and ends with double-quotes, remove them and do an exact match.
-                If SearchTerm.ToLowerInvariant.StartsWith("""") AndAlso SearchTerm.ToLowerInvariant.EndsWith("""") Then
-                    ' Set all rows visible to what's in the search box without the start and end.
-                    If searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
-                        ' Set only exactly-matching rows to show.
-                        searchRow.Visible = True
-                    Else
-                        ' Otherwise, hide it.
-                        searchRow.Visible = False
-                    End If
-                ElseIf searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
-                    ' If the Package ID cell contains what's in the search box, show it.
-                    searchRow.Visible = True
-                Else
-                    ' Otherwise, hide it.
-                    searchRow.Visible = False
-                End If
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            Next
+            ' Set DataView filter based on this SO example:
+            ' https://stackoverflow.com/a/10009794
+            ' A bunch of expression examples from here:
+            ' https://docs.microsoft.com/en-us/dotnet/api/system.data.datacolumn.expression?view=netframework-4.8
+            ' Turns out the rowstatefilter makes this break, so we can't use it.
+            ' Got the idea to just not use the rowstatefilter from this SO answer:
+            ' https://stackoverflow.com/a/52055612
+            If SearchTerm.Length > 0 Then
+                PackageListDataView.RowFilter = "[Id] LIKE '%" & SearchTerm & "%'"
+            Else
+                PackageListDataView.RowFilter = String.Empty
+            End If
+
+            'For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
+            '    ' Look in each row in the datagridview, and see what text it has.
+            '    ' If it starts and ends with double-quotes, remove them and do an exact match.
+            '    If SearchTerm.ToLowerInvariant.StartsWith("""") AndAlso SearchTerm.ToLowerInvariant.EndsWith("""") Then
+            '        ' Set all rows visible to what's in the search box without the start and end.
+            '        If searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
+            '            ' Set only exactly-matching rows to show.
+            '            searchRow.Visible = True
+            '        Else
+            '            ' Otherwise, hide it.
+            '            searchRow.Visible = False
+            '        End If
+            '    ElseIf searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
+            '        ' If the Package ID cell contains what's in the search box, show it.
+            '        searchRow.Visible = True
+            '    Else
+            '        ' Otherwise, hide it.
+            '        searchRow.Visible = False
+            '    End If
+            '    ' Make the progress bar progress.
+            '    aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            'Next
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
 
-            ' Reset progress label text.
-            aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
+        ' Reset progress label text.
+        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
 
-            ' Turn autosize back on for certain columns.
-            aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                ' Turn autosize back on for certain columns.
+                aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
-            ' Show the package list again.
-            aaformMainWindow.datagridviewPackageList.Visible = True
+                ' Show the package list again.
+                aaformMainWindow.datagridviewPackageList.Visible = True
 
-            ' Update the main window.
-            aaformMainWindow.Update()
+                ' Update the main window.
+                aaformMainWindow.Update()
 
-            IsPackageListTaskRunning = False
+                IsPackageListTaskRunning = False
 
-        End If
+            End If
     End Sub
 
     Private Sub toolstriptextboxSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles toolstriptextboxSearch.KeyDown
