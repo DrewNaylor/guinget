@@ -254,6 +254,27 @@ Public Class aaformMainWindow
     ' PackageListDataView is the DataView that we'll sort and filter with.
     Friend Shared PackageListDataView As New DataView(PackageListTable)
 
+    Friend Shared Sub UpdatePackageListCount()
+        ' Updates the number of packages as shown in the statusbar.
+        ' Since the DataView rowfilter makes the datagridview think
+        ' rows are getting removed even though the rows are still there,
+        ' we can take advantage of this and change the number to how
+        ' many packages are currently listed, like what Synaptic does.
+        ' TODO: Display the number of packages that are installed,
+        ' the number to install or upgrade, and the number to uninstall.
+        ' Pretty sure there won't have to be one for broken packages,
+        ' as winget doesn't have that at the moment, though I'll add that
+        ' if it gets that feature.
+        If aaformMainWindow.datagridviewPackageList.RowCount = 1 Then
+            ' Make sure it doesn't display "packages" when there's only one.
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
+                        " package listed," & PackageListTable.Rows.Count.ToString & " loaded."
+        Else
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
+                        " packages listed," & PackageListTable.Rows.Count.ToString & " loaded."
+        End If
+    End Sub
+
     Friend Shared Async Sub PackageListPostUpdate()
 
         ' Sort the package list if it's not already sorted.
@@ -292,14 +313,7 @@ Public Class aaformMainWindow
         ' but this is better than nothing for now.
         ' This SO answer might help:
         ' https://stackoverflow.com/a/44661255
-        If aaformMainWindow.datagridviewPackageList.RowCount = 1 Then
-            ' Make sure it doesn't display "packages" when there's only one.
-            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-                        " package loaded."
-        Else
-            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-                        " packages loaded."
-        End If
+        UpdatePackageListCount()
 
 
         ' Focus the package list.
@@ -1050,6 +1064,9 @@ Public Class aaformMainWindow
 
             ' Reset progress label text.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
+
+            ' Show the current number of packages in the filter.
+            UpdatePackageListCount()
 
             ' Turn autosize back on for certain columns.
             aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
