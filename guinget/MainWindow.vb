@@ -89,7 +89,7 @@ Public Class aaformMainWindow
         aaformMainWindow.datagridviewPackageList.DataSource = Nothing
 
         ' Clear the package list datatable.
-        PackageListObject.PackageListTable.Clear()
+        PackageListTable.Clear()
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
@@ -139,6 +139,15 @@ Public Class aaformMainWindow
         ' These have to be grabbed now or else updating the manifests
         ' will crash when the path doesn't exist.
         PackageListTools.FallbackPathList = Await PackageListTools.GetManifestsAsync
+
+        PackageListTable.Columns.Add("Action", GetType(String))
+        PackageListTable.Columns.Add("Status", GetType(String))
+        PackageListTable.Columns.Add("Id", GetType(String))
+        PackageListTable.Columns.Add("Name", GetType(String))
+        PackageListTable.Columns.Add("Version", GetType(String))
+        PackageListTable.Columns.Add("LatestVersion", GetType(String))
+        PackageListTable.Columns.Add("Description", GetType(String))
+        PackageListTable.Columns.Add("ManifestPath", GetType(String))
 
         'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
         'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
@@ -203,11 +212,11 @@ Public Class aaformMainWindow
                     ' One example is Adopt OpenJDK which displays
                     ' version 8.x last I checked when it should
                     ' display 15.x or something.
-                    PackageListObject.PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
+                    PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
                 End If
             Else
                 ' Just add all the package versions.
-                PackageListObject.PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
+                PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
             End If
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
@@ -219,7 +228,7 @@ Public Class aaformMainWindow
         Next
 
         ' Set the datasource for the datagridview to the public package list table.
-        aaformMainWindow.datagridviewPackageList.DataSource = PackageListObject.PackageListTable
+        aaformMainWindow.datagridviewPackageList.DataSource = PackageListTable
 
         ' Set the progressbar to the maximum to make it look finished.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
@@ -231,6 +240,8 @@ Public Class aaformMainWindow
         PackageListPostUpdate()
 
     End Function
+
+    Friend Shared PackageListTable As New DataTable
 
     Friend Shared Async Sub PackageListPostUpdate()
 
