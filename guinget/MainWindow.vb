@@ -84,8 +84,8 @@ Public Class aaformMainWindow
 
 
 
-        ' Clear the rows.
-        aaformMainWindow.datagridviewPackageList.Rows.Clear()
+        ' Set the datasource to Nothing so it's empty.
+        aaformMainWindow.datagridviewPackageList.DataSource = Nothing
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
