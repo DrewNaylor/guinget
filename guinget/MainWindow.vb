@@ -203,6 +203,11 @@ Public Class aaformMainWindow
                 packageDescription = "(Couldn't find manifest)"
             End If
 
+            ' ManifestType for debugging. This'll be commented out until it's needed.
+            ' It'll also have to be changed to support the new DataTable, and I'm just putting this here
+            ' in case it ends up being necessary for someone.
+            'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+
             If My.Settings.OnlyDisplayLatestPackageVersion = True Then
                 ' If the user wants to only display the latest package version,
                 ' we'll have to compare it.
@@ -214,11 +219,15 @@ Public Class aaformMainWindow
                     ' One example is Adopt OpenJDK which displays
                     ' version 8.x last I checked when it should
                     ' display 15.x or something.
-                    PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
+                    Await Task.Run(Sub()
+                                       PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
+                                   End Sub)
                 End If
             Else
                 ' Just add all the package versions.
-                PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
+                Await Task.Run(Sub()
+                                   PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
+                               End Sub)
             End If
             ' Make the progress bar progress.
             aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
