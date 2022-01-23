@@ -239,16 +239,16 @@ Public Class aaformMainWindow
             ' Make the progress bar progress if this row number is divisible by 100 and there are
             ' 100 or more packages.
             If ManifestPaths.Count >= 100 AndAlso PackageListTable.Rows.Count Mod 100 = 0 Then
-                Debug.WriteLine(">= 100, dividing by 100: " & PackageListTable.Rows.Count)
+                'Debug.WriteLine(">= 100, dividing by 100: " & PackageListTable.Rows.Count)
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             ElseIf ManifestPaths.Count >= 10 AndAlso ManifestPaths.Count < 100 AndAlso PackageListTable.Rows.Count Mod 10 = 0 Then
                 ' If there are 10 or more but fewer than 100 packages, perform a step when the
                 ' number of rows in the package list table is divisible by 10.
-                Debug.WriteLine(">= 10, < 100, dividing by 10: " & PackageListTable.Rows.Count)
+                'Debug.WriteLine(">= 10, < 100, dividing by 10: " & PackageListTable.Rows.Count)
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             ElseIf ManifestPaths.Count < 10 Then
                 ' If there are fewer than 10 packages, go one at a time.
-                Debug.WriteLine("< 10: " & PackageListTable.Rows.Count)
+                'Debug.WriteLine("< 10: " & PackageListTable.Rows.Count)
                 aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
             End If
             ' Update the statusbar to show the current info.
