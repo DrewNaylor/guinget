@@ -123,12 +123,6 @@
   <metadata name="contextmenustripPackageMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>357, 17</value>
   </metadata>
-  <metadata name="contextmenuPackageDetailsTextbox.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>504, 56</value>
-  </metadata>
-  <data name="textboxPackageDetails.Text" xml:space="preserve">
-    <value>No package is selected or the package list hasn't been loaded yet. You can load the package list by using the Refresh cache toolbar button, by going to Package list&gt;Refresh cache, or by pressing Ctrl+R.</value>
-  </data>
   <metadata name="PkgAction.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -156,6 +150,12 @@
   <metadata name="ManifestType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="contextmenuPackageDetailsTextbox.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>504, 56</value>
+  </metadata>
+  <data name="textboxPackageDetails.Text" xml:space="preserve">
+    <value>No package is selected or the package list hasn't been loaded yet. You can load the package list by using the Refresh cache toolbar button, by going to Package list&gt;Refresh cache, or by pressing Ctrl+R.</value>
+  </data>
   <metadata name="toolstripMainWindow.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>153, 17</value>
   </metadata>
