@@ -320,6 +320,9 @@ Public Class aaformMainWindow
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
 
+        ' Reset progress bar step count to 1.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
+
         ' Update the main window again.
         aaformMainWindow.Update()
 
