@@ -861,7 +861,7 @@ Public Class aaformMainWindow
         ' Show package context menu on cell double-click, like Synaptic.
 
         If e.ColumnIndex >= 1 AndAlso e.RowIndex >= 0 Then
-            ' Make sure we're not double-clicking on the column headers
+            ' Make sure we're not double-clicking on the column header sizing area
             ' before showing the context menu. This allows quick column
             ' auto-sizing based on cell contents when double-clicking
             ' the header separators.
