@@ -314,8 +314,8 @@ Public Class aaformMainWindow
 
         '' Turn autosize back on for certain columns. Might not help
         '' performance, so it's commented out for now.
-        aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        aaformMainWindow.datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        aaformMainWindow.datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
