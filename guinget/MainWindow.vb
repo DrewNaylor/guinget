@@ -520,6 +520,13 @@ Public Class aaformMainWindow
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
 
+        ' Update the number of listed packages, because marking them causes them to be
+        ' removed from view if you're not in the "All" view filter.
+        UpdatePackageListCount()
+
+        ' Accept the changes to the datatable.
+        PackageListTable.AcceptChanges()
+
         ' Reset package list flag.
         IsPackageListTaskRunning = False
     End Sub
