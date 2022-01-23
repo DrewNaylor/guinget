@@ -108,7 +108,14 @@ Public Class aaformMainWindow
         Dim ManifestPaths As List(Of String) = Await PackageListTools.GetManifestsAsync
 
         ' Set progress bar step count.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
+        ' Make sure the number of packages is high enough, or lower accordingly.
+        If ManifestPaths.Count >= 100 Then
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 100
+        ElseIf ManifestPaths.Count >= 10 AndAlso ManifestPaths.Count < 100 Then
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 10
+        Else
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
+        End If
 
         ' Update loading statusbar label.
         ' We're not showing the current index anymore since that takes too long.
@@ -118,7 +125,7 @@ Public Class aaformMainWindow
         'MessageBox.Show(ManifestPaths(0))
 
         ' Check to make sure there are manifests.
-        If ManifestPaths(0) = String.Empty Then
+        If ManifestPaths.Count = 0 Then
             ' Reset main window stuff to default.
             PackageListPostUpdate()
             Exit Function
@@ -229,8 +236,21 @@ Public Class aaformMainWindow
                                    PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
                                End Sub)
             End If
-            ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ' Make the progress bar progress if this row number is divisible by 100 and there are
+            ' 100 or more packages.
+            If ManifestPaths.Count >= 100 AndAlso PackageListTable.Rows.Count Mod 100 = 0 Then
+                Debug.WriteLine(">= 100, dividing by 100: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ElseIf ManifestPaths.Count >= 10 AndAlso ManifestPaths.Count < 100 AndAlso PackageListTable.Rows.Count Mod 10 = 0 Then
+                ' If there are 10 or more but fewer than 100 packages, perform a step when the
+                ' number of rows in the package list table is divisible by 10.
+                Debug.WriteLine(">= 10, < 100, dividing by 10: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ElseIf ManifestPaths.Count < 10 Then
+                ' If there are fewer than 10 packages, go one at a time.
+                Debug.WriteLine("< 10: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            End If
             ' Update the statusbar to show the current info.
             ' Currently commented out because it's faster to not
             ' update the statusbar every time, but to instead
@@ -552,7 +572,7 @@ Public Class aaformMainWindow
 
         ' We can now display the package details while making sure the manifest isn't
         ' nothing.
-        If aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
+        If PackageListTable.Rows.Count > 0 AndAlso aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
                     IO.File.Exists(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
