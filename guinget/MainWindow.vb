@@ -860,13 +860,21 @@ Public Class aaformMainWindow
     Private Sub datagridviewPackageList_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellDoubleClick
         ' Show package context menu on cell double-click, like Synaptic.
 
-        If e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
+        If e.ColumnIndex >= 1 AndAlso e.RowIndex >= 0 Then
             ' Make sure we're not double-clicking on the column headers
             ' before showing the context menu. This allows quick column
             ' auto-sizing based on cell contents when double-clicking
             ' the header separators.
             ' Related issue:
             ' https://github.com/DrewNaylor/guinget/issues/16
+            contextmenustripPackageMenu.Show(MousePosition)
+        End If
+    End Sub
+
+    Private Sub datagridviewPackageList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellClick
+        ' Show the context menu if we're clicking in the Action column.
+        If e.ColumnIndex = 0 AndAlso e.RowIndex >= 0 Then
+            ' Show the context menu at the mouse position.
             contextmenustripPackageMenu.Show(MousePosition)
         End If
     End Sub
