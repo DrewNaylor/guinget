@@ -146,6 +146,7 @@ Partial Class aaformMainWindow
         Me.TypeTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialogExportPackages = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialogImportPackages = New System.Windows.Forms.OpenFileDialog()
+        Me.ShowContextMenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menustripMainWindow.SuspendLayout()
         Me.contextmenustripPackageMenu.SuspendLayout()
         CType(Me.splitcontainerMainWindow, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -327,7 +328,7 @@ Partial Class aaformMainWindow
         '
         'SelectedPackagesToolStripMenuItem
         '
-        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesActionDoNothingMenuItem, Me.SelectedPackagesActionInstallMenuItem, Me.SelectedPackagesActionUninstallMenuItem, Me.SelectedPackagesActionUpgradeMenuItem, Me.zSeparatorAfterActionsInSelectedPackagesMenu, Me.SelectedPackagesSearchForLastSelectedID, Me.zSeparatorSelectedPackagesMenu, Me.ShowInWingetToolStripMenuItem, Me.SelectedPackagesProperties})
+        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesActionDoNothingMenuItem, Me.SelectedPackagesActionInstallMenuItem, Me.SelectedPackagesActionUninstallMenuItem, Me.SelectedPackagesActionUpgradeMenuItem, Me.zSeparatorAfterActionsInSelectedPackagesMenu, Me.SelectedPackagesSearchForLastSelectedID, Me.zSeparatorSelectedPackagesMenu, Me.ShowInWingetToolStripMenuItem, Me.SelectedPackagesProperties, Me.ShowContextMenuToolStripMenuItem})
         Me.SelectedPackagesToolStripMenuItem.Name = "SelectedPackagesToolStripMenuItem"
         Me.SelectedPackagesToolStripMenuItem.Size = New System.Drawing.Size(115, 20)
         Me.SelectedPackagesToolStripMenuItem.Text = "&Selected packages"
@@ -336,57 +337,57 @@ Partial Class aaformMainWindow
         '
         Me.SelectedPackagesActionDoNothingMenuItem.Name = "SelectedPackagesActionDoNothingMenuItem"
         Me.SelectedPackagesActionDoNothingMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionDoNothingMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionDoNothingMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesActionDoNothingMenuItem.Text = "Action: &Do nothing"
         '
         'SelectedPackagesActionInstallMenuItem
         '
         Me.SelectedPackagesActionInstallMenuItem.Name = "SelectedPackagesActionInstallMenuItem"
         Me.SelectedPackagesActionInstallMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionInstallMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionInstallMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesActionInstallMenuItem.Text = "Action: &Install"
         '
         'SelectedPackagesActionUninstallMenuItem
         '
         Me.SelectedPackagesActionUninstallMenuItem.Name = "SelectedPackagesActionUninstallMenuItem"
         Me.SelectedPackagesActionUninstallMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionUninstallMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionUninstallMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesActionUninstallMenuItem.Text = "Action: &Uninstall"
         '
         'SelectedPackagesActionUpgradeMenuItem
         '
         Me.SelectedPackagesActionUpgradeMenuItem.Name = "SelectedPackagesActionUpgradeMenuItem"
         Me.SelectedPackagesActionUpgradeMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionUpgradeMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionUpgradeMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesActionUpgradeMenuItem.Text = "Action: U&pgrade"
         '
         'zSeparatorAfterActionsInSelectedPackagesMenu
         '
         Me.zSeparatorAfterActionsInSelectedPackagesMenu.Name = "zSeparatorAfterActionsInSelectedPackagesMenu"
-        Me.zSeparatorAfterActionsInSelectedPackagesMenu.Size = New System.Drawing.Size(214, 6)
+        Me.zSeparatorAfterActionsInSelectedPackagesMenu.Size = New System.Drawing.Size(222, 6)
         '
         'SelectedPackagesSearchForLastSelectedID
         '
         Me.SelectedPackagesSearchForLastSelectedID.Name = "SelectedPackagesSearchForLastSelectedID"
-        Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesSearchForLastSelectedID.Text = "&Search for package ID"
         '
         'zSeparatorSelectedPackagesMenu
         '
         Me.zSeparatorSelectedPackagesMenu.Name = "zSeparatorSelectedPackagesMenu"
-        Me.zSeparatorSelectedPackagesMenu.Size = New System.Drawing.Size(214, 6)
+        Me.zSeparatorSelectedPackagesMenu.Size = New System.Drawing.Size(222, 6)
         '
         'ShowInWingetToolStripMenuItem
         '
         Me.ShowInWingetToolStripMenuItem.Name = "ShowInWingetToolStripMenuItem"
         Me.ShowInWingetToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
-        Me.ShowInWingetToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.ShowInWingetToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.ShowInWingetToolStripMenuItem.Text = "Show in &winget..."
         '
         'SelectedPackagesProperties
         '
         Me.SelectedPackagesProperties.Name = "SelectedPackagesProperties"
-        Me.SelectedPackagesProperties.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesProperties.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesProperties.Text = "&Properties..."
         '
         'ToolsToolStripMenuItem
@@ -1172,6 +1173,13 @@ Partial Class aaformMainWindow
         Me.OpenFileDialogImportPackages.RestoreDirectory = True
         Me.OpenFileDialogImportPackages.Title = "Import Packages"
         '
+        'ShowContextMenuToolStripMenuItem
+        '
+        Me.ShowContextMenuToolStripMenuItem.Name = "ShowContextMenuToolStripMenuItem"
+        Me.ShowContextMenuToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
+        Me.ShowContextMenuToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.ShowContextMenuToolStripMenuItem.Text = "Show context menu"
+        '
         'aaformMainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1342,4 +1350,5 @@ Partial Class aaformMainWindow
     Friend WithEvents RightToLeftMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents pictureboxFastResizePackageList As PictureBox
+    Friend WithEvents ShowContextMenuToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -1618,6 +1618,14 @@ Public Class aaformMainWindow
         End With
     End Sub
 
+    Private Sub ShowContextMenuToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowContextMenuToolStripMenuItem.Click
+        ' Shows the context menu for selected cells.
+        ' I'd prefer the context menu to show up underneath the last-selected one, but having it be PointToScreen gets it close enough,
+        ' in this case to the top-right corner. This isn't that good because it can cover up part of the screen, but
+        ' at least it's functional for showing the context menu for keyboard users.
+        contextmenustripPackageMenu.Show(datagridviewPackageList.PointToScreen(datagridviewPackageList.Location))
+    End Sub
+
 
     ' If we wanted to, we could allow the package list to be loaded on application
     ' startup, but since loading the files list isn't async yet, it takes a bit
