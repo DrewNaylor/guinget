@@ -659,7 +659,6 @@ Public Class PackageListTools
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
-
             ' Append the current package manifest's path to the ManifestPath string.
             Await Task.Run(Sub()
                                ManifestPath.Add(PackageManifest)
