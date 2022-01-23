@@ -499,7 +499,7 @@ Public Class aaformMainWindow
             ' If we don't do this, we'll accidentally mark
             ' packages that aren't being shown, such as if
             ' we're doing a search.
-            If Package.Visible = True Then
+            If Package.Visible = True AndAlso Not Package.Cells.Item(0).Value.ToString = Action Then
                 ' Mark the package.
                 Package.Cells.Item(0).Value = Action
             End If
