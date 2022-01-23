@@ -461,6 +461,12 @@ Public Class aaformMainWindow
         ' Mark each package with an action based on what
         ' the user wants.
 
+        ' KNOWN ISSUE: Sometimes, one of the selected packages will be shown when
+        ' displaying a filtered Action column until selecting a different package.
+        ' A solution to this would be to accept changes to the datatable, but
+        ' that's worse because it then moves the datagridview to the bottom of the
+        ' lowest package in the list, which is annoying.
+
         ' Set package list task flag.
         IsPackageListTaskRunning = True
 
@@ -523,9 +529,6 @@ Public Class aaformMainWindow
         ' Update the number of listed packages, because marking them causes them to be
         ' removed from view if you're not in the "All" view filter.
         UpdatePackageListCount()
-
-        ' Accept the changes to the datatable.
-        PackageListTable.AcceptChanges()
 
         ' Reset package list flag.
         IsPackageListTaskRunning = False
