@@ -1078,8 +1078,9 @@ Public Class aaformMainWindow
             UpdatePackageListCount()
 
             ' Turn autosize back on for certain columns.
-            aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            ' This is for the Action and Status columns.
+            aaformMainWindow.datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            aaformMainWindow.datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
             ' Show the package list again.
             aaformMainWindow.datagridviewPackageList.Visible = True
