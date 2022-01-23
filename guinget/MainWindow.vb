@@ -505,8 +505,8 @@ Public Class aaformMainWindow
         Next
 
         ' Turn autosize back on for certain columns.
-        aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        aaformMainWindow.datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        aaformMainWindow.datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
         ' Hide progress bar and info label.
         ProgressInfoVisibility(False)
@@ -989,28 +989,32 @@ Public Class aaformMainWindow
 #Region "HiDPI-related stuff."
     Private Sub HiDPIModeToggle(UseHiDPIMode As Boolean)
         ' Turn on or off HiDPI mode as needed.
+        ' Hide the datagridview to speed things up.
+        datagridviewPackageList.Visible = False
         If UseHiDPIMode = True Then
             ' Make the package list double height.
             datagridviewPackageList.RowTemplate.Height = 48
             ' Change the height of all the packages in there.
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             For Each PackageRow As DataGridViewRow In datagridviewPackageList.Rows
                 PackageRow.Height = 48
             Next
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         Else
             ' Turn off HiDPI mode.
             datagridviewPackageList.RowTemplate.Height = 24
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             For Each PackageRow As DataGridViewRow In datagridviewPackageList.Rows
                 PackageRow.Height = 24
             Next
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         End If
+        ' Show the datagridview again.
+        datagridviewPackageList.Visible = True
     End Sub
 #End Region
 
