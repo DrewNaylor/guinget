@@ -1524,6 +1524,19 @@ Public Class aaformMainWindow
         textboxPackageDetails.SelectAll()
     End Sub
 
+    Private Sub textboxPackageDetails_SelectionChanged(sender As Object, e As EventArgs) Handles textboxPackageDetails.SelectionChanged
+        ' Allow or block the "Copy" button based on
+        ' whether something is selected or not.
+        ' This is in the Package details textbox context menu region
+        ' because it's related, even though it's technically not
+        ' part of the context menu.
+        If textboxPackageDetails.SelectedText.Length > 0 Then
+            CopyToolStripMenuItem.Enabled = True
+        Else
+            CopyToolStripMenuItem.Enabled = False
+        End If
+    End Sub
+
     Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
         ' Copy text if some is selected.
         If textboxPackageDetails.SelectedText.Length > 0 Then
@@ -1606,16 +1619,6 @@ Public Class aaformMainWindow
         ValidateManifestWindow.ShowDialog(Me)
     End Sub
 
-    Private Sub textboxPackageDetails_SelectionChanged(sender As Object, e As EventArgs) Handles textboxPackageDetails.SelectionChanged
-        ' Allow or block the "Copy" button based on
-        ' whether something is selected or not.
-        If textboxPackageDetails.SelectedText.Length > 0 Then
-            CopyToolStripMenuItem.Enabled = True
-        Else
-            CopyToolStripMenuItem.Enabled = False
-        End If
-    End Sub
-
     Private Sub datagridviewPackageList_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles datagridviewPackageList.DataBindingComplete
         ' Hide certain columns once databinding is complete.
         ' Based on this SO post, solution 2:
@@ -1670,7 +1673,7 @@ Public Class aaformMainWindow
     ' https://www.youtube.com/watch?v=APyteDZMpYw
     ' The above video doesn't seem to work if
     ' the code you're calling is in another class without
-    ' Me.Invoke. libguinget.PackageTools.GetPkgInfoAsync
+    ' Me.Invoke. libguinget.PackageTools.GetPkgInfoFromWingetAsync
     ' works a lot better for this task as example code.
 
 End Class
