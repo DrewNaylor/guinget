@@ -1,7 +1,7 @@
 ﻿' guinget - Unofficial GUI for Microsoft's Windows Package Manager (winget)
 '           Kinda like Synaptic, but for Windows. Not associated with either
 '           Microsoft or the Synaptic project. 
-' Copyright (C) 2020-2021 Drew Naylor
+' Copyright (C) 2020-2022 Drew Naylor
 ' (Note that the copyright years include the years left out by the hyphen.)
 ' winget, Windows, and all related words are copyright and trademark Microsoft Corporation.
 '
@@ -71,21 +71,33 @@ Public Class aaformMainWindow
         ' Set update running flag.
         IsPackageListTaskRunning = True
 
+        ' Clear the column widths list.
+        PackageListColumnWidths.Clear()
+
         ' Turn off autosize to make it go way faster.
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
         For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
-            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+            ' Save the current column widths.
+            PackageListColumnWidths.Add(column.Width)
+            ' Unset the autosizecolumnmode.
+            'column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
         Next
 
         ' Hide the datagridview while we're updating to make
         ' this slightly faster.
         aaformMainWindow.datagridviewPackageList.Visible = False
 
+        ' Don't auto-create columns.
+        'aaformMainWindow.datagridviewPackageList.AutoGenerateColumns = False
 
+        ' Set the datasource to Nothing so it's empty.
+        aaformMainWindow.datagridviewPackageList.DataSource = Nothing
+        aaformMainWindow.datagridviewPackageList.Columns.Clear()
 
-        ' Clear the rows.
-        aaformMainWindow.datagridviewPackageList.Rows.Clear()
+        ' Clear the package list datatable.
+        PackageListTable.Clear()
+        PackageListTable.AcceptChanges()
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
@@ -102,7 +114,14 @@ Public Class aaformMainWindow
         Dim ManifestPaths As List(Of String) = Await PackageListTools.GetManifestsAsync
 
         ' Set progress bar step count.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
+        ' Make sure the number of packages is high enough, or lower accordingly.
+        If ManifestPaths.Count >= 100 Then
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 100
+        ElseIf ManifestPaths.Count >= 10 AndAlso ManifestPaths.Count < 100 Then
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 10
+        Else
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
+        End If
 
         ' Update loading statusbar label.
         ' We're not showing the current index anymore since that takes too long.
@@ -112,26 +131,105 @@ Public Class aaformMainWindow
         'MessageBox.Show(ManifestPaths(0))
 
         ' Check to make sure there are manifests.
-        If ManifestPaths(0) = String.Empty Then
+        If ManifestPaths.Count = 0 Then
             ' Reset main window stuff to default.
             PackageListPostUpdate()
             Exit Function
         End If
 
         ' Get a datatable ready.
-        Dim SqliteList As DataTable = PackageListTools.GetPackageDetailsTableFromSqliteDB()
+        ' Not sure how much this helps to be async, but I hope it does help at least some.
+        Dim SqliteList As DataTable = Await PackageListTools.GetPackageDetailsTableFromSqliteDBAsync()
 
-            ' Set progress bar maximum value.
-            ' This has to be done here or there will be a crash
-            ' if we can't find all the manifests.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = SqliteList.Rows.Count - 1
+        ' Set progress bar maximum value.
+        ' This has to be done here or there will be a crash
+        ' if we can't find all the manifests.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = SqliteList.Rows.Count - 1
 
-            ' Update the statusbar before doing the progressbar.
-            aaformMainWindow.statusbarMainWindow.Update()
+        ' Update the statusbar before doing the progressbar.
+        aaformMainWindow.statusbarMainWindow.Update()
+
+        ' In case there are manifests we can't find easily,
+        ' we need to get them now.
+        ' These have to be grabbed now or else updating the manifests
+        ' will crash when the path doesn't exist.
+        PackageListTools.FallbackPathList = Await PackageListTools.GetManifestsAsync
+
+        ' Set properties for each column.
+        For Each LocalColumn As DataColumn In PackageListTable.Columns
+            If Not LocalColumn.ColumnName = "Action" Then
+                LocalColumn.ReadOnly = True
+            Else
+                LocalColumn.ReadOnly = False
+            End If
+        Next
 
         'MessageBox.Show(SqliteList.Rows.Item(0).ToString)
         'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
         For Each PackageRow As DataRow In SqliteList.Rows
+            ' Get the manifest path and description for the current row.
+            ' TODO: Figure out how to get the manifest path for this package
+            ' by looking in the ManifestPaths list, if that's possible for
+            ' even manifests that it's difficult to find their paths.
+            ' Not sure why I didn't try to do this before, as this should
+            ' be a lot faster than having to look through the disk again
+            ' after looking just before this. It may be a good idea to provide
+            ' a fallback that looks through the disk, just in case, so
+            ' the FindManifestByVersionAndId function will probably still
+            ' be used, but I'll pass the list along with the version and ID.
+            Dim manifestPath As String = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Item(0).ToString, PackageRow.Item(2).ToString)
+            ' Get description from manifest.
+            ' Ensure the manifest path cell isn't nothing.
+            ' The database was broken just after 1 AM EDT
+            ' on October 8, 2020, so this is to prevent
+            ' future crashes, even if the database is broken
+            ' again.
+            ' Defaulting this to "(Couldn't find manifest)" so that it's simpler
+            ' and uses fewer lines.
+            ' TODO: Move this to a separate function so it doesn't have to get called as often,
+            ' as a lot of packages won't need to call it if only the latest version is supposed to be shown.
+            Dim packageDescription As String = "(Couldn't find manifest)"
+            If manifestPath IsNot Nothing Then
+                ' Make sure the short description doesn't match the package ID, and use the
+                ' long description if it does.
+                ' Store the short description in a string so we don't have to read
+                ' the manifest multiple times just for the description comparison.
+                ' First check if it's a single-file manifest or not.
+                Dim FileWithDescription As String = manifestPath
+                If Await PackageTools.GetPackageInfoFromYamlAsync(manifestPath, "ManifestType") = "version" Then
+                    ' Get the default locale path.
+                    FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
+                End If
+                ' Check if the file path isn't Nothing.
+                If FileWithDescription IsNot Nothing Then
+                    ' Now do the description stuff.
+                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
+                    If ShortDescription = PackageRow.Item(0).ToString Then
+                        ' Use the full description if the short description
+                        ' is just the package ID.
+                        packageDescription = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
+                    Else
+                        ' Package ID and short description aren't the same
+                        ' thing, so use the short description.
+                        packageDescription = ShortDescription
+                    End If
+                Else
+                    ' If the file path is Nothing, meaning the file
+                    ' doesn't exist or we couldn't find it, just say that
+                    ' we couldn't find the manifest.
+                    packageDescription = "(Couldn't find manifest)"
+                End If
+
+            Else
+                ' If the value in the manifest path cell is nothing, change the description.
+                packageDescription = "(Couldn't find manifest)"
+            End If
+
+            ' ManifestType for debugging. This'll be commented out until it's needed.
+            ' It'll also have to be changed to support the new DataTable, and I'm just putting this here
+            ' in case it ends up being necessary for someone.
+            'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
+
             If My.Settings.OnlyDisplayLatestPackageVersion = True Then
                 ' If the user wants to only display the latest package version,
                 ' we'll have to compare it.
@@ -143,14 +241,31 @@ Public Class aaformMainWindow
                     ' One example is Adopt OpenJDK which displays
                     ' version 8.x last I checked when it should
                     ' display 15.x or something.
-                    aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
+                    Await Task.Run(Sub()
+                                       PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
+                                   End Sub)
                 End If
             Else
                 ' Just add all the package versions.
-                aaformMainWindow.datagridviewPackageList.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), "Loading...", "Loading...")
+                Await Task.Run(Sub()
+                                   PackageListTable.Rows.Add("Do nothing", "Unknown", PackageRow.Item(0), PackageRow.Item(1), PackageRow.Item(2), PackageRow.Item(3), packageDescription, manifestPath)
+                               End Sub)
             End If
-            ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ' Make the progress bar progress if this row number is divisible by 100 and there are
+            ' 100 or more packages.
+            If ManifestPaths.Count >= 100 AndAlso PackageListTable.Rows.Count Mod 100 = 0 Then
+                'Debug.WriteLine(">= 100, dividing by 100: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ElseIf ManifestPaths.Count >= 10 AndAlso ManifestPaths.Count < 100 AndAlso PackageListTable.Rows.Count Mod 10 = 0 Then
+                ' If there are 10 or more but fewer than 100 packages, perform a step when the
+                ' number of rows in the package list table is divisible by 10.
+                'Debug.WriteLine(">= 10, < 100, dividing by 10: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            ElseIf ManifestPaths.Count < 10 Then
+                ' If there are fewer than 10 packages, go one at a time.
+                'Debug.WriteLine("< 10: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+            End If
             ' Update the statusbar to show the current info.
             ' Currently commented out because it's faster to not
             ' update the statusbar every time, but to instead
@@ -158,106 +273,77 @@ Public Class aaformMainWindow
             'aaformMainWindow.statusbarMainWindow.Update()
         Next
 
-        ' Update the main window now that the list is loaded.
-        aaformMainWindow.Update()
+        ' Accept the changes to the datatable.
+        PackageListTable.AcceptChanges()
+
+        ' Close the database.
+        SqliteList.Dispose()
+
+        ' Create a dataview so that it can be sorted automatically.
+        ' https://docs.microsoft.com/en-us/dotnet/api/system.data.dataview.sort?redirectedfrom=MSDN&view=netframework-4.8#System_Data_DataView_Sort
+
+        ' Set the datasource for the datagridview to the public package list table.
+        aaformMainWindow.datagridviewPackageList.DataSource = PackageListDataView
 
         ' Set the progressbar to the maximum to make it look finished.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum
 
-        ' Update loading label.
-        aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading package details..."
-
-        ' Set the progress bar back to 0.
-        aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
-
         ' Update the main window again after making the list visible and changing the loading label.
         aaformMainWindow.Update()
-
-        ' Now we load the details for each row.
-
-        ' In case there are manifests we can't find easily,
-        ' we need to get them now.
-        ' These have to be grabbed now or else updating the manifests
-        ' will crash when the path doesn't exist.
-        PackageListTools.FallbackPathList = Await PackageListTools.GetManifestsAsync
-
-        ' Update the statusbar before doing the progressbar.
-        aaformMainWindow.statusbarMainWindow.Update()
-
-        ' Now we need to load the manifests and the descriptions.
-        For Each PackageRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-            ' Find the manifest and get its description.
-            PackageRow.Cells.Item(7).Value = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Cells.Item(2).Value.ToString, PackageRow.Cells.Item(4).Value.ToString)
-            ' Ensure the manifest path cell isn't nothing.
-            ' The database was broken just after 1 AM EDT
-            ' on October 8, 2020, so this is to prevent
-            ' future crashes, even if the database is broken
-            ' again.
-            If PackageRow.Cells.Item(7).Value IsNot Nothing Then
-                ' Make sure the short description doesn't match the package ID, and use the
-                ' long description if it does.
-                ' Store the short description in a string so we don't have to read
-                ' the manifest multiple times just for the description comparison.
-                ' First check if it's a single-file manifest or not.
-                Dim FileWithDescription As String = PackageRow.Cells.Item(7).Value.ToString
-                If Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType") = "version" Then
-                    ' Get the default locale path.
-                    FileWithDescription = Await PackageTools.GetMultiFileManifestPieceFilePath(FileWithDescription, "defaultLocale")
-                End If
-                ' Check if the file path isn't Nothing.
-                If FileWithDescription IsNot Nothing Then
-                    ' Now do the description stuff.
-                    Dim ShortDescription As String = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "ShortDescription")
-                    If PackageRow.Cells.Item(2).Value.ToString = ShortDescription Then
-                        ' Use the full description if the short description
-                        ' is just the package ID.
-                        PackageRow.Cells.Item(6).Value = Await PackageTools.GetPackageInfoFromYamlAsync(FileWithDescription, "Description")
-                    Else
-                        ' Package ID and short description aren't the same
-                        ' thing, so use the short description.
-                        PackageRow.Cells.Item(6).Value = ShortDescription
-                    End If
-                Else
-                    ' If the file path is Nothing, meaning the file
-                    ' doesn't exist or we couldn't find it, just say that
-                    ' we couldn't find the manifest.
-                    PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
-                End If
-
-            Else
-                ' If the value in the manifest path cell is nothing, change the description.
-                PackageRow.Cells.Item(6).Value = "(Couldn't find manifest)"
-            End If
-
-            ' ManifestType for debugging. This'll be commented out until it's needed.
-            'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
-
-            ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
-            ' Update the statusbar to show the current info.
-            ' Currently commented out because it's faster to not
-            ' update the statusbar every time, but to instead
-            ' rely on it just updating automatically.
-            'aaformMainWindow.statusbarMainWindow.Update()
-        Next
 
         ' We're done updating the package list, so call the post-update sub.
         PackageListPostUpdate()
 
     End Function
 
+    ' PackageListTable is the DataTable that we'll use to assign things to.
+    Friend Shared PackageListTable As New DataTable
+    ' PackageListDataView is the DataView that we'll sort and filter with.
+    Friend Shared PackageListDataView As New DataView(PackageListTable)
+    ' Save the current column widths so they can be re-applied later.
+    Friend Shared PackageListColumnWidths As New List(Of Integer)
+
+    Friend Shared Sub UpdatePackageListCount()
+        ' Updates the number of packages as shown in the statusbar.
+        ' Since the DataView rowfilter makes the datagridview think
+        ' rows are getting removed even though the rows are still there,
+        ' we can take advantage of this and change the number to how
+        ' many packages are currently listed, like what Synaptic does.
+        ' TODO: Display the number of packages that are installed,
+        ' the number to install or upgrade, and the number to uninstall.
+        ' Pretty sure there won't have to be one for broken packages,
+        ' as winget doesn't have that at the moment, though I'll add that
+        ' if it gets that feature.
+        If aaformMainWindow.datagridviewPackageList.RowCount = 1 Then
+            ' Make sure it doesn't display "packages" when there's only one.
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
+                        " package listed, " & PackageListTable.Rows.Count.ToString & " loaded."
+        Else
+            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
+                        " packages listed, " & PackageListTable.Rows.Count.ToString & " loaded."
+        End If
+    End Sub
+
     Friend Shared Async Sub PackageListPostUpdate()
 
         ' Sort the package list if it's not already sorted.
-        AutoSortPackageIDColumn()
+        PackageListDataView.Sort = "Id ASC"
 
         '' Turn autosize back on for certain columns. Might not help
         '' performance, so it's commented out for now.
-        aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        'aaformMainWindow.datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        'aaformMainWindow.datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+
+        ' Load previous column widths.
+        For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+            column.Width = PackageListColumnWidths.Item(column.Index)
+        Next
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
+
+        ' Reset progress bar step count to 1.
+        aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
         ' Update the main window again.
         aaformMainWindow.Update()
@@ -278,21 +364,11 @@ Public Class aaformMainWindow
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
 
-        ' Display number of packages loaded. This really should be
-        ' changed to calculate the number of currently-visible rows
-        ' in case the user is filtering the list,
-        ' but this is better than nothing for now.
+        ' Display number of packages loaded and currently listed.
+        ' Moved to its own sub, so see that for more details.
         ' This SO answer might help:
         ' https://stackoverflow.com/a/44661255
-        If aaformMainWindow.datagridviewPackageList.RowCount = 1 Then
-            ' Make sure it doesn't display "packages" when there's only one.
-            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-                        " package loaded."
-        Else
-            aaformMainWindow.toolstripstatuslabelPackageCount.Text = (aaformMainWindow.datagridviewPackageList.RowCount).ToString &
-                        " packages loaded."
-        End If
-
+        UpdatePackageListCount()
 
         ' Focus the package list.
         aaformMainWindow.datagridviewPackageList.Focus()
@@ -407,6 +483,12 @@ Public Class aaformMainWindow
         ' Mark each package with an action based on what
         ' the user wants.
 
+        ' KNOWN ISSUE: Sometimes, one of the selected packages will be shown when
+        ' displaying a filtered Action column until selecting a different package.
+        ' A solution to this would be to accept changes to the datatable, but
+        ' that's worse because it then moves the datagridview to the bottom of the
+        ' lowest package in the list, which is annoying.
+
         ' Set package list task flag.
         IsPackageListTaskRunning = True
 
@@ -445,7 +527,7 @@ Public Class aaformMainWindow
             ' If we don't do this, we'll accidentally mark
             ' packages that aren't being shown, such as if
             ' we're doing a search.
-            If Package.Visible = True Then
+            If Package.Visible = True AndAlso Not Package.Cells.Item(0).Value.ToString = Action Then
                 ' Mark the package.
                 Package.Cells.Item(0).Value = Action
             End If
@@ -454,8 +536,8 @@ Public Class aaformMainWindow
         Next
 
         ' Turn autosize back on for certain columns.
-        aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        aaformMainWindow.datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        aaformMainWindow.datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
         ' Hide progress bar and info label.
         ProgressInfoVisibility(False)
@@ -465,6 +547,10 @@ Public Class aaformMainWindow
 
         ' Change mouse cursor to the default one.
         aaformMainWindow.Cursor = Cursors.Default
+
+        ' Update the number of listed packages, because marking them causes them to be
+        ' removed from view if you're not in the "All" view filter.
+        UpdatePackageListCount()
 
         ' Reset package list flag.
         IsPackageListTaskRunning = False
@@ -521,7 +607,8 @@ Public Class aaformMainWindow
 
         ' We can now display the package details while making sure the manifest isn't
         ' nothing.
-        If aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
+        If PackageListTable.Rows.Count > 0 AndAlso aaformMainWindow.datagridviewPackageList.Rows.Count > 0 AndAlso
+            aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
                     IO.File.Exists(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
@@ -650,13 +737,13 @@ Public Class aaformMainWindow
         End If
 
         ' Put the user's selections into this window.
-        For Each Row As DataGridViewRow In datagridviewPackageList.Rows
+        For Each Row As DataRow In PackageListTable.Rows
             ' Check if the package is meant to be installed.
-            If Not Row.Cells(0).Value.ToString = "Do nothing" Then
+            If Not Row.Item(0).ToString = "Do nothing" Then
                 ' If this package says something other than do nothing,
                 ' add it to the list.
-                LocalApplyChangesWindow.datagridviewAppsBeingInstalled.Rows.Add(Row.Cells(2).Value.ToString,
-                  Row.Cells(4).Value.ToString, Row.Cells(0).Value.ToString, "Ready")
+                LocalApplyChangesWindow.datagridviewAppsBeingInstalled.Rows.Add(Row.Item(2).ToString,
+                  Row.Item(4).ToString, Row.Item(0).ToString, "Ready")
 
             End If
         Next
@@ -707,7 +794,7 @@ Public Class aaformMainWindow
 
         ' Re-run search if the user wants to.
         If My.Settings.RerunSearchAfterCacheUpdate = True AndAlso toolstriptextboxSearch.Text IsNot String.Empty Then
-            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
         End If
 
         Return
@@ -799,13 +886,21 @@ Public Class aaformMainWindow
     Private Sub datagridviewPackageList_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellDoubleClick
         ' Show package context menu on cell double-click, like Synaptic.
 
-        If e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
-            ' Make sure we're not double-clicking on the column headers
+        If e.ColumnIndex >= 1 AndAlso e.RowIndex >= 0 Then
+            ' Make sure we're not double-clicking on the column header sizing area
             ' before showing the context menu. This allows quick column
             ' auto-sizing based on cell contents when double-clicking
             ' the header separators.
             ' Related issue:
             ' https://github.com/DrewNaylor/guinget/issues/16
+            contextmenustripPackageMenu.Show(MousePosition)
+        End If
+    End Sub
+
+    Private Sub datagridviewPackageList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellClick
+        ' Show the context menu if we're clicking in the Action column.
+        If e.ColumnIndex = 0 AndAlso e.RowIndex >= 0 Then
+            ' Show the context menu at the mouse position.
             contextmenustripPackageMenu.Show(MousePosition)
         End If
     End Sub
@@ -920,57 +1015,65 @@ Public Class aaformMainWindow
         ' in C# here: https://stackoverflow.com/questions/13418721/toolstrip-rounded-corners/48564597#48564597
         CType(toolstripMainWindow.Renderer, ToolStripProfessionalRenderer).RoundedEdges = False
 
-        ' Sort by package ID column.
-        ' This ensures lowercase package IDs are where they
-        ' should be and not at the end of the list.
-        AutoSortPackageIDColumn()
+        ' Add table columns.
+        ' We're doing this on startup so we don't have to figure out
+        ' how to clear them when refreshing the cache.
+        PackageListTable.Columns.Add("Action", GetType(String))
+        PackageListTable.Columns.Add("Status", GetType(String))
+        PackageListTable.Columns.Add("Id", GetType(String))
+        PackageListTable.Columns.Add("Name", GetType(String))
+        PackageListTable.Columns.Add("Version", GetType(String))
+        PackageListTable.Columns.Add("LatestVersion", GetType(String))
+        PackageListTable.Columns.Add("Description", GetType(String))
+        PackageListTable.Columns.Add("ManifestPath", GetType(String))
 
-    End Sub
 
-    Private Shared Sub AutoSortPackageIDColumn()
-        ' Sorts the package ID column after refreshing so it's in the right order.
-        ' It would be nice to have it re-sort the way it is now, though.
-        aaformMainWindow.datagridviewPackageList.Sort(aaformMainWindow.PkgName, System.ComponentModel.ListSortDirection.Ascending)
     End Sub
 
 #Region "HiDPI-related stuff."
     Private Sub HiDPIModeToggle(UseHiDPIMode As Boolean)
         ' Turn on or off HiDPI mode as needed.
+        ' Hide the datagridview to speed things up.
+        datagridviewPackageList.Visible = False
         If UseHiDPIMode = True Then
             ' Make the package list double height.
             datagridviewPackageList.RowTemplate.Height = 48
             ' Change the height of all the packages in there.
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             For Each PackageRow As DataGridViewRow In datagridviewPackageList.Rows
                 PackageRow.Height = 48
             Next
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         Else
             ' Turn off HiDPI mode.
             datagridviewPackageList.RowTemplate.Height = 24
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             For Each PackageRow As DataGridViewRow In datagridviewPackageList.Rows
                 PackageRow.Height = 24
             Next
-            PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         End If
+        ' Show the datagridview again.
+        datagridviewPackageList.Visible = True
     End Sub
 #End Region
 
 #Region "Package ID search."
     Private Sub toolstripsplitbuttonSearch_ButtonClick(sender As Object, e As EventArgs) Handles toolstripsplitbuttonSearch.ButtonClick
         ' Start searching.
-        BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+        BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
     End Sub
 
-    Friend Shared Sub BeginPackageIdSearch(SearchTerm As String, Optional SearchStartedFromSidebar As Boolean = False, Optional ColumnIndexToSearchIn As Integer = 2)
+    Friend Shared Sub BeginPackageIdSearch(SearchTerm As String, Optional SearchStartedFromSidebar As Boolean = False, Optional ColumnToSearch As String = "Id")
 
         ' Make sure there are packages to begin with.
-        If aaformMainWindow.datagridviewPackageList.Rows.Count >= 1 Then
+        ' We have to look at the package list table's row count rather than
+        ' the datagridview, as the packages aren't being stored in the datagridview anymore.
+        If PackageListTable.Rows.Count >= 1 Then
 
             ' Set package list task flag.
             IsPackageListTaskRunning = True
@@ -1006,43 +1109,53 @@ Public Class aaformMainWindow
             Next
 
             ' Set progress bar maximum to number of rows.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = aaformMainWindow.datagridviewPackageList.Rows.Count - 1
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Maximum = PackageListTable.Rows.Count - 1
             ' Set progress bar value to 0.
             aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
             ' Update main window.
             aaformMainWindow.Update()
 
-            For Each searchRow As DataGridViewRow In aaformMainWindow.datagridviewPackageList.Rows
-                ' Look in each row in the datagridview, and see what text it has.
-                ' If it starts and ends with double-quotes, remove them and do an exact match.
-                If SearchTerm.ToLowerInvariant.StartsWith("""") AndAlso SearchTerm.ToLowerInvariant.EndsWith("""") Then
-                    ' Set all rows visible to what's in the search box without the start and end.
-                    If searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant = SearchTerm.ToLowerInvariant.Trim(CChar("""")) Then
-                        ' Set only exactly-matching rows to show.
-                        searchRow.Visible = True
-                    Else
-                        ' Otherwise, hide it.
-                        searchRow.Visible = False
-                    End If
-                ElseIf searchRow.Cells.Item(ColumnIndexToSearchIn).Value.ToString.ToLowerInvariant.Contains(SearchTerm.ToLowerInvariant) Then
-                    ' If the Package ID cell contains what's in the search box, show it.
-                    searchRow.Visible = True
-                Else
-                    ' Otherwise, hide it.
-                    searchRow.Visible = False
-                End If
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
-            Next
+            ' Create a variable to store the search method.
+            Dim SearchMethod As String = "LIKE '%" & SearchTerm & "%'"
+
+            ' Check to see if we should do an exact match.
+            If SearchTerm.StartsWith("""") AndAlso SearchTerm.EndsWith("""") Then
+                SearchMethod = "= '" & SearchTerm.Trim(CChar("""")) & "'"
+            End If
+
+            ' Set DataView filter based on this SO example:
+            ' https://stackoverflow.com/a/10009794
+            ' A bunch of expression examples from here:
+            ' https://docs.microsoft.com/en-us/dotnet/api/system.data.datacolumn.expression?view=netframework-4.8
+            ' Turns out the rowstatefilter makes this break, so we can't use it.
+            ' Got the idea to just not use the rowstatefilter from this SO answer:
+            ' https://stackoverflow.com/a/52055612
+            If SearchTerm.Length > 0 Then
+                PackageListDataView.RowFilter = "[" & ColumnToSearch & "]" & SearchMethod
+            Else
+                PackageListDataView.RowFilter = String.Empty
+            End If
+
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
 
             ' Reset progress label text.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
 
+            ' If there are no items now, un-select the datagridview items.
+            If aaformMainWindow.datagridviewPackageList.Rows.Count = 0 Then
+                aaformMainWindow.datagridviewPackageList.ClearSelection()
+                ' Manually call the sub to update the package details textbox.
+                ShowSelectedPackageDetails()
+            End If
+
+            ' Show the current number of packages in the filter.
+            UpdatePackageListCount()
+
             ' Turn autosize back on for certain columns.
-            aaformMainWindow.PkgAction.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            aaformMainWindow.PkgStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            ' This is for the Action and Status columns.
+            aaformMainWindow.datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            aaformMainWindow.datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
             ' Show the package list again.
             aaformMainWindow.datagridviewPackageList.Visible = True
@@ -1059,7 +1172,7 @@ Public Class aaformMainWindow
         ' Start searching on pressing Enter.
 
         If e.KeyCode = Keys.Enter Then
-            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
             ' Stop search when typing timer.
             StopStartTypeTimer(False)
 
@@ -1127,7 +1240,7 @@ Public Class aaformMainWindow
         End If
 
         ' Begin search.
-        BeginPackageIdSearch(aaformMainWindow.toolstriptextboxSearch.Text, True, 2)
+        BeginPackageIdSearch(aaformMainWindow.toolstriptextboxSearch.Text, True, "Id")
     End Sub
 
     Private Sub listboxSearchTerms_KeyDown(sender As Object, e As KeyEventArgs) Handles listboxSearchTerms.KeyDown
@@ -1263,7 +1376,7 @@ Public Class aaformMainWindow
                 TypeTimer.Stop()
             End If
 
-            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
         End If
     End Sub
 
@@ -1323,7 +1436,7 @@ Public Class aaformMainWindow
         ' https://stackoverflow.com/a/671735
         If My.Settings.SearchWhenTyping = True Then
             TypeTimer.Stop()
-            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, 2)
+            BeginPackageIdSearch(toolstriptextboxSearch.Text, False, "Id")
         End If
     End Sub
 
@@ -1394,12 +1507,12 @@ Public Class aaformMainWindow
         If aaformMainWindow.listboxActions.SelectedItems.Count = 1 Then
             If aaformMainWindow.listboxActions.SelectedIndex = 0 Then
                 ' Search for everything if "All" is double-clicked.
-                BeginPackageIdSearch(String.Empty, True, 0)
+                BeginPackageIdSearch(String.Empty, True, "Action")
             Else
                 ' Search for the selected Action. This is between double-quotes
                 ' to ensure that something like "Uninstall" showing up when searching
                 ' for "Install" doesn't happen, for example.
-                BeginPackageIdSearch("""" & aaformMainWindow.listboxActions.SelectedItem.ToString & """", True, 0)
+                BeginPackageIdSearch("""" & aaformMainWindow.listboxActions.SelectedItem.ToString & """", True, "Action")
             End If
         End If
     End Sub
@@ -1426,6 +1539,19 @@ Public Class aaformMainWindow
         textboxPackageDetails.Focus()
         ' Select all the text.
         textboxPackageDetails.SelectAll()
+    End Sub
+
+    Private Sub textboxPackageDetails_SelectionChanged(sender As Object, e As EventArgs) Handles textboxPackageDetails.SelectionChanged
+        ' Allow or block the "Copy" button based on
+        ' whether something is selected or not.
+        ' This is in the Package details textbox context menu region
+        ' because it's related, even though it's technically not
+        ' part of the context menu.
+        If textboxPackageDetails.SelectedText.Length > 0 Then
+            CopyToolStripMenuItem.Enabled = True
+        Else
+            CopyToolStripMenuItem.Enabled = False
+        End If
     End Sub
 
     Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
@@ -1510,14 +1636,39 @@ Public Class aaformMainWindow
         ValidateManifestWindow.ShowDialog(Me)
     End Sub
 
-    Private Sub textboxPackageDetails_SelectionChanged(sender As Object, e As EventArgs) Handles textboxPackageDetails.SelectionChanged
-        ' Allow or block the "Copy" button based on
-        ' whether something is selected or not.
-        If textboxPackageDetails.SelectedText.Length > 0 Then
-            CopyToolStripMenuItem.Enabled = True
-        Else
-            CopyToolStripMenuItem.Enabled = False
-        End If
+    Private Sub datagridviewPackageList_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles datagridviewPackageList.DataBindingComplete
+        ' Hide certain columns once databinding is complete.
+        ' Based on this SO post, solution 2:
+        ' https://stackoverflow.com/a/16744811
+        With datagridviewPackageList
+            ' Hide the LatestVersion column if My.Settings.HideUnfinishedControls is True,
+            ' and show it if it's False.
+            .Columns("LatestVersion").Visible = Not My.Settings.HideUnfinishedControls
+            ' Setting the AutoSizeMode for Action and Status.
+            ' Not sure if this needs to be turned off to improve performance, but
+            ' it seems really fast anyway.
+            ' We're also setting the AutoSizeModes for the rest, so they don't
+            ' differ too much from the previous functionality.
+            .Columns("Action").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            .Columns("Status").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            .Columns("Id").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("Name").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("Version").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("LatestVersion").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("Description").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("ManifestPath").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("ManifestPath").Visible = My.Settings.DebuggingShowManifestPathColumn
+            .Columns("Id").HeaderText = "Package"
+            .Columns("Version").ToolTipText = "(will eventually only display latest version and have all older versions in a window like Synaptic)"
+        End With
+    End Sub
+
+    Private Sub ShowContextMenuToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowContextMenuToolStripMenuItem.Click
+        ' Shows the context menu for selected cells.
+        ' I'd prefer the context menu to show up underneath the last-selected one, but having it be PointToScreen gets it close enough,
+        ' in this case to the top-right corner. This isn't that good because it can cover up part of the screen, but
+        ' at least it's functional for showing the context menu for keyboard users.
+        contextmenustripPackageMenu.Show(datagridviewPackageList.PointToScreen(datagridviewPackageList.Location))
     End Sub
 
 
@@ -1539,21 +1690,7 @@ Public Class aaformMainWindow
     ' https://www.youtube.com/watch?v=APyteDZMpYw
     ' The above video doesn't seem to work if
     ' the code you're calling is in another class without
-    ' Me.Invoke. libguinget.PackageTools.GetPkgInfoAsync
+    ' Me.Invoke. libguinget.PackageTools.GetPkgInfoFromWingetAsync
     ' works a lot better for this task as example code.
 
 End Class
-
-
-'Public Class PackageInfo
-
-'    ' This class contains info on the packages.
-'    ' Commented out because it's not currently used
-'    ' and I don't want to waste memory.
-'    ' Not sure if it'll ever be used.
-'    Public Property Status As String
-'    Public Property Package As String
-'    Public Property InstalledVersion As String
-'    Public Property AvailableVersion As String
-'    Public Property Description As String
-'End Class

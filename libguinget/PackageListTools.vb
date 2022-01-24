@@ -234,17 +234,17 @@ Public Class PackageListTools
         End If
         ' Now download the database.
         If IO.Directory.Exists(DatabaseTempDir) Then
-                ' Exists; re-create it.
-                If Await DeleteTempDirAsync("winget-db", True) = False Then
-                    ' If there's an issue and a file is open, stop updating.
-                    Exit Function
-                End If
-            ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
-                ' Doesn't exist; create it.
-                Await Task.Run(Sub()
-                                   System.IO.Directory.CreateDirectory(DatabaseTempDir)
-                               End Sub)
+            ' Exists; re-create it.
+            If Await DeleteTempDirAsync("winget-db", True) = False Then
+                ' If there's an issue and a file is open, stop updating.
+                Exit Function
             End If
+        ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
+            ' Doesn't exist; create it.
+            Await Task.Run(Sub()
+                               System.IO.Directory.CreateDirectory(DatabaseTempDir)
+                           End Sub)
+        End If
         ' Now download.
         Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
                                              "winget-db")
@@ -426,11 +426,11 @@ Public Class PackageListTools
                                            "Extracting manifests")
                     End Try
                 Else
-                ' The calling app wants to use 7zip, so use it.
-                ' Make sure it doesn't have "://" in the path.
-                If PathTo7zip.Contains("://") Then
-                    PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
-                End If
+                    ' The calling app wants to use 7zip, so use it.
+                    ' Make sure it doesn't have "://" in the path.
+                    If PathTo7zip.Contains("://") Then
+                        PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
+                    End If
 
                     Using extraction7z As New Process
                         Await Task.Run(Sub()
@@ -455,11 +455,11 @@ Public Class PackageListTools
                     End Using
                 End If
 
-        'MessageBox.Show("7zip finished")
+                'MessageBox.Show("7zip finished")
 
 
 
-        End Using
+            End Using
 
             'MessageBox.Show("Done extracting.")
 
@@ -530,17 +530,17 @@ Public Class PackageListTools
                                                                ex.Message, "Moving manifests")
                         End Try
 
-                    Try
-                        ' Make sure the database temp folder exists before deleting
-                        ' the database dir.
-                        ' It might not exist if the user is running guinget offline,
-                        ' in which case the database cache will just be loaded from
-                        ' disk and won't be updated.
-                        Await Task.Run(Sub()
-                                           If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
-                                               System.IO.Directory.Delete(DatabaseDir, True)
-                                           End If
-                                       End Sub)
+                        Try
+                            ' Make sure the database temp folder exists before deleting
+                            ' the database dir.
+                            ' It might not exist if the user is running guinget offline,
+                            ' in which case the database cache will just be loaded from
+                            ' disk and won't be updated.
+                            Await Task.Run(Sub()
+                                               If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
+                                                   System.IO.Directory.Delete(DatabaseDir, True)
+                                               End If
+                                           End Sub)
 
                             ' Move the database to its proper
                             ' folder rather than copy so it's
@@ -553,17 +553,17 @@ Public Class PackageListTools
                                            End Sub)
 
                         Catch ex As System.IO.DirectoryNotFoundException
-                        MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
+                            MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                        "Please close any Explorer windows that may be open in this directory, and try again.",
                                        "Moving manifests")
-                    Catch ex As System.IO.IOException
-                        MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                        Catch ex As System.IO.IOException
+                            MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                        vbCrLf &
                                                        "Details:" & vbCrLf &
                                                        ex.Message, "Moving manifests")
-                    End Try
+                        End Try
 
-                Else
+                    Else
 
                         ' The calling app wants to use Robocopy.
                         ' Partially copying code from update-manifests.bat.
@@ -603,12 +603,12 @@ Public Class PackageListTools
                         ' If there's an issue deleting it here, exit the function.
                         Exit Function
                     End If
-                ' winget-db
-                If Await DeleteTempDirAsync("winget-db") = False Then
-                    ' If there's an issue deleting it here, exit the function.
-                    Exit Function
+                    ' winget-db
+                    If Await DeleteTempDirAsync("winget-db") = False Then
+                        ' If there's an issue deleting it here, exit the function.
+                        Exit Function
+                    End If
                 End If
-            End If
 
                 ' End checking if user clicked Cancel in the extracting phase.
             End If
@@ -659,7 +659,6 @@ Public Class PackageListTools
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
-
             ' Append the current package manifest's path to the ManifestPath string.
             Await Task.Run(Sub()
                                ManifestPath.Add(PackageManifest)
@@ -731,7 +730,7 @@ Public Class PackageListTools
 #End Region
 
 #Region "Get package details table from SQLite database"
-    Public Shared Function GetPackageDetailsTableFromSqliteDB() As DataTable
+    Public Shared Async Function GetPackageDetailsTableFromSqliteDBAsync() As Task(Of DataTable)
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
         ' https://stackoverflow.com/q/19553165
@@ -799,14 +798,28 @@ WHERE
                 ' for separation.
 
                 ' Column 0 is ID, 4 is Name, 2 is Version, and 6 is latest version.
-                packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2), SqlDataReader.GetValue(6))
+                ' Running this as async.
+                Await Task.Run(Sub()
+                                   packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2), SqlDataReader.GetValue(6))
+                               End Sub)
             Loop
         End If
 
 
-        'End the connection
+        ' End the connection
+        ' Trying to make sure the database is disconnected.
+        SqlDataReader.Dispose()
+        SqlConnection.Dispose()
+        SqlCommand.Dispose()
         SqlDataReader.Close()
         SqlConnection.Close()
+
+        ' Also have it clear all pools, as it'll otherwise keep the file
+        ' in memory in case you want to use it later. We don't need that,
+        ' because the data is copied into memory.
+        ' Learned about this from various answers to this SO post:
+        ' https://stackoverflow.com/questions/8511901/system-data-sqlite-close-not-releasing-database-file
+        SqliteConnection.ClearAllPools()
 
         ' Return the list of packages.
         Return packageArray

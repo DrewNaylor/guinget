@@ -59,6 +59,8 @@ Partial Class aaformMainWindow
         Me.zSeparatorSelectedPackagesMenu = New System.Windows.Forms.ToolStripSeparator()
         Me.ShowInWingetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectedPackagesProperties = New System.Windows.Forms.ToolStripMenuItem()
+        Me.zSeparatorAboveShowContextMenuToolStripMenuItem = New System.Windows.Forms.ToolStripSeparator()
+        Me.ShowContextMenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerifyManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FindManifestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -327,7 +329,7 @@ Partial Class aaformMainWindow
         '
         'SelectedPackagesToolStripMenuItem
         '
-        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesActionDoNothingMenuItem, Me.SelectedPackagesActionInstallMenuItem, Me.SelectedPackagesActionUninstallMenuItem, Me.SelectedPackagesActionUpgradeMenuItem, Me.zSeparatorAfterActionsInSelectedPackagesMenu, Me.SelectedPackagesSearchForLastSelectedID, Me.zSeparatorSelectedPackagesMenu, Me.ShowInWingetToolStripMenuItem, Me.SelectedPackagesProperties})
+        Me.SelectedPackagesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectedPackagesActionDoNothingMenuItem, Me.SelectedPackagesActionInstallMenuItem, Me.SelectedPackagesActionUninstallMenuItem, Me.SelectedPackagesActionUpgradeMenuItem, Me.zSeparatorAfterActionsInSelectedPackagesMenu, Me.SelectedPackagesSearchForLastSelectedID, Me.zSeparatorSelectedPackagesMenu, Me.ShowInWingetToolStripMenuItem, Me.SelectedPackagesProperties, Me.zSeparatorAboveShowContextMenuToolStripMenuItem, Me.ShowContextMenuToolStripMenuItem})
         Me.SelectedPackagesToolStripMenuItem.Name = "SelectedPackagesToolStripMenuItem"
         Me.SelectedPackagesToolStripMenuItem.Size = New System.Drawing.Size(115, 20)
         Me.SelectedPackagesToolStripMenuItem.Text = "&Selected packages"
@@ -336,58 +338,70 @@ Partial Class aaformMainWindow
         '
         Me.SelectedPackagesActionDoNothingMenuItem.Name = "SelectedPackagesActionDoNothingMenuItem"
         Me.SelectedPackagesActionDoNothingMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionDoNothingMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionDoNothingMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesActionDoNothingMenuItem.Text = "Action: &Do nothing"
         '
         'SelectedPackagesActionInstallMenuItem
         '
         Me.SelectedPackagesActionInstallMenuItem.Name = "SelectedPackagesActionInstallMenuItem"
         Me.SelectedPackagesActionInstallMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionInstallMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionInstallMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesActionInstallMenuItem.Text = "Action: &Install"
         '
         'SelectedPackagesActionUninstallMenuItem
         '
         Me.SelectedPackagesActionUninstallMenuItem.Name = "SelectedPackagesActionUninstallMenuItem"
         Me.SelectedPackagesActionUninstallMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionUninstallMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionUninstallMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesActionUninstallMenuItem.Text = "Action: &Uninstall"
         '
         'SelectedPackagesActionUpgradeMenuItem
         '
         Me.SelectedPackagesActionUpgradeMenuItem.Name = "SelectedPackagesActionUpgradeMenuItem"
         Me.SelectedPackagesActionUpgradeMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.SelectedPackagesActionUpgradeMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesActionUpgradeMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesActionUpgradeMenuItem.Text = "Action: U&pgrade"
         '
         'zSeparatorAfterActionsInSelectedPackagesMenu
         '
         Me.zSeparatorAfterActionsInSelectedPackagesMenu.Name = "zSeparatorAfterActionsInSelectedPackagesMenu"
-        Me.zSeparatorAfterActionsInSelectedPackagesMenu.Size = New System.Drawing.Size(214, 6)
+        Me.zSeparatorAfterActionsInSelectedPackagesMenu.Size = New System.Drawing.Size(222, 6)
         '
         'SelectedPackagesSearchForLastSelectedID
         '
         Me.SelectedPackagesSearchForLastSelectedID.Name = "SelectedPackagesSearchForLastSelectedID"
-        Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(217, 22)
+        Me.SelectedPackagesSearchForLastSelectedID.Size = New System.Drawing.Size(225, 22)
         Me.SelectedPackagesSearchForLastSelectedID.Text = "&Search for package ID"
         '
         'zSeparatorSelectedPackagesMenu
         '
         Me.zSeparatorSelectedPackagesMenu.Name = "zSeparatorSelectedPackagesMenu"
-        Me.zSeparatorSelectedPackagesMenu.Size = New System.Drawing.Size(214, 6)
+        Me.zSeparatorSelectedPackagesMenu.Size = New System.Drawing.Size(222, 6)
         '
         'ShowInWingetToolStripMenuItem
         '
         Me.ShowInWingetToolStripMenuItem.Name = "ShowInWingetToolStripMenuItem"
         Me.ShowInWingetToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
-        Me.ShowInWingetToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.ShowInWingetToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.ShowInWingetToolStripMenuItem.Text = "Show in &winget..."
         '
         'SelectedPackagesProperties
         '
         Me.SelectedPackagesProperties.Name = "SelectedPackagesProperties"
-        Me.SelectedPackagesProperties.Size = New System.Drawing.Size(217, 22)
-        Me.SelectedPackagesProperties.Text = "&Properties..."
+        Me.SelectedPackagesProperties.Size = New System.Drawing.Size(225, 22)
+        Me.SelectedPackagesProperties.Text = "Pr&operties..."
+        '
+        'zSeparatorAboveShowContextMenuToolStripMenuItem
+        '
+        Me.zSeparatorAboveShowContextMenuToolStripMenuItem.Name = "zSeparatorAboveShowContextMenuToolStripMenuItem"
+        Me.zSeparatorAboveShowContextMenuToolStripMenuItem.Size = New System.Drawing.Size(222, 6)
+        '
+        'ShowContextMenuToolStripMenuItem
+        '
+        Me.ShowContextMenuToolStripMenuItem.Name = "ShowContextMenuToolStripMenuItem"
+        Me.ShowContextMenuToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
+        Me.ShowContextMenuToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.ShowContextMenuToolStripMenuItem.Text = "Show context &menu"
         '
         'ToolsToolStripMenuItem
         '
@@ -515,7 +529,7 @@ Partial Class aaformMainWindow
         '
         Me.PropertiesPackageContextMenuToolStripMenuItem.Name = "PropertiesPackageContextMenuToolStripMenuItem"
         Me.PropertiesPackageContextMenuToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
-        Me.PropertiesPackageContextMenuToolStripMenuItem.Text = "&Properties..."
+        Me.PropertiesPackageContextMenuToolStripMenuItem.Text = "Pr&operties..."
         '
         'splitcontainerMainWindow
         '
@@ -577,6 +591,7 @@ Partial Class aaformMainWindow
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.datagridviewPackageList.DefaultCellStyle = DataGridViewCellStyle2
         Me.datagridviewPackageList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.datagridviewPackageList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.datagridviewPackageList.Location = New System.Drawing.Point(0, 0)
         Me.datagridviewPackageList.Margin = New System.Windows.Forms.Padding(2)
         Me.datagridviewPackageList.Name = "datagridviewPackageList"
@@ -675,7 +690,7 @@ Partial Class aaformMainWindow
         '
         Me.pictureboxFastResizePackageList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pictureboxFastResizePackageList.Location = New System.Drawing.Point(0, 0)
-        Me.pictureboxFastResizePackageList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pictureboxFastResizePackageList.Margin = New System.Windows.Forms.Padding(2)
         Me.pictureboxFastResizePackageList.Name = "pictureboxFastResizePackageList"
         Me.pictureboxFastResizePackageList.Size = New System.Drawing.Size(665, 336)
         Me.pictureboxFastResizePackageList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -959,7 +974,7 @@ Partial Class aaformMainWindow
         Me.tabpageAction.Location = New System.Drawing.Point(4, 5)
         Me.tabpageAction.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageAction.Name = "tabpageAction"
-        Me.tabpageAction.Size = New System.Drawing.Size(202, 476)
+        Me.tabpageAction.Size = New System.Drawing.Size(201, 470)
         Me.tabpageAction.TabIndex = 6
         Me.tabpageAction.Text = "Action"
         Me.tabpageAction.UseVisualStyleBackColor = True
@@ -973,7 +988,7 @@ Partial Class aaformMainWindow
         Me.listboxActions.Location = New System.Drawing.Point(0, 0)
         Me.listboxActions.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxActions.Name = "listboxActions"
-        Me.listboxActions.Size = New System.Drawing.Size(202, 476)
+        Me.listboxActions.Size = New System.Drawing.Size(201, 470)
         Me.listboxActions.TabIndex = 2
         '
         'tabpageStatus
@@ -982,7 +997,7 @@ Partial Class aaformMainWindow
         Me.tabpageStatus.Location = New System.Drawing.Point(4, 5)
         Me.tabpageStatus.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageStatus.Name = "tabpageStatus"
-        Me.tabpageStatus.Size = New System.Drawing.Size(202, 476)
+        Me.tabpageStatus.Size = New System.Drawing.Size(201, 470)
         Me.tabpageStatus.TabIndex = 1
         Me.tabpageStatus.Text = "Status"
         Me.tabpageStatus.UseVisualStyleBackColor = True
@@ -996,7 +1011,7 @@ Partial Class aaformMainWindow
         Me.listboxStatusTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxStatusTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxStatusTab.Name = "listboxStatusTab"
-        Me.listboxStatusTab.Size = New System.Drawing.Size(202, 476)
+        Me.listboxStatusTab.Size = New System.Drawing.Size(201, 470)
         Me.listboxStatusTab.TabIndex = 0
         '
         'tabpageCustomFilters
@@ -1005,7 +1020,7 @@ Partial Class aaformMainWindow
         Me.tabpageCustomFilters.Location = New System.Drawing.Point(4, 5)
         Me.tabpageCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageCustomFilters.Name = "tabpageCustomFilters"
-        Me.tabpageCustomFilters.Size = New System.Drawing.Size(202, 476)
+        Me.tabpageCustomFilters.Size = New System.Drawing.Size(201, 470)
         Me.tabpageCustomFilters.TabIndex = 3
         Me.tabpageCustomFilters.Text = "Custom filters"
         Me.tabpageCustomFilters.UseVisualStyleBackColor = True
@@ -1019,7 +1034,7 @@ Partial Class aaformMainWindow
         Me.listboxCustomFilters.Location = New System.Drawing.Point(0, 0)
         Me.listboxCustomFilters.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxCustomFilters.Name = "listboxCustomFilters"
-        Me.listboxCustomFilters.Size = New System.Drawing.Size(202, 476)
+        Me.listboxCustomFilters.Size = New System.Drawing.Size(201, 470)
         Me.listboxCustomFilters.TabIndex = 1
         '
         'tabpageSections
@@ -1028,7 +1043,7 @@ Partial Class aaformMainWindow
         Me.tabpageSections.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSections.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSections.Name = "tabpageSections"
-        Me.tabpageSections.Size = New System.Drawing.Size(202, 476)
+        Me.tabpageSections.Size = New System.Drawing.Size(201, 470)
         Me.tabpageSections.TabIndex = 0
         Me.tabpageSections.Text = "Categories"
         Me.tabpageSections.UseVisualStyleBackColor = True
@@ -1042,7 +1057,7 @@ Partial Class aaformMainWindow
         Me.listboxSections.Location = New System.Drawing.Point(0, 0)
         Me.listboxSections.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSections.Name = "listboxSections"
-        Me.listboxSections.Size = New System.Drawing.Size(202, 476)
+        Me.listboxSections.Size = New System.Drawing.Size(201, 470)
         Me.listboxSections.TabIndex = 1
         '
         'tabpageSource
@@ -1051,7 +1066,7 @@ Partial Class aaformMainWindow
         Me.tabpageSource.Location = New System.Drawing.Point(4, 5)
         Me.tabpageSource.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageSource.Name = "tabpageSource"
-        Me.tabpageSource.Size = New System.Drawing.Size(202, 476)
+        Me.tabpageSource.Size = New System.Drawing.Size(201, 470)
         Me.tabpageSource.TabIndex = 2
         Me.tabpageSource.Text = "Source"
         Me.tabpageSource.UseVisualStyleBackColor = True
@@ -1065,7 +1080,7 @@ Partial Class aaformMainWindow
         Me.listboxSourceTab.Location = New System.Drawing.Point(0, 0)
         Me.listboxSourceTab.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxSourceTab.Name = "listboxSourceTab"
-        Me.listboxSourceTab.Size = New System.Drawing.Size(202, 476)
+        Me.listboxSourceTab.Size = New System.Drawing.Size(201, 470)
         Me.listboxSourceTab.TabIndex = 1
         '
         'tabpageArchitecture
@@ -1074,7 +1089,7 @@ Partial Class aaformMainWindow
         Me.tabpageArchitecture.Location = New System.Drawing.Point(4, 5)
         Me.tabpageArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.tabpageArchitecture.Name = "tabpageArchitecture"
-        Me.tabpageArchitecture.Size = New System.Drawing.Size(202, 476)
+        Me.tabpageArchitecture.Size = New System.Drawing.Size(201, 470)
         Me.tabpageArchitecture.TabIndex = 5
         Me.tabpageArchitecture.Text = "Architecture"
         Me.tabpageArchitecture.UseVisualStyleBackColor = True
@@ -1088,7 +1103,7 @@ Partial Class aaformMainWindow
         Me.listboxArchitecture.Location = New System.Drawing.Point(0, 0)
         Me.listboxArchitecture.Margin = New System.Windows.Forms.Padding(2)
         Me.listboxArchitecture.Name = "listboxArchitecture"
-        Me.listboxArchitecture.Size = New System.Drawing.Size(202, 476)
+        Me.listboxArchitecture.Size = New System.Drawing.Size(201, 470)
         Me.listboxArchitecture.TabIndex = 1
         '
         'panelMainForm
@@ -1115,8 +1130,8 @@ Partial Class aaformMainWindow
         'toolstripstatuslabelPackageCount
         '
         Me.toolstripstatuslabelPackageCount.Name = "toolstripstatuslabelPackageCount"
-        Me.toolstripstatuslabelPackageCount.Size = New System.Drawing.Size(107, 17)
-        Me.toolstripstatuslabelPackageCount.Text = "0 packages loaded."
+        Me.toolstripstatuslabelPackageCount.Size = New System.Drawing.Size(150, 17)
+        Me.toolstripstatuslabelPackageCount.Text = "0 packages listed, 0 loaded."
         '
         'toolstripstatusSplitter
         '
@@ -1342,4 +1357,6 @@ Partial Class aaformMainWindow
     Friend WithEvents RightToLeftMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents pictureboxFastResizePackageList As PictureBox
+    Friend WithEvents ShowContextMenuToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents zSeparatorAboveShowContextMenuToolStripMenuItem As ToolStripSeparator
 End Class
