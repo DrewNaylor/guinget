@@ -737,13 +737,13 @@ Public Class aaformMainWindow
         End If
 
         ' Put the user's selections into this window.
-        For Each Row As DataGridViewRow In datagridviewPackageList.Rows
+        For Each Row As DataRow In PackageListTable.Rows
             ' Check if the package is meant to be installed.
-            If Not Row.Cells(0).Value.ToString = "Do nothing" Then
+            If Not Row.Item(0).ToString = "Do nothing" Then
                 ' If this package says something other than do nothing,
                 ' add it to the list.
-                LocalApplyChangesWindow.datagridviewAppsBeingInstalled.Rows.Add(Row.Cells(2).Value.ToString,
-                  Row.Cells(4).Value.ToString, Row.Cells(0).Value.ToString, "Ready")
+                LocalApplyChangesWindow.datagridviewAppsBeingInstalled.Rows.Add(Row.Item(2).ToString,
+                  Row.Item(4).ToString, Row.Item(0).ToString, "Ready")
 
             End If
         Next
