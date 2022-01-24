@@ -71,11 +71,17 @@ Public Class aaformMainWindow
         ' Set update running flag.
         IsPackageListTaskRunning = True
 
+        ' Clear the column widths list.
+        PackageListColumnWidths.Clear()
+
         ' Turn off autosize to make it go way faster.
         ' Credits to this SO answer:
         ' https://stackoverflow.com/a/19518340
         For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
-            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
+            ' Save the current column widths.
+            PackageListColumnWidths.Add(column.Width)
+            ' Unset the autosizecolumnmode.
+            'column.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet
         Next
 
         ' Hide the datagridview while we're updating to make
@@ -285,6 +291,8 @@ Public Class aaformMainWindow
     Friend Shared PackageListTable As New DataTable
     ' PackageListDataView is the DataView that we'll sort and filter with.
     Friend Shared PackageListDataView As New DataView(PackageListTable)
+    ' Save the current column widths so they can be re-applied later.
+    Friend Shared PackageListColumnWidths As New List(Of Integer)
 
     Friend Shared Sub UpdatePackageListCount()
         ' Updates the number of packages as shown in the statusbar.
@@ -314,8 +322,13 @@ Public Class aaformMainWindow
 
         '' Turn autosize back on for certain columns. Might not help
         '' performance, so it's commented out for now.
-        aaformMainWindow.datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-        aaformMainWindow.datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        'aaformMainWindow.datagridviewPackageList.Columns.Item(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        'aaformMainWindow.datagridviewPackageList.Columns.Item(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+
+        ' Load previous column widths.
+        For Each column As DataGridViewColumn In aaformMainWindow.datagridviewPackageList.Columns
+            column.Width = PackageListColumnWidths.Item(column.Index)
+        Next
 
         ' Reset progress bar to 0.
         aaformMainWindow.toolstripprogressbarLoadingPackages.Value = 0
