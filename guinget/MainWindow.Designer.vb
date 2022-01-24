@@ -477,7 +477,7 @@ Partial Class aaformMainWindow
         Me.contextmenustripPackageMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.contextmenustripPackageMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoNothingToolStripMenuItem, Me.InstallToolStripMenuItem, Me.UninstallToolStripMenuItem, Me.UpgradeToolStripMenuItem, Me.zSeparatorAfterActionButtonsInPackageContextMenu, Me.SearchForPackageIDFromContextMenu, Me.zSeparatorPackageContextMenu, Me.ShowInwingetToolStripMenuItem1, Me.PropertiesPackageContextMenuToolStripMenuItem})
         Me.contextmenustripPackageMenu.Name = "ContextMenuStrip1"
-        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(189, 192)
+        Me.contextmenustripPackageMenu.Size = New System.Drawing.Size(189, 170)
         '
         'DoNothingToolStripMenuItem
         '
@@ -823,6 +823,7 @@ Partial Class aaformMainWindow
         'toolstriptextboxSearch
         '
         Me.toolstriptextboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.toolstriptextboxSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.toolstriptextboxSearch.Name = "toolstriptextboxSearch"
         Me.toolstriptextboxSearch.Size = New System.Drawing.Size(200, 25)
         '
