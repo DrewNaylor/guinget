@@ -139,7 +139,7 @@ Public Class aaformMainWindow
 
         ' Get a datatable ready.
         ' Not sure how much this helps to be async, but I hope it does help at least some.
-        Dim SqliteList As DataTable = Await PackageListTools.GetPackageDetailsTableFromSqliteDB()
+        Dim SqliteList As DataTable = Await PackageListTools.GetPackageDetailsTableFromSqliteDBAsync()
 
         ' Set progress bar maximum value.
         ' This has to be done here or there will be a crash

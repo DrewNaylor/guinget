@@ -730,7 +730,7 @@ Public Class PackageListTools
 #End Region
 
 #Region "Get package details table from SQLite database"
-    Public Shared Async Function GetPackageDetailsTableFromSqliteDB() As Task(Of DataTable)
+    Public Shared Async Function GetPackageDetailsTableFromSqliteDBAsync() As Task(Of DataTable)
         ' Trying to load the package list as shown in this SO
         ' question that has the solution with it:
         ' https://stackoverflow.com/q/19553165
