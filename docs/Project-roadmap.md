@@ -2,6 +2,8 @@
 
 [Homepage](https://drew-naylor.com/guinget)
 
+Anything listed here is subject to change. Be sure to check the associated milestones for the most up-to-date information.
+
 ## Version 0.1 Pre-Alpha 1
 
 GitHub milestone:
@@ -84,16 +86,16 @@ Milestone: [Version 0.3](https://github.com/DrewNaylor/guinget/milestone/8)
   - If it's not too much slower, the extraction progress bar will properly progress when extracting manifests. Database extraction will still be indeterminate, just like it will be in 0.2.1 because it still uses the old manifest extraction code to keep things simple.
   - The 7-Zip and RoboCopy manifest updating code is still the same since it's still faster, but a future version may replace RoboCopy with a simple `move` command.
 
-## Version 0.3.1 Beta
+## Version 0.4 Beta
 
-Milestone: [Version 0.3.1](https://github.com/DrewNaylor/guinget/milestone/10)
+Milestone: [Version 0.4](https://github.com/DrewNaylor/guinget/milestone/10)
 
 - [ ] Load package sources from YAML files instead of having them be hard-coded
 - [ ] Show packages from sources without easily-accessible manifests like the Store
 - [ ] Store source support
 - [ ] Initial multiple sources support (involves loading from YAML files instead of being hard-coded; not sure how I'd add REST source support yet)
 
-## Version 0.3.2 Beta
+## Version 0.4.1 Beta
 
 - [ ] Check whether a package is currently installed ([issue #23](https://github.com/DrewNaylor/guinget/issues/23))
 - [ ] Allow packages to be re-installed (also issue #23)
