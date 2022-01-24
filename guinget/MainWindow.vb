@@ -1614,8 +1614,16 @@ Public Class aaformMainWindow
             ' Setting the AutoSizeMode for Action and Status.
             ' Not sure if this needs to be turned off to improve performance, but
             ' it seems really fast anyway.
+            ' We're also setting the AutoSizeModes for the rest, so they don't
+            ' differ too much from the previous functionality.
             .Columns("Action").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             .Columns("Status").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            .Columns("Id").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("Name").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("Version").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("LatestVersion").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("Description").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns("ManifestPath").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             .Columns("ManifestPath").Visible = My.Settings.DebuggingShowManifestPathColumn
             .Columns("Id").HeaderText = "Package"
         End With
