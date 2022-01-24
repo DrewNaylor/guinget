@@ -607,7 +607,8 @@ Public Class aaformMainWindow
 
         ' We can now display the package details while making sure the manifest isn't
         ' nothing.
-        If PackageListTable.Rows.Count > 0 AndAlso aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
+        If PackageListTable.Rows.Count > 0 AndAlso aaformMainWindow.datagridviewPackageList.Rows.Count > 0 AndAlso
+            aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
                     IO.File.Exists(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
@@ -1140,6 +1141,13 @@ Public Class aaformMainWindow
 
             ' Reset progress label text.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
+
+            ' If there are no items now, un-select the datagridview items.
+            If aaformMainWindow.datagridviewPackageList.Rows.Count = 0 Then
+                aaformMainWindow.datagridviewPackageList.ClearSelection()
+                ' Manually call the sub to update the package details textbox.
+                ShowSelectedPackageDetails()
+            End If
 
             ' Show the current number of packages in the filter.
             UpdatePackageListCount()
