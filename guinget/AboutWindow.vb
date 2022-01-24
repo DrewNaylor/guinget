@@ -47,7 +47,7 @@ Public Class AboutWindow
                         "https://github.com/DrewNaylor/guinget" & vbCrLf &
                         vbCrLf &
                         "libguinget is used for things like loading the package list and uses the Apache License 2.0." & vbCrLf &
-                        "libguinget Copyright (C) 2020-2021 Drew Naylor." & vbCrLf &
+                        "libguinget Copyright (C) 2020-2022 Drew Naylor." & vbCrLf &
                         vbCrLf &
                         "libscrollswitchtabs is part of the drews-libs project and is used for switching tab control tabs using the mouse scroll wheel, just like in many Linux applications." & vbCrLf &
                         "libscrollswitchtabs uses the Apace License 2.0 and you can get its source code here:" & vbCrLf &

@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Package and package list tools for guinget and other programs that want to use them.")>
 <Assembly: AssemblyCompany("")> 
 <Assembly: AssemblyProduct("libguinget")>
-<Assembly: AssemblyCopyright("Copyright (C) 2020-2021 Drew Naylor. Licensed under Apache License 2.0.")>
+<Assembly: AssemblyCopyright("Copyright (C) 2020-2022 Drew Naylor. Licensed under Apache License 2.0.")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.3.0.0")>
-<Assembly: AssemblyFileVersion("0.3.0.0")>
+<Assembly: AssemblyVersion("0.4.0.0")>
+<Assembly: AssemblyFileVersion("0.4.0.0")>
