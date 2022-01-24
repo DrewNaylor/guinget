@@ -168,6 +168,15 @@ Public Class aaformMainWindow
         'aaformMainWindow.datagridviewPackageList.DataSource = SqliteList
         For Each PackageRow As DataRow In SqliteList.Rows
             ' Get the manifest path and description for the current row.
+            ' TODO: Figure out how to get the manifest path for this package
+            ' by looking in the ManifestPaths list, if that's possible for
+            ' even manifests that it's difficult to find their paths.
+            ' Not sure why I didn't try to do this before, as this should
+            ' be a lot faster than having to look through the disk again
+            ' after looking just before this. It may be a good idea to provide
+            ' a fallback that looks through the disk, just in case, so
+            ' the FindManifestByVersionAndId function will probably still
+            ' be used, but I'll pass the list along with the version and ID.
             Dim manifestPath As String = Await PackageListTools.FindManifestByVersionAndId(PackageRow.Item(0).ToString, PackageRow.Item(2).ToString)
             ' Get description from manifest.
             ' Ensure the manifest path cell isn't nothing.
