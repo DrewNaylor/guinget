@@ -357,7 +357,7 @@ Partial Class OptionsWindow
         Me.groupboxPackageList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.groupboxPackageList.Name = "groupboxPackageList"
         Me.groupboxPackageList.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.groupboxPackageList.Size = New System.Drawing.Size(351, 78)
+        Me.groupboxPackageList.Size = New System.Drawing.Size(351, 91)
         Me.groupboxPackageList.TabIndex = 2
         Me.groupboxPackageList.TabStop = False
         Me.groupboxPackageList.Text = "Package list"
@@ -369,11 +369,9 @@ Partial Class OptionsWindow
         Me.checkboxUseKDEStyleFastResize.Location = New System.Drawing.Point(5, 17)
         Me.checkboxUseKDEStyleFastResize.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.checkboxUseKDEStyleFastResize.Name = "checkboxUseKDEStyleFastResize"
-        Me.checkboxUseKDEStyleFastResize.Size = New System.Drawing.Size(272, 56)
+        Me.checkboxUseKDEStyleFastResize.Size = New System.Drawing.Size(277, 69)
         Me.checkboxUseKDEStyleFastResize.TabIndex = 1
-        Me.checkboxUseKDEStyleFastResize.Text = "Use KDE-style fast resize for the package list so that" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "resizing the window is sm" &
-    "ooth when there are a lot" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "of packages listed (note: neither guinget nor Drew" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "N" &
-    "aylor are associated with KDE)"
+        Me.checkboxUseKDEStyleFastResize.Text = resources.GetString("checkboxUseKDEStyleFastResize.Text")
         Me.checkboxUseKDEStyleFastResize.UseVisualStyleBackColor = True
         '
         'tabpageApplyChanges
@@ -520,7 +518,7 @@ Partial Class OptionsWindow
         Me.tabpageMaintenance.Location = New System.Drawing.Point(4, 40)
         Me.tabpageMaintenance.Name = "tabpageMaintenance"
         Me.tabpageMaintenance.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.tabpageMaintenance.Size = New System.Drawing.Size(361, 353)
+        Me.tabpageMaintenance.Size = New System.Drawing.Size(360, 352)
         Me.tabpageMaintenance.TabIndex = 7
         Me.tabpageMaintenance.Text = "Maintenance"
         Me.tabpageMaintenance.UseVisualStyleBackColor = True
@@ -582,7 +580,7 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.Location = New System.Drawing.Point(4, 40)
         Me.tabpageExperimental.Name = "tabpageExperimental"
         Me.tabpageExperimental.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.tabpageExperimental.Size = New System.Drawing.Size(361, 353)
+        Me.tabpageExperimental.Size = New System.Drawing.Size(360, 352)
         Me.tabpageExperimental.TabIndex = 4
         Me.tabpageExperimental.Text = "Experimental"
         Me.tabpageExperimental.UseVisualStyleBackColor = True
