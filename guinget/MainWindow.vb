@@ -1639,6 +1639,7 @@ Public Class aaformMainWindow
             .Columns("ManifestPath").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             .Columns("ManifestPath").Visible = My.Settings.DebuggingShowManifestPathColumn
             .Columns("Id").HeaderText = "Package"
+            .Columns("Version").ToolTipText = "(will eventually only display latest version and have all older versions in a window like Synaptic)"
         End With
     End Sub
 
