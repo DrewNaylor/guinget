@@ -84,6 +84,7 @@ Partial Class OptionsWindow
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.SevenZExeOpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.checkboxShowContextMenuOnSingleClick = New System.Windows.Forms.CheckBox()
         Me.tablelayoutpanelOptions.SuspendLayout()
         Me.tabcontrolOptions.SuspendLayout()
         Me.tabpageRefreshCache.SuspendLayout()
@@ -352,12 +353,13 @@ Partial Class OptionsWindow
         '
         'groupboxPackageList
         '
+        Me.groupboxPackageList.Controls.Add(Me.checkboxShowContextMenuOnSingleClick)
         Me.groupboxPackageList.Controls.Add(Me.checkboxUseKDEStyleFastResize)
         Me.groupboxPackageList.Location = New System.Drawing.Point(6, 70)
         Me.groupboxPackageList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.groupboxPackageList.Name = "groupboxPackageList"
         Me.groupboxPackageList.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.groupboxPackageList.Size = New System.Drawing.Size(351, 101)
+        Me.groupboxPackageList.Size = New System.Drawing.Size(351, 181)
         Me.groupboxPackageList.TabIndex = 2
         Me.groupboxPackageList.TabStop = False
         Me.groupboxPackageList.Text = "Package list"
@@ -580,7 +582,7 @@ Partial Class OptionsWindow
         Me.tabpageExperimental.Location = New System.Drawing.Point(4, 40)
         Me.tabpageExperimental.Name = "tabpageExperimental"
         Me.tabpageExperimental.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.tabpageExperimental.Size = New System.Drawing.Size(361, 353)
+        Me.tabpageExperimental.Size = New System.Drawing.Size(360, 352)
         Me.tabpageExperimental.TabIndex = 4
         Me.tabpageExperimental.Text = "Experimental"
         Me.tabpageExperimental.UseVisualStyleBackColor = True
@@ -779,6 +781,18 @@ Partial Class OptionsWindow
         Me.SevenZExeOpenFileDialog.Filter = "EXE files|*.exe|All files|*.*"
         Me.SevenZExeOpenFileDialog.Title = "Browse for 7z.exe"
         '
+        'checkboxShowContextMenuOnSingleClick
+        '
+        Me.checkboxShowContextMenuOnSingleClick.AutoSize = True
+        Me.checkboxShowContextMenuOnSingleClick.CheckAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.checkboxShowContextMenuOnSingleClick.Location = New System.Drawing.Point(4, 90)
+        Me.checkboxShowContextMenuOnSingleClick.Margin = New System.Windows.Forms.Padding(2)
+        Me.checkboxShowContextMenuOnSingleClick.Name = "checkboxShowContextMenuOnSingleClick"
+        Me.checkboxShowContextMenuOnSingleClick.Size = New System.Drawing.Size(296, 82)
+        Me.checkboxShowContextMenuOnSingleClick.TabIndex = 2
+        Me.checkboxShowContextMenuOnSingleClick.Text = resources.GetString("checkboxShowContextMenuOnSingleClick.Text")
+        Me.checkboxShowContextMenuOnSingleClick.UseVisualStyleBackColor = True
+        '
         'OptionsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -884,4 +898,5 @@ Partial Class OptionsWindow
     Friend WithEvents checkboxUseKDEStyleFastResize As CheckBox
     Friend WithEvents groupboxPackageDetails As GroupBox
     Friend WithEvents groupboxPackageList As GroupBox
+    Friend WithEvents checkboxShowContextMenuOnSingleClick As CheckBox
 End Class
