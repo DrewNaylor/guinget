@@ -47,14 +47,14 @@ Public Class AboutWindow
                         "https://github.com/DrewNaylor/guinget" & vbCrLf &
                         vbCrLf &
                         "libguinget is used for things like loading the package list and uses the Apache License 2.0." & vbCrLf &
-                        "libguinget Copyright (C) 2020-2021 Drew Naylor." & vbCrLf &
+                        "libguinget Copyright (C) 2020-2022 Drew Naylor." & vbCrLf &
                         vbCrLf &
                         "libscrollswitchtabs is part of the drews-libs project and is used for switching tab control tabs using the mouse scroll wheel, just like in many Linux applications." & vbCrLf &
                         "libscrollswitchtabs uses the Apace License 2.0 and you can get its source code here:" & vbCrLf &
                         "https://github.com/DrewNaylor/drews-libs" & vbCrLf &
                         "libscrollswitchtabs Copyright (C) 2020 Drew Naylor." & vbCrLf &
                         vbCrLf &
-                        "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the Apache License 2.0. " &
+                        "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the MIT License, though some of its dependencies use the Apache License 2.0. " &
                         "NuGet page for Microsoft.Data.Sqlite:" & vbCrLf &
                         "https://www.nuget.org/packages/Microsoft.Data.Sqlite/" & vbCrLf &
                         "Microsoft.Data.Sqlite Copyright (C) Microsoft Corporation. All rights reserved." & vbCrLf &
@@ -66,7 +66,7 @@ Public Class AboutWindow
                         vbCrLf &
                         My.Resources.AboutSeparator & vbCrLf &
                         vbCrLf &
-                        "Apache License 2.0 summary as it applies to guinget, libguinget, libscrollswitchtabs, and Microsoft.Data.Sqlite:" & vbCrLf &
+                        "Apache License 2.0 summary as it applies to guinget, libguinget, libscrollswitchtabs, and some of Microsoft.Data.Sqlite's dependencies:" & vbCrLf &
                         "Licensed under the Apache License, Version 2.0 (the ""License"");" & vbCrLf &
 "you may not use this file except in compliance with the License." & vbCrLf &
 "You may obtain a copy of the License at" & vbCrLf &
@@ -82,25 +82,7 @@ vbCrLf &
 My.Resources.AboutSeparator & vbCrLf &
 vbCrLf &
 "MIT license as it applies to YamlDotNet:" & vbCrLf &
-"Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry and contributors" & vbCrLf &
-vbCrLf &
-"Permission is hereby granted, free of charge, to any person obtaining a copy of" & vbCrLf &
-"this software and associated documentation files (the ""Software""), to deal in" & vbCrLf &
-"the Software without restriction, including without limitation the rights to" & vbCrLf &
-"use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies" & vbCrLf &
-"of the Software, and to permit persons to whom the Software is furnished to do" & vbCrLf &
-"so, subject to the following conditions:" & vbCrLf &
-vbCrLf &
-"The above copyright notice and this permission notice shall be included in all" & vbCrLf &
-"copies or substantial portions of the Software." & vbCrLf &
-vbCrLf &
-"THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR" & vbCrLf &
-"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY," & vbCrLf &
-"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE" & vbCrLf &
-"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" & vbCrLf &
-"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," & vbCrLf &
-"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE" & vbCrLf &
-"SOFTWARE."
+My.Resources.LicenseForYamlDotNet
     End Sub
 
     Private Sub labelShowHiddenControls_Click(sender As Object, e As EventArgs) Handles labelShowHiddenControls.Click

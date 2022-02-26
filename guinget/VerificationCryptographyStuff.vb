@@ -56,8 +56,8 @@ Public Class VerificationCryptographyStuff
         Return ResultString.ToString
     End Function
 
-    Friend Shared Function GetUnciphered(InputString As String) As String
-        ' Simple function to manually un-cipher a string.
+    Friend Shared Function GetDeciphered(InputString As String, UserName As String) As String
+        ' Simple function to manually decipher a string.
         ' Using a stringbuilder with code loosely based on
         ' this SO answer: https://stackoverflow.com/a/39289878
         Dim ReplacerStringBuilder As New Text.StringBuilder(InputString)
@@ -65,8 +65,6 @@ Public Class VerificationCryptographyStuff
         ReplacerStringBuilder.Replace("e", "Y", 0, 1)
 
         ReplacerStringBuilder.Replace("e", "r", 5, 1)
-
-        ReplacerStringBuilder.Replace("e", "d", 12, 1)
 
         ReplacerStringBuilder.Replace("e", ")", 15, 1)
 
@@ -94,6 +92,13 @@ Public Class VerificationCryptographyStuff
 
         ReplacerStringBuilder.Replace("2", "l", 10, 1)
 
+        ' To allow passing in a username, we have to move this decyphering
+        ' line down to here for simplicity.
+        If UserName.Length > 0 Then
+            ReplacerStringBuilder.Replace("e", "d, " & UserName, 12, 1)
+        Else
+            ReplacerStringBuilder.Replace("e", "d", 12, 1)
+        End If
 
         Return ReplacerStringBuilder.ToString
     End Function
