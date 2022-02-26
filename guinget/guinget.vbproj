@@ -269,6 +269,9 @@
   <ItemGroup>
     <None Include="Resources\LicenseForYamlDotNet.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LicenseForMicrosoftDataSqlite.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>call cd $(SolutionDir)

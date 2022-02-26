@@ -81,8 +81,13 @@ vbCrLf &
 vbCrLf &
 My.Resources.AboutSeparator & vbCrLf &
 vbCrLf &
-"MIT license as it applies to YamlDotNet:" & vbCrLf &
-My.Resources.LicenseForYamlDotNet
+"MIT License as it applies to YamlDotNet:" & vbCrLf &
+My.Resources.LicenseForYamlDotNet.Replace(vbLf, vbCrLf) & vbCrLf &
+vbCrLf &
+My.Resources.AboutSeparator & vbCrLf &
+vbCrLf &
+"MIT License as it applies to Microsoft.Data.Sqlite:" & vbCrLf &
+My.Resources.LicenseForMicrosoftDataSqlite.Replace(vbLf, vbCrLf)
     End Sub
 
     Private Sub labelShowHiddenControls_Click(sender As Object, e As EventArgs) Handles labelShowHiddenControls.Click
