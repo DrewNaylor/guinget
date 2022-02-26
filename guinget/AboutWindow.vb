@@ -78,7 +78,7 @@ Public Class AboutWindow
                         vbCrLf &
                         My.Resources.AboutSeparator & vbCrLf &
                         vbCrLf &
-                        "Apache License 2.0 summary as it applies to guinget, libguinget, libscrollswitchtabs, and some of Microsoft.Data.Sqlite's dependencies:" & vbCrLf &
+                        "Apache License 2.0 summary as it applies to guinget, libguinget, libscrollswitchtabs, and SQLitePCLRaw (though more detail for the last one is in its own section):" & vbCrLf &
                         "Licensed under the Apache License, Version 2.0 (the ""License"");" & vbCrLf &
 "you may not use this file except in compliance with the License." & vbCrLf &
 "You may obtain a copy of the License at" & vbCrLf &
