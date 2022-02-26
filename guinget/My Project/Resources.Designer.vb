@@ -89,6 +89,25 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to Copied from https://github.com/dotnet/efcore/blob/main/LICENSE.txt
+        '''This also appears to be the same as the one from here: https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
+        '''The MIT License (MIT)
+        '''
+        '''Copyright (c) .NET Foundation and Contributors
+        '''
+        '''All rights reserved.
+        '''
+        '''Permission is hereby granted, free of charge, to any person obtaining a copy
+        '''of this software and associated documentation files (the &quot;Software&quot;), to deal
+        '''in the Software without restriction, including without limitation the rights [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property LicenseForMicrosoftDataSqlite() As String
+            Get
+                Return ResourceManager.GetString("LicenseForMicrosoftDataSqlite", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Copied from https://github.com/dotnet/corefx/blob/master/LICENSE.TXT in case it&apos;ll ever be different.
         '''The MIT License (MIT)
         '''
         '''Copyright (c) .NET Foundation and Contributors
@@ -99,11 +118,11 @@ Namespace My.Resources
         '''of this software and associated documentation files (the &quot;Software&quot;), to deal
         '''in the Software without restriction, including without limitation the rights
         '''to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-        '''copies of the Software, and to perm [rest of string was truncated]&quot;;.
+        ''' [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property LicenseForMicrosoftDataSqlite() As String
+        Friend ReadOnly Property LicenseForNumericsBuffersAndMemory() As String
             Get
-                Return ResourceManager.GetString("LicenseForMicrosoftDataSqlite", resourceCulture)
+                Return ResourceManager.GetString("LicenseForNumericsBuffersAndMemory", resourceCulture)
             End Get
         End Property
         

@@ -59,6 +59,13 @@ Public Class AboutWindow
                         "https://www.nuget.org/packages/Microsoft.Data.Sqlite/" & vbCrLf &
                         "Microsoft.Data.Sqlite Copyright (c) .NET Foundation and Contributors. All rights reserved." & vbCrLf &
                         vbCrLf &
+                        "System.Numerics.Vectors, System.Buffers, and System.Memory are all under the MIT License." & vbCrLf &
+                        "NuGet for Buffers: https://www.nuget.org/packages/System.Buffers/" & vbCrLf &
+                        "NuGet for Numerics.Vectors: https://www.nuget.org/packages/System.Numerics.Vectors/" & vbCrLf &
+                        "NuGet for Memory: https://www.nuget.org/packages/System.Memory" & vbCrLf &
+                        "These are Copyright (c) .NET Foundation and Contributors. All rights reserved." & vbCrLf &
+                        "See the license below." & vbCrLf &
+                        vbCrLf &
                         "System.Runtime.CompilerServices.Unsafe is a dependency of Microsoft.Data.Sqlite and is under the MIT License." & vbCrLf &
                         "NuGet page for System.Runtime.CompilerServices.Unsafe:" & vbCrLf &
                         "https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe" & vbCrLf &
@@ -93,6 +100,11 @@ My.Resources.AboutSeparator & vbCrLf &
 vbCrLf &
 "MIT License as it applies to Microsoft.Data.Sqlite and System.Runtime.CompilerServices.Unsafe:" & vbCrLf &
 My.Resources.LicenseForMicrosoftDataSqlite.Replace(vbLf, vbCrLf) & vbCrLf &
+vbCrLf &
+My.Resources.AboutSeparator & vbCrLf &
+vbCrLf &
+"MIT License as it applies to System.Numerics.Vectors, System.Buffers, and System.Memory:" & vbCrLf &
+My.Resources.LicenseForNumericsBuffersAndMemory.Replace(vbLf, vbCrLf) & vbCrLf &
 vbCrLf &
 My.Resources.AboutSeparator & vbCrLf &
 vbCrLf &

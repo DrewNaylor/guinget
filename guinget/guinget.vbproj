@@ -278,6 +278,9 @@
   <ItemGroup>
     <None Include="Resources\SQLitePCLRawLicenses.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LicenseForNumericsBuffersAndMemory.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>call cd $(SolutionDir)
