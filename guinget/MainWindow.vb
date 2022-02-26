@@ -847,6 +847,19 @@ Public Class aaformMainWindow
         End If
     End Sub
 
+    Private Sub datagridviewPackageList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewPackageList.CellClick
+        ' Show the context menu if we're clicking in the Action column
+        ' and the user wants this to happen.
+        ' It's a little wonky with the dropdown boxes, so it's off by default
+        ' until v0.4.
+        If My.Settings.SingleClickInActionColumnOpensContextMenu = True Then
+            If e.ColumnIndex = 0 AndAlso e.RowIndex >= 0 Then
+                ' Show the context menu at the mouse position.
+                contextmenustripPackageMenu.Show(MousePosition)
+            End If
+        End If
+    End Sub
+
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         '  Exit the application.
         Me.Close()
