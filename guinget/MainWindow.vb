@@ -253,7 +253,21 @@ Public Class aaformMainWindow
             'PackageRow.Cells.Item(8).Value = Await PackageTools.GetPackageInfoFromYamlAsync(PackageRow.Cells.Item(7).Value.ToString, "ManifestType")
 
             ' Make the progress bar progress.
-            aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
+            ' Make the progress bar progress if this row number is divisible by 100 and there are
+            ' 100 or more packages.
+            If aaformMainWindow.datagridviewPackageList.Rows.Count >= 100 AndAlso PackageRow.Index Mod 100 = 0 Then
+                'Debug.WriteLine(">= 100, dividing by 100: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
+            ElseIf aaformMainWindow.datagridviewPackageList.Rows.Count >= 10 AndAlso aaformMainWindow.datagridviewPackageList.Rows.Count < 100 AndAlso PackageRow.Index Mod 10 = 0 Then
+                ' If there are 10 or more but fewer than 100 packages, perform a step when the
+                ' number of rows in the package list table is divisible by 10.
+                'Debug.WriteLine(">= 10, < 100, dividing by 10: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
+            ElseIf aaformMainWindow.datagridviewPackageList.Rows.Count < 10 Then
+                ' If there are fewer than 10 packages, go one at a time.
+                'Debug.WriteLine("< 10: " & PackageListTable.Rows.Count)
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Value = PackageRow.Index
+            End If
             ' Update the statusbar to show the current info.
             ' Currently commented out because it's faster to not
             ' update the statusbar every time, but to instead
@@ -1018,6 +1032,16 @@ Public Class aaformMainWindow
             ' Show progress bar; this'll take a while.
             ProgressInfoVisibility(True)
 
+            ' Set progress bar step count.
+            ' Make sure the number of packages is high enough, or lower accordingly.
+            If aaformMainWindow.datagridviewPackageList.Rows.Count >= 100 Then
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 100
+            ElseIf aaformMainWindow.datagridviewPackageList.Rows.Count >= 10 AndAlso aaformMainWindow.datagridviewPackageList.Rows.Count < 100 Then
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 10
+            Else
+                aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
+            End If
+
             ' Hide the package list.
             aaformMainWindow.datagridviewPackageList.Visible = False
 
@@ -1054,11 +1078,27 @@ Public Class aaformMainWindow
                     ' Otherwise, hide it.
                     searchRow.Visible = False
                 End If
-                ' Make the progress bar progress.
-                aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                ' Make the progress bar progress if this row number is divisible by 100 and there are
+                ' 100 or more packages.
+                If aaformMainWindow.datagridviewPackageList.Rows.Count >= 100 AndAlso searchRow.Index Mod 100 = 0 Then
+                    'Debug.WriteLine(">= 100, dividing by 100: " & PackageListTable.Rows.Count)
+                    aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                ElseIf aaformMainWindow.datagridviewPackageList.Rows.Count >= 10 AndAlso aaformMainWindow.datagridviewPackageList.Rows.Count < 100 AndAlso searchRow.Index Mod 10 = 0 Then
+                    ' If there are 10 or more but fewer than 100 packages, perform a step when the
+                    ' number of rows in the package list table is divisible by 10.
+                    'Debug.WriteLine(">= 10, < 100, dividing by 10: " & PackageListTable.Rows.Count)
+                    aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                ElseIf aaformMainWindow.datagridviewPackageList.Rows.Count < 10 Then
+                    ' If there are fewer than 10 packages, go one at a time.
+                    'Debug.WriteLine("< 10: " & PackageListTable.Rows.Count)
+                    aaformMainWindow.toolstripprogressbarLoadingPackages.PerformStep()
+                End If
             Next
             ' Hide the progress bar.
             ProgressInfoVisibility(False)
+
+            ' Reset progress bar step count to 1.
+            aaformMainWindow.toolstripprogressbarLoadingPackages.Step = 1
 
             ' Reset progress label text.
             aaformMainWindow.toolstripstatuslabelLoadingPackageCount.Text = "Loading packages..."
