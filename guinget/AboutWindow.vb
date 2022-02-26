@@ -54,10 +54,14 @@ Public Class AboutWindow
                         "https://github.com/DrewNaylor/drews-libs" & vbCrLf &
                         "libscrollswitchtabs Copyright (C) 2020 Drew Naylor." & vbCrLf &
                         vbCrLf &
-                        "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the MIT License. " &
+                        "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the MIT License. " & vbCrLf &
                         "NuGet page for Microsoft.Data.Sqlite:" & vbCrLf &
                         "https://www.nuget.org/packages/Microsoft.Data.Sqlite/" & vbCrLf &
                         "Microsoft.Data.Sqlite Copyright (c) .NET Foundation and Contributors. All rights reserved." & vbCrLf &
+                        vbCrLf &
+                        "System.Runtime.CompilerServices.Unsafe is a dependency of Microsoft.Data.Sqlite and is under the MIT License." & vbCrLf &
+                        "NuGet page for System.Runtime.CompilerServices.Unsafe:" & vbCrLf &
+                        "https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe" & vbCrLf &
                         vbCrLf &
                         My.Resources.MicrosoftDataSqliteDependencies.Replace(vbLf, vbCrLf) & vbCrLf & vbCrLf &
                         "YamlDotNet is used to read manifests, which you can get the source code for here:" & vbCrLf &
@@ -87,7 +91,7 @@ My.Resources.LicenseForYamlDotNet.Replace(vbLf, vbCrLf) & vbCrLf &
 vbCrLf &
 My.Resources.AboutSeparator & vbCrLf &
 vbCrLf &
-"MIT License as it applies to Microsoft.Data.Sqlite:" & vbCrLf &
+"MIT License as it applies to Microsoft.Data.Sqlite and System.Runtime.CompilerServices.Unsafe:" & vbCrLf &
 My.Resources.LicenseForMicrosoftDataSqlite.Replace(vbLf, vbCrLf) & vbCrLf &
 vbCrLf &
 My.Resources.AboutSeparator & vbCrLf &
