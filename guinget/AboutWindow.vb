@@ -54,11 +54,12 @@ Public Class AboutWindow
                         "https://github.com/DrewNaylor/drews-libs" & vbCrLf &
                         "libscrollswitchtabs Copyright (C) 2020 Drew Naylor." & vbCrLf &
                         vbCrLf &
-                        "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the MIT License, though some of its dependencies use the Apache License 2.0. " &
+                        "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the MIT License. " &
                         "NuGet page for Microsoft.Data.Sqlite:" & vbCrLf &
                         "https://www.nuget.org/packages/Microsoft.Data.Sqlite/" & vbCrLf &
-                        "Microsoft.Data.Sqlite Copyright (C) Microsoft Corporation. All rights reserved." & vbCrLf &
+                        "Microsoft.Data.Sqlite Copyright (c) .NET Foundation and Contributors" & vbCrLf &
                         vbCrLf &
+                        My.Resources.MicrosoftDataSqliteDependencies.Replace(vbLf, vbCrLf) & vbCrLf & vbCrLf &
                         "YamlDotNet is used to read manifests, which you can get the source code for here:" & vbCrLf &
                         "https://github.com/aaubry/YamlDotNet" & vbCrLf &
                         "YamlDotNet falls under the MIT license, which you can read a copy of below the Apache License summary." & vbCrLf &

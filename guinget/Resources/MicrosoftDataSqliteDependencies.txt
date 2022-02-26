@@ -1,0 +1,6 @@
+Microsoft.Data.Sqlite depends on SQLitePCLRaw.core, SQLitePCLRaw.bundle_e_sqlite3,
+SQLitePCLRaw.lib.e_sqlite3, and SQLitePCLRaw.provider.dynamic_cdecl, which all are
+under the Apache License, Version 2.0.
+GitHub page for these dependencies: https://github.com/ericsink/SQLitePCL.raw
+These dependencies are Copyright 2014-2022 SourceGear, LLC.
+See below for full copyright and license details.

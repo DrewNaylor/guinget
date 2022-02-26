@@ -272,6 +272,9 @@
   <ItemGroup>
     <None Include="Resources\LicenseForMicrosoftDataSqlite.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MicrosoftDataSqliteDependencies.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>call cd $(SolutionDir)

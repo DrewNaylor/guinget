@@ -122,5 +122,18 @@ Namespace My.Resources
                 Return ResourceManager.GetString("LicenseForYamlDotNet", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Microsoft.Data.Sqlite depends on SQLitePCLRaw.core, SQLitePCLRaw.bundle_e_sqlite3,
+        '''SQLitePCLRaw.lib.e_sqlite3, and SQLitePCLRaw.provider.dynamic_cdecl, which all are
+        '''under the Apache License, Version 2.0.
+        '''
+        '''These dependencies are Copyright 2014-2022 SourceGear, LLC..
+        '''</summary>
+        Friend ReadOnly Property MicrosoftDataSqliteDependencies() As String
+            Get
+                Return ResourceManager.GetString("MicrosoftDataSqliteDependencies", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace
