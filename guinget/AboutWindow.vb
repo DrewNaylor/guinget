@@ -57,7 +57,7 @@ Public Class AboutWindow
                         "Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the MIT License. " &
                         "NuGet page for Microsoft.Data.Sqlite:" & vbCrLf &
                         "https://www.nuget.org/packages/Microsoft.Data.Sqlite/" & vbCrLf &
-                        "Microsoft.Data.Sqlite Copyright (c) .NET Foundation and Contributors" & vbCrLf &
+                        "Microsoft.Data.Sqlite Copyright (c) .NET Foundation and Contributors. All rights reserved." & vbCrLf &
                         vbCrLf &
                         My.Resources.MicrosoftDataSqliteDependencies.Replace(vbLf, vbCrLf) & vbCrLf & vbCrLf &
                         "YamlDotNet is used to read manifests, which you can get the source code for here:" & vbCrLf &
@@ -88,7 +88,12 @@ vbCrLf &
 My.Resources.AboutSeparator & vbCrLf &
 vbCrLf &
 "MIT License as it applies to Microsoft.Data.Sqlite:" & vbCrLf &
-My.Resources.LicenseForMicrosoftDataSqlite.Replace(vbLf, vbCrLf)
+My.Resources.LicenseForMicrosoftDataSqlite.Replace(vbLf, vbCrLf) & vbCrLf &
+vbCrLf &
+My.Resources.AboutSeparator & vbCrLf &
+vbCrLf &
+"Licenses and copyright notices for SQLitePCLRaw:" & vbCrLf &
+My.Resources.SQLitePCLRawLicenses.Replace(vbLf, vbCrLf)
     End Sub
 
     Private Sub labelShowHiddenControls_Click(sender As Object, e As EventArgs) Handles labelShowHiddenControls.Click

@@ -127,12 +127,34 @@ Namespace My.Resources
         '''  Looks up a localized string similar to Microsoft.Data.Sqlite depends on SQLitePCLRaw.core, SQLitePCLRaw.bundle_e_sqlite3,
         '''SQLitePCLRaw.lib.e_sqlite3, and SQLitePCLRaw.provider.dynamic_cdecl, which all are
         '''under the Apache License, Version 2.0.
-        '''
-        '''These dependencies are Copyright 2014-2022 SourceGear, LLC..
+        '''GitHub page for these dependencies: https://github.com/ericsink/SQLitePCL.raw
+        '''These dependencies are Copyright 2014-2022 SourceGear, LLC.
+        '''SQLitePCLRaw is a fork of SQLitePCL, which was a library MS Open Tech released
+        '''on Codeplex. That library also falls under the Apache License, Version 2.0.
+        '''See bel [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property MicrosoftDataSqliteDependencies() As String
             Get
                 Return ResourceManager.GetString("MicrosoftDataSqliteDependencies", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Relevant text copied from https://github.com/ericsink/SQLitePCL.raw/blob/master/NOTICE.TXT
+        '''----------------------------------------------------------------
+        '''Copyright on SQLitePCL.raw
+        '''----------------------------------------------------------------
+        '''
+        '''Version prior to 2.0 were labeled with the copyright owned by
+        '''Zumero.  In 2.0, this changed to SourceGear.  There is no legal
+        '''distinction, as Zumero is simply a dba name for SourceGear.
+        '''
+        '''And in either case, the open source license remains the same,
+        '''Apac [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property SQLitePCLRawLicenses() As String
+            Get
+                Return ResourceManager.GetString("SQLitePCLRawLicenses", resourceCulture)
             End Get
         End Property
     End Module

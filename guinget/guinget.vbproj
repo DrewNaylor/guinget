@@ -275,6 +275,9 @@
   <ItemGroup>
     <None Include="Resources\MicrosoftDataSqliteDependencies.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SQLitePCLRawLicenses.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>call cd $(SolutionDir)
