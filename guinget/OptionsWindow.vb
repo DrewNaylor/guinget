@@ -75,6 +75,8 @@ Public Class OptionsWindow
         checkboxLastSelectedPackageDetails.Checked = My.Settings.ShowLastSelectedPackageDetails
         ' Use KDE-style fast resize.
         checkboxUseKDEStyleFastResize.Checked = My.Settings.UseKDEStyleFastResize
+        ' Show context menu when single-clicking in the Action column.
+        checkboxShowContextMenuOnSingleClick.Checked = My.Settings.SingleClickInActionColumnOpensContextMenu
 
         ' Use 7-Zip.
         checkboxUse7zip.Checked = My.Settings.Use7zipForExtraction
@@ -166,6 +168,8 @@ Public Class OptionsWindow
         My.Settings.ShowLastSelectedPackageDetails = checkboxLastSelectedPackageDetails.Checked
         ' Use KDE-style fast resize.
         My.Settings.UseKDEStyleFastResize = checkboxUseKDEStyleFastResize.Checked
+        ' Show context menu when single-clicking in the Action column.
+        My.Settings.SingleClickInActionColumnOpensContextMenu = checkboxShowContextMenuOnSingleClick.Checked
 
         ' Use 7-Zip.
         My.Settings.Use7zipForExtraction = checkboxUse7zip.Checked
@@ -250,6 +254,8 @@ Public Class OptionsWindow
         checkboxLastSelectedPackageDetails.Checked = True
         ' Use KDE-style fast resize.
         checkboxUseKDEStyleFastResize.Checked = True
+        ' Show context menu when single-clicking in the Action column.
+        checkboxShowContextMenuOnSingleClick.Checked = False
 
         ' Use 7-Zip.
         checkboxUse7zip.Checked = False
