@@ -353,7 +353,7 @@ Partial Class OptionsWindow
         'groupboxPackageList
         '
         Me.groupboxPackageList.Controls.Add(Me.checkboxUseKDEStyleFastResize)
-        Me.groupboxPackageList.Location = New System.Drawing.Point(6, 82)
+        Me.groupboxPackageList.Location = New System.Drawing.Point(6, 70)
         Me.groupboxPackageList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.groupboxPackageList.Name = "groupboxPackageList"
         Me.groupboxPackageList.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
