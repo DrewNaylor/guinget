@@ -13,6 +13,7 @@
 ; faster and more reliable.
 #define CurrentVersion "v0.3.0.1-beta"
 #define PreviousVersion "v0.3-beta"
+#define SourcesRootPath "C:\DrewN Desktop Apps\Binaries"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -28,10 +29,10 @@ AppSupportURL={#MyAppHelpURL}
 AppUpdatesURL={#MyAppUpdatesURL}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName=DrewNaylor
-LicenseFile=C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\LICENSE.txt
-InfoBeforeFile=C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\README for guinget.txt
-InfoAfterFile=C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\{#CurrentVersion}_changelog_from-{#PreviousVersion}.txt
-OutputDir=C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\
+LicenseFile={#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE.txt
+InfoBeforeFile={#SourcesRootPath}\guinget\{#CurrentVersion}\README for guinget.txt
+InfoAfterFile={#SourcesRootPath}\guinget\{#CurrentVersion}\{#CurrentVersion}_changelog_from-{#PreviousVersion}.txt
+OutputDir={#SourcesRootPath}\guinget\{#CurrentVersion}\
 OutputBaseFilename=guinget_{#CurrentVersion}
 Compression=lzma
 SolidCompression=yes
@@ -60,16 +61,16 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\guinget.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\README for guinget.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\source-code.zip"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\{#CurrentVersion}_changelog_from-{#PreviousVersion}.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\guinget.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\README for guinget.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\source-code.zip"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\{#CurrentVersion}_changelog_from-{#PreviousVersion}.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
-Source: "C:\Users\drewn\My Applications\guinget\{#CurrentVersion}\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion createallsubdirs recursesubdirs
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion createallsubdirs recursesubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
