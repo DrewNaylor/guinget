@@ -281,6 +281,9 @@
   <ItemGroup>
     <None Include="Resources\LicenseForNumericsBuffersAndMemory.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutWindowCopyrightsAndStuff.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>call cd $(SolutionDir)

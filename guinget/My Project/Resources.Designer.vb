@@ -70,6 +70,26 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Unofficial GUI for Microsoft&apos;s Windows Package Manager (winget).
+        '''Kinda like Synaptic, but for Windows. Not associated with either
+        '''Microsoft or the Synaptic project. Microsoft does not endorse guinget.
+        '''winget is Copyright (c) Microsoft Corporation. All rights reserved.
+        '''
+        '''You can get the source code for guinget from
+        '''https://github.com/DrewNaylor/guinget
+        '''
+        '''libguinget is used for things like loading the package list and uses the Apache License 2.0.
+        '''libguinget Copyright (C) 2020-2022 Drew Naylor.
+        '''
+        '''libsc [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property AboutWindowCopyrightsAndStuff() As String
+            Get
+                Return ResourceManager.GetString("AboutWindowCopyrightsAndStuff", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Search terms,Action.
         '''</summary>
         Friend ReadOnly Property DefaultSidebarList() As String
