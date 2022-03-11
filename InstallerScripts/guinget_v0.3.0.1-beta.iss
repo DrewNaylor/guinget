@@ -2,12 +2,17 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "guinget"
-#define MyAppVersion "0.3"
+#define MyAppVersion "0.3.0.1"
 #define MyAppPublisher "Drew Naylor"
 #define MyAppURL "https://github.com/DrewNaylor/guinget"
 #define MyAppUpdatesURL "https://github.com/DrewNaylor/guinget/releases/latest"
 #define MyAppHelpURL "https://drew-naylor.com/guinget/How-to-use"
 #define MyAppExeName "guinget.exe"
+
+; Variables that are used to make updating installer scripts
+; faster and more reliable.
+#define CurrentVersion "v0.3.0.1-beta"
+#define PreviousVersion "v0.3-beta"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -27,10 +32,10 @@ LicenseFile=C:\Users\drewn\My Applications\guinget\v0.3-beta\LICENSE.txt
 InfoBeforeFile=C:\Users\drewn\My Applications\guinget\v0.3-beta\README for guinget.txt
 InfoAfterFile=C:\Users\drewn\My Applications\guinget\v0.3-beta\v0.3-beta_changelog_from-v0.2.0.2-alpha.txt
 OutputDir=C:\Users\drewn\My Applications\guinget\v0.3-beta\
-OutputBaseFilename=guinget_v0.3-beta
+OutputBaseFilename=guinget_v0.3.0.1-beta
 Compression=lzma
 SolidCompression=yes
-AppCopyright=Copyright 2020-2021 Drew Naylor. Licensed under Apache License 2.0.
+AppCopyright=Copyright 2020-2022 Drew Naylor. Licensed under Apache License 2.0.
 ShowLanguageDialog=no
 UninstallDisplayIcon={uninstallexe},5
 UninstallDisplayName={#MyAppName}
