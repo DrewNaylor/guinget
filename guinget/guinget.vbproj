@@ -267,21 +267,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\LicenseForYamlDotNet.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LicenseForMicrosoftDataSqlite.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MicrosoftDataSqliteDependencies.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SQLitePCLRawLicenses.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LicenseForNumericsBuffersAndMemory.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\AboutWindowCopyrightsAndStuff.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -131,19 +131,4 @@
   <data name="HiddenSidebarList" xml:space="preserve">
     <value>Search terms,Action,Status,Custom filters,Categories,Source,Architecture</value>
   </data>
-  <data name="LicenseForMicrosoftDataSqlite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LicenseForMicrosoftDataSqlite.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="LicenseForNumericsBuffersAndMemory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LicenseForNumericsBuffersAndMemory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="LicenseForYamlDotNet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LicenseForYamlDotNet.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="MicrosoftDataSqliteDependencies" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MicrosoftDataSqliteDependencies.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="SQLitePCLRawLicenses" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SQLitePCLRawLicenses.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
 </root>
