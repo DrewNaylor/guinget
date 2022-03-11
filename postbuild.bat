@@ -2,7 +2,7 @@
 REM Moves libraries into their own folder.
 
 REM Define destination root dir.
-set "rootdir=Debug"
+set "rootdir=Release"
 
 REM Check if lib folder exists first.
 IF EXIST guinget\bin\%rootdir%\lib\ (
