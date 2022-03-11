@@ -61,15 +61,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ---------------------------------------------------------------.
-        '''</summary>
-        Friend ReadOnly Property AboutSeparator() As String
-            Get
-                Return ResourceManager.GetString("AboutSeparator", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to Unofficial GUI for Microsoft&apos;s Windows Package Manager (winget).
         '''Kinda like Synaptic, but for Windows. Not associated with either
         '''Microsoft or the Synaptic project. Microsoft does not endorse guinget.
