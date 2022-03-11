@@ -68,6 +68,10 @@ Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\source-code.zip"; DestDir:
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\{#CurrentVersion}_changelog_from-{#PreviousVersion}.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-YamlDotNet.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-MicrosoftDataSqlite.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-SQLitePCLRaw.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-SysNumsVects_SysBuffs_SysMem.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-SysRuntimeCompSvcUnsafe.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion createallsubdirs recursesubdirs
