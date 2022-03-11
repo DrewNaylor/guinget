@@ -804,9 +804,20 @@ WHERE
         End If
 
 
-        'End the connection
+        ' End the connection
+        ' Trying to make sure the database is disconnected.
+        SqlDataReader.Dispose()
+        SqlConnection.Dispose()
+        SqlCommand.Dispose()
         SqlDataReader.Close()
         SqlConnection.Close()
+
+        ' Also have it clear all pools, as it'll otherwise keep the file
+        ' in memory in case you want to use it later. We don't need that,
+        ' because the data is copied into memory.
+        ' Learned about this from various answers to this SO post:
+        ' https://stackoverflow.com/questions/8511901/system-data-sqlite-close-not-releasing-database-file
+        SqliteConnection.ClearAllPools()
 
         ' Return the list of packages.
         Return packageArray
