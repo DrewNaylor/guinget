@@ -1,7 +1,7 @@
 If you are reading this in Notepad or another text editor, it displays best in Word Wrap view. Click on Format>Word Wrap on the top bar. Notepad++ users will find it under View>Word wrap.
 
 
-guinget -- Version 0.3 Beta -- 6/26/2021 (MM/DD/YYYY).
+guinget -- Version 0.3.0.1 Beta -- 3/18/2021 (MM/DD/YYYY).
 
 If you have any trouble, you might be able to find an answer in the documentation. It's linked at the end of this readme file. If not, you can submit a bug report at the "Report a problem" link at the end of this readme file. Your report will be labeled by the developers accordingly in a reasonable amount of time.
 
@@ -13,19 +13,26 @@ https://www.howtogeek.com/67241/htg-explains-what-are-md5-sha-1-hashes-and-how-d
 The PowerShell method can be used for all files listed below, though you'll have to switch out the filenames.
 
 SHA-256 sum for "guinget.exe" in the archive:
-FB549A86AE201AB03FE78641FCF0DD469D8286C424BAC7F1B2D3B397F45BDB2E
+3D83383F2929431A9E2D1D016940834BEAF5BF6B6847867218BC2372F1C25904
 
-SHA-256 sum for "lib\libguinget.dll" in the archive:
-63C8959892E2A0EC4AD0E99D9EAF082DE8AE1886E28A83E638E43DCAE30EB860
+These SHA-256 sums are for the libraries. Figured it would be a good idea to list them all out. I got this list by running `Get-ChildItem -Path .\lib -Recurse -Filter *.dll | Get-FileHash -Algorithm SHA256` in the archive's root folder. Here's how I learned to do it recursively: https://shellgeek.com/get-md5-checksum-or-sha-checksum-for-file-in-powershell/#Get-FileHash_Recursive_for_files
 
-SHA-256 sum for "lib\libscrollswitchtabs.dll" in the archive:
-3F2741B885A3BDD03422E0346542BF4D13384A5287FD3BAF94D05C964ABECB92
-
-SHA-256 sum for "lib\YamlDotNet.dll" in the archive:
-A52924C5065FC796B0B6E16A1FE09B34A2AAF7BAB5308BE26EE6D27AE2B127E6
-
-The rest of the libraries in the "lib" folder are from Microsoft.Data.Sqlite and I don't want to list them all:
-https://www.nuget.org/packages/Microsoft.Data.Sqlite/
+82C1753E30043047E8AC6EA8E2EC53188790EC1CE492AFED0E5E70F0E8AD9ADA    .\lib\libguinget.dll
+3F2741B885A3BDD03422E0346542BF4D13384A5287FD3BAF94D05C964ABECB92    .\lib\libscrollswitchtabs.dll
+3BACEAED157174779B03D53A65F65700EB37E8C942CE1696B0A8B0EFE6BE077B    .\lib\Microsoft.Data.Sqlite.dll
+B70365348A01BC6F8753B6F5F39FDA30504EB585158F457613F6A3C8B7B89214    .\lib\SQLitePCLRaw.batteries_v2.dll
+947B730A2DB758D062A79749D3877A8611ED9516179F16862CDDEFA556E5F467    .\lib\SQLitePCLRaw.core.dll
+9982F856992E7234E77A13EA2AD200D679D5CDB3EB1706CD735AB494120D8F31    .\lib\SQLitePCLRaw.nativelibrary.dll
+A0AB2C550198463C0A7EAA2071A4214793B57591C53A681634ED3E228D2F8C74    .\lib\SQLitePCLRaw.provider.dynamic_cdecl.dll
+ACCCCFBE45D9F08FFEED9916E37B33E98C65BE012CFFF6E7FA7B67210CE1FEFB    .\lib\System.Buffers.dll
+437CEDACC15547BCC5F997B65774B9B52B1A6B5F1E00303A9B31F48711BC6594    .\lib\System.dll
+8E76318E8B06692ABF7DAB1169D27D15557F7F0A34D36AF6463EFF0FE21213C7    .\lib\System.Memory.dll
+1D3EF8698281E7CF7371D1554AFEF5872B39F96C26DA772210A33DA041BA1183    .\lib\System.Numerics.Vectors.dll
+37768488E8EF45729BC7D9A2677633C6450042975BB96516E186DA6CB9CD0DCF    .\lib\System.Runtime.CompilerServices.Unsafe.dll
+F24D57A17849F58239561BA7872F2AA68BF6C80F365A0FCD6AEEF06B4440B476    .\lib\YamlDotNet.dll
+618AE75967ACF2053FDE3C74B2D96C4E6C097675C3A725EBC5605521DF296FBC    .\lib\runtimes\win-arm\native\e_sqlite3.dll
+29029877DCE20E985487B1805733D72E0962E6A5CB72796B52A52628AED085D5    .\lib\runtimes\win-x64\native\e_sqlite3.dll
+D2E0558E63AC31BD4ED01E4DB7107812808B17C0223455C00482F631C0B43339    .\lib\runtimes\win-x86\native\e_sqlite3.dll
 
 
 ----------------
@@ -48,11 +55,13 @@ Some installations of Windows 10 might have issues with elevating winget, so in 
 
 --> Version 0.1.2 and newer uses .NET Framework 4.8, so you'll have to install that as described in the System Requirements section if it's not already installed on your system. Windows 10 versions 1903 and newer already have this version of the .NET Framework installed, so you don't need to do anything in that case.
 
---> guinget uses YamlDotNet to read package manifests, and its license is available in "LICENSE-YamlDotNet.txt"
+--> guinget uses YamlDotNet to read package manifests, and its license is available in "LICENSE-YamlDotNet.txt".
 
---> Reading SQLite databases is done using Microsoft.Data.Sqlite, which falls under the Apache License 2.0.
+--> Reading SQLite databases is done using Microsoft.Data.Sqlite, which falls under the MIT License. Its license is available in "LICENSE-MicrosoftDataSqlite.txt", and this also currently applies to System.Runtime.CompilerServices.Unsafe.
 
---> Switching tab control tabs with the mouse scroll wheel is provided by libscrollswitchtabs.
+--> All other libraries have their own license files if they don't use the Apache License, Version 2.0, and their license files are also included with the name of the librar(y/ies) the file appl(ys/ies) to. Please note that I added text above the license text for most of them (including Microsoft.Data.Sqlite's file) to say what the license applies to, as well as where I copied it from.
+
+--> Switching tab control tabs with the mouse scroll wheel is provided by libscrollswitchtabs, which is under the Apache License, Version 2.0.
 
 --> The source code should be included in this archive in a Zip file called "source-code.zip". Visual Studio 2019 is required to open this project as it uses NuGet packages, and there were changes in the past where older Visual Studio versions can't use newer NuGet packages or something.
 
