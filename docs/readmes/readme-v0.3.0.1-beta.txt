@@ -81,6 +81,7 @@ KNOWN ISSUES
 - Shift+clicking makes it show the first-clicked item if the selection goes above the first-selected item. (issue #99 https://github.com/DrewNaylor/guinget/issues/99)
 - If the Apply changes window is too low when you open the mini-form, the mini-form will be offscreen. (issue #101 https://github.com/DrewNaylor/guinget/issues/101)
 - Installing just for your account works, but the uninstaller (using Inno Setup) doesn't seem to properly remove it for some versions of Windows 10. (issue #102 https://github.com/DrewNaylor/guinget/issues/102)
+- The Apply Changes window doesn't display the list properly at the bottom if there are a lot of packages in the list. (issue #141 https://github.com/DrewNaylor/guinget/issues/141)
 
 See all known issues: https://github.com/DrewNaylor/guinget/labels/known%20issue
 
