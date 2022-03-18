@@ -107,7 +107,7 @@ To run guinget, your computer requires the following:
 - Hardware requirements: 
   - Minimum: At least a 1.2 GHz CPU; 1 GB of RAM or more.
   - Recommended: At least a 2.5 GHz dual-core CPU; 2 GB of RAM or more.
-  - The recommended may not be enough in some cases to prevent lockups when loading the package list and details, but it should be ok. Performance improvements in guinget v0.3 should prevent most lockups related to loading the package list, though things may still be slow sometimes. Restarting guinget a few times may improve performance as that'll cause .NET Framework to compile it to machine code.
+  - The recommended may not be enough in some cases to prevent lockups when loading the package list and details, but it should be ok. Performance improvements in guinget v0.4 should prevent most lockups related to loading the package list, though things may still be slow sometimes. Restarting guinget a few times after a fresh install or upgrade may improve performance as that'll cause .NET Framework to compile it to machine code.
   
 - Disk space:
   - 32-bit: 5 GB space free
