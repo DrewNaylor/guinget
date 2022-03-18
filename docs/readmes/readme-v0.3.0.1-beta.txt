@@ -171,8 +171,8 @@ Email:                    		drewnaylor_apps -AT- outlook.com
 
 
 guinget
-Version 0.3 Beta
-Copyright (C) 2020-2021 Drew Naylor. Licensed under Apache License 2.0.
+Version 0.3.0.1 Beta
+Copyright (C) 2020-2022 Drew Naylor. Licensed under Apache License 2.0.
 
 Unofficial GUI for Microsoft's Windows Package Manager (winget).
 Kinda like Synaptic, but for Windows. Not associated with either
@@ -183,16 +183,38 @@ You can get the source code for guinget from
 https://github.com/DrewNaylor/guinget
 
 libguinget is used for things like loading the package list and uses the Apache License 2.0.
-libguinget Copyright (C) 2020-2021 Drew Naylor.
+libguinget Copyright (C) 2020-2022 Drew Naylor.
 
-libscrollswitchtabs is part of the drews-libs project and is used for switching tab control tabs using the mouse scroll wheel, just like in many Linux applications.
-libscrollswitchtabs uses the Apace License 2.0 and you can get its source code here:
+libscrollswitchtabs is part of the drews-libs project and is used for switching
+tab control tabs using the mouse scroll wheel, just like in many Linux applications.
+libscrollswitchtabs uses the Apache License 2.0 and you can get its source code here:
 https://github.com/DrewNaylor/drews-libs
 libscrollswitchtabs Copyright (C) 2020 Drew Naylor.
 
-Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the Apache License 2.0. NuGet page for Microsoft.Data.Sqlite:
+Microsoft.Data.Sqlite is used for loading the package list from an SQLite database and uses the MIT License. 
+NuGet page for Microsoft.Data.Sqlite:
 https://www.nuget.org/packages/Microsoft.Data.Sqlite/
-Microsoft.Data.Sqlite Copyright (C) Microsoft Corporation. All rights reserved.
+Microsoft.Data.Sqlite Copyright (c) .NET Foundation and Contributors. All rights reserved.
+
+System.Numerics.Vectors, System.Buffers, and System.Memory are all under the MIT License.
+NuGet for Buffers: https://www.nuget.org/packages/System.Buffers/
+NuGet for Numerics.Vectors: https://www.nuget.org/packages/System.Numerics.Vectors/
+NuGet for Memory: https://www.nuget.org/packages/System.Memory
+These are Copyright (c) .NET Foundation and Contributors. All rights reserved.
+See the license below.
+
+System.Runtime.CompilerServices.Unsafe is a dependency of Microsoft.Data.Sqlite and is under the MIT License.
+NuGet page for System.Runtime.CompilerServices.Unsafe:
+https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe
+
+Microsoft.Data.Sqlite depends on SQLitePCLRaw.core, SQLitePCLRaw.bundle_e_sqlite3,
+SQLitePCLRaw.lib.e_sqlite3, and SQLitePCLRaw.provider.dynamic_cdecl, which all are
+under the Apache License, Version 2.0.
+GitHub page for these dependencies: https://github.com/ericsink/SQLitePCL.raw
+These dependencies are Copyright 2014-2022 SourceGear, LLC.
+SQLitePCLRaw is a fork of SQLitePCL, which was a library MS Open Tech released
+on Codeplex. That library also falls under the Apache License, Version 2.0.
+See below for full copyright and license details.
 
 YamlDotNet is used to read manifests, which you can get the source code for here:
 https://github.com/aaubry/YamlDotNet
@@ -201,7 +223,9 @@ YamlDotNet Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry 
 
 ---------------------------------------------------------------
 
-Apache License 2.0 summary as it applies to guinget, libguinget, libscrollswitchtabs, and Microsoft.Data.Sqlite:
+Apache License 2.0 summary as it applies to guinget, libguinget,
+libscrollswitchtabs, and SQLitePCLRaw (though more detail for
+the last one is in its own section):
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -216,7 +240,8 @@ limitations under the License.
 
 ---------------------------------------------------------------
 
-MIT license as it applies to YamlDotNet:
+MIT License as it applies to YamlDotNet:
+Copied from https://www.nuget.org/packages/YamlDotNet/11.2.1/license
 Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -236,3 +261,107 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---------------------------------------------------------------
+
+MIT License as it applies to Microsoft.Data.Sqlite and System.Runtime.CompilerServices.Unsafe:
+Copied from https://github.com/dotnet/efcore/blob/main/LICENSE.txt
+This also appears to be the same as the one from here: https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
+The MIT License (MIT)
+
+Copyright (c) .NET Foundation and Contributors
+
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---------------------------------------------------------------
+
+MIT License as it applies to System.Numerics.Vectors, System.Buffers, and System.Memory:
+Copied from https://github.com/dotnet/corefx/blob/master/LICENSE.TXT in case it'll ever be different.
+The MIT License (MIT)
+
+Copyright (c) .NET Foundation and Contributors
+
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---------------------------------------------------------------
+
+Licenses and copyright notices for SQLitePCLRaw:
+Relevant text copied from https://github.com/ericsink/SQLitePCL.raw/blob/master/NOTICE.TXT
+----------------------------------------------------------------
+Copyright on SQLitePCL.raw
+----------------------------------------------------------------
+
+Version prior to 2.0 were labeled with the copyright owned by
+Zumero.  In 2.0, this changed to SourceGear.  There is no legal
+distinction, as Zumero is simply a dba name for SourceGear.
+
+And in either case, the open source license remains the same,
+Apache v2.
+
+----------------------------------------------------------------
+License for SQLite
+----------------------------------------------------------------
+
+** The author disclaims copyright to this source code.  In place of
+** a legal notice, here is a blessing:
+**
+**    May you do good and not evil.
+**    May you find forgiveness for yourself and forgive others.
+**    May you share freely, never taking more than you give.
+**
+
+
+----------------------------------------------------------------
+License for MS Open Tech
+----------------------------------------------------------------
+
+// Copyright © Microsoft Open Technologies, Inc.
+// All Rights Reserved
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy
+// of the License at 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS
+// OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY
+// IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+// 
+// See the Apache 2 License for the specific language governing permissions and
+// limitations under the License.
