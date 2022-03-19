@@ -2,9 +2,9 @@
 
 [Homepage](https://drew-naylor.com/guinget)
 
-This guide is up-to-date as of version 0.3.0.1. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
+This guide is up-to-date as of version 0.3. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
 
-[Version 0.3's usage guide](https://drew-naylor.com/guinget/How-to-use_0.3) is available if you need one for that version.
+[Version 0.2.0.2's usage guide](https://drew-naylor.com/guinget/How-to-use_0.2.0.2) is available if you need one for that version. Version 0.2.0.3 only backported fixes, so a new usage guide wasn't required.
 
 ## Running guinget as administrator
 
@@ -91,8 +91,6 @@ This also applies to marking a package as one you want to ignore (ignoring is `D
 
 Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
 
-**Important:** The combobox dropdown functionality is deprecated due to performance enhancements in v0.4 that made it difficult to keep this feature. Its replacement will be the ability to single-click the `Action` column items to open the package context menu. You can turn this on now if you wish to get used to it early by navigating to `Tools>Options...>Package List + Details` and checking the `Show Action column context menu when single-clicking one of the cells in that column` checkbox. Please note that this feature is wonky in this version due to conflicts with the dropdown boxes in case they're clicked multiple times in slow succession.
-
 ### Marking multiple packages
 
 To mark multiple packages, use these instructions:
@@ -145,7 +143,7 @@ The following `Apply changes` options are available:
   - Mini-form text: `Automatically open this window when the Apply Changes window is opened`
   - Options window text: `Automatically open the mini Options window when the Apply Changes window is opened`
   
-There are also two buttons at the bottom of the mini-form: `Defaults` and `Close`. `Close` just closes the window and `Defaults` sets all the checkboxes back to default. Please be aware that the settings are automatically saved after resetting the checkboxes, as this window is intended to have the option to leave it open when applying changes and stuff, unlike the regular `Options` window. Additionally, resetting to `Defaults` in this window only applies to the options available in this window, and not the main `Options` window, so resetting the rest of the settings to default must be done from `Tools>Options...>Defaults`.
+There are also two buttons at the bottom of the mini-form: `Defaults` and `Close`. `Close` just closes the window and `Defaults` sets all the checkboxes back to default. Please be aware that the settings are automatically saved after resetting the checkboxes, as this window is intended to have the option to leave it open when applying changes and stuff, unlike the regular `Options` window.
 
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
 
@@ -221,6 +219,8 @@ The available options are as follows:
 By default, it uses a folder browse window for use with multi-file manifests, but you can check the `Browse for singleton manifest` checkbox below the textbox to use a file open dialog, which will let you select a single-file manifest.
 
 When you're ready for validation, simply click the `Validate` button at the bottom-right and the manifest will be passed to winget with output displayed in CMD.
+
+"In Soviet Russia, manifest validates you."
 
 ## Edit winget settings
 
