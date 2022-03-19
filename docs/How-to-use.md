@@ -222,8 +222,6 @@ By default, it uses a folder browse window for use with multi-file manifests, bu
 
 When you're ready for validation, simply click the `Validate` button at the bottom-right and the manifest will be passed to winget with output displayed in CMD.
 
-"In Soviet Russia, manifest validates you."
-
 ## Edit winget settings
 
 You can edit winget's settings using `Tools>Edit winget settings`. If you wish to edit winget's settings for an administrator account, use `Tools>Edit winget settings as admin (UAC)` instead. Both will run `winget settings`, with the second one running it elevated.
