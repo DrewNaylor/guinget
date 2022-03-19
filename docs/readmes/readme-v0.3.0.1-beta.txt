@@ -17,6 +17,7 @@ SHA-256 sum for "guinget.exe" in the archive:
 
 These SHA-256 sums are for the libraries. Figured it would be a good idea to list them all out. I got this list by running `Get-ChildItem -Path .\lib -Recurse -Filter *.dll | Get-FileHash -Algorithm SHA256` in the archive's root folder. Here's how I learned to do it recursively: https://shellgeek.com/get-md5-checksum-or-sha-checksum-for-file-in-powershell/#Get-FileHash_Recursive_for_files
 
+```text
 82C1753E30043047E8AC6EA8E2EC53188790EC1CE492AFED0E5E70F0E8AD9ADA    .\lib\libguinget.dll
 3F2741B885A3BDD03422E0346542BF4D13384A5287FD3BAF94D05C964ABECB92    .\lib\libscrollswitchtabs.dll
 3BACEAED157174779B03D53A65F65700EB37E8C942CE1696B0A8B0EFE6BE077B    .\lib\Microsoft.Data.Sqlite.dll
@@ -33,6 +34,7 @@ F24D57A17849F58239561BA7872F2AA68BF6C80F365A0FCD6AEEF06B4440B476    .\lib\YamlDo
 618AE75967ACF2053FDE3C74B2D96C4E6C097675C3A725EBC5605521DF296FBC    .\lib\runtimes\win-arm\native\e_sqlite3.dll
 29029877DCE20E985487B1805733D72E0962E6A5CB72796B52A52628AED085D5    .\lib\runtimes\win-x64\native\e_sqlite3.dll
 D2E0558E63AC31BD4ED01E4DB7107812808B17C0223455C00482F631C0B43339    .\lib\runtimes\win-x86\native\e_sqlite3.dll
+```
 
 
 ----------------
@@ -82,6 +84,8 @@ KNOWN ISSUES
 - If the Apply changes window is too low when you open the mini-form, the mini-form will be offscreen. (issue #101 https://github.com/DrewNaylor/guinget/issues/101)
 - Installing just for your account works, but the uninstaller (using Inno Setup) doesn't seem to properly remove it for some versions of Windows 10. (issue #102 https://github.com/DrewNaylor/guinget/issues/102)
 - The Apply Changes window doesn't display the list properly at the bottom if there are a lot of packages in the list. (issue #141 https://github.com/DrewNaylor/guinget/issues/141)
+- If we can't find even one manifest when extracting and moving or loading them, none of the following manifests will be extracted. (issue #148 https://github.com/DrewNaylor/guinget/issues/148)
+- Apparently the unofficial ProtonMail desktop client's locale manifest's resulting filepath when extracted is too long for Windows without using the long file paths Registry key. (issue #149 https://github.com/DrewNaylor/guinget/issues/149)
 
 See all known issues: https://github.com/DrewNaylor/guinget/labels/known%20issue
 
