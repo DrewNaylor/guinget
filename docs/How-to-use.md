@@ -91,7 +91,7 @@ This also applies to marking a package as one you want to ignore (ignoring is `D
 
 Using the arrow keys to move the cell selection may not work sometimes, as I had some issue getting it to work during testing.
 
-**Important:** The combobox dropdown functionality is deprecated due to performance enhancements in v0.4 that made it difficult to keep this feature. Its replacement will be the ability to single-click the `Action` column items to open the package context menu. You can turn this on now if you wish to get used to it early by navigating to `Tools>Options>Package List + Details` and checking the `Show Action column context menu when single-clicking one of the cells in that column` checkbox. Please note that this feature is wonky in this version due to conflicts with the dropdown boxes in case they're clicked multiple times in slow succession.
+**Important:** The combobox dropdown functionality is deprecated due to performance enhancements in v0.4 that made it difficult to keep this feature. Its replacement will be the ability to single-click the `Action` column items to open the package context menu. You can turn this on now if you wish to get used to it early by navigating to `Tools>Options...>Package List + Details` and checking the `Show Action column context menu when single-clicking one of the cells in that column` checkbox. Please note that this feature is wonky in this version due to conflicts with the dropdown boxes in case they're clicked multiple times in slow succession.
 
 ### Marking multiple packages
 
