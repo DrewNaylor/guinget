@@ -145,7 +145,7 @@ The following `Apply changes` options are available:
   - Mini-form text: `Automatically open this window when the Apply Changes window is opened`
   - Options window text: `Automatically open the mini Options window when the Apply Changes window is opened`
   
-There are also two buttons at the bottom of the mini-form: `Defaults` and `Close`. `Close` just closes the window and `Defaults` sets all the checkboxes back to default. Please be aware that the settings are automatically saved after resetting the checkboxes, as this window is intended to have the option to leave it open when applying changes and stuff, unlike the regular `Options` window.
+There are also two buttons at the bottom of the mini-form: `Defaults` and `Close`. `Close` just closes the window and `Defaults` sets all the checkboxes back to default. Please be aware that the settings are automatically saved after resetting the checkboxes, as this window is intended to have the option to leave it open when applying changes and stuff, unlike the regular `Options` window. Additionally, resetting to `Defaults` in this window only applies to the options available in this window, and not the main `Options` window, so resetting the rest of the settings to default must be done from `Tools>Options...>Defaults`.
 
 These will persist across closing the `Apply changes` window and restarting or upgrading guinget.
 
