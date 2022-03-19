@@ -84,6 +84,8 @@ KNOWN ISSUES
 - If the Apply changes window is too low when you open the mini-form, the mini-form will be offscreen. (issue #101 https://github.com/DrewNaylor/guinget/issues/101)
 - Installing just for your account works, but the uninstaller (using Inno Setup) doesn't seem to properly remove it for some versions of Windows 10. (issue #102 https://github.com/DrewNaylor/guinget/issues/102)
 - The Apply Changes window doesn't display the list properly at the bottom if there are a lot of packages in the list. (issue #141 https://github.com/DrewNaylor/guinget/issues/141)
+- If we can't find even one manifest when extracting and moving or loading them, none of the following manifests will be extracted. (issue #148 https://github.com/DrewNaylor/guinget/issues/148)
+- Apparently the unofficial ProtonMail desktop client's locale manifest's resulting filepath when extracted is too long for Windows without using the long file paths Registry key. (issue #149 https://github.com/DrewNaylor/guinget/issues/149)
 
 See all known issues: https://github.com/DrewNaylor/guinget/labels/known%20issue
 
