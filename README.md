@@ -18,9 +18,11 @@ Main branch build status/nightly build:<br>
 Visual Studio 2019 Community is being used for this project's development, and .NET Framework 4.8 or newer for version 0.1.2 and newer (0.1.1 and older require at least .NET Framework 4.6.1) is required to run it.
 
 Other libraries used (besides .NET):
-- YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.<br>
-- To load the SQLite database, we're using [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.SQLite/), available under the Apache License 2.0.<br>
+- YAML files are being read with [YamlDotNet](https://github.com/aaubry/YamlDotNet), which uses the MIT license.
+- To load the SQLite database, we're using [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.SQLite/), available under the MIT License.
 - Scrolling tab control tabs with the mouse wheel is provided by [libscrollswitchtabs](https://github.com/DrewNaylor/drews-libs/blob/master/docs/libscrollswitchtabs-how-to-use.md), also available under the Apache License 2.0.
+
+Licenses for all components included with the distribution are in the files starting with `LICENSE`.
 
 There's a [project roadmap](https://drew-naylor.com/guinget/Project-roadmap) available, if you're interested.
 
