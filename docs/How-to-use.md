@@ -40,7 +40,7 @@ Some options are available to modify the behavior when refreshing the cache. The
 	
 #### Notes on loading from the database
 
-- The package list will be loaded using the same SQLite database as winget uses by default, located at https://winget.azureedge.net/cache/source.msix. As briefly mentioned above, this still relies on the manifests to get the package details as those aren't directly available in the database.
+- The package list will be loaded using the same SQLite database as winget uses by default, located at https://cdn.winget.microsoft.com/cache/source.msix. As briefly mentioned above, this still relies on the manifests to get the package details as those aren't directly available in the database.
 - Each package version is listed as a separate entry even when loading from the database, though using the database will make sure only packages winget can display right now are shown.
 - Loading the details may still take a bit as we have to take the package ID and version number and figure out where its manifest is, instead of just grabbing all the manifests and loading from them. In case we can't find a package's manifest, we'll just look through all the manifests until we find the right one. Figuring out where each package's manifest is stored is done in three ways:
   - If forming a path using the package ID and version according to the manifest format v1 finds a file that exists, then that's great and we'll use that file. This is the fastest method.
