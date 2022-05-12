@@ -2,7 +2,7 @@
 
 [Homepage](https://drew-naylor.com/guinget)
 
-This guide is up-to-date as of version 0.3.0.2. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
+This guide is up-to-date as of version 0.3.0.1. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
 
 [Version 0.3's usage guide](https://drew-naylor.com/guinget/How-to-use_0.3) is available if you need one for that version.
 
@@ -27,8 +27,6 @@ Once you've started the update, just wait for it to complete, and try again if t
 
 Loading the package list and details will take a bit and may lock up slightly on slower systems, such as virtual machines. Additionally, please be aware that the main window cannot be moved while loading the package list and details, though this is something I want to allow.
 
-**Please note:** Some manifests have a name that results in a file path that's too long for Windows. Windows 10 version 1607 and later (previous versions of Windows don't support this, so they'll still have the long file path issue) support the `LongPathsEnabled` Registry key, and if it's set to `1`, guinget should work just fine. If not, you can use the `EnableLongPathsEnabled.reg` file guinget ships with to set it. As with any `.reg` file, it's important to first check it in Notepad to ensure it's safe, but it should be unless a third-party modified it. You can also use `DisableLongPathsEnabled.reg` to turn it back off. Opening either of these files must be done elevated (as Administrator) from either Command Prompt or PowerShell. After applying the key, you may need to restart your computer for the changes to take effect. A future version of guinget will make this easier.
-
 ### Refresh cache options
 
 Some options are available to modify the behavior when refreshing the cache. They're listed below and accessible from `Tools>Options...>Refresh Cache`.
@@ -40,7 +38,7 @@ Some options are available to modify the behavior when refreshing the cache. The
 	
 #### Notes on loading from the database
 
-- The package list will be loaded using the same SQLite database as winget uses by default, located at https://cdn.winget.microsoft.com/cache/source.msix. As briefly mentioned above, this still relies on the manifests to get the package details as those aren't directly available in the database.
+- The package list will be loaded using the same SQLite database as winget uses by default, located at https://winget.azureedge.net/cache/source.msix. As briefly mentioned above, this still relies on the manifests to get the package details as those aren't directly available in the database.
 - Each package version is listed as a separate entry even when loading from the database, though using the database will make sure only packages winget can display right now are shown.
 - Loading the details may still take a bit as we have to take the package ID and version number and figure out where its manifest is, instead of just grabbing all the manifests and loading from them. In case we can't find a package's manifest, we'll just look through all the manifests until we find the right one. Figuring out where each package's manifest is stored is done in three ways:
   - If forming a path using the package ID and version according to the manifest format v1 finds a file that exists, then that's great and we'll use that file. This is the fastest method.
