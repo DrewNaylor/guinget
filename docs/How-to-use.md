@@ -4,7 +4,7 @@
 
 This guide is up-to-date as of version 0.3.0.2. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
 
-[Version 0.3's usage guide](https://drew-naylor.com/guinget/How-to-use_0.3) is available if you need one for that version.
+[Version 0.3.0.1's usage guide](https://drew-naylor.com/guinget/How-to-use_0.3.0.1) is available if you need one for that version.
 
 ## Running guinget as administrator
 
