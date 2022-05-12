@@ -2,7 +2,7 @@
 
 [Homepage](https://drew-naylor.com/guinget)
 
-This guide is up-to-date as of version 0.3.0.1. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
+This guide is up-to-date as of version 0.3.0.2. You can get here at any time from `Help>How to use guinget`, or by pressing `F1`. There's a video showing [how to use guinget](https://youtu.be/t2OhzNE4yj0) available if you prefer watching videos, but it only covers up to version 0.1.0.1.
 
 [Version 0.3's usage guide](https://drew-naylor.com/guinget/How-to-use_0.3) is available if you need one for that version.
 
@@ -26,6 +26,8 @@ To refresh the cache, all you have to do is one of the following:
 Once you've started the update, just wait for it to complete, and try again if there are issues.
 
 Loading the package list and details will take a bit and may lock up slightly on slower systems, such as virtual machines. Additionally, please be aware that the main window cannot be moved while loading the package list and details, though this is something I want to allow.
+
+**Please note:** Some manifests have a name that results in a file path that's too long for Windows. Windows 10 version 1607 and later (previous versions of Windows don't support this, so they'll still have the long file path issue) support the `LongPathsEnabled` Registry key, and if it's set to `1`, guinget should work just fine. If not, you can use the `EnableLongPathsEnabled.reg` file guinget ships with to set it. As with any `.reg` file, it's important to first check it in Notepad to ensure it's safe, but it should be unless a third-party modified it. You can also use `DisableLongPathsEnabled.reg` to turn it back off. Opening either of these files must be done elevated (as Administrator) from either Command Prompt or PowerShell. After applying the key, you may need to restart your computer for the changes to take effect. A future version of guinget will make this easier.
 
 ### Refresh cache options
 
