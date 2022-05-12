@@ -246,7 +246,7 @@ Public Class PackageListTools
                                End Sub)
             End If
         ' Now download.
-        Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
+        Await DownloadPkgListWithProgressAsync("https://cdn.winget.microsoft.com/cache/source.msix",
                                              "winget-db")
 #End Region
 
@@ -362,6 +362,10 @@ Public Class PackageListTools
                                             ' every file.
                                             progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
 
+                                            ' Create variable that'll say whether we should show the long file path messagebox again this extraction.
+                                            Dim LongFilePathMessageShown As Boolean = False
+
+
                                             Await Task.Run(Sub()
                                                                ' Make sure there's a "\" at the end of the path to prevent path traversal.
                                                                If Not DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty).EndsWith("\") Then
@@ -375,7 +379,26 @@ Public Class PackageListTools
                                                                IO.Directory.CreateDirectory(DestinationPath)
 
                                                                ' Now extract.
-                                                               ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
+                                                               ' Catch System.IO.DirectoryNotFoundException exceptions to tell the user they may
+                                                               ' need to go to the Options window to turn LongFilePath support on in the Windows Registry.
+                                                               ' Also state that a process will help it to be done automatically.
+                                                               ' TODO/NOTE: The feature in the Options window will be available in a future version.
+                                                               ' Default max was taken from here:
+                                                               ' https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation
+
+                                                               Try
+                                                                   ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
+
+                                                               Catch ex As System.IO.DirectoryNotFoundException
+                                                                   If LongFilePathMessageShown = False Then
+                                                                       MessageBox.Show("The file path for this manifest is too long. You'll need to turn LongPathsEnabled on in the Windows Registry manually for now, or use the EnableLongPathsEnabled.reg file that shipped with guinget. You can turn it back off with DisableLongPathsEnabled.reg. A future version will make this easier. After doing either, you need to restart your computer to ensure the changes take effect for everything. We won't tell you again during this extraction for any more files we run into that are too long." & vbCrLf &
+                                                                                       vbCrLf &
+                                                                                       "Current manifest we're trying to extract: " & ZipArchiveEntry.Name)
+                                                                       'MessageBox.Show("The file path for this manifest is probably too long. You'll need to go to the Options window to turn LongPathsEnabled on in the Windows Registry. You'll be guided through the task automatically.")
+                                                                       ' Update variable to say if we've shown this message or not yet.
+                                                                       LongFilePathMessageShown = True
+                                                                   End If
+                                                               End Try
                                                            End Sub)
                                         End If
                                     End If
