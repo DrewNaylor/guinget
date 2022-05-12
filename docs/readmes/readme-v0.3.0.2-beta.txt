@@ -44,7 +44,7 @@ D2E0558E63AC31BD4ED01E4DB7107812808B17C0223455C00482F631C0B43339       .\lib\run
 
 
 ----------------
-GENERAL NOTES
+General Notes
 ~~~~~~~~~~~~~~~~
 
 --> Some packages like CrystalDiskMark and LibreOffice may require administrative permissions to install, so you'll have to check the "Elevate winget with UAC" checkbox in the "Apply changes" window's mini-form version of Options accessible from the "Options..." linklabel before confirming changes. Please don't run guinget itself as an administrator for versions 0.1.3 and above.
@@ -80,7 +80,7 @@ Some installations of Windows 10 might have issues with elevating winget, so in 
 --> I am not responsible for any damage using my app may cause.
 
 ----------------
-KNOWN ISSUES
+Known Issues
 ~~~~~~~~~~~~~~~~
 
 - Selecting all packages with Ctrl+A while searching will select every package, even the ones that aren't visible. (issue #13 https://github.com/DrewNaylor/guinget/issues/13)
@@ -96,7 +96,7 @@ KNOWN ISSUES
 See all known issues: https://github.com/DrewNaylor/guinget/labels/known%20issue
 
 --------------------
-SYSTEM REQUIREMENTS
+System Requirements
 ~~~~~~~~~~~~~~~~~~~~
 
 To run guinget, your computer requires the following:
@@ -130,7 +130,7 @@ To run guinget, your computer requires the following:
 - Disk space, RAM, and CPU frequency minimum requirements are based on the .NET Framework 4.8 requirements. guinget itself is quite small, although some packages and the cache may take up more space.
 
 ------------
-HOW TO USE
+How to Use
 ~~~~~~~~~~~~
 
 A more-detailed usage guide is available in "docs/How to use guinget.html".
@@ -140,6 +140,8 @@ A more-detailed usage guide is available in "docs/How to use guinget.html".
 2. Open the file titled "guinget.exe". I recommend making a shortcut to the app on your desktop or taskbar for easy access.
 
 3. Refresh the package list cache using the "Refresh cache" button on the toolbar, choosing "Refresh cache" from the "Package list" menu, or by pressing "Ctrl+R".
+
+Note: See the "general"
 
 4. Wait until the package list cache has been updated and the package details have been loaded. This may take a bit.
 
@@ -165,7 +167,7 @@ By default, searches are re-done after updating the package list, although you c
 If a package didn't (for example) install the first time, you can reset its status by right-clicking on it, clicking `Reset status for selected package`, change the `Apply changes` options via the linklabel in the bottom-left corner that says, `Options...`, and check the `Elevate winget with UAC` checkbox, then try again.
 
 ----------------------------------
-CONTACT AND COPYRIGHT/LICENSING
+Contact and Copyright/Licensing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Drew's Main Website:      		https://drew-naylor.com/
