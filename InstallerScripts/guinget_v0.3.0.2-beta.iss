@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "guinget"
-#define MyAppVersion "0.3.0.1"
+#define MyAppVersion "0.3.0.2"
 #define MyAppPublisher "Drew Naylor"
 #define MyAppURL "https://github.com/DrewNaylor/guinget"
 #define MyAppUpdatesURL "https://github.com/DrewNaylor/guinget/releases/latest"
@@ -11,8 +11,8 @@
 
 ; Variables that are used to make updating installer scripts
 ; faster and more reliable.
-#define CurrentVersion "v0.3.0.1-beta"
-#define PreviousVersion "v0.3-beta"
+#define CurrentVersion "v0.3.0.2-beta"
+#define PreviousVersion "v0.3.0.1-beta"
 #define SourcesRootPath "C:\DrewN Desktop Apps\Binaries"
 
 [Setup]
@@ -72,6 +72,8 @@ Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-MicrosoftDataSqlit
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-SQLitePCLRaw.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-SysNumsVects_SysBuffs_SysMem.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\LICENSE-SysRuntimeCompSvcUnsafe.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\DisableLongPathsEnabled.reg"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\EnableLongPathsEnabled.reg"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion createallsubdirs recursesubdirs
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\guinget.exe_migratesettings_.config"; DestDir: "{app}"; DestName: "guinget.exe.config"; Flags: ignoreversion
 Source: "{#SourcesRootPath}\guinget\{#CurrentVersion}\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion createallsubdirs recursesubdirs
