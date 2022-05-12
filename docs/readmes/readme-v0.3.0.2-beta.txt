@@ -141,7 +141,7 @@ A more-detailed usage guide is available in "docs/How to use guinget.html".
 
 3. Refresh the package list cache using the "Refresh cache" button on the toolbar, choosing "Refresh cache" from the "Package list" menu, or by pressing "Ctrl+R".
 
-Note: See the "general"
+Note: See near the top of the "General Notes" section above regarding long file paths for some manifests, and how to tell Windows 10 version 1607 and up to use them.
 
 4. Wait until the package list cache has been updated and the package details have been loaded. This may take a bit.
 
