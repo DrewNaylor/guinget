@@ -608,7 +608,7 @@ Public Class aaformMainWindow
         ' We can now display the package details while making sure the manifest isn't
         ' nothing.
         If PackageListTable.Rows.Count > 0 AndAlso aaformMainWindow.datagridviewPackageList.Rows.Count > 0 AndAlso
-            aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value IsNot Nothing AndAlso
+            Not String.IsNullOrEmpty(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) AndAlso
                     IO.File.Exists(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
             ' If only one is selected, get its details into the details textbox.
             ' Set the textbox to say "Loading..." so it doesn't look like it's hanging.
@@ -700,7 +700,8 @@ Public Class aaformMainWindow
                 ">Refresh cache, or by pressing Ctrl+R."
 
         ElseIf aaformMainWindow.datagridviewPackageList.SelectedRows.Count > 0 AndAlso
-         String.IsNullOrEmpty(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
+         String.IsNullOrEmpty(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Or
+         Not IO.File.Exists(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
             ' Note: Apparently empty columns are treated as just blank strings instead of being Nothing when loading from a DataTable,
             ' so we need to do String.IsNullOrEmpty for it to work correctly.
 
