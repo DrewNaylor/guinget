@@ -700,7 +700,9 @@ Public Class aaformMainWindow
                 ">Refresh cache, or by pressing Ctrl+R."
 
         ElseIf aaformMainWindow.datagridviewPackageList.SelectedRows.Count > 0 AndAlso
-        aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value Is Nothing Then
+         String.IsNullOrEmpty(aaformMainWindow.datagridviewPackageList.SelectedRows.Item(0).Cells(7).Value.ToString) Then
+            ' Note: Apparently empty columns are treated as just blank strings instead of being Nothing when loading from a DataTable,
+            ' so we need to do String.IsNullOrEmpty for it to work correctly.
 
             ' If there are more than 0 rows selected and the manifest path
             ' is Nothing, say that we couldn't find the manifest.
