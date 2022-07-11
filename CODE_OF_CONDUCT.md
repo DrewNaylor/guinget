@@ -5,7 +5,7 @@
 We as members, contributors, and leaders pledge to make participation in our
 community a harassment-free experience for everyone, regardless of age, body
 size, visible or invisible disability, ethnicity, sex characteristics, gender
-identity and expression, level of experience, education, socio-economic status (except the rich),
+identity and expression, plurality (including if someone's not plural; sorry, I don't know the right words), level of experience, education, socio-economic status (except the rich),
 housing status, nationality, personal appearance, race, job (except police and other oppressors), religion, or sexual identity
 and orientation.
 
@@ -159,18 +159,23 @@ Note that some changes were made from the original template by Drew Naylor.
 These include the "Special" section under "Enforcement Guidelines", as well
 as stating that the rich are excluded from the socio-economic groups that
 will be protected, and adding "job" to the list of categories that will be
-protected while excluding police (Working Class Unity). Additionally, being vocally
+protected while excluding police (Working Class Unity). Plurality was
+also added to what's protected, though please note that I don't know all the
+words, so I hope it's close enough. Additionally, being vocally
 anti-facist will be allowed as an exception to the text preventing political
 attacks (fascists don't get to exist Scott-free). Being a fascist/nazi, TERF,
 authoritarian... has also been added to the list of examples of things that
 aren't allowed. The entire "Appeals" section has been added to give anyone
 that changes their ways an option to be unbanned and unblocked if they change their ways and
 their appeal request is accepted (not everything will be accepted if it's too major).
-This is mainly to ensure that anyone that realizes they were in the wrong with their
+<br>This is mainly to ensure that anyone that realizes they were in the wrong with their
 beliefs is allowed a second chance so they're not unfairly punished for something
 their past self did that they now (rightly) regret, something their current self
 would insta-block them for.
-Anyone is allowed to use and modify this version of the Contributor
+<br>Anyone is allowed to use and modify this version of the Contributor
 Covenant however they wish if they so desire and if it's closer to their ideals.
-These changes won't be available in the translations and FAQ linked above.
-This is version 1.1 of Drew Naylor's modified version of the Contributor Covenant.
+<br>These changes won't be available in the translations and FAQ linked above.
+<br>This is version 1.2 of Drew Naylor's modified version of the Contributor Covenant.
+<br>Version 1.1 added the "Appeals" section.
+<br>Version 1.2 added plurality to the list of protected categories and also
+added line breaks to this note about the modified version.
