@@ -61,7 +61,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-drewnaylor_apps AT outlook DOT com.
+`drewnaylor_apps AT outlook DOT com` (replace "AT" with the at-sign and "DOT" with a dot/period).
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
@@ -126,6 +126,20 @@ to be correct.
 **Consequence**: Get blocked on social media mainly by the community leader(s), and also
 get banned on platforms that allow moderation by the community leader(s).
 
+## Appeals
+
+If you were previously a bigot but changed your ways and wish to be unbanned and unblocked,
+please send an email to `drewnaylor_apps AT outlook DOT com` (replace "AT" with the at-sign and "DOT" with a dot/period).
+Your appeal application will be processed in a timely manner. Please be aware that some behaviour may not allow you
+to be unbanned and unblocked if it is too severe, but these will be determined on a case-by-case basis.
+If you're found to continue the actions you appealed for to be unblocked and unbanned, then you will be
+reblocked and rebanned with no further option for appeal.
+
+Appeals are mainly to ensure that anyone that realizes they were in the wrong with their
+beliefs is allowed a second chance so they're not unfairly punished for something
+their past self did that they now (rightly) regret, something their current self
+would insta-block them for.
+
 ## Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant][homepage],
@@ -147,8 +161,16 @@ as stating that the rich are excluded from the socio-economic groups that
 will be protected, and adding "job" to the list of categories that will be
 protected while excluding police (Working Class Unity). Additionally, being vocally
 anti-facist will be allowed as an exception to the text preventing political
-attacks (fascists don't get to exist Scott-free). Being a facist/nazi, TERF,
+attacks (fascists don't get to exist Scott-free). Being a fascist/nazi, TERF,
 authoritarian... has also been added to the list of examples of things that
-aren't allowed. Anyone is allowed to use and modify this version of the Contributor
+aren't allowed. The entire "Appeals" section has been added to give anyone
+that changes their ways an option to be unbanned and unblocked if they change their ways and
+their appeal request is accepted (not everything will be accepted if it's too major).
+This is mainly to ensure that anyone that realizes they were in the wrong with their
+beliefs is allowed a second chance so they're not unfairly punished for something
+their past self did that they now (rightly) regret, something their current self
+would insta-block them for.
+Anyone is allowed to use and modify this version of the Contributor
 Covenant however they wish if they so desire and if it's closer to their ideals.
 These changes won't be available in the translations and FAQ linked above.
+This is version 1.1 of Drew Naylor's modified version of the Contributor Covenant.
