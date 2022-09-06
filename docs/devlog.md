@@ -71,7 +71,10 @@ select distinct ids.id, manifest.id, versions.version, manifest.version, names.n
 
 ## Update 10/5/2020
 
-At this point, I'm trying to see if it's possible to get the latest version, and this code doesn't work even though it should. This is based on the code from https://www.sqlitetutorial.net/sqlite-window-functions/sqlite-last_value/#:~:text=The%20LAST_VALUE%20%28%29%20is%20a%20window%20function%20that,LAST_VALUE%20%28expression%29%20OVER%20%28%20PARTITION%20BY%20expression1%2C%20expression2%2C
+At this point, I'm trying to see if it's possible to get the latest version, and this code doesn't work even though it should. This is based on the code from:
+```text
+https://www.sqlitetutorial.net/sqlite-window-functions/sqlite-last_value/#:~:text=The%20LAST_VALUE%20%28%29%20is%20a%20window%20function%20that,LAST_VALUE%20%28expression%29%20OVER%20%28%20PARTITION%20BY%20expression1%2C%20expression2%2C
+```
 
 ```sqlite
 SELECT DISTINCT
