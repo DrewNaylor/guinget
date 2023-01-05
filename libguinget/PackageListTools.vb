@@ -57,6 +57,7 @@ Public Class PackageListTools
                                                   TitleText, MessageBoxButtons.YesNo)
         ' If the user clicks Yes, delete the folder then let them know if it was successful.
         ' Make sure it's not in use at the moment.
+        ' TODO: Make this async.
         If response = DialogResult.Yes AndAlso IO.Directory.Exists(path) Then
             Try
                 System.IO.Directory.Delete(path, True)
