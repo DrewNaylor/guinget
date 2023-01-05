@@ -666,6 +666,10 @@ Public Class PackageListTools
 #End Region
 
 #Region "Deleting temp directories."
+
+    ' Boolean to store whether we should use the last session's package list.
+    Private Shared UsePreviousSessionPackageList As Boolean = False
+
     Public Shared Async Function DeleteTempDirAsync(SourceRootDir As String, Optional RecreateTempDir As Boolean = False) As Task(Of Boolean)
         ' Delete the temp dir of the source specified in SourceRootDir.
         ' Define a variable to store the path.
@@ -673,35 +677,44 @@ Public Class PackageListTools
                                    "\winget-frontends\source\" & SourceRootDir & "\temp"
         ' Now begin deletion process.
         ' Make sure it's not in use at the moment.
-        Try
-            ' Using Await so it's properly async.
-            Await Task.Run(Sub()
-                               ' Make sure the path exists first.
-                               If System.IO.Directory.Exists(tempPath) Then
-                                   Try
-                                       System.IO.Directory.Delete(tempPath, True)
-                                   Catch ex As System.IO.IOException
-                                       ' We need to tell another sub to load the last session's package list
-                                       ' because something in the path is in use and we'll do it
-                                       ' by updating a boolean outside the Await because I don't
-                                       ' know how to do this properly.
-                                       ' TODO: Figure it out to do it properly.
-                                       UpdateBooleanToUsePreviousSessionPackageList(True)
-                                   End Try
-                               End If
-                           End Sub)
-            ' Re-create the dir if necessary.
-            If RecreateTempDir = True Then
-                System.IO.Directory.CreateDirectory(tempPath)
-            End If
-        Catch ex As System.IO.IOException
+        ' Actually, that's being done in the Await to make sure it works,
+        ' because it didn't work before.
+
+        ' Using Await so it's properly async.
+        Await Task.Run(Sub()
+                           ' Make sure the path exists first.
+                           If System.IO.Directory.Exists(tempPath) Then
+                               Try
+                                   System.IO.Directory.Delete(tempPath, True)
+                               Catch ex As System.IO.IOException
+                                   ' We need to tell another sub to load the last session's package list
+                                   ' because something in the path is in use and we'll do it
+                                   ' by updating a boolean outside the Await because I don't
+                                   ' know how to do this properly.
+                                   ' TODO: Figure it out to do it properly.
+                                   UpdateBooleanToUsePreviousSessionPackageList(True)
+                               End Try
+                           End If
+                       End Sub)
+        ' Re-create the dir if necessary.
+        If RecreateTempDir = True Then
+            System.IO.Directory.CreateDirectory(tempPath)
+        End If
+        If UsePreviousSessionPackageList = True Then
             MessageBox.Show("A file in " & tempPath & " is in use by another process. Please close it and try again. Loading last session's package list.", "Deleting temp dir")
             ' Task unsuccessful.
+            ' We still need to reset the boolean, though.
+            UpdateBooleanToUsePreviousSessionPackageList(False)
             Return False
-        End Try
+        End If
         ' Task successful.
         Return True
     End Function
+
+    Private Shared Sub UpdateBooleanToUsePreviousSessionPackageList(State As Boolean)
+        ' Update the boolean.
+        UsePreviousSessionPackageList = State
+    End Sub
 #End Region
 
 #Region "Get manifest paths list"
