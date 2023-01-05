@@ -362,20 +362,41 @@ Public Class PackageListTools
                                             ' every file.
                                             progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
 
-                                            Await Task.Run(Sub()
-                                                               ' Make sure there's a "\" at the end of the path to prevent path traversal.
-                                                               If Not DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty).EndsWith("\") Then
-                                                                   DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty) & "\"
-                                                               Else
-                                                                   ' Destination path has a "\", so just replace the filename.
-                                                                   DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty)
-                                                               End If
 
+                                            ' Make sure there's a "\" at the end of the path to prevent path traversal.
+                                            If Not DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty).EndsWith("\") Then
+                                                DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty) & "\"
+                                            Else
+                                                ' Destination path has a "\", so just replace the filename.
+                                                DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty)
+                                            End If
+
+                                            Await Task.Run(Sub()
                                                                ' Create the directory for the manifest if it doesn't exist.
                                                                IO.Directory.CreateDirectory(DestinationPath)
 
                                                                ' Now extract.
-                                                               ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
+                                                               ' Catch System.IO.DirectoryNotFoundException exceptions to tell the user they may
+                                                               ' need to go to the Options window to turn LongFilePath support on in the Windows Registry.
+                                                               ' Also state that a process will help it to be done automatically.
+                                                               ' TODO/NOTE: The feature in the Options window will be available in a future version.
+                                                               ' Default max was taken from here:
+                                                               ' https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation
+
+                                                               Try
+                                                                   ' TODO: Make sure the file doesn't exist yet, which can happen if the main window
+                                                                   ' is closed during extraction and we're not deleting the temp directory yet.
+                                                                   If Not System.IO.File.Exists(DestinationPath & ZipArchiveEntry.Name) Then
+                                                                       ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
+                                                                   Else
+                                                                       Exit Sub
+                                                                   End If
+
+                                                               Catch ex As System.IO.DirectoryNotFoundException
+                                                                   ' The messagebox was moved to its own sub so that the boolean
+                                                                   ' would be updated properly.
+                                                                   ManifestPathTooLongMessage(ZipArchiveEntry.Name)
+                                                               End Try
                                                            End Sub)
                                         End If
                                     End If
@@ -409,6 +430,8 @@ Public Class PackageListTools
                             ' Now extract.
 
                             Await Task.Run(Sub()
+                                               ' TODO: Ensure files that already exist are skipped if we're debugging
+                                               ' extracting without updating the cache from the server.
                                                ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source\")
                                            End Sub)
 
@@ -617,6 +640,29 @@ Public Class PackageListTools
         End If
 
     End Function
+
+#Region "Stop extracting manifests with paths that are too long message."
+
+    ' Boolean to store if the long file path message has been shown yet.
+    ' This and the sub with the message box below has been moved from the
+    ' extraction code as it wasn't properly updating the boolean
+    ' due to happening in an async block.
+    Private Shared LongFilePathMessageShown As Boolean = False
+
+    Private Shared Sub ManifestPathTooLongMessage(ZipArchiveEntryName As String)
+        If LongFilePathMessageShown = False Then
+            MessageBox.Show("The file path for this manifest is too long." & vbCrLf & vbCrLf &
+                            "You'll need to turn LongPathsEnabled on in the Windows Registry manually for now, or use the EnableLongPathsEnabled.reg file that shipped with guinget. You can turn it back off with DisableLongPathsEnabled.reg." & vbCrLf & vbCrLf &
+                            "Be sure to read these files in Notepad first to ensure they don't do anything dangerous (just in case they get modified by a third-party in an unofficial guinget package), or so that you can just copy everything manually if you know what you're doing. These files must be opened from an elevated (Administrator) process, such as Command Prompt or PowerShell. After doing either, you may need to restart your computer to ensure the changes take effect. We won't tell you again during this extraction for any more files we run into that are too long." & vbCrLf & vbCrLf &
+                            "A future version will make this easier." & vbCrLf &
+                            vbCrLf &
+                            "Current manifest we're trying to extract: " & ZipArchiveEntryName, "Manifest File Path Too Long")
+            'MessageBox.Show("The file path for this manifest is probably too long. You'll need to go to the Options window to turn LongPathsEnabled on in the Windows Registry. You'll be guided through the task automatically.")
+            ' Update variable to say if we've shown this message or not yet.
+            LongFilePathMessageShown = True
+        End If
+    End Sub
+#End Region
 #End Region
 
 #Region "Deleting temp directories."
@@ -630,7 +676,19 @@ Public Class PackageListTools
         Try
             ' Using Await so it's properly async.
             Await Task.Run(Sub()
-                               System.IO.Directory.Delete(tempPath, True)
+                               ' Make sure the path exists first.
+                               If System.IO.Directory.Exists(tempPath) Then
+                                   Try
+                                       System.IO.Directory.Delete(tempPath, True)
+                                   Catch ex As System.IO.IOException
+                                       ' We need to tell another sub to load the last session's package list
+                                       ' because something in the path is in use and we'll do it
+                                       ' by updating a boolean outside the Await because I don't
+                                       ' know how to do this properly.
+                                       ' TODO: Figure it out to do it properly.
+                                       UpdateBooleanToUsePreviousSessionPackageList(True)
+                                   End Try
+                               End If
                            End Sub)
             ' Re-create the dir if necessary.
             If RecreateTempDir = True Then
