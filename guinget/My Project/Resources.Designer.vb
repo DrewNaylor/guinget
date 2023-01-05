@@ -22,7 +22,7 @@ Namespace My.Resources
     '''<summary>
     '''  A strongly-typed resource class, for looking up localized strings, etc.
     '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0"),  _
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
      Global.Microsoft.VisualBasic.HideModuleNameAttribute()>  _
@@ -66,6 +66,26 @@ Namespace My.Resources
         Friend ReadOnly Property AboutSeparator() As String
             Get
                 Return ResourceManager.GetString("AboutSeparator", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Unofficial GUI for Microsoft&apos;s Windows Package Manager (winget).
+        '''Kinda like Synaptic, but for Windows. Not associated with either
+        '''Microsoft or the Synaptic project. Microsoft does not endorse guinget.
+        '''winget is Copyright (c) Microsoft Corporation. All rights reserved.
+        '''
+        '''You can get the source code for guinget from
+        '''https://github.com/DrewNaylor/guinget
+        '''
+        '''libguinget is used for things like loading the package list and uses the Apache License 2.0.
+        '''libguinget Copyright (C) 2020-2022 Drew Naylor.
+        '''
+        '''libsc [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property AboutWindowCopyrightsAndStuff() As String
+            Get
+                Return ResourceManager.GetString("AboutWindowCopyrightsAndStuff", resourceCulture)
             End Get
         End Property
         
