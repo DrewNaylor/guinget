@@ -62,14 +62,17 @@ Public Class ValidateManifestWindow
         End If
 
         If VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "12f3c1d6e07f0988cee8279ed3ad22f5" Or
-            VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "c211984abb9f71ad93ddf55caf0428f6" Then
+            VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "c211984abb9f71ad93ddf55caf0428f6" Or
+            VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "5181a8acdef7be40dfbf3ec66bee2b20" Or
+            VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "e6223c6274a7979612ce6b2d84c6ffff" Or
+            VerificationCryptographyStuff.GetMd5(textboxManifestPath.Text.ToLowerInvariant) = "c823de8343fd2b2646a45a76c2d7b49b" Then
             ' Confirm user validation.
             ' The "If" statement checks above this comment use a simple MD5
             ' hash since it doesn't really need anything fancy, and the messagebox
             ' thing below is a partial MD5 hash that's manually deciphered.
             ' We need to allow the user to type a name in if they want to specify
             ' the user to validate.
-            Dim userName As String = InputBox("Please type a username to validate, if you want to specify one:", "Validate Manifest")
+            Dim userName As String = InputBox("Please type a username or system Workgroup name to validate, if you want to specify one:", "Validate Manifest")
             ' Now pass in the username into the decyphering code.
             MessageBox.Show(VerificationCryptographyStuff.GetDeciphered("e36b8e3fd02fe8be", userName), "Validate Manifest", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
