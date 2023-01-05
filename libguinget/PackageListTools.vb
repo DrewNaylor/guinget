@@ -432,6 +432,8 @@ Public Class PackageListTools
                             ' Now extract.
 
                             Await Task.Run(Sub()
+                                               ' TODO: Ensure files that already exist are skipped if we're debugging
+                                               ' extracting without updating the cache from the server.
                                                ZipFile.ExtractToDirectory(DatabaseTempDir & "\source.msix", DatabaseTempDir & "\source\")
                                            End Sub)
 
