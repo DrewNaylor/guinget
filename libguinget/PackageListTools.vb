@@ -246,7 +246,7 @@ Public Class PackageListTools
                            End Sub)
         End If
         ' Now download.
-        Await DownloadPkgListWithProgressAsync("https://winget.azureedge.net/cache/source.msix",
+        Await DownloadPkgListWithProgressAsync("https://cdn.winget.microsoft.com/cache/source.msix",
                                              "winget-db")
 #End Region
 
