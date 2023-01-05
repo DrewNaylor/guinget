@@ -362,15 +362,17 @@ Public Class PackageListTools
                                             ' every file.
                                             progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
 
-                                            Await Task.Run(Sub()
-                                                               ' Make sure there's a "\" at the end of the path to prevent path traversal.
-                                                               If Not DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty).EndsWith("\") Then
-                                                                   DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty) & "\"
-                                                               Else
-                                                                   ' Destination path has a "\", so just replace the filename.
-                                                                   DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty)
-                                                               End If
 
+                                            ' Make sure there's a "\" at the end of the path to prevent path traversal.
+                                            If Not DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty).EndsWith("\") Then
+                                                DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty) & "\"
+                                            Else
+                                                ' Destination path has a "\", so just replace the filename.
+                                                DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty)
+                                            End If
+
+
+                                            Await Task.Run(Sub()
                                                                ' Create the directory for the manifest if it doesn't exist.
                                                                IO.Directory.CreateDirectory(DestinationPath)
 
@@ -385,7 +387,11 @@ Public Class PackageListTools
                                                                Try
                                                                    ' TODO: Make sure the file doesn't exist yet, which can happen if the main window
                                                                    ' is closed during extraction and we're not deleting the temp directory yet.
-                                                                   ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
+                                                                   If Not System.IO.File.Exists(DestinationPath & ZipArchiveEntry.Name) Then
+                                                                       ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
+                                                                   Else
+                                                                       Exit Sub
+                                                                   End If
 
                                                                Catch ex As System.IO.DirectoryNotFoundException
                                                                    ' The messagebox was moved to its own sub so that the boolean
@@ -394,9 +400,9 @@ Public Class PackageListTools
                                                                End Try
                                                            End Sub)
                                         End If
-                                    End If
-                                    ' Update progress bar.
-                                    progressform.progressbarDownloadProgress.Value = progressform.progressbarDownloadProgress.Value + 1
+                                        End If
+                                        ' Update progress bar.
+                                        progressform.progressbarDownloadProgress.Value = progressform.progressbarDownloadProgress.Value + 1
                                 Next
 
                                 ' Set the progress bar back to the way it was.
