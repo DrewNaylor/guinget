@@ -383,6 +383,8 @@ Public Class PackageListTools
                                                                ' https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation
 
                                                                Try
+                                                                   ' TODO: Make sure the file doesn't exist yet, which can happen if the main window
+                                                                   ' is closed during extraction and we're not deleting the temp directory yet.
                                                                    ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
 
                                                                Catch ex As System.IO.DirectoryNotFoundException
@@ -667,7 +669,10 @@ Public Class PackageListTools
         Try
             ' Using Await so it's properly async.
             Await Task.Run(Sub()
-                               System.IO.Directory.Delete(tempPath, True)
+                               ' Make sure the path exists first.
+                               If System.IO.Directory.Exists(tempPath) Then
+                                   System.IO.Directory.Delete(tempPath, True)
+                               End If
                            End Sub)
             ' Re-create the dir if necessary.
             If RecreateTempDir = True Then
