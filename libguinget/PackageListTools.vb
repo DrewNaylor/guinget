@@ -234,17 +234,17 @@ Public Class PackageListTools
         End If
         ' Now download the database.
         If IO.Directory.Exists(DatabaseTempDir) Then
-                ' Exists; re-create it.
-                If Await DeleteTempDirAsync("winget-db", True) = False Then
-                    ' If there's an issue and a file is open, stop updating.
-                    Exit Function
-                End If
-            ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
-                ' Doesn't exist; create it.
-                Await Task.Run(Sub()
-                                   System.IO.Directory.CreateDirectory(DatabaseTempDir)
-                               End Sub)
+            ' Exists; re-create it.
+            If Await DeleteTempDirAsync("winget-db", True) = False Then
+                ' If there's an issue and a file is open, stop updating.
+                Exit Function
             End If
+        ElseIf Not IO.Directory.Exists(DatabaseTempDir) Then
+            ' Doesn't exist; create it.
+            Await Task.Run(Sub()
+                               System.IO.Directory.CreateDirectory(DatabaseTempDir)
+                           End Sub)
+        End If
         ' Now download.
         Await DownloadPkgListWithProgressAsync("https://cdn.winget.microsoft.com/cache/source.msix",
                                              "winget-db")
@@ -362,10 +362,6 @@ Public Class PackageListTools
                                             ' every file.
                                             progressform.labelSourceName.Text = "File: " & ZipArchiveEntry.Name.ToString
 
-                                            ' Create variable that'll say whether we should show the long file path messagebox again this extraction.
-                                            Dim LongFilePathMessageShown As Boolean = False
-
-
                                             Await Task.Run(Sub()
                                                                ' Make sure there's a "\" at the end of the path to prevent path traversal.
                                                                If Not DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty).EndsWith("\") Then
@@ -390,17 +386,9 @@ Public Class PackageListTools
                                                                    ZipArchiveEntry.ExtractToFile(DestinationPath & ZipArchiveEntry.Name)
 
                                                                Catch ex As System.IO.DirectoryNotFoundException
-                                                                   If LongFilePathMessageShown = False Then
-                                                                       MessageBox.Show("The file path for this manifest is too long." & vbCrLf & vbCrLf &
-                                                                                       "You'll need to turn LongPathsEnabled on in the Windows Registry manually for now, or use the EnableLongPathsEnabled.reg file that shipped with guinget. You can turn it back off with DisableLongPathsEnabled.reg." & vbCrLf & vbCrLf &
-                                                                                       "Be sure to read these files in Notepad first to ensure they don't do anything dangerous (just in case they get modified by a third-party in an unofficial guinget package), or so that you can just copy everything manually if you know what you're doing. These files must be opened from an elevated (Administrator) process, such as Command Prompt or PowerShell. After doing either, you may need to restart your computer to ensure the changes take effect. We won't tell you again during this extraction for any more files we run into that are too long." & vbCrLf & vbCrLf &
-                                                                                       "A future version will make this easier." & vbCrLf &
-                                                                                       vbCrLf &
-                                                                                       "Current manifest we're trying to extract: " & ZipArchiveEntry.Name, "Manifest File Path Too Long")
-                                                                       'MessageBox.Show("The file path for this manifest is probably too long. You'll need to go to the Options window to turn LongPathsEnabled on in the Windows Registry. You'll be guided through the task automatically.")
-                                                                       ' Update variable to say if we've shown this message or not yet.
-                                                                       LongFilePathMessageShown = True
-                                                                   End If
+                                                                   ' The messagebox was moved to its own sub so that the boolean
+                                                                   ' would be updated properly.
+                                                                   ManifestPathTooLongMessage(ZipArchiveEntry.Name)
                                                                End Try
                                                            End Sub)
                                         End If
@@ -452,11 +440,11 @@ Public Class PackageListTools
                                            "Extracting manifests")
                     End Try
                 Else
-                ' The calling app wants to use 7zip, so use it.
-                ' Make sure it doesn't have "://" in the path.
-                If PathTo7zip.Contains("://") Then
-                    PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
-                End If
+                    ' The calling app wants to use 7zip, so use it.
+                    ' Make sure it doesn't have "://" in the path.
+                    If PathTo7zip.Contains("://") Then
+                        PathTo7zip = "C:\Program Files\7-Zip\7z.exe"
+                    End If
 
                     Using extraction7z As New Process
                         Await Task.Run(Sub()
@@ -481,11 +469,11 @@ Public Class PackageListTools
                     End Using
                 End If
 
-        'MessageBox.Show("7zip finished")
+                'MessageBox.Show("7zip finished")
 
 
 
-        End Using
+            End Using
 
             'MessageBox.Show("Done extracting.")
 
@@ -556,17 +544,17 @@ Public Class PackageListTools
                                                                ex.Message, "Moving manifests")
                         End Try
 
-                    Try
-                        ' Make sure the database temp folder exists before deleting
-                        ' the database dir.
-                        ' It might not exist if the user is running guinget offline,
-                        ' in which case the database cache will just be loaded from
-                        ' disk and won't be updated.
-                        Await Task.Run(Sub()
-                                           If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
-                                               System.IO.Directory.Delete(DatabaseDir, True)
-                                           End If
-                                       End Sub)
+                        Try
+                            ' Make sure the database temp folder exists before deleting
+                            ' the database dir.
+                            ' It might not exist if the user is running guinget offline,
+                            ' in which case the database cache will just be loaded from
+                            ' disk and won't be updated.
+                            Await Task.Run(Sub()
+                                               If System.IO.Directory.Exists(DatabaseDir) AndAlso IO.Directory.Exists(DatabaseTempDir & "\source\Public") Then
+                                                   System.IO.Directory.Delete(DatabaseDir, True)
+                                               End If
+                                           End Sub)
 
                             ' Move the database to its proper
                             ' folder rather than copy so it's
@@ -579,17 +567,17 @@ Public Class PackageListTools
                                            End Sub)
 
                         Catch ex As System.IO.DirectoryNotFoundException
-                        MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
+                            MessageBox.Show("Couldn't find " & DatabaseTempDir & "\source\Public" & vbCrLf &
                                                        "Please close any Explorer windows that may be open in this directory, and try again.",
                                        "Moving manifests")
-                    Catch ex As System.IO.IOException
-                        MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
+                        Catch ex As System.IO.IOException
+                            MessageBox.Show("Please close any Explorer windows that may be open in this directory, and try again." & vbCrLf &
                                                        vbCrLf &
                                                        "Details:" & vbCrLf &
                                                        ex.Message, "Moving manifests")
-                    End Try
+                        End Try
 
-                Else
+                    Else
 
                         ' The calling app wants to use Robocopy.
                         ' Partially copying code from update-manifests.bat.
@@ -629,12 +617,12 @@ Public Class PackageListTools
                         ' If there's an issue deleting it here, exit the function.
                         Exit Function
                     End If
-                ' winget-db
-                If Await DeleteTempDirAsync("winget-db") = False Then
-                    ' If there's an issue deleting it here, exit the function.
-                    Exit Function
+                    ' winget-db
+                    If Await DeleteTempDirAsync("winget-db") = False Then
+                        ' If there's an issue deleting it here, exit the function.
+                        Exit Function
+                    End If
                 End If
-            End If
 
                 ' End checking if user clicked Cancel in the extracting phase.
             End If
@@ -643,6 +631,29 @@ Public Class PackageListTools
         End If
 
     End Function
+
+#Region "Stop extracting manifests with paths that are too long message."
+
+    ' Boolean to store if the long file path message has been shown yet.
+    ' This and the sub with the message box below has been moved from the
+    ' extraction code as it wasn't properly updating the boolean
+    ' due to happening in an async block.
+    Private Shared LongFilePathMessageShown As Boolean = False
+
+    Private Shared Sub ManifestPathTooLongMessage(ZipArchiveEntryName As String)
+        If LongFilePathMessageShown = False Then
+            MessageBox.Show("The file path for this manifest is too long." & vbCrLf & vbCrLf &
+                            "You'll need to turn LongPathsEnabled on in the Windows Registry manually for now, or use the EnableLongPathsEnabled.reg file that shipped with guinget. You can turn it back off with DisableLongPathsEnabled.reg." & vbCrLf & vbCrLf &
+                            "Be sure to read these files in Notepad first to ensure they don't do anything dangerous (just in case they get modified by a third-party in an unofficial guinget package), or so that you can just copy everything manually if you know what you're doing. These files must be opened from an elevated (Administrator) process, such as Command Prompt or PowerShell. After doing either, you may need to restart your computer to ensure the changes take effect. We won't tell you again during this extraction for any more files we run into that are too long." & vbCrLf & vbCrLf &
+                            "A future version will make this easier." & vbCrLf &
+                            vbCrLf &
+                            "Current manifest we're trying to extract: " & ZipArchiveEntryName, "Manifest File Path Too Long")
+            'MessageBox.Show("The file path for this manifest is probably too long. You'll need to go to the Options window to turn LongPathsEnabled on in the Windows Registry. You'll be guided through the task automatically.")
+            ' Update variable to say if we've shown this message or not yet.
+            LongFilePathMessageShown = True
+        End If
+    End Sub
+#End Region
 #End Region
 
 #Region "Deleting temp directories."
