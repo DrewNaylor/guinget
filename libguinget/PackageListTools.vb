@@ -57,6 +57,7 @@ Public Class PackageListTools
                                                   TitleText, MessageBoxButtons.YesNo)
         ' If the user clicks Yes, delete the folder then let them know if it was successful.
         ' Make sure it's not in use at the moment.
+        ' TODO: Make this async. Doing so will require moving the Try...Catch block inside the Await.
         If response = DialogResult.Yes AndAlso IO.Directory.Exists(path) Then
             Try
                 System.IO.Directory.Delete(path, True)
@@ -370,6 +371,7 @@ Public Class PackageListTools
                                                 ' Destination path has a "\", so just replace the filename.
                                                 DestinationPath = DestinationPath.Replace(ZipArchiveEntry.Name, String.Empty)
                                             End If
+
 
                                             Await Task.Run(Sub()
                                                                ' Create the directory for the manifest if it doesn't exist.
@@ -730,6 +732,7 @@ Public Class PackageListTools
         ' Take the Id string for each package file and append it to the
         ' package list array variable.
         For Each PackageManifest As String In My.Computer.FileSystem.GetFiles(ManifestAppDataFolder, FileIO.SearchOption.SearchAllSubDirectories, "*.yaml")
+
             ' Append the current package manifest's path to the ManifestPath string.
             Await Task.Run(Sub()
                                ManifestPath.Add(PackageManifest)
