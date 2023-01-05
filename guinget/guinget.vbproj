@@ -241,8 +241,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DisableLongPathsEnabled.reg" />
-    <None Include="EnableLongPathsEnabled.reg" />
+    <None Include="DisableLongPathsEnabled.reg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="EnableLongPathsEnabled.reg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
