@@ -686,13 +686,13 @@ Public Class PackageListTools
                                    Try
                                        System.IO.Directory.Delete(tempPath, True)
                                    Catch ex As System.IO.IOException
-                                       ' We need to tell another sub to load the last session's package list
-                                       ' because something in the path is in use and we'll do it
-                                       ' by updating a boolean outside the Await because I don't
-                                       ' know how to do this properly.
-                                       ' TODO: Figure it out to do it properly.
-                                       UpdateBooleanToUsePreviousSessionPackageList()
-                                   End Try
+                                   ' We need to tell another sub to load the last session's package list
+                                   ' because something in the path is in use and we'll do it
+                                   ' by updating a boolean outside the Await because I don't
+                                   ' know how to do this properly.
+                                   ' TODO: Figure it out to do it properly.
+                                   UpdateBooleanToUsePreviousSessionPackageList(True)
+                               End Try
                                End If
                            End Sub)
             ' Re-create the dir if necessary.
@@ -702,15 +702,17 @@ Public Class PackageListTools
         If UsePreviousSessionPackageList = True Then
             MessageBox.Show("A file in " & tempPath & " is in use by another process. Please close it and try again. Loading last session's package list.", "Deleting temp dir")
             ' Task unsuccessful.
+            ' We still need to reset the boolean, though.
+            UpdateBooleanToUsePreviousSessionPackageList(False)
             Return False
         End If
         ' Task successful.
         Return True
     End Function
 
-    Private Shared Sub UpdateBooleanToUsePreviousSessionPackageList()
+    Private Shared Sub UpdateBooleanToUsePreviousSessionPackageList(State As Boolean)
         ' Update the boolean.
-        UsePreviousSessionPackageList = True
+        UsePreviousSessionPackageList = State
     End Sub
 #End Region
 
