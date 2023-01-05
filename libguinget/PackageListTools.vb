@@ -873,6 +873,7 @@ WHERE
 
                 ' Column 0 is ID, 4 is Name, 2 is Version, and 6 is latest version.
                 ' Running this as async.
+                ' This wasn't in the v0.3.x backports.
                 Await Task.Run(Sub()
                                    packageArray.Rows.Add(SqlDataReader.GetValue(0), SqlDataReader.GetValue(4), SqlDataReader.GetValue(2), SqlDataReader.GetValue(6))
                                End Sub)
