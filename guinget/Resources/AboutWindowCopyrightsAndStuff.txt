@@ -7,7 +7,7 @@ You can get the source code for guinget from
 https://github.com/DrewNaylor/guinget
 
 libguinget is used for things like loading the package list and uses the Apache License 2.0.
-libguinget Copyright (C) 2020-2022 Drew Naylor.
+libguinget Copyright (C) 2020-2023 Drew Naylor.
 
 libscrollswitchtabs is part of the drews-libs project and is used for switching
 tab control tabs using the mouse scroll wheel, just like in many Linux applications.

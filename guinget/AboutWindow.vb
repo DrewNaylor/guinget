@@ -1,7 +1,7 @@
 ﻿' guinget - Unofficial GUI for Microsoft's Windows Package Manager (winget)
 '           Kinda like Synaptic, but for Windows. Not associated with either
 '           Microsoft or the Synaptic project. 
-' Copyright (C) 2020-2022 Drew Naylor
+' Copyright (C) 2020-2023 Drew Naylor
 ' (Note that the copyright years include the years left out by the hyphen.)
 ' winget, Windows, and all related words are copyright and trademark Microsoft Corporation.
 '
@@ -37,8 +37,6 @@ Public Class AboutWindow
         textboxAbout.Text = "guinget" & vbCrLf &
                         "Version " & My.Application.Info.Version.ToString & " Beta" & vbCrLf &
                         My.Application.Info.Copyright & vbCrLf &
-                        vbCrLf &
-                        "(note: the following text may need to be updated or may be out of date; I am simply copying over the file from v0.3.0.2's backports branch, and will check it later)" & vbCrLf &
                         vbCrLf &
                         My.Resources.AboutWindowCopyrightsAndStuff.Replace(vbLf, vbCrLf)
     End Sub
