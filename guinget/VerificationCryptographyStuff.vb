@@ -92,7 +92,7 @@ Public Class VerificationCryptographyStuff
 
         ReplacerStringBuilder.Replace("2", "l", 10, 1)
 
-        ' To allow passing in a username, we have to move this decyphering
+        ' To allow passing in a username, we have to move this deciphering
         ' line down to here for simplicity.
         If UserName.Length > 0 Then
             ReplacerStringBuilder.Replace("e", "d, " & UserName, 12, 1)
