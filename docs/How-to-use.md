@@ -272,3 +272,5 @@ Controls that don't yet have their features implemented are hidden by default, b
 You may need to restart guinget for this change to take full effect.
 
 Version 0.1.3 and newer also hide [experimental options](experimental-options) behind this feature, so you'll have to show experimental controls if you want to change experimental options. Please note that experimental options will stay active even if the controls are hidden again.
+
+{% include anti-drm.html %}
