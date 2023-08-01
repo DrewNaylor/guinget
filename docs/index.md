@@ -5,3 +5,5 @@ For now, this website won't have much, so it may be a good idea to [look at the 
 - [Experimental options](https://drew-naylor.com/guinget/experimental-options)<br>
 - [Project roadmap](https://drew-naylor.com/guinget/Project-roadmap)<br>
 - [Devlog](https://drew-naylor.com/guinget/devlog)
+
+{% include anti-drm.html %}
