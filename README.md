@@ -1,10 +1,14 @@
 # guinget
+
+## Moving to Codeberg
+**Note:** I'm migrating to Codeberg. The canonical repo for guinget is now here, please update your remotes: https://codeberg.org/DrewNaylor/guinget
+
+## Rest of the readme
+
 Unofficial GUI for Microsoft's Windows Package Manager (winget). Kinda like Synaptic, but for Windows.
 
 Not associated with Microsoft, and Microsoft does not endorse guinget.
 Not associated with the Synaptic project, either.
-
-> NB: I'm migrating to Codeberg. The canonical repo for guinget is now here, please update your remotes: https://codeberg.org/DrewNaylor/guinget
 
 >~~**NB:** If you installed winget in a regular user account, you may need to re-install it in an account with Admin permissions before installing guinget or any other packages that use Inno Setup installers. Be sure to update winget's sources before logging off the Admin account and back into your regular account, or winget's sources cache may claim it's corrupted when trying to use it in an Admin command prompt in your regular account.~~<br>
 >This may no longer be necessary, at least on the latest update for Windows 10 2004. The purpose for this text was to say that winget doesn't properly elevate Inno Setup installers so you'd have to install them from an elevated CMD, but it seems to do just fine now. In fact, winget doesn't like to run elevated on 2004 from a limited account anymore, but at least it usually elevates installers. Whether this affects other versions of Windows 10 or if it's a bug are uncertain, but 1909 doesn't seem to have this issue.<br>
